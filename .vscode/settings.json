@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.workingDirectories": [
+    {
+      "pattern": "./apps/*/"
+    },
+    {
+      "pattern": "./packages/*/"
+    }
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

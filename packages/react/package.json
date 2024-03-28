@@ -1,0 +1,59 @@
+{
+  "name": "@thinkbuff/figma-react",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "A Figma React UI components for creating plugins and widgets",
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint:config-viewer": "npx eslint-flat-config-viewer",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview",
+    "storybook": "storybook dev -h 127.0.0.1 -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.2.25",
+    "@storybook/addon-essentials": "^8.0.5",
+    "@storybook/addon-interactions": "^8.0.5",
+    "@storybook/addon-links": "^8.0.5",
+    "@storybook/addon-onboarding": "^8.0.5",
+    "@storybook/blocks": "^8.0.5",
+    "@storybook/react": "^8.0.5",
+    "@storybook/react-vite": "^8.0.5",
+    "@storybook/test": "^8.0.5",
+    "@unocss/preset-rem-to-px": "^0.58.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^8.0.5",
+    "unocss": "^0.58.7",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
+    "@thinkbuff/figma-theme": "workspace:*",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.2.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
+  }
+}

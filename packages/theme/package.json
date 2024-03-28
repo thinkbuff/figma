@@ -1,0 +1,60 @@
+{
+  "name": "@thinkbuff/figma-theme",
+  "version": "0.0.0",
+  "author": "Eleven <eteplus@outlook.com>",
+  "type": "module",
+  "description": "Figma theme",
+  "scripts": {
+    "build": "unbuild && pnpm generate:css",
+    "stub": "unbuild --stub && pnpm generate:css",
+    "generate:css": "tsx scripts/generate-css-files.ts",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "figma",
+    "figma-theme",
+    "unocss",
+    "unocss-preset",
+    "unocss-preset-figma"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./colors": {
+      "types": "./dist/colors/index.d.ts",
+      "import": "./dist/colors/index.mjs",
+      "require": "./dist/colors/index.cjs"
+    },
+    "./unocss": {
+      "types": "./dist/unocss/index.d.ts",
+      "import": "./dist/unocss/index.mjs",
+      "require": "./dist/unocss/index.cjs"
+    },
+    "./css/*.css": "./dist/css/*.css",
+    "./*": "./*"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "*.css",
+    "*.d.ts",
+    "dist"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "unbuild": "^2.0.0",
+    "unocss": "^0.58.7"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
+  }
+}
