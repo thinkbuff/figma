@@ -13,7 +13,7 @@ const buttonVariants = cva(
     'items-center',
     'justify-center',
     'shrink-0',
-    'rounded-[6px]',
+    'rounded-6px',
     'text-size-11',
     'truncate',
     'font-medium',
