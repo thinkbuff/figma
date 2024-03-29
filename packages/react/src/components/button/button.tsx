@@ -15,7 +15,6 @@ const buttonVariants = cva(
     'shrink-0',
     'rounded-[6px]',
     'text-size-11',
-    'max-w-50',
     'truncate',
     'font-medium',
     'border-none',
@@ -43,14 +42,9 @@ const buttonVariants = cva(
           'disabled:hover:bg-transparent',
           'disabled:active:bg-transparent',
         ],
-        ghost: [
-          'disabled:(text-figma-disabled bg-transparent)',
-          'disabled:hover:bg-transparent',
-          'disabled:active:bg-transparent',
-        ],
         link: [
           'hover:underline',
-          'disabled:(text-figma-disabled no-underline)',
+          'disabled:text-figma-disabled',
         ],
       },
       color: {
@@ -183,56 +177,6 @@ const buttonVariants = cva(
         ],
       },
       {
-        variant: 'ghost',
-        color: 'primary',
-        className: [
-          'text-figma-brand-secondary',
-          'hover:bg-figma-brand-tertiary',
-          'active:bg-figma-brand-tertiary',
-          'data-[state=open]:bg-figma-brand-tertiary',
-        ],
-      },
-      {
-        variant: 'ghost',
-        color: 'secondary',
-        className: [
-          'text-figma',
-          'hover:bg-figma-pressed',
-          'active:bg-figma-pressed',
-          'data-[state=open]:bg-figma-pressed',
-        ],
-      },
-      {
-        variant: 'ghost',
-        color: 'success',
-        className: [
-          'text-figma-success',
-          'hover:bg-figma-success-tertiary',
-          'active:bg-figma-success-tertiary',
-          'data-[state=open]:bg-figma-success-tertiary',
-        ],
-      },
-      {
-        variant: 'ghost',
-        color: 'warning',
-        className: [
-          'text-figma-warning',
-          'hover:bg-figma-warning-tertiary',
-          'active:bg-figma-warning-tertiary',
-          'data-[state=open]:bg-figma-warning-tertiary',
-        ],
-      },
-      {
-        variant: 'ghost',
-        color: 'danger',
-        className: [
-          'text-figma-danger',
-          'hover:bg-figma-danger-tertiary',
-          'active:bg-figma-danger-tertiary',
-          'data-[state=open]:bg-figma-danger-tertiary',
-        ],
-      },
-      {
         variant: 'link',
         color: 'primary',
         className: ['text-figma-brand-secondary'],
@@ -269,7 +213,7 @@ type ButtonVariantsProps = VariantProps<typeof buttonVariants>;
 
 type ButtonHTMLAttributes = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
 
-export interface ButtonProps extends ButtonHTMLAttributes, ButtonVariantsProps {
+interface ButtonProps extends ButtonHTMLAttributes, ButtonVariantsProps {
   asChild?: boolean;
 }
 
@@ -294,4 +238,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = 'Button';
 
-export { Button, buttonVariants };
+export { type ButtonProps, Button, buttonVariants };
