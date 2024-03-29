@@ -94,7 +94,7 @@ export const WithIcon: Story = {
   ),
 };
 
-export const Loading: Story = {
+export const WithSpinner: Story = {
   render: args => (
     <Button {...args}>
       <svg

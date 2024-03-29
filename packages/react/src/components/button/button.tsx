@@ -19,6 +19,7 @@ const buttonVariants = cva(
     'font-medium',
     'border-none',
     'cursor-default',
+    'transition-colors',
     'outline',
     'outline-1',
     '-outline-offset-1',
@@ -44,7 +45,7 @@ const buttonVariants = cva(
         ],
         link: [
           'hover:underline',
-          'disabled:text-figma-disabled',
+          'disabled:(text-figma-disabled no-underline)',
         ],
       },
       color: {
@@ -214,6 +215,11 @@ type ButtonVariantsProps = VariantProps<typeof buttonVariants>;
 type ButtonHTMLAttributes = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
 
 interface ButtonProps extends ButtonHTMLAttributes, ButtonVariantsProps {
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   *
+   * Read [Composition](https://www.radix-ui.com/primitives/docs/guides/composition) guide for more details.
+   */
   asChild?: boolean;
 }
 
