@@ -1,8 +1,16 @@
 import type { Rule } from '@unocss/core';
 
-import { FigmaLightTheme, type ThemeCSSVariables, type ThemeColorScope } from '../colors';
+import {
+  BaseThemeCSSVariables,
+  FigmaLightThemeCSSVariables,
+  type ThemeCSSVariableKey,
+  type ThemeColorScope,
+} from '../colors';
 
-const variables = Object.keys(FigmaLightTheme) as ThemeCSSVariables[];
+const variables = Object.keys({
+  ...BaseThemeCSSVariables,
+  ...FigmaLightThemeCSSVariables,
+}) as ThemeCSSVariableKey[];
 
 /**
  * Generates a theme suffix based on the given scope and prefix.
@@ -39,7 +47,7 @@ export const rules: Rule[] = [
       const scopes = ['bg', 'border', 'text', 'icon'];
       const suffix = scopes.some(s => color?.startsWith?.(s, 1)) ? `${color || ''}` : `-${scope}${color}`;
 
-      if (color && !variables.includes(`--figma-color${suffix}` as ThemeCSSVariables)) {
+      if (color && !variables.includes(`--figma-color${suffix}` as ThemeCSSVariableKey)) {
         return '';
       }
 
@@ -63,7 +71,7 @@ export const rules: Rule[] = [
   [
     /^(fill|stroke|outline)-figma(.*)$/,
     ([, scope, color]) => {
-      if (color && !variables.includes(`--figma-color${color}` as ThemeCSSVariables)) {
+      if (color && !variables.includes(`--figma-color${color}` as ThemeCSSVariableKey)) {
         return '';
       }
 

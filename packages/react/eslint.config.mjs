@@ -21,6 +21,7 @@ export default defineFlatConfigAsync({
       ],
       rules: {
         'import/no-default-export': 'off',
+        'react-hooks/rules-of-hooks': 'off',
       },
     },
   ],

@@ -1,4 +1,4 @@
-export const FigJamLightTheme = {
+export const FigJamLightThemeCSSVariables = {
   '--figma-color-bg': 'rgba(255, 255, 255, 1)',
   '--figma-color-bg-brand': '#9747ff',
   '--figma-color-bg-brand-hover': '#8638e5',
@@ -171,6 +171,8 @@ export const FigJamLightTheme = {
   '--figma-color-text-warning': '#b86200',
   '--figma-color-text-warning-secondary': '#b86200',
   '--figma-color-text-warning-tertiary': '#b86200',
-} as const;
+};
 
-export type FigJamTheme = typeof FigJamLightTheme;
+export type FigJamThemeCSSVariables = typeof FigJamLightThemeCSSVariables;
+
+export type FigJamThemeCSSVariableKey = keyof FigJamThemeCSSVariables;

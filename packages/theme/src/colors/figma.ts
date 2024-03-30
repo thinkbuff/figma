@@ -1,4 +1,4 @@
-export const FigmaLightTheme = {
+export const FigmaLightThemeCSSVariables = {
   '--figma-color-bg': '#ffffff',
   '--figma-color-bg-brand': '#0d99ff',
   '--figma-color-bg-brand-hover': '#007be5',
@@ -171,9 +171,9 @@ export const FigmaLightTheme = {
   '--figma-color-text-warning': '#b86200',
   '--figma-color-text-warning-secondary': '#b86200',
   '--figma-color-text-warning-tertiary': '#b86200',
-} as const;
+};
 
-export const FigmaDarkTheme = {
+export const FigmaDarkThemeCSSVariables = {
   '--figma-color-bg': '#2c2c2c',
   '--figma-color-bg-brand': '#0c8ce9',
   '--figma-color-bg-brand-hover': '#0a6dc2',
@@ -346,6 +346,8 @@ export const FigmaDarkTheme = {
   '--figma-color-text-warning': '#f7d15f',
   '--figma-color-text-warning-secondary': '#f7d15f',
   '--figma-color-text-warning-tertiary': '#f7d15f',
-} as const;
+};
 
-export type FigmaTheme = typeof FigmaLightTheme | typeof FigmaDarkTheme;
+export type FigmaThemeCSSVariables = typeof FigmaLightThemeCSSVariables & typeof FigmaDarkThemeCSSVariables;
+
+export type FigmaThemeCSSVariableKey = keyof FigmaThemeCSSVariables;

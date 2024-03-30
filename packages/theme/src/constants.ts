@@ -1,10 +1,10 @@
-export const THEME_CSS_VARIABLES = {};
-
 /**
  * base css for figma
  */
 export const THEME_BASE_CSS = `
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;

@@ -1,25 +1,34 @@
-import { FigJamLightTheme, type FigJamTheme } from './figjam';
-import { FigmaLightTheme, FigmaDarkTheme, type FigmaTheme } from './figma';
+import { BaseThemeCSSVariables, type BaseThemeCSSVariableKey } from './base';
+import { FigmaLightThemeCSSVariables, FigmaDarkThemeCSSVariables, type FigmaThemeCSSVariableKey } from './figma';
+import { FigJamLightThemeCSSVariables, type FigJamThemeCSSVariableKey } from './figjam';
 
+export * from './base';
 export * from './figma';
 export * from './figjam';
 
-export type ThemeCSSVariables = keyof FigmaTheme & keyof FigJamTheme;
+export type ThemeCSSVariableKey = BaseThemeCSSVariableKey | FigmaThemeCSSVariableKey | FigJamThemeCSSVariableKey;
 
-export type ThemeColorScope = 'bg' | 'border' | 'text' | 'icon';
+export type ThemeColorScope = 'bg' | 'border' | 'icon' | 'text';
 
-export function getCSSPreflights(theme: Record<ThemeCSSVariables, string>) {
+export function getCSSPreflights(theme: Record<ThemeCSSVariableKey, string>) {
   return Object.entries(theme)
     .map(([name, value]) => {
-      return `${name.replace('figma-', '')}: var(${name}, ${value})`;
+      return `${name.replace('--figma-color', '--color')}: var(${name}, ${value})`;
     })
     .join(';');
 }
 
 export function generateCSSVariables(type: 'figma' | 'figjam') {
   if (type === 'figma') {
-    return `html {${getCSSPreflights(FigmaLightTheme)}}\nhtml.figma-dark {${getCSSPreflights(FigmaDarkTheme)}}`;
+    return `html.figma-light, .figma-light {
+      ${getCSSPreflights({ ...BaseThemeCSSVariables, ...FigmaLightThemeCSSVariables })}
+    }
+    html.figma-dark, .figma-dark {
+      ${getCSSPreflights({ ...BaseThemeCSSVariables, ...FigmaDarkThemeCSSVariables })}
+    }`;
   }
 
-  return `html.figjam {${getCSSPreflights(FigJamLightTheme)}}`;
+  return `html.figjam, .figjam {
+    ${getCSSPreflights({ ...BaseThemeCSSVariables, ...FigJamLightThemeCSSVariables })}
+  }`;
 }
