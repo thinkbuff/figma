@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
@@ -212,9 +212,9 @@ const buttonVariants = cva(
 
 type ButtonVariantsProps = VariantProps<typeof buttonVariants>;
 
-type ButtonHTMLAttributes = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
+type ButtonElement = React.ElementRef<'button'>;
 
-interface ButtonProps extends ButtonHTMLAttributes, ButtonVariantsProps {
+interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'color'>, ButtonVariantsProps {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    *
@@ -223,7 +223,7 @@ interface ButtonProps extends ButtonHTMLAttributes, ButtonVariantsProps {
   asChild?: boolean;
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<ButtonElement, ButtonProps>(
   ({ className, variant, color, asChild = false, ...props }, ref) => {
     const Component = asChild ? Slot : 'button';
     return (

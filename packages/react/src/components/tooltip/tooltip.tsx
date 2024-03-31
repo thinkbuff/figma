@@ -11,7 +11,7 @@ const TooltipTrigger = TooltipPrimitive.Trigger;
 
 const TooltipArrow = forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Arrow>,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Arrow>
+  TooltipPrimitive.PopperArrowProps
 >((props, ref) => (
   <TooltipPrimitive.Arrow
     className="fill-figma-bg-tooltip"
@@ -22,36 +22,34 @@ const TooltipArrow = forwardRef<
 
 TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName;
 
-type TooltipContentElement = typeof TooltipPrimitive.Content;
+type TooltipContentElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 
-interface TooltipContentProps
-  extends React.ComponentPropsWithoutRef<TooltipContentElement>,
-  TooltipPrimitive.PortalProps {}
+interface TooltipContentProps extends TooltipPrimitive.PopperContentProps, TooltipPrimitive.PortalProps {}
 
 /**
  * A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
  * - [Docs](https://www.radix-ui.com/primitives/docs/components/tooltip)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/tooltip#api-reference)
  */
-const TooltipContent = forwardRef<React.ElementRef<TooltipContentElement>, TooltipContentProps>(
+const TooltipContent = forwardRef<TooltipContentElement, TooltipContentProps>(
   ({ className, container = document.body, sideOffset = 4, ...props }, ref) => (
     <TooltipPrimitive.Portal container={container}>
       <TooltipPrimitive.Content
-        ref={ref}
-        sideOffset={sideOffset}
         className={cn(
           [
             'bg-figma-tooltip',
             'text-figma-tooltip',
             'fill-figma-icon-tooltip',
-            'z-50',
-            'rounded-0.5',
             'px-3',
+            'rounded-0.5',
             'py-2.5',
+            'z-50',
           ],
           className,
         )}
         {...props}
+        sideOffset={sideOffset}
+        ref={ref}
       />
     </TooltipPrimitive.Portal>
   ),

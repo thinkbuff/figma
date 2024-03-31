@@ -2,9 +2,11 @@ import { forwardRef } from 'react';
 
 import { cn } from '../../utils';
 
-interface ActionIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+type ActionIconElement = React.ElementRef<'button'>;
 
-const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(({ className, disabled, ...props }, ref) => {
+interface ActionIconProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> {}
+
+const ActionIcon = forwardRef<ActionIconElement, ActionIconProps>(({ className, disabled, ...props }, ref) => {
   return (
     <button
       ref={ref}
