@@ -19,13 +19,14 @@ const Checkbox = forwardRef<CheckboxElement, CheckboxProps>(
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn([
+        'relative',
         'size-3',
         'inline-flex',
         'items-center',
         'justify-center',
         'shrink-0',
         'cursor-default',
-        'rounded-2px',
+        'rounded-0.5',
         'outline',
         'outline-1',
         'outline-transparent',
@@ -61,6 +62,7 @@ const Checkbox = forwardRef<CheckboxElement, CheckboxProps>(
     </CheckboxPrimitive.Root>
   ),
 );
+
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 
 export { type CheckboxProps, Checkbox };

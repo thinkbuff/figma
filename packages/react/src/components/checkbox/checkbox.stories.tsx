@@ -44,7 +44,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-export const Uncheck: Story = {};
+export const Unchecked: Story = {};
 
 export const Checked: Story = {
   args: {
