@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
 
-import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent, TooltipArrow } from './tooltip';
+import { Tooltip, TooltipProvider } from './tooltip';
 
 const meta = {
   title: 'Components/Tooltip',
-  component: TooltipContent,
+  component: Tooltip,
   parameters: {
     layout: 'centered',
   },
@@ -60,33 +61,61 @@ const meta = {
         defaultValue: { summary: true },
       },
     },
+    withArrow: {
+      table: {
+        type: {
+          summary: 'boolean',
+          detail: 'Whether the tooltip should have an arrow',
+        },
+        defaultValue: { summary: true },
+      },
+    },
+    content: {
+      table: {
+        type: {
+          summary: 'React.ReactNode',
+          detail: 'The content of the tooltip',
+        },
+      },
+    },
   },
-  render: args => (
-    <TooltipProvider delayDuration={200}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <ActionIcon>
-            <span className="i-tabler-adjustments-alt size-4"></span>
-          </ActionIcon>
-        </TooltipTrigger>
-        <TooltipContent {...args}>
-          <p>Open settings</p>
-          <TooltipArrow />
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  ),
+
   args: {
+    open: false,
     align: 'center',
     alignOffset: 0,
     side: 'top',
     sideOffset: 4,
     avoidCollisions: true,
+    withArrow: true,
   },
-} satisfies Meta<typeof TooltipContent>;
+} satisfies Meta<typeof Tooltip>;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    content: 'Open settings',
+  },
+  render: (args) => {
+    const [{ open }, updateArgs] = useArgs();
+
+    return (
+      <TooltipProvider delayDuration={200}>
+        <Tooltip
+          {...args}
+          open={open}
+          onOpenChange={(value) => {
+            updateArgs({ open: value });
+          }}
+        >
+          <ActionIcon>
+            <span className="i-tabler-adjustments-alt size-4"></span>
+          </ActionIcon>
+        </Tooltip>
+      </TooltipProvider>
+    );
+  },
+};
 
 export default meta;
