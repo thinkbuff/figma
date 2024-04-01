@@ -48,6 +48,18 @@ export const Border: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+  },
+};
+
+export const Invalid: Story = {
+  args: {
+    invalid: true,
+  },
+};
+
 export const WithLeftIcon: Story = {
   render: args => (
     <Input {...args}>
@@ -78,7 +90,10 @@ export const WithSlots: Story = {
         <span className="i-tabler-search size-3"></span>
       </InputSlot>
       <InputSlot side="right">
-        <ActionIcon disabled={args.disabled} className="mx-1 size-6 text-figma-icon-secondary">
+        <ActionIcon
+          disabled={args.disabled}
+          className="mx-1 size-6 text-figma-icon-secondary focus:outline-transparent"
+        >
           <span className="i-tabler-x size-3"></span>
         </ActionIcon>
       </InputSlot>
