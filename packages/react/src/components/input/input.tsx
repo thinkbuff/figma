@@ -14,8 +14,6 @@ const InputContext = createContext<{
 const inputVariants = cva(
   [
     'w-full',
-    'h-8',
-    'px-2',
     'flex',
     'items-center',
     'text-size-11',
@@ -92,7 +90,7 @@ const Input = forwardRef<InputRootElement, InputProps>(
   ({ className, variant, invalid, disabled, children, ...props }, ref) => (
     <InputContext.Provider value={{ disabled, invalid }}>
       <div
-        className={cn(inputVariants({ variant, disabled, invalid, className }))}
+        className={cn(['relative', 'h-8', 'px-2'], inputVariants({ variant, disabled, invalid, className }))}
         data-disabled={disabled}
         data-invalid={invalid}
       >
@@ -160,4 +158,4 @@ const InputSlot = forwardRef<InputSlotElement, InputSlotProps>(({ className, sid
 
 InputSlot.displayName = 'InputSlot';
 
-export { type InputProps, Input, type InputSlotProps, InputSlot, inputVariants };
+export { type InputProps, Input, type InputSlotProps, InputSlot, type InputVariantsProps, inputVariants };

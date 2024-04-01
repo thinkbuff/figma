@@ -52,7 +52,7 @@
   "license": "MIT",
   "devDependencies": {
     "unbuild": "^2.0.0",
-    "unocss": "^0.58.8"
+    "unocss": "^0.58.9"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix"
