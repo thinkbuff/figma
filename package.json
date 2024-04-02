@@ -10,7 +10,7 @@
     "lint:fix": "pnpm run -r lint --fix",
     "typecheck": "pnpm run -r typecheck"
   },
-  "packageManager": "pnpm@8.15.5",
+  "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=18.18.0"
   },
@@ -33,5 +33,10 @@
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "jsxSingleQuote": false
   }
 }
