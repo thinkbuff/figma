@@ -3,11 +3,11 @@ import { useArgs } from '@storybook/preview-api';
 
 import { Label } from '../label';
 
-import { Checkbox } from './checkbox';
+import { Switch } from './switch';
 
 const meta = {
-  title: 'Components/Checkbox',
-  component: Checkbox,
+  title: 'Components/Switch',
+  component: Switch,
   parameters: {
     layout: 'centered',
   },
@@ -21,28 +21,20 @@ const meta = {
   },
   args: {
     disabled: false,
-    indeterminate: false,
     checked: false,
   },
   render: (args) => {
-    const [{ checked, indeterminate }, updateArgs] = useArgs();
+    const [{ checked }, updateArgs] = useArgs();
 
     return (
-      <Checkbox
+      <Switch
         {...args}
         checked={checked}
-        onCheckedChange={(value) => {
-          if (indeterminate && value) {
-            updateArgs({ indeterminate: false, checked: value });
-            return;
-          }
-
-          updateArgs({ checked: value });
-        }}
+        onCheckedChange={value => updateArgs({ checked: value })}
       />
     );
   },
-} satisfies Meta<typeof Checkbox>;
+} satisfies Meta<typeof Switch>;
 
 type Story = StoryObj<typeof meta>;
 
@@ -54,12 +46,6 @@ export const Checked: Story = {
   },
 };
 
-export const Indeterminate: Story = {
-  args: {
-    indeterminate: true,
-  },
-};
-
 export const Disabled: Story = {
   args: {
     disabled: true,
@@ -67,29 +53,18 @@ export const Disabled: Story = {
 };
 
 export const WithLabel: Story = {
-  argTypes: {
-    indeterminate: {
-      table: {
-        disable: true,
-      },
-    },
-  },
   render: (args) => {
     const [{ checked }, updateArgs] = useArgs();
 
     return (
       <div className="flex items-center gap-1">
-        <Checkbox
-          id="checkbox"
+        <Switch
+          id="switch"
           {...args}
           checked={checked}
-          onCheckedChange={() => {
-            updateArgs({ checked: !checked });
-          }}
+          onCheckedChange={() => updateArgs({ checked: !checked })}
         />
-        <Label htmlFor="checkbox">
-          Accept terms and conditions.
-        </Label>
+        <Label htmlFor="switch">Test mode</Label>
       </div>
     );
   },

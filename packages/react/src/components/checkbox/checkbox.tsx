@@ -17,6 +17,7 @@ const Checkbox = forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, Che
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn([
+        'peer',
         'relative',
         'size-3',
         'inline-flex',
@@ -37,7 +38,6 @@ const Checkbox = forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, Che
               'cursor-not-allowed',
               'text-figma-disabled',
               'border-figma-bg-disabled',
-              '[&~label]:text-figma-disabled',
               'data-[state=checked]:(text-figma-ondisabled bg-figma-disabled)',
             ]
           : [

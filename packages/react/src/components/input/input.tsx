@@ -21,7 +21,7 @@ const Input = forwardRef<React.ElementRef<'input'>, InputProps>(
   ({ className, variant, invalid, disabled, children, ...props }, ref) => (
     <InputContext.Provider value={{ disabled, invalid }}>
       <div
-        className={cn(['relative', 'h-8', 'px-2'], inputVariants({ variant, disabled, invalid, className }))}
+        className={cn(['peer', 'relative', 'h-8', 'px-2'], inputVariants({ variant, disabled, invalid, className }))}
         data-disabled={disabled}
         data-invalid={invalid}
       >
