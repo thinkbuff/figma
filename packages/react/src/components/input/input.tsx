@@ -12,14 +12,12 @@ const InputContext = createContext<{
   invalid: false,
 });
 
-type InputRootElement = React.ElementRef<'input'>;
-
 interface InputProps extends React.ComponentPropsWithRef<'input'>, InputVariantsProps {
   invalid?: boolean;
   disabled?: boolean;
 }
 
-const Input = forwardRef<InputRootElement, InputProps>(
+const Input = forwardRef<React.ElementRef<'input'>, InputProps>(
   ({ className, variant, invalid, disabled, children, ...props }, ref) => (
     <InputContext.Provider value={{ disabled, invalid }}>
       <div
@@ -50,8 +48,6 @@ const Input = forwardRef<InputRootElement, InputProps>(
 
 Input.displayName = 'Input';
 
-type InputSlotElement = React.ElementRef<'div'>;
-
 interface InputSlotProps extends React.ComponentPropsWithoutRef<'div'> {
   /**
    * The side of the Input that the icon or button is on.
@@ -62,7 +58,7 @@ interface InputSlotProps extends React.ComponentPropsWithoutRef<'div'> {
 /**
  * Contains icons or buttons associated with an Input.
  */
-const InputSlot = forwardRef<InputSlotElement, InputSlotProps>(({ className, side = 'left', ...props }, ref) => {
+const InputSlot = forwardRef<React.ElementRef<'div'>, InputSlotProps>(({ className, side = 'left', ...props }, ref) => {
   const { disabled, invalid } = useContext(InputContext);
   return (
     <div
@@ -91,4 +87,6 @@ const InputSlot = forwardRef<InputSlotElement, InputSlotProps>(({ className, sid
 
 InputSlot.displayName = 'InputSlot';
 
-export { type InputProps, Input, type InputSlotProps, InputSlot };
+export { Input, InputSlot };
+
+export type { InputProps, InputSlotProps };

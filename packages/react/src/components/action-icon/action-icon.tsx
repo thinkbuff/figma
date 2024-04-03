@@ -2,11 +2,9 @@ import { forwardRef } from 'react';
 
 import { cn } from '../../utils';
 
-type ActionIconElement = React.ElementRef<'button'>;
-
 interface ActionIconProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> {}
 
-const ActionIcon = forwardRef<ActionIconElement, ActionIconProps>(({ className, disabled, ...props }, ref) => {
+const ActionIcon = forwardRef<React.ElementRef<'button'>, ActionIconProps>(({ className, disabled, ...props }, ref) => {
   return (
     <button
       ref={ref}
@@ -52,4 +50,6 @@ const ActionIcon = forwardRef<ActionIconElement, ActionIconProps>(({ className, 
 
 ActionIcon.displayName = 'ActionIcon';
 
-export { type ActionIconProps, ActionIcon };
+export { ActionIcon };
+
+export type { ActionIconProps };

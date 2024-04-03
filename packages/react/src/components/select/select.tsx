@@ -209,13 +209,13 @@ const SelectSeparator = forwardRef<
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
 export {
-  SelectRoot,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectGroup,
-  SelectLabel,
-  SelectItem,
-  SelectSeparator,
-  SelectArrow,
+  SelectRoot as Root,
+  SelectTrigger as Trigger,
+  SelectValue as Value,
+  SelectContent as Content,
+  SelectGroup as Group,
+  SelectLabel as Label,
+  SelectItem as Item,
+  SelectSeparator as Separator,
+  SelectArrow as Arrow,
 };

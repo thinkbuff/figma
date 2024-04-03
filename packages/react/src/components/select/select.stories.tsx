@@ -1,27 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
-import {
-  SelectRoot,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-  SelectSeparator,
-} from './select';
+import * as Select from './select';
 
-type StoryArgs = React.ComponentPropsWithoutRef<typeof SelectContent> &
+type StoryArgs = React.ComponentPropsWithoutRef<typeof Select.Content> &
   Pick<
-    React.ComponentProps<typeof SelectTrigger>,
+    React.ComponentProps<typeof Select.Trigger>,
     | 'disabled'
     | 'value'
   >;
 
 const meta = {
-  title: 'Components/Select',
-  component: SelectContent,
+  title: 'Components/Select.',
+  component: Select.Content,
   parameters: {
     layout: 'centered',
     viewport: {
@@ -135,18 +126,18 @@ const meta = {
     const [args, updateArgs] = useArgs();
 
     return (
-      <SelectRoot
+      <Select.Root
         disabled={disabled}
         value={args.value}
         onValueChange={value => updateArgs({ value })}
       >
-        <SelectTrigger disabled={disabled} placeholder="Select color" />
-        <SelectContent {...props}>
-          <SelectItem value="blue">Blue</SelectItem>
-          <SelectItem value="red">Red</SelectItem>
-          <SelectItem value="green">Green</SelectItem>
-        </SelectContent>
-      </SelectRoot>
+        <Select.Trigger disabled={disabled} placeholder="Select. color" />
+        <Select.Content {...props}>
+          <Select.Item value="blue">Blue</Select.Item>
+          <Select.Item value="red">Red</Select.Item>
+          <Select.Item value="green">Green</Select.Item>
+        </Select.Content>
+      </Select.Root>
     );
   },
 } satisfies Meta<StoryArgs>;
@@ -181,71 +172,71 @@ export const CustomTrigger: Story = {
     const [args, updateArgs] = useArgs();
 
     return (
-      <SelectRoot
+      <Select.Root
         disabled={disabled}
         value={args.value}
         onValueChange={value => updateArgs({ value })}
       >
-        <SelectTrigger disabled={disabled}>
+        <Select.Trigger disabled={disabled}>
           <span className="i-tabler-droplet h-3 w-8 text-figma-secondary -ml-2"></span>
-          <SelectValue placeholder="Select an option" />
-        </SelectTrigger>
-        <SelectContent {...props}>
-          <SelectGroup>
-            <SelectItem value="pass-through">Pass through</SelectItem>
-            <SelectItem value="normal">Normal</SelectItem>
-          </SelectGroup>
+          <Select.Value placeholder="Select. an option" />
+        </Select.Trigger>
+        <Select.Content {...props}>
+          <Select.Group>
+            <Select.Item value="pass-through">Pass through</Select.Item>
+            <Select.Item value="normal">Normal</Select.Item>
+          </Select.Group>
 
-          <SelectSeparator />
+          <Select.Separator />
 
-          <SelectGroup>
-            <SelectItem value="darken">Darken</SelectItem>
-            <SelectItem value="multiply">Multiply</SelectItem>
-            <SelectItem value="plus-darker">Plus darker</SelectItem>
-            <SelectItem value="color-burn">Color burn</SelectItem>
-          </SelectGroup>
+          <Select.Group>
+            <Select.Item value="darken">Darken</Select.Item>
+            <Select.Item value="multiply">Multiply</Select.Item>
+            <Select.Item value="plus-darker">Plus darker</Select.Item>
+            <Select.Item value="color-burn">Color burn</Select.Item>
+          </Select.Group>
 
-          <SelectSeparator />
+          <Select.Separator />
 
-          <SelectGroup>
-            <SelectItem value="lighten">Lighten</SelectItem>
-            <SelectItem value="screen">Screen</SelectItem>
-            <SelectItem value="plus-lighter">Plus lighter</SelectItem>
-            <SelectItem value="color-dodge">Color dodge</SelectItem>
-          </SelectGroup>
+          <Select.Group>
+            <Select.Item value="lighten">Lighten</Select.Item>
+            <Select.Item value="screen">Screen</Select.Item>
+            <Select.Item value="plus-lighter">Plus lighter</Select.Item>
+            <Select.Item value="color-dodge">Color dodge</Select.Item>
+          </Select.Group>
 
-          <SelectSeparator />
+          <Select.Separator />
 
-          <SelectGroup>
-            <SelectItem value="overlay">Overlay</SelectItem>
-            <SelectItem value="soft-light">Soft light</SelectItem>
-            <SelectItem value="hard-light">Hard light</SelectItem>
-          </SelectGroup>
+          <Select.Group>
+            <Select.Item value="overlay">Overlay</Select.Item>
+            <Select.Item value="soft-light">Soft light</Select.Item>
+            <Select.Item value="hard-light">Hard light</Select.Item>
+          </Select.Group>
 
-          <SelectSeparator />
+          <Select.Separator />
 
-          <SelectGroup>
-            <SelectItem value="difference">Difference</SelectItem>
-            <SelectItem value="exclusion">Exclusion</SelectItem>
-          </SelectGroup>
+          <Select.Group>
+            <Select.Item value="difference">Difference</Select.Item>
+            <Select.Item value="exclusion">Exclusion</Select.Item>
+          </Select.Group>
 
-          <SelectSeparator />
+          <Select.Separator />
 
-          <SelectGroup>
-            <SelectItem value="hue">Hue</SelectItem>
-            <SelectItem value="saturation">Saturation</SelectItem>
-            <SelectItem value="color">Color</SelectItem>
-            <SelectItem value="luminosity">Luminosity</SelectItem>
-          </SelectGroup>
+          <Select.Group>
+            <Select.Item value="hue">Hue</Select.Item>
+            <Select.Item value="saturation">Saturation</Select.Item>
+            <Select.Item value="color">Color</Select.Item>
+            <Select.Item value="luminosity">Luminosity</Select.Item>
+          </Select.Group>
 
-          <SelectSeparator />
+          <Select.Separator />
 
-          <SelectGroup>
-            <SelectItem value="contrast">Contrast</SelectItem>
-            <SelectItem value="invert">Invert</SelectItem>
-          </SelectGroup>
-        </SelectContent>
-      </SelectRoot>
+          <Select.Group>
+            <Select.Item value="contrast">Contrast</Select.Item>
+            <Select.Item value="invert">Invert</Select.Item>
+          </Select.Group>
+        </Select.Content>
+      </Select.Root>
     );
   },
 };
@@ -258,42 +249,42 @@ export const WithLabel: Story = {
     const [args, updateArgs] = useArgs();
 
     return (
-      <SelectRoot
+      <Select.Root
         disabled={disabled}
         value={args.value}
         onValueChange={value => updateArgs({ value })}
       >
-        <SelectTrigger disabled={disabled} placeholder="Select an option" />
-        <SelectContent {...props}>
-          <SelectGroup>
-            <SelectLabel>String</SelectLabel>
-            <SelectItem value="text">Text</SelectItem>
-          </SelectGroup>
-          <SelectSeparator />
-          <SelectGroup>
-            <SelectLabel>Sizing</SelectLabel>
-            <SelectItem value="width">Width</SelectItem>
-            <SelectItem value="height">Height</SelectItem>
-          </SelectGroup>
-          <SelectSeparator />
-          <SelectGroup>
-            <SelectLabel>Auto Layout</SelectLabel>
-            <SelectItem value="gap">Gap</SelectItem>
-            <SelectItem value="horizontal-padding">
+        <Select.Trigger disabled={disabled} placeholder="Select. an option" />
+        <Select.Content {...props}>
+          <Select.Group>
+            <Select.Label>String</Select.Label>
+            <Select.Item value="text">Text</Select.Item>
+          </Select.Group>
+          <Select.Separator />
+          <Select.Group>
+            <Select.Label>Sizing</Select.Label>
+            <Select.Item value="width">Width</Select.Item>
+            <Select.Item value="height">Height</Select.Item>
+          </Select.Group>
+          <Select.Separator />
+          <Select.Group>
+            <Select.Label>Auto Layout</Select.Label>
+            <Select.Item value="gap">Gap</Select.Item>
+            <Select.Item value="horizontal-padding">
               Horizontal padding
-            </SelectItem>
-            <SelectItem value="vertical-padding">Vertical padding</SelectItem>
-          </SelectGroup>
-          <SelectSeparator />
-          <SelectGroup>
-            <SelectItem value="fill-width" disabled>
+            </Select.Item>
+            <Select.Item value="vertical-padding">Vertical padding</Select.Item>
+          </Select.Group>
+          <Select.Separator />
+          <Select.Group>
+            <Select.Item value="fill-width" disabled>
               Fill weight
-            </SelectItem>
-            <SelectItem value="stroke-width">Stroke weight</SelectItem>
-            <SelectItem value="corner-radius">Corner radius</SelectItem>
-          </SelectGroup>
-        </SelectContent>
-      </SelectRoot>
+            </Select.Item>
+            <Select.Item value="stroke-width">Stroke weight</Select.Item>
+            <Select.Item value="corner-radius">Corner radius</Select.Item>
+          </Select.Group>
+        </Select.Content>
+      </Select.Root>
     );
   },
 };
@@ -306,98 +297,98 @@ export const OptionWithIcon: Story = {
     const [args, updateArgs] = useArgs();
 
     return (
-      <SelectRoot
+      <Select.Root
         disabled={disabled}
         value={args.value}
         onValueChange={value => updateArgs({ value })}
       >
-        <SelectTrigger disabled={disabled} placeholder="Select an option" />
-        <SelectContent {...props}>
-          <SelectGroup>
-            <SelectItem asChild value="none">
+        <Select.Trigger disabled={disabled} placeholder="Select. an option" />
+        <Select.Content {...props}>
+          <Select.Group>
+            <Select.Item asChild value="none">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-circle-dot size-3.5"></span>
                 None
               </div>
-            </SelectItem>
-          </SelectGroup>
+            </Select.Item>
+          </Select.Group>
 
-          <SelectSeparator />
+          <Select.Separator />
 
-          <SelectGroup>
-            <SelectItem asChild value="navigate-to">
+          <Select.Group>
+            <Select.Item asChild value="navigate-to">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-arrow-right size-3.5"></span>
                 Navigate to
               </div>
-            </SelectItem>
-            <SelectItem asChild disabled value="change-to">
+            </Select.Item>
+            <Select.Item asChild disabled value="change-to">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-refresh size-3.5"></span>
                 Change to
               </div>
-            </SelectItem>
-            <SelectItem asChild value="back">
+            </Select.Item>
+            <Select.Item asChild value="back">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-arrow-back-up size-3.5"></span>
                 Back
               </div>
-            </SelectItem>
-          </SelectGroup>
+            </Select.Item>
+          </Select.Group>
 
-          <SelectSeparator />
+          <Select.Separator />
 
-          <SelectGroup>
-            <SelectItem asChild value="set-variable">
+          <Select.Group>
+            <Select.Item asChild value="set-variable">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-settings-2 size-3.5"></span>
                 Set variable
               </div>
-            </SelectItem>
-            <SelectItem asChild value="conditional">
+            </Select.Item>
+            <Select.Item asChild value="conditional">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-arrows-split-2 size-3.5"></span>
                 Conditional
               </div>
-            </SelectItem>
-            <SelectItem asChild value="scroll-to">
+            </Select.Item>
+            <Select.Item asChild value="scroll-to">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-arrow-move-down size-3.5"></span>
                 Scroll to
               </div>
-            </SelectItem>
-            <SelectItem asChild value="open-link">
+            </Select.Item>
+            <Select.Item asChild value="open-link">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-link size-3.5"></span>
                 Open link
               </div>
-            </SelectItem>
-          </SelectGroup>
+            </Select.Item>
+          </Select.Group>
 
-          <SelectSeparator />
+          <Select.Separator />
 
-          <SelectGroup>
-            <SelectItem asChild value="open-overlay">
+          <Select.Group>
+            <Select.Item asChild value="open-overlay">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-square-half size-3.5"></span>
                 Open overlay
               </div>
-            </SelectItem>
-            <SelectItem asChild value="swap-overlay">
+            </Select.Item>
+            <Select.Item asChild value="swap-overlay">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-replace size-3.5"></span>
                 Swap overlay
               </div>
-            </SelectItem>
-            <SelectItem asChild value="close-overlay">
+            </Select.Item>
+            <Select.Item asChild value="close-overlay">
               <div className="flex items-center gap-2">
                 <span className="i-tabler-square-x size-3.5"></span>
                 Close overlay
               </div>
-            </SelectItem>
-          </SelectGroup>
-        </SelectContent>
-      </SelectRoot>
+            </Select.Item>
+          </Select.Group>
+        </Select.Content>
+      </Select.Root>
     );
   },
 };

@@ -9,21 +9,24 @@ const TooltipRoot = TooltipPrimitive.Root;
 
 const TooltipTrigger = TooltipPrimitive.Trigger;
 
-const TooltipArrow = forwardRef<React.ElementRef<typeof TooltipPrimitive.Arrow>, TooltipPrimitive.PopperArrowProps>(
-  (props, ref) => (
-    <TooltipPrimitive.Arrow
-      className="fill-figma-bg-tooltip"
-      ref={ref}
-      {...props}
-    />
-  ),
-);
+const TooltipArrow = forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Arrow>,
+  TooltipPrimitive.PopperArrowProps
+>((props, ref) => (
+  <TooltipPrimitive.Arrow
+    className="fill-figma-bg-tooltip"
+    ref={ref}
+    {...props}
+  />
+));
 
 TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName;
 
 type TooltipContentElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 
-interface TooltipContentProps extends TooltipPrimitive.PortalProps, TooltipPrimitive.PopperContentProps {}
+interface TooltipContentProps
+  extends TooltipPrimitive.PortalProps,
+  TooltipPrimitive.PopperContentProps {}
 
 const TooltipContent = forwardRef<TooltipContentElement, TooltipContentProps>(
   ({ className, container = document.body, sideOffset = 4, ...props }, ref) => (
@@ -51,7 +54,9 @@ const TooltipContent = forwardRef<TooltipContentElement, TooltipContentProps>(
 
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
-interface TooltipProps extends TooltipPrimitive.TooltipProps, Omit<TooltipPrimitive.PopperContentProps, 'content'> {
+interface TooltipProps
+  extends TooltipPrimitive.TooltipProps,
+  Omit<TooltipPrimitive.PopperContentProps, 'content'> {
   /**
    * The content of the tooltip
    */
@@ -100,11 +105,7 @@ const Tooltip = forwardRef<TooltipContentElement, TooltipProps>(
       disableHoverableContent={disableHoverableContent}
     >
       <TooltipTrigger asChild>{children}</TooltipTrigger>
-      <TooltipContent
-        {...props}
-        asChild={false}
-        ref={ref}
-      >
+      <TooltipContent {...props} asChild={false} ref={ref}>
         {content}
         {withArrow ? <TooltipArrow /> : null}
       </TooltipContent>
@@ -114,4 +115,13 @@ const Tooltip = forwardRef<TooltipContentElement, TooltipProps>(
 
 Tooltip.displayName = 'Tooltip';
 
-export { TooltipProvider, TooltipRoot, Tooltip, TooltipTrigger, TooltipContent, TooltipArrow };
+export {
+  Tooltip,
+  TooltipProvider,
+  TooltipRoot,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+};
+
+export type { TooltipProps };

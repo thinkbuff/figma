@@ -5,8 +5,6 @@ import { cn } from '../../utils/cn';
 
 import { buttonVariants, type ButtonVariantsProps } from './button-variants';
 
-type ButtonElement = React.ElementRef<'button'>;
-
 interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'color'>, ButtonVariantsProps {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
@@ -16,7 +14,7 @@ interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'co
   asChild?: boolean;
 }
 
-const Button = forwardRef<ButtonElement, ButtonProps>(
+const Button = forwardRef< React.ElementRef<'button'>, ButtonProps>(
   ({ className, variant, color, asChild = false, ...props }, ref) => {
     const Component = asChild ? Slot : 'button';
     return (
@@ -37,4 +35,6 @@ const Button = forwardRef<ButtonElement, ButtonProps>(
 
 Button.displayName = 'Button';
 
-export { type ButtonProps, Button };
+export { Button };
+
+export type { ButtonProps };

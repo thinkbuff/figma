@@ -3,8 +3,6 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 
 import { cn } from '../../utils';
 
-type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
-
 interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
   indeterminate?: boolean;
 }
@@ -14,7 +12,7 @@ interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof CheckboxPr
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/checkbox)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/checkbox#api-reference)
  */
-const Checkbox = forwardRef<CheckboxElement, CheckboxProps>(
+const Checkbox = forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, CheckboxProps>(
   ({ className, checked, indeterminate = false, disabled, ...props }, ref) => (
     <CheckboxPrimitive.Root
       ref={ref}
@@ -65,4 +63,6 @@ const Checkbox = forwardRef<CheckboxElement, CheckboxProps>(
 
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 
-export { type CheckboxProps, Checkbox };
+export { Checkbox };
+
+export type { CheckboxProps };
