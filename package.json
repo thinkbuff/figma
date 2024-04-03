@@ -17,8 +17,8 @@
   "author": "Eleven <eteplus@outlook.com>",
   "license": "MIT",
   "devDependencies": {
-    "@thinkbuff/eslint-config": "^0.1.2",
-    "@types/node": "^20.12.2",
+    "@thinkbuff/eslint-config": "^0.1.4",
+    "@types/node": "^20.12.3",
     "@unocss/eslint-plugin": "^0.58.9",
     "eslint": "^8.57.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",

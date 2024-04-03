@@ -63,7 +63,7 @@ const SelectTrigger = forwardRef<
             'fill-figma-icon',
             'hover:border-figma',
             'focus-visible:(border-figma-selected outline-figma-border-selected)',
-            'data-[state=open]:border-figma-selected',
+            'data-[state=open]:outline-figma-border-selected',
           ],
       className,
     ])}
@@ -108,11 +108,14 @@ const SelectContent = forwardRef<
         'w-full',
         'bg-figma-menu',
         'rounded-0.5',
-        'border-none',
         'z-50',
+        'data-[side=top]:min-w-[var(--radix-select-trigger-width)]',
+        'data-[side=bottom]:min-w-[var(--radix-select-trigger-width)]',
+        'max-h-[var(--radix-select-content-available-height)]',
         className,
       ])}
       sideOffset={sideOffset}
+      onCloseAutoFocus={e => e.preventDefault()}
       {...props}
       ref={ref}
     >
