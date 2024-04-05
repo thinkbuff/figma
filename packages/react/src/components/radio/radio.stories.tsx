@@ -22,18 +22,18 @@ const meta = {
       control: 'inline-radio',
       options: ['all', 'only', 'none'],
     },
-    orientation: {
-      control: 'inline-radio',
-      options: ['horizontal', 'vertical'],
+    inline: {
+      control: 'boolean',
       table: {
-        defaultValue: { summary: 'vertical' },
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
       },
     },
   },
   args: {
     disabled: false,
     value: 'all',
-    orientation: 'vertical',
+    inline: false,
   },
   render: (args) => {
     const [{ value }, updateArgs] = useArgs();
@@ -75,6 +75,12 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+export const Inline: Story = {
+  args: {
+    inline: true,
+  },
+};
 
 export const Disabled: Story = {
   args: {

@@ -3,6 +3,10 @@ import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
 import { cn } from '../../utils';
 
+interface RadioGroupProps extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> {
+  inline?: boolean;
+}
+
 /**
  * A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
  *
@@ -11,14 +15,18 @@ import { cn } from '../../utils';
  */
 const RadioGroup = forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
->(({ className, orientation, ...props }, ref) => {
+  RadioGroupProps
+>(({ className, inline = false, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn(['flex', 'gap-2', orientation === 'horizontal' ? 'flex-row' : 'flex-col', className])}
+      className={cn([
+        'flex',
+        'gap-2',
+        inline ? 'flex-row' : 'flex-col',
+        className,
+      ])}
       {...props}
       ref={ref}
-      orientation={orientation}
     />
   );
 });
