@@ -12,12 +12,13 @@ import { cn } from '../../utils';
 const RadioGroup = forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
->(({ className, ...props }, ref) => {
+>(({ className, orientation, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn(['grid', 'gap-2', className])}
+      className={cn(['flex', 'gap-2', orientation === 'horizontal' ? 'flex-row' : 'flex-col', className])}
       {...props}
       ref={ref}
+      orientation={orientation}
     />
   );
 });

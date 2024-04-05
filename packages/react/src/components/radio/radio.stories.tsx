@@ -22,10 +22,18 @@ const meta = {
       control: 'inline-radio',
       options: ['all', 'only', 'none'],
     },
+    orientation: {
+      control: 'inline-radio',
+      options: ['horizontal', 'vertical'],
+      table: {
+        defaultValue: { summary: 'vertical' },
+      },
+    },
   },
   args: {
     disabled: false,
     value: 'all',
+    orientation: 'vertical',
   },
   render: (args) => {
     const [{ value }, updateArgs] = useArgs();
@@ -50,7 +58,7 @@ const meta = {
       >
         {options.map(option => (
           <div key={option.value} className="flex items-center gap-2">
-            <Radio.Item
+            <Radio.GroupItem
               id={`radio-${option.value}`}
               value={option.value}
             />
