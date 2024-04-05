@@ -11,7 +11,7 @@ type StoryArgs = React.ComponentPropsWithoutRef<typeof Select.Content> &
   >;
 
 const meta = {
-  title: 'Components/Select.',
+  title: 'Components/Select',
   component: Select.Content,
   parameters: {
     layout: 'centered',
