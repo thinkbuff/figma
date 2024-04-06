@@ -26,10 +26,10 @@ type TooltipContentElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 
 interface TooltipContentProps
   extends TooltipPrimitive.PortalProps,
-  TooltipPrimitive.PopperContentProps {}
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> {}
 
 const TooltipContent = forwardRef<TooltipContentElement, TooltipContentProps>(
-  ({ className, container = document.body, sideOffset = 4, ...props }, ref) => (
+  ({ className, container, sideOffset = 4, ...props }, ref) => (
     <TooltipPrimitive.Portal container={container}>
       <TooltipPrimitive.Content
         className={cn(
@@ -44,8 +44,8 @@ const TooltipContent = forwardRef<TooltipContentElement, TooltipContentProps>(
           ],
           className,
         )}
-        {...props}
         sideOffset={sideOffset}
+        {...props}
         ref={ref}
       />
     </TooltipPrimitive.Portal>
@@ -56,7 +56,7 @@ TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
 interface TooltipProps
   extends TooltipPrimitive.TooltipProps,
-  Omit<TooltipPrimitive.PopperContentProps, 'content'> {
+  Omit<TooltipContentProps, 'content'> {
   /**
    * The content of the tooltip
    */
@@ -78,39 +78,37 @@ interface TooltipProps
  * - [Docs](https://www.radix-ui.com/primitives/docs/components/tooltip)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/tooltip#api-reference)
  */
-const Tooltip = forwardRef<TooltipContentElement, TooltipProps>(
-  (
-    {
-      // Root props,
-      open,
-      defaultOpen,
-      onOpenChange,
-      delayDuration,
-      disableHoverableContent,
-      // Tooltip Trigger
-      children,
-      // Tooltip Content
-      content,
-      withArrow = true,
-      // Tooltip Content props
-      ...props
-    },
-    ref,
-  ) => (
-    <TooltipRoot
-      open={open}
-      defaultOpen={defaultOpen}
-      onOpenChange={onOpenChange}
-      delayDuration={delayDuration}
-      disableHoverableContent={disableHoverableContent}
+const Tooltip = ({
+  // Root props,
+  open,
+  defaultOpen,
+  onOpenChange,
+  delayDuration,
+  disableHoverableContent,
+  // Tooltip Trigger
+  children,
+  // Tooltip Content
+  content,
+  withArrow = true,
+  // Tooltip Content props
+  ...props
+}: TooltipProps) => (
+  <TooltipRoot
+    open={open}
+    defaultOpen={defaultOpen}
+    onOpenChange={onOpenChange}
+    delayDuration={delayDuration}
+    disableHoverableContent={disableHoverableContent}
+  >
+    <TooltipTrigger asChild>{children}</TooltipTrigger>
+    <TooltipContent
+      {...props}
+      asChild={false}
     >
-      <TooltipTrigger asChild>{children}</TooltipTrigger>
-      <TooltipContent {...props} asChild={false} ref={ref}>
-        {content}
-        {withArrow ? <TooltipArrow /> : null}
-      </TooltipContent>
-    </TooltipRoot>
-  ),
+      {content}
+      {withArrow ? <TooltipArrow /> : null}
+    </TooltipContent>
+  </TooltipRoot>
 );
 
 Tooltip.displayName = 'Tooltip';
