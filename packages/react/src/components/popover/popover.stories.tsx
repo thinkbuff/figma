@@ -8,8 +8,8 @@ import { Label } from '../label';
 import * as Popover from './popover';
 
 type StoryArgs = React.ComponentPropsWithoutRef<typeof Popover.Content> & {
-  open?: boolean;
   modal?: boolean;
+  open?: boolean;
 };
 
 const meta = {

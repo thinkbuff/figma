@@ -12,9 +12,9 @@ const TooltipTrigger = TooltipPrimitive.Trigger;
 const TooltipArrow = forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Arrow>,
   TooltipPrimitive.PopperArrowProps
->((props, ref) => (
+>(({ className, ...props }, ref) => (
   <TooltipPrimitive.Arrow
-    className="fill-figma-bg-tooltip"
+    className={cn('fill-figma-bg-tooltip', className)}
     ref={ref}
     {...props}
   />
