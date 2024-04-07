@@ -1,5 +1,6 @@
 import { defineConfig, presetUno, presetIcons, transformerVariantGroup } from 'unocss';
 import presetRemToPx from '@unocss/preset-rem-to-px';
+import presetAnimations from 'unocss-preset-animations';
 import { presetFigma } from '@thinkbuff/figma-theme/unocss';
 
 export default defineConfig({
@@ -11,6 +12,7 @@ export default defineConfig({
       },
     }),
     presetFigma(),
+    presetAnimations(),
     presetRemToPx(),
     presetIcons({
       cdn: 'https://esm.sh/',

@@ -22,6 +22,10 @@ const meta = {
       control: 'inline-radio',
       options: ['start', 'center', 'end'],
       table: {
+        type: {
+          summary: 'enum',
+          detail: 'The preferred alignment against the anchor. May change when collisions occur.',
+        },
         defaultValue: { summary: 'center' },
       },
     },
@@ -37,10 +41,13 @@ const meta = {
       control: 'inline-radio',
       options: ['top', 'right', 'bottom', 'left'],
       table: {
-        defaultValue: {
-          summary: 'top',
+        type: {
+          summary: 'enum',
           detail:
             'The preferred side of the trigger to render against when open. Will be reversed when collisions occur and avoidCollisions is enabled.',
+        },
+        defaultValue: {
+          summary: 'top',
         },
       },
     },
