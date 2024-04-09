@@ -32,7 +32,6 @@ export const rules: Rule[] = [
     /^font-size-(\d+|\d+\/\d+)$/,
     ([, value]) => {
       const [size, leading] = value.split('/');
-      console.log('[LOG] -> value:', value, size, leading);
       return ({
         'font-size': `${size}px`,
         'line-height': `${leading || 16}px`,

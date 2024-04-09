@@ -138,10 +138,10 @@ const meta = {
           <DropdownMenu.Label>People</DropdownMenu.Label>
           <DropdownMenu.RadioGroup value="pedro">
             <DropdownMenu.RadioItem value="pedro">
-              Pedro Duarte
+              Eleven Zhang
             </DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem value="colm">
-              Colm Tuite
+              Jerry Zhang
             </DropdownMenu.RadioItem>
           </DropdownMenu.RadioGroup>
           <DropdownMenu.Arrow />

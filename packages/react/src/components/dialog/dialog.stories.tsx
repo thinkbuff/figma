@@ -6,62 +6,48 @@ import { Label } from '../label';
 import { Input } from '../input';
 import { ActionIcon } from '../action-icon';
 
-import * as Sheet from './sheet';
+import * as Dialog from './dialog';
 
-type StoryArgs = React.ComponentPropsWithoutRef<typeof Sheet.Content> & {
+type StoryArgs = React.ComponentPropsWithoutRef<typeof Dialog.Content> & {
   modal?: boolean;
   open?: boolean;
 };
 
 const meta = {
-  title: 'Components/Sheet',
-  component: Sheet.Content,
+  title: 'Components/Dialog',
+  component: Dialog.Content,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    side: {
-      control: 'inline-radio',
-      options: ['top', 'right', 'bottom', 'left'],
-      table: {
-        type: {
-          summary: 'enum',
-          detail:
-            'Indicate the edge of the screen where the component will appear',
-        },
-        defaultValue: {
-          summary: 'bottom',
-        },
-      },
-    },
-  },
   args: {
     modal: true,
     open: false,
-    side: 'bottom',
   },
   render: (args) => {
     const { open: _, modal, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
     return (
-      <Sheet.Root
-        open={open}
+      <Dialog.Root
         modal={modal}
+        open={open}
         onOpenChange={value => updateArgs({ open: value })}
       >
-        <Sheet.Trigger asChild>
-          <Button>Open</Button>
-        </Sheet.Trigger>
-        <Sheet.Content {...props}>
-          <Sheet.Header className="justify-between">
-            <Sheet.Title>Edit profile</Sheet.Title>
-            <Sheet.Close asChild>
-              <ActionIcon className="-mr-2">
+        <Dialog.Trigger asChild>
+          <Button variant="outline">Edit profile</Button>
+        </Dialog.Trigger>
+        <Dialog.Content {...props}>
+          <Dialog.Header className="justify-between">
+            <Dialog.Title>Edit profile</Dialog.Title>
+            <Dialog.Close asChild>
+              <ActionIcon className="-mr-2 -mt-2">
                 <span className="i-mdi-window-close size-4"></span>
               </ActionIcon>
-            </Sheet.Close>
-          </Sheet.Header>
+            </Dialog.Close>
+          </Dialog.Header>
+          <Dialog.Description>
+            Make changes to your profile here. Click save when you&apos;re done.
+          </Dialog.Description>
           <div className="grid gap-4 p-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">
@@ -86,15 +72,13 @@ const meta = {
               />
             </div>
           </div>
-          <Sheet.Footer className="justify-end">
-            <Sheet.Close asChild>
-              <Button type="submit" className="h-7">
-                Save changes
-              </Button>
-            </Sheet.Close>
-          </Sheet.Footer>
-        </Sheet.Content>
-      </Sheet.Root>
+          <Dialog.Footer className="justify-end gap-3">
+            <Dialog.Close asChild>
+              <Button>Save changes</Button>
+            </Dialog.Close>
+          </Dialog.Footer>
+        </Dialog.Content>
+      </Dialog.Root>
     );
   },
 } satisfies Meta<StoryArgs>;
