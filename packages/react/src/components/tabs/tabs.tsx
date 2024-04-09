@@ -54,7 +54,7 @@ const TabsTrigger = forwardRef<
       'items-center',
       'justify-center',
       'px-3',
-      'text-size-11',
+      'font-size-11',
       'text-figma-secondary',
       'bg-transparent',
       'hover:text-figma',

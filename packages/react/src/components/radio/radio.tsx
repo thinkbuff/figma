@@ -51,7 +51,7 @@ const RadioGroupItem = forwardRef<
         'rounded-full',
         'aspect-square',
         'cursor-default',
-        'outline',
+        'outline-solid',
         'outline-1',
         '-outline-offset-2',
         'outline-transparent',

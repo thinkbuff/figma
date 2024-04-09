@@ -29,12 +29,16 @@ export function getThemeSuffix(scope: ThemeColorScope, prefix = '') {
 
 export const rules: Rule[] = [
   [
-    /^text-size-(\d+)$/,
-    ([, size]) => ({
-      'font-size': `${size}px`,
-      'line-height': '16px',
-    }),
-    { autocomplete: 'text-size-<num>' },
+    /^font-size-(\d+|\d+\/\d+)$/,
+    ([, value]) => {
+      const [size, leading] = value.split('/');
+      console.log('[LOG] -> value:', value, size, leading);
+      return ({
+        'font-size': `${size}px`,
+        'line-height': `${leading || 16}px`,
+      });
+    },
+    { autocomplete: 'font-size-(<num>|<num>/<num>)' },
   ],
   [
     /^(bg|border|text)-figma?(.*)$/,

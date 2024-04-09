@@ -82,7 +82,7 @@ const SliderThumb = forwardRef<
       'border-transparent',
       'rounded-full',
       'bg-figma',
-      'outline',
+      'outline-solid',
       'outline-2',
       'outline-transparent',
       'after:(block size-2 shrink-0 rounded-full content-[""] bg-figma-icon)',

@@ -44,7 +44,7 @@ const SelectTrigger = forwardRef<
       'border',
       'border-solid',
       'border-transparent',
-      'outline',
+      'outline-solid',
       'outline-1',
       '-outline-offset-2',
       'outline-transparent',
@@ -141,11 +141,10 @@ const SelectLabel = forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     className={cn([
-      'text-size-11',
+      'font-size-11',
       'text-figma-menu-secondary',
       'px-8',
       'py-1',
-      'pt-1',
       'font-medium',
       className,
     ])}
@@ -171,7 +170,7 @@ const SelectItem = forwardRef<
       'h-6',
       'flex',
       'items-center',
-      'text-size-11',
+      'font-size-11',
       'pl-8',
       'pr-4',
       'cursor-default',
@@ -183,7 +182,7 @@ const SelectItem = forwardRef<
     ])}
     {...props}
   >
-    <SelectPrimitive.ItemIndicator className="i-mdi-check-bold absolute left-2 h-3 w-4 -mt-1px" />
+    <SelectPrimitive.ItemIndicator className="i-mdi-check-bold absolute left-2 h-3 w-4" />
     <SelectPrimitive.ItemText asChild={asChild}>
       {children}
     </SelectPrimitive.ItemText>

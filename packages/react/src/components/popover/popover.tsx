@@ -68,7 +68,7 @@ const PopoverContent = forwardRef<
         'w-auto',
         'bg-figma',
         'rounded-0.5',
-        'outline',
+        'outline-solid',
         'outline-1',
         'outline-figma-border',
         'shadow-md',

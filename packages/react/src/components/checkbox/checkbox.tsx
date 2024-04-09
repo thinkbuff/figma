@@ -26,7 +26,7 @@ const Checkbox = forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, Che
         'shrink-0',
         'cursor-default',
         'rounded-0.5',
-        'outline',
+        'outline-solid',
         'outline-1',
         'outline-transparent',
         'border',
@@ -52,10 +52,14 @@ const Checkbox = forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, Che
       disabled={disabled}
     >
       <CheckboxPrimitive.Indicator
-        className="absolute inline-block text-size-10px"
+        className="absolute inline-block size-2.5"
         asChild
       >
-        {indeterminate ? <span className="i-mdi-minus-thick"></span> : <span className="i-mdi-check-bold -mt-1px"></span>}
+        {
+          indeterminate
+            ? (<span className="i-mdi-minus-thick"></span>)
+            : <span className="i-mdi-check-bold -mt-1px"></span>
+        }
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   ),

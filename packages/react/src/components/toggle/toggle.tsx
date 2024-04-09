@@ -17,11 +17,12 @@ const Toggle = forwardRef<
     ref={ref}
     className={cn([
       'size-8',
-      'text-size-11',
+      'font-size-11',
       'text-figma',
       'inline-flex',
       'items-center',
       'justify-center',
+      'shrink-0',
       'rounded-0.5',
       'font-medium',
       'cursor-default',
@@ -30,11 +31,12 @@ const Toggle = forwardRef<
       'fill-figma-icon',
       'bg-transparent',
       'bg-clip-border',
-      'outline',
-      'outline-2',
-      '-outline-offset-2',
+      'outline-solid',
+      'outline-1',
+      '-outline-offset-1',
       'outline-transparent',
       'transition-colors',
+      'focus:not-focus-visible:(outline-0 outline-transparent)',
       disabled
         ? [
             'cursor-not-allowed',
@@ -45,11 +47,9 @@ const Toggle = forwardRef<
           ]
         : [
             'hover:(bg-figma-hover text-figma-icon-hover fill-figma-icon-hover)',
-            'focus:outline-figma-border-selected',
-            'focus-visible:outline-figma-border-selected',
+            'focus-visible:(outline-2 -outline-offset-2 outline-figma-border-brand-strong)',
             'data-[state=on]:(bg-figma-brand text-figma-icon-onbrand fill-figma-icon-onbrand)',
             'data-[state=on]:hover:(bg-figma-brand text-figma-icon-onbrand fill-figma-icon-onbrand)',
-            'data-[state=on]:focus:outline-figma-border-brand-strong',
           ],
       className,
     ])}

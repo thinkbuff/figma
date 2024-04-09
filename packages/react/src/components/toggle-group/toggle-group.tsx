@@ -46,7 +46,7 @@ const ToggleGroupItem = forwardRef<
       ref={ref}
       className={cn([
         'size-6',
-        'text-size-11',
+        'font-size-11',
         'flex',
         'justify-center',
         'items-center',

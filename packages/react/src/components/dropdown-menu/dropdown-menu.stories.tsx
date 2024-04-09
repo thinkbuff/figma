@@ -70,7 +70,7 @@ const meta = {
     },
   },
   args: {
-    modal: false,
+    modal: true,
     open: false,
     align: 'center',
     alignOffset: 0,

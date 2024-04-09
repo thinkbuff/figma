@@ -10,10 +10,11 @@ const ActionIcon = forwardRef<React.ElementRef<'button'>, ActionIconProps>(({ cl
       ref={ref}
       className={cn([
         'size-8',
-        'text-size-11',
+        'font-size-11',
         'flex',
         'justify-center',
         'items-center',
+        'shrink-0',
         'rounded-0.5',
         'cursor-default',
         'appearance-none',
@@ -21,11 +22,12 @@ const ActionIcon = forwardRef<React.ElementRef<'button'>, ActionIconProps>(({ cl
         'fill-figma-icon',
         'bg-transparent',
         'bg-clip-border',
-        'outline',
-        'outline-2',
-        '-outline-offset-2',
+        'outline-solid',
+        'outline-1',
+        '-outline-offset-1',
         'outline-transparent',
         'transition-colors',
+        'focus:not-focus-visible:(outline-0 outline-transparent)',
         disabled
           ? [
               'cursor-not-allowed',
@@ -34,11 +36,9 @@ const ActionIcon = forwardRef<React.ElementRef<'button'>, ActionIconProps>(({ cl
             ]
           : [
               'hover:(bg-figma-hover text-figma-icon-hover fill-figma-icon-hover)',
-              'focus:outline-figma-border-selected',
-              'focus-visible:outline-figma-border-selected',
+              'focus-visible:(outline-2 -outline-offset-2 outline-figma-border-brand-strong)',
               'data-[state=open]:(bg-figma-brand text-figma-icon-onbrand fill-figma-icon-onbrand)',
               'data-[state=open]:hover:(bg-figma-brand text-figma-icon-onbrand fill-figma-icon-onbrand)',
-              'data-[state=open]:focus:outline-figma-border-brand-strong',
             ],
         className,
       ])}

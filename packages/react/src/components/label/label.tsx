@@ -11,7 +11,7 @@ const Label = forwardRef<
     {...props}
     ref={ref}
     className={cn([
-      'text-size-11',
+      'font-size-11',
       'font-medium',
       'leading-none',
       'cursor-default',

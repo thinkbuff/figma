@@ -40,7 +40,7 @@ const DropdownMenuSubTrigger = forwardRef<
       'h-6',
       'pl-8',
       'pr-4',
-      'text-size-11',
+      'font-size-11',
       'text-figma-menu',
       'cursor-default',
       'select-none',
@@ -155,7 +155,7 @@ const DropdownMenuItem = forwardRef<
       'h-6',
       'pl-8',
       'pr-4',
-      'text-size-11',
+      'font-size-11',
       'text-figma-menu',
       'cursor-default',
       'select-none',
@@ -184,7 +184,7 @@ const DropdownMenuCheckboxItem = forwardRef<
       'h-6',
       'pl-8',
       'pr-4',
-      'text-size-11',
+      'font-size-11',
       'text-figma-menu',
       'cursor-default',
       'select-none',
@@ -197,9 +197,7 @@ const DropdownMenuCheckboxItem = forwardRef<
     checked={checked}
     {...props}
   >
-    <DropdownMenuPrimitive.ItemIndicator className="absolute left-2 w-4 flex items-center justify-center">
-      <span className="i-mdi-check-bold size-3"></span>
-    </DropdownMenuPrimitive.ItemIndicator>
+    <DropdownMenuPrimitive.ItemIndicator className="i-mdi-check-bold absolute left-2 h-3 w-4" />
     {children}
   </DropdownMenuPrimitive.CheckboxItem>
 ));
@@ -219,7 +217,7 @@ const DropdownMenuRadioItem = forwardRef<
       'h-6',
       'pl-8',
       'pr-4',
-      'text-size-11',
+      'font-size-11',
       'text-figma-menu',
       'cursor-default',
       'select-none',
@@ -249,8 +247,8 @@ const DropdownMenuLabel = forwardRef<
     className={cn([
       'px-8',
       'py-1',
-      'text-size-11',
-      'text-figma-menu-tertiary',
+      'font-size-11',
+      'text-figma-menu-secondary',
       'font-medium',
       className,
     ])}
