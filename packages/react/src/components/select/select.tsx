@@ -197,7 +197,7 @@ const SelectSeparator = forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     className={cn(
-      ['w-full', 'border-t', 'border-figma-menu', 'my-2', 'h-1px'],
+      ['w-full', 'border-t', 'border-figma-menu', 'my-2', 'h-px'],
       className,
     )}
     {...props}
