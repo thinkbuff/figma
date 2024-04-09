@@ -8,9 +8,8 @@ const Label = forwardRef<
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
 >(({ className, ...props }, ref) => (
   <LabelPrimitive.Root
-    {...props}
     ref={ref}
-    className={cn([
+    className={cn(
       'font-size-11',
       'font-medium',
       'leading-none',
@@ -18,7 +17,8 @@ const Label = forwardRef<
       'disabled:(cursor-not-allowed text-figma-disabled)',
       'peer-disabled:(cursor-not-allowed text-figma-disabled)',
       className,
-    ])}
+    )}
+    {...props}
   />
 ));
 

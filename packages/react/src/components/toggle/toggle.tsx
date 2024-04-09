@@ -15,7 +15,7 @@ const Toggle = forwardRef<
 >(({ className, disabled, ...props }, ref) => (
   <TogglePrimitive.Root
     ref={ref}
-    className={cn([
+    className={cn(
       'size-8',
       'font-size-11',
       'text-figma',
@@ -52,7 +52,7 @@ const Toggle = forwardRef<
             'data-[state=on]:hover:(bg-figma-brand text-figma-icon-onbrand fill-figma-icon-onbrand)',
           ],
       className,
-    ])}
+    )}
     {...props}
   />
 ));

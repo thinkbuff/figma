@@ -1,13 +1,13 @@
 import fs from 'node:fs/promises';
+import path from 'node:path';
 import { existsSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { generateCSSVariables } from '../src/colors';
 import { THEME_BASE_CSS } from '../src/constants';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const output = resolve(__dirname, '../dist/css');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const output = path.resolve(__dirname, '../dist/css');
 const styles = ['figma', 'figjam'] as const;
 
 if (!existsSync(output)) {

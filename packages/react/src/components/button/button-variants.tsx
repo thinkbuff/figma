@@ -21,7 +21,6 @@ export const buttonVariants = cva(
     'outline-transparent',
     'bg-transparent',
     'bg-clip-border',
-    'focus:not-focus-visible:(outline-0 outline-transparent)',
     'not-disabled:focus-visible:(outline-2 -outline-offset-2)',
     'disabled:cursor-not-allowed',
   ],
@@ -29,6 +28,7 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         solid: [
+          'focus:not-focus-visible:(outline-0 outline-transparent)',
           'disabled:(text-figma-ondisabled bg-figma-disabled)',
           'disabled:hover:bg-figma-disabled',
           'disabled:active:(bg-figma-disabled outline-transparent)',

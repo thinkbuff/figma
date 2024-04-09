@@ -36,16 +36,7 @@ const Switch = forwardRef<
     ref={ref}
   >
     <SwitchPrimitives.Thumb
-      className={cn(
-        'block',
-        'size-2.5',
-        'pointer-events-none',
-        'rounded-full',
-        'transition-transform',
-        'bg-figma-icon-onbrand',
-        'data-[state=checked]:translate-x-3',
-        'data-[state=unchecked]:translate-x-0',
-      )}
+      className="pointer-events-none block size-2.5 rounded-full transition-transform bg-figma-icon-onbrand data-[state=checked]:translate-x-3 data-[state=unchecked]:translate-x-0"
     />
   </SwitchPrimitives.Root>
 ));

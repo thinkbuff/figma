@@ -19,14 +19,14 @@ const RadioGroup = forwardRef<
 >(({ className, inline = false, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn([
+      ref={ref}
+      className={cn(
         'flex',
         'gap-2',
         inline ? 'flex-row' : 'flex-col',
         className,
-      ])}
+      )}
       {...props}
-      ref={ref}
     />
   );
 });
@@ -39,7 +39,8 @@ const RadioGroupItem = forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Item
-      className={cn([
+      ref={ref}
+      className={cn(
         'peer',
         'group',
         'size-3.5',
@@ -59,9 +60,8 @@ const RadioGroupItem = forwardRef<
         'not-disabled:focus:(border-figma-selected outline-figma-border-selected)',
         'disabled:(cursor-not-allowed text-figma-disabled fill-figma-icon-disabled border-figma-disabled-strong)',
         className,
-      ])}
+      )}
       {...props}
-      ref={ref}
     >
       <RadioGroupPrimitive.Indicator className="pointer-events-none flex items-center justify-center after:block after:size-1.5 after:rounded-full after:content-[''] after:bg-figma-icon group-disabled:after:bg-figma-icon-disabled" />
     </RadioGroupPrimitive.Item>

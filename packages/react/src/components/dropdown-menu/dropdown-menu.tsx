@@ -18,8 +18,8 @@ const DropdownMenuArrow = forwardRef<
   DropdownMenuPrimitive.MenuArrowProps
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Arrow
-    className={cn('fill-figma-bg-menu', className)}
     ref={ref}
+    className={cn('fill-figma-bg-menu', className)}
     {...props}
   />
 ));
@@ -117,7 +117,7 @@ const DropdownMenuContent = forwardRef<
     <DropdownMenuPrimitive.Content
       ref={ref}
       sideOffset={sideOffset}
-      className={cn([
+      className={cn(
         'group',
         'text-figma-menu',
         'bg-figma-menu',
@@ -134,7 +134,7 @@ const DropdownMenuContent = forwardRef<
         'shadow-md',
         'z-50',
         className,
-      ])}
+      )}
       {...props}
     />
   </DropdownMenuPrimitive.Portal>
@@ -148,7 +148,7 @@ const DropdownMenuItem = forwardRef<
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
-    className={cn([
+    className={cn(
       'relative',
       'flex',
       'items-center',
@@ -164,7 +164,7 @@ const DropdownMenuItem = forwardRef<
       'focus:bg-figma-menu-selected',
       'data-[disabled]:(pointer-events-none text-figma-menu-disabled)',
       className,
-    ])}
+    )}
     {...props}
   />
 ));
@@ -174,10 +174,10 @@ DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 const DropdownMenuCheckboxItem = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
->(({ className, children, checked, ...props }, ref) => (
+>(({ className, children, ...props }, ref) => (
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
-    className={cn([
+    className={cn(
       'relative',
       'flex',
       'items-center',
@@ -193,8 +193,7 @@ const DropdownMenuCheckboxItem = forwardRef<
       'focus:bg-figma-menu-selected',
       'data-[disabled]:(pointer-events-none text-figma-disabled)',
       className,
-    ])}
-    checked={checked}
+    )}
     {...props}
   >
     <DropdownMenuPrimitive.ItemIndicator className="i-mdi-check-bold absolute left-2 h-3 w-4" />
@@ -244,14 +243,14 @@ const DropdownMenuLabel = forwardRef<
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Label
     ref={ref}
-    className={cn([
+    className={cn(
       'px-8',
       'py-1',
       'font-size-11',
       'text-figma-menu-secondary',
       'font-medium',
       className,
-    ])}
+    )}
     {...props}
   />
 ));

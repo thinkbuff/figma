@@ -26,7 +26,7 @@ const Textarea = forwardRef<TextareaRootElement, TextareaProps>(
         data-invalid={invalid}
       >
         <textarea
-          className={cn([
+          className={cn(
             'block',
             'px-2',
             'py-1',
@@ -38,7 +38,7 @@ const Textarea = forwardRef<TextareaRootElement, TextareaProps>(
             'outline-0',
             'resize-none',
             disabled ? ['cursor-not-allowed', 'text-figma-disabled'] : ['cursor-default'],
-          ])}
+          )}
           {...props}
           ref={ref}
           disabled={disabled}

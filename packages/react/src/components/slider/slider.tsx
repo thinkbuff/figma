@@ -8,7 +8,7 @@ const SliderRoot = forwardRef<
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 >(({ className, ...props }, ref) => (
   <SliderPrimitive.Root
-    className={cn([
+    className={cn(
       'relative',
       'flex',
       'items-center',
@@ -18,7 +18,7 @@ const SliderRoot = forwardRef<
       'select-none',
       'data-[orientation=vertical]:(flex-col w-3 h-full)',
       className,
-    ])}
+    )}
     {...props}
     ref={ref}
   />
@@ -31,7 +31,7 @@ const SliderTrack = forwardRef<
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Track>
 >(({ className, ...props }, ref) => (
   <SliderPrimitive.Track
-    className={cn([
+    className={cn(
       'relative',
       'h-0.5',
       'grow',
@@ -40,7 +40,7 @@ const SliderTrack = forwardRef<
       'bg-figma-tertiary',
       'data-[orientation=vertical]:w-0.5',
       className,
-    ])}
+    )}
     {...props}
     ref={ref}
   />
@@ -53,14 +53,14 @@ const SliderRange = forwardRef<
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Range>
 >(({ className, ...props }, ref) => (
   <SliderPrimitive.Range
-    className={cn([
+    className={cn(
       'absolute',
       'bg-figma-brand',
       'data-[orientation=horizontal]:h-full',
       'data-[orientation=vertical]:w-full',
       'data-[disabled]:bg-figma-icon-disabled',
       className,
-    ])}
+    )}
     {...props}
     ref={ref}
   />
@@ -73,7 +73,7 @@ const SliderThumb = forwardRef<
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Thumb>
 >(({ className, ...props }, ref) => (
   <SliderPrimitive.Thumb
-    className={cn([
+    className={cn(
       'flex',
       'items-center',
       'justify-center',
@@ -90,7 +90,7 @@ const SliderThumb = forwardRef<
       'data-[disabled]:after:bg-figma-icon-disabled',
       'data-[disabled]:pointer-events-none',
       className,
-    ])}
+    )}
     {...props}
     ref={ref}
   />

@@ -32,21 +32,19 @@ const TooltipContent = forwardRef<TooltipContentElement, TooltipContentProps>(
   ({ className, container, sideOffset = 4, ...props }, ref) => (
     <TooltipPrimitive.Portal container={container}>
       <TooltipPrimitive.Content
+        ref={ref}
+        sideOffset={sideOffset}
         className={cn(
-          [
-            'bg-figma-tooltip',
-            'text-figma-tooltip',
-            'fill-figma-icon-tooltip',
-            'px-3',
-            'rounded-0.5',
-            'py-2',
-            'z-50',
-          ],
+          'bg-figma-tooltip',
+          'text-figma-tooltip',
+          'fill-figma-icon-tooltip',
+          'px-3',
+          'rounded-0.5',
+          'py-2',
+          'z-50',
           className,
         )}
-        sideOffset={sideOffset}
         {...props}
-        ref={ref}
       />
     </TooltipPrimitive.Portal>
   ),

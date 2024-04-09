@@ -18,17 +18,16 @@ const SheetOverlay = forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     ref={ref}
-    className={cn([
+    className={cn(
       'fixed',
       'inset-0',
       'z-50',
-      'bg-black',
-      'bg-opacity-50',
+      'bg-black/50',
       'backdrop-blur-2',
       'data-[state=open]:(animate-in fade-in-0)',
       'data-[state=closed]:(animate-out fade-out-0)',
       className,
-    ])}
+    )}
     {...props}
   />
 ));
@@ -40,6 +39,8 @@ const sheetVariants = cva(
     'fixed',
     'z-50',
     'bg-figma',
+    'border-solid',
+    'border-figma',
     'focus:outline-none',
     'focus-visible:outline-none',
     'transition-all',
@@ -53,12 +54,14 @@ const sheetVariants = cva(
         top: [
           'inset-x-0',
           'top-0',
+          'border-b',
           'data-[state=open]:slide-in-from-top',
           'data-[state=closed]:slide-out-to-top',
         ],
         bottom: [
           'inset-x-0',
           'bottom-0',
+          'border-t',
           'data-[state=open]:slide-in-from-bottom',
           'data-[state=closed]:slide-out-to-bottom',
         ],
@@ -66,6 +69,7 @@ const sheetVariants = cva(
           'inset-y-0',
           'left-0',
           'h-full',
+          'border-r',
           'data-[state=open]:slide-in-from-left',
           'data-[state=closed]:slide-out-to-left',
         ],
@@ -73,6 +77,7 @@ const sheetVariants = cva(
           'inset-y-0',
           'right-0',
           'h-full',
+          'border-l',
           'data-[state=open]:slide-in-from-right',
           'data-[state=closed]:slide-out-to-right',
         ],
@@ -127,7 +132,7 @@ const SheetHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       'px-4',
       'text-left',
       'min-h-10',
-      'border-y',
+      'border-b',
       'border-solid',
       'border-figma',
       className,
@@ -150,7 +155,7 @@ const SheetFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       'px-4',
       'text-left',
       'min-h-10',
-      'border-y',
+      'border-t',
       'border-solid',
       'border-figma',
       className,
@@ -168,7 +173,7 @@ const SheetTitle = forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={cn(['font-size-12', 'text-figma', 'font-semibold'], className)}
+    className={cn('font-size-12', 'text-figma', 'font-semibold', className)}
     {...props}
   />
 ));

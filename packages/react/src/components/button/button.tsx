@@ -14,11 +14,12 @@ interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'co
   asChild?: boolean;
 }
 
-const Button = forwardRef< React.ElementRef<'button'>, ButtonProps>(
+const Button = forwardRef<React.ElementRef<'button'>, ButtonProps>(
   ({ className, variant, color, asChild = false, ...props }, ref) => {
     const Component = asChild ? Slot : 'button';
     return (
       <Component
+        ref={ref}
         className={cn(
           buttonVariants({
             variant,
@@ -26,7 +27,6 @@ const Button = forwardRef< React.ElementRef<'button'>, ButtonProps>(
             className,
           }),
         )}
-        ref={ref}
         {...props}
       />
     );

@@ -21,14 +21,14 @@ const Input = forwardRef<React.ElementRef<'input'>, InputProps>(
   ({ className, variant, invalid, disabled, children, ...props }, ref) => (
     <InputContext.Provider value={{ disabled, invalid }}>
       <div
-        className={cn(['peer', 'relative', 'h-8', 'px-2'], inputVariants({ variant, disabled, invalid, className }))}
+        className={cn('peer', 'relative', 'h-8', 'px-2', inputVariants({ variant, disabled, invalid, className }))}
         data-disabled={disabled}
         data-invalid={invalid}
       >
         <input
           ref={ref}
           aria-invalid={invalid}
-          className={cn([
+          className={cn(
             'h-6',
             'bg-transparent',
             'placeholder:text-figma-tertiary',
@@ -36,7 +36,7 @@ const Input = forwardRef<React.ElementRef<'input'>, InputProps>(
             'border-none',
             'outline-0',
             disabled ? ['cursor-not-allowed', 'text-figma-disabled'] : ['cursor-default'],
-          ])}
+          )}
           {...props}
           disabled={disabled}
         />
@@ -62,7 +62,8 @@ const InputSlot = forwardRef<React.ElementRef<'div'>, InputSlotProps>(({ classNa
   const { disabled, invalid } = useContext(InputContext);
   return (
     <div
-      className={cn([
+      ref={ref}
+      className={cn(
         'flex',
         'shrink-0',
         'w-8',
@@ -75,9 +76,8 @@ const InputSlot = forwardRef<React.ElementRef<'div'>, InputSlotProps>(({ classNa
           : ['cursor-default', 'text-figma-secondary', 'fill-figma-icon-secondary'],
         invalid && !disabled ? ['text-figma-danger', 'fill-figma-icon-danger'] : '',
         className,
-      ])}
+      )}
       {...props}
-      ref={ref}
       data-side={side}
       data-invalid={invalid}
       data-disabled={disabled}

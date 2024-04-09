@@ -15,7 +15,7 @@ const ToggleGroup = forwardRef<
 >(({ className, children, disabled, ...props }, ref) => (
   <ToggleGroupPrimitive.Root
     ref={ref}
-    className={cn([
+    className={cn(
       'group',
       'flex',
       'items-center',
@@ -27,7 +27,7 @@ const ToggleGroup = forwardRef<
       'rounded-0.5',
       disabled ? 'cursor-not-allowed' : 'hover:border-figma',
       className,
-    ])}
+    )}
     {...props}
     disabled={disabled}
   >
@@ -44,7 +44,7 @@ const ToggleGroupItem = forwardRef<
   return (
     <ToggleGroupPrimitive.Item
       ref={ref}
-      className={cn([
+      className={cn(
         'size-6',
         'font-size-11',
         'flex',
@@ -60,7 +60,7 @@ const ToggleGroupItem = forwardRef<
         'disabled:(pointer-events-none cursor-not-allowed text-figma-disabled fill-figma-icon-disabled)',
         'disabled:data-[state=on]:(bg-figma-disabled text-figma-ondisabled fill-figma-icon-ondisabled)',
         className,
-      ])}
+      )}
       {...props}
 
     >

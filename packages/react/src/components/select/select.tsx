@@ -32,7 +32,7 @@ const SelectTrigger = forwardRef<
   SelectTriggerProps
 >(({ className, children, disabled, placeholder, ...props }, ref) => (
   <SelectPrimitive.Trigger
-    className={cn([
+    className={cn(
       'relative',
       'w-full',
       'h-7',
@@ -66,7 +66,7 @@ const SelectTrigger = forwardRef<
             'data-[state=open]:outline-figma-border-selected',
           ],
       className,
-    ])}
+    )}
     {...props}
     ref={ref}
     disabled={disabled}
@@ -99,39 +99,44 @@ interface SelectContentProps
 const SelectContent = forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
   SelectContentProps
->(({ className, children, container, withArrow, sideOffset = 4, ...props }, ref) => (
-  <SelectPrimitive.Portal container={container}>
-    <SelectPrimitive.Content
-      className={cn([
-        'relative',
-        'text-figma-menu',
-        'w-full',
-        'bg-figma-menu',
-        'rounded-0.5',
-        'z-50',
-        'data-[side=top]:min-w-[var(--radix-select-trigger-width)]',
-        'data-[side=bottom]:min-w-[var(--radix-select-trigger-width)]',
-        'max-h-[var(--radix-select-content-available-height)]',
-        className,
-      ])}
-      sideOffset={sideOffset}
-      onCloseAutoFocus={e => e.preventDefault()}
-      {...props}
-      ref={ref}
-    >
-      { withArrow && <SelectArrow /> }
-      <SelectPrimitive.ScrollUpButton className="h-6 flex cursor-default items-center justify-center">
-        <span className="i-tabler-chevron-up size-3.5"></span>
-      </SelectPrimitive.ScrollUpButton>
-      <SelectPrimitive.Viewport className="py-2">
-        {children}
-      </SelectPrimitive.Viewport>
-      <SelectPrimitive.ScrollDownButton className="h-6 flex cursor-default items-center justify-center">
-        <span className="i-tabler-chevron-down size-3.5"></span>
-      </SelectPrimitive.ScrollDownButton>
-    </SelectPrimitive.Content>
-  </SelectPrimitive.Portal>
-));
+>(
+  (
+    { className, children, container, withArrow, sideOffset = 4, ...props },
+    ref,
+  ) => (
+    <SelectPrimitive.Portal container={container}>
+      <SelectPrimitive.Content
+        className={cn(
+          'relative',
+          'text-figma-menu',
+          'w-full',
+          'bg-figma-menu',
+          'rounded-0.5',
+          'z-50',
+          'data-[side=top]:min-w-[var(--radix-select-trigger-width)]',
+          'data-[side=bottom]:min-w-[var(--radix-select-trigger-width)]',
+          'max-h-[var(--radix-select-content-available-height)]',
+          className,
+        )}
+        sideOffset={sideOffset}
+        onCloseAutoFocus={e => e.preventDefault()}
+        {...props}
+        ref={ref}
+      >
+        {withArrow && <SelectArrow />}
+        <SelectPrimitive.ScrollUpButton className="h-6 flex cursor-default items-center justify-center">
+          <span className="i-tabler-chevron-up size-3.5"></span>
+        </SelectPrimitive.ScrollUpButton>
+        <SelectPrimitive.Viewport className="py-2">
+          {children}
+        </SelectPrimitive.Viewport>
+        <SelectPrimitive.ScrollDownButton className="h-6 flex cursor-default items-center justify-center">
+          <span className="i-tabler-chevron-down size-3.5"></span>
+        </SelectPrimitive.ScrollDownButton>
+      </SelectPrimitive.Content>
+    </SelectPrimitive.Portal>
+  ),
+);
 
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
@@ -140,14 +145,14 @@ const SelectLabel = forwardRef<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
-    className={cn([
+    className={cn(
       'font-size-11',
       'text-figma-menu-secondary',
       'px-8',
       'py-1',
       'font-medium',
       className,
-    ])}
+    )}
     {...props}
     ref={ref}
   />
@@ -164,7 +169,7 @@ const SelectItem = forwardRef<
 >(({ className, children, asChild = false, ...props }, ref) => (
   <SelectPrimitive.Item
     ref={ref}
-    className={cn([
+    className={cn(
       'relative',
       'w-full',
       'h-6',
@@ -179,7 +184,7 @@ const SelectItem = forwardRef<
       'focus:bg-figma-menu-selected',
       'data-[disabled]:(text-figma-menu-disabled pointer-events-none)',
       className,
-    ])}
+    )}
     {...props}
   >
     <SelectPrimitive.ItemIndicator className="i-mdi-check-bold absolute left-2 h-3 w-4" />
@@ -197,7 +202,11 @@ const SelectSeparator = forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     className={cn(
-      ['w-full', 'border-t', 'border-figma-menu', 'my-2', 'h-px'],
+      'w-full',
+      'border-t',
+      'border-figma-menu',
+      'my-2',
+      'h-px',
       className,
     )}
     {...props}

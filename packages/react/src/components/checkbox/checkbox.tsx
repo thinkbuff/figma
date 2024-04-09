@@ -16,7 +16,7 @@ const Checkbox = forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, Che
   ({ className, checked, indeterminate = false, disabled, ...props }, ref) => (
     <CheckboxPrimitive.Root
       ref={ref}
-      className={cn([
+      className={cn(
         'peer',
         'relative',
         'size-3',
@@ -46,7 +46,7 @@ const Checkbox = forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, Che
               'data-[state=checked]:(bg-figma-brand text-figma-onbrand border-figma-bg-brand)',
             ],
         className,
-      ])}
+      )}
       {...props}
       checked={indeterminate ? 'indeterminate' : checked}
       disabled={disabled}

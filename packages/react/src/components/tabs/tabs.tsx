@@ -14,7 +14,7 @@ const TabsRoot = forwardRef<
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Root
-    className={cn(['bg-figma', className])}
+    className={cn('bg-figma', className)}
     {...props}
     ref={ref}
   />
@@ -27,7 +27,7 @@ const TabsList = forwardRef<
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
-    className={cn([
+    className={cn(
       'bg-figma',
       'inline-flex',
       'items-center',
@@ -36,7 +36,7 @@ const TabsList = forwardRef<
       'border-solid',
       'border-figma',
       className,
-    ])}
+    )}
     {...props}
     ref={ref}
   />
@@ -49,7 +49,7 @@ const TabsTrigger = forwardRef<
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
-    className={cn([
+    className={cn(
       'inline-flex',
       'items-center',
       'justify-center',
@@ -61,7 +61,7 @@ const TabsTrigger = forwardRef<
       'data-[state=active]:(text-figma font-bold)',
       'disabled:pointer-events-none',
       className,
-    ])}
+    )}
     {...props}
     ref={ref}
   />
@@ -74,7 +74,7 @@ const TabsContent = forwardRef<
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Content
-    className={cn(['bg-figma', className])}
+    className={cn('bg-figma', className)}
     {...props}
     ref={ref}
   />
