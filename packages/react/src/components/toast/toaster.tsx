@@ -1,7 +1,8 @@
 import { Toaster as SonnerToaster } from 'sonner';
 
+import { cn } from '~/utils';
+
 import { buttonVariants } from '../button/button-variants';
-import { cn } from '../../utils';
 
 type ToasterProps = React.ComponentProps<typeof SonnerToaster>;
 

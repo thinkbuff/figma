@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 
-import { cn } from '../../utils/cn';
+import { cn } from '~/utils';
+
 import { inputVariants, type InputVariantsProps } from '../input';
 
 const textareaVariants = inputVariants;

@@ -1,7 +1,9 @@
 {
   "name": "@thinkbuff/figma-react",
-  "version": "0.0.0",
+  "author": "Eleven <eteplus@outlook.com>",
+  "license": "MIT",
   "type": "module",
+  "version": "0.0.0",
   "description": "A Figma React UI components for creating plugins and widgets",
   "scripts": {
     "clean": "rm -rf node_modules",
@@ -14,6 +16,31 @@
     "storybook": "storybook dev -h 127.0.0.1 -p 6006",
     "build-storybook": "storybook build"
   },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./*": {
+      "types": "./dist/*/*.d.ts",
+      "import": "./dist/*/*.mjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "files": [
+    "*.css",
+    "dist"
+  ],
   "peerDependencies": {
     "@thinkbuff/figma-theme": "*",
     "@types/react": "*",
@@ -42,12 +69,15 @@
     "@thinkbuff/figma-theme": "workspace:*",
     "@unocss/preset-rem-to-px": "^0.59.2",
     "@vitejs/plugin-react": "^4.2.1",
+    "glob": "^10.3.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^8.0.8",
+    "typescript": "^5.4.5",
     "unocss": "^0.59.2",
     "unocss-preset-animations": "^1.0.2",
-    "vite": "^5.2.8"
+    "vite": "^5.2.8",
+    "vite-plugin-dts": "^3.8.2"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.0.5",

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import * as TogglePrimitive from '@radix-ui/react-toggle';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 /**
  * A two-state button that can be either on or off.

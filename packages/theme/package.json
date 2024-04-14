@@ -1,8 +1,9 @@
 {
   "name": "@thinkbuff/figma-theme",
-  "version": "0.0.0",
   "author": "Eleven <eteplus@outlook.com>",
+  "license": "MIT",
   "type": "module",
+  "version": "0.0.0",
   "description": "Figma theme",
   "scripts": {
     "build": "unbuild && pnpm generate:css",
@@ -22,34 +23,37 @@
     "access": "public"
   },
   "sideEffects": false,
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs"
     },
     "./colors": {
       "types": "./dist/colors/index.d.ts",
-      "import": "./dist/colors/index.mjs",
-      "require": "./dist/colors/index.cjs"
+      "import": "./dist/colors/index.mjs"
     },
     "./unocss": {
       "types": "./dist/unocss/index.d.ts",
-      "import": "./dist/unocss/index.mjs",
-      "require": "./dist/unocss/index.cjs"
+      "import": "./dist/unocss/index.mjs"
     },
     "./css/*.css": "./dist/css/*.css",
     "./*": "./*"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
   "files": [
     "*.css",
-    "*.d.ts",
     "dist"
   ],
-  "license": "MIT",
   "devDependencies": {
     "unbuild": "^2.0.0",
     "unocss": "^0.59.2"

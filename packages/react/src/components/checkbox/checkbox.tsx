@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
   indeterminate?: boolean;

@@ -1,6 +1,6 @@
 import { forwardRef, createContext, useContext } from 'react';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 import { inputVariants, type InputVariantsProps } from './input-variants';
 

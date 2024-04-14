@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 /**
  * A set of layered sections of content—known as tab panels—that are displayed one at a time.

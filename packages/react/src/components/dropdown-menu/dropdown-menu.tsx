@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 const DropdownMenuRoot = DropdownMenuPrimitive.Root;
 
@@ -15,7 +15,7 @@ const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
 const DropdownMenuArrow = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Arrow>,
-  DropdownMenuPrimitive.MenuArrowProps
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Arrow>
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Arrow
     ref={ref}

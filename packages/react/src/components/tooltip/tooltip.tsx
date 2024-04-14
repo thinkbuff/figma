@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 const TooltipProvider = TooltipPrimitive.Provider;
 
@@ -11,7 +11,7 @@ const TooltipTrigger = TooltipPrimitive.Trigger;
 
 const TooltipArrow = forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Arrow>,
-  TooltipPrimitive.PopperArrowProps
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Arrow>
 >(({ className, ...props }, ref) => (
   <TooltipPrimitive.Arrow
     className={cn('fill-figma-bg-tooltip', className)}

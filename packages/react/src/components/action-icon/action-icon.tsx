@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 interface ActionIconProps
   extends Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> {}

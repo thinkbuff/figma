@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 interface RadioGroupProps extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> {
   inline?: boolean;

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 /**
  * A set of two-state buttons that can be toggled on or off.

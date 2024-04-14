@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 import { Separator } from './separator';
 

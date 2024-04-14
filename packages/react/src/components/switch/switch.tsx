@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import * as SwitchPrimitives from '@radix-ui/react-switch';
 
-import { cn } from '../../utils';
+import { cn } from '~/utils';
 
 /**
  * A control that allows the user to toggle between checked and not checked.
