@@ -1,0 +1,32 @@
+{
+  "name": "playground",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@thinkbuff/figma-react": "workspace:^",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@thinkbuff/figma-theme": "workspace:*",
+    "@types/react": "^18.2.78",
+    "@types/react-dom": "^18.2.25",
+    "@unocss/preset-rem-to-px": "^0.59.2",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.4.5",
+    "unocss": "^0.59.2",
+    "unocss-preset-animations": "^1.0.2",
+    "vite": "^5.2.8"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
+  }
+}
