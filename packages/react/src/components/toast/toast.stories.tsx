@@ -17,10 +17,10 @@ const meta = {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <>
+      <div className="min-h-60">
         <Story />
         <Toaster />
-      </>
+      </div>
     ),
   ],
 } satisfies Meta<typeof Toaster>;

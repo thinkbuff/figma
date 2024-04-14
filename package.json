@@ -10,7 +10,7 @@
     "lint:fix": "pnpm run -r lint --fix",
     "typecheck": "pnpm run -r typecheck"
   },
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@8.15.7",
   "engines": {
     "node": ">=18.18.0"
   },
