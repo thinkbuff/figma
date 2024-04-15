@@ -16,10 +16,10 @@ export interface PresetFigmaOptions {
 /**
  * Figma theme css rules for unocss preset
  */
-export const presetFigma = definePreset((options: PresetFigmaOptions = {}) => {
+export const presetFigmaTheme = definePreset((options: PresetFigmaOptions = {}) => {
   const { preflight = 'figma' } = options;
   return {
-    name: 'unocss-preset-figma',
+    name: 'unocss-preset-figma-theme',
     rules,
     preflights: typeof preflight === 'string' && ['figma', 'figjam', 'all'].includes(preflight)
       ? [
@@ -38,4 +38,4 @@ export const presetFigma = definePreset((options: PresetFigmaOptions = {}) => {
   };
 });
 
-export default presetFigma;
+export default presetFigmaTheme;

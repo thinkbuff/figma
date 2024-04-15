@@ -1,7 +1,7 @@
 import { defineConfig, presetUno, presetIcons, transformerVariantGroup } from 'unocss';
 import presetRemToPx from '@unocss/preset-rem-to-px';
 import presetAnimations from 'unocss-preset-animations';
-import { presetFigma } from '@thinkbuff/figma-theme/unocss';
+import { presetFigmaTheme } from '@thinkbuff/figma-theme/unocss';
 
 export default defineConfig({
   presets: [
@@ -11,7 +11,7 @@ export default defineConfig({
         dark: '.figma-dark',
       },
     }),
-    presetFigma(),
+    presetFigmaTheme(),
     presetAnimations(),
     presetRemToPx(),
     presetIcons({
