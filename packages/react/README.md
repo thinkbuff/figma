@@ -1,30 +1,83 @@
-# React + TypeScript + Vite
+# @thinkbuff/figma-react
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React UI component library for creating Figma plugins and widgets.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+pnpm add @thinkbuff/figma-react
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+We also rely on a few dependencies, so make sure they are also installed.
+
+```bash
+pnpm add @thinkbuff/figma-theme unocss @unocss/preset-rem-to-px unocss-preset-animations -D
+```
+
+## Vite Config
+
+Set up your `vite.config.ts` file, by importing UnoCSS and passing it the location of the config file.
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import unocss from 'unocss/vite';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react(), unocss()],
+});
+```
+
+## UnoCSS Config
+
+Create a `unocss.config.ts` file with all the required presets and transformers.
+
+```ts
+// unocss.config.ts
+import { defineConfig, presetUno, presetIcons, transformerVariantGroup } from 'unocss';
+import presetRemToPx from '@unocss/preset-rem-to-px';
+import presetAnimations from 'unocss-preset-animations';
+import { presetFigmaTheme } from '@thinkbuff/figma-theme/unocss';
+
+export default defineConfig({
+  presets: [
+    presetUno({
+      dark: {
+        light: '.figma-light',
+        dark: '.figma-dark',
+      },
+    }),
+    presetFigmaTheme(),
+    presetAnimations(),
+    presetRemToPx(),
+    presetIcons({
+      cdn: 'https://esm.sh/',
+    }),
+  ],
+  transformers: [transformerVariantGroup()],
+});
+```
+
+Add virtual:uno.css to your main entry:
+
+```ts
+// main.ts
+import 'virtual:uno.css';
+```
+
+## Usage
+
+```tsx
+import { TooltipProvider, Tooltip } from '@thinkbuff/figma-react/tooltip';
+
+<TooltipProvider>
+  <Tooltip>
+    <ActionIcon>
+      <span className="i-tabler-adjustments-alt size-4"></span>
+    </ActionIcon>
+  </Tooltip>
+</TooltipProvider>
+```
