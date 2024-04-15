@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "clean": "rm -rf node_modules",
-    "dev": "vite",
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "dev": "pnpm -F @thinkbuff/figma-theme stub && pnpm -F @thinkbuff/figma-react build --watch & vite",
     "build": "tsc && vite build",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
