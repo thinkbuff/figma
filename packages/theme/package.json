@@ -6,7 +6,7 @@
   "version": "0.0.0",
   "description": "Figma theme",
   "scripts": {
-    "build": "unbuild && pnpm generate:css",
+    "build": "unbuild --minify && pnpm generate:css",
     "stub": "unbuild --stub && pnpm generate:css",
     "generate:css": "tsx scripts/generate-css-files.ts",
     "lint": "eslint .",
@@ -39,7 +39,7 @@
       "types": "./dist/unocss/index.d.ts",
       "import": "./dist/unocss/index.mjs"
     },
-    "./css/*.css": "./dist/css/*.css",
+    "./css/*": "./dist/css/*",
     "./*": "./*"
   },
   "typesVersions": {

@@ -12,13 +12,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const entries = glob
   .sync('src/**/*.{ts,tsx}', {
-    ignore: 'src/**/*.stories.{ts,tsx}',
+    ignore: ['src/components/index.ts', 'src/**/*.stories.{ts,tsx}'],
   })
   .map((file) => {
-    const isComponentsDir = file.includes('src/components');
+    const isInComponentsDir = file.includes('src/components/');
     return [
       path.relative(
-        isComponentsDir ? 'src/components' : 'src',
+        isInComponentsDir ? 'src/components' : 'src',
         file.slice(0, file.length - path.extname(file).length),
       ),
       path.resolve(__dirname, file),
@@ -29,15 +29,27 @@ const entries = glob
  * @see https://vitejs.dev/config/
  */
 export default defineConfig({
+  plugins: [
+    react(),
+    unocss(),
+    dts({
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: ['src/**/*.stories.{ts,tsx}'],
+      beforeWriteFile: (filePath, content) => ({
+        filePath: filePath.replace('components/', ''),
+        content: content,
+      }),
+    }),
+  ],
   resolve: {
     alias: {
-      '~/utils': path.resolve(__dirname, 'src/utils'),
+      '~': path.resolve(__dirname, 'src'),
     },
   },
   build: {
     copyPublicDir: false,
     target: 'esnext',
-    minify: true,
+    minify: false,
     lib: {
       entry: Object.fromEntries(entries),
       formats: ['es'],
@@ -55,25 +67,4 @@ export default defineConfig({
       },
     },
   },
-  plugins: [
-    react(),
-    unocss(),
-    dts({
-      include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.stories.{ts,tsx}'],
-      beforeWriteFile: (filePath, content) => {
-        if (filePath.includes('components/index.d.ts')) {
-          return {
-            filePath: filePath.replace('components/index.d.ts', 'components.d.ts'),
-            content,
-          };
-        }
-
-        return {
-          filePath: filePath.replace('components/', ''),
-          content: content,
-        };
-      },
-    }),
-  ],
 });
