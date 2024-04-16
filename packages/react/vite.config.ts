@@ -12,18 +12,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const entries = glob
   .sync('src/**/*.{ts,tsx}', {
-    ignore: ['src/components/index.ts', 'src/**/*.stories.{ts,tsx}'],
+    ignore: ['src/**/*.stories.{ts,tsx}'],
   })
-  .map((file) => {
-    const isInComponentsDir = file.includes('src/components/');
-    return [
-      path.relative(
-        isInComponentsDir ? 'src/components' : 'src',
-        file.slice(0, file.length - path.extname(file).length),
-      ),
-      path.resolve(__dirname, file),
-    ];
-  });
+  .map(file => ([
+    path.relative(
+      'src',
+      file.slice(0, file.length - path.extname(file).length),
+    ),
+    path.resolve(__dirname, file),
+  ]));
 
 /**
  * @see https://vitejs.dev/config/
@@ -35,10 +32,6 @@ export default defineConfig({
     dts({
       include: ['src/**/*.{ts,tsx}'],
       exclude: ['src/**/*.stories.{ts,tsx}'],
-      beforeWriteFile: (filePath, content) => ({
-        filePath: filePath.replace('components/', ''),
-        content: content,
-      }),
     }),
   ],
   resolve: {
@@ -59,6 +52,7 @@ export default defineConfig({
         'react',
         'react/jsx-runtime',
         'react-dom',
+        './components',
         ...Object.keys(dependencies),
       ],
       output: {

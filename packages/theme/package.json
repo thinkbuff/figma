@@ -18,7 +18,7 @@
     "figma-theme",
     "unocss",
     "unocss-preset",
-    "unocss-preset-figma"
+    "unocss-preset-figma-theme"
   ],
   "publishConfig": {
     "access": "public"

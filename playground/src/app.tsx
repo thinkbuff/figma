@@ -9,6 +9,7 @@ import {
   SliderRange,
   SliderThumb,
 } from '@thinkbuff/figma-react/slider';
+import { cn } from '@thinkbuff/figma-react/utils';
 
 import reactLogo from './assets/react.svg';
 
@@ -48,7 +49,7 @@ function Slider() {
 export function App() {
   return (
     <TooltipProvider>
-      <div className="outline-figma-icon">
+      <div className={cn('outline-figma-icon', 'outline-figma-border-brand')}>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>

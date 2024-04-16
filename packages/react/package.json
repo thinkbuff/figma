@@ -8,6 +8,7 @@
   "scripts": {
     "clean": "rm -rf node_modules",
     "build": "tsc && vite build",
+    "build:watch": "tsc && vite build -w -l warn",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint:config-viewer": "npx @eslint/config-inspector",
     "typecheck": "tsc --noEmit",
@@ -23,9 +24,17 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.mjs"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.mjs"
+    },
     "./*": {
-      "types": "./dist/*/*.d.ts",
-      "import": "./dist/*/*.mjs"
+      "types": "./dist/components/*/*.d.ts",
+      "import": "./dist/components/*/*.mjs"
     }
   },
   "typesVersions": {
