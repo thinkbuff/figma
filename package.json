@@ -1,6 +1,6 @@
 {
   "name": "@thinkbuff/figma",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simplify plugin and widget creation for Figma and FigJam",
   "private": true,
   "type": "module",
@@ -8,7 +8,9 @@
     "clean": "pnpm run -r clean && rm -rf node_modules",
     "lint": "pnpm run -r lint",
     "lint:fix": "pnpm run -r lint --fix",
-    "typecheck": "pnpm run -r typecheck"
+    "typecheck": "pnpm run -r typecheck",
+    "release": "changelogen --release --no-commit --no-tag && tsx scripts/update-version.ts",
+    "prepare": "simple-git-hooks"
   },
   "packageManager": "pnpm@8.15.7",
   "engines": {
@@ -20,12 +22,14 @@
     "@thinkbuff/eslint-config": "^0.1.5",
     "@types/node": "^20.12.7",
     "@unocss/eslint-plugin": "^0.59.2",
+    "changelogen": "^0.5.5",
     "eslint": "^8.57.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "eslint-plugin-storybook": "^0.8.0",
+    "glob": "^10.3.12",
     "lint-staged": "^15.2.2",
     "simple-git-hooks": "^2.11.1",
     "tsx": "^4.7.2",

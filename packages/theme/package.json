@@ -10,7 +10,8 @@
     "stub": "unbuild --stub && pnpm generate:css",
     "generate:css": "tsx scripts/generate-css-files.ts",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
   },
   "keywords": [
     "figma",
