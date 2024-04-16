@@ -3,12 +3,11 @@
   "author": "Eleven <eteplus@outlook.com>",
   "license": "MIT",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A Figma React UI components for creating plugins and widgets",
   "scripts": {
     "clean": "rm -rf node_modules",
     "build": "tsc && vite build",
-    "build:watch": "tsc && vite build -w -l warn",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint:config-viewer": "npx @eslint/config-inspector",
     "typecheck": "tsc --noEmit",
