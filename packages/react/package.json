@@ -15,6 +15,25 @@
     "build-storybook": "storybook build",
     "prepublishOnly": "pnpm build"
   },
+  "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thinkbuff/figma",
+    "directory": "packages/theme"
+  },
+  "bugs": {
+    "url": "https://github.com/thinkbuff/figma/issues"
+  },
+  "keywords": [
+    "figma",
+    "figma-plugin",
+    "figma-react",
+    "react",
+    "react-component",
+    "unocss",
+    "unocss-preset",
+    "unocss-preset-figma-theme"
+  ],
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

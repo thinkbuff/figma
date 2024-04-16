@@ -13,6 +13,15 @@
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm build"
   },
+  "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thinkbuff/figma",
+    "directory": "packages/theme"
+  },
+  "bugs": {
+    "url": "https://github.com/thinkbuff/figma/issues"
+  },
   "keywords": [
     "figma",
     "figma-theme",
