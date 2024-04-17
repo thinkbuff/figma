@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/thinkbuff/figma/compare/v0.0.2...v0.0.3)
+
+### 🚀 Features
+
+- **theme:** Add light theme variables to `html` selector ([e6cab7e](https://github.com/thinkbuff/figma/commit/e6cab7e))
+- **react/action-icon:** Add the `asChild` prop for changing the default rendered element ([751881f](https://github.com/thinkbuff/figma/commit/751881f))
+
+### 📖 Documentation
+
+- **react:** Add `content` in `unocss` config ([556fe38](https://github.com/thinkbuff/figma/commit/556fe38))
+
+### ❤️ Contributors
+
+- Eleven ([@eteplus](http://github.com/eteplus))
+
 ## v0.0.2
 
 [compare changes](https://github.com/thinkbuff/figma/compare/v0.0.1...v0.0.2)
