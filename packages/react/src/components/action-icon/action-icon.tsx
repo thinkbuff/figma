@@ -1,14 +1,22 @@
 import { forwardRef } from 'react';
+import { Slot } from '@radix-ui/react-slot';
 
 import { cn } from '~/utils';
 
-interface ActionIconProps
-  extends Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> {}
+interface ActionIconProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> {
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   *
+   * Read [Composition](https://www.radix-ui.com/primitives/docs/guides/composition) guide for more details.
+   */
+  asChild?: boolean;
+}
 
 const ActionIcon = forwardRef<React.ElementRef<'button'>, ActionIconProps>(
-  ({ className, disabled, ...props }, ref) => {
+  ({ className, disabled, asChild = false, ...props }, ref) => {
+    const Component = asChild ? Slot : 'button';
     return (
-      <button
+      <Component
         ref={ref}
         className={cn(
           'size-8',
