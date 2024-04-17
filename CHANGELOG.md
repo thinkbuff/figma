@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.0.2
+
+[compare changes](https://github.com/thinkbuff/figma/compare/v0.0.1...v0.0.2)
+
+### 🐛 Fixes
+
+- **react:** Correct `exports` field ([6d093a1](https://github.com/thinkbuff/figma/commit/6d093a1))
+
+### 🧹 Chore
+
+- Update `homepage`, `repository`, `bugs` in package.json ([f2013b3](https://github.com/thinkbuff/figma/commit/f2013b3))
+- Udpate deps and set `packageManager` to `pnpm@9.0.1` ([cc7eb8a](https://github.com/thinkbuff/figma/commit/cc7eb8a))
+
+### ❤️ Contributors
+
+- Eleven ([@eteplus](http://github.com/eteplus))
+
 ## v0.0.1
 
 
