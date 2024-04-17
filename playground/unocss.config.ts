@@ -11,7 +11,10 @@ import { presetFigmaTheme } from '@thinkbuff/figma-theme/unocss';
 export default defineConfig({
   content: {
     pipeline: {
-      include: ['**/*.{mjs,jsx,tsx}'],
+      include: [
+        'src/**/*.tsx',
+        /(.*)(\/)?figma(-|\/packages\/)?react(.*)\.(c|m)?(js)(x?)$/,
+      ],
     },
   },
   presets: [

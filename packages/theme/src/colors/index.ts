@@ -20,7 +20,7 @@ export function getCSSPreflights(theme: Record<ThemeCSSVariableKey, string>) {
 
 export function generateCSSVariables(type: 'figma' | 'figjam') {
   if (type === 'figma') {
-    return `html.figma-light, .figma-light {
+    return `html, html.figma-light, .figma-light {
       ${getCSSPreflights({ ...BaseThemeCSSVariables, ...FigmaLightThemeCSSVariables })}
     }
     html.figma-dark, .figma-dark {

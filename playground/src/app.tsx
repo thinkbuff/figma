@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import viteLogo from '/vite.svg';
 
-import { TooltipProvider, Tooltip } from '@thinkbuff/figma-react/tooltip';
+import { Tooltip } from '@thinkbuff/figma-react/tooltip';
 import {
   SliderRoot,
   SliderTrack,
@@ -49,7 +49,7 @@ function Slider() {
 
 export function App() {
   return (
-    <TooltipProvider>
+    <>
       <div className={cn('outline-figma-icon', 'outline-figma-border-brand')}>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -101,6 +101,6 @@ export function App() {
           </Select.Content>
         </Select.Root>
       </div>
-    </TooltipProvider>
+    </>
   );
 }
