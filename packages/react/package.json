@@ -51,8 +51,8 @@
       "import": "./dist/components/index.mjs"
     },
     "./*": {
-      "types": "./dist/components/*/*.d.ts",
-      "import": "./dist/components/*/*.mjs"
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.mjs"
     }
   },
   "typesVersions": {
