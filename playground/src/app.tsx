@@ -9,6 +9,7 @@ import {
   SliderRange,
   SliderThumb,
 } from '@thinkbuff/figma-react/slider';
+import { Select } from '@thinkbuff/figma-react/select';
 import { cn } from '@thinkbuff/figma-react/utils';
 
 import reactLogo from './assets/react.svg';
@@ -63,8 +64,42 @@ export function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <div className="min-h-60 min-w-60 flex items-center justify-center bg-figma">
+      <div className="min-h-60 min-w-60 flex flex-col items-center justify-center gap-4 bg-figma">
         <Slider />
+        <Select.Root>
+          <Select.Trigger placeholder="Select. an option" />
+          <Select.Content>
+            <Select.Group>
+              <Select.Label>String</Select.Label>
+              <Select.Item value="text">Text</Select.Item>
+            </Select.Group>
+            <Select.Separator />
+            <Select.Group>
+              <Select.Label>Sizing</Select.Label>
+              <Select.Item value="width">Width</Select.Item>
+              <Select.Item value="height">Height</Select.Item>
+            </Select.Group>
+            <Select.Separator />
+            <Select.Group>
+              <Select.Label>Auto Layout</Select.Label>
+              <Select.Item value="gap">Gap</Select.Item>
+              <Select.Item value="horizontal-padding">
+                Horizontal padding
+              </Select.Item>
+              <Select.Item value="vertical-padding">
+                Vertical padding
+              </Select.Item>
+            </Select.Group>
+            <Select.Separator />
+            <Select.Group>
+              <Select.Item value="fill-width" disabled>
+                Fill weight
+              </Select.Item>
+              <Select.Item value="stroke-width">Stroke weight</Select.Item>
+              <Select.Item value="corner-radius">Corner radius</Select.Item>
+            </Select.Group>
+          </Select.Content>
+        </Select.Root>
       </div>
     </TooltipProvider>
   );

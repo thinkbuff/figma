@@ -10,9 +10,10 @@
     "lint:fix": "pnpm run -r lint --fix",
     "typecheck": "pnpm run -r typecheck",
     "release": "changelogen --release --no-commit --no-tag && tsx scripts/update-version.ts",
+    "postinstall": "pnpm run -r stub",
     "prepare": "simple-git-hooks"
   },
-  "packageManager": "pnpm@8.15.7",
+  "packageManager": "pnpm@9.0.1",
   "engines": {
     "node": ">=18.18.0"
   },
@@ -21,7 +22,7 @@
   "devDependencies": {
     "@thinkbuff/eslint-config": "^0.1.5",
     "@types/node": "^20.12.7",
-    "@unocss/eslint-plugin": "^0.59.2",
+    "@unocss/eslint-plugin": "^0.59.3",
     "changelogen": "^0.5.5",
     "eslint": "^8.57.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
