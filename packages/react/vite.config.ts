@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 import unocss from 'unocss/vite';
 import dts from 'vite-plugin-dts';
 import path from 'node:path';
-import { glob } from 'glob';
 import { fileURLToPath } from 'node:url';
+import { glob } from 'glob';
 
 import { dependencies } from './package.json';
 

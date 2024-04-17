@@ -43,6 +43,14 @@ import presetAnimations from 'unocss-preset-animations';
 import { presetFigmaTheme } from '@thinkbuff/figma-theme/unocss';
 
 export default defineConfig({
+  content: {
+    pipeline: {
+      include: [
+        'src/**/*.tsx',
+        /(.*)figma-react(.*)\.(c|m)?(js)(x?)$/
+      ],
+    },
+  },
   presets: [
     presetUno({
       dark: {
