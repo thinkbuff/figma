@@ -1,0 +1,73 @@
+{
+  "name": "@thinkbuff/figma-utils",
+  "author": "Eleven <eteplus@outlook.com>",
+  "license": "MIT",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Utilities for Figma plugin and widget",
+  "scripts": {
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "build": "unbuild",
+    "stub": "unbuild --stub",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
+  },
+  "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thinkbuff/figma",
+    "directory": "packages/utils"
+  },
+  "bugs": {
+    "url": "https://github.com/thinkbuff/figma/issues"
+  },
+  "keywords": [
+    "figma",
+    "figma-plugin",
+    "figma-utils"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./message-channel": {
+      "types": "./dist/message-channel/index.d.ts",
+      "import": "./dist/message-channel/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "@figma/plugin-typings": "*",
+    "@figma/widget-typings": "*"
+  },
+  "peerDependenciesMeta": {
+    "@figma/plugin-typings": {
+      "optional": true
+    },
+    "@figma/widget-typings": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "eventemitter3": "^5.0.1"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.91.0",
+    "@figma/widget-typings": "^1.9.1",
+    "unbuild": "^2.0.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
+  }
+}
