@@ -19,10 +19,10 @@
     "@thinkbuff/figma-theme": "workspace:*",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
-    "@unocss/preset-rem-to-px": "^0.59.3",
+    "@unocss/preset-rem-to-px": "^0.59.4",
     "@vitejs/plugin-react": "^4.2.1",
     "typescript": "^5.4.5",
-    "unocss": "^0.59.3",
+    "unocss": "^0.59.4",
     "unocss-preset-animations": "^1.0.2",
     "vite": "^5.2.9"
   },

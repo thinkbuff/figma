@@ -13,7 +13,7 @@
     "postinstall": "pnpm run -r stub",
     "prepare": "simple-git-hooks"
   },
-  "packageManager": "pnpm@9.0.1",
+  "packageManager": "pnpm@9.0.4",
   "engines": {
     "node": ">=18.18.0"
   },
@@ -22,7 +22,7 @@
   "devDependencies": {
     "@thinkbuff/eslint-config": "^0.1.5",
     "@types/node": "^20.12.7",
-    "@unocss/eslint-plugin": "^0.59.3",
+    "@unocss/eslint-plugin": "^0.59.4",
     "changelogen": "^0.5.5",
     "eslint": "^8.57.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
