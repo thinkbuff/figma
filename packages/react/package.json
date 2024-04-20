@@ -3,7 +3,7 @@
   "author": "Eleven <eteplus@outlook.com>",
   "license": "MIT",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Figma React UI components for creating plugins and widgets",
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
@@ -13,7 +13,6 @@
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -h 127.0.0.1 -p 6006",
     "build-storybook": "storybook build",
-    "release": "changelogen --bump --no-output",
     "prepublishOnly": "pnpm build"
   },
   "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
@@ -127,7 +126,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "sonner": "^1.4.41",
-    "tailwind-merge": "^2.2.2"
+    "tailwind-merge": "^2.3.0"
   },
   "publishConfig": {
     "access": "public"

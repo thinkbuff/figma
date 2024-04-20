@@ -3,14 +3,13 @@
   "author": "Eleven <eteplus@outlook.com>",
   "license": "MIT",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Utilities for Figma plugin and widget",
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
     "build": "tsc && vite build",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "release": "changelogen --bump --no-output",
     "prepublishOnly": "pnpm build"
   },
   "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/utils#readme",

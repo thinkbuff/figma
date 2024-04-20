@@ -1,6 +1,25 @@
 # Changelog
 
 
+## v0.0.4
+
+[compare changes](https://github.com/thinkbuff/figma/compare/v0.0.3...v0.0.4)
+
+### 🚀 Features
+
+- **utils:** Implement MessageChannel ([046721d](https://github.com/thinkbuff/figma/commit/046721d))
+- **utils:** Add utilities for image paint and node ([45ff957](https://github.com/thinkbuff/figma/commit/45ff957))
+- **utils:** Enhance type definitions ([fa9874b](https://github.com/thinkbuff/figma/commit/fa9874b))
+
+### 🧹 Chore
+
+- **react:** Fix directory value of repository ([0d904b4](https://github.com/thinkbuff/figma/commit/0d904b4))
+- Update deps and set `packageManager` to `pnpm@9.0.4` ([2adb5bf](https://github.com/thinkbuff/figma/commit/2adb5bf))
+
+### ❤️ Contributors
+
+- Eleven <eteplus@outlook.com>
+
 ## v0.0.3
 
 [compare changes](https://github.com/thinkbuff/figma/compare/v0.0.2...v0.0.3)
