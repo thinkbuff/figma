@@ -8,7 +8,6 @@
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
     "build": "tsc && vite build",
-    "stub": "unbuild --stub",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "release": "changelogen --bump --no-output",
@@ -40,9 +39,17 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     },
+    "./node": {
+      "types": "./dist/node/index.d.ts",
+      "import": "./dist/node/index.mjs"
+    },
+    "./image": {
+      "types": "./dist/image/index.d.ts",
+      "import": "./dist/image/index.mjs"
+    },
     "./message-channel": {
-      "types": "./dist/message-channel/index.d.ts",
-      "import": "./dist/message-channel/index.mjs"
+      "types": "./dist/message-channel.d.ts",
+      "import": "./dist/message-channel.mjs"
     }
   },
   "files": [
@@ -61,12 +68,12 @@
     }
   },
   "dependencies": {
-    "eventemitter3": "^5.0.1"
+    "eventemitter3": "^5.0.1",
+    "type-fest": "^4.15.0"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.91.0",
     "@figma/widget-typings": "^1.9.1",
-    "unbuild": "^2.0.0",
     "vite": "^5.2.9",
     "vite-plugin-dts": "^3.8.3"
   },

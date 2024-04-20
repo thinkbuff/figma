@@ -1,4 +1,4 @@
-import type { Mutable } from '../types';
+import type { WritableDeep } from 'type-fest';
 
 /**
  * Deep clones a value of any type.
@@ -7,22 +7,22 @@ import type { Mutable } from '../types';
  * @throws {Error} - If the value is of an unknown type.
  * @returns - The cloned value.
  */
-export function cloneDeep<T = any>(value: T): T | Mutable<T> {
+export function cloneDeep<T = any>(value: T): WritableDeep<T> {
   const type = typeof value;
   if (
     value === null
     || ['undefined', 'number', 'string', 'boolean', 'symbol'].includes(type)
   ) {
-    return value as T;
+    return value as WritableDeep<T>;
   }
 
   if (type === 'object') {
     if (Array.isArray(value)) {
-      return value.map(item => cloneDeep(item)) as T;
+      return value.map(item => cloneDeep(item)) as WritableDeep<T>;
     }
 
     if (value instanceof Uint8Array) {
-      return new Uint8Array(value) as T;
+      return new Uint8Array(value) as WritableDeep<T>;
     }
 
     const cloned: Record<string, any> = {};
@@ -30,7 +30,7 @@ export function cloneDeep<T = any>(value: T): T | Mutable<T> {
       cloned[key] = cloneDeep(value[key]);
     }
 
-    return cloned as Mutable<T>;
+    return cloned as WritableDeep<T>;
   }
 
   throw new Error('Unknown value type');

@@ -1,6 +1,6 @@
-import type { Mutable } from '../types';
+import type { WritableDeep } from 'type-fest';
 
-const imagePaints = new Map<string, Mutable<ImagePaint>>();
+const imagePaints = new Map<string, WritableDeep<ImagePaint>>();
 
 export type ImageCreateParams = {
   key: string;
@@ -43,12 +43,12 @@ async function createImageByUrlOrBytes(params: Pick<ImageCreateParams, 'url' | '
 export async function createImagePaint(params: ImageCreateParams) {
   const { key, options = {} } = params;
   if (imagePaints.has(key)) {
-    return imagePaints.get(key) as Mutable<ImagePaint>;
+    return imagePaints.get(key) as WritableDeep<ImagePaint>;
   }
 
   const image = await createImageByUrlOrBytes(params);
 
-  const imagePaint: Mutable<ImagePaint> = {
+  const imagePaint: WritableDeep<ImagePaint> = {
     type: 'IMAGE',
     scaleMode: 'FILL',
     imageHash: image.hash,
