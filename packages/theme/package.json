@@ -12,6 +12,7 @@
     "generate:css": "tsx scripts/generate-css-files.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "release": "changelogen --bump --no-output",
     "prepublishOnly": "pnpm build"
   },
   "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",

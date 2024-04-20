@@ -1,10 +1,31 @@
 import EventEmitter from 'eventemitter3';
 
-import type {
-  MessageEventTypes,
-  MessageEventObject,
-  MessageEventListener,
-} from './types';
+export type MessageEventTypes<T extends Record<string, unknown>> =
+  EventEmitter.EventNames<T>;
+
+export type MessageEventObject<
+  T extends Record<string, unknown>,
+  K extends MessageEventTypes<T>,
+> = T[K] extends undefined
+  ? {
+      /** unique message id */
+      key?: string;
+      /** message event type  */
+      type: K;
+    }
+  : {
+      /** unique message id */
+      key?: string;
+      /** message event type  */
+      type: K;
+      /** message event data */
+      data: T[K];
+    };
+
+export type MessageEventListener<
+  T extends Record<string, unknown>,
+  K extends MessageEventTypes<T>,
+> = (message: MessageEventObject<T, K>) => void;
 
 function getEventNameWithKey(type: string | symbol, key: string = '') {
   return key ? `${type.toString()}::${key}` : type;

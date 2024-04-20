@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -h 127.0.0.1 -p 6006",
     "build-storybook": "storybook build",
+    "release": "changelogen --bump --no-output",
     "prepublishOnly": "pnpm build"
   },
   "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",

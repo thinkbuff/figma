@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "release": "changelogen --bump --no-output",
     "preview": "vite preview"
   },
   "dependencies": {

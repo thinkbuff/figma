@@ -214,6 +214,12 @@ importers:
       unbuild:
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.4.5)
+      vite:
+        specifier: ^5.2.9
+        version: 5.2.9(@types/node@20.12.7)
+      vite-plugin-dts:
+        specifier: ^3.8.3
+        version: 3.8.3(@types/node@20.12.7)(rollup@3.29.4)(typescript@5.4.5)(vite@5.2.9(@types/node@20.12.7))
 
   playground:
     dependencies:
@@ -13125,6 +13131,23 @@ snapshots:
       - supports-color
       - terser
     optional: true
+
+  vite-plugin-dts@3.8.3(@types/node@20.12.7)(rollup@3.29.4)(typescript@5.4.5)(vite@5.2.9(@types/node@20.12.7)):
+    dependencies:
+      '@microsoft/api-extractor': 7.43.0(@types/node@20.12.7)
+      '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
+      '@vue/language-core': 1.8.27(typescript@5.4.5)
+      debug: 4.3.4
+      kolorist: 1.8.0
+      magic-string: 0.30.10
+      typescript: 5.4.5
+      vue-tsc: 1.8.27(typescript@5.4.5)
+    optionalDependencies:
+      vite: 5.2.9(@types/node@20.12.7)
+    transitivePeerDependencies:
+      - '@types/node'
+      - rollup
+      - supports-color
 
   vite-plugin-dts@3.8.3(@types/node@20.12.7)(rollup@4.14.3)(typescript@5.4.5)(vite@5.2.9(@types/node@20.12.7)):
     dependencies:

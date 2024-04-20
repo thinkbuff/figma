@@ -2,8 +2,11 @@ import { defineBuildConfig } from 'unbuild';
 
 export default defineBuildConfig({
   entries: [
-    'src/index',
-    'src/message-channel/index',
+    {
+      builder: 'mkdist',
+      input: 'src',
+      outDir: 'dist',
+    },
   ],
   clean: true,
   declaration: true,
@@ -13,5 +16,8 @@ export default defineBuildConfig({
   failOnWarn: false,
   rollup: {
     inlineDependencies: true,
+    output: {
+      preserveModules: true,
+    },
   },
 });

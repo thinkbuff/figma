@@ -9,7 +9,7 @@
     "lint": "pnpm run -r lint",
     "lint:fix": "pnpm run -r lint --fix",
     "typecheck": "pnpm run -r typecheck",
-    "release": "changelogen --release --no-commit --no-tag && tsx scripts/update-version.ts",
+    "release": "changelogen --release --no-commit --no-tag && pnpm run -r release",
     "postinstall": "pnpm run -r stub",
     "prepare": "simple-git-hooks"
   },
