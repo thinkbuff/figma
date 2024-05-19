@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.0.5
+
+[compare changes](https://github.com/thinkbuff/figma/compare/v0.0.4...v0.0.5)
+
+### 🚀 Features
+
+- **react:** Optimize DOM and styles for `textarea` and `input` components ([94840cd](https://github.com/thinkbuff/figma/commit/94840cd), [f98a41e](https://github.com/thinkbuff/figma/commit/f98a41e))
+
+### 🐛 Fixes
+
+- **storybook:** Fix type error when setting summary value ([40f7c26](https://github.com/thinkbuff/figma/commit/40f7c26))
+
+### 🧹 Chore
+
+- Update dependencies and set packageManager to pnpm@9.1.1 ([42b7567](https://github.com/thinkbuff/figma/commit/42b7567))
+
+### ❤️ Contributors
+
+- Eleven ([@eteplus](http://github.com/eteplus))
+
 ## v0.0.4
 
 [compare changes](https://github.com/thinkbuff/figma/compare/v0.0.3...v0.0.4)

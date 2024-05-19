@@ -29,7 +29,7 @@ const meta = {
       },
     },
     value: {
-      control: 'array',
+      control: 'object',
       table: {
         defaultValue: { summary: '[0]' },
         type: {
