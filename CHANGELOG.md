@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.6
+
+[compare changes](https://github.com/thinkbuff/figma/compare/v0.0.5...v0.0.6)
+
+### 🚀 Features
+
+- **react:** Optimize styles for `textarea` and `input` components ([516fe6c](https://github.com/thinkbuff/figma/commit/516fe6c))
+
+### ❤️ Contributors
+
+- Eleven ([@eteplus](http://github.com/eteplus))
+
 ## v0.0.5
 
 [compare changes](https://github.com/thinkbuff/figma/compare/v0.0.4...v0.0.5)

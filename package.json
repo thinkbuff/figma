@@ -1,5 +1,5 @@
 {
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Simplify plugin and widget creation for Figma and FigJam",
   "private": true,
   "type": "module",
