@@ -10,7 +10,9 @@ type TextareaRootElement = React.ElementRef<'textarea'>;
 
 type TextareaVariantsProps = InputVariantsProps;
 
-interface TextareaProps extends React.ComponentPropsWithRef<'textarea'>, TextareaVariantsProps {
+interface TextareaProps
+  extends React.ComponentPropsWithRef<'textarea'>,
+  TextareaVariantsProps {
   invalid?: boolean;
   disabled?: boolean;
 }
@@ -19,27 +21,25 @@ const Textarea = forwardRef<TextareaRootElement, TextareaProps>(
   ({ className, variant, invalid, disabled, children, ...props }, ref) => {
     return (
       <div
-        className={cn(
-          'relative', 'overflow-hidden', 'min-h-15', 'flex-col',
-        )}
+        className={cn('peer', 'relative')}
         data-disabled={disabled}
         data-invalid={invalid}
       >
+        {children}
         <textarea
+          ref={ref}
+          data-invalid={invalid}
+          aria-invalid={invalid}
           className={cn(
             'block',
             'px-2',
             'py-1',
-            'flex-grow',
             'resize-none',
             textareaVariants({ variant, disabled, invalid, className }),
           )}
           {...props}
-          ref={ref}
           disabled={disabled}
-          data-invalid={invalid}
         />
-        {children}
       </div>
     );
   },

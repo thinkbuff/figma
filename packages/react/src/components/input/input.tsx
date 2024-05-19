@@ -45,6 +45,7 @@ const Input = forwardRef<React.ElementRef<'input'>, InputProps>(
           {children}
           <input
             ref={ref}
+            data-invalid={invalid}
             aria-invalid={invalid}
             className={cn(
               'inline-block',
