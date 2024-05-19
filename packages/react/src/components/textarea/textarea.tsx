@@ -20,7 +20,7 @@ const Textarea = forwardRef<TextareaRootElement, TextareaProps>(
     return (
       <div
         className={cn(
-          ['relative', 'overflow-hidden'],
+          ['relative', 'overflow-hidden', 'min-h-15', 'flex-col'],
           textareaVariants({ variant, disabled, invalid, className }),
         )}
         data-disabled={disabled}
@@ -31,10 +31,10 @@ const Textarea = forwardRef<TextareaRootElement, TextareaProps>(
             'block',
             'px-2',
             'py-1',
-            'min-h-15',
             'bg-transparent',
             'placeholder:text-figma-tertiary',
             'w-full',
+            'flex-grow',
             'border-none',
             'outline-0',
             'resize-none',
