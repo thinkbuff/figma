@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
+import { Tooltip, TooltipProvider } from '../tooltip';
 
 import { Input, InputSlot } from './input';
 
@@ -93,12 +95,42 @@ export const WithSlots: Story = {
         <ActionIcon
           disabled={args.disabled}
           className="mx-1 size-6 text-figma-icon-secondary focus:outline-transparent"
+          onClick={e => e.stopPropagation()}
         >
           <span className="i-tabler-x size-3"></span>
         </ActionIcon>
       </InputSlot>
     </Input>
   ),
+};
+
+export const WithTooltip: Story = {
+  args: {
+    variant: 'border',
+    value: 12,
+  },
+  render: (args) => {
+    const [{ value }, updateArgs] = useArgs();
+    return (
+      <TooltipProvider delayDuration={100}>
+        <Tooltip content={<p>Spacing</p>}>
+          <div className="relative w-20 flex items-center">
+            <Input
+              id="spacing"
+              {...args}
+              value={value}
+              onFocus={e => e.currentTarget.select()}
+              onChange={e => updateArgs({ value: Number(e.currentTarget.value) })}
+            >
+              <InputSlot side="left">
+                <span className="i-tabler-spacing-vertical size-3.5"></span>
+              </InputSlot>
+            </Input>
+          </div>
+        </Tooltip>
+      </TooltipProvider>
+    );
+  },
 };
 
 export default meta;

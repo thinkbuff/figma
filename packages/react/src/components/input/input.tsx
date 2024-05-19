@@ -1,4 +1,4 @@
-import { forwardRef, createContext, useContext } from 'react';
+import { forwardRef, createContext, useContext, useRef, useEffect } from 'react';
 
 import { cn } from '~/utils';
 
@@ -18,32 +18,47 @@ interface InputProps extends React.ComponentPropsWithRef<'input'>, InputVariants
 }
 
 const Input = forwardRef<React.ElementRef<'input'>, InputProps>(
-  ({ className, variant, invalid, disabled, children, ...props }, ref) => (
-    <InputContext.Provider value={{ disabled, invalid }}>
-      <div
-        className={cn('peer', 'relative', 'h-8', 'px-2', inputVariants({ variant, disabled, invalid, className }))}
-        data-disabled={disabled}
-        data-invalid={invalid}
-      >
-        <input
-          ref={ref}
-          aria-invalid={invalid}
-          className={cn(
-            'h-6',
-            'bg-transparent',
-            'placeholder:text-figma-tertiary',
-            'w-full',
-            'border-none',
-            'outline-0',
-            disabled ? ['cursor-not-allowed', 'text-figma-disabled'] : ['cursor-default'],
-          )}
-          {...props}
-          disabled={disabled}
-        />
-        {children}
-      </div>
-    </InputContext.Provider>
-  ),
+  ({ className, variant, invalid, disabled, children, ...props }, forwardedRef) => {
+    const ref = useRef<HTMLInputElement | null>(null);
+
+    useEffect(() => {
+      if (!ref || !forwardedRef) {
+        return;
+      }
+
+      const node = ref.current;
+      if (typeof forwardedRef === 'function') {
+        forwardedRef(node);
+      } else if (forwardedRef) {
+        forwardedRef.current = node;
+      }
+    }, [ref]);
+
+    return (
+      <InputContext.Provider value={{ disabled, invalid }}>
+        <div
+          className={cn('peer', 'relative', 'h-8', 'flex', 'items-center')}
+          data-disabled={disabled}
+          data-invalid={invalid}
+          onClick={() => ref.current?.focus?.()}
+        >
+          {children}
+          <input
+            ref={ref}
+            aria-invalid={invalid}
+            className={cn(
+              'inline-block',
+              'h-full',
+              'px-2',
+              inputVariants({ variant, disabled, invalid, className }),
+            )}
+            {...props}
+            disabled={disabled}
+          />
+        </div>
+      </InputContext.Provider>
+    );
+  },
 );
 
 Input.displayName = 'Input';
@@ -64,13 +79,14 @@ const InputSlot = forwardRef<React.ElementRef<'div'>, InputSlotProps>(({ classNa
     <div
       ref={ref}
       className={cn(
+        'absolute',
         'flex',
         'shrink-0',
         'w-8',
         'items-center',
         'justify-center',
         'transition-colors',
-        side === 'left' ? ['order-first', '-ml-2'] : ['order-last', '-mr-2'],
+        side === 'left' ? ['left-0', '[&~input]:pl-8'] : ['right-0', '[&~input]:pr-8'],
         disabled
           ? ['cursor-not-allowed', 'text-figma-disabled', 'fill-figma-icon-disabled']
           : ['cursor-default', 'text-figma-secondary', 'fill-figma-icon-secondary'],

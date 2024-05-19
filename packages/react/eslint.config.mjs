@@ -10,9 +10,6 @@ const storybookConfigs = StorybookPlugin.configs.recommended.overrides.map(confi
 }));
 
 export default defineFlatConfigAsync({
-  react: {
-    a11y: 'recommended',
-  },
   unocss: true,
   extends: [
     ...storybookConfigs,
