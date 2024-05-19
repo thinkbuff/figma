@@ -24,7 +24,7 @@ const meta = {
     disabled: {
       control: 'boolean',
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
       },
     },
     value: {
@@ -101,7 +101,7 @@ const meta = {
           detail:
             'When true, overrides the side andalign preferences to prevent collisions with boundary edges. Only available when position is set to popper.',
         },
-        defaultValue: { summary: true },
+        defaultValue: { summary: 'true' },
       },
     },
   },

@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
+import { Root as Portal } from '@radix-ui/react-portal';
 
 import { Button } from '../button';
 import { Label } from '../label';
 import { Input } from '../input';
 import { ActionIcon } from '../action-icon';
+import { toast, Toaster } from '../toast';
 
 import * as Dialog from './dialog';
 
@@ -24,6 +26,16 @@ const meta = {
     modal: true,
     open: false,
   },
+  decorators: [
+    Story => (
+      <>
+        <Story />
+        <Portal>
+          <Toaster className="pointer-events-auto" />
+        </Portal>
+      </>
+    ),
+  ],
   render: (args) => {
     const { open: _, modal, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
@@ -36,7 +48,17 @@ const meta = {
         <Dialog.Trigger asChild>
           <Button variant="outline">Edit profile</Button>
         </Dialog.Trigger>
-        <Dialog.Content {...props}>
+        <Dialog.Content
+          {...props}
+          onPointerDownOutside={(event) => {
+            if (
+              event.target instanceof Element
+              && event.target.closest('[data-sonner-toast]')
+            ) {
+              event.preventDefault();
+            }
+          }}
+        >
           <Dialog.Header className="justify-between">
             <Dialog.Title>Edit profile</Dialog.Title>
             <Dialog.Close asChild>
@@ -55,7 +77,7 @@ const meta = {
               </Label>
               <Input
                 id="name"
-                value="Eleven"
+                defaultValue="Eleven"
                 variant="border"
                 className="col-span-3"
               />
@@ -66,7 +88,7 @@ const meta = {
               </Label>
               <Input
                 id="username"
-                value="@eteplus"
+                defaultValue="@eteplus"
                 variant="border"
                 className="col-span-3"
               />
@@ -74,8 +96,17 @@ const meta = {
           </div>
           <Dialog.Footer className="justify-end gap-3">
             <Dialog.Close asChild>
-              <Button>Save changes</Button>
+              <Button variant="outline" color="secondary">Cancel</Button>
             </Dialog.Close>
+            <Button onClick={() => {
+              toast.success('Profile has been updated', {
+                duration: 6000,
+                closeButton: true,
+              });
+            }}
+            >
+              Save changes
+            </Button>
           </Dialog.Footer>
         </Dialog.Content>
       </Dialog.Root>

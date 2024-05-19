@@ -65,7 +65,7 @@ const meta = {
           summary: 'boolean',
           detail: 'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
         },
-        defaultValue: { summary: true },
+        defaultValue: { summary: 'true' },
       },
     },
     withArrow: {
@@ -74,7 +74,7 @@ const meta = {
           summary: 'boolean',
           detail: 'Whether the tooltip should have an arrow',
         },
-        defaultValue: { summary: true },
+        defaultValue: { summary: 'true' },
       },
     },
     content: {

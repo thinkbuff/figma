@@ -26,7 +26,7 @@ const meta = {
     },
     disabled: {
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
       },
     },
   },

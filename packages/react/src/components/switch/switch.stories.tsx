@@ -15,7 +15,7 @@ const meta = {
   argTypes: {
     disabled: {
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
       },
     },
   },

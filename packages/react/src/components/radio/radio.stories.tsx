@@ -15,7 +15,7 @@ const meta = {
   argTypes: {
     disabled: {
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
       },
     },
     value: {
@@ -25,7 +25,7 @@ const meta = {
     inline: {
       control: 'boolean',
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
         type: { summary: 'boolean' },
       },
     },
