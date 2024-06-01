@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.0.7
+
+[compare changes](https://github.com/thinkbuff/figma/compare/v0.0.6...v0.0.7)
+
+### 🐛 Fixes
+
+- **utils:** Optimize parameter validation logic for `createImageByUrlOrBytes` ([e88c6a7](https://github.com/thinkbuff/figma/commit/e88c6a7))
+
+### 🧹 Chore
+
+- Update dependencies and set packageManager to pnpm@9.1.4 ([93500ed](https://github.com/thinkbuff/figma/commit/93500ed))
+
+### ❤️ Contributors
+
+- Eleven ([@eteplus](http://github.com/eteplus))
+
 ## v0.0.6
 
 [compare changes](https://github.com/thinkbuff/figma/compare/v0.0.5...v0.0.6)
