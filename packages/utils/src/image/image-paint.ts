@@ -19,15 +19,15 @@ export type ImageCreateParams = {
  * @return A promise that resolves to the created image.
  */
 async function createImageByUrlOrBytes(params: Pick<ImageCreateParams, 'url' | 'bytes'>) {
-  if (!params?.url || !params?.bytes) {
-    throw new Error('Either url or bytes must be provided');
-  }
-
   if (params.url) {
     return figma.createImageAsync(params.url);
   }
 
-  return figma.createImage(params.bytes);
+  if (params.bytes) {
+    return figma.createImage(params.bytes);
+  }
+
+  throw new Error('Either url or bytes must be provided');
 }
 
 /**
