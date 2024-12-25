@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.8
+
+[compare changes](https://github.com/thinkbuff/figma/compare/v0.0.7...v0.0.8)
+
+### 🧹 Chore
+
+- Update dependencies and fix type references ([d98b712](https://github.com/thinkbuff/figma/commit/d98b712))
+
+### ❤️ Contributors
+
+- Eleven ([@eteplus](http://github.com/eteplus))
+
 ## v0.0.7
 
 [compare changes](https://github.com/thinkbuff/figma/compare/v0.0.6...v0.0.7)
