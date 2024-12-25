@@ -35,6 +35,7 @@ export function createMessageChannel<
   MessageEvents extends Record<string, unknown> = Record<string, unknown>,
 >() {
   const emitter = new EventEmitter();
+  // eslint-disable-next-line unicorn/prefer-global-this
   const isInFigmaSandbox = typeof window === 'undefined';
 
   try {

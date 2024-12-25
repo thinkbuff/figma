@@ -92,7 +92,7 @@ const sheetVariants = cva(
 export interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
   VariantProps<typeof sheetVariants> {
-  container?: SheetPrimitive.PortalProps['container'];
+  container?: SheetPrimitive.DialogPortalProps['container'];
 }
 
 /**

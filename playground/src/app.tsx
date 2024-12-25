@@ -30,6 +30,7 @@ function Slider() {
       </SliderTrack>
       {values.map((value, index) => (
         <Tooltip
+          // eslint-disable-next-line react/no-array-index-key
           key={index}
           defaultOpen={showTooltip}
           open={showTooltip}

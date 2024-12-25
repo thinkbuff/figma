@@ -46,7 +46,7 @@ interface PopoverContentProps extends React.ComponentPropsWithoutRef<typeof Popo
    *
    * @default document.body
    */
-  container?: PopoverPrimitive.PortalProps['container'];
+  container?: PopoverPrimitive.PopoverPortalProps['container'];
 }
 
 /**

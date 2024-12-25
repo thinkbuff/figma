@@ -25,7 +25,7 @@ TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName;
 type TooltipContentElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 
 interface TooltipContentProps
-  extends TooltipPrimitive.PortalProps,
+  extends TooltipPrimitive.TooltipPortalProps,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> {}
 
 const TooltipContent = forwardRef<TooltipContentElement, TooltipContentProps>(
@@ -62,7 +62,7 @@ interface TooltipProps
   /**
    * The container of the tooltip
    */
-  container?: TooltipPrimitive.PortalProps['container'];
+  container?: TooltipPrimitive.TooltipPortalProps['container'];
   /**
    * Whether the tooltip should have an arrow
    *

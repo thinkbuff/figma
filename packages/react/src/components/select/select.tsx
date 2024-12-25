@@ -160,8 +160,7 @@ const SelectLabel = forwardRef<
 
 SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
-interface SelectItemProps
-  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> {}
+type SelectItemProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>;
 
 const SelectItem = forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
