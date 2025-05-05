@@ -1,7 +1,4 @@
 import { useState } from 'react';
-
-import viteLogo from '/vite.svg';
-
 import { Tooltip } from '@thinkbuff/figma-react/tooltip';
 import {
   SliderRoot,
@@ -12,7 +9,7 @@ import {
 import { Select } from '@thinkbuff/figma-react/select';
 import { cn } from '@thinkbuff/figma-react/utils';
 
-import reactLogo from './assets/react.svg';
+import ReactLogo from './assets/react.svg';
 
 import './app.css';
 
@@ -53,10 +50,10 @@ export function App() {
     <>
       <div className={cn('outline-figma-icon', 'outline-figma-border-brand')}>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+          <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
         <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src={ReactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
       <h1 className="border border-solid p-2 bg-figma border-figma hover:text-figma-brand">

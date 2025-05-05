@@ -1,11 +1,11 @@
-import { defineConfig, presetUno, presetIcons, transformerVariantGroup } from 'unocss';
+import { defineConfig, presetWind3, presetIcons, transformerVariantGroup } from 'unocss';
 import presetRemToPx from '@unocss/preset-rem-to-px';
 import presetAnimations from 'unocss-preset-animations';
 import { presetFigmaTheme } from '@thinkbuff/figma-theme/unocss';
 
 export default defineConfig({
   presets: [
-    presetUno({
+    presetWind3({
       dark: {
         light: '.figma-light',
         dark: '.figma-dark',

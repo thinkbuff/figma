@@ -1,6 +1,6 @@
 import {
   defineConfig,
-  presetUno,
+  presetWind3,
   presetIcons,
   transformerVariantGroup,
 } from 'unocss';
@@ -18,7 +18,7 @@ export default defineConfig({
     },
   },
   presets: [
-    presetUno({
+    presetWind3({
       dark: {
         light: '.figma-light',
         dark: '.figma-dark',

@@ -42,7 +42,7 @@ export const rules: Rule[] = [
   [
     /^(bg|border|text)-figma?(.*)$/,
     ([, scope, color]) => {
-      if (color && color.startsWith(scope, 1)) {
+      if (color?.startsWith?.(scope, 1)) {
         // ignore `bg-figma-bg-*`
         return '';
       }

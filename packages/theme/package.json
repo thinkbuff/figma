@@ -6,7 +6,7 @@
   "version": "0.0.8",
   "description": "Figma theme",
   "scripts": {
-    "clean": "rm -rf node_modules && rm -rf dist",
+    "clean": "rm -rf dist node_modules",
     "build": "unbuild --minify && pnpm generate:css",
     "stub": "unbuild --stub && pnpm generate:css",
     "generate:css": "tsx scripts/generate-css-files.ts",
@@ -67,8 +67,8 @@
     "dist"
   ],
   "devDependencies": {
-    "unbuild": "^3.0.1",
-    "unocss": "^0.65.2"
+    "unbuild": "^3.5.0",
+    "unocss": "^66.1.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix"

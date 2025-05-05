@@ -6,7 +6,10 @@
  * @param maximum - The maximum number of clones to create.
  * @returns An array of cloned nodes.
  */
-export function cloneNodesToMaximum(nodes: SceneNode[], maximum: number) {
+export function cloneNodesToMaximum(
+  nodes: Exclude<SceneNode, SlideGridNode | InteractiveSlideElementNode>[],
+  maximum: number,
+) {
   if (nodes.length >= maximum) {
     return [];
   }
