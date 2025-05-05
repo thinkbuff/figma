@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
 import { cn } from '~/utils';
@@ -9,45 +8,48 @@ const TooltipRoot = TooltipPrimitive.Root;
 
 const TooltipTrigger = TooltipPrimitive.Trigger;
 
-const TooltipArrow = forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Arrow>,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Arrow>
->(({ className, ...props }, ref) => (
+const TooltipArrow: React.FC<React.ComponentPropsWithRef<typeof TooltipPrimitive.Arrow>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <TooltipPrimitive.Arrow
     className={cn('fill-figma-bg-tooltip', className)}
     ref={ref}
     {...props}
   />
-));
+);
 
 TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName;
 
-type TooltipContentElement = React.ElementRef<typeof TooltipPrimitive.Content>;
-
 interface TooltipContentProps
   extends TooltipPrimitive.TooltipPortalProps,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> {}
+  React.ComponentPropsWithRef<typeof TooltipPrimitive.Content> {}
 
-const TooltipContent = forwardRef<TooltipContentElement, TooltipContentProps>(
-  ({ className, container, sideOffset = 4, ...props }, ref) => (
-    <TooltipPrimitive.Portal container={container}>
-      <TooltipPrimitive.Content
-        ref={ref}
-        sideOffset={sideOffset}
-        className={cn(
-          'bg-figma-tooltip',
-          'text-figma-tooltip',
-          'fill-figma-icon-tooltip',
-          'px-3',
-          'rounded-0.5',
-          'py-2',
-          'z-50',
-          className,
-        )}
-        {...props}
-      />
-    </TooltipPrimitive.Portal>
-  ),
+const TooltipContent: React.FC<TooltipContentProps> = ({
+  className,
+  container,
+  sideOffset = 4,
+  ref,
+  ...props
+}) => (
+  <TooltipPrimitive.Portal container={container}>
+    <TooltipPrimitive.Content
+      ref={ref}
+      sideOffset={sideOffset}
+      className={cn(
+        'bg-figma-tooltip',
+        'text-figma-tooltip',
+        'fill-figma-icon-tooltip',
+        'px-3',
+        'rounded-0.5',
+        'py-2',
+        'z-50',
+        className,
+      )}
+      {...props}
+    />
+  </TooltipPrimitive.Portal>
 );
 
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;

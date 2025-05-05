@@ -1,4 +1,4 @@
-import { forwardRef, createContext, useContext, useRef, useEffect } from 'react';
+import { createContext, useContext } from 'react';
 
 import { cn } from '~/utils';
 
@@ -15,56 +15,49 @@ const InputContext = createContext<{
 interface InputProps extends React.ComponentPropsWithRef<'input'>, InputVariantsProps {
   invalid?: boolean;
   disabled?: boolean;
+  /**
+   * Props passed down to the root element of the Input component
+   */
+  wrapperProps?: Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'> &
+    React.DataHTMLAttributes<'div'>;
 }
 
-const Input = forwardRef<React.ElementRef<'input'>, InputProps>(
-  ({ className, variant, invalid, disabled, children, ...props }, forwardedRef) => {
-    const ref = useRef<HTMLInputElement | null>(null);
-
-    useEffect(() => {
-      if (!ref || !forwardedRef) {
-        return;
-      }
-
-      const node = ref.current;
-      if (typeof forwardedRef === 'function') {
-        forwardedRef(node);
-      } else if (forwardedRef) {
-        forwardedRef.current = node;
-      }
-    }, [ref]);
-
-    return (
-      <InputContext.Provider value={{ disabled, invalid }}>
-        <div
-          className={cn('peer', 'relative', 'h-8', 'flex', 'items-center')}
-          data-disabled={disabled}
+const Input: React.FC<InputProps> = ({
+  wrapperProps,
+  className,
+  variant,
+  invalid,
+  disabled,
+  children,
+  ref,
+  ...props
+}) => {
+  return (
+    <InputContext.Provider value={{ disabled, invalid }}>
+      <div
+        {...wrapperProps}
+        className={cn('peer', 'relative', 'h-8', 'flex', 'items-center', wrapperProps?.className ?? '')}
+        data-disabled={disabled}
+        data-invalid={invalid}
+        onClick={() => (ref as React.RefObject<HTMLInputElement>).current?.focus?.()}
+      >
+        {children}
+        <input
+          ref={ref}
           data-invalid={invalid}
-          onClick={() => ref.current?.focus?.()}
-        >
-          {children}
-          <input
-            ref={ref}
-            data-invalid={invalid}
-            aria-invalid={invalid}
-            className={cn(
-              'inline-block',
-              'h-full',
-              'px-2',
-              inputVariants({ variant, disabled, invalid, className }),
-            )}
-            {...props}
-            disabled={disabled}
-          />
-        </div>
-      </InputContext.Provider>
-    );
-  },
-);
+          aria-invalid={invalid}
+          className={cn('inline-block', 'h-full', 'px-2', inputVariants({ variant, disabled, invalid, className }))}
+          {...props}
+          disabled={disabled}
+        />
+      </div>
+    </InputContext.Provider>
+  );
+};
 
 Input.displayName = 'Input';
 
-interface InputSlotProps extends React.ComponentPropsWithoutRef<'div'> {
+interface InputSlotProps extends React.ComponentPropsWithRef<'div'> {
   /**
    * The side of the Input that the icon or button is on.
    */
@@ -74,7 +67,7 @@ interface InputSlotProps extends React.ComponentPropsWithoutRef<'div'> {
 /**
  * Contains icons or buttons associated with an Input.
  */
-const InputSlot = forwardRef<React.ElementRef<'div'>, InputSlotProps>(({ className, side = 'left', ...props }, ref) => {
+const InputSlot: React.FC<InputSlotProps> = ({ className, side = 'left', ref, ...props }) => {
   const { disabled, invalid } = useContext(InputContext);
   return (
     <div
@@ -100,7 +93,7 @@ const InputSlot = forwardRef<React.ElementRef<'div'>, InputSlotProps>(({ classNa
       data-disabled={disabled}
     />
   );
-});
+};
 
 InputSlot.displayName = 'InputSlot';
 

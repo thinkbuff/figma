@@ -5,7 +5,7 @@ import { ActionIcon } from '../action-icon';
 
 import * as DropdownMenu from './dropdown-menu';
 
-type StoryArgs = React.ComponentPropsWithoutRef<typeof DropdownMenu.Content> & {
+type StoryArgs = React.ComponentPropsWithRef<typeof DropdownMenu.Content> & {
   modal?: boolean;
   open?: boolean;
 };

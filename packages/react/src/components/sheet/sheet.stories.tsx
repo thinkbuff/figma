@@ -8,7 +8,7 @@ import { ActionIcon } from '../action-icon';
 
 import * as Sheet from './sheet';
 
-type StoryArgs = React.ComponentPropsWithoutRef<typeof Sheet.Content> & {
+type StoryArgs = React.ComponentPropsWithRef<typeof Sheet.Content> & {
   modal?: boolean;
   open?: boolean;
 };

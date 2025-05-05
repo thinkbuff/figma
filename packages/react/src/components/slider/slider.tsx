@@ -1,12 +1,12 @@
-import { forwardRef } from 'react';
 import * as SliderPrimitive from '@radix-ui/react-slider';
 
 import { cn } from '~/utils';
 
-const SliderRoot = forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
->(({ className, ...props }, ref) => (
+const SliderRoot: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.Root>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <SliderPrimitive.Root
     className={cn(
       'relative',
@@ -22,14 +22,15 @@ const SliderRoot = forwardRef<
     {...props}
     ref={ref}
   />
-));
+);
 
 SliderRoot.displayName = SliderPrimitive.Root.displayName;
 
-const SliderTrack = forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Track>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Track>
->(({ className, ...props }, ref) => (
+const SliderTrack: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.Track>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <SliderPrimitive.Track
     className={cn(
       'relative',
@@ -44,14 +45,15 @@ const SliderTrack = forwardRef<
     {...props}
     ref={ref}
   />
-));
+);
 
 SliderTrack.displayName = SliderPrimitive.Track.displayName;
 
-const SliderRange = forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Range>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Range>
->(({ className, ...props }, ref) => (
+const SliderRange: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.Range>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <SliderPrimitive.Range
     className={cn(
       'absolute',
@@ -64,14 +66,15 @@ const SliderRange = forwardRef<
     {...props}
     ref={ref}
   />
-));
+);
 
 SliderRange.displayName = SliderPrimitive.Range.displayName;
 
-const SliderThumb = forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Thumb>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Thumb>
->(({ className, ...props }, ref) => (
+const SliderThumb: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.Thumb>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <SliderPrimitive.Thumb
     className={cn(
       'flex',
@@ -94,7 +97,7 @@ const SliderThumb = forwardRef<
     {...props}
     ref={ref}
   />
-));
+);
 
 SliderThumb.displayName = SliderPrimitive.Thumb.displayName;
 
@@ -104,10 +107,7 @@ SliderThumb.displayName = SliderPrimitive.Thumb.displayName;
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/slider)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/slider#api-reference)
  */
-const Slider = forwardRef<
-  React.ElementRef<typeof SliderRoot>,
-  React.ComponentPropsWithoutRef<typeof SliderRoot>
->((props, ref) => {
+const Slider: React.FC<React.ComponentPropsWithRef<typeof SliderRoot>> = ({ ref, ...props }) => {
   const value = props.value ?? props.defaultValue ?? [0];
   return (
     <SliderRoot {...props} ref={ref}>
@@ -119,7 +119,7 @@ const Slider = forwardRef<
       ))}
     </SliderRoot>
   );
-});
+};
 
 Slider.displayName = SliderPrimitive.Root.displayName;
 

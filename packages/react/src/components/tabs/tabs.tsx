@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 
 import { cn } from '~/utils';
@@ -9,23 +8,25 @@ import { cn } from '~/utils';
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/tabs)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/tabs#api-reference)
  */
-const TabsRoot = forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>
->(({ className, ...props }, ref) => (
+const TabsRoot: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Root>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <TabsPrimitive.Root
     className={cn('bg-figma', className)}
     {...props}
     ref={ref}
   />
-));
+);
 
 TabsRoot.displayName = TabsPrimitive.Root.displayName;
 
-const TabsList = forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->(({ className, ...props }, ref) => (
+const TabsList: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.List>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <TabsPrimitive.List
     className={cn(
       'bg-figma',
@@ -40,14 +41,15 @@ const TabsList = forwardRef<
     {...props}
     ref={ref}
   />
-));
+);
 
 TabsList.displayName = TabsPrimitive.List.displayName;
 
-const TabsTrigger = forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
+const TabsTrigger: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Trigger>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <TabsPrimitive.Trigger
     className={cn(
       'inline-flex',
@@ -65,20 +67,21 @@ const TabsTrigger = forwardRef<
     {...props}
     ref={ref}
   />
-));
+);
 
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 
-const TabsContent = forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
+const TabsContent: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Content>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <TabsPrimitive.Content
     className={cn('bg-figma', className)}
     {...props}
     ref={ref}
   />
-));
+);
 
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 

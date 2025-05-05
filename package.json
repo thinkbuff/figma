@@ -1,4 +1,5 @@
 {
+  "name": "@thinkbuff/figma",
   "version": "0.0.8",
   "description": "Simplify plugin and widget creation for Figma and FigJam",
   "private": true,
@@ -43,6 +44,7 @@
     "semi": true,
     "singleQuote": true,
     "jsxSingleQuote": false,
+    "printWidth": 120,
     "trailingComma": "all"
   }
 }

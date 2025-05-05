@@ -11,7 +11,7 @@ import {
   SliderThumb,
 } from './slider';
 
-type CustomStoryProps = React.ComponentPropsWithoutRef<typeof Slider> & {
+type CustomStoryProps = React.ComponentPropsWithRef<typeof Slider> & {
   showTooltip?: boolean;
 };
 

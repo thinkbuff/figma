@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 
 import { cn } from '~/utils';
@@ -11,10 +10,11 @@ const DialogPortal = DialogPrimitive.Portal;
 
 const DialogClose = DialogPrimitive.Close;
 
-const DialogOverlay = forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->(({ className, ...props }, ref) => (
+const DialogOverlay: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive.Overlay>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
@@ -28,12 +28,11 @@ const DialogOverlay = forwardRef<
     )}
     {...props}
   />
-));
+);
 
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
-interface DialogContentProps
-  extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {
+interface DialogContentProps extends React.ComponentPropsWithRef<typeof DialogPrimitive.Content> {
   container?: DialogPrimitive.DialogPortalProps['container'];
 }
 
@@ -43,10 +42,7 @@ interface DialogContentProps
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/dialog)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/dialog#api-reference)
  */
-const DialogContent = forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
-  DialogContentProps
->(({ className, container, ...props }, ref) => (
+const DialogContent: React.FC<DialogContentProps> = ({ className, container, ref, ...props }) => (
   <DialogPortal container={container}>
     <DialogOverlay />
     <DialogPrimitive.Content
@@ -73,63 +69,41 @@ const DialogContent = forwardRef<
       {...props}
     />
   </DialogPortal>
-));
+);
 
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
-const DialogHeader = forwardRef<
-  React.ElementRef<'div'>,
-  React.ComponentPropsWithoutRef<'div'>
->(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('flex', 'items-center', 'pb-6', className)}
-    {...props}
-  >
+const DialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({ className, children, ref, ...props }) => (
+  <div ref={ref} className={cn('flex', 'items-center', 'pb-6', className)} {...props}>
     {children}
   </div>
-));
+);
 
 DialogHeader.displayName = 'DialogHeader';
 
-const DialogFooter = forwardRef<
-  React.ElementRef<'div'>,
-  React.ComponentPropsWithoutRef<'div'>
->(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('flex', 'items-center', 'pt-6', className)}
-    {...props}
-  >
+const DialogFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({ className, children, ref, ...props }) => (
+  <div ref={ref} className={cn('flex', 'items-center', 'pt-6', className)} {...props}>
     {children}
   </div>
-));
+);
 
 DialogFooter.displayName = 'DialogFooter';
 
-const DialogTitle = forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Title
-    ref={ref}
-    className={cn('text-figma', 'font-size-14', 'font-medium', className)}
-    {...props}
-  />
-));
+const DialogTitle: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive.Title>> = ({
+  className,
+  ref,
+  ...props
+}) => (
+  <DialogPrimitive.Title ref={ref} className={cn('text-figma', 'font-size-14', 'font-medium', className)} {...props} />
+);
 
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
 
-const DialogDescription = forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Description
-    ref={ref}
-    className={cn('text-figma', 'font-size-11', className)}
-    {...props}
-  />
-));
+const DialogDescription: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive.Description>> = ({
+  className,
+  ref,
+  ...props
+}) => <DialogPrimitive.Description ref={ref} className={cn('text-figma', 'font-size-11', className)} {...props} />;
 
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 

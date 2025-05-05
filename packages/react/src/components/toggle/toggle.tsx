@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import * as TogglePrimitive from '@radix-ui/react-toggle';
 
 import { cn } from '~/utils';
@@ -9,10 +8,12 @@ import { cn } from '~/utils';
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/toggle)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/toggle#api-reference)
  */
-const Toggle = forwardRef<
-  React.ElementRef<typeof TogglePrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root>
->(({ className, disabled, ...props }, ref) => (
+const Toggle: React.FC<React.ComponentPropsWithRef<typeof TogglePrimitive.Root>> = ({
+  className,
+  disabled,
+  ref,
+  ...props
+}) => (
   <TogglePrimitive.Root
     ref={ref}
     className={cn(
@@ -54,8 +55,9 @@ const Toggle = forwardRef<
       className,
     )}
     {...props}
+    disabled={disabled}
   />
-));
+);
 
 Toggle.displayName = TogglePrimitive.Root.displayName;
 

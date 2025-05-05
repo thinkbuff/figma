@@ -1,11 +1,10 @@
-import { forwardRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 
 import { cn } from '~/utils';
 
 import { buttonVariants, type ButtonVariantsProps } from './button-variants';
 
-interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'color'>, ButtonVariantsProps {
+interface ButtonProps extends Omit<React.ComponentPropsWithRef<'button'>, 'color'>, ButtonVariantsProps {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    *
@@ -14,24 +13,22 @@ interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'co
   asChild?: boolean;
 }
 
-const Button = forwardRef<React.ElementRef<'button'>, ButtonProps>(
-  ({ className, variant, color, asChild = false, ...props }, ref) => {
-    const Component = asChild ? Slot : 'button';
-    return (
-      <Component
-        ref={ref}
-        className={cn(
-          buttonVariants({
-            variant,
-            color,
-            className,
-          }),
-        )}
-        {...props}
-      />
-    );
-  },
-);
+const Button: React.FC<ButtonProps> = ({ className, variant, color, asChild = false, ref, ...props }) => {
+  const Component = asChild ? Slot : 'button';
+  return (
+    <Component
+      ref={ref}
+      className={cn(
+        buttonVariants({
+          variant,
+          color,
+          className,
+        }),
+      )}
+      {...props}
+    />
+  );
+};
 
 Button.displayName = 'Button';
 

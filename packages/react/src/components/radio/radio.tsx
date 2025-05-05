@@ -1,9 +1,8 @@
-import { forwardRef } from 'react';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
 import { cn } from '~/utils';
 
-interface RadioGroupProps extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> {
+interface RadioGroupProps extends React.ComponentPropsWithRef<typeof RadioGroupPrimitive.Root> {
   inline?: boolean;
 }
 
@@ -13,10 +12,12 @@ interface RadioGroupProps extends React.ComponentPropsWithoutRef<typeof RadioGro
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/radio-group)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/radio-group#api-reference)
  */
-const RadioGroup = forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Root>,
-  RadioGroupProps
->(({ className, inline = false, ...props }, ref) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({
+  className,
+  inline = false,
+  ref,
+  ...props
+}) => {
   return (
     <RadioGroupPrimitive.Root
       ref={ref}
@@ -29,14 +30,15 @@ const RadioGroup = forwardRef<
       {...props}
     />
   );
-});
+};
 
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
-const RadioGroupItem = forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
->(({ className, ...props }, ref) => {
+const RadioGroupItem: React.FC<React.ComponentPropsWithRef<typeof RadioGroupPrimitive.Item>> = ({
+  className,
+  ref,
+  ...props
+}) => {
   return (
     <RadioGroupPrimitive.Item
       ref={ref}
@@ -66,7 +68,7 @@ const RadioGroupItem = forwardRef<
       <RadioGroupPrimitive.Indicator className="pointer-events-none flex items-center justify-center after:block after:size-1.5 after:rounded-full after:content-[''] after:bg-figma-icon group-disabled:after:bg-figma-icon-disabled" />
     </RadioGroupPrimitive.Item>
   );
-});
+};
 
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
 

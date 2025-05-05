@@ -3,7 +3,7 @@ import { useArgs } from '@storybook/preview-api';
 
 import * as Select from './select';
 
-type StoryArgs = React.ComponentPropsWithoutRef<typeof Select.Content> &
+type StoryArgs = React.ComponentPropsWithRef<typeof Select.Content> &
   Pick<
     React.ComponentProps<typeof Select.Trigger>,
     | 'disabled'

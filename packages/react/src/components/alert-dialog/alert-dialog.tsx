@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 
 import { cn } from '~/utils';
@@ -13,10 +12,11 @@ const AlertDialogAction = AlertDialogPrimitive.Action;
 
 const AlertDialogCancel = AlertDialogPrimitive.Cancel;
 
-const AlertDialogOverlay = forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
->(({ className, ...props }, ref) => (
+const AlertDialogOverlay: React.FC<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Overlay>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <AlertDialogPrimitive.Overlay
     ref={ref}
     className={cn(
@@ -30,12 +30,11 @@ const AlertDialogOverlay = forwardRef<
     )}
     {...props}
   />
-));
+);
 
 AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName;
 
-interface AlertDialogContentProps
-  extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content> {
+interface AlertDialogContentProps extends React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Content> {
   container?: AlertDialogPrimitive.AlertDialogPortalProps['container'];
 }
 
@@ -45,10 +44,7 @@ interface AlertDialogContentProps
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/alert-dialog)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/alert-dialog#api-reference)
  */
-const AlertDialogContent = forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Content>,
-  AlertDialogContentProps
->(({ className, container, ...props }, ref) => (
+const AlertDialogContent: React.FC<AlertDialogContentProps> = ({ className, container, ref, ...props }) => (
   <AlertDialogPortal container={container}>
     <AlertDialogOverlay />
     <AlertDialogPrimitive.Content
@@ -75,63 +71,45 @@ const AlertDialogContent = forwardRef<
       {...props}
     />
   </AlertDialogPortal>
-));
+);
 
 AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName;
 
-const AlertDialogHeader = forwardRef<
-  React.ElementRef<'div'>,
-  React.ComponentPropsWithoutRef<'div'>
->(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('flex', 'items-center', 'pb-6', className)}
-    {...props}
-  >
+const AlertDialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({ className, children, ref, ...props }) => (
+  <div ref={ref} className={cn('flex', 'items-center', 'pb-6', className)} {...props}>
     {children}
   </div>
-));
+);
 
 AlertDialogHeader.displayName = 'AlertDialogHeader';
 
-const AlertDialogFooter = forwardRef<
-  React.ElementRef<'div'>,
-  React.ComponentPropsWithoutRef<'div'>
->(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('flex', 'items-center', 'pt-6', className)}
-    {...props}
-  >
+const AlertDialogFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({ className, children, ref, ...props }) => (
+  <div ref={ref} className={cn('flex', 'items-center', 'pt-6', className)} {...props}>
     {children}
   </div>
-));
+);
 
 AlertDialogFooter.displayName = 'AlertDialogFooter';
 
-const AlertDialogTitle = forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
->(({ className, ...props }, ref) => (
+const AlertDialogTitle: React.FC<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Title>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <AlertDialogPrimitive.Title
     ref={ref}
     className={cn('text-figma', 'font-size-14', 'font-medium', className)}
     {...props}
   />
-));
+);
 
 AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName;
 
-const AlertDialogDescription = forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Description
-    ref={ref}
-    className={cn('text-figma', 'font-size-11', className)}
-    {...props}
-  />
-));
+const AlertDialogDescription: React.FC<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Description>> = ({
+  className,
+  ref,
+  ...props
+}) => <AlertDialogPrimitive.Description ref={ref} className={cn('text-figma', 'font-size-11', className)} {...props} />;
 
 AlertDialogDescription.displayName = AlertDialogPrimitive.Description.displayName;
 

@@ -5,7 +5,7 @@ import { Tooltip, TooltipProvider } from '../tooltip';
 
 import { ToggleGroup, ToggleGroupItem } from './toggle-group';
 
-type StoryArgs = React.ComponentPropsWithoutRef<typeof ToggleGroup>;
+type StoryArgs = React.ComponentPropsWithRef<typeof ToggleGroup>;
 
 const meta = {
   title: 'Components/ToggleGroup',

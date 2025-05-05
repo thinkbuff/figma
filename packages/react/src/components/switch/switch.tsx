@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import * as SwitchPrimitives from '@radix-ui/react-switch';
 
 import { cn } from '~/utils';
@@ -9,10 +8,11 @@ import { cn } from '~/utils';
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/switch)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/switch#api-reference)
  */
-const Switch = forwardRef<
-  React.ElementRef<typeof SwitchPrimitives.Root>,
-  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
->(({ className, ...props }, ref) => (
+const Switch: React.FC<React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>> = ({
+  className,
+  ref,
+  ...props
+}) => (
   <SwitchPrimitives.Root
     className={cn(
       'peer',
@@ -39,7 +39,7 @@ const Switch = forwardRef<
       className="pointer-events-none block size-2.5 rounded-full transition-transform bg-figma-icon-onbrand data-[state=checked]:translate-x-3 data-[state=unchecked]:translate-x-0"
     />
   </SwitchPrimitives.Root>
-));
+);
 
 Switch.displayName = SwitchPrimitives.Root.displayName;
 

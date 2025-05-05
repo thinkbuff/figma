@@ -5,7 +5,7 @@ import { Button } from '../button';
 
 import * as AlertDialog from './alert-dialog';
 
-type StoryArgs = React.ComponentPropsWithoutRef<typeof AlertDialog.Content> & {
+type StoryArgs = React.ComponentPropsWithRef<typeof AlertDialog.Content> & {
   open?: boolean;
 };
 

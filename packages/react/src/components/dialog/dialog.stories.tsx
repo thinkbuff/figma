@@ -10,7 +10,7 @@ import { toast, Toaster } from '../toast';
 
 import * as Dialog from './dialog';
 
-type StoryArgs = React.ComponentPropsWithoutRef<typeof Dialog.Content> & {
+type StoryArgs = React.ComponentPropsWithRef<typeof Dialog.Content> & {
   modal?: boolean;
   open?: boolean;
 };
@@ -40,21 +40,14 @@ const meta = {
     const { open: _, modal, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
     return (
-      <Dialog.Root
-        modal={modal}
-        open={open}
-        onOpenChange={value => updateArgs({ open: value })}
-      >
+      <Dialog.Root modal={modal} open={open} onOpenChange={value => updateArgs({ open: value })}>
         <Dialog.Trigger asChild>
           <Button variant="outline">Edit profile</Button>
         </Dialog.Trigger>
         <Dialog.Content
           {...props}
           onPointerDownOutside={(event) => {
-            if (
-              event.target instanceof Element
-              && event.target.closest('[data-sonner-toast]')
-            ) {
+            if (event.target instanceof Element && event.target.closest('[data-sonner-toast]')) {
               event.preventDefault();
             }
           }}
@@ -67,9 +60,7 @@ const meta = {
               </ActionIcon>
             </Dialog.Close>
           </Dialog.Header>
-          <Dialog.Description>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </Dialog.Description>
+          <Dialog.Description>Make changes to your profile here. Click save when you&apos;re done.</Dialog.Description>
           <div className="grid gap-4 p-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">
@@ -79,7 +70,9 @@ const meta = {
                 id="name"
                 defaultValue="Eleven"
                 variant="border"
-                className="col-span-3"
+                wrapperProps={{
+                  className: 'col-span-3',
+                }}
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
@@ -90,20 +83,25 @@ const meta = {
                 id="username"
                 defaultValue="@eteplus"
                 variant="border"
-                className="col-span-3"
+                wrapperProps={{
+                  className: 'col-span-3',
+                }}
               />
             </div>
           </div>
           <Dialog.Footer className="justify-end gap-3">
             <Dialog.Close asChild>
-              <Button variant="outline" color="secondary">Cancel</Button>
+              <Button variant="outline" color="secondary">
+                Cancel
+              </Button>
             </Dialog.Close>
-            <Button onClick={() => {
-              toast.success('Profile has been updated', {
-                duration: 6000,
-                closeButton: true,
-              });
-            }}
+            <Button
+              onClick={() => {
+                toast.success('Profile has been updated', {
+                  duration: 6000,
+                  closeButton: true,
+                });
+              }}
             >
               Save changes
             </Button>

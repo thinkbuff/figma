@@ -7,7 +7,7 @@ import { Label } from '../label';
 
 import * as Popover from './popover';
 
-type StoryArgs = React.ComponentPropsWithoutRef<typeof Popover.Content> & {
+type StoryArgs = React.ComponentPropsWithRef<typeof Popover.Content> & {
   modal?: boolean;
   open?: boolean;
 };
