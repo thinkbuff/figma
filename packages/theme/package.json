@@ -68,7 +68,7 @@
   ],
   "devDependencies": {
     "unbuild": "^3.5.0",
-    "unocss": "^66.1.1"
+    "unocss": "^66.1.2"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix"
