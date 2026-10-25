@@ -26,7 +26,7 @@ const ToggleGroup: React.FC<React.ComponentPropsWithRef<typeof ToggleGroupPrimit
       'border',
       'border-solid',
       'border-transparent',
-      'rounded-0.5',
+      'rounded-figma-sm',
       disabled ? 'cursor-not-allowed' : 'hover:border-figma',
       className,
     )}
@@ -49,7 +49,7 @@ const ToggleGroupItem: React.FC<React.ComponentPropsWithRef<typeof ToggleGroupPr
     ref={ref}
     className={cn(
       'size-6',
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'flex',
       'justify-center',
       'items-center',
@@ -60,8 +60,8 @@ const ToggleGroupItem: React.FC<React.ComponentPropsWithRef<typeof ToggleGroupPr
       'bg-transparent',
       'transition-colors',
       'data-[state=on]:bg-figma-tertiary',
-      'disabled:(pointer-events-none cursor-not-allowed text-figma-disabled fill-figma-icon-disabled)',
-      'disabled:data-[state=on]:(bg-figma-disabled text-figma-ondisabled fill-figma-icon-ondisabled)',
+      'disabled:pointer-events-none disabled:cursor-not-allowed disabled:text-figma-disabled disabled:fill-figma-icon-disabled',
+      'disabled:data-[state=on]:bg-figma-disabled disabled:data-[state=on]:text-figma-ondisabled disabled:data-[state=on]:fill-figma-icon-ondisabled',
       className,
     )}
     {...props}

@@ -1,4 +1,4 @@
-export const BaseThemeCSSVariables = {
+export const SharedThemeCSSVariables = {
   '--figma-color-bg-menu': '#1e1e1e',
   '--figma-color-bg-menu-disabled': '#757575',
   '--figma-color-bg-menu-hover': '#2c2c2c',
@@ -97,4 +97,4 @@ export const BaseThemeCSSVariables = {
   '--figma-color-text-tooltip-warning': '#ffd966',
 };
 
-export type BaseThemeCSSVariableKey = keyof typeof BaseThemeCSSVariables;
+export type SharedThemeCSSVariableKey = keyof typeof SharedThemeCSSVariables;

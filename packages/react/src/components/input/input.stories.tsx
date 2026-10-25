@@ -65,7 +65,7 @@ export const WithLeftIcon: Story = {
   render: (args) => (
     <Input {...args}>
       <InputSlot>
-        <span className="i-tabler-hash size-3"></span>
+        <span className="icon-[tabler--hash] size-3"></span>
       </InputSlot>
     </Input>
   ),
@@ -75,7 +75,7 @@ export const WithRightIcon: Story = {
   render: (args) => (
     <Input {...args}>
       <InputSlot side="right">
-        <span className="i-tabler-hash size-3"></span>
+        <span className="icon-[tabler--hash] size-3"></span>
       </InputSlot>
     </Input>
   ),
@@ -88,7 +88,7 @@ export const WithSlots: Story = {
   render: (args) => (
     <Input {...args}>
       <InputSlot side="left">
-        <span className="i-tabler-search size-3"></span>
+        <span className="icon-[tabler--search] size-3"></span>
       </InputSlot>
       <InputSlot side="right">
         <ActionIcon
@@ -96,7 +96,7 @@ export const WithSlots: Story = {
           className="mx-1 size-6 text-figma-icon-secondary focus:outline-transparent"
           onClick={(e) => e.stopPropagation()}
         >
-          <span className="i-tabler-x size-3"></span>
+          <span className="icon-[tabler--x] size-3"></span>
         </ActionIcon>
       </InputSlot>
     </Input>
@@ -122,7 +122,7 @@ export const WithTooltip: Story = {
               onChange={(e) => updateArgs({ value: Number(e.currentTarget.value) })}
             >
               <InputSlot side="left">
-                <span className="i-tabler-spacing-vertical size-3.5"></span>
+                <span className="icon-[tabler--spacing-vertical] size-3.5"></span>
               </InputSlot>
             </Input>
           </div>

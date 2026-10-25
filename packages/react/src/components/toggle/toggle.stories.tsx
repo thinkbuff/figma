@@ -29,7 +29,7 @@ const meta = {
         pressed={pressed}
         onPressedChange={(value) => updateArgs({ pressed: value })}
       >
-        <span className="i-tabler-dots size-4"></span>
+        <span className="icon-[tabler--dots] size-4"></span>
       </Toggle>
     );
   },

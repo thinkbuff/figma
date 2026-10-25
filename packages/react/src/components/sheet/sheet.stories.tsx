@@ -56,7 +56,7 @@ const meta = {
             <Sheet.Title>Edit profile</Sheet.Title>
             <Sheet.Close asChild>
               <ActionIcon className="-mr-2">
-                <span className="i-mdi-window-close size-4"></span>
+                <span className="icon-[mdi--window-close] size-4"></span>
               </ActionIcon>
             </Sheet.Close>
           </Sheet.Header>

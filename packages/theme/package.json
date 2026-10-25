@@ -5,9 +5,9 @@
   "keywords": [
     "figma",
     "figma-theme",
-    "unocss",
-    "unocss-preset",
-    "unocss-preset-figma-theme"
+    "tailwindcss",
+    "tailwindcss-figma-theme",
+    "tailwindcss-theme"
   ],
   "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
   "bugs": {
@@ -48,11 +48,6 @@
       "import": "./dist/colors/index.mjs",
       "default": "./dist/colors/index.mjs"
     },
-    "./unocss": {
-      "types": "./dist/unocss/index.d.mts",
-      "import": "./dist/unocss/index.mjs",
-      "default": "./dist/unocss/index.mjs"
-    },
     "./css/*": "./dist/css/*",
     "./*": "./*"
   },
@@ -61,8 +56,8 @@
   },
   "scripts": {
     "clean": "rm -rf dist node_modules",
-    "build": "vp pack && pnpm generate:css",
-    "generate:css": "tsx scripts/generate-css-files.ts",
+    "build": "pnpm generate:css && vp pack && cp -r src/css dist/css",
+    "generate:css": "tsx src/theme/generate-css-files.ts",
     "typecheck": "tsc --noEmit",
     "release": "changelogen --bump --no-output",
     "prepublishOnly": "pnpm build",
@@ -71,7 +66,6 @@
   "devDependencies": {
     "tsx": "catalog:",
     "typescript": "catalog:",
-    "unocss": "catalog:unocss",
     "vite-plus": "catalog:",
     "vitest": "catalog:"
   }

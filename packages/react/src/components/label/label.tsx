@@ -10,12 +10,11 @@ const Label: React.FC<React.ComponentPropsWithRef<typeof LabelPrimitive.Root>> =
   <LabelPrimitive.Root
     ref={ref}
     className={cn(
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'font-medium',
-      'leading-none',
       'cursor-default',
-      'disabled:(cursor-not-allowed text-figma-disabled)',
-      'peer-disabled:(cursor-not-allowed text-figma-disabled)',
+      'disabled:cursor-not-allowed disabled:text-figma-disabled',
+      'peer-disabled:cursor-not-allowed peer-disabled:text-figma-disabled',
       className,
     )}
     {...props}

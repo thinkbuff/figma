@@ -49,8 +49,8 @@ const RadioGroupItem: React.FC<React.ComponentPropsWithRef<typeof RadioGroupPrim
         '-outline-offset-2',
         'outline-transparent',
         'bg-clip-border',
-        'not-disabled:focus:(border-figma-selected outline-figma-border-selected)',
-        'disabled:(cursor-not-allowed text-figma-disabled fill-figma-icon-disabled border-figma-disabled-strong)',
+        'not-disabled:focus:border-figma-selected not-disabled:focus:outline-figma-border-selected',
+        'disabled:cursor-not-allowed disabled:text-figma-disabled disabled:fill-figma-icon-disabled disabled:border-figma-disabled-strong',
         className,
       )}
       {...props}

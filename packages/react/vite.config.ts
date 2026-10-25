@@ -4,22 +4,15 @@ import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite-plus';
 
+import tailwindcss from '@tailwindcss/vite';
 import { playwright } from '@vitest/browser-playwright';
 import { glob } from 'glob';
-import unocss from 'unocss/vite';
 
 import { dependencies } from './package.json';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const vitePlugins = [
-  react(),
-  unocss({
-    content: {
-      filesystem: ['src/**/*.{ts,tsx}'],
-    },
-  }),
-];
+const vitePlugins = [react(), tailwindcss()];
 
 const viteResolve = {
   alias: {

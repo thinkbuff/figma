@@ -1,3 +1,4 @@
-/// <reference types="vitest/browser" />
+/// <reference types="vitest" />
 
-declare module 'virtual:uno.css';
+import type {} from '@vitest/browser/matchers';
+import type {} from 'vitest/browser';

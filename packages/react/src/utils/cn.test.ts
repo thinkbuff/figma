@@ -24,4 +24,23 @@ describe('cn', () => {
   it('keeps non-conflicting classes', () => {
     expect(cn('h-8', 'w-8', 'flex')).toBe('h-8 w-8 flex');
   });
+
+  it('keeps figma text size and figma text color as separate groups', () => {
+    expect(cn('text-figma-sm', 'text-figma-danger')).toBe('text-figma-sm text-figma-danger');
+    expect(cn('text-figma', 'text-figma-lg')).toBe('text-figma text-figma-lg');
+  });
+
+  it('merges conflicting figma color classes, keeping the last', () => {
+    expect(cn('text-figma-danger', 'text-figma-success')).toBe('text-figma-success');
+    expect(cn('bg-figma-brand', 'bg-figma-danger')).toBe('bg-figma-danger');
+  });
+
+  it('merges conflicting figma text sizes, keeping the last', () => {
+    expect(cn('text-figma-sm', 'text-figma-lg')).toBe('text-figma-lg');
+  });
+
+  it('merges figma font families and weights by group', () => {
+    expect(cn('font-figma', 'font-figma-code')).toBe('font-figma-code');
+    expect(cn('font-figma-default', 'font-figma-strong')).toBe('font-figma-strong');
+  });
 });

@@ -22,20 +22,20 @@ const Toaster = ({ className, ...props }: ToasterProps) => {
         unstyled: true,
         classNames: {
           toast:
-            'group toast flex items-center gap-2 p-3 font-size-11 bg-figma text-figma shadow-lg flex items-center border-solid border border-figma rounded-1 w-[var(--width)]',
-          title: 'font-size-12',
+            'group toast flex items-center gap-2 p-3 text-figma-sm leading-figma-sm bg-figma text-figma shadow-lg flex items-center border-solid border border-figma rounded w-[var(--width)]',
+          title: 'text-xs',
           description:
-            'font-size-11 text-figma-secondary group-data-[type=success]:text-figma-success-tertiary group-data-[type=info]:text-figma-brand-tertiary group-data-[type=warning]:text-figma-warning-tertiary group-data-[type=error]:text-figma-danger-tertiary dark:group-data-[type=warning]:text-figma-onwarning dark:group-data-[type=danger]:text-figma-ondanger',
+            'text-figma-sm leading-figma-sm text-figma-secondary group-data-[type=success]:text-figma-success-tertiary group-data-[type=info]:text-figma-brand-tertiary group-data-[type=warning]:text-figma-warning-tertiary group-data-[type=error]:text-figma-danger-tertiary dark:group-data-[type=warning]:text-figma-onwarning dark:group-data-[type=danger]:text-figma-ondanger',
           success: 'bg-figma-success-tertiary text-figma-success border-figma-success',
           info: 'bg-figma-brand-tertiary text-figma-brand border-figma-brand',
           warning:
-            'bg-figma-warning-tertiary text-figma-warning border-figma-warning dark:(bg-figma-warning-secondary text-figma-onwarning border-figma-onwarning)',
+            'bg-figma-warning-tertiary text-figma-warning border-figma-warning dark:bg-figma-warning-secondary dark:text-figma-onwarning dark:border-figma-onwarning',
           error:
-            'bg-figma-danger-tertiary text-figma-danger border-figma-danger dark:(bg-figma-danger-secondary text-figma-ondanger border-figma-ondanger)',
+            'bg-figma-danger-tertiary text-figma-danger border-figma-danger dark:bg-figma-danger-secondary dark:text-figma-ondanger dark:border-figma-ondanger',
           actionButton: cn(buttonVariants({ color: 'secondary' }), 'h-7 ml-auto'),
           cancelButton: cn(buttonVariants({ color: 'secondary' }), 'h-7 ml-auto'),
           closeButton:
-            'text-figma cursor-default bg-figma-secondary hover:bg-figma-tertiary! active:bg-figma-tertiary! border border-solid border-figma right-0 left-unset translate-x-2/5 -translate-y-2/5 opacity-0 group-hover:opacity-100',
+            'text-figma cursor-default bg-figma-secondary hover:bg-figma-tertiary! active:bg-figma-tertiary! border border-solid border-figma right-0 left-auto translate-x-[40%] -translate-y-[40%] opacity-0 group-hover:opacity-100',
           icon: '[&_.sonner-loading-bar]:bg-figma-text',
         },
       }}

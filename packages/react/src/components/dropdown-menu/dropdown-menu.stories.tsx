@@ -93,7 +93,7 @@ const meta = {
       >
         <DropdownMenu.Trigger asChild>
           <ActionIcon>
-            <span className="i-tabler-menu-2 size-4"></span>
+            <span className="icon-[tabler--menu-2] size-4"></span>
           </ActionIcon>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content

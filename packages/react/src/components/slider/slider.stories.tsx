@@ -143,7 +143,7 @@ export const CustomStyle: Story = {
           className="data-[orientation=vertical]:h-60"
           onValueChange={(value) => updateArgs({ value })}
         >
-          <SliderTrack className="h-1px bg-figma-icon data-[orientation=vertical]:w-1px">
+          <SliderTrack className="h-px bg-figma-icon data-[orientation=vertical]:w-px">
             <SliderRange className="bg-figma-icon" />
           </SliderTrack>
           {values.map((_, index) => (

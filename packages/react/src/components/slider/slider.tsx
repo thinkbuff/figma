@@ -16,7 +16,7 @@ const SliderRoot: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.Ro
       'h-3',
       'touch-none',
       'select-none',
-      'data-[orientation=vertical]:(flex-col w-3 h-full)',
+      'data-[orientation=vertical]:flex-col data-[orientation=vertical]:w-3 data-[orientation=vertical]:h-full',
       className,
     )}
     {...props}
@@ -88,7 +88,12 @@ const SliderThumb: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.T
       'outline-solid',
       'outline-2',
       'outline-transparent',
-      'after:(block size-2 shrink-0 rounded-full content-[""] bg-figma-icon)',
+      'after:block',
+      'after:size-2',
+      'after:shrink-0',
+      'after:rounded-full',
+      'after:content-[""]',
+      'after:bg-figma-icon',
       '[&:not(data-disabled)]:focus:outline-figma-border-selected',
       'data-[disabled]:after:bg-figma-icon-disabled',
       'data-[disabled]:pointer-events-none',

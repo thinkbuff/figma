@@ -6,11 +6,10 @@ export default defineConfig({
     include: ['src/**/*.test.ts'],
   },
   pack: {
-    entry: ['src/index.ts', 'src/constants.ts', 'src/colors/index.ts', 'src/unocss/index.ts'],
+    entry: ['src/index.ts', 'src/colors/index.ts'],
     format: ['esm'],
     dts: true,
     unbundle: true,
     target: 'esnext',
-    external: ['unocss', '@unocss/core'],
   },
 });

@@ -1,5 +1,6 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 
+import { MdiCheckBold, MdiMinusThick } from '~/icons';
 import { cn } from '~/utils';
 
 interface CheckboxProps extends React.ComponentPropsWithRef<typeof CheckboxPrimitive.Root> {
@@ -30,7 +31,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       'justify-center',
       'shrink-0',
       'cursor-default',
-      'rounded-0.5',
+      'rounded-figma-sm',
       'outline-solid',
       'outline-1',
       'outline-transparent',
@@ -43,12 +44,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
             'cursor-not-allowed',
             'text-figma-disabled',
             'border-figma-bg-disabled',
-            'data-[state=checked]:(text-figma-ondisabled bg-figma-disabled)',
+            'data-[state=checked]:text-figma-ondisabled data-[state=checked]:bg-figma-disabled',
           ]
         : [
-            'focus:(border-figma-selected-strong outline-figma-border-selected-strong)',
+            'focus:border-figma-selected-strong focus:outline-figma-border-selected-strong',
             'data-[state=checked]:focus:border-figma-bg',
-            'data-[state=checked]:(bg-figma-brand text-figma-onbrand border-figma-bg-brand)',
+            'data-[state=checked]:bg-figma-brand data-[state=checked]:text-figma-onbrand data-[state=checked]:border-figma-bg-brand',
           ],
       className,
     )}
@@ -60,11 +61,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       className="absolute inline-block size-2.5"
       asChild
     >
-      {indeterminate ? (
-        <span className="i-mdi-minus-thick"></span>
-      ) : (
-        <span className="i-mdi-check-bold -mt-1px"></span>
-      )}
+      {indeterminate ? <MdiMinusThick /> : <MdiCheckBold className="-mt-px" />}
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 );

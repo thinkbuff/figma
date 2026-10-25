@@ -96,7 +96,7 @@ export const WithIcon: Story = {
 export const WithSpinner: Story = {
   render: (args) => (
     <Button {...args}>
-      <span className="i-tabler:loader-2 mx-2 size-4 animate-spin"></span>
+      <span className="icon-[tabler--loader-2] mx-2 size-4 animate-spin"></span>
     </Button>
   ),
 };

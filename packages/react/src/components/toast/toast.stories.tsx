@@ -142,7 +142,7 @@ export const Default: Story = {
                 description: () => {
                   return 'Monday, January 3rd at 6:00pm';
                 },
-                success: (data) => {
+                success: (data: { name: string }) => {
                   return `${data.name} toast has been added`;
                 },
                 error: 'Error',

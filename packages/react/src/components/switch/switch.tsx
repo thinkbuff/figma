@@ -27,7 +27,7 @@ const Switch: React.FC<React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>
       'border-solid',
       'border-transparent',
       'transition-colors',
-      'disabled:(cursor-not-allowed bg-figma-disabled)',
+      'disabled:cursor-not-allowed disabled:bg-figma-disabled',
       'data-[state=checked]:bg-figma-brand',
       'data-[state=unchecked]:bg-figma-icon-tertiary',
       className,

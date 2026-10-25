@@ -179,7 +179,7 @@ export const CustomTrigger: Story = {
         onValueChange={(value) => updateArgs({ value })}
       >
         <Select.Trigger disabled={disabled}>
-          <span className="i-tabler-droplet h-3 w-8 text-figma-secondary -ml-2"></span>
+          <span className="icon-[tabler--droplet] h-3 w-8 text-figma-secondary -ml-2"></span>
           <Select.Value placeholder="Select. an option" />
         </Select.Trigger>
         <Select.Content {...props}>
@@ -318,7 +318,7 @@ export const OptionWithIcon: Story = {
               value="none"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-circle-dot size-3.5"></span>
+                <span className="icon-[tabler--circle-dot] size-3.5"></span>
                 None
               </div>
             </Select.Item>
@@ -332,7 +332,7 @@ export const OptionWithIcon: Story = {
               value="navigate-to"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-arrow-right size-3.5"></span>
+                <span className="icon-[tabler--arrow-right] size-3.5"></span>
                 Navigate to
               </div>
             </Select.Item>
@@ -342,7 +342,7 @@ export const OptionWithIcon: Story = {
               value="change-to"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-refresh size-3.5"></span>
+                <span className="icon-[tabler--refresh] size-3.5"></span>
                 Change to
               </div>
             </Select.Item>
@@ -351,7 +351,7 @@ export const OptionWithIcon: Story = {
               value="back"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-arrow-back-up size-3.5"></span>
+                <span className="icon-[tabler--arrow-back-up] size-3.5"></span>
                 Back
               </div>
             </Select.Item>
@@ -365,7 +365,7 @@ export const OptionWithIcon: Story = {
               value="set-variable"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-settings-2 size-3.5"></span>
+                <span className="icon-[tabler--settings-2] size-3.5"></span>
                 Set variable
               </div>
             </Select.Item>
@@ -374,7 +374,7 @@ export const OptionWithIcon: Story = {
               value="conditional"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-arrows-split-2 size-3.5"></span>
+                <span className="icon-[tabler--arrows-split-2] size-3.5"></span>
                 Conditional
               </div>
             </Select.Item>
@@ -383,7 +383,7 @@ export const OptionWithIcon: Story = {
               value="scroll-to"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-arrow-move-down size-3.5"></span>
+                <span className="icon-[tabler--arrow-move-down] size-3.5"></span>
                 Scroll to
               </div>
             </Select.Item>
@@ -392,7 +392,7 @@ export const OptionWithIcon: Story = {
               value="open-link"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-link size-3.5"></span>
+                <span className="icon-[tabler--link] size-3.5"></span>
                 Open link
               </div>
             </Select.Item>
@@ -406,7 +406,7 @@ export const OptionWithIcon: Story = {
               value="open-overlay"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-square-half size-3.5"></span>
+                <span className="icon-[tabler--square-half] size-3.5"></span>
                 Open overlay
               </div>
             </Select.Item>
@@ -415,7 +415,7 @@ export const OptionWithIcon: Story = {
               value="swap-overlay"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-replace size-3.5"></span>
+                <span className="icon-[tabler--replace] size-3.5"></span>
                 Swap overlay
               </div>
             </Select.Item>
@@ -424,7 +424,7 @@ export const OptionWithIcon: Story = {
               value="close-overlay"
             >
               <div className="flex items-center gap-2">
-                <span className="i-tabler-square-x size-3.5"></span>
+                <span className="icon-[tabler--square-x] size-3.5"></span>
                 Close overlay
               </div>
             </Select.Item>

@@ -120,7 +120,7 @@ export const Default: Story = {
           }}
         >
           <ActionIcon>
-            <span className="i-tabler-adjustments-alt size-4"></span>
+            <span className="icon-[tabler--adjustments-alt] size-4"></span>
           </ActionIcon>
         </Tooltip>
       </TooltipProvider>

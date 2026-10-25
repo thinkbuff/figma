@@ -17,15 +17,7 @@ const DialogOverlay: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive
 }) => (
   <DialogPrimitive.Overlay
     ref={ref}
-    className={cn(
-      'fixed',
-      'inset-0',
-      'z-50',
-      'bg-black/50',
-      'data-[state=open]:(animate-in fade-in-0)',
-      'data-[state=closed]:(animate-out fade-out-0)',
-      className,
-    )}
+    className={cn('fixed', 'inset-0', 'z-50', 'bg-black/50', className)}
     {...props}
   />
 );
@@ -57,13 +49,10 @@ const DialogContent: React.FC<DialogContentProps> = ({ className, container, ref
         '-translate-x-1/2',
         '-translate-y-1/2',
         'z-50',
-        'rounded-0.5',
+        'rounded-figma-sm',
         'bg-figma',
         'p-6',
         'shadow-lg',
-        'data-[state=open]:(animate-in fade-in-0 zoom-in-95 slide-in-from-left-1/2 slide-in-from-top-12/25)',
-        'data-[state=closed]:(animate-out fade-out-0 zoom-out-95 slide-out-to-left-1/2 slide-out-to-top-12/25)',
-        'animate-duration-200',
         className,
       )}
       {...props}
@@ -114,7 +103,7 @@ const DialogTitle: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive.T
 }) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn('text-figma', 'font-size-14', 'font-medium', className)}
+    className={cn('text-figma', 'text-sm leading-4', 'font-medium', className)}
     {...props}
   />
 );
@@ -126,7 +115,7 @@ const DialogDescription: React.FC<
 > = ({ className, ref, ...props }) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn('text-figma', 'font-size-11', className)}
+    className={cn('text-figma', 'text-figma-sm leading-figma-sm', className)}
     {...props}
   />
 );

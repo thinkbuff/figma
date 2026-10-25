@@ -1,5 +1,6 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
+import { MdiCheckBold, MdiCircleMedium, MdiTriangle } from '~/icons';
 import { cn } from '~/utils';
 
 const DropdownMenuRoot = DropdownMenuPrimitive.Root;
@@ -37,20 +38,20 @@ const DropdownMenuSubTrigger: React.FC<
       'h-6',
       'pl-8',
       'pr-4',
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'text-figma-menu',
       'cursor-default',
       'select-none',
       'outline-none',
       'hover:bg-figma-menu-selected',
       'focus:bg-figma-menu-selected',
-      'data-[disabled]:(pointer-events-none text-figma-menu-disabled)',
+      'data-[disabled]:pointer-events-none data-[disabled]:text-figma-menu-disabled',
       className,
     )}
     {...props}
   >
     {children}
-    <span className="i-mdi-triangle size-2 rotate-90"></span>
+    <MdiTriangle className="size-2 rotate-90" />
   </DropdownMenuPrimitive.SubTrigger>
 );
 
@@ -74,14 +75,8 @@ const DropdownMenuSubContent: React.FC<DropdownMenuSubContentProps> = ({
       className={cn(
         'text-figma-menu',
         'bg-figma-menu',
-        'data-[state=open]:(animate-in fade-in-0 zoom-in-95)',
-        'data-[state=closed]:(animate-out fade-out-0 zoom-out-95)',
-        'data-[side=top]:slide-in-from-bottom-2',
-        'data-[side=right]:slide-in-from-left-2',
-        'data-[side=bottom]:slide-in-from-top-2',
-        'data-[side=left]:slide-in-from-right-2',
         'min-w-20',
-        'rounded-0.5',
+        'rounded-figma-sm',
         'border-none',
         'py-2',
         'shadow-md',
@@ -122,14 +117,8 @@ const DropdownMenuContent: React.FC<DropdownMenuContentProps> = ({
         'group',
         'text-figma-menu',
         'bg-figma-menu',
-        'data-[state=open]:(animate-in fade-in-0 zoom-in-95)',
-        'data-[state=closed]:(animate-out fade-out-0 zoom-out-95)',
-        'data-[side=top]:slide-in-from-bottom-2',
-        'data-[side=right]:slide-in-from-left-2',
-        'data-[side=bottom]:slide-in-from-top-2',
-        'data-[side=left]:slide-in-from-right-2',
         'min-w-20',
-        'rounded-0.5',
+        'rounded-figma-sm',
         'border-none',
         'py-2',
         'shadow-md',
@@ -155,14 +144,14 @@ const DropdownMenuItem: React.FC<
       'h-6',
       'pl-8',
       'pr-4',
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'text-figma-menu',
       'cursor-default',
       'select-none',
       'outline-none',
       'hover:bg-figma-menu-selected',
       'focus:bg-figma-menu-selected',
-      'data-[disabled]:(pointer-events-none text-figma-menu-disabled)',
+      'data-[disabled]:pointer-events-none data-[disabled]:text-figma-menu-disabled',
       className,
     )}
     {...props}
@@ -183,19 +172,24 @@ const DropdownMenuCheckboxItem: React.FC<
       'h-6',
       'pl-8',
       'pr-4',
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'text-figma-menu',
       'cursor-default',
       'select-none',
       'outline-none',
       'hover:bg-figma-menu-selected',
       'focus:bg-figma-menu-selected',
-      'data-[disabled]:(pointer-events-none text-figma-disabled)',
+      'data-[disabled]:pointer-events-none data-[disabled]:text-figma-disabled',
       className,
     )}
     {...props}
   >
-    <DropdownMenuPrimitive.ItemIndicator className="i-mdi-check-bold absolute left-2 h-3 w-4" />
+    <DropdownMenuPrimitive.ItemIndicator
+      className="absolute left-2 h-3 w-4"
+      asChild
+    >
+      <MdiCheckBold />
+    </DropdownMenuPrimitive.ItemIndicator>
     {children}
   </DropdownMenuPrimitive.CheckboxItem>
 );
@@ -214,20 +208,20 @@ const DropdownMenuRadioItem: React.FC<
       'h-6',
       'pl-8',
       'pr-4',
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'text-figma-menu',
       'cursor-default',
       'select-none',
       'outline-none',
       'hover:bg-figma-menu-selected',
       'focus:bg-figma-menu-selected',
-      'data-[disabled]:(pointer-events-none text-figma-disabled)',
+      'data-[disabled]:pointer-events-none data-[disabled]:text-figma-disabled',
       className,
     )}
     {...props}
   >
     <DropdownMenuPrimitive.ItemIndicator className="absolute left-2 w-4 flex items-center justify-center">
-      <span className="i-mdi-circle-medium size-3"></span>
+      <MdiCircleMedium className="size-3" />
     </DropdownMenuPrimitive.ItemIndicator>
     {children}
   </DropdownMenuPrimitive.RadioItem>
@@ -243,7 +237,7 @@ const DropdownMenuLabel: React.FC<
     className={cn(
       'px-8',
       'py-1',
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'text-figma-menu-secondary',
       'font-medium',
       className,

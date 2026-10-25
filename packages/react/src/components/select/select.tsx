@@ -1,5 +1,6 @@
 import * as SelectPrimitive from '@radix-ui/react-select';
 
+import { MdiCheckBold, MdiChevronDown, TablerChevronDown, TablerChevronUp } from '~/icons';
 import { cn } from '~/utils';
 
 const SelectRoot = SelectPrimitive.Root;
@@ -50,8 +51,8 @@ const SelectTrigger: React.FC<SelectTriggerProps> = ({
       'outline-1',
       '-outline-offset-2',
       'outline-transparent',
-      'rounded-0.5',
-      'data-[placeholder]:(text-figma-tertiary fill-figma-icon-tertiary)',
+      'rounded-figma-sm',
+      'data-[placeholder]:text-figma-tertiary data-[placeholder]:fill-figma-icon-tertiary',
       disabled
         ? ['cursor-not-allowed', 'text-figma-disabled', 'fill-figma-icon-disabled']
         : [
@@ -60,7 +61,7 @@ const SelectTrigger: React.FC<SelectTriggerProps> = ({
             'text-figma',
             'fill-figma-icon',
             'hover:border-figma',
-            'focus-visible:(border-figma-selected outline-figma-border-selected)',
+            'focus-visible:border-figma-selected focus-visible:outline-figma-border-selected',
             'data-[state=open]:outline-figma-border-selected',
           ],
       className,
@@ -70,13 +71,16 @@ const SelectTrigger: React.FC<SelectTriggerProps> = ({
     disabled={disabled}
     asChild={false}
   >
-    <div className="pointer-events-none flex items-center group-hover:flex-grow group-data-[state=open]:flex-grow">
+    <div className="pointer-events-none flex items-center group-hover:grow group-data-[state=open]:grow">
       {children ?? <SelectValue placeholder={placeholder} />}
     </div>
     <SelectPrimitive.Icon
       data-disabled={disabled}
-      className="i-mdi-chevron-down pointer-events-none ml-1 mr-2 size-3 flex-shrink-0 text-figma-icon-tertiary data-[disabled=true]:text-figma-icon-disabled group-hover:text-figma-icon"
-    />
+      className="pointer-events-none ml-1 mr-2 size-3 shrink-0 text-figma-icon-tertiary data-[disabled=true]:text-figma-icon-disabled group-hover:text-figma-icon"
+      asChild
+    >
+      <MdiChevronDown />
+    </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 );
 
@@ -109,7 +113,7 @@ const SelectContent: React.FC<SelectContentProps> = ({
         'text-figma-menu',
         'w-full',
         'bg-figma-menu',
-        'rounded-0.5',
+        'rounded-figma-sm',
         'z-50',
         'data-[side=top]:min-w-[var(--radix-select-trigger-width)]',
         'data-[side=bottom]:min-w-[var(--radix-select-trigger-width)]',
@@ -123,11 +127,11 @@ const SelectContent: React.FC<SelectContentProps> = ({
     >
       {withArrow && <SelectArrow />}
       <SelectPrimitive.ScrollUpButton className="h-6 flex cursor-default items-center justify-center">
-        <span className="i-tabler-chevron-up size-3.5"></span>
+        <TablerChevronUp className="size-3.5" />
       </SelectPrimitive.ScrollUpButton>
       <SelectPrimitive.Viewport className="py-2">{children}</SelectPrimitive.Viewport>
       <SelectPrimitive.ScrollDownButton className="h-6 flex cursor-default items-center justify-center">
-        <span className="i-tabler-chevron-down size-3.5"></span>
+        <TablerChevronDown className="size-3.5" />
       </SelectPrimitive.ScrollDownButton>
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
@@ -142,7 +146,7 @@ const SelectLabel: React.FC<React.ComponentPropsWithRef<typeof SelectPrimitive.L
 }) => (
   <SelectPrimitive.Label
     className={cn(
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'text-figma-menu-secondary',
       'px-8',
       'py-1',
@@ -173,19 +177,24 @@ const SelectItem: React.FC<SelectItemProps> = ({
       'h-6',
       'flex',
       'items-center',
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'pl-8',
       'pr-4',
       'cursor-default',
       'select-none',
       'outline-0',
       'focus:bg-figma-menu-selected',
-      'data-[disabled]:(text-figma-menu-disabled pointer-events-none)',
+      'data-[disabled]:text-figma-menu-disabled data-[disabled]:pointer-events-none',
       className,
     )}
     {...props}
   >
-    <SelectPrimitive.ItemIndicator className="i-mdi-check-bold absolute left-2 h-3 w-4" />
+    <SelectPrimitive.ItemIndicator
+      className="absolute left-2 h-3 w-4"
+      asChild
+    >
+      <MdiCheckBold />
+    </SelectPrimitive.ItemIndicator>
     <SelectPrimitive.ItemText asChild={asChild}>{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
 );

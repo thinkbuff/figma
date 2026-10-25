@@ -8,9 +8,9 @@
     "figma-react",
     "react",
     "react-component",
-    "unocss",
-    "unocss-preset",
-    "unocss-preset-figma-theme"
+    "tailwindcss",
+    "tailwindcss-figma-theme",
+    "tailwindcss-theme"
   ],
   "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
   "bugs": {
@@ -55,7 +55,8 @@
     "./*": {
       "types": "./dist/components/*/index.d.mts",
       "import": "./dist/components/*/index.mjs"
-    }
+    },
+    "./styles.css": "./styles.css"
   },
   "publishConfig": {
     "access": "public"
@@ -89,32 +90,34 @@
     "@radix-ui/react-toggle": "catalog:radix",
     "@radix-ui/react-toggle-group": "catalog:radix",
     "@radix-ui/react-tooltip": "catalog:radix",
+    "@thinkbuff/figma-theme": "workspace:^",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
     "sonner": "catalog:",
     "tailwind-merge": "catalog:"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "catalog:",
+    "@iconify-json/tabler": "catalog:",
+    "@iconify/tailwind4": "catalog:",
     "@storybook/addon-docs": "catalog:storybook",
     "@storybook/react-vite": "catalog:storybook",
-    "@thinkbuff/figma-theme": "workspace:*",
-    "@unocss/preset-rem-to-px": "catalog:unocss",
+    "@tailwindcss/vite": "catalog:",
     "@vitejs/plugin-react": "catalog:react",
+    "@vitest/browser": "catalog:",
     "@vitest/browser-playwright": "catalog:",
     "glob": "catalog:",
     "playwright": "catalog:",
     "react": "catalog:react",
     "react-dom": "catalog:react",
     "storybook": "catalog:storybook",
+    "tailwindcss": "catalog:",
     "typescript": "catalog:",
-    "unocss": "catalog:unocss",
-    "unocss-preset-animations": "catalog:unocss",
     "vite": "catalog:",
     "vitest": "catalog:",
     "vitest-browser-react": "catalog:"
   },
   "peerDependencies": {
-    "@thinkbuff/figma-theme": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
     "react": "^18.2.0",

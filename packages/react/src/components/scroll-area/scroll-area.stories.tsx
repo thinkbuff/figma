@@ -22,10 +22,10 @@ export const Default: Story = {
         {...args}
       >
         <div className="w-full flex flex-col p-2">
-          <div className="h-6 inline-flex items-center font-medium font-size-13">Tags</div>
+          <div className="h-6 inline-flex items-center font-medium text-figma-lg">Tags</div>
           {TAGS.map((tag) => (
             <div
-              className="h-8 inline-flex items-center border-t font-size-12 border-figma text-figma"
+              className="h-8 inline-flex items-center border-t text-xs border-figma text-figma"
               key={tag}
             >
               {tag}

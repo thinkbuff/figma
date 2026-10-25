@@ -56,11 +56,11 @@ const TabsTrigger: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Tri
       'items-center',
       'justify-center',
       'px-3',
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'text-figma-secondary',
       'bg-transparent',
       'hover:text-figma',
-      'data-[state=active]:(text-figma font-bold)',
+      'data-[state=active]:text-figma data-[state=active]:font-bold',
       'disabled:pointer-events-none',
       className,
     )}

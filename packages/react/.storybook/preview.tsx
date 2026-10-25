@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/react-vite';
 import React from 'react';
 
-import 'virtual:uno.css';
+import '../src/test-utils/styles.css';
 import './preview.css';
 
 const themes = [

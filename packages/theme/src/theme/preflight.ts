@@ -1,7 +1,4 @@
-/**
- * base css for figma
- */
-export const THEME_BASE_CSS = `
+export const THEME_PREFLIGHT_CSS = `
 * {
   margin: 0;
   padding: 0;
@@ -21,16 +18,21 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  color: var(--color-text);
-  background-color: var(--color-bg);
+  color: var(--figma-color-text);
+  background-color: var(--figma-color-bg);
   font-family: "Inter", "Helvetica", sans-serif;
-  font-size: 11px;
   line-height: 16px;
   font-weight: 400;
 }
 
+/* Keep rem-based theme tokens anchored to the default 16px root size;
+   the 11px Figma UI font-size applies to body content only. */
+body {
+  font-size: 11px;
+}
+
 ::selection {
-  background-color: var(--color-bg-onselected);
+  background-color: var(--figma-color-bg-onselected);
 }
 
 div,

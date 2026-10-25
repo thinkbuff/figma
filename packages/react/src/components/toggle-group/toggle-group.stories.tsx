@@ -36,17 +36,17 @@ const meta = {
       {
         value: 'horizontal',
         label: 'Horizontal layout',
-        icon: <span className="i-tabler-arrow-left"></span>,
+        icon: <span className="icon-[tabler--arrow-left]"></span>,
       },
       {
         value: 'vertical',
         label: 'Vertical layout',
-        icon: <span className="i-tabler-arrow-down"></span>,
+        icon: <span className="icon-[tabler--arrow-down]"></span>,
       },
       {
         value: 'wrap',
-        label: 'Wrap ',
-        icon: <span className="i-tabler-arrow-back"></span>,
+        label: 'Wrap',
+        icon: <span className="icon-[tabler--arrow-back]"></span>,
       },
     ];
     return (
@@ -96,17 +96,17 @@ export const Multiple: Story = {
       {
         value: 'bold',
         label: 'Bold',
-        icon: <span className="i-tabler-bold"></span>,
+        icon: <span className="icon-[tabler--bold]"></span>,
       },
       {
         value: 'italic',
         label: 'Italic',
-        icon: <span className="i-tabler-italic"></span>,
+        icon: <span className="icon-[tabler--italic]"></span>,
       },
       {
         value: 'underline',
-        label: 'Underline ',
-        icon: <span className="i-tabler-underline"></span>,
+        label: 'Underline',
+        icon: <span className="icon-[tabler--underline]"></span>,
       },
     ];
     return (
@@ -145,17 +145,17 @@ export const WithTooltip: Story = {
       {
         value: 'bold',
         label: 'Bold',
-        icon: <span className="i-tabler-bold"></span>,
+        icon: <span className="icon-[tabler--bold]"></span>,
       },
       {
         value: 'italic',
         label: 'Italic',
-        icon: <span className="i-tabler-italic"></span>,
+        icon: <span className="icon-[tabler--italic]"></span>,
       },
       {
         value: 'underline',
-        label: 'Underline ',
-        icon: <span className="i-tabler-underline"></span>,
+        label: 'Underline',
+        icon: <span className="icon-[tabler--underline]"></span>,
       },
     ];
     return (

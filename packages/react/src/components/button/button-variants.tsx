@@ -8,8 +8,8 @@ export const buttonVariants = cva(
     'items-center',
     'justify-center',
     'shrink-0',
-    'rounded-1.5',
-    'font-size-11',
+    'rounded-md',
+    'text-figma-sm leading-figma-sm',
     'truncate',
     'font-medium',
     'border-none',
@@ -21,25 +21,25 @@ export const buttonVariants = cva(
     'outline-transparent',
     'bg-transparent',
     'bg-clip-border',
-    'not-disabled:focus-visible:(outline-2 -outline-offset-2)',
+    'not-disabled:focus-visible:outline-2 not-disabled:focus-visible:-outline-offset-2',
     'disabled:cursor-not-allowed',
   ],
   {
     variants: {
       variant: {
         solid: [
-          'focus:not-focus-visible:(outline-0 outline-transparent)',
-          'disabled:(text-figma-ondisabled bg-figma-disabled)',
+          'focus:not-focus-visible:outline-0 focus:not-focus-visible:outline-transparent',
+          'disabled:text-figma-ondisabled disabled:bg-figma-disabled',
           'disabled:hover:bg-figma-disabled',
-          'disabled:active:(bg-figma-disabled outline-transparent)',
+          'disabled:active:bg-figma-disabled disabled:active:outline-transparent',
           'disabled:focus-visible:outline-transparent',
         ],
         outline: [
-          'disabled:(text-figma-disabled bg-transparent outline-figma-text-disabled)',
+          'disabled:text-figma-disabled disabled:bg-transparent disabled:outline-figma-text-disabled',
           'disabled:hover:bg-transparent',
           'disabled:active:bg-transparent',
         ],
-        link: ['hover:underline', 'disabled:(text-figma-disabled no-underline)'],
+        link: ['hover:underline', 'disabled:text-figma-disabled disabled:no-underline'],
       },
       color: {
         primary: 'btn-primary',

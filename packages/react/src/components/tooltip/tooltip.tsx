@@ -43,7 +43,7 @@ const TooltipContent: React.FC<TooltipContentProps> = ({
         'text-figma-tooltip',
         'fill-figma-icon-tooltip',
         'px-3',
-        'rounded-0.5',
+        'rounded-figma-sm',
         'py-2',
         'z-50',
         className,

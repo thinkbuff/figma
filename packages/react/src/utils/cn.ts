@@ -1,5 +1,17 @@
 import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { extendTailwindMerge } from 'tailwind-merge';
+
+const twMerge = extendTailwindMerge({
+  extend: {
+    theme: {
+      text: ['figma-xs', 'figma-sm', 'figma-md', 'figma-lg'],
+      font: ['figma', 'figma-code'],
+    },
+    classGroups: {
+      'font-weight': [{ font: ['figma-default', 'figma-strong'] }],
+    },
+  },
+});
 
 /**
  * Merge classes

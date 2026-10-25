@@ -16,7 +16,7 @@ const ScrollBar: React.FC<
     )}
     {...props}
   >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-grow rounded-full bg-figma-text-secondary" />
+    <ScrollAreaPrimitive.ScrollAreaThumb className="relative grow rounded-full bg-figma-text-secondary" />
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
 );
 

@@ -74,18 +74,12 @@ const PopoverContent: React.FC<PopoverContentProps> = ({
       className={cn(
         'w-auto',
         'bg-figma',
-        'rounded-0.5',
+        'rounded-figma-sm',
         'outline-solid',
         'outline-1',
         'outline-figma-border',
         'shadow-md',
-        'will-change-(transform,opacity)',
-        'data-[state=open]:(animate-in fade-in zoom-in-95)',
-        'data-[state=closed]:(animate-out fade-out zoom-out-95)',
-        'data-[side=top]:slide-in-from-bottom-1',
-        'data-[side=right]:slide-in-from-left-1',
-        'data-[side=bottom]:slide-in-from-top-1',
-        'data-[side=left]:slide-in-from-right-1',
+        'will-change-[transform,opacity]',
         className,
       )}
       {...props}

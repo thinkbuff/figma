@@ -16,14 +16,13 @@
     "react-dom": "catalog:react"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "catalog:",
     "@thinkbuff/figma-theme": "workspace:*",
     "@types/react": "catalog:react",
     "@types/react-dom": "catalog:react",
-    "@unocss/preset-rem-to-px": "catalog:unocss",
     "@vitejs/plugin-react": "catalog:react",
+    "tailwindcss": "catalog:",
     "typescript": "catalog:",
-    "unocss": "catalog:unocss",
-    "unocss-preset-animations": "catalog:unocss",
     "vite": "catalog:",
     "vite-plus": "catalog:"
   }

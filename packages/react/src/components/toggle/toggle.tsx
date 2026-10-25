@@ -18,13 +18,13 @@ const Toggle: React.FC<React.ComponentPropsWithRef<typeof TogglePrimitive.Root>>
     ref={ref}
     className={cn(
       'size-8',
-      'font-size-11',
+      'text-figma-sm leading-figma-sm',
       'text-figma',
       'inline-flex',
       'items-center',
       'justify-center',
       'shrink-0',
-      'rounded-0.5',
+      'rounded-figma-sm',
       'font-medium',
       'cursor-default',
       'appearance-none',
@@ -37,7 +37,7 @@ const Toggle: React.FC<React.ComponentPropsWithRef<typeof TogglePrimitive.Root>>
       '-outline-offset-1',
       'outline-transparent',
       'transition-colors',
-      'focus:not-focus-visible:(outline-0 outline-transparent)',
+      'focus:not-focus-visible:outline-0 focus:not-focus-visible:outline-transparent',
       disabled
         ? [
             'cursor-not-allowed',
@@ -47,10 +47,10 @@ const Toggle: React.FC<React.ComponentPropsWithRef<typeof TogglePrimitive.Root>>
             'data-[state=on]:bg-figma-disabled',
           ]
         : [
-            'hover:(bg-figma-hover text-figma-icon-hover fill-figma-icon-hover)',
-            'focus-visible:(outline-2 -outline-offset-2 outline-figma-border-brand-strong)',
-            'data-[state=on]:(bg-figma-brand text-figma-icon-onbrand fill-figma-icon-onbrand)',
-            'data-[state=on]:hover:(bg-figma-brand text-figma-icon-onbrand fill-figma-icon-onbrand)',
+            'hover:bg-figma-hover hover:text-figma-icon-hover hover:fill-figma-icon-hover',
+            'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-figma-border-brand-strong',
+            'data-[state=on]:bg-figma-brand data-[state=on]:text-figma-icon-onbrand data-[state=on]:fill-figma-icon-onbrand',
+            'data-[state=on]:hover:bg-figma-brand data-[state=on]:hover:text-figma-icon-onbrand data-[state=on]:hover:fill-figma-icon-onbrand',
           ],
       className,
     )}

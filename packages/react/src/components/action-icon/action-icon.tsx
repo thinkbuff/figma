@@ -24,12 +24,12 @@ const ActionIcon: React.FC<ActionIconProps> = ({
       ref={ref}
       className={cn(
         'size-8',
-        'font-size-11',
+        'text-figma-sm leading-figma-sm',
         'flex',
         'justify-center',
         'items-center',
         'shrink-0',
-        'rounded-0.5',
+        'rounded-figma-sm',
         'cursor-default',
         'appearance-none',
         'text-figma-icon',
@@ -41,14 +41,14 @@ const ActionIcon: React.FC<ActionIconProps> = ({
         '-outline-offset-1',
         'outline-transparent',
         'transition-colors',
-        'focus:not-focus-visible:(outline-0 outline-transparent)',
+        'focus:not-focus-visible:outline-0 focus:not-focus-visible:outline-transparent',
         disabled
           ? ['cursor-not-allowed', 'text-figma-disabled', 'fill-figma-icon-disabled']
           : [
-              'hover:(bg-figma-hover text-figma-icon-hover fill-figma-icon-hover)',
-              'focus-visible:(outline-2 -outline-offset-2 outline-figma-border-brand-strong)',
-              'data-[state=open]:(bg-figma-brand text-figma-icon-onbrand fill-figma-icon-onbrand)',
-              'data-[state=open]:hover:(bg-figma-brand text-figma-icon-onbrand fill-figma-icon-onbrand)',
+              'hover:bg-figma-hover hover:text-figma-icon-hover hover:fill-figma-icon-hover',
+              'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-figma-border-brand-strong',
+              'data-[state=open]:bg-figma-brand data-[state=open]:text-figma-icon-onbrand data-[state=open]:fill-figma-icon-onbrand',
+              'data-[state=open]:hover:bg-figma-brand data-[state=open]:hover:text-figma-icon-onbrand data-[state=open]:hover:fill-figma-icon-onbrand',
             ],
         className,
       )}

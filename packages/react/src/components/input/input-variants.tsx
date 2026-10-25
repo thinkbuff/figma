@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 export const inputVariants = cva(
   [
     'w-full',
-    'font-size-11',
+    'text-figma-sm leading-figma-sm',
     'text-figma',
     'fill-figma-icon',
     'cursor-default',
@@ -14,9 +14,9 @@ export const inputVariants = cva(
     'outline-1',
     '-outline-offset-2',
     'outline-transparent',
-    'rounded-0.5',
+    'rounded-figma-sm',
     'placeholder:text-figma-tertiary',
-    'focus:(border-figma-selected outline-figma-border-selected)',
+    'focus:border-figma-selected focus:outline-figma-border-selected',
   ],
   {
     variants: {
@@ -39,20 +39,23 @@ export const inputVariants = cva(
         disabled: true,
         className: [
           'border-transparent',
-          'focus:(border-transparent outline-transparent)',
+          'focus:border-transparent focus:outline-transparent',
           'not-focus:hover:border-transparent',
         ],
       },
       {
         variant: 'border',
         disabled: true,
-        className: ['border-figma-disabled', 'focus:(border-figma-disabled outline-transparent)'],
+        className: [
+          'border-figma-disabled',
+          'focus:border-figma-disabled focus:outline-transparent',
+        ],
       },
       {
         disabled: false,
         invalid: true,
         className: [
-          'focus:(border-figma-danger outline-figma-transparent)',
+          'focus:border-figma-danger focus:outline-figma-transparent',
           'not-focus:hover:border-figma-danger',
         ],
       },
