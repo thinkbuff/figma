@@ -23,10 +23,10 @@ function Fixture({
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>Open menu</DropdownMenu.Trigger>
       <DropdownMenu.Content>
-        <DropdownMenu.Item onSelect={onSelect}>Undo</DropdownMenu.Item>
+        <DropdownMenu.Item onClick={onSelect}>Undo</DropdownMenu.Item>
         <DropdownMenu.Item
           disabled
-          onSelect={onSelect}
+          onClick={onSelect}
         >
           Redo
         </DropdownMenu.Item>

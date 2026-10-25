@@ -61,16 +61,6 @@ const meta = {
         type: { summary: 'number', detail: 'The distance in pixels from the trigger.' },
       },
     },
-    avoidCollisions: {
-      table: {
-        type: {
-          summary: 'boolean',
-          detail:
-            'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
-        },
-        defaultValue: { summary: 'true' },
-      },
-    },
   },
   args: {
     modal: true,
@@ -78,8 +68,7 @@ const meta = {
     align: 'center',
     alignOffset: 0,
     side: 'top',
-    sideOffset: 4,
-    avoidCollisions: true,
+    sideOffset: 9,
   },
   render: function Render(args) {
     const { open: _, modal, ...props } = args;
@@ -91,11 +80,13 @@ const meta = {
         open={open}
         onOpenChange={(value) => updateArgs({ open: value })}
       >
-        <DropdownMenu.Trigger asChild>
-          <ActionIcon>
-            <span className="icon-[tabler--menu-2] size-4"></span>
-          </ActionIcon>
-        </DropdownMenu.Trigger>
+        <DropdownMenu.Trigger
+          render={
+            <ActionIcon>
+              <span className="icon-[tabler--menu-2] size-4"></span>
+            </ActionIcon>
+          }
+        />
         <DropdownMenu.Content
           {...props}
           className="min-w-60"
@@ -127,8 +118,8 @@ const meta = {
           </DropdownMenu.CheckboxItem>
           <DropdownMenu.CheckboxItem checked>Show Full URLs</DropdownMenu.CheckboxItem>
           <DropdownMenu.Separator />
-          <DropdownMenu.Label>People</DropdownMenu.Label>
           <DropdownMenu.RadioGroup value="pedro">
+            <DropdownMenu.Label>People</DropdownMenu.Label>
             <DropdownMenu.RadioItem value="pedro">Eleven Zhang</DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem value="colm">Jerry Zhang</DropdownMenu.RadioItem>
           </DropdownMenu.RadioGroup>
