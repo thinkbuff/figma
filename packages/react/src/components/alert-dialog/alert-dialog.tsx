@@ -24,7 +24,7 @@ const AlertDialogOverlay: React.FC<
       'inset-0',
       'z-50',
       'bg-black/50',
-      'transition-opacity duration-150 data-[starting-style]:opacity-0 data-[ending-style]:opacity-0 motion-reduce:transition-none',
+      'transition-opacity duration-150 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
       className,
     )}
     {...props}
@@ -70,7 +70,7 @@ const AlertDialogContent: React.FC<AlertDialogContentProps> = ({
         'p-6',
         'shadow-lg',
         'outline-none',
-        'transition-[opacity,scale] duration-150 data-[starting-style]:opacity-0 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[ending-style]:scale-95 motion-reduce:transition-none',
+        'transition-[opacity,scale] duration-150 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
         className,
       )}
       {...props}

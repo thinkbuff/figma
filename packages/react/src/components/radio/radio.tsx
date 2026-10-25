@@ -57,13 +57,13 @@ const RadioGroupItem: React.FC<RadioGroupItemProps> = ({ className, ref, ...prop
         '-outline-offset-2',
         'outline-transparent',
         'bg-clip-border',
-        'not-data-[disabled]:focus:border-figma-selected not-data-[disabled]:focus:outline-figma-border-selected',
-        'data-[disabled]:cursor-not-allowed data-[disabled]:text-figma-disabled data-[disabled]:fill-figma-icon-disabled data-[disabled]:border-figma-disabled-strong',
+        'not-data-disabled:focus:border-figma-selected not-data-disabled:focus:outline-figma-border-selected',
+        'data-disabled:cursor-not-allowed data-disabled:text-figma-disabled data-disabled:fill-figma-icon-disabled data-disabled:border-figma-disabled-strong',
         className,
       )}
       {...props}
     >
-      <Radio.Indicator className="pointer-events-none flex items-center justify-center after:block after:size-1.5 after:rounded-full after:content-[''] after:bg-figma-icon group-data-[disabled]:after:bg-figma-icon-disabled" />
+      <Radio.Indicator className="pointer-events-none flex items-center justify-center after:block after:size-1.5 after:rounded-full after:content-[''] after:bg-figma-icon group-data-disabled:after:bg-figma-icon-disabled" />
     </Radio.Root>
   );
 };

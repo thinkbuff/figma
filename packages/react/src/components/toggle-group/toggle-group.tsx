@@ -74,9 +74,9 @@ const ToggleGroupItem: React.FC<ToggleGroupItemProps> = ({
       'fill-figma-icon',
       'bg-transparent',
       'transition-colors',
-      'data-[pressed]:bg-figma-tertiary',
+      'data-pressed:bg-figma-tertiary',
       'disabled:pointer-events-none disabled:cursor-not-allowed disabled:text-figma-disabled disabled:fill-figma-icon-disabled',
-      'disabled:data-[pressed]:bg-figma-disabled disabled:data-[pressed]:text-figma-ondisabled disabled:data-[pressed]:fill-figma-icon-ondisabled',
+      'disabled:data-pressed:bg-figma-disabled disabled:data-pressed:text-figma-ondisabled disabled:data-pressed:fill-figma-icon-ondisabled',
       className,
     )}
     {...props}

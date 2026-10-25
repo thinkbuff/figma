@@ -70,7 +70,7 @@ const SliderRange: React.FC<
       'bg-figma-brand',
       'data-[orientation=horizontal]:h-full',
       'data-[orientation=vertical]:w-full',
-      'data-[disabled]:bg-figma-icon-disabled',
+      'data-disabled:bg-figma-icon-disabled',
       className,
     )}
     {...props}
@@ -105,8 +105,8 @@ const SliderThumb: React.FC<
       'after:content-[""]',
       'after:bg-figma-icon',
       '[&:not(data-disabled)]:focus:outline-figma-border-selected',
-      'data-[disabled]:after:bg-figma-icon-disabled',
-      'data-[disabled]:pointer-events-none',
+      'data-disabled:after:bg-figma-icon-disabled',
+      'data-disabled:pointer-events-none',
       className,
     )}
     {...props}

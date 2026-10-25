@@ -19,7 +19,7 @@ const ScrollBar: React.FC<ScrollBarProps> = ({
     ref={ref}
     orientation={orientation}
     className={cn(
-      'flex touch-none select-none transition-all opacity-0 data-[hovering]:opacity-100 data-[scrolling]:opacity-100',
+      'flex touch-none select-none transition-all opacity-0 data-hovering:opacity-100 data-scrolling:opacity-100',
       orientation === 'vertical' && 'h-full w-1.5 border-l border-l-transparent p-px',
       orientation === 'horizontal' && 'h-1.5 border-t border-t-transparent p-px',
       className,

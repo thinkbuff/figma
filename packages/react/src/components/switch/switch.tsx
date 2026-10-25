@@ -30,15 +30,15 @@ const Switch: React.FC<SwitchProps> = ({ className, ref, ...props }) => (
       'border-solid',
       'border-transparent',
       'transition-colors',
-      'data-[disabled]:cursor-not-allowed data-[disabled]:bg-figma-disabled',
-      'data-[checked]:bg-figma-brand',
-      'data-[unchecked]:bg-figma-icon-tertiary',
+      'data-disabled:cursor-not-allowed data-disabled:bg-figma-disabled',
+      'data-checked:bg-figma-brand',
+      'data-unchecked:bg-figma-icon-tertiary',
       className,
     )}
     {...props}
     ref={ref}
   >
-    <SwitchPrimitives.Thumb className="pointer-events-none block size-2.5 rounded-full transition-transform bg-figma-icon-onbrand data-[checked]:translate-x-3 data-[unchecked]:translate-x-0" />
+    <SwitchPrimitives.Thumb className="pointer-events-none block size-2.5 rounded-full transition-transform bg-figma-icon-onbrand data-checked:translate-x-3 data-unchecked:translate-x-0" />
   </SwitchPrimitives.Root>
 );
 

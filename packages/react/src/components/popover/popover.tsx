@@ -23,10 +23,10 @@ const PopoverArrow: React.FC<PopoverArrowProps> = ({ className, ref, ...props })
     ref={ref}
     className={cn(
       'text-figma-border fill-figma-bg',
-      'data-[side=bottom]:-top-[7px] data-[side=bottom]:rotate-180',
-      'data-[side=top]:-bottom-[7px]',
-      'data-[side=left]:-right-[10.5px] data-[side=left]:-rotate-90',
-      'data-[side=right]:-left-[10.5px] data-[side=right]:rotate-90',
+      'data-[side=bottom]:-top-1.75 data-[side=bottom]:rotate-180',
+      'data-[side=top]:-bottom-1.75',
+      'data-[side=left]:right-[-10.5px] data-[side=left]:-rotate-90',
+      'data-[side=right]:left-[-10.5px] data-[side=right]:rotate-90',
       className,
     )}
     render={
@@ -111,7 +111,7 @@ const PopoverContent: React.FC<PopoverContentProps> = ({
           'outline-figma-border',
           'shadow-md',
           'will-change-[transform,opacity]',
-          'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-[starting-style]:opacity-0 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[ending-style]:scale-95 motion-reduce:transition-none',
+          'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
           className,
         )}
         {...props}

@@ -43,13 +43,13 @@ const Toggle: React.FC<ToggleProps> = ({ className, disabled, ref, ...props }) =
             'pointer-events-none',
             'text-figma-disabled',
             'fill-figma-icon-disabled',
-            'data-[pressed]:bg-figma-disabled',
+            'data-pressed:bg-figma-disabled',
           ]
         : [
             'hover:bg-figma-hover hover:text-figma-icon-hover hover:fill-figma-icon-hover',
             'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-figma-border-brand-strong',
-            'data-[pressed]:bg-figma-brand data-[pressed]:text-figma-icon-onbrand data-[pressed]:fill-figma-icon-onbrand',
-            'data-[pressed]:hover:bg-figma-brand data-[pressed]:hover:text-figma-icon-onbrand data-[pressed]:hover:fill-figma-icon-onbrand',
+            'data-pressed:bg-figma-brand data-pressed:text-figma-icon-onbrand data-pressed:fill-figma-icon-onbrand',
+            'data-pressed:hover:bg-figma-brand data-pressed:hover:text-figma-icon-onbrand data-pressed:hover:fill-figma-icon-onbrand',
           ],
       className,
     )}

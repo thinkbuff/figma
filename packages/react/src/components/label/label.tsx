@@ -9,7 +9,7 @@ const Label: React.FC<React.ComponentPropsWithRef<'label'>> = ({ className, ref,
       'cursor-default',
       'disabled:cursor-not-allowed disabled:text-figma-disabled',
       'peer-disabled:cursor-not-allowed peer-disabled:text-figma-disabled',
-      'peer-data-[disabled]:cursor-not-allowed peer-data-[disabled]:text-figma-disabled',
+      'peer-data-disabled:cursor-not-allowed peer-data-disabled:text-figma-disabled',
       className,
     )}
     {...props}

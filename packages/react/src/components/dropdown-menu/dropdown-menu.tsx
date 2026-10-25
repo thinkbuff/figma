@@ -26,10 +26,10 @@ const DropdownMenuArrow: React.FC<
     ref={ref}
     className={cn(
       'fill-figma-bg-menu',
-      'data-[side=bottom]:-top-[5px] data-[side=bottom]:rotate-180',
-      'data-[side=top]:-bottom-[5px]',
-      'data-[side=left]:-right-[7.5px] data-[side=left]:-rotate-90',
-      'data-[side=right]:-left-[7.5px] data-[side=right]:rotate-90',
+      'data-[side=bottom]:-top-1.25 data-[side=bottom]:rotate-180',
+      'data-[side=top]:-bottom-1.25',
+      'data-[side=left]:right-[-7.5px] data-[side=left]:-rotate-90',
+      'data-[side=right]:left-[-7.5px] data-[side=right]:rotate-90',
       className,
     )}
     render={
@@ -68,7 +68,7 @@ const DropdownMenuSubTrigger: React.FC<
       'outline-none',
       'hover:bg-figma-menu-selected',
       'focus:bg-figma-menu-selected',
-      'data-[disabled]:pointer-events-none data-[disabled]:text-figma-menu-disabled',
+      'data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled',
       className,
     )}
     {...props}
@@ -100,7 +100,7 @@ const popupClassName = [
   'py-2',
   'shadow-md',
   'outline-none',
-  'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-[starting-style]:opacity-0 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[ending-style]:scale-95 motion-reduce:transition-none',
+  'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
 ];
 
 const DropdownMenuPopup: React.FC<DropdownMenuContentProps> = ({
@@ -181,7 +181,7 @@ const DropdownMenuItem: React.FC<
     ref={ref}
     className={cn(
       itemClassName,
-      'data-[disabled]:pointer-events-none data-[disabled]:text-figma-menu-disabled',
+      'data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled',
       className,
     )}
     {...props}
@@ -197,7 +197,7 @@ const DropdownMenuCheckboxItem: React.FC<
     ref={ref}
     className={cn(
       itemClassName,
-      'data-[disabled]:pointer-events-none data-[disabled]:text-figma-disabled',
+      'data-disabled:pointer-events-none data-disabled:text-figma-disabled',
       className,
     )}
     {...props}
@@ -219,7 +219,7 @@ const DropdownMenuRadioItem: React.FC<
     ref={ref}
     className={cn(
       itemClassName,
-      'data-[disabled]:pointer-events-none data-[disabled]:text-figma-disabled',
+      'data-disabled:pointer-events-none data-disabled:text-figma-disabled',
       className,
     )}
     {...props}

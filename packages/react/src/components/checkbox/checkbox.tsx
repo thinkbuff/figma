@@ -47,12 +47,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
             'cursor-not-allowed',
             'text-figma-disabled',
             'border-figma-bg-disabled',
-            'data-[checked]:text-figma-ondisabled data-[checked]:bg-figma-disabled',
+            'data-checked:text-figma-ondisabled data-checked:bg-figma-disabled',
           ]
         : [
             'focus:border-figma-selected-strong focus:outline-figma-border-selected-strong',
-            'data-[checked]:focus:border-figma-bg',
-            'data-[checked]:bg-figma-brand data-[checked]:text-figma-onbrand data-[checked]:border-figma-bg-brand',
+            'data-checked:focus:border-figma-bg',
+            'data-checked:bg-figma-brand data-checked:text-figma-onbrand data-checked:border-figma-bg-brand',
           ],
       className,
     )}

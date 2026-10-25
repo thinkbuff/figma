@@ -19,10 +19,10 @@ const SelectArrow: React.FC<
   <SelectPrimitive.Arrow
     className={cn(
       'z-10 fill-figma-bg-menu',
-      'data-[side=bottom]:-top-[5px] data-[side=bottom]:rotate-180',
-      'data-[side=top]:-bottom-[5px]',
-      'data-[side=left]:-right-[7.5px] data-[side=left]:-rotate-90',
-      'data-[side=right]:-left-[7.5px] data-[side=right]:rotate-90',
+      'data-[side=bottom]:-top-1.25 data-[side=bottom]:rotate-180',
+      'data-[side=top]:-bottom-1.25',
+      'data-[side=left]:right-[-7.5px] data-[side=left]:-rotate-90',
+      'data-[side=right]:left-[-7.5px] data-[side=right]:rotate-90',
       className,
     )}
     render={
@@ -74,7 +74,7 @@ const SelectTrigger: React.FC<SelectTriggerProps> = ({
       '-outline-offset-2',
       'outline-transparent',
       'rounded-figma-sm',
-      'data-[placeholder]:text-figma-tertiary data-[placeholder]:fill-figma-icon-tertiary',
+      'data-placeholder:text-figma-tertiary data-placeholder:fill-figma-icon-tertiary',
       disabled
         ? ['cursor-not-allowed', 'text-figma-disabled', 'fill-figma-icon-disabled']
         : [
@@ -84,7 +84,7 @@ const SelectTrigger: React.FC<SelectTriggerProps> = ({
             'fill-figma-icon',
             'hover:border-figma',
             'focus-visible:border-figma-selected focus-visible:outline-figma-border-selected',
-            'data-[popup-open]:outline-figma-border-selected',
+            'data-popup-open:outline-figma-border-selected',
           ],
       className,
     )}
@@ -92,7 +92,7 @@ const SelectTrigger: React.FC<SelectTriggerProps> = ({
     ref={ref}
     disabled={disabled}
   >
-    <div className="pointer-events-none flex items-center group-hover:grow group-data-[popup-open]:grow">
+    <div className="pointer-events-none flex items-center group-hover:grow group-data-popup-open:grow">
       {children ?? <SelectValue placeholder={placeholder} />}
     </div>
     <SelectPrimitive.Icon
@@ -222,8 +222,8 @@ const SelectItem: React.FC<SelectItemProps> = ({ className, children, ref, ...pr
       'cursor-default',
       'select-none',
       'outline-0',
-      'data-[highlighted]:bg-figma-menu-selected',
-      'data-[disabled]:text-figma-menu-disabled data-[disabled]:pointer-events-none',
+      'data-highlighted:bg-figma-menu-selected',
+      'data-disabled:text-figma-menu-disabled data-disabled:pointer-events-none',
       className,
     )}
     {...props}

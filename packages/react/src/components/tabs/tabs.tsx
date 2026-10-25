@@ -67,8 +67,8 @@ const TabsTrigger: React.FC<TabsTriggerProps> = ({ className, ref, ...props }) =
       'text-figma-secondary',
       'bg-transparent',
       'hover:text-figma',
-      'data-[active]:text-figma data-[active]:font-bold',
-      'data-[disabled]:pointer-events-none',
+      'data-active:text-figma data-active:font-bold',
+      'data-disabled:pointer-events-none',
       className,
     )}
     {...props}
