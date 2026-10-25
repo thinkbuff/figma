@@ -18,7 +18,7 @@ function Fixture(props: React.ComponentProps<typeof ToggleGroup>) {
 
 describe('ToggleGroup', () => {
   it('selects a single item at a time in single mode', async () => {
-    await render(<Fixture type="single" />);
+    await render(<Fixture />);
 
     await userEvent.click(getToggleable('Left'));
     expect(isOn(getToggleable('Left').element())).toBe(true);
@@ -30,7 +30,7 @@ describe('ToggleGroup', () => {
   });
 
   it('selects multiple items in multiple mode', async () => {
-    await render(<Fixture type="multiple" />);
+    await render(<Fixture multiple />);
 
     await userEvent.click(getToggleable('Left'));
     await userEvent.click(getToggleable('Right'));
@@ -41,34 +41,24 @@ describe('ToggleGroup', () => {
   });
 
   it('respects defaultValue', async () => {
-    await render(
-      <Fixture
-        defaultValue="center"
-        type="single"
-      />,
-    );
+    await render(<Fixture defaultValue={['center']} />);
 
     expect(isOn(getToggleable('Center').element())).toBe(true);
   });
 
   it('calls onValueChange with the new selection', async () => {
     const onValueChange = vi.fn<() => void>();
-    await render(
-      <Fixture
-        onValueChange={onValueChange}
-        type="single"
-      />,
-    );
+    await render(<Fixture onValueChange={onValueChange} />);
 
     await userEvent.click(getToggleable('Right'));
 
     expect(onValueChange).toHaveBeenCalledOnce();
-    expect(firstArg(onValueChange)).toBe('right');
+    expect(firstArg(onValueChange)).toEqual(['right']);
   });
 
   it('does not toggle a disabled item', async () => {
     await render(
-      <ToggleGroup type="single">
+      <ToggleGroup>
         <ToggleGroupItem value="left">Left</ToggleGroupItem>
         <ToggleGroupItem
           disabled

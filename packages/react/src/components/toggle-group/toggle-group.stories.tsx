@@ -19,18 +19,13 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
-    type: {
-      table: {
-        disable: true,
-      },
-    },
   },
   args: {
     disabled: false,
   },
   render: function Render(args) {
     const [{ value }, updateArgs] = useArgs<{
-      value: string;
+      value: string[];
     }>();
     const options = [
       {
@@ -52,13 +47,10 @@ const meta = {
     return (
       <ToggleGroup
         {...args}
-        type="single"
-        defaultValue="horizontal"
+        defaultValue={['horizontal']}
         value={value}
         onValueChange={(selected) => {
-          if (selected) {
-            updateArgs({ value: selected });
-          }
+          updateArgs({ value: selected });
         }}
       >
         {options.map((option) => (
@@ -78,14 +70,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Single: Story = {
   args: {
-    type: 'single',
-    value: 'horizontal',
+    value: ['horizontal'],
   },
 };
 
 export const Multiple: Story = {
   args: {
-    type: 'multiple',
+    multiple: true,
     value: [],
   },
   render: function Render(args) {
@@ -112,7 +103,7 @@ export const Multiple: Story = {
     return (
       <ToggleGroup
         {...args}
-        type="multiple"
+        multiple
         defaultValue={[]}
         value={value}
         onValueChange={(selected) => {
@@ -134,7 +125,7 @@ export const Multiple: Story = {
 
 export const WithTooltip: Story = {
   args: {
-    type: 'multiple',
+    multiple: true,
     value: [],
   },
   render: function Render(args) {
@@ -162,7 +153,7 @@ export const WithTooltip: Story = {
       <TooltipProvider delayDuration={200}>
         <ToggleGroup
           {...args}
-          type="multiple"
+          multiple
           defaultValue={[]}
           value={value}
           onValueChange={(selected) => {
@@ -187,8 +178,7 @@ export const WithTooltip: Story = {
 
 export const Disabled: Story = {
   args: {
-    type: 'single',
-    value: 'vertical',
+    value: ['vertical'],
     disabled: true,
   },
 };
