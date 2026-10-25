@@ -1,20 +1,19 @@
-import * as TogglePrimitive from '@radix-ui/react-toggle';
+import { Toggle as BaseToggle } from '@base-ui/react/toggle';
 
 import { cn } from '~/utils';
+
+interface ToggleProps extends Omit<React.ComponentPropsWithRef<typeof BaseToggle>, 'className'> {
+  className?: string;
+}
 
 /**
  * A two-state button that can be either on or off.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/toggle)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/toggle#api-reference)
+ * - [Docs](https://base-ui.com/react/components/toggle)
+ * - [API Reference](https://base-ui.com/react/components/toggle#api)
  */
-const Toggle: React.FC<React.ComponentPropsWithRef<typeof TogglePrimitive.Root>> = ({
-  className,
-  disabled,
-  ref,
-  ...props
-}) => (
-  <TogglePrimitive.Root
+const Toggle: React.FC<ToggleProps> = ({ className, disabled, ref, ...props }) => (
+  <BaseToggle
     ref={ref}
     className={cn(
       'size-8',
@@ -44,13 +43,13 @@ const Toggle: React.FC<React.ComponentPropsWithRef<typeof TogglePrimitive.Root>>
             'pointer-events-none',
             'text-figma-disabled',
             'fill-figma-icon-disabled',
-            'data-[state=on]:bg-figma-disabled',
+            'data-[pressed]:bg-figma-disabled',
           ]
         : [
             'hover:bg-figma-hover hover:text-figma-icon-hover hover:fill-figma-icon-hover',
             'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-figma-border-brand-strong',
-            'data-[state=on]:bg-figma-brand data-[state=on]:text-figma-icon-onbrand data-[state=on]:fill-figma-icon-onbrand',
-            'data-[state=on]:hover:bg-figma-brand data-[state=on]:hover:text-figma-icon-onbrand data-[state=on]:hover:fill-figma-icon-onbrand',
+            'data-[pressed]:bg-figma-brand data-[pressed]:text-figma-icon-onbrand data-[pressed]:fill-figma-icon-onbrand',
+            'data-[pressed]:hover:bg-figma-brand data-[pressed]:hover:text-figma-icon-onbrand data-[pressed]:hover:fill-figma-icon-onbrand',
           ],
       className,
     )}
@@ -59,6 +58,7 @@ const Toggle: React.FC<React.ComponentPropsWithRef<typeof TogglePrimitive.Root>>
   />
 );
 
-Toggle.displayName = TogglePrimitive.Root.displayName;
+Toggle.displayName = 'Toggle';
 
 export { Toggle };
+export type { ToggleProps };
