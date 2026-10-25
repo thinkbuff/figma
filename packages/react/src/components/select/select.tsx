@@ -60,7 +60,7 @@ const SelectTrigger: React.FC<SelectTriggerProps> = ({
     className={cn(
       'relative',
       'w-full',
-      'h-7',
+      'h-6',
       'flex',
       'pl-2',
       'items-center',
@@ -68,12 +68,12 @@ const SelectTrigger: React.FC<SelectTriggerProps> = ({
       'bg-clip-border',
       'border',
       'border-solid',
-      'border-transparent',
+      'border-figma-border',
       'outline-solid',
       'outline-1',
       '-outline-offset-2',
       'outline-transparent',
-      'rounded-figma-sm',
+      'rounded-figma-md',
       'data-placeholder:text-figma-tertiary data-placeholder:fill-figma-icon-tertiary',
       disabled
         ? ['cursor-not-allowed', 'text-figma-disabled', 'fill-figma-icon-disabled']
@@ -82,7 +82,6 @@ const SelectTrigger: React.FC<SelectTriggerProps> = ({
             'cursor-default',
             'text-figma',
             'fill-figma-icon',
-            'hover:border-figma',
             'focus-visible:border-figma-selected focus-visible:outline-figma-border-selected',
             'data-popup-open:outline-figma-border-selected',
           ],
@@ -157,7 +156,8 @@ const SelectContent: React.FC<SelectContentProps> = ({
           'text-figma-menu',
           'w-full',
           'bg-figma-menu',
-          'rounded-figma-sm',
+          'rounded-figma-lg',
+          'shadow-figma-menu',
           'min-w-(--anchor-width)',
           'max-h-(--available-height)',
           'outline-none',
@@ -167,11 +167,11 @@ const SelectContent: React.FC<SelectContentProps> = ({
         ref={ref}
       >
         {withArrow && !alignItemWithTrigger && <SelectArrow />}
-        <SelectPrimitive.ScrollUpArrow className="h-6 w-full flex cursor-default items-center justify-center">
+        <SelectPrimitive.ScrollUpArrow className="h-6 w-full flex cursor-default items-center justify-center bg-figma-menu hover:bg-figma-menu-hover rounded-t-figma-lg">
           <TablerChevronUp className="size-3.5" />
         </SelectPrimitive.ScrollUpArrow>
-        <SelectPrimitive.List className="py-2">{children}</SelectPrimitive.List>
-        <SelectPrimitive.ScrollDownArrow className="h-6 w-full flex cursor-default items-center justify-center">
+        <SelectPrimitive.List className="p-2">{children}</SelectPrimitive.List>
+        <SelectPrimitive.ScrollDownArrow className="h-6 w-full flex cursor-default items-center justify-center bg-figma-menu hover:bg-figma-menu-hover rounded-b-figma-lg">
           <TablerChevronDown className="size-3.5" />
         </SelectPrimitive.ScrollDownArrow>
       </SelectPrimitive.Popup>
@@ -190,9 +190,9 @@ const SelectLabel: React.FC<
   <SelectPrimitive.GroupLabel
     className={cn(
       'text-figma-sm leading-figma-sm',
-      'text-figma-menu-secondary',
-      'px-8',
-      'py-1',
+      'text-figma-menu-tertiary',
+      'h-6',
+      'px-2',
       'font-medium',
       className,
     )}
@@ -217,19 +217,20 @@ const SelectItem: React.FC<SelectItemProps> = ({ className, children, ref, ...pr
       'flex',
       'items-center',
       'text-figma-sm leading-figma-sm',
-      'pl-8',
-      'pr-4',
+      'pl-6',
+      'pr-2',
       'cursor-default',
       'select-none',
       'outline-0',
-      'data-highlighted:bg-figma-menu-selected',
-      'data-disabled:text-figma-menu-disabled data-disabled:pointer-events-none',
+      'rounded-figma-md',
+      'data-highlighted:bg-figma-selected-strong',
+      'data-disabled:text-figma-menu-tertiary data-disabled:pointer-events-none',
       className,
     )}
     {...props}
   >
     <SelectPrimitive.ItemIndicator
-      className="absolute left-2 h-3 w-4"
+      className="absolute left-1 h-3 w-4"
       render={<MdiCheckBold />}
     />
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
