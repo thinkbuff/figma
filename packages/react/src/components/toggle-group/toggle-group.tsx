@@ -32,19 +32,7 @@ const ToggleGroup: React.FC<ToggleGroupProps> = ({
 }) => (
   <BaseToggleGroup
     ref={ref}
-    className={cn(
-      'group',
-      'flex',
-      'items-center',
-      'justify-center',
-      'bg-figma',
-      'border',
-      'border-solid',
-      'border-transparent',
-      'rounded-figma-sm',
-      disabled ? 'cursor-not-allowed' : 'hover:border-figma',
-      className,
-    )}
+    className={cn('group', 'inline-flex', 'bg-figma-secondary', 'rounded-figma-md', className)}
     {...props}
     disabled={disabled}
   >
@@ -63,20 +51,26 @@ const ToggleGroupItem: React.FC<ToggleGroupItemProps> = ({
   <BaseToggle
     ref={ref}
     className={cn(
-      'size-6',
+      'h-6',
+      'min-w-6',
+      'w-fit',
+      'flex-[1_0_auto]',
       'text-figma-sm leading-figma-sm',
+      'font-figma-default',
       'flex',
       'justify-center',
       'items-center',
+      'whitespace-nowrap',
       'cursor-default',
       'appearance-none',
       'text-figma',
-      'fill-figma-icon',
+      'fill-figma-icon-secondary',
       'bg-transparent',
+      'rounded-figma-md',
       'transition-colors',
-      'data-pressed:bg-figma-tertiary',
-      'disabled:pointer-events-none disabled:cursor-not-allowed disabled:text-figma-disabled disabled:fill-figma-icon-disabled',
-      'disabled:data-pressed:bg-figma-disabled disabled:data-pressed:text-figma-ondisabled disabled:data-pressed:fill-figma-icon-ondisabled',
+      'focus-visible:outline-solid focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-figma-border-selected',
+      'data-pressed:bg-figma data-pressed:fill-figma-icon data-pressed:shadow-[inset_0_0_0_1px_var(--figma-color-border)]',
+      'disabled:text-figma-disabled disabled:fill-figma-icon-disabled',
       className,
     )}
     {...props}
