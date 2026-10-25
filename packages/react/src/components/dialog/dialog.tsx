@@ -1,6 +1,8 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { Dialog as DialogPrimitive } from '@base-ui/react/dialog';
 
 import { cn } from '~/utils';
+
+type WithStringClassName<T> = Omit<T, 'className'> & { className?: string };
 
 const DialogRoot = DialogPrimitive.Root;
 
@@ -10,34 +12,41 @@ const DialogPortal = DialogPrimitive.Portal;
 
 const DialogClose = DialogPrimitive.Close;
 
-const DialogOverlay: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive.Overlay>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <DialogPrimitive.Overlay
+const DialogOverlay: React.FC<
+  WithStringClassName<React.ComponentPropsWithRef<typeof DialogPrimitive.Backdrop>>
+> = ({ className, ref, ...props }) => (
+  <DialogPrimitive.Backdrop
     ref={ref}
-    className={cn('fixed', 'inset-0', 'z-50', 'bg-black/50', className)}
+    className={cn(
+      'fixed',
+      'inset-0',
+      'z-50',
+      'bg-black/50',
+      'transition-opacity duration-150 data-[starting-style]:opacity-0 data-[ending-style]:opacity-0 motion-reduce:transition-none',
+      className,
+    )}
     {...props}
   />
 );
 
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+DialogOverlay.displayName = 'DialogOverlay';
 
-interface DialogContentProps extends React.ComponentPropsWithRef<typeof DialogPrimitive.Content> {
-  container?: DialogPrimitive.DialogPortalProps['container'];
+interface DialogContentProps extends WithStringClassName<
+  React.ComponentPropsWithRef<typeof DialogPrimitive.Popup>
+> {
+  container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
 }
 
 /**
  * A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/dialog)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/dialog#api-reference)
+ * - [Docs](https://base-ui.com/react/components/dialog)
+ * - [API Reference](https://base-ui.com/react/components/dialog#api-reference)
  */
 const DialogContent: React.FC<DialogContentProps> = ({ className, container, ref, ...props }) => (
   <DialogPortal container={container}>
     <DialogOverlay />
-    <DialogPrimitive.Content
+    <DialogPrimitive.Popup
       ref={ref}
       className={cn(
         'fixed',
@@ -53,6 +62,8 @@ const DialogContent: React.FC<DialogContentProps> = ({ className, container, ref
         'bg-figma',
         'p-6',
         'shadow-lg',
+        'outline-none',
+        'transition-[opacity,scale] duration-150 data-[starting-style]:opacity-0 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[ending-style]:scale-95 motion-reduce:transition-none',
         className,
       )}
       {...props}
@@ -60,7 +71,7 @@ const DialogContent: React.FC<DialogContentProps> = ({ className, container, ref
   </DialogPortal>
 );
 
-DialogContent.displayName = DialogPrimitive.Content.displayName;
+DialogContent.displayName = 'DialogContent';
 
 const DialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   className,
@@ -96,11 +107,9 @@ const DialogFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({
 
 DialogFooter.displayName = 'DialogFooter';
 
-const DialogTitle: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive.Title>> = ({
-  className,
-  ref,
-  ...props
-}) => (
+const DialogTitle: React.FC<
+  WithStringClassName<React.ComponentPropsWithRef<typeof DialogPrimitive.Title>>
+> = ({ className, ref, ...props }) => (
   <DialogPrimitive.Title
     ref={ref}
     className={cn('text-figma', 'text-sm leading-4', 'font-medium', className)}
@@ -108,10 +117,10 @@ const DialogTitle: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive.T
   />
 );
 
-DialogTitle.displayName = DialogPrimitive.Title.displayName;
+DialogTitle.displayName = 'DialogTitle';
 
 const DialogDescription: React.FC<
-  React.ComponentPropsWithRef<typeof DialogPrimitive.Description>
+  WithStringClassName<React.ComponentPropsWithRef<typeof DialogPrimitive.Description>>
 > = ({ className, ref, ...props }) => (
   <DialogPrimitive.Description
     ref={ref}
@@ -120,7 +129,7 @@ const DialogDescription: React.FC<
   />
 );
 
-DialogDescription.displayName = DialogPrimitive.Description.displayName;
+DialogDescription.displayName = 'DialogDescription';
 
 export {
   DialogRoot as Root,

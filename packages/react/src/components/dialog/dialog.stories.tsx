@@ -42,26 +42,30 @@ const meta = {
       <Dialog.Root
         modal={modal}
         open={open}
-        onOpenChange={(value) => updateArgs({ open: value })}
+        onOpenChange={(value, eventDetails) => {
+          const target = eventDetails.event.target;
+          if (
+            eventDetails.reason === 'outside-press' &&
+            target instanceof Element &&
+            target.closest('[data-sonner-toast]')
+          ) {
+            eventDetails.cancel();
+            return;
+          }
+          updateArgs({ open: value });
+        }}
       >
-        <Dialog.Trigger asChild>
-          <Button variant="outline">Edit profile</Button>
-        </Dialog.Trigger>
-        <Dialog.Content
-          {...props}
-          onPointerDownOutside={(event) => {
-            if (event.target instanceof Element && event.target.closest('[data-sonner-toast]')) {
-              event.preventDefault();
-            }
-          }}
-        >
+        <Dialog.Trigger render={<Button variant="outline">Edit profile</Button>} />
+        <Dialog.Content {...props}>
           <Dialog.Header className="justify-between">
             <Dialog.Title>Edit profile</Dialog.Title>
-            <Dialog.Close asChild>
-              <ActionIcon className="-mr-2 -mt-2">
-                <span className="icon-[mdi--window-close] size-4"></span>
-              </ActionIcon>
-            </Dialog.Close>
+            <Dialog.Close
+              render={
+                <ActionIcon className="-mr-2 -mt-2">
+                  <span className="icon-[mdi--window-close] size-4"></span>
+                </ActionIcon>
+              }
+            />
           </Dialog.Header>
           <Dialog.Description>
             Make changes to your profile here. Click save when you&apos;re done.
@@ -101,14 +105,16 @@ const meta = {
             </div>
           </div>
           <Dialog.Footer className="justify-end gap-3">
-            <Dialog.Close asChild>
-              <Button
-                variant="outline"
-                color="secondary"
-              >
-                Cancel
-              </Button>
-            </Dialog.Close>
+            <Dialog.Close
+              render={
+                <Button
+                  variant="outline"
+                  color="secondary"
+                >
+                  Cancel
+                </Button>
+              }
+            />
             <Button
               onClick={() => {
                 toast.success('Profile has been updated', {
