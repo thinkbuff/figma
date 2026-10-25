@@ -1,64 +1,100 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import unocss from 'unocss/vite';
-import dts from 'vite-plugin-dts';
+import { glob } from 'glob';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { glob } from 'glob';
+import react from '@vitejs/plugin-react';
+import { playwright } from '@vitest/browser-playwright';
+import unocss from 'unocss/vite';
+import { defineConfig } from 'vite-plus';
 
 import { dependencies } from './package.json';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const entries = glob
-  .sync('src/**/*.{ts,tsx}', {
-    ignore: ['src/**/*.stories.{ts,tsx}', 'src/**/*.test.{ts,tsx}', 'src/test-utils/**'],
-  })
-  .map(file => ([
-    path.relative(
-      'src',
-      file.slice(0, file.length - path.extname(file).length),
-    ),
-    path.resolve(__dirname, file),
-  ]));
+const vitePlugins = [
+  react(),
+  unocss({
+    content: {
+      filesystem: ['src/**/*.{ts,tsx}'],
+    },
+  }),
+];
 
-/**
- * @see https://vitejs.dev/config/
- */
-export default defineConfig({
-  plugins: [
-    react(),
-    unocss(),
-    dts({
-      include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.stories.{ts,tsx}', 'src/**/*.test.{ts,tsx}', 'src/test-utils/**'],
-    }),
-  ],
-  resolve: {
-    alias: {
-      '~': path.resolve(__dirname, 'src'),
-    },
+const viteResolve = {
+  alias: {
+    '~': path.resolve(__dirname, 'src'),
   },
-  build: {
-    copyPublicDir: false,
-    target: 'esnext',
-    minify: false,
-    lib: {
-      entry: Object.fromEntries(entries),
-      formats: ['es'],
-    },
-    rollupOptions: {
-      external: [
-        'react',
-        'react/jsx-runtime',
-        'react-dom',
-        './components',
-        ...Object.keys(dependencies),
-      ],
-      output: {
-        preserveModules: true,
-        entryFileNames: '[name].mjs',
+};
+
+const optimizeDeps = {
+  include: [
+    'react',
+    'react/jsx-runtime',
+    'react/jsx-dev-runtime',
+    'react-dom',
+    'react-dom/client',
+    'vitest-browser-react',
+    ...Object.keys(dependencies),
+  ],
+};
+
+const entries = Object.fromEntries(
+  glob
+    .sync('src/**/*.{ts,tsx}', {
+      ignore: ['src/**/*.test.*', 'src/**/*.stories.*', 'src/test-utils/**'],
+    })
+    .map(file => [
+      path.relative('src', file.slice(0, file.length - path.extname(file).length)),
+      path.resolve(__dirname, file),
+    ]),
+);
+
+export default defineConfig({
+  plugins: vitePlugins,
+  resolve: viteResolve,
+  optimizeDeps,
+  test: {
+    projects: [
+      {
+        test: {
+          name: 'unit',
+          environment: 'node',
+          include: ['src/**/*.test.ts'],
+        },
       },
-    },
+      {
+        test: {
+          name: 'browser',
+          include: ['src/**/*.test.tsx'],
+          setupFiles: ['./src/test-utils/setup.ts'],
+          browser: {
+            enabled: true,
+            provider: playwright(),
+            headless: true,
+            instances: [{ browser: 'chromium' }],
+          },
+        },
+      },
+      {
+        test: {
+          name: 'vrt',
+          include: ['tests/**/*.vrt.test.tsx'],
+          setupFiles: ['./tests/visual/vrt.setup.ts'],
+          browser: {
+            enabled: true,
+            provider: playwright(),
+            headless: true,
+            viewport: { width: 800, height: 600 },
+            instances: [{ browser: 'chromium' }],
+          },
+        },
+      },
+    ],
+  },
+  pack: {
+    entry: entries,
+    format: ['esm'],
+    dts: true,
+    unbundle: true,
+    target: 'esnext',
   },
 });

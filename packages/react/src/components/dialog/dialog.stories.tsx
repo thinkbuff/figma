@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 import { Root as Portal } from '@radix-ui/react-portal';
 
 import { Button } from '../button';
@@ -36,7 +36,7 @@ const meta = {
       </>
     ),
   ],
-  render: (args) => {
+  render: function Render(args) {
     const { open: _, modal, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
     return (

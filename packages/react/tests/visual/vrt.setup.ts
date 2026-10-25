@@ -1,6 +1,6 @@
 import 'virtual:uno.css';
 
-import { setProjectAnnotations } from '@storybook/react';
+import { setProjectAnnotations } from '@storybook/react-vite';
 
 import preview from '../../.storybook/preview';
 

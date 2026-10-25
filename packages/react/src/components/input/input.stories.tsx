@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
 import { Tooltip, TooltipProvider } from '../tooltip';
@@ -109,7 +109,7 @@ export const WithTooltip: Story = {
     variant: 'border',
     value: 12,
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs();
     return (
       <TooltipProvider delayDuration={100}>

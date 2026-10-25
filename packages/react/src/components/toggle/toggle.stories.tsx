@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { Toggle } from './toggle';
 
@@ -21,7 +21,7 @@ const meta = {
     disabled: false,
     pressed: false,
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ pressed }, updateArgs] = useArgs();
     return (
       <Toggle

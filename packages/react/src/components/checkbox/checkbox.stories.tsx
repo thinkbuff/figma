@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { Label } from '../label';
 
@@ -24,7 +24,7 @@ const meta = {
     indeterminate: false,
     checked: false,
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ checked, indeterminate }, updateArgs] = useArgs();
 
     return (
@@ -74,7 +74,7 @@ export const WithLabel: Story = {
       },
     },
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ checked }, updateArgs] = useArgs();
 
     return (

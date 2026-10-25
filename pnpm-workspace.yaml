@@ -2,6 +2,67 @@ packages:
   - packages/*
   - playground
 
+cleanupUnusedCatalogs: true
+
+catalog:
+  '@commitlint/cli': ^21.2.4
+  '@commitlint/config-conventional': ^21.2.4
+  '@types/node': ^24.19.2
+  '@vitest/browser-playwright': 5.0.5
+  changelogen: ^0.6.2
+  class-variance-authority: ^0.7.1
+  clsx: ^2.1.1
+  eventemitter3: ^5.0.1
+  glob: ^13.0.6
+  playwright: 1.64.1
+  simple-git-hooks: ^2.14.0
+  sonner: ^2.0.3
+  tailwind-merge: ^3.3.0
+  tsx: ^4.23.15
+  type-fest: ^4.41.0
+  typescript: ^6.0.3
+  vite: npm:@voidzero-dev/vite-plus-core@1.3.0
+  vite-plus: 1.3.0
+  vitest: 5.0.5
+  vitest-browser-react: 2.3.0
+
+catalogs:
+  react:
+    '@types/react': ^19.3.0
+    '@types/react-dom': ^19.3.0
+    '@vitejs/plugin-react': ^6.1.2
+    react: ^19.3.1
+    react-dom: ^19.3.1
+  storybook:
+    '@storybook/addon-docs': 10.6.2
+    '@storybook/react-vite': 10.6.2
+    storybook: 10.6.2
+  figma:
+    '@figma/plugin-typings': ^1.142.0
+    '@figma/widget-typings': ^1.13.0
+  radix:
+    '@radix-ui/react-alert-dialog': ^1.1.13
+    '@radix-ui/react-checkbox': ^1.3.1
+    '@radix-ui/react-dialog': ^1.1.13
+    '@radix-ui/react-dropdown-menu': ^2.1.14
+    '@radix-ui/react-label': ^2.1.6
+    '@radix-ui/react-popover': ^1.1.13
+    '@radix-ui/react-radio-group': ^1.3.6
+    '@radix-ui/react-scroll-area': ^1.2.8
+    '@radix-ui/react-select': ^2.2.4
+    '@radix-ui/react-separator': ^1.1.6
+    '@radix-ui/react-slider': ^1.3.4
+    '@radix-ui/react-slot': ^1.2.2
+    '@radix-ui/react-switch': ^1.2.4
+    '@radix-ui/react-tabs': ^1.1.11
+    '@radix-ui/react-toggle': ^1.1.8
+    '@radix-ui/react-toggle-group': ^1.1.9
+    '@radix-ui/react-tooltip': ^1.2.6
+  unocss:
+    '@unocss/preset-rem-to-px': ^66.1.2
+    unocss: ^66.1.2
+    unocss-preset-animations: ^1.2.1
+
 onlyBuiltDependencies:
   - esbuild
   - simple-git-hooks

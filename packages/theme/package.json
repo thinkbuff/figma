@@ -7,10 +7,8 @@
   "description": "Figma theme",
   "scripts": {
     "clean": "rm -rf dist node_modules",
-    "build": "unbuild --minify && pnpm generate:css",
-    "stub": "unbuild --stub && pnpm generate:css",
+    "build": "vp pack && pnpm generate:css",
     "generate:css": "tsx scripts/generate-css-files.ts",
-    "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "release": "changelogen --bump --no-output",
     "prepublishOnly": "pnpm build",
@@ -38,19 +36,22 @@
   "sideEffects": false,
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
     },
     "./colors": {
-      "types": "./dist/colors/index.d.ts",
-      "import": "./dist/colors/index.mjs"
+      "types": "./dist/colors/index.d.mts",
+      "import": "./dist/colors/index.mjs",
+      "default": "./dist/colors/index.mjs"
     },
     "./unocss": {
-      "types": "./dist/unocss/index.d.ts",
-      "import": "./dist/unocss/index.mjs"
+      "types": "./dist/unocss/index.d.mts",
+      "import": "./dist/unocss/index.mjs",
+      "default": "./dist/unocss/index.mjs"
     },
     "./css/*": "./dist/css/*",
     "./*": "./*"
@@ -68,11 +69,10 @@
     "dist"
   ],
   "devDependencies": {
-    "unbuild": "^3.5.0",
-    "unocss": "^66.1.2",
-    "vitest": "5.0.5"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "unocss": "catalog:unocss",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   }
 }

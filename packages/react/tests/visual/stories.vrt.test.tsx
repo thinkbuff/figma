@@ -1,5 +1,5 @@
-import { composeStories } from '@storybook/react';
-import type { Meta } from '@storybook/react';
+import { composeStories } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 import { render } from 'vitest-browser-react';
 import { describe, expect, it } from 'vitest';
 import { page } from 'vitest/browser';

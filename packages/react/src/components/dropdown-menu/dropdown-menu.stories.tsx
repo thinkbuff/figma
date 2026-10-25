@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
 
@@ -78,7 +78,7 @@ const meta = {
     sideOffset: 4,
     avoidCollisions: true,
   },
-  render: (args) => {
+  render: function Render(args) {
     const { open: _, modal, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
     return (

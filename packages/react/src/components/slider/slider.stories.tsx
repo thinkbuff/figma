@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { TooltipProvider, Tooltip } from '../tooltip';
 
@@ -106,7 +106,7 @@ const meta = {
     step: 1,
     minStepsBetweenThumbs: 0,
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs();
     return (
       <div className="min-h-60 min-w-60 flex items-center justify-center">
@@ -138,7 +138,7 @@ export const RangeSlider: Story = {
 };
 
 export const CustomStyle: Story = {
-  render: (args) => {
+  render: function Render(args) {
     const [{ value: values }, updateArgs] = useArgs<{
       value: number[];
     }>();
@@ -174,7 +174,7 @@ export const WithValueTooltip: Story = {
   args: {
     showTooltip: false,
   },
-  render: ({ showTooltip: _, ...props }) => {
+  render: function Render({ showTooltip: _, ...props }) {
     const [{ value: values, showTooltip }, updateArgs] = useArgs<{
       value: number[];
       showTooltip: boolean;

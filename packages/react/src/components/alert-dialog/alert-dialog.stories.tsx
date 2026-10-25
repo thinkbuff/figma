@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { Button } from '../button';
 
@@ -19,7 +19,7 @@ const meta = {
   args: {
     open: false,
   },
-  render: (args) => {
+  render: function Render(args) {
     const { open: _, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
     return (

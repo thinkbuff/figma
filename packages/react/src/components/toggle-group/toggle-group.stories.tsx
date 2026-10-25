@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { Tooltip, TooltipProvider } from '../tooltip';
 
@@ -29,7 +29,7 @@ const meta = {
   args: {
     disabled: false,
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs<{
       value: string;
     }>();
@@ -86,7 +86,7 @@ export const Multiple: Story = {
     type: 'multiple',
     value: [],
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs<{
       value: string[];
     }>();
@@ -132,7 +132,7 @@ export const WithTooltip: Story = {
     type: 'multiple',
     value: [],
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs<{
       value: string[];
     }>();

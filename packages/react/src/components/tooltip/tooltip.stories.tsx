@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
 
@@ -104,7 +104,7 @@ export const Default: Story = {
   args: {
     content: 'Open settings',
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ open }, updateArgs] = useArgs();
 
     return (

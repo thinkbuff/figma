@@ -1,4 +1,4 @@
-import { composeStory } from '@storybook/react';
+import { composeStory } from '@storybook/react-vite';
 import { render } from 'vitest-browser-react';
 import { describe, expect, it } from 'vitest';
 import { page, userEvent } from 'vitest/browser';

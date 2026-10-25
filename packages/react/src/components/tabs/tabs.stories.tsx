@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import * as Tabs from './tabs';
 
@@ -19,7 +19,7 @@ const meta = {
   args: {
     value: 'all',
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs();
 
     const list = [{

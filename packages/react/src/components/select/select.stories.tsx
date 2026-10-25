@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import * as Select from './select';
 
@@ -122,7 +122,7 @@ const meta = {
       </div>
     ),
   ],
-  render: ({ disabled, ...props }) => {
+  render: function Render({ disabled, ...props }) {
     const [args, updateArgs] = useArgs();
 
     return (
@@ -168,7 +168,7 @@ export const CustomTrigger: Story = {
   args: {
     value: 'normal',
   },
-  render: ({ disabled, ...props }) => {
+  render: function Render({ disabled, ...props }) {
     const [args, updateArgs] = useArgs();
 
     return (
@@ -245,7 +245,7 @@ export const WithLabel: Story = {
   args: {
     value: 'text',
   },
-  render: ({ disabled, ...props }) => {
+  render: function Render({ disabled, ...props }) {
     const [args, updateArgs] = useArgs();
 
     return (
@@ -293,7 +293,7 @@ export const OptionWithIcon: Story = {
   args: {
     value: 'back',
   },
-  render: ({ disabled, ...props }) => {
+  render: function Render({ disabled, ...props }) {
     const [args, updateArgs] = useArgs();
 
     return (

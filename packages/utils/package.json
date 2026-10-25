@@ -7,8 +7,7 @@
   "description": "Utilities for Figma plugin and widget",
   "scripts": {
     "clean": "rm -rf dist node_modules",
-    "build": "tsc && vite build",
-    "lint": "eslint .",
+    "build": "vp pack",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm build",
     "test": "vitest run"
@@ -33,22 +32,22 @@
   "sideEffects": false,
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs"
     },
     "./node": {
-      "types": "./dist/node/index.d.ts",
+      "types": "./dist/node/index.d.mts",
       "import": "./dist/node/index.mjs"
     },
     "./image": {
-      "types": "./dist/image/index.d.ts",
+      "types": "./dist/image/index.d.mts",
       "import": "./dist/image/index.mjs"
     },
     "./message-channel": {
-      "types": "./dist/message-channel.d.ts",
+      "types": "./dist/message-channel.d.mts",
       "import": "./dist/message-channel.mjs"
     }
   },
@@ -68,17 +67,14 @@
     }
   },
   "dependencies": {
-    "eventemitter3": "^5.0.1",
-    "type-fest": "^4.41.0"
+    "eventemitter3": "catalog:",
+    "type-fest": "catalog:"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "^1.112.0",
-    "@figma/widget-typings": "^1.11.0",
-    "vite": "6.4.4",
-    "vite-plugin-dts": "^4.5.4",
-    "vitest": "5.0.5"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
+    "@figma/plugin-typings": "catalog:figma",
+    "@figma/widget-typings": "catalog:figma",
+    "typescript": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   }
 }
