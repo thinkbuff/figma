@@ -55,3 +55,6 @@ coverage
 # storybook static build output
 storybook-static
 .vitest
+
+# Devin local config
+.devin/*.local.json
