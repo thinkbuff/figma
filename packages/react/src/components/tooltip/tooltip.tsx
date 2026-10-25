@@ -19,17 +19,17 @@ const TooltipArrow: React.FC<TooltipArrowProps> = ({ className, ref, ...props })
   <TooltipPrimitive.Arrow
     className={cn(
       'fill-figma-bg-tooltip',
-      'data-[side=bottom]:-top-1.25 data-[side=bottom]:rotate-180',
-      'data-[side=top]:-bottom-1.25',
-      'data-[side=left]:right-[-7.5px] data-[side=left]:-rotate-90',
-      'data-[side=right]:left-[-7.5px] data-[side=right]:rotate-90',
+      'data-[side=bottom]:-top-1.5 data-[side=bottom]:rotate-180',
+      'data-[side=top]:-bottom-1.5',
+      'data-[side=left]:right-[-10.5px] data-[side=left]:-rotate-90',
+      'data-[side=right]:left-[-10.5px] data-[side=right]:rotate-90',
       className,
     )}
     ref={ref}
     render={
       <svg
-        width={10}
-        height={5}
+        width={14}
+        height={7}
         viewBox="0 0 30 10"
         preserveAspectRatio="none"
       >
@@ -83,9 +83,13 @@ const TooltipContent: React.FC<TooltipContentProps> = ({
           'bg-figma-tooltip',
           'text-figma-tooltip',
           'fill-figma-icon-tooltip',
-          'px-3',
-          'rounded-figma-sm',
-          'py-2',
+          'px-2',
+          'py-1',
+          'min-h-6',
+          'whitespace-pre-wrap',
+          'break-words',
+          'rounded-figma-md',
+          'shadow-figma-tooltip',
           'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
           className,
         )}
