@@ -1,6 +1,46 @@
 # Changelog
 
 
+## v0.1.0
+
+### ⚠️ Breaking Changes
+
+#### Styling: UnoCSS → Tailwind CSS v4
+
+- `@thinkbuff/figma-theme/unocss` is removed. The theme now ships Tailwind v4 CSS (`@thinkbuff/figma-theme/css/*`) generated from the Figma tokens; `@thinkbuff/figma-theme/colors` is unchanged.
+- `@thinkbuff/figma-react` ships `styles.css`, so consumers only need:
+  ```css
+  @import 'tailwindcss';
+  @import '@thinkbuff/figma-react/styles.css';
+  ```
+- Utilities follow the theme's utility contract (`text-figma-sm`, `rounded-figma-sm`, `bg-figma-*`, …). Dark mode is `.figma-dark`; FigJam is `.figjam`.
+- Components use inline SVG icons, so no icon preset is needed.
+
+#### Primitives: Radix UI → Base UI (`@base-ui/react`)
+
+- `asChild` → `render` everywhere (e.g. `<Dialog.Trigger render={<Button />} />`). Use `nativeButton={false}` when rendering a non-button element through `Button`.
+- Change callbacks receive a second `eventDetails` argument (`onValueChange`, `onCheckedChange`, `onPressedChange`, `onOpenChange`). Dismissal is cancelled via `eventDetails.cancel()` instead of `event.preventDefault()` on `onPointerDownOutside` / `onEscapeKeyDown` / `onInteractOutside` (removed).
+- State attributes follow Base UI: `data-checked`, `data-unchecked`, `data-pressed`, `data-active`, `data-popup-open`, `data-highlighted`, `data-starting-style` / `data-ending-style`. Open triggers are styled through `aria-expanded`.
+- Overlays (`Popover`, `Tooltip`, `DropdownMenu`, `Select`) position through a Base UI Positioner: `avoidCollisions` and `updatePositionStrategy` are removed, `collisionPadding` defaults to 5, and `sideOffset` measures to the popup edge (no automatic arrow height).
+- `Checkbox`: `checked="indeterminate"` → `indeterminate` prop.
+- `ToggleGroup`: `type="single" | "multiple"` → `multiple`; `value` / `defaultValue` are always arrays.
+- `Slider`: `onValueCommit` → `onValueCommitted`; `minStepsBetweenThumbs` → `minStepsBetweenValues`; `inverted` removed; `SliderRoot` wraps a Base UI `Control`.
+- `ScrollArea`: `type` / `scrollHideDelay` removed; the scrollbar shows while hovering or scrolling.
+- `Tabs`: `activationMode` → `activateOnFocus` (default `false`: arrow keys move focus without selecting); `forceMount` → `keepMounted`; disabled tabs stay focusable.
+- `Tooltip`: `delayDuration` → `delay`, `skipDelayDuration` → `timeout`, `disableHoverableContent` → `disableHoverablePopup`; `delay` / `closeDelay` live on the trigger.
+- `DropdownMenu`: `Item onSelect` → `onClick`; `Label` must be inside `Group` / `RadioGroup`; checkbox and radio items keep the menu open.
+- `Select`: pass `items` to `Root` so the trigger shows labels; `position` → `alignItemWithTrigger`; `Item asChild` removed; the empty value is `null`; `Label` must be inside `Group`; focus returns to the trigger on close.
+- `Dialog` / `AlertDialog` / `Sheet`: `Overlay` renders Base UI `Backdrop`; `AlertDialog.Action` and `AlertDialog.Cancel` both close the dialog.
+- `Label` is a native `<label>`.
+- `react` / `react-dom` peer range is now `^18.2.0 || ^19`; Node `>=24.21.0`.
+
+Per-component details, behavior notes and QA checklists live in `.migration/`.
+
+### 🧹 Chore
+
+- Toolchain moved to Vite+ (`vp check` / `vp test` / `vp pack`), Oxlint and Oxfmt, pnpm catalogs, Storybook 10.
+- Added Vitest unit, browser-mode behavior and visual regression tests.
+
 ## v0.0.8
 
 [compare changes](https://github.com/thinkbuff/figma/compare/v0.0.7...v0.0.8)

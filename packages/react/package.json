@@ -1,6 +1,6 @@
 {
   "name": "@thinkbuff/figma-react",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "A Figma React UI components for creating plugins and widgets",
   "keywords": [
     "figma",
@@ -74,23 +74,6 @@
   },
   "dependencies": {
     "@base-ui/react": "catalog:",
-    "@radix-ui/react-alert-dialog": "catalog:radix",
-    "@radix-ui/react-checkbox": "catalog:radix",
-    "@radix-ui/react-dialog": "catalog:radix",
-    "@radix-ui/react-dropdown-menu": "catalog:radix",
-    "@radix-ui/react-label": "catalog:radix",
-    "@radix-ui/react-popover": "catalog:radix",
-    "@radix-ui/react-radio-group": "catalog:radix",
-    "@radix-ui/react-scroll-area": "catalog:radix",
-    "@radix-ui/react-select": "catalog:radix",
-    "@radix-ui/react-separator": "catalog:radix",
-    "@radix-ui/react-slider": "catalog:radix",
-    "@radix-ui/react-slot": "catalog:radix",
-    "@radix-ui/react-switch": "catalog:radix",
-    "@radix-ui/react-tabs": "catalog:radix",
-    "@radix-ui/react-toggle": "catalog:radix",
-    "@radix-ui/react-toggle-group": "catalog:radix",
-    "@radix-ui/react-tooltip": "catalog:radix",
     "@thinkbuff/figma-theme": "workspace:^",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
@@ -121,8 +104,8 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.2.0 || ^19",
+    "react-dom": "^18.2.0 || ^19"
   },
   "peerDependenciesMeta": {
     "@types/react": {

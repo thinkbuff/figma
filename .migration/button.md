@@ -25,7 +25,7 @@ Leftover scan: `rg "@radix-ui" packages/react/src/components/{button,action-icon
 
 ## Behavior changes
 
-- `data-[state=open]:*` classes on ActionIcon still target Radix `data-state` emitted by still-Radix triggers; they keep working until the overlays migrate (Base UI will emit `data-open` then — update those selectors at that handoff).
+- Open-trigger styling later moved to `aria-expanded:` (see `popover.md`).
 - None observed in tests or VRT.
 
 ## Re-baselined screenshots

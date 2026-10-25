@@ -36,7 +36,7 @@ Leftover scan: `rg "@radix-ui" src/components/tooltip/` → 0.
 
 ## Re-baselined screenshots
 
-- `tooltip-open-figma-light` + `tooltip-open-figjam` — the popup box is 5px shorter (Base UI's arrow is absolutely positioned vs Radix's in-flow SVG inside Content) and shifts ~5px right (Base UI `collisionPadding` default). Unavoidable positioning-engine delta; content/text identical.
+- Superseded: the arrow was invisible after the first pass (Base UI Arrow renders no SVG). Fixed in the popover commit, where tooltip baselines were restored to the Radix captures; the only remaining delta is Base UI's default `collisionPadding` (5px). See `popover.md`.
 
 ## Verify by hand
 

@@ -1,6 +1,6 @@
 {
   "name": "@thinkbuff/figma",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "private": true,
   "description": "Simplify plugin and widget creation for Figma and FigJam",
   "license": "MIT",
