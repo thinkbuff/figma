@@ -1,10 +1,12 @@
-import { glob } from 'glob';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
 import react from '@vitejs/plugin-react';
-import { playwright } from '@vitest/browser-playwright';
-import unocss from 'unocss/vite';
 import { defineConfig } from 'vite-plus';
+
+import { playwright } from '@vitest/browser-playwright';
+import { glob } from 'glob';
+import unocss from 'unocss/vite';
 
 import { dependencies } from './package.json';
 
@@ -42,7 +44,7 @@ const entries = Object.fromEntries(
     .sync('src/**/*.{ts,tsx}', {
       ignore: ['src/**/*.test.*', 'src/**/*.stories.*', 'src/test-utils/**'],
     })
-    .map(file => [
+    .map((file) => [
       path.relative('src', file.slice(0, file.length - path.extname(file).length)),
       path.resolve(__dirname, file),
     ]),

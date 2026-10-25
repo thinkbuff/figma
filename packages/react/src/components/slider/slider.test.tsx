@@ -1,6 +1,6 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { clickAt, firstArg } from '~/test-utils';
 
@@ -8,7 +8,13 @@ import { Slider } from './slider';
 
 describe('Slider', () => {
   it('renders a slider with the current value', async () => {
-    await render(<Slider defaultValue={[40]} max={100} min={0} />);
+    await render(
+      <Slider
+        defaultValue={[40]}
+        max={100}
+        min={0}
+      />,
+    );
 
     const slider = page.getByRole('slider');
     await expect.element(slider).toBeVisible();
@@ -18,7 +24,14 @@ describe('Slider', () => {
   });
 
   it('steps with ArrowRight and ArrowLeft', async () => {
-    await render(<Slider defaultValue={[40]} max={100} min={0} step={10} />);
+    await render(
+      <Slider
+        defaultValue={[40]}
+        max={100}
+        min={0}
+        step={10}
+      />,
+    );
 
     const slider = page.getByRole('slider');
     (slider.element() as HTMLElement).focus();
@@ -32,7 +45,14 @@ describe('Slider', () => {
   });
 
   it('jumps to min/max with Home and End', async () => {
-    await render(<Slider defaultValue={[40]} max={100} min={0} step={10} />);
+    await render(
+      <Slider
+        defaultValue={[40]}
+        max={100}
+        min={0}
+        step={10}
+      />,
+    );
 
     const slider = page.getByRole('slider');
     (slider.element() as HTMLElement).focus();
@@ -45,8 +65,14 @@ describe('Slider', () => {
   });
 
   it('is disabled', async () => {
-    const onValueChange = vi.fn();
-    await render(<Slider defaultValue={[40]} disabled onValueChange={onValueChange} />);
+    const onValueChange = vi.fn<() => void>();
+    await render(
+      <Slider
+        defaultValue={[40]}
+        disabled
+        onValueChange={onValueChange}
+      />,
+    );
 
     const slider = page.getByRole('slider');
     const sliderEl = slider.element() as HTMLElement;
@@ -64,14 +90,27 @@ describe('Slider', () => {
   });
 
   it('exposes aria-orientation for vertical sliders', async () => {
-    await render(<Slider defaultValue={[40]} orientation="vertical" />);
+    await render(
+      <Slider
+        defaultValue={[40]}
+        orientation="vertical"
+      />,
+    );
 
     await expect.element(page.getByRole('slider')).toHaveAttribute('aria-orientation', 'vertical');
   });
 
   it('calls onValueChange with the new value', async () => {
-    const onValueChange = vi.fn();
-    await render(<Slider defaultValue={[40]} max={100} min={0} step={10} onValueChange={onValueChange} />);
+    const onValueChange = vi.fn<() => void>();
+    await render(
+      <Slider
+        defaultValue={[40]}
+        max={100}
+        min={0}
+        step={10}
+        onValueChange={onValueChange}
+      />,
+    );
 
     const slider = page.getByRole('slider');
     (slider.element() as HTMLElement).focus();

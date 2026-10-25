@@ -16,7 +16,7 @@ export type ImageCreateParams = {
  * @param params.url - The URL to create the image from.
  * @param params.bytes - The bytes to create the image from.
  * @throws {Error} If neither a URL nor bytes are provided.
- * @return A promise that resolves to the created image.
+ * @returns A promise that resolves to the created image.
  */
 async function createImageByUrlOrBytes(params: Pick<ImageCreateParams, 'url' | 'bytes'>) {
   if (params.url) {
@@ -38,7 +38,7 @@ async function createImageByUrlOrBytes(params: Pick<ImageCreateParams, 'url' | '
  * @param [params.options] - Additional options for the image paint.
  * @param [params.options.scaleMode] - The scale mode for the image paint. Defaults to 'FILL'.
  * @param [params.options.scalingFactor] - The scaling factor for the image paint. Defaults to 0.5.
- * @return A promise that resolves to the created image paint.
+ * @returns A promise that resolves to the created image paint.
  */
 export async function createImagePaint(params: ImageCreateParams) {
   const { key, options = {} } = params;
@@ -65,7 +65,7 @@ export async function createImagePaint(params: ImageCreateParams) {
  * Retrieves an image paint based on the provided parameters.
  *
  * @param params - The parameters for creating the image paint.
- * @return A promise that resolves to the created image paint.
+ * @returns A promise that resolves to the created image paint.
  */
 export function getImagePaint(params: ImageCreateParams) {
   return createImagePaint(params);
@@ -75,7 +75,7 @@ export function getImagePaint(params: ImageCreateParams) {
  * Retrieves an image paint from the cache based on the provided key.
  *
  * @param key - The key used to retrieve the image paint from the cache.
- * @return The image paint associated with the provided key, or undefined if it does not exist in the cache.
+ * @returns The image paint associated with the provided key, or undefined if it does not exist in the cache.
  */
 export function getImagePaintFromCache(key: string) {
   return imagePaints.get(key);

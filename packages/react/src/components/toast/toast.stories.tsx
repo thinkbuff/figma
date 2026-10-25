@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Button } from '../button';
-
-import { Toaster } from './toaster';
 import { toast } from './toast';
+import { Toaster } from './toaster';
 
 const meta = {
   title: 'Components/Toast',
@@ -16,7 +15,7 @@ const meta = {
   },
   tags: ['autodocs'],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="min-h-60">
         <Story />
         <Toaster />
@@ -36,7 +35,8 @@ export const Default: Story = {
           onClick={() =>
             toast('Event has been created', {
               duration: 1_000_000,
-            })}
+            })
+          }
         >
           Default
         </Button>
@@ -50,7 +50,8 @@ export const Default: Story = {
                 label: 'Undo',
                 onClick: () => console.log('Undo'),
               },
-            })}
+            })
+          }
         >
           Action
         </Button>
@@ -64,7 +65,8 @@ export const Default: Story = {
                 label: 'Cancel',
                 onClick: () => console.log('Cancel'),
               },
-            })}
+            })
+          }
         >
           Cancel
         </Button>
@@ -78,7 +80,8 @@ export const Default: Story = {
                 label: 'Cancel',
                 onClick: () => console.log('Cancel'),
               },
-            })}
+            })
+          }
         >
           Success
         </Button>
@@ -92,7 +95,8 @@ export const Default: Story = {
                 label: 'Cancel',
                 onClick: () => console.log('Cancel'),
               },
-            })}
+            })
+          }
         >
           Info
         </Button>
@@ -106,7 +110,8 @@ export const Default: Story = {
                 label: 'Cancel',
                 onClick: () => console.log('Cancel'),
               },
-            })}
+            })
+          }
         >
           Warning
         </Button>
@@ -120,7 +125,8 @@ export const Default: Story = {
                 label: 'Cancel',
                 onClick: () => console.log('Cancel'),
               },
-            })}
+            })
+          }
         >
           Error
         </Button>
@@ -128,7 +134,7 @@ export const Default: Story = {
           variant="outline"
           onClick={() => {
             toast.promise(
-              new Promise<{ name: string }>(resolve =>
+              new Promise<{ name: string }>((resolve) =>
                 setTimeout(() => resolve({ name: 'Figma' }), 2000),
               ),
               {

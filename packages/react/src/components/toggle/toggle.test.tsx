@@ -1,6 +1,6 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { firstArg } from '~/test-utils';
 
@@ -21,8 +21,13 @@ describe('Toggle', () => {
   });
 
   it('calls onPressedChange with the new state', async () => {
-    const onPressedChange = vi.fn();
-    await render(<Toggle aria-label="Bold" onPressedChange={onPressedChange} />);
+    const onPressedChange = vi.fn<() => void>();
+    await render(
+      <Toggle
+        aria-label="Bold"
+        onPressedChange={onPressedChange}
+      />,
+    );
 
     await userEvent.click(page.getByRole('button', { name: 'Bold' }));
 
@@ -31,8 +36,14 @@ describe('Toggle', () => {
   });
 
   it('does not toggle when disabled', async () => {
-    const onPressedChange = vi.fn();
-    await render(<Toggle aria-label="Bold" disabled onPressedChange={onPressedChange} />);
+    const onPressedChange = vi.fn<() => void>();
+    await render(
+      <Toggle
+        aria-label="Bold"
+        disabled
+        onPressedChange={onPressedChange}
+      />,
+    );
 
     const toggle = page.getByRole('button', { name: 'Bold' });
     await expect.element(toggle).toBeDisabled();

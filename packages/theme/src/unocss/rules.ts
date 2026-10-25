@@ -17,13 +17,13 @@ const variables = Object.keys({
  *
  * @param scope - The color scope for the theme.
  * @param prefix - The prefix to be added to the theme suffix.
- * @return The generated theme suffix.
+ * @returns The generated theme suffix.
  */
 export function getThemeSuffix(scope: ThemeColorScope, prefix = '') {
   const variablePrefix = `--figma-color-${scope}`;
   return variables
-    .filter(variable => variable !== variablePrefix && variable.startsWith(variablePrefix))
-    .map(variable => `${prefix}${variable.slice(variablePrefix.length + 1)}`)
+    .filter((variable) => variable !== variablePrefix && variable.startsWith(variablePrefix))
+    .map((variable) => `${prefix}${variable.slice(variablePrefix.length + 1)}`)
     .join('|');
 }
 
@@ -32,10 +32,10 @@ export const rules: Rule[] = [
     /^font-size-(\d+|\d+\/\d+)$/,
     ([, value]) => {
       const [size, leading] = value.split('/');
-      return ({
+      return {
         'font-size': `${size}px`,
         'line-height': `${leading || 16}px`,
-      });
+      };
     },
     { autocomplete: 'font-size-(<num>|<num>/<num>)' },
   ],
@@ -48,7 +48,9 @@ export const rules: Rule[] = [
       }
 
       const scopes = ['bg', 'border', 'text', 'icon'];
-      const suffix = scopes.some(s => color?.startsWith?.(s, 1)) ? `${color || ''}` : `-${scope}${color}`;
+      const suffix = scopes.some((s) => color?.startsWith?.(s, 1))
+        ? `${color || ''}`
+        : `-${scope}${color}`;
 
       if (color && !variables.includes(`--figma-color${suffix}` as ThemeCSSVariableKey)) {
         return '';

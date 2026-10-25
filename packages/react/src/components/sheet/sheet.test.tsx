@@ -1,16 +1,24 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { firstArg } from '~/test-utils';
 
 import { Button } from '../button';
-
 import { Sheet } from './index';
 
-function Fixture({ open, onOpenChange }: { open?: boolean; onOpenChange?: (open: boolean) => void }) {
+function Fixture({
+  open,
+  onOpenChange,
+}: {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}) {
   return (
-    <Sheet.Root onOpenChange={onOpenChange} open={open}>
+    <Sheet.Root
+      onOpenChange={onOpenChange}
+      open={open}
+    >
       <Sheet.Trigger asChild>
         <Button variant="outline">Open sheet</Button>
       </Sheet.Trigger>
@@ -35,9 +43,9 @@ describe('Sheet', () => {
 
     const dialog = page.getByRole('dialog', { name: 'Sheet title' });
     await expect.element(dialog).toBeVisible();
-    await expect.element(dialog).toContainElement(
-      page.getByText('Sheet description goes here.').element() as HTMLElement,
-    );
+    await expect
+      .element(dialog)
+      .toContainElement(page.getByText('Sheet description goes here.').element() as HTMLElement);
   });
 
   it('moves focus inside the sheet on open', async () => {
@@ -72,12 +80,22 @@ describe('Sheet', () => {
   });
 
   it('supports controlled open with onOpenChange', async () => {
-    const onOpenChange = vi.fn();
-    const screen = await render(<Fixture onOpenChange={onOpenChange} open={false} />);
+    const onOpenChange = vi.fn<() => void>();
+    const screen = await render(
+      <Fixture
+        onOpenChange={onOpenChange}
+        open={false}
+      />,
+    );
 
     await expect.element(page.getByRole('dialog')).not.toBeInTheDocument();
 
-    await screen.rerender(<Fixture onOpenChange={onOpenChange} open />);
+    await screen.rerender(
+      <Fixture
+        onOpenChange={onOpenChange}
+        open
+      />,
+    );
     await expect.element(page.getByRole('dialog', { name: 'Sheet title' })).toBeVisible();
 
     await userEvent.keyboard('{Escape}');

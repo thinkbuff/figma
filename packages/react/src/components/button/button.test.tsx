@@ -1,6 +1,6 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { Button } from './button';
 
@@ -12,7 +12,7 @@ describe('Button', () => {
   });
 
   it('fires onClick when clicked', async () => {
-    const onClick = vi.fn();
+    const onClick = vi.fn<() => void>();
     await render(<Button onClick={onClick}>Click me</Button>);
 
     await userEvent.click(page.getByRole('button', { name: 'Click me' }));
@@ -21,8 +21,15 @@ describe('Button', () => {
   });
 
   it('does not fire onClick when disabled', async () => {
-    const onClick = vi.fn();
-    await render(<Button disabled onClick={onClick}>Click me</Button>);
+    const onClick = vi.fn<() => void>();
+    await render(
+      <Button
+        disabled
+        onClick={onClick}
+      >
+        Click me
+      </Button>,
+    );
 
     const button = page.getByRole('button', { name: 'Click me' });
     await expect.element(button).toBeDisabled();

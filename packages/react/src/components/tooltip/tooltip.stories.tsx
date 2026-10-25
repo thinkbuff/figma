@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
-
 import { Tooltip, TooltipProvider } from './tooltip';
 
 const meta = {
@@ -34,7 +33,10 @@ const meta = {
         type: 'number',
       },
       table: {
-        type: { summary: 'number', detail: 'An offset in pixels from the "start" or "end" alignment options.' },
+        type: {
+          summary: 'number',
+          detail: 'An offset in pixels from the "start" or "end" alignment options.',
+        },
       },
     },
     side: {
@@ -63,7 +65,8 @@ const meta = {
       table: {
         type: {
           summary: 'boolean',
-          detail: 'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
+          detail:
+            'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
         },
         defaultValue: { summary: 'true' },
       },

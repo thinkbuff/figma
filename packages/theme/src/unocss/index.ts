@@ -2,7 +2,6 @@ import { definePreset } from 'unocss';
 
 import { generateCSSVariables } from '../colors';
 import { THEME_BASE_CSS } from '../constants';
-
 import { rules } from './rules';
 
 export interface PresetFigmaOptions {
@@ -21,20 +20,25 @@ export const presetFigmaTheme = definePreset((options: PresetFigmaOptions = {}) 
   return {
     name: 'unocss-preset-figma-theme',
     rules,
-    preflights: typeof preflight === 'string' && ['figma', 'figjam', 'all'].includes(preflight)
-      ? [
-          {
-            layer: 'preflights',
-            async getCSS() {
-              if (preflight === 'all') {
-                return [generateCSSVariables('figma'), generateCSSVariables('figjam'), THEME_BASE_CSS].join('\n');
-              }
+    preflights:
+      typeof preflight === 'string' && ['figma', 'figjam', 'all'].includes(preflight)
+        ? [
+            {
+              layer: 'preflights',
+              async getCSS() {
+                if (preflight === 'all') {
+                  return [
+                    generateCSSVariables('figma'),
+                    generateCSSVariables('figjam'),
+                    THEME_BASE_CSS,
+                  ].join('\n');
+                }
 
-              return [generateCSSVariables(preflight), THEME_BASE_CSS].join('\n');
+                return [generateCSSVariables(preflight), THEME_BASE_CSS].join('\n');
+              },
             },
-          },
-        ]
-      : [],
+          ]
+        : [],
   };
 });
 

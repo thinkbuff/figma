@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 
 import { Label } from '../label';
-
 import { Checkbox } from './checkbox';
 
 const meta = {
@@ -87,9 +86,7 @@ export const WithLabel: Story = {
             updateArgs({ checked: !checked });
           }}
         />
-        <Label htmlFor="checkbox">
-          Accept terms and conditions.
-        </Label>
+        <Label htmlFor="checkbox">Accept terms and conditions.</Label>
       </div>
     );
   },

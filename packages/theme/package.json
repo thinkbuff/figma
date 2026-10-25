@@ -1,28 +1,7 @@
 {
   "name": "@thinkbuff/figma-theme",
-  "author": "Eleven <eteplus@outlook.com>",
-  "license": "MIT",
-  "type": "module",
   "version": "0.0.8",
   "description": "Figma theme",
-  "scripts": {
-    "clean": "rm -rf dist node_modules",
-    "build": "vp pack && pnpm generate:css",
-    "generate:css": "tsx scripts/generate-css-files.ts",
-    "typecheck": "tsc --noEmit",
-    "release": "changelogen --bump --no-output",
-    "prepublishOnly": "pnpm build",
-    "test": "vitest run"
-  },
-  "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/thinkbuff/figma",
-    "directory": "packages/theme"
-  },
-  "bugs": {
-    "url": "https://github.com/thinkbuff/figma/issues"
-  },
   "keywords": [
     "figma",
     "figma-theme",
@@ -30,13 +9,34 @@
     "unocss-preset",
     "unocss-preset-figma-theme"
   ],
-  "publishConfig": {
-    "access": "public"
+  "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
+  "bugs": {
+    "url": "https://github.com/thinkbuff/figma/issues"
   },
+  "license": "MIT",
+  "author": "Eleven <eteplus@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thinkbuff/figma",
+    "directory": "packages/theme"
+  },
+  "files": [
+    "*.css",
+    "dist"
+  ],
+  "type": "module",
   "sideEffects": false,
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
@@ -56,18 +56,18 @@
     "./css/*": "./dist/css/*",
     "./*": "./*"
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./*"
-      ]
-    }
+  "publishConfig": {
+    "access": "public"
   },
-  "files": [
-    "*.css",
-    "dist"
-  ],
+  "scripts": {
+    "clean": "rm -rf dist node_modules",
+    "build": "vp pack && pnpm generate:css",
+    "generate:css": "tsx scripts/generate-css-files.ts",
+    "typecheck": "tsc --noEmit",
+    "release": "changelogen --bump --no-output",
+    "prepublishOnly": "pnpm build",
+    "test": "vitest run"
+  },
   "devDependencies": {
     "tsx": "catalog:",
     "typescript": "catalog:",

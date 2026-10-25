@@ -1,7 +1,9 @@
-import { glob } from 'glob';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
 import { defineConfig } from 'vite-plus';
+
+import { glob } from 'glob';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -10,7 +12,7 @@ const entries = Object.fromEntries(
     .sync('src/**/*.ts', {
       ignore: ['src/**/*.test.ts'],
     })
-    .map(file => [
+    .map((file) => [
       path.relative('src', file.slice(0, file.length - path.extname(file).length)),
       path.resolve(__dirname, file),
     ]),

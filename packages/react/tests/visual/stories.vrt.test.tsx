@@ -1,7 +1,7 @@
 import { composeStories } from '@storybook/react-vite';
 import type { Meta } from '@storybook/react-vite';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it } from 'vitest';
+import { render } from 'vitest-browser-react';
 import { page } from 'vitest/browser';
 
 const modules = import.meta.glob('../../src/components/**/*.stories.tsx', { eager: true });
@@ -32,9 +32,9 @@ async function shot(name: string) {
 }
 
 for (const story of stories) {
-  describe(story.id, () => {
+  describe(String(story.id), () => {
     for (const theme of themes) {
-      it(theme, async () => {
+      it(String(theme), async () => {
         await render(<story.component />);
         // the preview decorator already applied globals.theme; pin the
         // requested theme on <html> after render so it always wins

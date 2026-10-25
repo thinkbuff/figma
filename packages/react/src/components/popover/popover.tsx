@@ -28,7 +28,10 @@ const PopoverArrow: React.FC<React.ComponentPropsWithRef<typeof PopoverPrimitive
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="24" height="2" />
+      <rect
+        width="24"
+        height="2"
+      />
       <path
         d="M24 1C18 1 18 11 12 11C6 11 6 0.999999 8.74228e-07 0.999999"
         stroke="currentColor"

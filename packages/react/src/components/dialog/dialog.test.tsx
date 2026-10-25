@@ -1,16 +1,24 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { firstArg } from '~/test-utils';
 
 import { Button } from '../button';
-
 import { Dialog } from './index';
 
-function Fixture({ open, onOpenChange }: { open?: boolean; onOpenChange?: (open: boolean) => void }) {
+function Fixture({
+  open,
+  onOpenChange,
+}: {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}) {
   return (
-    <Dialog.Root onOpenChange={onOpenChange} open={open}>
+    <Dialog.Root
+      onOpenChange={onOpenChange}
+      open={open}
+    >
       <Dialog.Trigger asChild>
         <Button variant="outline">Edit profile</Button>
       </Dialog.Trigger>
@@ -35,9 +43,11 @@ describe('Dialog', () => {
 
     const dialog = page.getByRole('dialog', { name: 'Edit profile' });
     await expect.element(dialog).toBeVisible();
-    await expect.element(dialog).toContainElement(
-      page.getByText('Make changes to your profile here.').element() as HTMLElement,
-    );
+    await expect
+      .element(dialog)
+      .toContainElement(
+        page.getByText('Make changes to your profile here.').element() as HTMLElement,
+      );
   });
 
   it('moves focus inside the dialog on open', async () => {
@@ -72,12 +82,22 @@ describe('Dialog', () => {
   });
 
   it('supports controlled open with onOpenChange', async () => {
-    const onOpenChange = vi.fn();
-    const screen = await render(<Fixture onOpenChange={onOpenChange} open={false} />);
+    const onOpenChange = vi.fn<() => void>();
+    const screen = await render(
+      <Fixture
+        onOpenChange={onOpenChange}
+        open={false}
+      />,
+    );
 
     await expect.element(page.getByRole('dialog')).not.toBeInTheDocument();
 
-    await screen.rerender(<Fixture onOpenChange={onOpenChange} open />);
+    await screen.rerender(
+      <Fixture
+        onOpenChange={onOpenChange}
+        open
+      />,
+    );
     await expect.element(page.getByRole('dialog', { name: 'Edit profile' })).toBeVisible();
 
     await userEvent.keyboard('{Escape}');

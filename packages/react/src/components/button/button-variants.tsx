@@ -39,10 +39,7 @@ export const buttonVariants = cva(
           'disabled:hover:bg-transparent',
           'disabled:active:bg-transparent',
         ],
-        link: [
-          'hover:underline',
-          'disabled:(text-figma-disabled no-underline)',
-        ],
+        link: ['hover:underline', 'disabled:(text-figma-disabled no-underline)'],
       },
       color: {
         primary: 'btn-primary',

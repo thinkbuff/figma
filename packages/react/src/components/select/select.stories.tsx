@@ -4,11 +4,7 @@ import { useArgs } from 'storybook/preview-api';
 import * as Select from './select';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof Select.Content> &
-  Pick<
-    React.ComponentProps<typeof Select.Trigger>,
-    | 'disabled'
-    | 'value'
-  >;
+  Pick<React.ComponentProps<typeof Select.Trigger>, 'disabled' | 'value'>;
 
 const meta = {
   title: 'Components/Select',
@@ -64,7 +60,8 @@ const meta = {
       table: {
         type: {
           summary: 'number',
-          detail: 'The distance in pixels from the anchor. Only available when position is set to popper.',
+          detail:
+            'The distance in pixels from the anchor. Only available when position is set to popper.',
         },
       },
     },
@@ -76,7 +73,8 @@ const meta = {
         defaultValue: { summary: 'center' },
         type: {
           summary: 'enum',
-          detail: 'The preferred alignment against the anchor. May change when collisions occur. Only available when position is set to popper.',
+          detail:
+            'The preferred alignment against the anchor. May change when collisions occur. Only available when position is set to popper.',
         },
       },
     },
@@ -116,7 +114,7 @@ const meta = {
     withArrow: true,
   },
   decorators: [
-    Story => (
+    (Story) => (
       <div className="w-40 p-2">
         <Story />
       </div>
@@ -129,9 +127,12 @@ const meta = {
       <Select.Root
         disabled={disabled}
         value={args.value}
-        onValueChange={value => updateArgs({ value })}
+        onValueChange={(value) => updateArgs({ value })}
       >
-        <Select.Trigger disabled={disabled} placeholder="Select. color" />
+        <Select.Trigger
+          disabled={disabled}
+          placeholder="Select. color"
+        />
         <Select.Content {...props}>
           <Select.Item value="blue">Blue</Select.Item>
           <Select.Item value="red">Red</Select.Item>
@@ -175,7 +176,7 @@ export const CustomTrigger: Story = {
       <Select.Root
         disabled={disabled}
         value={args.value}
-        onValueChange={value => updateArgs({ value })}
+        onValueChange={(value) => updateArgs({ value })}
       >
         <Select.Trigger disabled={disabled}>
           <span className="i-tabler-droplet h-3 w-8 text-figma-secondary -ml-2"></span>
@@ -252,9 +253,12 @@ export const WithLabel: Story = {
       <Select.Root
         disabled={disabled}
         value={args.value}
-        onValueChange={value => updateArgs({ value })}
+        onValueChange={(value) => updateArgs({ value })}
       >
-        <Select.Trigger disabled={disabled} placeholder="Select. an option" />
+        <Select.Trigger
+          disabled={disabled}
+          placeholder="Select. an option"
+        />
         <Select.Content {...props}>
           <Select.Group>
             <Select.Label>String</Select.Label>
@@ -270,14 +274,15 @@ export const WithLabel: Story = {
           <Select.Group>
             <Select.Label>Auto Layout</Select.Label>
             <Select.Item value="gap">Gap</Select.Item>
-            <Select.Item value="horizontal-padding">
-              Horizontal padding
-            </Select.Item>
+            <Select.Item value="horizontal-padding">Horizontal padding</Select.Item>
             <Select.Item value="vertical-padding">Vertical padding</Select.Item>
           </Select.Group>
           <Select.Separator />
           <Select.Group>
-            <Select.Item value="fill-width" disabled>
+            <Select.Item
+              value="fill-width"
+              disabled
+            >
               Fill weight
             </Select.Item>
             <Select.Item value="stroke-width">Stroke weight</Select.Item>
@@ -300,12 +305,18 @@ export const OptionWithIcon: Story = {
       <Select.Root
         disabled={disabled}
         value={args.value}
-        onValueChange={value => updateArgs({ value })}
+        onValueChange={(value) => updateArgs({ value })}
       >
-        <Select.Trigger disabled={disabled} placeholder="Select. an option" />
+        <Select.Trigger
+          disabled={disabled}
+          placeholder="Select. an option"
+        />
         <Select.Content {...props}>
           <Select.Group>
-            <Select.Item asChild value="none">
+            <Select.Item
+              asChild
+              value="none"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-circle-dot size-3.5"></span>
                 None
@@ -316,19 +327,29 @@ export const OptionWithIcon: Story = {
           <Select.Separator />
 
           <Select.Group>
-            <Select.Item asChild value="navigate-to">
+            <Select.Item
+              asChild
+              value="navigate-to"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-arrow-right size-3.5"></span>
                 Navigate to
               </div>
             </Select.Item>
-            <Select.Item asChild disabled value="change-to">
+            <Select.Item
+              asChild
+              disabled
+              value="change-to"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-refresh size-3.5"></span>
                 Change to
               </div>
             </Select.Item>
-            <Select.Item asChild value="back">
+            <Select.Item
+              asChild
+              value="back"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-arrow-back-up size-3.5"></span>
                 Back
@@ -339,25 +360,37 @@ export const OptionWithIcon: Story = {
           <Select.Separator />
 
           <Select.Group>
-            <Select.Item asChild value="set-variable">
+            <Select.Item
+              asChild
+              value="set-variable"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-settings-2 size-3.5"></span>
                 Set variable
               </div>
             </Select.Item>
-            <Select.Item asChild value="conditional">
+            <Select.Item
+              asChild
+              value="conditional"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-arrows-split-2 size-3.5"></span>
                 Conditional
               </div>
             </Select.Item>
-            <Select.Item asChild value="scroll-to">
+            <Select.Item
+              asChild
+              value="scroll-to"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-arrow-move-down size-3.5"></span>
                 Scroll to
               </div>
             </Select.Item>
-            <Select.Item asChild value="open-link">
+            <Select.Item
+              asChild
+              value="open-link"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-link size-3.5"></span>
                 Open link
@@ -368,19 +401,28 @@ export const OptionWithIcon: Story = {
           <Select.Separator />
 
           <Select.Group>
-            <Select.Item asChild value="open-overlay">
+            <Select.Item
+              asChild
+              value="open-overlay"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-square-half size-3.5"></span>
                 Open overlay
               </div>
             </Select.Item>
-            <Select.Item asChild value="swap-overlay">
+            <Select.Item
+              asChild
+              value="swap-overlay"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-replace size-3.5"></span>
                 Swap overlay
               </div>
             </Select.Item>
-            <Select.Item asChild value="close-overlay">
+            <Select.Item
+              asChild
+              value="close-overlay"
+            >
               <div className="flex items-center gap-2">
                 <span className="i-tabler-square-x size-3.5"></span>
                 Close overlay

@@ -14,7 +14,7 @@ export default defineConfig({
       '**/__screenshots__/**',
     ],
     rules: {
-      'curly': ['error', 'all'],
+      curly: ['error', 'all'],
       'unicorn/filename-case': ['warn', { case: 'kebabCase' }],
       'typescript/consistent-type-imports': [
         'error',

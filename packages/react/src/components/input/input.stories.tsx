@@ -3,7 +3,6 @@ import { useArgs } from 'storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
 import { Tooltip, TooltipProvider } from '../tooltip';
-
 import { Input, InputSlot } from './input';
 
 const meta = {
@@ -63,7 +62,7 @@ export const Invalid: Story = {
 };
 
 export const WithLeftIcon: Story = {
-  render: args => (
+  render: (args) => (
     <Input {...args}>
       <InputSlot>
         <span className="i-tabler-hash size-3"></span>
@@ -73,7 +72,7 @@ export const WithLeftIcon: Story = {
 };
 
 export const WithRightIcon: Story = {
-  render: args => (
+  render: (args) => (
     <Input {...args}>
       <InputSlot side="right">
         <span className="i-tabler-hash size-3"></span>
@@ -86,7 +85,7 @@ export const WithSlots: Story = {
   args: {
     variant: 'border',
   },
-  render: args => (
+  render: (args) => (
     <Input {...args}>
       <InputSlot side="left">
         <span className="i-tabler-search size-3"></span>
@@ -95,7 +94,7 @@ export const WithSlots: Story = {
         <ActionIcon
           disabled={args.disabled}
           className="mx-1 size-6 text-figma-icon-secondary focus:outline-transparent"
-          onClick={e => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
         >
           <span className="i-tabler-x size-3"></span>
         </ActionIcon>
@@ -119,8 +118,8 @@ export const WithTooltip: Story = {
               id="spacing"
               {...args}
               value={value}
-              onFocus={e => e.currentTarget.select()}
-              onChange={e => updateArgs({ value: Number(e.currentTarget.value) })}
+              onFocus={(e) => e.currentTarget.select()}
+              onChange={(e) => updateArgs({ value: Number(e.currentTarget.value) })}
             >
               <InputSlot side="left">
                 <span className="i-tabler-spacing-vertical size-3.5"></span>

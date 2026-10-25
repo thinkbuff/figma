@@ -1,12 +1,16 @@
 import { BaseThemeCSSVariables, type BaseThemeCSSVariableKey } from './base';
-import { FigmaLightThemeCSSVariables, FigmaDarkThemeCSSVariables, type FigmaThemeCSSVariableKey } from './figma';
-import { FigJamLightThemeCSSVariables, type FigJamThemeCSSVariableKey } from './figjam';
+import { FigJamLightThemeCSSVariables } from './figjam';
+import {
+  FigmaLightThemeCSSVariables,
+  FigmaDarkThemeCSSVariables,
+  type FigmaThemeCSSVariableKey,
+} from './figma';
 
 export * from './base';
 export * from './figma';
 export * from './figjam';
 
-export type ThemeCSSVariableKey = BaseThemeCSSVariableKey | FigmaThemeCSSVariableKey | FigJamThemeCSSVariableKey;
+export type ThemeCSSVariableKey = BaseThemeCSSVariableKey | FigmaThemeCSSVariableKey;
 
 export type ThemeColorScope = 'bg' | 'border' | 'icon' | 'text';
 

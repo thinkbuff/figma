@@ -12,7 +12,7 @@ describe('debounce', () => {
   });
 
   it('calls the function after the delay', () => {
-    const fn = vi.fn();
+    const fn = vi.fn<() => void>();
     const debounced = debounce(fn, 100);
 
     debounced();
@@ -23,7 +23,7 @@ describe('debounce', () => {
   });
 
   it('resets the timer on subsequent calls', () => {
-    const fn = vi.fn();
+    const fn = vi.fn<() => void>();
     const debounced = debounce(fn, 100);
 
     debounced();
@@ -37,7 +37,7 @@ describe('debounce', () => {
   });
 
   it('passes the last arguments to the function', () => {
-    const fn = vi.fn();
+    const fn = vi.fn<(value: string) => void>();
     const debounced = debounce(fn, 100);
 
     debounced('first');

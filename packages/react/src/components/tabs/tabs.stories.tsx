@@ -22,26 +22,30 @@ const meta = {
   render: function Render(args) {
     const [{ value }, updateArgs] = useArgs();
 
-    const list = [{
-      value: 'all',
-      content: 'All comments, mentions, and replies',
-    }, {
-      value: 'only',
-      content: 'Only mentions and replies',
-    }, {
-      value: 'none',
-      content: 'None',
-    }];
+    const list = [
+      {
+        value: 'all',
+        content: 'All comments, mentions, and replies',
+      },
+      {
+        value: 'only',
+        content: 'Only mentions and replies',
+      },
+      {
+        value: 'none',
+        content: 'None',
+      },
+    ];
 
     return (
       <Tabs.Root
         {...args}
         className="min-w-60"
         value={value}
-        onValueChange={tab => updateArgs({ value: tab })}
+        onValueChange={(tab) => updateArgs({ value: tab })}
       >
         <Tabs.List className="h-9 w-full justify-start">
-          {list.map(item => (
+          {list.map((item) => (
             <Tabs.Trigger
               key={item.value}
               value={item.value}
@@ -51,7 +55,7 @@ const meta = {
           ))}
         </Tabs.List>
         <div className="flex p-2">
-          {list.map(item => (
+          {list.map((item) => (
             <Tabs.Content
               key={item.value}
               value={item.value}

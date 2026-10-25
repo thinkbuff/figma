@@ -1,12 +1,8 @@
 import { useState } from 'react';
-import { Tooltip } from '@thinkbuff/figma-react/tooltip';
-import {
-  SliderRoot,
-  SliderTrack,
-  SliderRange,
-  SliderThumb,
-} from '@thinkbuff/figma-react/slider';
+
 import { Select } from '@thinkbuff/figma-react/select';
+import { SliderRoot, SliderTrack, SliderRange, SliderThumb } from '@thinkbuff/figma-react/slider';
+import { Tooltip } from '@thinkbuff/figma-react/tooltip';
 import { cn } from '@thinkbuff/figma-react/utils';
 
 import ReactLogo from './assets/react.svg';
@@ -20,7 +16,7 @@ function Slider() {
     <SliderRoot
       value={values}
       className="data-[orientation=vertical]:h-60"
-      onValueChange={value => setValues(value)}
+      onValueChange={(value) => setValues(value)}
     >
       <SliderTrack>
         <SliderRange />
@@ -49,19 +45,33 @@ export function App() {
   return (
     <>
       <div className={cn('outline-figma-icon', 'outline-figma-border-brand')}>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
+        <a
+          href="https://vitejs.dev"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src="/vite.svg"
+            className="logo"
+            alt="Vite logo"
+          />
         </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={ReactLogo} className="logo react" alt="React logo" />
+        <a
+          href="https://react.dev"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src={ReactLogo}
+            className="logo react"
+            alt="React logo"
+          />
         </a>
       </div>
       <h1 className="border border-solid p-2 bg-figma border-figma hover:text-figma-brand">
         Vite + React + Figma
       </h1>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
       <div className="min-h-60 min-w-60 flex flex-col items-center justify-center gap-4 bg-figma">
         <Slider />
         <Select.Root>
@@ -81,16 +91,15 @@ export function App() {
             <Select.Group>
               <Select.Label>Auto Layout</Select.Label>
               <Select.Item value="gap">Gap</Select.Item>
-              <Select.Item value="horizontal-padding">
-                Horizontal padding
-              </Select.Item>
-              <Select.Item value="vertical-padding">
-                Vertical padding
-              </Select.Item>
+              <Select.Item value="horizontal-padding">Horizontal padding</Select.Item>
+              <Select.Item value="vertical-padding">Vertical padding</Select.Item>
             </Select.Group>
             <Select.Separator />
             <Select.Group>
-              <Select.Item value="fill-width" disabled>
+              <Select.Item
+                value="fill-width"
+                disabled
+              >
                 Fill weight
               </Select.Item>
               <Select.Item value="stroke-width">Stroke weight</Select.Item>

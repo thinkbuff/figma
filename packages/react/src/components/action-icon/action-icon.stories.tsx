@@ -19,7 +19,7 @@ const meta = {
   args: {
     disabled: false,
   },
-  render: args => (
+  render: (args) => (
     <ActionIcon {...args}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -33,8 +33,7 @@ const meta = {
           fillRule="nonzero"
           stroke="none"
           d="M5.5 5.5v-5h1v5h5v1h-5v5h-1v-5h-5v-1h5z"
-        >
-        </path>
+        ></path>
       </svg>
     </ActionIcon>
   ),

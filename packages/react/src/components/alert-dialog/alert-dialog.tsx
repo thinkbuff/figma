@@ -12,11 +12,9 @@ const AlertDialogAction = AlertDialogPrimitive.Action;
 
 const AlertDialogCancel = AlertDialogPrimitive.Cancel;
 
-const AlertDialogOverlay: React.FC<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Overlay>> = ({
-  className,
-  ref,
-  ...props
-}) => (
+const AlertDialogOverlay: React.FC<
+  React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Overlay>
+> = ({ className, ref, ...props }) => (
   <AlertDialogPrimitive.Overlay
     ref={ref}
     className={cn(
@@ -34,7 +32,9 @@ const AlertDialogOverlay: React.FC<React.ComponentPropsWithRef<typeof AlertDialo
 
 AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName;
 
-interface AlertDialogContentProps extends React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Content> {
+interface AlertDialogContentProps extends React.ComponentPropsWithRef<
+  typeof AlertDialogPrimitive.Content
+> {
   container?: AlertDialogPrimitive.AlertDialogPortalProps['container'];
 }
 
@@ -44,7 +44,12 @@ interface AlertDialogContentProps extends React.ComponentPropsWithRef<typeof Ale
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/alert-dialog)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/alert-dialog#api-reference)
  */
-const AlertDialogContent: React.FC<AlertDialogContentProps> = ({ className, container, ref, ...props }) => (
+const AlertDialogContent: React.FC<AlertDialogContentProps> = ({
+  className,
+  container,
+  ref,
+  ...props
+}) => (
   <AlertDialogPortal container={container}>
     <AlertDialogOverlay />
     <AlertDialogPrimitive.Content
@@ -75,27 +80,43 @@ const AlertDialogContent: React.FC<AlertDialogContentProps> = ({ className, cont
 
 AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName;
 
-const AlertDialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({ className, children, ref, ...props }) => (
-  <div ref={ref} className={cn('flex', 'items-center', 'pb-6', className)} {...props}>
+const AlertDialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({
+  className,
+  children,
+  ref,
+  ...props
+}) => (
+  <div
+    ref={ref}
+    className={cn('flex', 'items-center', 'pb-6', className)}
+    {...props}
+  >
     {children}
   </div>
 );
 
 AlertDialogHeader.displayName = 'AlertDialogHeader';
 
-const AlertDialogFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({ className, children, ref, ...props }) => (
-  <div ref={ref} className={cn('flex', 'items-center', 'pt-6', className)} {...props}>
+const AlertDialogFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({
+  className,
+  children,
+  ref,
+  ...props
+}) => (
+  <div
+    ref={ref}
+    className={cn('flex', 'items-center', 'pt-6', className)}
+    {...props}
+  >
     {children}
   </div>
 );
 
 AlertDialogFooter.displayName = 'AlertDialogFooter';
 
-const AlertDialogTitle: React.FC<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Title>> = ({
-  className,
-  ref,
-  ...props
-}) => (
+const AlertDialogTitle: React.FC<
+  React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Title>
+> = ({ className, ref, ...props }) => (
   <AlertDialogPrimitive.Title
     ref={ref}
     className={cn('text-figma', 'font-size-14', 'font-medium', className)}
@@ -105,11 +126,15 @@ const AlertDialogTitle: React.FC<React.ComponentPropsWithRef<typeof AlertDialogP
 
 AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName;
 
-const AlertDialogDescription: React.FC<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Description>> = ({
-  className,
-  ref,
-  ...props
-}) => <AlertDialogPrimitive.Description ref={ref} className={cn('text-figma', 'font-size-11', className)} {...props} />;
+const AlertDialogDescription: React.FC<
+  React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Description>
+> = ({ className, ref, ...props }) => (
+  <AlertDialogPrimitive.Description
+    ref={ref}
+    className={cn('text-figma', 'font-size-11', className)}
+    {...props}
+  />
+);
 
 AlertDialogDescription.displayName = AlertDialogPrimitive.Description.displayName;
 

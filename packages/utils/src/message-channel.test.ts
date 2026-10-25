@@ -321,7 +321,7 @@ describe('lifecycle', () => {
     expect(h2).not.toHaveBeenCalled();
   });
 
-  it('removeAllMessageListeners(type) clears only that type\'s handlers', () => {
+  it("removeAllMessageListeners(type) clears only that type's handlers", () => {
     const channel = createMessageChannel();
     const h1 = vi.fn<() => void>();
     const h2 = vi.fn<() => void>();

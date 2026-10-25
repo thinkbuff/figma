@@ -110,7 +110,10 @@ SliderThumb.displayName = SliderPrimitive.Thumb.displayName;
 const Slider: React.FC<React.ComponentPropsWithRef<typeof SliderRoot>> = ({ ref, ...props }) => {
   const value = props.value ?? props.defaultValue ?? [0];
   return (
-    <SliderRoot {...props} ref={ref}>
+    <SliderRoot
+      {...props}
+      ref={ref}
+    >
       <SliderTrack>
         <SliderRange />
       </SliderTrack>

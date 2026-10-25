@@ -1,5 +1,6 @@
-import React from 'react';
 import type { Preview } from '@storybook/react-vite';
+import React from 'react';
+
 import 'virtual:uno.css';
 import './preview.css';
 
@@ -9,7 +10,7 @@ const themes = [
   { value: 'figjam', title: 'FigJam' },
 ] as const;
 
-type Theme = typeof themes[number]['value'];
+type Theme = (typeof themes)[number]['value'];
 
 function setTheme(theme: Theme) {
   for (const theme of themes) {

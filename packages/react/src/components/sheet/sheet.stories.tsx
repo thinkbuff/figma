@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 
-import { Button } from '../button';
-import { Label } from '../label';
-import { Input } from '../input';
 import { ActionIcon } from '../action-icon';
-
+import { Button } from '../button';
+import { Input } from '../input';
+import { Label } from '../label';
 import * as Sheet from './sheet';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof Sheet.Content> & {
@@ -27,8 +26,7 @@ const meta = {
       table: {
         type: {
           summary: 'enum',
-          detail:
-            'Indicate the edge of the screen where the component will appear',
+          detail: 'Indicate the edge of the screen where the component will appear',
         },
         defaultValue: {
           summary: 'bottom',
@@ -48,7 +46,7 @@ const meta = {
       <Sheet.Root
         open={open}
         modal={modal}
-        onOpenChange={value => updateArgs({ open: value })}
+        onOpenChange={(value) => updateArgs({ open: value })}
       >
         <Sheet.Trigger asChild>
           <Button>Open</Button>
@@ -64,7 +62,10 @@ const meta = {
           </Sheet.Header>
           <div className="grid gap-4 p-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
+              <Label
+                htmlFor="name"
+                className="text-right"
+              >
                 Name
               </Label>
               <Input
@@ -75,7 +76,10 @@ const meta = {
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
+              <Label
+                htmlFor="username"
+                className="text-right"
+              >
                 Username
               </Label>
               <Input
@@ -88,7 +92,10 @@ const meta = {
           </div>
           <Sheet.Footer className="justify-end">
             <Sheet.Close asChild>
-              <Button type="submit" className="h-7">
+              <Button
+                type="submit"
+                className="h-7"
+              >
                 Save changes
               </Button>
             </Sheet.Close>

@@ -3,9 +3,9 @@ import { describe, expect, it, vi } from 'vitest';
 import { cloneNodesToMaximum } from './clone-nodes-to-maximum';
 
 function makeNode() {
-  const parent = { appendChild: vi.fn() };
+  const parent = { appendChild: vi.fn<() => void>() };
   const node = {
-    clone: vi.fn(() => ({ visible: true })),
+    clone: vi.fn<() => object>(() => ({ visible: true })),
     parent,
   };
   return node as unknown as FrameNode & { clone: ReturnType<typeof vi.fn> };
@@ -38,10 +38,10 @@ describe('cloneNodesToMaximum', () => {
   });
 
   it('hides cloned nodes and appends them to the parent', () => {
-    const parent = { appendChild: vi.fn() };
+    const parent = { appendChild: vi.fn<() => void>() };
     const clone = { visible: true };
     const node = {
-      clone: vi.fn(() => clone),
+      clone: vi.fn<() => object>(() => clone),
       parent,
     } as unknown as FrameNode;
 

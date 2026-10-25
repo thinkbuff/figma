@@ -12,21 +12,11 @@ interface RadioGroupProps extends React.ComponentPropsWithRef<typeof RadioGroupP
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/radio-group)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/radio-group#api-reference)
  */
-const RadioGroup: React.FC<RadioGroupProps> = ({
-  className,
-  inline = false,
-  ref,
-  ...props
-}) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({ className, inline = false, ref, ...props }) => {
   return (
     <RadioGroupPrimitive.Root
       ref={ref}
-      className={cn(
-        'flex',
-        'gap-2',
-        inline ? 'flex-row' : 'flex-col',
-        className,
-      )}
+      className={cn('flex', 'gap-2', inline ? 'flex-row' : 'flex-col', className)}
       {...props}
     />
   );

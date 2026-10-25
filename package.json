@@ -1,8 +1,10 @@
 {
   "name": "@thinkbuff/figma",
   "version": "0.0.8",
-  "description": "Simplify plugin and widget creation for Figma and FigJam",
   "private": true,
+  "description": "Simplify plugin and widget creation for Figma and FigJam",
+  "license": "MIT",
+  "author": "Eleven <eteplus@outlook.com>",
   "type": "module",
   "scripts": {
     "clean": "pnpm run -r clean && rm -rf node_modules",
@@ -21,12 +23,6 @@
     "postinstall": "pnpm -F @thinkbuff/figma-theme build",
     "prepare": "simple-git-hooks"
   },
-  "packageManager": "pnpm@10.34.7",
-  "engines": {
-    "node": ">=24.21.0"
-  },
-  "author": "Eleven <eteplus@outlook.com>",
-  "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
@@ -46,5 +42,9 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  }
+  },
+  "engines": {
+    "node": ">=24.21.0"
+  },
+  "packageManager": "pnpm@10.34.7"
 }

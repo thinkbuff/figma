@@ -1,6 +1,6 @@
-import { page } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page } from 'vitest/browser';
 
 import { Separator } from './separator';
 
@@ -18,16 +18,25 @@ describe('Separator', () => {
   });
 
   it('exposes aria-orientation when not decorative', async () => {
-    await render(<Separator decorative={false} orientation="vertical" />);
-
-    await expect.element(page.getByRole('separator')).toHaveAttribute(
-      'aria-orientation',
-      'vertical',
+    await render(
+      <Separator
+        decorative={false}
+        orientation="vertical"
+      />,
     );
+
+    await expect
+      .element(page.getByRole('separator'))
+      .toHaveAttribute('aria-orientation', 'vertical');
   });
 
   it('reports horizontal orientation', async () => {
-    await render(<Separator decorative={false} orientation="horizontal" />);
+    await render(
+      <Separator
+        decorative={false}
+        orientation="horizontal"
+      />,
+    );
 
     // horizontal is the implicit default: it is either explicit or omitted
     const separator = page.getByRole('separator');

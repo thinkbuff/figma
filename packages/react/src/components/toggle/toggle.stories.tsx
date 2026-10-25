@@ -27,7 +27,7 @@ const meta = {
       <Toggle
         {...args}
         pressed={pressed}
-        onPressedChange={value => updateArgs({ pressed: value })}
+        onPressedChange={(value) => updateArgs({ pressed: value })}
       >
         <span className="i-tabler-dots size-4"></span>
       </Toggle>

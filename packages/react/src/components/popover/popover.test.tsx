@@ -1,11 +1,10 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { clickOutside } from '~/test-utils';
 
 import { Button } from '../button';
-
 import * as Popover from './popover';
 
 function Fixture() {

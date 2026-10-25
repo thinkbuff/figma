@@ -18,7 +18,10 @@ interface InputProps extends React.ComponentPropsWithRef<'input'>, InputVariants
   /**
    * Props passed down to the root element of the Input component
    */
-  wrapperProps?: Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'> &
+  wrapperProps?: Omit<
+    React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+    'ref'
+  > &
     React.DataHTMLAttributes<'div'>;
 }
 
@@ -36,7 +39,14 @@ const Input: React.FC<InputProps> = ({
     <InputContext.Provider value={{ disabled, invalid }}>
       <div
         {...wrapperProps}
-        className={cn('peer', 'relative', 'h-8', 'flex', 'items-center', wrapperProps?.className ?? '')}
+        className={cn(
+          'peer',
+          'relative',
+          'h-8',
+          'flex',
+          'items-center',
+          wrapperProps?.className ?? '',
+        )}
         data-disabled={disabled}
         data-invalid={invalid}
         onClick={() => (ref as React.RefObject<HTMLInputElement>).current?.focus?.()}
@@ -46,7 +56,12 @@ const Input: React.FC<InputProps> = ({
           ref={ref}
           data-invalid={invalid}
           aria-invalid={invalid}
-          className={cn('inline-block', 'h-full', 'px-2', inputVariants({ variant, disabled, invalid, className }))}
+          className={cn(
+            'inline-block',
+            'h-full',
+            'px-2',
+            inputVariants({ variant, disabled, invalid, className }),
+          )}
           {...props}
           disabled={disabled}
         />

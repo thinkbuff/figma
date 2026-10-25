@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 
 import { Label } from '../label';
-
 import { Switch } from './switch';
 
 const meta = {
@@ -30,7 +29,7 @@ const meta = {
       <Switch
         {...args}
         checked={checked}
-        onCheckedChange={value => updateArgs({ checked: value })}
+        onCheckedChange={(value) => updateArgs({ checked: value })}
       />
     );
   },

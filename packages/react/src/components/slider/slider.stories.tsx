@@ -2,14 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 
 import { TooltipProvider, Tooltip } from '../tooltip';
-
-import {
-  Slider,
-  SliderRoot,
-  SliderTrack,
-  SliderRange,
-  SliderThumb,
-} from './slider';
+import { Slider, SliderRoot, SliderTrack, SliderRange, SliderThumb } from './slider';
 
 type CustomStoryProps = React.ComponentPropsWithRef<typeof Slider> & {
   showTooltip?: boolean;
@@ -114,7 +107,7 @@ const meta = {
           {...args}
           value={value}
           className="data-[orientation=vertical]:h-60"
-          onValueChange={changed => updateArgs({ value: changed })}
+          onValueChange={(changed) => updateArgs({ value: changed })}
         />
       </div>
     );
@@ -148,7 +141,7 @@ export const CustomStyle: Story = {
           {...args}
           value={values}
           className="data-[orientation=vertical]:h-60"
-          onValueChange={value => updateArgs({ value })}
+          onValueChange={(value) => updateArgs({ value })}
         >
           <SliderTrack className="h-1px bg-figma-icon data-[orientation=vertical]:w-1px">
             <SliderRange className="bg-figma-icon" />
@@ -174,7 +167,7 @@ export const WithValueTooltip: Story = {
   args: {
     showTooltip: false,
   },
-  render: function Render({ showTooltip: _, ...props }) {
+  render: function Render({ showTooltip: _showTooltip, ...props }) {
     const [{ value: values, showTooltip }, updateArgs] = useArgs<{
       value: number[];
       showTooltip: boolean;
@@ -187,7 +180,7 @@ export const WithValueTooltip: Story = {
             {...props}
             value={values}
             className="data-[orientation=vertical]:h-60"
-            onValueChange={value => updateArgs({ value })}
+            onValueChange={(value) => updateArgs({ value })}
           >
             <SliderTrack>
               <SliderRange />

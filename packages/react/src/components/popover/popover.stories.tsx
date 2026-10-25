@@ -4,7 +4,6 @@ import { useArgs } from 'storybook/preview-api';
 import { Button } from '../button';
 import { Input } from '../input';
 import { Label } from '../label';
-
 import * as Popover from './popover';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof Popover.Content> & {
@@ -53,8 +52,7 @@ const meta = {
       table: {
         type: {
           summary: 'number',
-          detail:
-            'An offset in pixels from the "start" or "end" alignment options.',
+          detail: 'An offset in pixels from the "start" or "end" alignment options.',
         },
       },
     },
@@ -112,12 +110,15 @@ const meta = {
         modal={modal}
         defaultOpen={false}
         open={open}
-        onOpenChange={value => updateArgs({ open: value })}
+        onOpenChange={(value) => updateArgs({ open: value })}
       >
         <Popover.Trigger asChild>
           <Button variant="outline">Open</Button>
         </Popover.Trigger>
-        <Popover.Content {...props} className="w-60 p-4">
+        <Popover.Content
+          {...props}
+          className="w-60 p-4"
+        >
           <div className="grid gap-4">
             <div className="space-y-2">
               <h3 className="font-medium leading-none">Dimensions</h3>

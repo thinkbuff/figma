@@ -90,8 +90,9 @@ const sheetVariants = cva(
 );
 
 export interface SheetContentProps
-  extends React.ComponentPropsWithRef<typeof SheetPrimitive.Content>,
-  VariantProps<typeof sheetVariants> {
+  extends
+    React.ComponentPropsWithRef<typeof SheetPrimitive.Content>,
+    VariantProps<typeof sheetVariants> {
   container?: SheetPrimitive.DialogPortalProps['container'];
 }
 
@@ -142,8 +143,7 @@ const SheetHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       className,
     )}
     {...props}
-  >
-  </div>
+  ></div>
 );
 
 SheetHeader.displayName = 'SheetHeader';
@@ -165,8 +165,7 @@ const SheetFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       className,
     )}
     {...props}
-  >
-  </div>
+  ></div>
 );
 
 SheetFooter.displayName = 'SheetFooter';
@@ -185,11 +184,9 @@ const SheetTitle: React.FC<React.ComponentPropsWithRef<typeof SheetPrimitive.Tit
 
 SheetTitle.displayName = SheetPrimitive.Title.displayName;
 
-const SheetDescription: React.FC<React.ComponentPropsWithRef<typeof SheetPrimitive.Description>> = ({
-  className,
-  ref,
-  ...props
-}) => (
+const SheetDescription: React.FC<
+  React.ComponentPropsWithRef<typeof SheetPrimitive.Description>
+> = ({ className, ref, ...props }) => (
   <SheetPrimitive.Description
     ref={ref}
     className={cn('text-figma-secondary', className)}

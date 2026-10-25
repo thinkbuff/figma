@@ -1,13 +1,12 @@
+import { Root as Portal } from '@radix-ui/react-portal';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
-import { Root as Portal } from '@radix-ui/react-portal';
 
-import { Button } from '../button';
-import { Label } from '../label';
-import { Input } from '../input';
 import { ActionIcon } from '../action-icon';
+import { Button } from '../button';
+import { Input } from '../input';
+import { Label } from '../label';
 import { toast, Toaster } from '../toast';
-
 import * as Dialog from './dialog';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof Dialog.Content> & {
@@ -27,7 +26,7 @@ const meta = {
     open: false,
   },
   decorators: [
-    Story => (
+    (Story) => (
       <>
         <Story />
         <Portal>
@@ -40,7 +39,11 @@ const meta = {
     const { open: _, modal, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
     return (
-      <Dialog.Root modal={modal} open={open} onOpenChange={value => updateArgs({ open: value })}>
+      <Dialog.Root
+        modal={modal}
+        open={open}
+        onOpenChange={(value) => updateArgs({ open: value })}
+      >
         <Dialog.Trigger asChild>
           <Button variant="outline">Edit profile</Button>
         </Dialog.Trigger>
@@ -60,10 +63,15 @@ const meta = {
               </ActionIcon>
             </Dialog.Close>
           </Dialog.Header>
-          <Dialog.Description>Make changes to your profile here. Click save when you&apos;re done.</Dialog.Description>
+          <Dialog.Description>
+            Make changes to your profile here. Click save when you&apos;re done.
+          </Dialog.Description>
           <div className="grid gap-4 p-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
+              <Label
+                htmlFor="name"
+                className="text-right"
+              >
                 Name
               </Label>
               <Input
@@ -76,7 +84,10 @@ const meta = {
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
+              <Label
+                htmlFor="username"
+                className="text-right"
+              >
                 Username
               </Label>
               <Input
@@ -91,7 +102,10 @@ const meta = {
           </div>
           <Dialog.Footer className="justify-end gap-3">
             <Dialog.Close asChild>
-              <Button variant="outline" color="secondary">
+              <Button
+                variant="outline"
+                color="secondary"
+              >
                 Cancel
               </Button>
             </Dialog.Close>

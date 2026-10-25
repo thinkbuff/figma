@@ -1,6 +1,6 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { firstArg } from '~/test-utils';
 
@@ -89,7 +89,7 @@ describe('Select', () => {
   });
 
   it('calls onValueChange with the selected value', async () => {
-    const onValueChange = vi.fn();
+    const onValueChange = vi.fn<() => void>();
     await render(<Fixture onValueChange={onValueChange} />);
 
     await userEvent.click(page.getByRole('combobox', { name: 'Fruit' }));

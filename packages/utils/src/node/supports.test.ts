@@ -23,12 +23,17 @@ describe('supportsAutoLayout', () => {
 });
 
 describe('supportsChildren', () => {
-  it.each(['BOOLEAN_OPERATION', 'COMPONENT', 'COMPONENT_SET', 'FRAME', 'GROUP', 'INSTANCE', 'SECTION'])(
-    'returns true for %s',
-    (type) => {
-      expect(supportsChildren(node(type))).toBe(true);
-    },
-  );
+  it.each([
+    'BOOLEAN_OPERATION',
+    'COMPONENT',
+    'COMPONENT_SET',
+    'FRAME',
+    'GROUP',
+    'INSTANCE',
+    'SECTION',
+  ])('returns true for %s', (type) => {
+    expect(supportsChildren(node(type))).toBe(true);
+  });
 
   it.each(['RECTANGLE', 'TEXT', 'LINE', 'VECTOR'])('returns false for %s', (type) => {
     expect(supportsChildren(node(type))).toBe(false);

@@ -1,6 +1,6 @@
-import { userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { userEvent } from 'vitest/browser';
 
 import { firstArg, getToggleable, isOn } from '~/test-utils';
 
@@ -41,14 +41,24 @@ describe('ToggleGroup', () => {
   });
 
   it('respects defaultValue', async () => {
-    await render(<Fixture defaultValue="center" type="single" />);
+    await render(
+      <Fixture
+        defaultValue="center"
+        type="single"
+      />,
+    );
 
     expect(isOn(getToggleable('Center').element())).toBe(true);
   });
 
   it('calls onValueChange with the new selection', async () => {
-    const onValueChange = vi.fn();
-    await render(<Fixture onValueChange={onValueChange} type="single" />);
+    const onValueChange = vi.fn<() => void>();
+    await render(
+      <Fixture
+        onValueChange={onValueChange}
+        type="single"
+      />,
+    );
 
     await userEvent.click(getToggleable('Right'));
 
@@ -60,7 +70,12 @@ describe('ToggleGroup', () => {
     await render(
       <ToggleGroup type="single">
         <ToggleGroupItem value="left">Left</ToggleGroupItem>
-        <ToggleGroupItem disabled value="center">Center</ToggleGroupItem>
+        <ToggleGroupItem
+          disabled
+          value="center"
+        >
+          Center
+        </ToggleGroupItem>
       </ToggleGroup>,
     );
 

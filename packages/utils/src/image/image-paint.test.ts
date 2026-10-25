@@ -3,8 +3,12 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { createImagePaint, getImagePaintFromCache } from './image-paint';
 
 function stubFigma() {
-  const createImageAsync = vi.fn(async (_url: string) => ({ hash: 'hash-async' }));
-  const createImage = vi.fn((_bytes: Uint8Array) => ({ hash: 'hash-bytes' }));
+  const createImageAsync = vi.fn<(url: string) => Promise<{ hash: string }>>(async () => ({
+    hash: 'hash-async',
+  }));
+  const createImage = vi.fn<(bytes: Uint8Array) => { hash: string }>(() => ({
+    hash: 'hash-bytes',
+  }));
   vi.stubGlobal('figma', { createImageAsync, createImage });
   return { createImageAsync, createImage };
 }

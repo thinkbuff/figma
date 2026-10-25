@@ -1,6 +1,6 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { isRendered } from '~/test-utils';
 
@@ -36,10 +36,12 @@ describe('Tooltip', () => {
     // pointermove events, so keep moving until they register the leave
     const elsewhere = page.getByText('Elsewhere');
     await elsewhere.hover();
-    await expect.poll(async () => {
-      await elsewhere.hover();
-      return content.elements().length === 0;
-    }).toBe(true);
+    await expect
+      .poll(async () => {
+        await elsewhere.hover();
+        return content.elements().length === 0;
+      })
+      .toBe(true);
     expect(triggerEl.getAttribute('aria-describedby')).toBeNull();
   });
 

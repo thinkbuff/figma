@@ -1,6 +1,6 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { firstArg } from '~/test-utils';
 
@@ -31,8 +31,14 @@ describe('Switch', () => {
   });
 
   it('does not toggle when disabled', async () => {
-    const onCheckedChange = vi.fn();
-    await render(<Switch aria-label="Notifications" disabled onCheckedChange={onCheckedChange} />);
+    const onCheckedChange = vi.fn<() => void>();
+    await render(
+      <Switch
+        aria-label="Notifications"
+        disabled
+        onCheckedChange={onCheckedChange}
+      />,
+    );
 
     await expect.element(page.getByRole('switch', { name: 'Notifications' })).toBeDisabled();
 
@@ -40,8 +46,13 @@ describe('Switch', () => {
   });
 
   it('calls onCheckedChange with the new state', async () => {
-    const onCheckedChange = vi.fn();
-    await render(<Switch aria-label="Notifications" onCheckedChange={onCheckedChange} />);
+    const onCheckedChange = vi.fn<() => void>();
+    await render(
+      <Switch
+        aria-label="Notifications"
+        onCheckedChange={onCheckedChange}
+      />,
+    );
 
     await userEvent.click(page.getByRole('switch', { name: 'Notifications' }));
 

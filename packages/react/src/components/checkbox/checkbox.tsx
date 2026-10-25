@@ -11,7 +11,14 @@ interface CheckboxProps extends React.ComponentPropsWithRef<typeof CheckboxPrimi
  * - [Docs](https://www.radix-ui.com/docs/primitives/components/checkbox)
  * - [API Reference](https://www.radix-ui.com/primitives/docs/components/checkbox#api-reference)
  */
-const Checkbox: React.FC<CheckboxProps> = ({ className, checked, indeterminate = false, disabled, ref, ...props }) => (
+const Checkbox: React.FC<CheckboxProps> = ({
+  className,
+  checked,
+  indeterminate = false,
+  disabled,
+  ref,
+  ...props
+}) => (
   <CheckboxPrimitive.Root
     ref={ref}
     className={cn(
@@ -49,8 +56,15 @@ const Checkbox: React.FC<CheckboxProps> = ({ className, checked, indeterminate =
     checked={indeterminate ? 'indeterminate' : checked}
     disabled={disabled}
   >
-    <CheckboxPrimitive.Indicator className="absolute inline-block size-2.5" asChild>
-      {indeterminate ? <span className="i-mdi-minus-thick"></span> : <span className="i-mdi-check-bold -mt-1px"></span>}
+    <CheckboxPrimitive.Indicator
+      className="absolute inline-block size-2.5"
+      asChild
+    >
+      {indeterminate ? (
+        <span className="i-mdi-minus-thick"></span>
+      ) : (
+        <span className="i-mdi-check-bold -mt-1px"></span>
+      )}
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 );

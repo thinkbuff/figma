@@ -348,6 +348,7 @@ export const FigmaDarkThemeCSSVariables = {
   '--figma-color-text-warning-tertiary': '#f7d15f',
 };
 
-export type FigmaThemeCSSVariables = typeof FigmaLightThemeCSSVariables & typeof FigmaDarkThemeCSSVariables;
+export type FigmaThemeCSSVariables = typeof FigmaLightThemeCSSVariables &
+  typeof FigmaDarkThemeCSSVariables;
 
 export type FigmaThemeCSSVariableKey = keyof FigmaThemeCSSVariables;

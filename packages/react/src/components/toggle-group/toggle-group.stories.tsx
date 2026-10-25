@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 
 import { Tooltip, TooltipProvider } from '../tooltip';
-
 import { ToggleGroup, ToggleGroupItem } from './toggle-group';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof ToggleGroup>;
@@ -62,8 +61,11 @@ const meta = {
           }
         }}
       >
-        {options.map(option => (
-          <ToggleGroupItem key={option.value} value={option.value}>
+        {options.map((option) => (
+          <ToggleGroupItem
+            key={option.value}
+            value={option.value}
+          >
             {option.icon}
           </ToggleGroupItem>
         ))}
@@ -117,8 +119,11 @@ export const Multiple: Story = {
           updateArgs({ value: selected });
         }}
       >
-        {options.map(option => (
-          <ToggleGroupItem key={option.value} value={option.value}>
+        {options.map((option) => (
+          <ToggleGroupItem
+            key={option.value}
+            value={option.value}
+          >
             {option.icon}
           </ToggleGroupItem>
         ))}
@@ -164,12 +169,13 @@ export const WithTooltip: Story = {
             updateArgs({ value: selected });
           }}
         >
-          {options.map(option => (
-            <Tooltip key={option.value} content={option.label}>
+          {options.map((option) => (
+            <Tooltip
+              key={option.value}
+              content={option.label}
+            >
               <div className="inline-flex items-center justify-center">
-                <ToggleGroupItem value={option.value}>
-                  {option.icon}
-                </ToggleGroupItem>
+                <ToggleGroupItem value={option.value}>{option.icon}</ToggleGroupItem>
               </div>
             </Tooltip>
           ))}

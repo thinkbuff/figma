@@ -1,6 +1,6 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { firstArg, pressKey } from '~/test-utils';
 
@@ -9,9 +9,18 @@ import { Radio } from './index';
 function Fixture(props: React.ComponentProps<typeof Radio.Group>) {
   return (
     <Radio.Group {...props}>
-      <Radio.GroupItem aria-label="Option A" value="a" />
-      <Radio.GroupItem aria-label="Option B" value="b" />
-      <Radio.GroupItem aria-label="Option C" value="c" />
+      <Radio.GroupItem
+        aria-label="Option A"
+        value="a"
+      />
+      <Radio.GroupItem
+        aria-label="Option B"
+        value="b"
+      />
+      <Radio.GroupItem
+        aria-label="Option C"
+        value="c"
+      />
     </Radio.Group>
   );
 }
@@ -31,14 +40,12 @@ describe('Radio', () => {
 
     await userEvent.click(page.getByRole('radio', { name: 'Option B' }));
 
-    await expect.element(page.getByRole('radio', { name: 'Option B' })).toHaveAttribute(
-      'aria-checked',
-      'true',
-    );
-    await expect.element(page.getByRole('radio', { name: 'Option A' })).toHaveAttribute(
-      'aria-checked',
-      'false',
-    );
+    await expect
+      .element(page.getByRole('radio', { name: 'Option B' }))
+      .toHaveAttribute('aria-checked', 'true');
+    await expect
+      .element(page.getByRole('radio', { name: 'Option A' }))
+      .toHaveAttribute('aria-checked', 'false');
   });
 
   it('moves selection with arrow keys', async () => {
@@ -47,51 +54,56 @@ describe('Radio', () => {
     (page.getByRole('radio', { name: 'Option A' }).element() as HTMLElement).focus();
     pressKey('ArrowDown');
 
-    await expect.element(page.getByRole('radio', { name: 'Option B' })).toHaveAttribute(
-      'aria-checked',
-      'true',
-    );
+    await expect
+      .element(page.getByRole('radio', { name: 'Option B' }))
+      .toHaveAttribute('aria-checked', 'true');
 
     pressKey('ArrowDown');
-    await expect.element(page.getByRole('radio', { name: 'Option C' })).toHaveAttribute(
-      'aria-checked',
-      'true',
-    );
+    await expect
+      .element(page.getByRole('radio', { name: 'Option C' }))
+      .toHaveAttribute('aria-checked', 'true');
   });
 
   it('skips disabled items during keyboard navigation', async () => {
     await render(
       <Radio.Group defaultValue="a">
-        <Radio.GroupItem aria-label="Option A" value="a" />
-        <Radio.GroupItem aria-label="Option B" disabled value="b" />
-        <Radio.GroupItem aria-label="Option C" value="c" />
+        <Radio.GroupItem
+          aria-label="Option A"
+          value="a"
+        />
+        <Radio.GroupItem
+          aria-label="Option B"
+          disabled
+          value="b"
+        />
+        <Radio.GroupItem
+          aria-label="Option C"
+          value="c"
+        />
       </Radio.Group>,
     );
 
     (page.getByRole('radio', { name: 'Option A' }).element() as HTMLElement).focus();
     pressKey('ArrowDown');
 
-    await expect.element(page.getByRole('radio', { name: 'Option C' })).toHaveAttribute(
-      'aria-checked',
-      'true',
-    );
-    await expect.element(page.getByRole('radio', { name: 'Option B' })).toHaveAttribute(
-      'aria-checked',
-      'false',
-    );
+    await expect
+      .element(page.getByRole('radio', { name: 'Option C' }))
+      .toHaveAttribute('aria-checked', 'true');
+    await expect
+      .element(page.getByRole('radio', { name: 'Option B' }))
+      .toHaveAttribute('aria-checked', 'false');
   });
 
   it('respects defaultValue', async () => {
     await render(<Fixture defaultValue="b" />);
 
-    await expect.element(page.getByRole('radio', { name: 'Option B' })).toHaveAttribute(
-      'aria-checked',
-      'true',
-    );
+    await expect
+      .element(page.getByRole('radio', { name: 'Option B' }))
+      .toHaveAttribute('aria-checked', 'true');
   });
 
   it('calls onValueChange with the selected value', async () => {
-    const onValueChange = vi.fn();
+    const onValueChange = vi.fn<() => void>();
     await render(<Fixture onValueChange={onValueChange} />);
 
     await userEvent.click(page.getByRole('radio', { name: 'Option C' }));

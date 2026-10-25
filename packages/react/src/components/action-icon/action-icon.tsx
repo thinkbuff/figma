@@ -11,7 +11,13 @@ interface ActionIconProps extends Omit<React.ComponentPropsWithRef<'button'>, 'c
   asChild?: boolean;
 }
 
-const ActionIcon: React.FC<ActionIconProps> = ({ className, disabled, asChild = false, ref, ...props }) => {
+const ActionIcon: React.FC<ActionIconProps> = ({
+  className,
+  disabled,
+  asChild = false,
+  ref,
+  ...props
+}) => {
   const Component = asChild ? Slot : 'button';
   return (
     <Component

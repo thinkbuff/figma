@@ -1,6 +1,6 @@
-import { page } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page } from 'vitest/browser';
 
 import { ScrollArea } from './scroll-area';
 

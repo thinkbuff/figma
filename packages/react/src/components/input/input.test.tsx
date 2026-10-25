@@ -1,7 +1,7 @@
 import { createRef } from 'react';
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { Input, InputSlot } from './input';
 
@@ -13,8 +13,13 @@ describe('Input', () => {
   });
 
   it('updates value and calls onChange when typing', async () => {
-    const onChange = vi.fn();
-    await render(<Input aria-label="Name" onChange={onChange} />);
+    const onChange = vi.fn<() => void>();
+    await render(
+      <Input
+        aria-label="Name"
+        onChange={onChange}
+      />,
+    );
 
     const input = page.getByRole('textbox', { name: 'Name' });
     await userEvent.fill(input, 'hello');
@@ -24,18 +29,27 @@ describe('Input', () => {
   });
 
   it('is disabled', async () => {
-    await render(<Input aria-label="Name" disabled />);
+    await render(
+      <Input
+        aria-label="Name"
+        disabled
+      />,
+    );
 
     await expect.element(page.getByRole('textbox', { name: 'Name' })).toBeDisabled();
   });
 
   it('is marked invalid', async () => {
-    await render(<Input aria-label="Name" invalid />);
-
-    await expect.element(page.getByRole('textbox', { name: 'Name' })).toHaveAttribute(
-      'aria-invalid',
-      'true',
+    await render(
+      <Input
+        aria-label="Name"
+        invalid
+      />,
     );
+
+    await expect
+      .element(page.getByRole('textbox', { name: 'Name' }))
+      .toHaveAttribute('aria-invalid', 'true');
   });
 
   it('forwards ref to the input element', async () => {
@@ -48,7 +62,10 @@ describe('Input', () => {
   it('focuses the input when the wrapper is clicked', async () => {
     const ref = createRef<HTMLInputElement>();
     await render(
-      <Input ref={ref} aria-label="Name">
+      <Input
+        ref={ref}
+        aria-label="Name"
+      >
         <InputSlot>
           <span>icon</span>
         </InputSlot>

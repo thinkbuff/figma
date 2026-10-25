@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+
 import { glob } from 'glob';
 
 import { version } from '../package.json';

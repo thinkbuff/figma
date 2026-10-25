@@ -2,12 +2,9 @@ import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 
 import { cn } from '~/utils';
 
-const ScrollBar: React.FC<React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>> = ({
-  className,
-  orientation = 'vertical',
-  ref,
-  ...props
-}) => (
+const ScrollBar: React.FC<
+  React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
+> = ({ className, orientation = 'vertical', ref, ...props }) => (
   <ScrollAreaPrimitive.ScrollAreaScrollbar
     ref={ref}
     orientation={orientation}

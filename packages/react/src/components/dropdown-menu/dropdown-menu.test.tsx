@@ -1,6 +1,6 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { clickForce, firstArg } from '~/test-utils';
 
@@ -24,11 +24,22 @@ function Fixture({
       <DropdownMenu.Trigger>Open menu</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Item onSelect={onSelect}>Undo</DropdownMenu.Item>
-        <DropdownMenu.Item disabled onSelect={onSelect}>Redo</DropdownMenu.Item>
-        <DropdownMenu.CheckboxItem checked={checked} onCheckedChange={onCheckedChange}>
+        <DropdownMenu.Item
+          disabled
+          onSelect={onSelect}
+        >
+          Redo
+        </DropdownMenu.Item>
+        <DropdownMenu.CheckboxItem
+          checked={checked}
+          onCheckedChange={onCheckedChange}
+        >
           Show grid
         </DropdownMenu.CheckboxItem>
-        <DropdownMenu.RadioGroup value={radioValue} onValueChange={onRadioChange}>
+        <DropdownMenu.RadioGroup
+          value={radioValue}
+          onValueChange={onRadioChange}
+        >
           <DropdownMenu.RadioItem value="a">Layout A</DropdownMenu.RadioItem>
           <DropdownMenu.RadioItem value="b">Layout B</DropdownMenu.RadioItem>
         </DropdownMenu.RadioGroup>
@@ -60,7 +71,7 @@ describe('DropdownMenu', () => {
   });
 
   it('fires the item handler on click', async () => {
-    const onSelect = vi.fn();
+    const onSelect = vi.fn<() => void>();
     await render(<Fixture onSelect={onSelect} />);
 
     await userEvent.click(page.getByRole('button', { name: 'Open menu' }));
@@ -79,8 +90,13 @@ describe('DropdownMenu', () => {
   });
 
   it('toggles a checkbox item', async () => {
-    const onCheckedChange = vi.fn();
-    await render(<Fixture checked onCheckedChange={onCheckedChange} />);
+    const onCheckedChange = vi.fn<() => void>();
+    await render(
+      <Fixture
+        checked
+        onCheckedChange={onCheckedChange}
+      />,
+    );
 
     await userEvent.click(page.getByRole('button', { name: 'Open menu' }));
 
@@ -131,7 +147,7 @@ describe('DropdownMenu', () => {
   });
 
   it('does not fire the handler for a disabled item', async () => {
-    const onSelect = vi.fn();
+    const onSelect = vi.fn<() => void>();
     await render(<Fixture onSelect={onSelect} />);
 
     await userEvent.click(page.getByRole('button', { name: 'Open menu' }));

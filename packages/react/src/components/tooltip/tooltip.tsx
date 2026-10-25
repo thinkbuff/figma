@@ -23,8 +23,9 @@ const TooltipArrow: React.FC<React.ComponentPropsWithRef<typeof TooltipPrimitive
 TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName;
 
 interface TooltipContentProps
-  extends TooltipPrimitive.TooltipPortalProps,
-  React.ComponentPropsWithRef<typeof TooltipPrimitive.Content> {}
+  extends
+    TooltipPrimitive.TooltipPortalProps,
+    React.ComponentPropsWithRef<typeof TooltipPrimitive.Content> {}
 
 const TooltipContent: React.FC<TooltipContentProps> = ({
   className,
@@ -54,9 +55,7 @@ const TooltipContent: React.FC<TooltipContentProps> = ({
 
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
-interface TooltipProps
-  extends TooltipPrimitive.TooltipProps,
-  Omit<TooltipContentProps, 'content'> {
+interface TooltipProps extends TooltipPrimitive.TooltipProps, Omit<TooltipContentProps, 'content'> {
   /**
    * The content of the tooltip
    */
@@ -113,13 +112,6 @@ const Tooltip = ({
 
 Tooltip.displayName = 'Tooltip';
 
-export {
-  Tooltip,
-  TooltipProvider,
-  TooltipRoot,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-};
+export { Tooltip, TooltipProvider, TooltipRoot, TooltipTrigger, TooltipContent, TooltipArrow };
 
 export type { TooltipProps };

@@ -1,7 +1,6 @@
 import EventEmitter from 'eventemitter3';
 
-export type MessageEventTypes<T extends Record<string, unknown>> =
-  EventEmitter.EventNames<T>;
+export type MessageEventTypes<T extends Record<string, unknown>> = EventEmitter.EventNames<T>;
 
 export type MessageEventObject<
   T extends Record<string, unknown>,
@@ -41,10 +40,7 @@ export function createMessageChannel<
   try {
     if (isInFigmaSandbox) {
       figma.ui.onmessage = (
-        message: MessageEventObject<
-          MessageEvents,
-          MessageEventTypes<MessageEvents>
-        >,
+        message: MessageEventObject<MessageEvents, MessageEventTypes<MessageEvents>>,
       ) => {
         if (!message?.type) {
           return;
@@ -139,9 +135,7 @@ export function createMessageChannel<
      *
      * @param type - The type of the message event. If not provided, all listeners will be removed.
      */
-    removeAllMessageListeners<T extends MessageEventTypes<MessageEvents>>(
-      type?: T,
-    ) {
+    removeAllMessageListeners<T extends MessageEventTypes<MessageEvents>>(type?: T) {
       emitter.removeAllListeners(type);
     },
   };

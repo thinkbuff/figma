@@ -1,20 +1,13 @@
-import {
-  defineConfig,
-  presetWind3,
-  presetIcons,
-  transformerVariantGroup,
-} from 'unocss';
 import presetRemToPx from '@unocss/preset-rem-to-px';
+import { defineConfig, presetWind3, presetIcons, transformerVariantGroup } from 'unocss';
 import presetAnimations from 'unocss-preset-animations';
+
 import { presetFigmaTheme } from '@thinkbuff/figma-theme/unocss';
 
 export default defineConfig({
   content: {
     pipeline: {
-      include: [
-        'src/**/*.tsx',
-        /(.*)(\/)?figma(-|\/packages\/)?react(.*)\.(c|m)?(js)(x?)$/,
-      ],
+      include: ['src/**/*.tsx', /(.*)(\/)?figma(-|\/packages\/)?react(.*)\.(c|m)?(js)(x?)$/],
     },
   },
   presets: [

@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 
 import { Button } from '../button';
-
 import * as AlertDialog from './alert-dialog';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof AlertDialog.Content> & {
@@ -25,10 +24,13 @@ const meta = {
     return (
       <AlertDialog.Root
         open={open}
-        onOpenChange={value => updateArgs({ open: value })}
+        onOpenChange={(value) => updateArgs({ open: value })}
       >
         <AlertDialog.Trigger asChild>
-          <Button variant="outline" color="danger">
+          <Button
+            variant="outline"
+            color="danger"
+          >
             Delete account
           </Button>
         </AlertDialog.Trigger>
@@ -37,12 +39,17 @@ const meta = {
             <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
           </AlertDialog.Header>
           <AlertDialog.Description>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            This action cannot be undone. This will permanently delete your account and remove your
+            data from our servers.
           </AlertDialog.Description>
           <AlertDialog.Footer className="justify-end gap-3">
             <AlertDialog.Cancel asChild>
-              <Button variant="outline" color="secondary">Cancel</Button>
+              <Button
+                variant="outline"
+                color="secondary"
+              >
+                Cancel
+              </Button>
             </AlertDialog.Cancel>
             <AlertDialog.Action asChild>
               <Button color="danger">Yes, delete account</Button>

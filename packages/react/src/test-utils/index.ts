@@ -8,8 +8,8 @@ import { page, type Locator, type UserEventClickOptions } from 'vitest/browser';
  */
 export function isOn(element: Element): boolean {
   return (
-    element.getAttribute('aria-pressed') === 'true'
-    || element.getAttribute('aria-checked') === 'true'
+    element.getAttribute('aria-pressed') === 'true' ||
+    element.getAttribute('aria-checked') === 'true'
   );
 }
 
@@ -70,14 +70,14 @@ export function isRendered(element: Element): boolean {
  * Useful when a locator can match both visible and visually-hidden elements.
  */
 export function anyVisible(locator: Locator): boolean {
-  return locator.elements().some(element => isRendered(element));
+  return locator.elements().some((element) => isRendered(element));
 }
 
 /**
  * Whether no element matched by the locator is rendered.
  */
 export function noneVisible(locator: Locator): boolean {
-  return locator.elements().every(element => !isRendered(element));
+  return locator.elements().every((element) => !isRendered(element));
 }
 
 /**

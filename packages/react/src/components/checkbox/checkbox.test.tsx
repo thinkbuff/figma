@@ -1,11 +1,10 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { firstArg } from '~/test-utils';
 
 import { Label } from '../label';
-
 import { Checkbox } from './checkbox';
 
 describe('Checkbox', () => {
@@ -36,26 +35,40 @@ describe('Checkbox', () => {
   });
 
   it('respects controlled checked', async () => {
-    await render(<Checkbox aria-label="Accept" checked />);
-
-    await expect.element(page.getByRole('checkbox', { name: 'Accept' })).toHaveAttribute(
-      'aria-checked',
-      'true',
+    await render(
+      <Checkbox
+        aria-label="Accept"
+        checked
+      />,
     );
+
+    await expect
+      .element(page.getByRole('checkbox', { name: 'Accept' }))
+      .toHaveAttribute('aria-checked', 'true');
   });
 
   it('reports aria-checked="mixed" when indeterminate', async () => {
-    await render(<Checkbox aria-label="Accept" indeterminate />);
-
-    await expect.element(page.getByRole('checkbox', { name: 'Accept' })).toHaveAttribute(
-      'aria-checked',
-      'mixed',
+    await render(
+      <Checkbox
+        aria-label="Accept"
+        indeterminate
+      />,
     );
+
+    await expect
+      .element(page.getByRole('checkbox', { name: 'Accept' }))
+      .toHaveAttribute('aria-checked', 'mixed');
   });
 
   it('does not toggle when disabled', async () => {
-    const onCheckedChange = vi.fn();
-    await render(<Checkbox aria-label="Accept" disabled onCheckedChange={onCheckedChange} />);
+    const onCheckedChange = vi.fn<() => void>();
+    await render(
+      <Checkbox
+        aria-label="Accept"
+        disabled
+        onCheckedChange={onCheckedChange}
+      />,
+    );
 
     const checkbox = page.getByRole('checkbox', { name: 'Accept' });
     await expect.element(checkbox).toBeDisabled();
@@ -64,8 +77,13 @@ describe('Checkbox', () => {
   });
 
   it('calls onCheckedChange with the new state', async () => {
-    const onCheckedChange = vi.fn();
-    await render(<Checkbox aria-label="Accept" onCheckedChange={onCheckedChange} />);
+    const onCheckedChange = vi.fn<() => void>();
+    await render(
+      <Checkbox
+        aria-label="Accept"
+        onCheckedChange={onCheckedChange}
+      />,
+    );
 
     await userEvent.click(page.getByRole('checkbox', { name: 'Accept' }));
 

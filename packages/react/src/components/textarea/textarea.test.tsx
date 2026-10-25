@@ -1,7 +1,7 @@
 import { createRef } from 'react';
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { Textarea } from './textarea';
 
@@ -13,8 +13,13 @@ describe('Textarea', () => {
   });
 
   it('updates value and calls onChange when typing', async () => {
-    const onChange = vi.fn();
-    await render(<Textarea aria-label="Bio" onChange={onChange} />);
+    const onChange = vi.fn<() => void>();
+    await render(
+      <Textarea
+        aria-label="Bio"
+        onChange={onChange}
+      />,
+    );
 
     const textarea = page.getByRole('textbox', { name: 'Bio' });
     await userEvent.fill(textarea, 'a few words');
@@ -24,18 +29,27 @@ describe('Textarea', () => {
   });
 
   it('is disabled', async () => {
-    await render(<Textarea aria-label="Bio" disabled />);
+    await render(
+      <Textarea
+        aria-label="Bio"
+        disabled
+      />,
+    );
 
     await expect.element(page.getByRole('textbox', { name: 'Bio' })).toBeDisabled();
   });
 
   it('is marked invalid', async () => {
-    await render(<Textarea aria-label="Bio" invalid />);
-
-    await expect.element(page.getByRole('textbox', { name: 'Bio' })).toHaveAttribute(
-      'aria-invalid',
-      'true',
+    await render(
+      <Textarea
+        aria-label="Bio"
+        invalid
+      />,
     );
+
+    await expect
+      .element(page.getByRole('textbox', { name: 'Bio' }))
+      .toHaveAttribute('aria-invalid', 'true');
   });
 
   it('forwards ref to the textarea element', async () => {

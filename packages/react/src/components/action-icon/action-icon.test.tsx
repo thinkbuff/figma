@@ -1,6 +1,6 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { ActionIcon } from './action-icon';
 
@@ -12,8 +12,13 @@ describe('ActionIcon', () => {
   });
 
   it('fires onClick when clicked', async () => {
-    const onClick = vi.fn();
-    await render(<ActionIcon aria-label="Settings" onClick={onClick} />);
+    const onClick = vi.fn<() => void>();
+    await render(
+      <ActionIcon
+        aria-label="Settings"
+        onClick={onClick}
+      />,
+    );
 
     await userEvent.click(page.getByRole('button', { name: 'Settings' }));
 
@@ -21,8 +26,14 @@ describe('ActionIcon', () => {
   });
 
   it('does not fire onClick when disabled', async () => {
-    const onClick = vi.fn();
-    await render(<ActionIcon aria-label="Settings" disabled onClick={onClick} />);
+    const onClick = vi.fn<() => void>();
+    await render(
+      <ActionIcon
+        aria-label="Settings"
+        disabled
+        onClick={onClick}
+      />,
+    );
 
     await expect.element(page.getByRole('button', { name: 'Settings' })).toBeDisabled();
 

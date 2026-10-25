@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
-
 import * as DropdownMenu from './dropdown-menu';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof DropdownMenu.Content> & {
@@ -34,7 +33,10 @@ const meta = {
         type: 'number',
       },
       table: {
-        type: { summary: 'number', detail: 'An offset in pixels from the "start" or "end" alignment options.' },
+        type: {
+          summary: 'number',
+          detail: 'An offset in pixels from the "start" or "end" alignment options.',
+        },
       },
     },
     side: {
@@ -63,7 +65,8 @@ const meta = {
       table: {
         type: {
           summary: 'boolean',
-          detail: 'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
+          detail:
+            'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
         },
         defaultValue: { summary: 'true' },
       },
@@ -86,38 +89,31 @@ const meta = {
         modal={modal}
         defaultOpen={false}
         open={open}
-        onOpenChange={value => updateArgs({ open: value })}
+        onOpenChange={(value) => updateArgs({ open: value })}
       >
         <DropdownMenu.Trigger asChild>
           <ActionIcon>
             <span className="i-tabler-menu-2 size-4"></span>
           </ActionIcon>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Content {...props} className="min-w-60">
+        <DropdownMenu.Content
+          {...props}
+          className="min-w-60"
+        >
           <DropdownMenu.Item>
-            New Tab
-            {' '}
-            <span className="ml-auto">⌘+T</span>
+            New Tab <span className="ml-auto">⌘+T</span>
           </DropdownMenu.Item>
           <DropdownMenu.Item>
-            New Window
-            {' '}
-            <span className="ml-auto">⌘+N</span>
+            New Window <span className="ml-auto">⌘+N</span>
           </DropdownMenu.Item>
           <DropdownMenu.Item disabled>
-            New Private Window
-            {' '}
-            <span className="ml-auto">⇧+⌘+N</span>
+            New Private Window <span className="ml-auto">⇧+⌘+N</span>
           </DropdownMenu.Item>
           <DropdownMenu.Sub>
-            <DropdownMenu.SubTrigger>
-              More Tools
-            </DropdownMenu.SubTrigger>
+            <DropdownMenu.SubTrigger>More Tools</DropdownMenu.SubTrigger>
             <DropdownMenu.SubContent className="min-w-40">
               <DropdownMenu.Item>
-                Save Page As
-                {' '}
-                <span className="ml-auto">⌘+S</span>
+                Save Page As <span className="ml-auto">⌘+S</span>
               </DropdownMenu.Item>
               <DropdownMenu.Item>Create Shortcut</DropdownMenu.Item>
               <DropdownMenu.Item>Name Window</DropdownMenu.Item>
@@ -127,22 +123,14 @@ const meta = {
           </DropdownMenu.Sub>
           <DropdownMenu.Separator />
           <DropdownMenu.CheckboxItem>
-            Show Bookmarks
-            {' '}
-            <span className="ml-auto">⌘+B</span>
+            Show Bookmarks <span className="ml-auto">⌘+B</span>
           </DropdownMenu.CheckboxItem>
-          <DropdownMenu.CheckboxItem checked>
-            Show Full URLs
-          </DropdownMenu.CheckboxItem>
+          <DropdownMenu.CheckboxItem checked>Show Full URLs</DropdownMenu.CheckboxItem>
           <DropdownMenu.Separator />
           <DropdownMenu.Label>People</DropdownMenu.Label>
           <DropdownMenu.RadioGroup value="pedro">
-            <DropdownMenu.RadioItem value="pedro">
-              Eleven Zhang
-            </DropdownMenu.RadioItem>
-            <DropdownMenu.RadioItem value="colm">
-              Jerry Zhang
-            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="pedro">Eleven Zhang</DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="colm">Jerry Zhang</DropdownMenu.RadioItem>
           </DropdownMenu.RadioGroup>
           <DropdownMenu.Arrow />
         </DropdownMenu.Content>

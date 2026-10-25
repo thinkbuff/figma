@@ -85,9 +85,4 @@ const TabsContent: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Con
 
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-export {
-  TabsRoot as Root,
-  TabsList as List,
-  TabsTrigger as Trigger,
-  TabsContent as Content,
-};
+export { TabsRoot as Root, TabsList as List, TabsTrigger as Trigger, TabsContent as Content };

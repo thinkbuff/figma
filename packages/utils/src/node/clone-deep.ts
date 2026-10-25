@@ -9,16 +9,13 @@ import type { WritableDeep } from 'type-fest';
  */
 export function cloneDeep<T = any>(value: T): WritableDeep<T> {
   const type = typeof value;
-  if (
-    value === null
-    || ['undefined', 'number', 'string', 'boolean', 'symbol'].includes(type)
-  ) {
+  if (value === null || ['undefined', 'number', 'string', 'boolean', 'symbol'].includes(type)) {
     return value as WritableDeep<T>;
   }
 
   if (type === 'object') {
     if (Array.isArray(value)) {
-      return value.map(item => cloneDeep(item)) as WritableDeep<T>;
+      return value.map((item) => cloneDeep(item)) as WritableDeep<T>;
     }
 
     if (value instanceof Uint8Array) {

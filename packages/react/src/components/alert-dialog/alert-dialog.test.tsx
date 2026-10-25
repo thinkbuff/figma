@@ -1,11 +1,10 @@
-import { page, userEvent } from 'vitest/browser';
-import { render } from 'vitest-browser-react';
 import { describe, expect, it } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
 
 import { clickOutside } from '~/test-utils';
 
 import { Button } from '../button';
-
 import { AlertDialog } from './index';
 
 function Fixture() {
@@ -18,9 +17,7 @@ function Fixture() {
         <AlertDialog.Header>
           <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
         </AlertDialog.Header>
-        <AlertDialog.Description>
-          This action cannot be undone.
-        </AlertDialog.Description>
+        <AlertDialog.Description>This action cannot be undone.</AlertDialog.Description>
         <AlertDialog.Footer>
           <AlertDialog.Cancel asChild>
             <Button variant="outline">Cancel</Button>
@@ -40,7 +37,8 @@ describe('AlertDialog', () => {
 
     await userEvent.click(page.getByRole('button', { name: 'Delete account' }));
 
-    await expect.element(page.getByRole('alertdialog', { name: 'Are you absolutely sure?' }))
+    await expect
+      .element(page.getByRole('alertdialog', { name: 'Are you absolutely sure?' }))
       .toBeVisible();
   });
 
