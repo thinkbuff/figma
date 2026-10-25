@@ -22,7 +22,7 @@ const SheetOverlay: React.FC<
       'fixed',
       'inset-0',
       'z-50',
-      'bg-black/50',
+      'bg-figma-overlay',
       'backdrop-blur',
       'transition-opacity duration-200 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
       className,
@@ -170,7 +170,7 @@ const SheetTitle: React.FC<
 > = ({ className, ref, ...props }) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={cn('text-xs', 'text-figma', 'font-semibold', className)}
+    className={cn('text-figma', 'text-figma-sm leading-figma-sm', 'font-figma-strong', className)}
     {...props}
   />
 );
