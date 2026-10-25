@@ -1,0 +1,84 @@
+import { page, userEvent } from 'vitest/browser';
+import { render } from 'vitest-browser-react';
+import { describe, expect, it, vi } from 'vitest';
+
+import { clickAt, firstArg } from '~/test-utils';
+
+import { Slider } from './slider';
+
+describe('Slider', () => {
+  it('renders a slider with the current value', async () => {
+    await render(<Slider defaultValue={[40]} max={100} min={0} />);
+
+    const slider = page.getByRole('slider');
+    await expect.element(slider).toBeVisible();
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '40');
+    await expect.element(slider).toHaveAttribute('aria-valuemin', '0');
+    await expect.element(slider).toHaveAttribute('aria-valuemax', '100');
+  });
+
+  it('steps with ArrowRight and ArrowLeft', async () => {
+    await render(<Slider defaultValue={[40]} max={100} min={0} step={10} />);
+
+    const slider = page.getByRole('slider');
+    (slider.element() as HTMLElement).focus();
+
+    await userEvent.keyboard('{ArrowRight}');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '50');
+
+    await userEvent.keyboard('{ArrowLeft}');
+    await userEvent.keyboard('{ArrowLeft}');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '30');
+  });
+
+  it('jumps to min/max with Home and End', async () => {
+    await render(<Slider defaultValue={[40]} max={100} min={0} step={10} />);
+
+    const slider = page.getByRole('slider');
+    (slider.element() as HTMLElement).focus();
+
+    await userEvent.keyboard('{End}');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '100');
+
+    await userEvent.keyboard('{Home}');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '0');
+  });
+
+  it('is disabled', async () => {
+    const onValueChange = vi.fn();
+    await render(<Slider defaultValue={[40]} disabled onValueChange={onValueChange} />);
+
+    const slider = page.getByRole('slider');
+    const sliderEl = slider.element() as HTMLElement;
+
+    // the disabled state is exposed on the slider root
+    const disabledAncestor = sliderEl.closest('[aria-disabled]') as HTMLElement | null;
+    expect(disabledAncestor?.getAttribute('aria-disabled')).toBe('true');
+
+    // pointer interaction does not change the value
+    const root = page.elementLocator(sliderEl.parentElement as Element);
+    await clickAt(root, (root.element() as HTMLElement).clientWidth - 2, 4);
+
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '40');
+    expect(onValueChange).not.toHaveBeenCalled();
+  });
+
+  it('exposes aria-orientation for vertical sliders', async () => {
+    await render(<Slider defaultValue={[40]} orientation="vertical" />);
+
+    await expect.element(page.getByRole('slider')).toHaveAttribute('aria-orientation', 'vertical');
+  });
+
+  it('calls onValueChange with the new value', async () => {
+    const onValueChange = vi.fn();
+    await render(<Slider defaultValue={[40]} max={100} min={0} step={10} onValueChange={onValueChange} />);
+
+    const slider = page.getByRole('slider');
+    (slider.element() as HTMLElement).focus();
+    await userEvent.keyboard('{ArrowRight}');
+
+    expect(onValueChange).toHaveBeenCalled();
+    // callback arity/shape varies between primitives (Radix passes an array)
+    expect([firstArg(onValueChange)].flat()[0]).toBe(50);
+  });
+});

@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "release": "changelogen --bump --no-output",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "pnpm build",
+    "test": "vitest run"
   },
   "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
   "repository": {
@@ -68,7 +69,8 @@
   ],
   "devDependencies": {
     "unbuild": "^3.5.0",
-    "unocss": "^66.1.2"
+    "unocss": "^66.1.2",
+    "vitest": "5.0.5"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix"

@@ -9,7 +9,9 @@ import { dependencies } from './package.json';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const entries = glob
-  .sync('src/**/*.ts')
+  .sync('src/**/*.ts', {
+    ignore: ['src/**/*.test.ts'],
+  })
   .map(file => ([
     path.relative(
       'src',
@@ -25,6 +27,7 @@ export default defineConfig({
   plugins: [
     dts({
       include: ['src/**/*.ts'],
+      exclude: ['src/**/*.test.ts'],
     }),
   ],
   resolve: {

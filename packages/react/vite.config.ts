@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const entries = glob
   .sync('src/**/*.{ts,tsx}', {
-    ignore: ['src/**/*.stories.{ts,tsx}'],
+    ignore: ['src/**/*.stories.{ts,tsx}', 'src/**/*.test.{ts,tsx}', 'src/test-utils/**'],
   })
   .map(file => ([
     path.relative(
@@ -31,7 +31,7 @@ export default defineConfig({
     unocss(),
     dts({
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.stories.{ts,tsx}'],
+      exclude: ['src/**/*.stories.{ts,tsx}', 'src/**/*.test.{ts,tsx}', 'src/test-utils/**'],
     }),
   ],
   resolve: {

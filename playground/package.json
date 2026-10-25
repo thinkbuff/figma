@@ -24,7 +24,7 @@
     "typescript": "^5.8.3",
     "unocss": "^66.1.2",
     "unocss-preset-animations": "^1.2.1",
-    "vite": "^6.3.5"
+    "vite": "6.4.4"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix"

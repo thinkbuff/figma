@@ -13,7 +13,10 @@
     "release": "changelogen --release --no-commit --no-tag && tsx scripts/update-version.ts",
     "storybook": "pnpm -F @thinkbuff/figma-react storybook",
     "postinstall": "pnpm run -r stub",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "test": "pnpm -r test",
+    "test:visual": "pnpm -F @thinkbuff/figma-react test:visual",
+    "test:visual:update": "pnpm -F @thinkbuff/figma-react test:visual:update"
   },
   "packageManager": "pnpm@10.11.0",
   "engines": {

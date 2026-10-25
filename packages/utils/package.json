@@ -10,7 +10,8 @@
     "build": "tsc && vite build",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "pnpm build",
+    "test": "vitest run"
   },
   "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/utils#readme",
   "repository": {
@@ -73,8 +74,9 @@
   "devDependencies": {
     "@figma/plugin-typings": "^1.112.0",
     "@figma/widget-typings": "^1.11.0",
-    "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.4"
+    "vite": "6.4.4",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "5.0.5"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix"
