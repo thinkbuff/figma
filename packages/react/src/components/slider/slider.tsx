@@ -1,12 +1,18 @@
-import * as SliderPrimitive from '@radix-ui/react-slider';
+import { Slider as SliderPrimitive } from '@base-ui/react/slider';
 
 import { cn } from '~/utils';
 
-const SliderRoot: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.Root>> = ({
-  className,
-  ref,
-  ...props
-}) => (
+interface SliderRootProps extends Omit<
+  React.ComponentPropsWithRef<typeof SliderPrimitive.Root>,
+  'className'
+> {
+  className?: string;
+}
+
+const toArray = (value: number | readonly number[]): readonly number[] =>
+  typeof value === 'number' ? [value] : value;
+
+const SliderRoot: React.FC<SliderRootProps> = ({ className, children, ref, ...props }) => (
   <SliderPrimitive.Root
     className={cn(
       'relative',
@@ -21,16 +27,20 @@ const SliderRoot: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.Ro
     )}
     {...props}
     ref={ref}
-  />
+  >
+    <SliderPrimitive.Control className="group relative flex h-full w-full items-center group-data-[orientation=vertical]:flex-col">
+      {children}
+    </SliderPrimitive.Control>
+  </SliderPrimitive.Root>
 );
 
-SliderRoot.displayName = SliderPrimitive.Root.displayName;
+SliderRoot.displayName = 'SliderRoot';
 
-const SliderTrack: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.Track>> = ({
-  className,
-  ref,
-  ...props
-}) => (
+const SliderTrack: React.FC<
+  Omit<React.ComponentPropsWithRef<typeof SliderPrimitive.Track>, 'className'> & {
+    className?: string;
+  }
+> = ({ className, ref, ...props }) => (
   <SliderPrimitive.Track
     className={cn(
       'relative',
@@ -47,14 +57,14 @@ const SliderTrack: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.T
   />
 );
 
-SliderTrack.displayName = SliderPrimitive.Track.displayName;
+SliderTrack.displayName = 'SliderTrack';
 
-const SliderRange: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.Range>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <SliderPrimitive.Range
+const SliderRange: React.FC<
+  Omit<React.ComponentPropsWithRef<typeof SliderPrimitive.Indicator>, 'className'> & {
+    className?: string;
+  }
+> = ({ className, ref, ...props }) => (
+  <SliderPrimitive.Indicator
     className={cn(
       'absolute',
       'bg-figma-brand',
@@ -68,13 +78,13 @@ const SliderRange: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.R
   />
 );
 
-SliderRange.displayName = SliderPrimitive.Range.displayName;
+SliderRange.displayName = 'SliderRange';
 
-const SliderThumb: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.Thumb>> = ({
-  className,
-  ref,
-  ...props
-}) => (
+const SliderThumb: React.FC<
+  Omit<React.ComponentPropsWithRef<typeof SliderPrimitive.Thumb>, 'className'> & {
+    className?: string;
+  }
+> = ({ className, ref, ...props }) => (
   <SliderPrimitive.Thumb
     className={cn(
       'flex',
@@ -104,16 +114,16 @@ const SliderThumb: React.FC<React.ComponentPropsWithRef<typeof SliderPrimitive.T
   />
 );
 
-SliderThumb.displayName = SliderPrimitive.Thumb.displayName;
+SliderThumb.displayName = 'SliderThumb';
 
 /**
  * An input where the user selects a value from within a given range.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/slider)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/slider#api-reference)
+ * - [Docs](https://base-ui.com/react/components/slider)
+ * - [API Reference](https://base-ui.com/react/components/slider#api)
  */
 const Slider: React.FC<React.ComponentPropsWithRef<typeof SliderRoot>> = ({ ref, ...props }) => {
-  const value = props.value ?? props.defaultValue ?? [0];
+  const values = toArray(props.value ?? props.defaultValue ?? 0);
   return (
     <SliderRoot
       {...props}
@@ -122,13 +132,16 @@ const Slider: React.FC<React.ComponentPropsWithRef<typeof SliderRoot>> = ({ ref,
       <SliderTrack>
         <SliderRange />
       </SliderTrack>
-      {value.map((_, index) => (
-        <SliderThumb key={index} />
+      {values.map((_: number, index: number) => (
+        <SliderThumb
+          key={index}
+          index={index}
+        />
       ))}
     </SliderRoot>
   );
 };
 
-Slider.displayName = SliderPrimitive.Root.displayName;
+Slider.displayName = 'Slider';
 
 export { Slider, SliderRoot, SliderTrack, SliderRange, SliderThumb };

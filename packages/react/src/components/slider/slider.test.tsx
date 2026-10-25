@@ -19,8 +19,9 @@ describe('Slider', () => {
     const slider = page.getByRole('slider');
     await expect.element(slider).toBeVisible();
     await expect.element(slider).toHaveAttribute('aria-valuenow', '40');
-    await expect.element(slider).toHaveAttribute('aria-valuemin', '0');
-    await expect.element(slider).toHaveAttribute('aria-valuemax', '100');
+    // Base UI: role=slider lives on a hidden <input type="range">, which carries native min/max attrs instead of aria-valuemin/max.
+    await expect.element(slider).toHaveAttribute('min', '0');
+    await expect.element(slider).toHaveAttribute('max', '100');
   });
 
   it('steps with ArrowRight and ArrowLeft', async () => {
@@ -77,9 +78,9 @@ describe('Slider', () => {
     const slider = page.getByRole('slider');
     const sliderEl = slider.element() as HTMLElement;
 
-    // the disabled state is exposed on the slider root
-    const disabledAncestor = sliderEl.closest('[aria-disabled]') as HTMLElement | null;
-    expect(disabledAncestor?.getAttribute('aria-disabled')).toBe('true');
+    // Base UI: disabled state is exposed via data-disabled (the hidden input also carries the disabled attr).
+    const disabledAncestor = sliderEl.closest('[data-disabled]') as HTMLElement | null;
+    expect(disabledAncestor?.getAttribute('data-disabled')).not.toBeNull();
 
     // pointer interaction does not change the value
     const root = page.elementLocator(sliderEl.parentElement as Element);

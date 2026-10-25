@@ -32,14 +32,6 @@ const meta = {
         },
       },
     },
-    inverted: {
-      table: {
-        type: {
-          summary: 'boolean',
-          detail: 'Whether the slider is visually inverted.',
-        },
-      },
-    },
     orientation: {
       control: 'inline-radio',
       options: ['horizontal', 'vertical'],
@@ -75,7 +67,7 @@ const meta = {
         },
       },
     },
-    minStepsBetweenThumbs: {
+    minStepsBetweenValues: {
       table: {
         type: {
           summary: 'number',
@@ -91,13 +83,12 @@ const meta = {
   },
   args: {
     disabled: false,
-    inverted: false,
     orientation: 'horizontal',
     value: [50],
     min: 0,
     max: 100,
     step: 1,
-    minStepsBetweenThumbs: 0,
+    minStepsBetweenValues: 0,
   },
   render: function Render(args) {
     const [{ value }, updateArgs] = useArgs();
@@ -141,7 +132,7 @@ export const CustomStyle: Story = {
           {...args}
           value={values}
           className="data-[orientation=vertical]:h-60"
-          onValueChange={(value) => updateArgs({ value })}
+          onValueChange={(value) => updateArgs({ value: value as number[] })}
         >
           <SliderTrack className="h-px bg-figma-icon data-[orientation=vertical]:w-px">
             <SliderRange className="bg-figma-icon" />
@@ -180,7 +171,7 @@ export const WithValueTooltip: Story = {
             {...props}
             value={values}
             className="data-[orientation=vertical]:h-60"
-            onValueChange={(value) => updateArgs({ value })}
+            onValueChange={(value) => updateArgs({ value: value as number[] })}
           >
             <SliderTrack>
               <SliderRange />
