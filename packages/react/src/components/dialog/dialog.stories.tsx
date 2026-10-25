@@ -1,5 +1,5 @@
-import { Root as Portal } from '@radix-ui/react-portal';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { createPortal } from 'react-dom';
 import { useArgs } from 'storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
@@ -29,9 +29,7 @@ const meta = {
     (Story) => (
       <>
         <Story />
-        <Portal>
-          <Toaster className="pointer-events-auto" />
-        </Portal>
+        {createPortal(<Toaster className="pointer-events-auto" />, document.body)}
       </>
     ),
   ],

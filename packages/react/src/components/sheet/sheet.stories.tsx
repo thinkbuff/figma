@@ -48,17 +48,17 @@ const meta = {
         modal={modal}
         onOpenChange={(value) => updateArgs({ open: value })}
       >
-        <Sheet.Trigger asChild>
-          <Button>Open</Button>
-        </Sheet.Trigger>
+        <Sheet.Trigger render={<Button>Open</Button>} />
         <Sheet.Content {...props}>
           <Sheet.Header className="justify-between">
             <Sheet.Title>Edit profile</Sheet.Title>
-            <Sheet.Close asChild>
-              <ActionIcon className="-mr-2">
-                <span className="icon-[mdi--window-close] size-4"></span>
-              </ActionIcon>
-            </Sheet.Close>
+            <Sheet.Close
+              render={
+                <ActionIcon className="-mr-2">
+                  <span className="icon-[mdi--window-close] size-4"></span>
+                </ActionIcon>
+              }
+            />
           </Sheet.Header>
           <div className="grid gap-4 p-4">
             <div className="grid grid-cols-4 items-center gap-4">
@@ -91,14 +91,16 @@ const meta = {
             </div>
           </div>
           <Sheet.Footer className="justify-end">
-            <Sheet.Close asChild>
-              <Button
-                type="submit"
-                className="h-7"
-              >
-                Save changes
-              </Button>
-            </Sheet.Close>
+            <Sheet.Close
+              render={
+                <Button
+                  type="submit"
+                  className="h-7"
+                >
+                  Save changes
+                </Button>
+              }
+            />
           </Sheet.Footer>
         </Sheet.Content>
       </Sheet.Root>

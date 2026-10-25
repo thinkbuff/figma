@@ -1,7 +1,9 @@
-import * as SheetPrimitive from '@radix-ui/react-dialog';
+import { Dialog as SheetPrimitive } from '@base-ui/react/dialog';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '~/utils';
+
+type WithStringClassName<T> = Omit<T, 'className'> & { className?: string };
 
 const SheetRoot = SheetPrimitive.Root;
 
@@ -11,19 +13,25 @@ const SheetClose = SheetPrimitive.Close;
 
 const SheetPortal = SheetPrimitive.Portal;
 
-const SheetOverlay: React.FC<React.ComponentPropsWithRef<typeof SheetPrimitive.Overlay>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <SheetPrimitive.Overlay
+const SheetOverlay: React.FC<
+  WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Backdrop>>
+> = ({ className, ref, ...props }) => (
+  <SheetPrimitive.Backdrop
     ref={ref}
-    className={cn('fixed', 'inset-0', 'z-50', 'bg-black/50', 'backdrop-blur', className)}
+    className={cn(
+      'fixed',
+      'inset-0',
+      'z-50',
+      'bg-black/50',
+      'backdrop-blur',
+      'transition-opacity duration-200 data-[starting-style]:opacity-0 data-[ending-style]:opacity-0 motion-reduce:transition-none',
+      className,
+    )}
     {...props}
   />
 );
 
-SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
+SheetOverlay.displayName = 'SheetOverlay';
 
 const sheetVariants = cva(
   [
@@ -36,14 +44,38 @@ const sheetVariants = cva(
     'focus-visible:outline-none',
     'transition-all',
     'ease-in-out',
+    'duration-200',
+    'motion-reduce:transition-none',
   ],
   {
     variants: {
       side: {
-        top: ['inset-x-0', 'top-0', 'border-b'],
-        bottom: ['inset-x-0', 'bottom-0', 'border-t'],
-        left: ['inset-y-0', 'left-0', 'h-full', 'border-r'],
-        right: ['inset-y-0', 'right-0', 'h-full', 'border-l'],
+        top: [
+          'inset-x-0',
+          'top-0',
+          'border-b',
+          'data-[starting-style]:-translate-y-full data-[ending-style]:-translate-y-full',
+        ],
+        bottom: [
+          'inset-x-0',
+          'bottom-0',
+          'border-t',
+          'data-[starting-style]:translate-y-full data-[ending-style]:translate-y-full',
+        ],
+        left: [
+          'inset-y-0',
+          'left-0',
+          'h-full',
+          'border-r',
+          'data-[starting-style]:-translate-x-full data-[ending-style]:-translate-x-full',
+        ],
+        right: [
+          'inset-y-0',
+          'right-0',
+          'h-full',
+          'border-l',
+          'data-[starting-style]:translate-x-full data-[ending-style]:translate-x-full',
+        ],
       },
     },
     defaultVariants: {
@@ -54,16 +86,16 @@ const sheetVariants = cva(
 
 export interface SheetContentProps
   extends
-    React.ComponentPropsWithRef<typeof SheetPrimitive.Content>,
+    WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Popup>>,
     VariantProps<typeof sheetVariants> {
-  container?: SheetPrimitive.DialogPortalProps['container'];
+  container?: React.ComponentProps<typeof SheetPrimitive.Portal>['container'];
 }
 
 /**
  * Extends the Dialog component to display content that complements the main content of the screen.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/dialog)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/dialog#api-reference)
+ * - [Docs](https://base-ui.com/react/components/dialog)
+ * - [API Reference](https://base-ui.com/react/components/dialog#api-reference)
  */
 const SheetContent: React.FC<SheetContentProps> = ({
   className,
@@ -76,18 +108,18 @@ const SheetContent: React.FC<SheetContentProps> = ({
   return (
     <SheetPortal container={container}>
       <SheetOverlay />
-      <SheetPrimitive.Content
+      <SheetPrimitive.Popup
         ref={ref}
         className={cn(sheetVariants({ side }), className)}
         {...props}
       >
         {children}
-      </SheetPrimitive.Content>
+      </SheetPrimitive.Popup>
     </SheetPortal>
   );
 };
 
-SheetContent.displayName = SheetPrimitive.Content.displayName;
+SheetContent.displayName = 'SheetContent';
 
 const SheetHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
@@ -133,11 +165,9 @@ const SheetFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 
 SheetFooter.displayName = 'SheetFooter';
 
-const SheetTitle: React.FC<React.ComponentPropsWithRef<typeof SheetPrimitive.Title>> = ({
-  className,
-  ref,
-  ...props
-}) => (
+const SheetTitle: React.FC<
+  WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Title>>
+> = ({ className, ref, ...props }) => (
   <SheetPrimitive.Title
     ref={ref}
     className={cn('text-xs', 'text-figma', 'font-semibold', className)}
@@ -145,10 +175,10 @@ const SheetTitle: React.FC<React.ComponentPropsWithRef<typeof SheetPrimitive.Tit
   />
 );
 
-SheetTitle.displayName = SheetPrimitive.Title.displayName;
+SheetTitle.displayName = 'SheetTitle';
 
 const SheetDescription: React.FC<
-  React.ComponentPropsWithRef<typeof SheetPrimitive.Description>
+  WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Description>>
 > = ({ className, ref, ...props }) => (
   <SheetPrimitive.Description
     ref={ref}
@@ -157,7 +187,7 @@ const SheetDescription: React.FC<
   />
 );
 
-SheetDescription.displayName = SheetPrimitive.Description.displayName;
+SheetDescription.displayName = 'SheetDescription';
 
 export {
   SheetRoot as Root,
