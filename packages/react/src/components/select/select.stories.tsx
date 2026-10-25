@@ -3,8 +3,79 @@ import { useArgs } from 'storybook/preview-api';
 
 import * as Select from './select';
 
-type StoryArgs = React.ComponentPropsWithRef<typeof Select.Content> &
-  Pick<React.ComponentProps<typeof Select.Trigger>, 'disabled' | 'value'>;
+type StoryArgs = React.ComponentPropsWithRef<typeof Select.Content> & {
+  disabled?: boolean;
+  value?: string | null;
+};
+
+const optionWithIconItems: Record<string, React.ReactNode> = {
+  none: (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--circle-dot] size-3.5"></span>
+      None
+    </div>
+  ),
+  'navigate-to': (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--arrow-right] size-3.5"></span>
+      Navigate to
+    </div>
+  ),
+  'change-to': (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--refresh] size-3.5"></span>
+      Change to
+    </div>
+  ),
+  back: (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--arrow-back-up] size-3.5"></span>
+      Back
+    </div>
+  ),
+  'set-variable': (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--settings-2] size-3.5"></span>
+      Set variable
+    </div>
+  ),
+  conditional: (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--arrows-split-2] size-3.5"></span>
+      Conditional
+    </div>
+  ),
+  'scroll-to': (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--arrow-move-down] size-3.5"></span>
+      Scroll to
+    </div>
+  ),
+  'open-link': (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--link] size-3.5"></span>
+      Open link
+    </div>
+  ),
+  'open-overlay': (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--square-half] size-3.5"></span>
+      Open overlay
+    </div>
+  ),
+  'swap-overlay': (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--replace] size-3.5"></span>
+      Swap overlay
+    </div>
+  ),
+  'close-overlay': (
+    <div className="flex items-center gap-2">
+      <span className="icon-[tabler--square-x] size-3.5"></span>
+      Close overlay
+    </div>
+  ),
+};
 
 const meta = {
   title: 'Components/Select',
@@ -26,34 +97,30 @@ const meta = {
     value: {
       control: 'text',
     },
-    position: {
-      control: 'inline-radio',
-      options: ['item-aligned', 'popper'],
+    alignItemWithTrigger: {
+      control: 'boolean',
       table: {
-        defaultValue: { summary: 'item-aligned' },
-        type: {
-          summary: 'enum',
-        },
+        defaultValue: { summary: 'true' },
       },
     },
     withArrow: {
-      if: { arg: 'position', eq: 'popper' },
+      if: { arg: 'alignItemWithTrigger', truthy: false },
       control: 'boolean',
     },
     side: {
-      if: { arg: 'position', eq: 'popper' },
+      if: { arg: 'alignItemWithTrigger', truthy: false },
       control: 'inline-radio',
       options: ['top', 'right', 'bottom', 'left'],
       table: {
         defaultValue: {
           summary: 'top',
           detail:
-            'The preferred side of the anchor to render against when open. Will be reversed when collisions occur and avoidCollisions is enabled. Only available when position is set to popper.',
+            'The preferred side of the anchor to render against when open. Only available when alignItemWithTrigger is false.',
         },
       },
     },
     sideOffset: {
-      if: { arg: 'position', eq: 'popper' },
+      if: { arg: 'alignItemWithTrigger', truthy: false },
       control: {
         type: 'number',
       },
@@ -61,12 +128,12 @@ const meta = {
         type: {
           summary: 'number',
           detail:
-            'The distance in pixels from the anchor. Only available when position is set to popper.',
+            'The distance in pixels from the anchor. Only available when alignItemWithTrigger is false.',
         },
       },
     },
     align: {
-      if: { arg: 'position', eq: 'popper' },
+      if: { arg: 'alignItemWithTrigger', truthy: false },
       control: 'inline-radio',
       options: ['start', 'center', 'end'],
       table: {
@@ -74,12 +141,12 @@ const meta = {
         type: {
           summary: 'enum',
           detail:
-            'The preferred alignment against the anchor. May change when collisions occur. Only available when position is set to popper.',
+            'The preferred alignment against the anchor. May change when collisions occur. Only available when alignItemWithTrigger is false.',
         },
       },
     },
     alignOffset: {
-      if: { arg: 'position', eq: 'popper' },
+      if: { arg: 'alignItemWithTrigger', truthy: false },
       control: {
         type: 'number',
       },
@@ -87,30 +154,18 @@ const meta = {
         type: {
           summary: 'number',
           detail:
-            'An offset in pixels from the "start" or "end" alignment options. Only available when position is set to popper.',
+            'An offset in pixels from the "start" or "end" alignment options. Only available when alignItemWithTrigger is false.',
         },
-      },
-    },
-    avoidCollisions: {
-      if: { arg: 'position', eq: 'popper' },
-      table: {
-        type: {
-          summary: 'boolean',
-          detail:
-            'When true, overrides the side andalign preferences to prevent collisions with boundary edges. Only available when position is set to popper.',
-        },
-        defaultValue: { summary: 'true' },
       },
     },
   },
   args: {
     disabled: false,
-    position: 'item-aligned',
+    alignItemWithTrigger: true,
     side: 'top',
     sideOffset: 4,
     align: 'center',
     alignOffset: 0,
-    avoidCollisions: true,
     withArrow: true,
   },
   decorators: [
@@ -125,6 +180,7 @@ const meta = {
 
     return (
       <Select.Root
+        items={{ blue: 'Blue', red: 'Red', green: 'Green' }}
         disabled={disabled}
         value={args.value}
         onValueChange={(value) => updateArgs({ value })}
@@ -154,14 +210,14 @@ export const Default: Story = {
 export const Popover: Story = {
   args: {
     value: 'blue',
-    position: 'popper',
+    alignItemWithTrigger: false,
     align: 'center',
   },
 };
 
 export const Placeholder: Story = {
   args: {
-    value: '',
+    value: null,
   },
 };
 
@@ -174,6 +230,29 @@ export const CustomTrigger: Story = {
 
     return (
       <Select.Root
+        items={{
+          'pass-through': 'Pass through',
+          normal: 'Normal',
+          darken: 'Darken',
+          multiply: 'Multiply',
+          'plus-darker': 'Plus darker',
+          'color-burn': 'Color burn',
+          lighten: 'Lighten',
+          screen: 'Screen',
+          'plus-lighter': 'Plus lighter',
+          'color-dodge': 'Color dodge',
+          overlay: 'Overlay',
+          'soft-light': 'Soft light',
+          'hard-light': 'Hard light',
+          difference: 'Difference',
+          exclusion: 'Exclusion',
+          hue: 'Hue',
+          saturation: 'Saturation',
+          color: 'Color',
+          luminosity: 'Luminosity',
+          contrast: 'Contrast',
+          invert: 'Invert',
+        }}
         disabled={disabled}
         value={args.value}
         onValueChange={(value) => updateArgs({ value })}
@@ -251,6 +330,17 @@ export const WithLabel: Story = {
 
     return (
       <Select.Root
+        items={{
+          text: 'Text',
+          'fill-width': 'Fill weight',
+          width: 'Width',
+          height: 'Height',
+          gap: 'Gap',
+          'horizontal-padding': 'Horizontal padding',
+          'vertical-padding': 'Vertical padding',
+          'stroke-width': 'Stroke weight',
+          'corner-radius': 'Corner radius',
+        }}
         disabled={disabled}
         value={args.value}
         onValueChange={(value) => updateArgs({ value })}
@@ -303,6 +393,7 @@ export const OptionWithIcon: Story = {
 
     return (
       <Select.Root
+        items={optionWithIconItems}
         disabled={disabled}
         value={args.value}
         onValueChange={(value) => updateArgs({ value })}
@@ -313,121 +404,37 @@ export const OptionWithIcon: Story = {
         />
         <Select.Content {...props}>
           <Select.Group>
-            <Select.Item
-              asChild
-              value="none"
-            >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--circle-dot] size-3.5"></span>
-                None
-              </div>
-            </Select.Item>
+            <Select.Item value="none">{optionWithIconItems['none']}</Select.Item>
           </Select.Group>
 
           <Select.Separator />
 
           <Select.Group>
+            <Select.Item value="navigate-to">{optionWithIconItems['navigate-to']}</Select.Item>
             <Select.Item
-              asChild
-              value="navigate-to"
-            >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--arrow-right] size-3.5"></span>
-                Navigate to
-              </div>
-            </Select.Item>
-            <Select.Item
-              asChild
-              disabled
               value="change-to"
+              disabled
             >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--refresh] size-3.5"></span>
-                Change to
-              </div>
+              {optionWithIconItems['change-to']}
             </Select.Item>
-            <Select.Item
-              asChild
-              value="back"
-            >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--arrow-back-up] size-3.5"></span>
-                Back
-              </div>
-            </Select.Item>
+            <Select.Item value="back">{optionWithIconItems['back']}</Select.Item>
           </Select.Group>
 
           <Select.Separator />
 
           <Select.Group>
-            <Select.Item
-              asChild
-              value="set-variable"
-            >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--settings-2] size-3.5"></span>
-                Set variable
-              </div>
-            </Select.Item>
-            <Select.Item
-              asChild
-              value="conditional"
-            >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--arrows-split-2] size-3.5"></span>
-                Conditional
-              </div>
-            </Select.Item>
-            <Select.Item
-              asChild
-              value="scroll-to"
-            >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--arrow-move-down] size-3.5"></span>
-                Scroll to
-              </div>
-            </Select.Item>
-            <Select.Item
-              asChild
-              value="open-link"
-            >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--link] size-3.5"></span>
-                Open link
-              </div>
-            </Select.Item>
+            <Select.Item value="set-variable">{optionWithIconItems['set-variable']}</Select.Item>
+            <Select.Item value="conditional">{optionWithIconItems['conditional']}</Select.Item>
+            <Select.Item value="scroll-to">{optionWithIconItems['scroll-to']}</Select.Item>
+            <Select.Item value="open-link">{optionWithIconItems['open-link']}</Select.Item>
           </Select.Group>
 
           <Select.Separator />
 
           <Select.Group>
-            <Select.Item
-              asChild
-              value="open-overlay"
-            >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--square-half] size-3.5"></span>
-                Open overlay
-              </div>
-            </Select.Item>
-            <Select.Item
-              asChild
-              value="swap-overlay"
-            >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--replace] size-3.5"></span>
-                Swap overlay
-              </div>
-            </Select.Item>
-            <Select.Item
-              asChild
-              value="close-overlay"
-            >
-              <div className="flex items-center gap-2">
-                <span className="icon-[tabler--square-x] size-3.5"></span>
-                Close overlay
-              </div>
-            </Select.Item>
+            <Select.Item value="open-overlay">{optionWithIconItems['open-overlay']}</Select.Item>
+            <Select.Item value="swap-overlay">{optionWithIconItems['swap-overlay']}</Select.Item>
+            <Select.Item value="close-overlay">{optionWithIconItems['close-overlay']}</Select.Item>
           </Select.Group>
         </Select.Content>
       </Select.Root>

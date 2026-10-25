@@ -6,9 +6,15 @@ import { firstArg } from '~/test-utils';
 
 import { Select } from './index';
 
+const items = { apple: 'Apple', banana: 'Banana', cherry: 'Cherry' };
+
 function Fixture(props: React.ComponentProps<typeof Select.Root>) {
   return (
-    <Select.Root {...props}>
+    // Base UI: the trigger shows item labels only when `items` is provided.
+    <Select.Root
+      items={items}
+      {...props}
+    >
       <Select.Trigger aria-label="Fruit">
         <Select.Value placeholder="Pick a fruit" />
       </Select.Trigger>
@@ -66,8 +72,8 @@ describe('Select', () => {
 
     await userEvent.keyboard('{Escape}');
     await expect.element(page.getByRole('listbox')).not.toBeInTheDocument();
-    // NOTE: focus does not return to the trigger — SelectContent
-    // intentionally preventDefaults onCloseAutoFocus (flagged delta).
+    // Base UI: focus returns to the trigger (the Radix wrapper suppressed this).
+    await expect.element(trigger).toHaveFocus();
   });
 
   it('does not open when the trigger is disabled', async () => {

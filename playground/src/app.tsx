@@ -74,7 +74,19 @@ export function App() {
       <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
       <div className="min-h-60 min-w-60 flex flex-col items-center justify-center gap-4 bg-figma">
         <Slider />
-        <Select.Root>
+        <Select.Root
+          items={{
+            text: 'Text',
+            width: 'Width',
+            height: 'Height',
+            gap: 'Gap',
+            'horizontal-padding': 'Horizontal padding',
+            'vertical-padding': 'Vertical padding',
+            'fill-width': 'Fill weight',
+            'stroke-width': 'Stroke weight',
+            'corner-radius': 'Corner radius',
+          }}
+        >
           <Select.Trigger placeholder="Select. an option" />
           <Select.Content>
             <Select.Group>
