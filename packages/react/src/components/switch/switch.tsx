@@ -1,18 +1,21 @@
-import * as SwitchPrimitives from '@radix-ui/react-switch';
+import { Switch as SwitchPrimitives } from '@base-ui/react/switch';
 
 import { cn } from '~/utils';
+
+interface SwitchProps extends Omit<
+  React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>,
+  'className'
+> {
+  className?: string;
+}
 
 /**
  * A control that allows the user to toggle between checked and not checked.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/switch)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/switch#api-reference)
+ * - [Docs](https://base-ui.com/react/components/switch)
+ * - [API Reference](https://base-ui.com/react/components/switch#api)
  */
-const Switch: React.FC<React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>> = ({
-  className,
-  ref,
-  ...props
-}) => (
+const Switch: React.FC<SwitchProps> = ({ className, ref, ...props }) => (
   <SwitchPrimitives.Root
     className={cn(
       'peer',
@@ -27,18 +30,19 @@ const Switch: React.FC<React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>
       'border-solid',
       'border-transparent',
       'transition-colors',
-      'disabled:cursor-not-allowed disabled:bg-figma-disabled',
-      'data-[state=checked]:bg-figma-brand',
-      'data-[state=unchecked]:bg-figma-icon-tertiary',
+      'data-[disabled]:cursor-not-allowed data-[disabled]:bg-figma-disabled',
+      'data-[checked]:bg-figma-brand',
+      'data-[unchecked]:bg-figma-icon-tertiary',
       className,
     )}
     {...props}
     ref={ref}
   >
-    <SwitchPrimitives.Thumb className="pointer-events-none block size-2.5 rounded-full transition-transform bg-figma-icon-onbrand data-[state=checked]:translate-x-3 data-[state=unchecked]:translate-x-0" />
+    <SwitchPrimitives.Thumb className="pointer-events-none block size-2.5 rounded-full transition-transform bg-figma-icon-onbrand data-[checked]:translate-x-3 data-[unchecked]:translate-x-0" />
   </SwitchPrimitives.Root>
 );
 
-Switch.displayName = SwitchPrimitives.Root.displayName;
+Switch.displayName = 'Switch';
 
 export { Switch };
+export type { SwitchProps };
