@@ -21,7 +21,7 @@ const DialogOverlay: React.FC<
       'fixed',
       'inset-0',
       'z-50',
-      'bg-black/50',
+      'bg-figma-overlay',
       'transition-opacity duration-150 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
       className,
     )}
@@ -58,10 +58,10 @@ const DialogContent: React.FC<DialogContentProps> = ({ className, container, ref
         '-translate-x-1/2',
         '-translate-y-1/2',
         'z-50',
-        'rounded-figma-sm',
+        'rounded-figma-lg',
         'bg-figma',
         'p-6',
-        'shadow-lg',
+        'shadow-figma-modal',
         'outline-none',
         'transition-[opacity,scale] duration-150 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
         className,
@@ -112,7 +112,7 @@ const DialogTitle: React.FC<
 > = ({ className, ref, ...props }) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn('text-figma', 'text-sm leading-4', 'font-medium', className)}
+    className={cn('text-figma', 'text-figma-sm leading-figma-sm', 'font-figma-strong', className)}
     {...props}
   />
 );
