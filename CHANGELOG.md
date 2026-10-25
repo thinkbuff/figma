@@ -38,6 +38,13 @@
 
 - Spacing renumbered to the UI3 scale: `--figma-space-5` is now 32px (was 20px), `--figma-space-6` is now 40px (was 28px), and `--figma-space-7` is removed. Utilities such as `p-figma-5` / `gap-figma-6` follow the new values.
 
+#### Components: UI3 look
+
+- Components are restyled to Figma's UI3, with [figma-kit](https://github.com/tigranpetrossian/figma-kit) (beta @ `4366bb0`) as the reference. Layouts may shift: `Input`, `Select` triggers, `Tabs` and `ToggleGroup` items are 24px tall (were 32px), `Checkbox` and `Radio` are 16px, and `Switch` is 32×16.
+- Solid buttons have no hover background; focus is a 1px outline plus a 1px ring. Fields are outline-only on `bg-secondary`. Menus, popovers and dialogs use 13px radius and elevation shadows; menu highlight is `bg-selected-strong`.
+- `ActionIcon` open state (`aria-expanded`) is now subtle (`bg-selected` with a brand icon) instead of solid brand.
+- Inline `RadioGroup` items are 20px apart (were 8px).
+
 Per-component details, behavior notes and QA checklists live in `.migration/`.
 
 ### 🚀 Features
