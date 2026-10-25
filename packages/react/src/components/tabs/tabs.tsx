@@ -39,16 +39,7 @@ TabsRoot.displayName = 'Tabs';
 
 const TabsList: React.FC<TabsListProps> = ({ className, ref, ...props }) => (
   <Tabs.List
-    className={cn(
-      'bg-figma',
-      'inline-flex',
-      'items-center',
-      'justify-center',
-      'border-b',
-      'border-solid',
-      'border-figma',
-      className,
-    )}
+    className={cn('flex', 'gap-1', 'overflow-y-auto', className)}
     {...props}
     ref={ref}
   />
@@ -59,16 +50,21 @@ TabsList.displayName = 'TabsList';
 const TabsTrigger: React.FC<TabsTriggerProps> = ({ className, ref, ...props }) => (
   <Tabs.Tab
     className={cn(
-      'inline-flex',
+      'flex',
       'items-center',
       'justify-center',
-      'px-3',
+      'shrink-0',
+      'h-6',
+      'px-2',
       'text-figma-sm leading-figma-sm',
+      'font-figma-default',
       'text-figma-secondary',
-      'bg-transparent',
-      'hover:text-figma',
-      'data-active:text-figma data-active:font-bold',
-      'data-disabled:pointer-events-none',
+      'fill-figma-icon-secondary',
+      'whitespace-nowrap',
+      'rounded-figma-md',
+      'not-data-disabled:hover:bg-figma-secondary',
+      'data-active:font-figma-strong data-active:text-figma data-active:fill-figma-icon data-active:bg-figma-secondary',
+      'data-disabled:text-figma-disabled',
       className,
     )}
     {...props}
