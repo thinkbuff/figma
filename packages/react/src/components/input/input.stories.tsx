@@ -111,7 +111,7 @@ export const WithTooltip: Story = {
   render: function Render(args) {
     const [{ value }, updateArgs] = useArgs();
     return (
-      <TooltipProvider delayDuration={100}>
+      <TooltipProvider delay={100}>
         <Tooltip content={<p>Spacing</p>}>
           <div className="relative w-20 flex items-center">
             <Input

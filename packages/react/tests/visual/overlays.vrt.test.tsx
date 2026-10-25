@@ -80,6 +80,25 @@ const overlays: Record<string, { story: StoryComponent; open: () => Promise<void
     story: openOverlay(tooltipStories, 'Default', { open: true }),
     open: async () => {
       await expect.element(page.getByText('Open settings')).toBeVisible();
+      // Base UI: wait until the popup's open state and position have settled
+      // (data-open present, no data-starting-style, rect stable across frames).
+      await expect
+        .poll(async () => {
+          const popup = document.querySelector('[data-base-ui-focusable]') as HTMLElement | null;
+          if (!popup || !popup.hasAttribute('data-open')) {
+            return false;
+          }
+          if (document.querySelector('[data-starting-style],[data-ending-style]')) {
+            return false;
+          }
+          const r1 = popup.getBoundingClientRect();
+          await new Promise((resolve) =>
+            requestAnimationFrame(() => requestAnimationFrame(resolve)),
+          );
+          const r2 = popup.getBoundingClientRect();
+          return r1.x === r2.x && r1.y === r2.y;
+        })
+        .toBe(true);
     },
   },
 };

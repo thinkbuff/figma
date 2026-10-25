@@ -61,16 +61,6 @@ const meta = {
         type: { summary: 'number', detail: 'The distance in pixels from the trigger.' },
       },
     },
-    avoidCollisions: {
-      table: {
-        type: {
-          summary: 'boolean',
-          detail:
-            'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
-        },
-        defaultValue: { summary: 'true' },
-      },
-    },
     withArrow: {
       table: {
         type: {
@@ -96,7 +86,6 @@ const meta = {
     alignOffset: 0,
     side: 'top',
     sideOffset: 4,
-    avoidCollisions: true,
     withArrow: true,
   },
 } satisfies Meta<typeof Tooltip>;
@@ -111,7 +100,7 @@ export const Default: Story = {
     const [{ open }, updateArgs] = useArgs();
 
     return (
-      <TooltipProvider delayDuration={200}>
+      <TooltipProvider delay={200}>
         <Tooltip
           {...args}
           open={open}

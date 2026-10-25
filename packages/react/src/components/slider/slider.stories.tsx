@@ -183,8 +183,7 @@ export const WithValueTooltip: Story = {
                 open={showTooltip}
                 side={props.orientation === 'horizontal' ? 'top' : 'left'}
                 content={<p>{value}</p>}
-                delayDuration={200}
-                updatePositionStrategy="always"
+                delay={200}
               >
                 <SliderThumb
                   onMouseOver={() => updateArgs({ showTooltip: true })}

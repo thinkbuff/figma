@@ -8,7 +8,7 @@ import { Tooltip, TooltipProvider } from './tooltip';
 
 function Fixture() {
   return (
-    <TooltipProvider delayDuration={0}>
+    <TooltipProvider delay={0}>
       <Tooltip content="Helpful hint">
         <button type="button">Hover me</button>
       </Tooltip>
@@ -30,7 +30,8 @@ describe('Tooltip', () => {
     // the matched node may be a visually-hidden accessibility node;
     // its visible container must actually be rendered
     expect(isRendered(content.element().parentElement as Element)).toBe(true);
-    expect(triggerEl.getAttribute('aria-describedby')).toBeTruthy();
+    // Base UI: the trigger carries data-popup-open while open (no aria-describedby).
+    expect(triggerEl.hasAttribute('data-popup-open')).toBe(true);
 
     // move the pointer over unrelated content; hoverable tooltips track
     // pointermove events, so keep moving until they register the leave
@@ -42,7 +43,7 @@ describe('Tooltip', () => {
         return content.elements().length === 0;
       })
       .toBe(true);
-    expect(triggerEl.getAttribute('aria-describedby')).toBeNull();
+    expect(triggerEl.hasAttribute('data-popup-open')).toBe(false);
   });
 
   it('shows content on focus and hides on Escape', async () => {

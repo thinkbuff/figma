@@ -1,4 +1,4 @@
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { Tooltip as TooltipPrimitive } from '@base-ui/react/tooltip';
 
 import { cn } from '~/utils';
 
@@ -8,11 +8,14 @@ const TooltipRoot = TooltipPrimitive.Root;
 
 const TooltipTrigger = TooltipPrimitive.Trigger;
 
-const TooltipArrow: React.FC<React.ComponentPropsWithRef<typeof TooltipPrimitive.Arrow>> = ({
-  className,
-  ref,
-  ...props
-}) => (
+interface TooltipArrowProps extends Omit<
+  React.ComponentPropsWithRef<typeof TooltipPrimitive.Arrow>,
+  'className'
+> {
+  className?: string;
+}
+
+const TooltipArrow: React.FC<TooltipArrowProps> = ({ className, ref, ...props }) => (
   <TooltipPrimitive.Arrow
     className={cn('fill-figma-bg-tooltip', className)}
     ref={ref}
@@ -20,42 +23,68 @@ const TooltipArrow: React.FC<React.ComponentPropsWithRef<typeof TooltipPrimitive
   />
 );
 
-TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName;
+TooltipArrow.displayName = 'TooltipArrow';
 
-interface TooltipContentProps
-  extends
-    TooltipPrimitive.TooltipPortalProps,
-    React.ComponentPropsWithRef<typeof TooltipPrimitive.Content> {}
+type PositionerProps = React.ComponentPropsWithRef<typeof TooltipPrimitive.Positioner>;
+
+interface TooltipContentProps extends Omit<
+  React.ComponentPropsWithRef<typeof TooltipPrimitive.Popup>,
+  'className'
+> {
+  className?: string;
+  container?: React.ComponentProps<typeof TooltipPrimitive.Portal>['container'];
+  side?: PositionerProps['side'];
+  align?: PositionerProps['align'];
+  sideOffset?: PositionerProps['sideOffset'];
+  alignOffset?: PositionerProps['alignOffset'];
+  collisionPadding?: PositionerProps['collisionPadding'];
+}
 
 const TooltipContent: React.FC<TooltipContentProps> = ({
   className,
   container,
+  side,
+  align,
   sideOffset = 4,
+  alignOffset,
+  collisionPadding,
   ref,
   ...props
 }) => (
   <TooltipPrimitive.Portal container={container}>
-    <TooltipPrimitive.Content
-      ref={ref}
+    <TooltipPrimitive.Positioner
+      className="z-50"
+      side={side}
+      align={align}
       sideOffset={sideOffset}
-      className={cn(
-        'bg-figma-tooltip',
-        'text-figma-tooltip',
-        'fill-figma-icon-tooltip',
-        'px-3',
-        'rounded-figma-sm',
-        'py-2',
-        'z-50',
-        className,
-      )}
-      {...props}
-    />
+      alignOffset={alignOffset}
+      collisionPadding={collisionPadding}
+    >
+      <TooltipPrimitive.Popup
+        ref={ref}
+        className={cn(
+          'bg-figma-tooltip',
+          'text-figma-tooltip',
+          'fill-figma-icon-tooltip',
+          'px-3',
+          'rounded-figma-sm',
+          'py-2',
+          'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-[starting-style]:opacity-0 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[ending-style]:scale-95 motion-reduce:transition-none',
+          className,
+        )}
+        {...props}
+      />
+    </TooltipPrimitive.Positioner>
   </TooltipPrimitive.Portal>
 );
 
-TooltipContent.displayName = TooltipPrimitive.Content.displayName;
+TooltipContent.displayName = 'TooltipContent';
 
-interface TooltipProps extends TooltipPrimitive.TooltipProps, Omit<TooltipContentProps, 'content'> {
+interface TooltipProps
+  extends
+    Omit<React.ComponentPropsWithRef<typeof TooltipRoot>, 'children'>,
+    Pick<React.ComponentPropsWithRef<typeof TooltipTrigger>, 'delay' | 'closeDelay'>,
+    Omit<TooltipContentProps, 'children' | 'content'> {
   /**
    * The content of the tooltip
    */
@@ -63,28 +92,33 @@ interface TooltipProps extends TooltipPrimitive.TooltipProps, Omit<TooltipConten
   /**
    * The container of the tooltip
    */
-  container?: TooltipPrimitive.TooltipPortalProps['container'];
+  container?: React.ComponentProps<typeof TooltipPrimitive.Portal>['container'];
   /**
    * Whether the tooltip should have an arrow
    *
    * @default true
    */
   withArrow?: boolean;
+  /**
+   * The trigger element.
+   */
+  children?: React.ReactElement;
 }
 
 /**
  * A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
- * - [Docs](https://www.radix-ui.com/primitives/docs/components/tooltip)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/tooltip#api-reference)
+ * - [Docs](https://base-ui.com/react/components/tooltip)
+ * - [API Reference](https://base-ui.com/react/components/tooltip#api)
  */
 const Tooltip = ({
   // Root props,
   open,
   defaultOpen,
   onOpenChange,
-  delayDuration,
-  disableHoverableContent,
+  disableHoverablePopup,
   // Tooltip Trigger
+  delay,
+  closeDelay,
   children,
   // Tooltip Content
   content,
@@ -96,14 +130,16 @@ const Tooltip = ({
     open={open}
     defaultOpen={defaultOpen}
     onOpenChange={onOpenChange}
-    delayDuration={delayDuration}
-    disableHoverableContent={disableHoverableContent}
+    disableHoverablePopup={disableHoverablePopup}
   >
-    <TooltipTrigger asChild>{children}</TooltipTrigger>
-    <TooltipContent
-      {...props}
-      asChild={false}
-    >
+    {children ? (
+      <TooltipTrigger
+        render={children as React.ReactElement}
+        delay={delay}
+        closeDelay={closeDelay}
+      />
+    ) : null}
+    <TooltipContent {...props}>
       {content}
       {withArrow ? <TooltipArrow /> : null}
     </TooltipContent>

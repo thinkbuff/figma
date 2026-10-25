@@ -150,7 +150,7 @@ export const WithTooltip: Story = {
       },
     ];
     return (
-      <TooltipProvider delayDuration={200}>
+      <TooltipProvider delay={200}>
         <ToggleGroup
           {...args}
           multiple
