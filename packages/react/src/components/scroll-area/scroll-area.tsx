@@ -1,45 +1,57 @@
-import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
+import { ScrollArea as ScrollAreaPrimitive } from '@base-ui/react/scroll-area';
 
 import { cn } from '~/utils';
 
-const ScrollBar: React.FC<
-  React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
-> = ({ className, orientation = 'vertical', ref, ...props }) => (
-  <ScrollAreaPrimitive.ScrollAreaScrollbar
+interface ScrollBarProps extends Omit<
+  React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Scrollbar>,
+  'className'
+> {
+  className?: string;
+}
+
+const ScrollBar: React.FC<ScrollBarProps> = ({
+  className,
+  orientation = 'vertical',
+  ref,
+  ...props
+}) => (
+  <ScrollAreaPrimitive.Scrollbar
     ref={ref}
     orientation={orientation}
     className={cn(
-      'flex touch-none select-none transition-colors',
+      'flex touch-none select-none transition-all opacity-0 data-[hovering]:opacity-100 data-[scrolling]:opacity-100',
       orientation === 'vertical' && 'h-full w-1.5 border-l border-l-transparent p-px',
       orientation === 'horizontal' && 'h-1.5 border-t border-t-transparent p-px',
       className,
     )}
     {...props}
   >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="relative grow rounded-full bg-figma-text-secondary" />
-  </ScrollAreaPrimitive.ScrollAreaScrollbar>
+    <ScrollAreaPrimitive.Thumb className="relative grow rounded-full bg-figma-text-secondary" />
+  </ScrollAreaPrimitive.Scrollbar>
 );
 
-ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
+ScrollBar.displayName = 'ScrollBar';
+
+interface ScrollAreaProps extends Omit<
+  React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Root>,
+  'className'
+> {
+  className?: string;
+}
 
 /**
  * Augments native scroll functionality for custom, cross-browser styling.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/scroll-area)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/scroll-area#api-reference)
+ * - [Docs](https://base-ui.com/react/components/scroll-area)
+ * - [API Reference](https://base-ui.com/react/components/scroll-area#api)
  */
-const ScrollArea: React.FC<React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Root>> = ({
-  className,
-  children,
-  ref,
-  ...props
-}) => (
+const ScrollArea: React.FC<ScrollAreaProps> = ({ className, children, ref, ...props }) => (
   <ScrollAreaPrimitive.Root
     ref={ref}
     className={cn('relative overflow-hidden', className)}
     {...props}
   >
-    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit] [&>div]:!block">
+    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
       {children}
     </ScrollAreaPrimitive.Viewport>
     <ScrollBar />
@@ -47,6 +59,7 @@ const ScrollArea: React.FC<React.ComponentPropsWithRef<typeof ScrollAreaPrimitiv
   </ScrollAreaPrimitive.Root>
 );
 
-ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
+ScrollArea.displayName = 'ScrollArea';
 
 export { ScrollArea, ScrollBar };
+export type { ScrollAreaProps, ScrollBarProps };
