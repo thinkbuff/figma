@@ -1,20 +1,32 @@
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import { Radio } from '@base-ui/react/radio';
+import { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group';
 
 import { cn } from '~/utils';
 
-interface RadioGroupProps extends React.ComponentPropsWithRef<typeof RadioGroupPrimitive.Root> {
+interface RadioGroupProps extends Omit<
+  React.ComponentPropsWithRef<typeof RadioGroupPrimitive>,
+  'className'
+> {
+  className?: string;
   inline?: boolean;
+}
+
+interface RadioGroupItemProps extends Omit<
+  React.ComponentPropsWithRef<typeof Radio.Root>,
+  'className'
+> {
+  className?: string;
 }
 
 /**
  * A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/radio-group)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/radio-group#api-reference)
+ * - [Docs](https://base-ui.com/react/components/radio)
+ * - [API Reference](https://base-ui.com/react/components/radio#api)
  */
 const RadioGroup: React.FC<RadioGroupProps> = ({ className, inline = false, ref, ...props }) => {
   return (
-    <RadioGroupPrimitive.Root
+    <RadioGroupPrimitive
       ref={ref}
       className={cn('flex', 'gap-2', inline ? 'flex-row' : 'flex-col', className)}
       {...props}
@@ -22,15 +34,11 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ className, inline = false, ref,
   );
 };
 
-RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
+RadioGroup.displayName = 'RadioGroup';
 
-const RadioGroupItem: React.FC<React.ComponentPropsWithRef<typeof RadioGroupPrimitive.Item>> = ({
-  className,
-  ref,
-  ...props
-}) => {
+const RadioGroupItem: React.FC<RadioGroupItemProps> = ({ className, ref, ...props }) => {
   return (
-    <RadioGroupPrimitive.Item
+    <Radio.Root
       ref={ref}
       className={cn(
         'peer',
@@ -49,17 +57,18 @@ const RadioGroupItem: React.FC<React.ComponentPropsWithRef<typeof RadioGroupPrim
         '-outline-offset-2',
         'outline-transparent',
         'bg-clip-border',
-        'not-disabled:focus:border-figma-selected not-disabled:focus:outline-figma-border-selected',
-        'disabled:cursor-not-allowed disabled:text-figma-disabled disabled:fill-figma-icon-disabled disabled:border-figma-disabled-strong',
+        'not-data-[disabled]:focus:border-figma-selected not-data-[disabled]:focus:outline-figma-border-selected',
+        'data-[disabled]:cursor-not-allowed data-[disabled]:text-figma-disabled data-[disabled]:fill-figma-icon-disabled data-[disabled]:border-figma-disabled-strong',
         className,
       )}
       {...props}
     >
-      <RadioGroupPrimitive.Indicator className="pointer-events-none flex items-center justify-center after:block after:size-1.5 after:rounded-full after:content-[''] after:bg-figma-icon group-disabled:after:bg-figma-icon-disabled" />
-    </RadioGroupPrimitive.Item>
+      <Radio.Indicator className="pointer-events-none flex items-center justify-center after:block after:size-1.5 after:rounded-full after:content-[''] after:bg-figma-icon group-data-[disabled]:after:bg-figma-icon-disabled" />
+    </Radio.Root>
   );
 };
 
-RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
+RadioGroupItem.displayName = 'RadioGroupItem';
 
 export { RadioGroup as Group, RadioGroupItem as GroupItem };
+export type { RadioGroupProps, RadioGroupItemProps };
