@@ -26,7 +26,7 @@ const ActionIcon: React.FC<ActionIconProps> = ({ className, disabled, render, re
           'justify-center',
           'items-center',
           'shrink-0',
-          'rounded-figma-sm',
+          'rounded-figma-md',
           'cursor-default',
           'appearance-none',
           'text-figma-icon',
@@ -40,12 +40,12 @@ const ActionIcon: React.FC<ActionIconProps> = ({ className, disabled, render, re
           'transition-colors',
           'focus:not-focus-visible:outline-0 focus:not-focus-visible:outline-transparent',
           disabled
-            ? ['cursor-not-allowed', 'text-figma-disabled', 'fill-figma-icon-disabled']
+            ? ['cursor-not-allowed', 'text-figma-icon-disabled', 'fill-figma-icon-disabled']
             : [
-                'hover:bg-figma-hover hover:text-figma-icon-hover hover:fill-figma-icon-hover',
-                'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-figma-border-brand-strong',
-                'aria-expanded:bg-figma-brand aria-expanded:text-figma-icon-onbrand aria-expanded:fill-figma-icon-onbrand',
-                'aria-expanded:hover:bg-figma-brand aria-expanded:hover:text-figma-icon-onbrand aria-expanded:hover:fill-figma-icon-onbrand',
+                'hover:bg-figma-pressed',
+                'focus-visible:outline-figma-border-selected',
+                'aria-expanded:bg-figma-selected aria-expanded:text-figma-icon-brand aria-expanded:fill-figma-icon-brand',
+                'aria-expanded:hover:bg-figma-selected aria-expanded:hover:text-figma-icon-brand aria-expanded:hover:fill-figma-icon-brand',
               ],
           className,
         ),
