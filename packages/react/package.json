@@ -73,6 +73,7 @@
     "test:visual:update": "vitest run --project vrt --update"
   },
   "dependencies": {
+    "@base-ui/react": "catalog:",
     "@radix-ui/react-alert-dialog": "catalog:radix",
     "@radix-ui/react-checkbox": "catalog:radix",
     "@radix-ui/react-dialog": "catalog:radix",

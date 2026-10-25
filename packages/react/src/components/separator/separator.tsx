@@ -1,23 +1,18 @@
-import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import { Separator as BaseSeparator } from '@base-ui/react/separator';
 
 import { cn } from '~/utils';
 
 /**
  * Visually or semantically separates content.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/separator)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/separator#api-reference)
+ * - [Docs](https://base-ui.com/react/components/separator)
  */
-const Separator: React.FC<React.ComponentPropsWithRef<typeof SeparatorPrimitive.Root>> = ({
-  className,
-  orientation = 'vertical',
-  decorative = true,
-  ref,
-  ...props
-}) => (
-  <SeparatorPrimitive.Root
+const Separator: React.FC<
+  React.ComponentPropsWithRef<typeof BaseSeparator> & { decorative?: boolean }
+> = ({ className, orientation = 'vertical', decorative = true, ref, ...props }) => (
+  <BaseSeparator
     ref={ref}
-    decorative={decorative}
+    role={decorative ? 'none' : 'separator'}
     orientation={orientation}
     className={cn(
       'block',
@@ -30,6 +25,6 @@ const Separator: React.FC<React.ComponentPropsWithRef<typeof SeparatorPrimitive.
   />
 );
 
-Separator.displayName = SeparatorPrimitive.Root.displayName;
+Separator.displayName = 'Separator';
 
 export { Separator };

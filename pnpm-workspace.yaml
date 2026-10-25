@@ -10,6 +10,7 @@ catalog:
   '@iconify/tailwind4': ^1.2.3
   '@tailwindcss/vite': ^4.3.3
   '@types/node': ^24.19.2
+  '@base-ui/react': 1.9.0
   '@vitest/browser': 5.0.5
   '@vitest/browser-playwright': 5.0.5
   changelogen: ^0.6.2
