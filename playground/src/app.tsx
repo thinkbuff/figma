@@ -16,7 +16,7 @@ function Slider() {
     <SliderRoot
       value={values}
       className="data-[orientation=vertical]:h-60"
-      onValueChange={(value) => setValues(value)}
+      onValueChange={(value) => setValues(value as number[])}
     >
       <SliderTrack>
         <SliderRange />
