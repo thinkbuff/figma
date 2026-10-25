@@ -14,15 +14,18 @@ const toArray = (value: number | readonly number[]): readonly number[] =>
 
 const SliderRoot: React.FC<SliderRootProps> = ({ className, children, ref, ...props }) => (
   <SliderPrimitive.Root
+    thumbAlignment="center"
     className={cn(
       'relative',
       'flex',
       'items-center',
+      'grow',
       'w-full',
-      'h-3',
+      'h-6',
       'touch-none',
       'select-none',
-      'data-[orientation=vertical]:flex-col data-[orientation=vertical]:w-3 data-[orientation=vertical]:h-full',
+      'border-0 border-x-8 border-solid border-transparent',
+      'data-[orientation=vertical]:flex-col data-[orientation=vertical]:w-6 data-[orientation=vertical]:h-full data-[orientation=vertical]:border-x-0 data-[orientation=vertical]:border-y-8',
       className,
     )}
     {...props}
@@ -43,13 +46,15 @@ const SliderTrack: React.FC<
 > = ({ className, ref, ...props }) => (
   <SliderPrimitive.Track
     className={cn(
-      'relative',
-      'h-0.5',
+      'static',
+      'h-4',
       'grow',
-      'overflow-hidden',
+      'overflow-visible',
       'rounded-full',
-      'bg-figma-tertiary',
-      'data-[orientation=vertical]:w-0.5',
+      'bg-figma-secondary',
+      'outline-solid outline-1 -outline-offset-1 outline-[#0000001a] dark:outline-[#ffffff1a]',
+      'data-[orientation=horizontal]:-mx-2',
+      'data-[orientation=vertical]:w-4 data-[orientation=vertical]:-my-2',
       className,
     )}
     {...props}
@@ -67,10 +72,13 @@ const SliderRange: React.FC<
   <SliderPrimitive.Indicator
     className={cn(
       'absolute',
+      'block',
+      'rounded-full',
       'bg-figma-brand',
-      'data-[orientation=horizontal]:h-full',
-      'data-[orientation=vertical]:w-full',
-      'data-disabled:bg-figma-icon-disabled',
+      'box-content',
+      'data-[orientation=horizontal]:h-4 data-[orientation=horizontal]:px-2 data-[orientation=horizontal]:-ml-2',
+      'data-[orientation=vertical]:w-4 data-[orientation=vertical]:py-2 data-[orientation=vertical]:-mt-2',
+      'data-disabled:bg-figma-disabled',
       className,
     )}
     {...props}
@@ -87,26 +95,18 @@ const SliderThumb: React.FC<
 > = ({ className, ref, ...props }) => (
   <SliderPrimitive.Thumb
     className={cn(
-      'flex',
-      'items-center',
-      'justify-center',
-      'border',
+      'block',
+      'z-10',
+      'size-4',
+      'border-4',
       'border-solid',
-      'border-transparent',
+      'border-figma-icon-onbrand',
       'rounded-full',
-      'bg-figma',
-      'outline-solid',
-      'outline-2',
-      'outline-transparent',
-      'after:block',
-      'after:size-2',
-      'after:shrink-0',
-      'after:rounded-full',
-      'after:content-[""]',
-      'after:bg-figma-icon',
-      '[&:not(data-disabled)]:focus:outline-figma-border-selected',
-      'data-disabled:after:bg-figma-icon-disabled',
-      'data-disabled:pointer-events-none',
+      'bg-transparent',
+      'shadow-figma-elevation-200',
+      'outline-0',
+      'focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-figma-border-selected',
+      'data-disabled:border-0 data-disabled:bg-figma-disabled-secondary data-disabled:shadow-none data-disabled:pointer-events-none',
       className,
     )}
     {...props}

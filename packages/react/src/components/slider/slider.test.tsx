@@ -4,7 +4,7 @@ import { page, userEvent } from 'vitest/browser';
 
 import { clickAt, firstArg } from '~/test-utils';
 
-import { Slider } from './slider';
+import { Slider, SliderRange, SliderRoot, SliderThumb, SliderTrack } from './slider';
 
 describe('Slider', () => {
   it('renders a slider with the current value', async () => {
@@ -120,5 +120,35 @@ describe('Slider', () => {
     expect(onValueChange).toHaveBeenCalled();
     // callback arity/shape varies between primitives (Radix passes an array)
     expect([firstArg(onValueChange)].flat()[0]).toBe(50);
+  });
+});
+
+describe('range coverage', () => {
+  it('extends the indicator under the center of every thumb', async () => {
+    await render(
+      <SliderRoot
+        defaultValue={[25, 75]}
+        data-testid="slider"
+      >
+        <SliderTrack>
+          <SliderRange data-testid="range" />
+        </SliderTrack>
+        <SliderThumb index={0} />
+        <SliderThumb index={1} />
+      </SliderRoot>,
+    );
+
+    const range = document
+      .querySelector<HTMLElement>('[data-testid="range"]')!
+      .getBoundingClientRect();
+    const thumbs = [...document.querySelectorAll<HTMLElement>('[role="slider"], [data-index]')]
+      .filter((el) => el.hasAttribute('data-index'))
+      .map((el) => el.getBoundingClientRect());
+
+    const firstCenter = thumbs[0].left + thumbs[0].width / 2;
+    const lastCenter = thumbs[thumbs.length - 1].left + thumbs[thumbs.length - 1].width / 2;
+
+    expect(range.left).toBeLessThanOrEqual(firstCenter);
+    expect(range.right).toBeGreaterThanOrEqual(lastCenter);
   });
 });
