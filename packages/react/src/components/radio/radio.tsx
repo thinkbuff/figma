@@ -28,7 +28,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ className, inline = false, ref,
   return (
     <RadioGroupPrimitive
       ref={ref}
-      className={cn('flex', 'gap-2', inline ? 'flex-row' : 'flex-col', className)}
+      className={cn('flex', inline ? 'flex-row gap-5' : 'flex-col gap-2', className)}
       {...props}
     />
   );
@@ -42,29 +42,26 @@ const RadioGroupItem: React.FC<RadioGroupItemProps> = ({ className, ref, ...prop
       ref={ref}
       className={cn(
         'peer',
-        'group',
-        'size-3.5',
-        'text-figma',
-        'fill-figma-icon',
-        'border',
-        'border-solid',
-        'border-figma-icon',
-        'rounded-full',
+        'size-4',
         'aspect-square',
         'cursor-default',
+        'border-4',
+        'border-solid',
+        'border-transparent',
+        'rounded-full',
+        'bg-figma',
+        'data-checked:bg-figma-icon data-checked:border-figma-bg',
+        'data-disabled:data-checked:bg-figma-icon-disabled',
         'outline-solid',
         'outline-1',
-        '-outline-offset-2',
-        'outline-transparent',
-        'bg-clip-border',
-        'not-data-disabled:focus:border-figma-selected not-data-disabled:focus:outline-figma-border-selected',
-        'data-disabled:cursor-not-allowed data-disabled:text-figma-disabled data-disabled:fill-figma-icon-disabled data-disabled:border-figma-disabled-strong',
+        '-outline-offset-1',
+        'outline-figma-icon',
+        'not-data-disabled:focus-visible:outline-figma-border-selected',
+        'data-disabled:outline-figma-icon-disabled',
         className,
       )}
       {...props}
-    >
-      <Radio.Indicator className="pointer-events-none flex items-center justify-center after:block after:size-1.5 after:rounded-full after:content-[''] after:bg-figma-icon group-data-disabled:after:bg-figma-icon-disabled" />
-    </Radio.Root>
+    />
   );
 };
 

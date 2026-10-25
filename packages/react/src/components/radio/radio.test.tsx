@@ -112,3 +112,39 @@ describe('Radio', () => {
     expect(firstArg(onValueChange)).toBe('c');
   });
 });
+
+describe('RadioGroupItem checked state', () => {
+  it('renders the dot via the root background and the border gap', async () => {
+    await render(
+      <Radio.Group defaultValue="a">
+        <Radio.GroupItem
+          aria-label="Option A"
+          value="a"
+          data-testid="checked-radio"
+        />
+        <Radio.GroupItem
+          aria-label="Option B"
+          value="b"
+          data-testid="unchecked-radio"
+        />
+      </Radio.Group>,
+    );
+
+    const checked = document.querySelector<HTMLElement>('[data-testid="checked-radio"]')!;
+    const unchecked = document.querySelector<HTMLElement>('[data-testid="unchecked-radio"]')!;
+
+    const probe = document.createElement('div');
+    document.body.appendChild(probe);
+    probe.style.backgroundColor = 'var(--figma-color-icon)';
+    const iconColor = getComputedStyle(probe).backgroundColor;
+    probe.style.backgroundColor = 'var(--figma-color-bg)';
+    const bgColor = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+
+    // checked: the 8px padding box is the icon-colored dot, the 4px border is the bg-colored gap
+    expect(getComputedStyle(checked).backgroundColor).toBe(iconColor);
+    expect(getComputedStyle(checked).borderColor).toBe(bgColor);
+    // unchecked: fully bg-colored inside the icon-colored outline ring
+    expect(getComputedStyle(unchecked).backgroundColor).toBe(bgColor);
+  });
+});
