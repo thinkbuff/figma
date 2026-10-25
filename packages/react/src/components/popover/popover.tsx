@@ -104,12 +104,13 @@ const PopoverContent: React.FC<PopoverContentProps> = ({
         ref={ref}
         className={cn(
           'w-auto',
+          'text-figma',
+          'text-figma-sm leading-figma-sm',
           'bg-figma',
-          'rounded-figma-sm',
-          'outline-solid',
-          'outline-1',
-          'outline-figma-border',
-          'shadow-md',
+          'rounded-figma-lg',
+          'overflow-y-auto',
+          'outline-0',
+          'shadow-figma-elevation-500',
           'will-change-[transform,opacity]',
           'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
           className,
