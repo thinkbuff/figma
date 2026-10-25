@@ -22,7 +22,7 @@ const Toaster = ({ className, ...props }: ToasterProps) => {
         unstyled: true,
         classNames: {
           toast:
-            'group toast flex items-center gap-2 p-3 text-figma-sm leading-figma-sm bg-figma text-figma shadow-lg flex items-center border-solid border border-figma rounded w-[var(--width)]',
+            'group toast flex items-center gap-2 p-3 text-figma-sm leading-figma-sm bg-figma text-figma shadow-figma-elevation-400 flex items-center border-solid border border-figma rounded-figma-md w-[var(--width)]',
           title: 'text-xs',
           description:
             'text-figma-sm leading-figma-sm text-figma-secondary group-data-[type=success]:text-figma-success-tertiary group-data-[type=info]:text-figma-brand-tertiary group-data-[type=warning]:text-figma-warning-tertiary group-data-[type=error]:text-figma-danger-tertiary dark:group-data-[type=warning]:text-figma-onwarning dark:group-data-[type=danger]:text-figma-ondanger',

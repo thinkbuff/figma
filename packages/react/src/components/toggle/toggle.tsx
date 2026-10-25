@@ -24,7 +24,7 @@ const Toggle: React.FC<ToggleProps> = ({ className, disabled, ref, ...props }) =
       'justify-center',
       'shrink-0',
       'rounded-figma-sm',
-      'font-medium',
+      'font-figma-default',
       'cursor-default',
       'appearance-none',
       'text-figma-icon',

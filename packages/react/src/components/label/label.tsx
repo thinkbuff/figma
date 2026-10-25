@@ -5,7 +5,7 @@ const Label: React.FC<React.ComponentPropsWithRef<'label'>> = ({ className, ref,
     ref={ref}
     className={cn(
       'text-figma-sm leading-figma-sm',
-      'font-medium',
+      'font-figma-default',
       'cursor-default',
       'disabled:cursor-not-allowed disabled:text-figma-disabled',
       'peer-disabled:cursor-not-allowed peer-disabled:text-figma-disabled',
