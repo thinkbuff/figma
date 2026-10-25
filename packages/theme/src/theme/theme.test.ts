@@ -117,3 +117,97 @@ describe('@thinkbuff/figma-theme', () => {
     expect(utilitiesCss).not.toContain('@utility shadow-figma-menu {');
   });
 });
+
+describe('UI3 theme tokens', () => {
+  it('exposes semantic typography foundation variables and aliases', () => {
+    const css = generateThemeVariablesCSS('figma');
+
+    const expected: Record<string, [string, string, string]> = {
+      'body-small': ['.5625rem', '.875rem', '.00281rem'],
+      'body-medium': ['.6875rem', '1rem', '.00344rem'],
+      'body-large': ['.8125rem', '1.375rem', '-.002rem'],
+      'heading-small': ['.8125rem', '1.375rem', '-.002rem'],
+      'heading-medium': ['.9375rem', '1.5625rem', '-.00469rem'],
+      'heading-large': ['1.5rem', '2rem', '-.0255rem'],
+    };
+
+    for (const [name, [size, lineHeight, letterSpacing]] of Object.entries(expected)) {
+      expect(css).toContain(`--figma-font-size-${name}: ${size};`);
+      expect(css).toContain(`--figma-line-height-${name}: ${lineHeight};`);
+      expect(css).toContain(`--figma-letter-spacing-${name}: ${letterSpacing};`);
+      expect(css).toContain(`--text-figma-${name}: ${size};`);
+      expect(css).toContain(`--text-figma-${name}--line-height: ${lineHeight};`);
+      expect(css).toContain(`--text-figma-${name}--letter-spacing: ${letterSpacing};`);
+      expect(css).toContain(`--leading-figma-${name}: ${lineHeight};`);
+      expect(css).toContain(`--tracking-figma-${name}: ${letterSpacing};`);
+    }
+  });
+
+  it('sets font-weight 550 on heading text aliases only', () => {
+    const css = generateThemeVariablesCSS('figma');
+
+    for (const name of ['heading-small', 'heading-medium', 'heading-large']) {
+      expect(css).toContain(`--text-figma-${name}--font-weight: 550;`);
+    }
+    for (const name of ['body-small', 'body-medium', 'body-large']) {
+      expect(css).not.toContain(`--text-figma-${name}--font-weight`);
+    }
+  });
+
+  it('renumbers the spacing scale', () => {
+    const css = generateThemeVariablesCSS('figma');
+
+    expect(css).toContain('--figma-space-5: 2rem;');
+    expect(css).toContain('--figma-space-6: 2.5rem;');
+    expect(css).not.toContain('--figma-space-7');
+    expect(css).toContain('--spacing-figma-5: 2rem;');
+    expect(css).toContain('--spacing-figma-6: 2.5rem;');
+    expect(css).not.toContain('--spacing-figma-7');
+  });
+
+  it('emits per-theme elevation variables outside @theme', () => {
+    const css = generateThemeVariablesCSS('figma');
+
+    const plainTheme = css.split('@theme {')[1].split('}')[0];
+    expect(plainTheme).not.toContain('--figma-elevation-');
+
+    const lightBlock = css.split(':root, html.figma-light, .figma-light {')[1].split('}')[0];
+    expect(lightBlock).toContain('--figma-elevation-100:');
+    expect(lightBlock).toContain('--figma-elevation-500:');
+    expect(lightBlock).not.toContain('inset');
+
+    const darkBlock = css.split('html.figma-dark, .figma-dark {')[1].split('}')[0];
+    expect(darkBlock).toContain('--figma-elevation-100:');
+    expect(darkBlock).toContain('--figma-elevation-500:');
+    expect(darkBlock).toContain('inset');
+
+    const figjamCss = generateThemeVariablesCSS('figjam');
+    const figjamBlock = figjamCss.split(':root, html.figjam, .figjam {')[1].split('}')[0];
+    expect(figjamBlock).toContain('--figma-elevation-100:');
+    expect(figjamBlock).toContain('--figma-elevation-500:');
+    expect(figjamBlock).not.toContain('inset');
+  });
+
+  it('emits shadow aliases only inside @theme inline', () => {
+    const css = generateThemeVariablesCSS('figma');
+
+    const plainTheme = css.split('@theme {')[1].split('}')[0];
+    expect(plainTheme).not.toContain('--shadow-figma-');
+
+    const inlineTheme = css.split('@theme inline {')[1].split('}')[0];
+    for (const level of ['100', '200', '300', '400', '500']) {
+      expect(inlineTheme).toContain(
+        `--shadow-figma-elevation-${level}: var(--figma-elevation-${level});`,
+      );
+    }
+    expect(inlineTheme).toContain('--shadow-figma-tooltip: var(--figma-elevation-300);');
+    expect(inlineTheme).toContain('--shadow-figma-menu: var(--figma-elevation-400);');
+    expect(inlineTheme).toContain('--shadow-figma-modal: var(--figma-elevation-500);');
+    expect(inlineTheme).toContain('--shadow-figma-slider:');
+
+    const lightBlock = css.split(':root, html.figma-light, .figma-light {')[1].split('}')[0];
+    expect(lightBlock).toContain('--figma-shadow-tooltip: var(--figma-elevation-300);');
+    expect(lightBlock).toContain('--figma-shadow-menu: var(--figma-elevation-400);');
+    expect(lightBlock).toContain('--figma-shadow-modal: var(--figma-elevation-500);');
+  });
+});

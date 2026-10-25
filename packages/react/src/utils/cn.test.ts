@@ -44,3 +44,13 @@ describe('cn', () => {
     expect(cn('font-figma-default', 'font-figma-strong')).toBe('font-figma-strong');
   });
 });
+
+describe('cn UI3 typography', () => {
+  it('treats text-figma-body-* and text-figma-heading-* as font sizes', () => {
+    expect(cn('text-figma-sm', 'text-figma-heading-medium')).toBe('text-figma-heading-medium');
+    expect(cn('text-figma-body-small', 'text-figma-body-large')).toBe('text-figma-body-large');
+    expect(cn('text-figma-heading-small', 'text-figma-danger')).toBe(
+      'text-figma-heading-small text-figma-danger',
+    );
+  });
+});

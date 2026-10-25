@@ -19,6 +19,26 @@ export const SharedFoundationVariables = {
   '--figma-font-size-lg': '.8125rem', // 13px
   '--figma-line-height-lg': '1.375rem', // 22px
   '--figma-letter-spacing-lg': '-.002rem', // -0.032px
+  // UI3 semantic typography scale (UI Kit typography tokens).
+  // heading-* carries weight 550 via the --text-figma-*--font-weight theme alias.
+  '--figma-font-size-body-small': '.5625rem', // 9px
+  '--figma-line-height-body-small': '.875rem', // 14px
+  '--figma-letter-spacing-body-small': '.00281rem',
+  '--figma-font-size-body-medium': '.6875rem', // 11px
+  '--figma-line-height-body-medium': '1rem', // 16px
+  '--figma-letter-spacing-body-medium': '.00344rem',
+  '--figma-font-size-body-large': '.8125rem', // 13px
+  '--figma-line-height-body-large': '1.375rem', // 22px
+  '--figma-letter-spacing-body-large': '-.002rem',
+  '--figma-font-size-heading-small': '.8125rem', // 13px
+  '--figma-line-height-heading-small': '1.375rem', // 22px
+  '--figma-letter-spacing-heading-small': '-.002rem',
+  '--figma-font-size-heading-medium': '.9375rem', // 15px
+  '--figma-line-height-heading-medium': '1.5625rem', // 25px
+  '--figma-letter-spacing-heading-medium': '-.00469rem',
+  '--figma-font-size-heading-large': '1.5rem', // 24px
+  '--figma-line-height-heading-large': '2rem', // 32px
+  '--figma-letter-spacing-heading-large': '-.0255rem',
   '--figma-radius-sm': '.125rem', // 2px
   '--figma-radius-md': '.3125rem', // 5px
   '--figma-radius-lg': '.8125rem', // 13px
@@ -31,9 +51,8 @@ export const SharedFoundationVariables = {
   '--figma-space-2\\.5': '.75rem', // 12px
   '--figma-space-3': '1rem', // 16px
   '--figma-space-4': '1.5rem', // 24px
-  '--figma-space-5': '1.25rem', // 20px
-  '--figma-space-6': '1.75rem', // 28px
-  '--figma-space-7': '2rem', // 32px
+  '--figma-space-5': '2rem', // 32px
+  '--figma-space-6': '2.5rem', // 40px
   '--figma-border-width-1': '1px',
   '--figma-border-width-4': '.25rem', // 4px
   '--figma-duration-100': '100ms',
@@ -46,9 +65,6 @@ export const SharedFoundationVariables = {
   '--figma-z-index-dropdown': '10',
   '--figma-z-index-modal': '50',
   '--figma-z-index-tooltip': '100',
-  '--figma-shadow-tooltip': '0 1px 3px 0 #0000001a, 0 5px 12px 0 #00000021, 0 0 0.5px 0 #00000026',
-  '--figma-shadow-menu': '0 2px 5px 0 #00000026, 0 10px 16px 0 #0000001f, 0 0 0.5px 0 #0000001f',
-  '--figma-shadow-modal': '0 2px 5px 0 #00000026, 0 10px 24px 0 #0000002e, 0 0 0.5px 0 #00000014',
   '--figma-shadow-slider':
     '0 1px 3px 0 #0000001a, 0 3px 8px 0 #0000001a, 0 0 0.5px 0 #0000002e, inset 0 0 0 0.5px #0000001a',
 } as const;

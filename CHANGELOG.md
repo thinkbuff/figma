@@ -34,7 +34,16 @@
 - `Label` is a native `<label>`.
 - `react` / `react-dom` peer range is now `^18.2.0 || ^19`; Node `>=24.21.0`.
 
+#### Theme tokens: UI3 sync
+
+- Spacing renumbered to the UI3 scale: `--figma-space-5` is now 32px (was 20px), `--figma-space-6` is now 40px (was 28px), and `--figma-space-7` is removed. Utilities such as `p-figma-5` / `gap-figma-6` follow the new values.
+
 Per-component details, behavior notes and QA checklists live in `.migration/`.
+
+### 🚀 Features
+
+- UI3 semantic typography utilities: `text-figma-body-{small,medium,large}` and `text-figma-heading-{small,medium,large}` set size, leading and tracking in one class; the `heading-*` variants also apply `font-weight: 550`. Matching `leading-figma-*` and `tracking-figma-*` utilities are available.
+- UI3 elevation shadows: `shadow-figma-elevation-{100..500}` plus semantic `shadow-figma-tooltip` / `shadow-figma-menu` / `shadow-figma-modal` (elevation 300/400/500). Elevations are theme-scoped, so `.figma-dark` gets the dark values (inset highlights) even on nested elements; `shadow-figma-slider` is unchanged.
 
 ### 🧹 Chore
 

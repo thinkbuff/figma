@@ -4,7 +4,18 @@ import { extendTailwindMerge } from 'tailwind-merge';
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {
-      text: ['figma-xs', 'figma-sm', 'figma-md', 'figma-lg'],
+      text: [
+        'figma-xs',
+        'figma-sm',
+        'figma-md',
+        'figma-lg',
+        'figma-body-small',
+        'figma-body-medium',
+        'figma-body-large',
+        'figma-heading-small',
+        'figma-heading-medium',
+        'figma-heading-large',
+      ],
       font: ['figma', 'figma-code'],
     },
     classGroups: {

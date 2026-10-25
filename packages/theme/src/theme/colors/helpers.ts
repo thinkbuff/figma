@@ -1,3 +1,8 @@
+import {
+  DarkElevationCSSVariables,
+  LegacyElevationShadowVariables,
+  LightElevationCSSVariables,
+} from '../elevation-variables';
 import { SharedFoundationVariables } from '../shared-foundation-variables';
 import { FigJamLightThemeCSSVariables } from './figjam';
 import { FigmaLightThemeCSSVariables, FigmaDarkThemeCSSVariables } from './figma';
@@ -24,11 +29,28 @@ function getSharedFoundationAliases() {
   const fontWeightScale = extractSharedScale('--figma-font-weight-', (left, right) => {
     return left.localeCompare(right);
   });
-  const typographyScale = ['xs', 'sm', 'md', 'lg'] as const;
+  const typographyScale = [
+    'xs',
+    'sm',
+    'md',
+    'lg',
+    'body-small',
+    'body-medium',
+    'body-large',
+    'heading-small',
+    'heading-medium',
+    'heading-large',
+  ] as const;
+  const semanticTypographyScale = [
+    'body-small',
+    'body-medium',
+    'body-large',
+    'heading-small',
+    'heading-medium',
+    'heading-large',
+  ] as const;
+  const headingTypographyScale = ['heading-small', 'heading-medium', 'heading-large'] as const;
   const radiusScale = extractSharedScale('--figma-radius-', (left, right) => {
-    return left.localeCompare(right);
-  });
-  const shadowScale = extractSharedScale('--figma-shadow-', (left, right) => {
     return left.localeCompare(right);
   });
   const spacingScale = extractSharedScale('--figma-space-', (left, right) => {
@@ -106,23 +128,30 @@ function getSharedFoundationAliases() {
       }),
     ),
     ...Object.fromEntries(
+      semanticTypographyScale.map((suffix) => {
+        return [
+          `--text-figma-${suffix}--letter-spacing`,
+          getSharedFoundationValue(
+            `--figma-letter-spacing-${suffix}` as keyof typeof SharedFoundationVariables,
+          ),
+        ];
+      }),
+    ),
+    ...Object.fromEntries(
+      headingTypographyScale.map((suffix) => {
+        return [
+          `--text-figma-${suffix}--font-weight`,
+          getSharedFoundationValue('--figma-font-weight-strong'),
+        ];
+      }),
+    ),
+    ...Object.fromEntries(
       radiusScale.map((suffix) => {
         const escapedSuffix = escapeThemeVariableSuffix(suffix);
         return [
           `--radius-figma-${escapedSuffix}`,
           getSharedFoundationValue(
             `--figma-radius-${escapedSuffix}` as keyof typeof SharedFoundationVariables,
-          ),
-        ];
-      }),
-    ),
-    ...Object.fromEntries(
-      shadowScale.map((suffix) => {
-        const escapedSuffix = escapeThemeVariableSuffix(suffix);
-        return [
-          `--shadow-figma-${escapedSuffix}`,
-          getSharedFoundationValue(
-            `--figma-shadow-${escapedSuffix}` as keyof typeof SharedFoundationVariables,
           ),
         ];
       }),
@@ -185,6 +214,22 @@ function getSharedFoundationAliases() {
   };
 }
 
+function getInlineShadowAliases() {
+  const elevationLevels = ['100', '200', '300', '400', '500'] as const;
+  return {
+    ...Object.fromEntries(
+      elevationLevels.map((level) => [
+        `--shadow-figma-elevation-${level}`,
+        `var(--figma-elevation-${level})`,
+      ]),
+    ),
+    '--shadow-figma-tooltip': 'var(--figma-elevation-300)',
+    '--shadow-figma-menu': 'var(--figma-elevation-400)',
+    '--shadow-figma-modal': 'var(--figma-elevation-500)',
+    '--shadow-figma-slider': getSharedFoundationValue('--figma-shadow-slider'),
+  };
+}
+
 export function serializeThemeColorPreflightDeclarations(
   theme: Record<ThemeCSSVariableKey, string>,
 ) {
@@ -207,23 +252,42 @@ export function serializeCSSVariableDeclarations(theme: Record<string, string>) 
 export function generateThemeVariablesCSS(type: 'figma' | 'figjam') {
   const sharedFoundationVariablesCSS = `@theme {
 ${serializeCSSVariableDeclarations({ ...SharedFoundationVariables, ...getSharedFoundationAliases() })}
+}
+
+@theme inline {
+${serializeCSSVariableDeclarations(getInlineShadowAliases())}
 }`;
 
   if (type === 'figma') {
     return `${sharedFoundationVariablesCSS}
 
 :root, html.figma-light, .figma-light {
-${serializeCSSVariableDeclarations({ ...SharedThemeCSSVariables, ...FigmaLightThemeCSSVariables })}
+${serializeCSSVariableDeclarations({
+  ...SharedThemeCSSVariables,
+  ...FigmaLightThemeCSSVariables,
+  ...LightElevationCSSVariables,
+  ...LegacyElevationShadowVariables,
+})}
 }
 
 html.figma-dark, .figma-dark {
-${serializeCSSVariableDeclarations({ ...SharedThemeCSSVariables, ...FigmaDarkThemeCSSVariables })}
+${serializeCSSVariableDeclarations({
+  ...SharedThemeCSSVariables,
+  ...FigmaDarkThemeCSSVariables,
+  ...DarkElevationCSSVariables,
+  ...LegacyElevationShadowVariables,
+})}
 }`;
   }
 
   return `${sharedFoundationVariablesCSS}
 
 :root, html.figjam, .figjam {
-${serializeCSSVariableDeclarations({ ...SharedThemeCSSVariables, ...FigJamLightThemeCSSVariables })}
+${serializeCSSVariableDeclarations({
+  ...SharedThemeCSSVariables,
+  ...FigJamLightThemeCSSVariables,
+  ...LightElevationCSSVariables,
+  ...LegacyElevationShadowVariables,
+})}
 }`;
 }
