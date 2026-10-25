@@ -28,8 +28,7 @@ function Slider() {
           defaultOpen={showTooltip}
           open={showTooltip}
           content={<p>{value}</p>}
-          delayDuration={200}
-          updatePositionStrategy="always"
+          delay={200}
         >
           <SliderThumb
             onMouseOver={() => toggleTooltip(true)}
