@@ -26,14 +26,16 @@ const meta = {
         open={open}
         onOpenChange={(value) => updateArgs({ open: value })}
       >
-        <AlertDialog.Trigger asChild>
-          <Button
-            variant="outline"
-            color="danger"
-          >
-            Delete account
-          </Button>
-        </AlertDialog.Trigger>
+        <AlertDialog.Trigger
+          render={
+            <Button
+              variant="outline"
+              color="danger"
+            >
+              Delete account
+            </Button>
+          }
+        />
         <AlertDialog.Content {...props}>
           <AlertDialog.Header>
             <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
@@ -43,17 +45,17 @@ const meta = {
             data from our servers.
           </AlertDialog.Description>
           <AlertDialog.Footer className="justify-end gap-3">
-            <AlertDialog.Cancel asChild>
-              <Button
-                variant="outline"
-                color="secondary"
-              >
-                Cancel
-              </Button>
-            </AlertDialog.Cancel>
-            <AlertDialog.Action asChild>
-              <Button color="danger">Yes, delete account</Button>
-            </AlertDialog.Action>
+            <AlertDialog.Cancel
+              render={
+                <Button
+                  variant="outline"
+                  color="secondary"
+                >
+                  Cancel
+                </Button>
+              }
+            />
+            <AlertDialog.Action render={<Button color="danger">Yes, delete account</Button>} />
           </AlertDialog.Footer>
         </AlertDialog.Content>
       </AlertDialog.Root>

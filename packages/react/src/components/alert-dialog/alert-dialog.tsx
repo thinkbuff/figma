@@ -1,6 +1,8 @@
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
 
 import { cn } from '~/utils';
+
+type WithStringClassName<T> = Omit<T, 'className'> & { className?: string };
 
 const AlertDialogRoot = AlertDialogPrimitive.Root;
 
@@ -8,33 +10,40 @@ const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
 
 const AlertDialogPortal = AlertDialogPrimitive.Portal;
 
-const AlertDialogAction = AlertDialogPrimitive.Action;
+const AlertDialogAction = AlertDialogPrimitive.Close;
 
-const AlertDialogCancel = AlertDialogPrimitive.Cancel;
+const AlertDialogCancel = AlertDialogPrimitive.Close;
 
 const AlertDialogOverlay: React.FC<
-  React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Overlay>
+  WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Backdrop>>
 > = ({ className, ref, ...props }) => (
-  <AlertDialogPrimitive.Overlay
+  <AlertDialogPrimitive.Backdrop
     ref={ref}
-    className={cn('fixed', 'inset-0', 'z-50', 'bg-black/50', className)}
+    className={cn(
+      'fixed',
+      'inset-0',
+      'z-50',
+      'bg-black/50',
+      'transition-opacity duration-150 data-[starting-style]:opacity-0 data-[ending-style]:opacity-0 motion-reduce:transition-none',
+      className,
+    )}
     {...props}
   />
 );
 
-AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName;
+AlertDialogOverlay.displayName = 'AlertDialogOverlay';
 
-interface AlertDialogContentProps extends React.ComponentPropsWithRef<
-  typeof AlertDialogPrimitive.Content
+interface AlertDialogContentProps extends WithStringClassName<
+  React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Popup>
 > {
-  container?: AlertDialogPrimitive.AlertDialogPortalProps['container'];
+  container?: React.ComponentProps<typeof AlertDialogPrimitive.Portal>['container'];
 }
 
 /**
  * A modal dialog that interrupts the user with important content and expects a response.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/alert-dialog)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/alert-dialog#api-reference)
+ * - [Docs](https://base-ui.com/react/components/alert-dialog)
+ * - [API Reference](https://base-ui.com/react/components/alert-dialog#api-reference)
  */
 const AlertDialogContent: React.FC<AlertDialogContentProps> = ({
   className,
@@ -44,7 +53,7 @@ const AlertDialogContent: React.FC<AlertDialogContentProps> = ({
 }) => (
   <AlertDialogPortal container={container}>
     <AlertDialogOverlay />
-    <AlertDialogPrimitive.Content
+    <AlertDialogPrimitive.Popup
       ref={ref}
       className={cn(
         'fixed',
@@ -60,6 +69,8 @@ const AlertDialogContent: React.FC<AlertDialogContentProps> = ({
         'bg-figma',
         'p-6',
         'shadow-lg',
+        'outline-none',
+        'transition-[opacity,scale] duration-150 data-[starting-style]:opacity-0 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[ending-style]:scale-95 motion-reduce:transition-none',
         className,
       )}
       {...props}
@@ -67,7 +78,7 @@ const AlertDialogContent: React.FC<AlertDialogContentProps> = ({
   </AlertDialogPortal>
 );
 
-AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName;
+AlertDialogContent.displayName = 'AlertDialogContent';
 
 const AlertDialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   className,
@@ -104,7 +115,7 @@ const AlertDialogFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({
 AlertDialogFooter.displayName = 'AlertDialogFooter';
 
 const AlertDialogTitle: React.FC<
-  React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Title>
+  WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Title>>
 > = ({ className, ref, ...props }) => (
   <AlertDialogPrimitive.Title
     ref={ref}
@@ -113,10 +124,10 @@ const AlertDialogTitle: React.FC<
   />
 );
 
-AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName;
+AlertDialogTitle.displayName = 'AlertDialogTitle';
 
 const AlertDialogDescription: React.FC<
-  React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Description>
+  WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Description>>
 > = ({ className, ref, ...props }) => (
   <AlertDialogPrimitive.Description
     ref={ref}
@@ -125,7 +136,7 @@ const AlertDialogDescription: React.FC<
   />
 );
 
-AlertDialogDescription.displayName = AlertDialogPrimitive.Description.displayName;
+AlertDialogDescription.displayName = 'AlertDialogDescription';
 
 export {
   AlertDialogRoot as Root,
