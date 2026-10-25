@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -20,6 +21,18 @@ const viteResolve = {
   },
 };
 
+// Every exported @base-ui/react subpath must be pre-optimized: the bare
+// package name in `dependencies` does not cover deep imports, and a
+// partially-optimized dep graph leaves stale Radix chunks in the browser
+// test cache after a dependency swap (phantom VRT diffs).
+const baseUiSubpaths = Object.keys(
+  JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, 'node_modules/@base-ui/react/package.json'), 'utf8'),
+  ).exports as Record<string, unknown>,
+)
+  .filter((key) => key !== '.' && !key.includes('*') && key !== './package.json')
+  .map((key) => `@base-ui/react/${key.slice(2)}`);
+
 const optimizeDeps = {
   include: [
     'react',
@@ -28,6 +41,7 @@ const optimizeDeps = {
     'react-dom',
     'react-dom/client',
     'vitest-browser-react',
+    ...baseUiSubpaths,
     ...Object.keys(dependencies),
   ],
 };

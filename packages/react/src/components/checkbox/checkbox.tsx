@@ -1,16 +1,19 @@
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox';
 
 import { MdiCheckBold, MdiMinusThick } from '~/icons';
 import { cn } from '~/utils';
 
-interface CheckboxProps extends React.ComponentPropsWithRef<typeof CheckboxPrimitive.Root> {
-  indeterminate?: boolean;
+interface CheckboxProps extends Omit<
+  React.ComponentPropsWithRef<typeof CheckboxPrimitive.Root>,
+  'className'
+> {
+  className?: string;
 }
 
 /**
  * A control that allows the user to toggle between checked and not checked.
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/checkbox)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/checkbox#api-reference)
+ * - [Docs](https://base-ui.com/react/components/checkbox)
+ * - [API Reference](https://base-ui.com/react/components/checkbox#api)
  */
 const Checkbox: React.FC<CheckboxProps> = ({
   className,
@@ -44,29 +47,27 @@ const Checkbox: React.FC<CheckboxProps> = ({
             'cursor-not-allowed',
             'text-figma-disabled',
             'border-figma-bg-disabled',
-            'data-[state=checked]:text-figma-ondisabled data-[state=checked]:bg-figma-disabled',
+            'data-[checked]:text-figma-ondisabled data-[checked]:bg-figma-disabled',
           ]
         : [
             'focus:border-figma-selected-strong focus:outline-figma-border-selected-strong',
-            'data-[state=checked]:focus:border-figma-bg',
-            'data-[state=checked]:bg-figma-brand data-[state=checked]:text-figma-onbrand data-[state=checked]:border-figma-bg-brand',
+            'data-[checked]:focus:border-figma-bg',
+            'data-[checked]:bg-figma-brand data-[checked]:text-figma-onbrand data-[checked]:border-figma-bg-brand',
           ],
       className,
     )}
     {...props}
-    checked={indeterminate ? 'indeterminate' : checked}
+    checked={checked}
+    indeterminate={indeterminate}
     disabled={disabled}
   >
-    <CheckboxPrimitive.Indicator
-      className="absolute inline-block size-2.5"
-      asChild
-    >
+    <CheckboxPrimitive.Indicator className="absolute inline-block size-2.5">
       {indeterminate ? <MdiMinusThick /> : <MdiCheckBold className="-mt-px" />}
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 );
 
-Checkbox.displayName = CheckboxPrimitive.Root.displayName;
+Checkbox.displayName = 'Checkbox';
 
 export { Checkbox };
 
