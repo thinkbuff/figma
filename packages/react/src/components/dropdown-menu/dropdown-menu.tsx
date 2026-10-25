@@ -13,7 +13,18 @@ const DropdownMenuRoot = MenuPrimitive.Root;
 
 const DropdownMenuTrigger = MenuPrimitive.Trigger;
 
-const DropdownMenuGroup = MenuPrimitive.Group;
+const DropdownMenuGroup: React.FC<
+  WithStringClassName<React.ComponentPropsWithRef<typeof MenuPrimitive.Group>>
+> = ({ className, ref, ...props }) => (
+  <MenuPrimitive.Group
+    ref={ref}
+    className={cn(
+      'py-2 first:pt-0 last:pb-0 not-first:border-t not-first:border-solid not-first:border-figma-border-menu',
+      className,
+    )}
+    {...props}
+  />
+);
 
 const DropdownMenuSub = MenuPrimitive.SubmenuRoot;
 
@@ -59,22 +70,21 @@ const DropdownMenuSubTrigger: React.FC<
       'items-center',
       'justify-between',
       'h-6',
-      'pl-8',
-      'pr-4',
+      'px-2',
       'text-figma-sm leading-figma-sm',
       'text-figma-menu',
       'cursor-default',
       'select-none',
       'outline-none',
-      'hover:bg-figma-menu-selected',
-      'focus:bg-figma-menu-selected',
-      'data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled',
+      'rounded-figma-md',
+      'data-highlighted:bg-figma-selected-strong',
+      'data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
       className,
     )}
     {...props}
   >
     {children}
-    <MdiTriangle className="size-2 rotate-90" />
+    <MdiTriangle className="ml-auto size-2 rotate-90 pl-6 -mr-2" />
   </MenuPrimitive.SubmenuTrigger>
 );
 
@@ -92,13 +102,13 @@ interface DropdownMenuContentProps extends WithStringClassName<
 }
 
 const popupClassName = [
-  'text-figma-menu',
+  'text-figma-sm text-figma-menu',
   'bg-figma-menu',
   'min-w-20',
-  'rounded-figma-sm',
+  'rounded-figma-lg',
   'border-none',
-  'py-2',
-  'shadow-md',
+  'p-2',
+  'shadow-figma-menu',
   'outline-none',
   'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
 ];
@@ -163,15 +173,14 @@ const itemClassName = [
   'flex',
   'items-center',
   'h-6',
-  'pl-8',
-  'pr-4',
+  'px-2',
   'text-figma-sm leading-figma-sm',
   'text-figma-menu',
   'cursor-default',
   'select-none',
   'outline-none',
-  'hover:bg-figma-menu-selected',
-  'focus:bg-figma-menu-selected',
+  'rounded-figma-md',
+  'data-highlighted:bg-figma-selected-strong',
 ];
 
 const DropdownMenuItem: React.FC<
@@ -197,13 +206,13 @@ const DropdownMenuCheckboxItem: React.FC<
     ref={ref}
     className={cn(
       itemClassName,
-      'data-disabled:pointer-events-none data-disabled:text-figma-disabled',
+      'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
       className,
     )}
     {...props}
   >
     <MenuPrimitive.CheckboxItemIndicator
-      className="absolute left-2 h-3 w-4"
+      className="absolute left-1 h-3 w-4"
       render={<MdiCheckBold />}
     />
     {children}
@@ -219,12 +228,12 @@ const DropdownMenuRadioItem: React.FC<
     ref={ref}
     className={cn(
       itemClassName,
-      'data-disabled:pointer-events-none data-disabled:text-figma-disabled',
+      'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
       className,
     )}
     {...props}
   >
-    <MenuPrimitive.RadioItemIndicator className="absolute left-2 w-4 flex items-center justify-center">
+    <MenuPrimitive.RadioItemIndicator className="absolute left-1 w-4 flex items-center justify-center">
       <MdiCircleMedium className="size-3" />
     </MenuPrimitive.RadioItemIndicator>
     {children}
@@ -242,11 +251,12 @@ const DropdownMenuLabel: React.FC<
   <MenuPrimitive.GroupLabel
     ref={ref}
     className={cn(
-      'px-8',
-      'py-1',
+      'flex',
+      'items-center',
+      'h-6',
+      'px-2',
       'text-figma-sm leading-figma-sm',
-      'text-figma-menu-secondary',
-      'font-medium',
+      'text-figma-menu-tertiary',
       className,
     )}
     {...props}
@@ -260,7 +270,7 @@ const DropdownMenuSeparator: React.FC<
 > = ({ className, ref, ...props }) => (
   <MenuPrimitive.Separator
     ref={ref}
-    className={cn('border-figma-menu my-2 h-[1px] w-full border-t', className)}
+    className={cn('my-2 h-px w-full bg-figma-border-menu', className)}
     {...props}
   />
 );
