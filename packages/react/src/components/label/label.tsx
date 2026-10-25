@@ -1,13 +1,7 @@
-import * as LabelPrimitive from '@radix-ui/react-label';
-
 import { cn } from '~/utils';
 
-const Label: React.FC<React.ComponentPropsWithRef<typeof LabelPrimitive.Root>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <LabelPrimitive.Root
+const Label: React.FC<React.ComponentPropsWithRef<'label'>> = ({ className, ref, ...props }) => (
+  <label
     ref={ref}
     className={cn(
       'text-figma-sm leading-figma-sm',
@@ -21,6 +15,6 @@ const Label: React.FC<React.ComponentPropsWithRef<typeof LabelPrimitive.Root>> =
   />
 );
 
-Label.displayName = LabelPrimitive.Root.displayName;
+Label.displayName = 'Label';
 
 export { Label };
