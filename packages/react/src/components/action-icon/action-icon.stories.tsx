@@ -43,15 +43,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const WithDataState = {
+export const Expanded = {
   argTypes: {
-    'data-state': {
-      control: 'inline-radio',
-      options: ['open', 'closed'],
+    'aria-expanded': {
+      control: 'boolean',
     },
   },
   args: {
-    'data-state': 'open',
+    'aria-expanded': true,
   },
 };
 

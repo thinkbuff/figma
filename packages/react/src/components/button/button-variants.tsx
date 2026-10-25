@@ -59,7 +59,7 @@ export const buttonVariants = cva(
           'hover:bg-figma-brand-hover',
           'active:bg-figma-brand-pressed',
           'focus-visible:outline-figma-border-brand-strong',
-          'data-[state=open]:bg-figma-brand-pressed',
+          'aria-expanded:bg-figma-brand-pressed',
         ],
       },
       {
@@ -71,7 +71,7 @@ export const buttonVariants = cva(
           'hover:bg-figma-tertiary',
           'active:bg-figma-tertiary',
           'focus-visible:outline-figma-border-brand-strong',
-          'data-[state=open]:bg-figma-brand-pressed',
+          'aria-expanded:bg-figma-brand-pressed',
         ],
       },
       {
@@ -83,7 +83,7 @@ export const buttonVariants = cva(
           'hover:bg-figma-success-hover',
           'active:bg-figma-success-pressed',
           'focus-visible:outline-figma-border-success-strong',
-          'data-[state=open]:bg-figma-success-pressed',
+          'aria-expanded:bg-figma-success-pressed',
         ],
       },
       {
@@ -95,7 +95,7 @@ export const buttonVariants = cva(
           'hover:bg-figma-warning-hover',
           'active:bg-figma-warning-pressed',
           'focus-visible:outline-figma-border-warning-strong',
-          'data-[state=open]:bg-figma-warning-pressed',
+          'aria-expanded:bg-figma-warning-pressed',
         ],
       },
       {
@@ -107,7 +107,7 @@ export const buttonVariants = cva(
           'hover:bg-figma-danger-hover',
           'active:bg-figma-danger-pressed',
           'focus-visible:outline-figma-border-danger-strong',
-          'data-[state=open]:bg-figma-danger-pressed',
+          'aria-expanded:bg-figma-danger-pressed',
         ],
       },
       {
@@ -119,7 +119,7 @@ export const buttonVariants = cva(
           'hover:bg-figma-brand-tertiary',
           'active:bg-figma-brand-tertiary',
           'focus-visible:outline-figma-border-brand-strong',
-          'data-[state=open]:bg-figma-brand-tertiary',
+          'aria-expanded:bg-figma-brand-tertiary',
         ],
       },
       {
@@ -131,7 +131,7 @@ export const buttonVariants = cva(
           'hover:bg-figma-pressed',
           'active:bg-figma-pressed',
           'focus-visible:outline-figma-border-brand-strong',
-          'data-[state=open]:bg-figma-pressed',
+          'aria-expanded:bg-figma-pressed',
         ],
       },
       {
@@ -143,7 +143,7 @@ export const buttonVariants = cva(
           'hover:bg-figma-success-tertiary',
           'active:bg-figma-success-tertiary',
           'focus-visible:outline-figma-border-success-strong',
-          'data-[state=open]:bg-figma-success-tertiary',
+          'aria-expanded:bg-figma-success-tertiary',
         ],
       },
       {
@@ -155,7 +155,7 @@ export const buttonVariants = cva(
           'hover:bg-figma-warning-tertiary',
           'active:bg-figma-warning-tertiary',
           'focus-visible:outline-figma-border-warning-strong',
-          'data-[state=open]:bg-figma-warning-tertiary',
+          'aria-expanded:bg-figma-warning-tertiary',
         ],
       },
       {
@@ -167,7 +167,7 @@ export const buttonVariants = cva(
           'hover:bg-figma-danger-tertiary',
           'active:bg-figma-danger-tertiary',
           'focus-visible:outline-figma-border-danger-strong',
-          'data-[state=open]:bg-figma-danger-tertiary',
+          'aria-expanded:bg-figma-danger-tertiary',
         ],
       },
       {

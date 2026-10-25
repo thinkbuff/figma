@@ -44,8 +44,8 @@ const ActionIcon: React.FC<ActionIconProps> = ({ className, disabled, render, re
             : [
                 'hover:bg-figma-hover hover:text-figma-icon-hover hover:fill-figma-icon-hover',
                 'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-figma-border-brand-strong',
-                'data-[state=open]:bg-figma-brand data-[state=open]:text-figma-icon-onbrand data-[state=open]:fill-figma-icon-onbrand',
-                'data-[state=open]:hover:bg-figma-brand data-[state=open]:hover:text-figma-icon-onbrand data-[state=open]:hover:fill-figma-icon-onbrand',
+                'aria-expanded:bg-figma-brand aria-expanded:text-figma-icon-onbrand aria-expanded:fill-figma-icon-onbrand',
+                'aria-expanded:hover:bg-figma-brand aria-expanded:hover:text-figma-icon-onbrand aria-expanded:hover:fill-figma-icon-onbrand',
               ],
           className,
         ),

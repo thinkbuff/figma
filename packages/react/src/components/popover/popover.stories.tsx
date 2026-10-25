@@ -81,16 +81,6 @@ const meta = {
         },
       },
     },
-    avoidCollisions: {
-      table: {
-        type: {
-          summary: 'boolean',
-          detail:
-            'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
-        },
-        defaultValue: { summary: 'true' },
-      },
-    },
   },
   args: {
     modal: false,
@@ -98,8 +88,7 @@ const meta = {
     align: 'center',
     alignOffset: 0,
     side: 'bottom',
-    sideOffset: 4,
-    avoidCollisions: true,
+    sideOffset: 11,
   },
   render: function Render(args) {
     const { open: _, modal, ...props } = args;
@@ -112,9 +101,7 @@ const meta = {
         open={open}
         onOpenChange={(value) => updateArgs({ open: value })}
       >
-        <Popover.Trigger asChild>
-          <Button variant="outline">Open</Button>
-        </Popover.Trigger>
+        <Popover.Trigger render={<Button variant="outline">Open</Button>} />
         <Popover.Content
           {...props}
           className="w-60 p-4"

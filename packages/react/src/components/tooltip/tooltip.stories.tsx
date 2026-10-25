@@ -85,7 +85,6 @@ const meta = {
     align: 'center',
     alignOffset: 0,
     side: 'top',
-    sideOffset: 4,
     withArrow: true,
   },
 } satisfies Meta<typeof Tooltip>;

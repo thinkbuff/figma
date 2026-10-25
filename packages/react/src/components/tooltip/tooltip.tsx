@@ -17,8 +17,25 @@ interface TooltipArrowProps extends Omit<
 
 const TooltipArrow: React.FC<TooltipArrowProps> = ({ className, ref, ...props }) => (
   <TooltipPrimitive.Arrow
-    className={cn('fill-figma-bg-tooltip', className)}
+    className={cn(
+      'fill-figma-bg-tooltip',
+      'data-[side=bottom]:-top-[5px] data-[side=bottom]:rotate-180',
+      'data-[side=top]:-bottom-[5px]',
+      'data-[side=left]:-right-[7.5px] data-[side=left]:-rotate-90',
+      'data-[side=right]:-left-[7.5px] data-[side=right]:rotate-90',
+      className,
+    )}
     ref={ref}
+    render={
+      <svg
+        width={10}
+        height={5}
+        viewBox="0 0 30 10"
+        preserveAspectRatio="none"
+      >
+        <polygon points="0,0 30,0 15,10" />
+      </svg>
+    }
     {...props}
   />
 );
@@ -123,6 +140,7 @@ const Tooltip = ({
   // Tooltip Content
   content,
   withArrow = true,
+  sideOffset = withArrow ? 9 : 4,
   // Tooltip Content props
   ...props
 }: TooltipProps) => (
@@ -139,7 +157,10 @@ const Tooltip = ({
         closeDelay={closeDelay}
       />
     ) : null}
-    <TooltipContent {...props}>
+    <TooltipContent
+      sideOffset={sideOffset}
+      {...props}
+    >
       {content}
       {withArrow ? <TooltipArrow /> : null}
     </TooltipContent>

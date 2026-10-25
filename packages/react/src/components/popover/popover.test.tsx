@@ -10,9 +10,7 @@ import * as Popover from './popover';
 function Fixture() {
   return (
     <Popover.Root>
-      <Popover.Trigger asChild>
-        <Button variant="outline">Open popover</Button>
-      </Popover.Trigger>
+      <Popover.Trigger render={<Button variant="outline">Open popover</Button>} />
       <Popover.Content>
         <div>Popover content</div>
       </Popover.Content>
