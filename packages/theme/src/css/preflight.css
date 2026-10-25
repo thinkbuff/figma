@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +20,7 @@ body {
   padding: 0;
   color: var(--figma-color-text);
   background-color: var(--figma-color-bg);
-  font-family: 'Inter', 'Helvetica', sans-serif;
+  font-family: "Inter", "Helvetica", sans-serif;
   line-height: 16px;
   font-weight: 400;
 }
@@ -76,3 +77,4 @@ textarea {
 svg {
   display: block;
 }
+

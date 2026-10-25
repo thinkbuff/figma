@@ -48,6 +48,7 @@ export default defineConfig({
       '**/__screenshots__/**',
       '**/dist/**',
       '**/storybook-static/**',
+      'packages/theme/src/css/**',
       'pnpm-lock.yaml',
       'CHANGELOG.md',
     ],

@@ -1,40 +1,37 @@
 @theme {
-  --figma-font-family-default:
-    'Inter', ui-sans-serif, system-ui, -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
-    'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif, 'SFProLocalRange';
-  --figma-font-family-code:
-    'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  --figma-font-family-default: "Inter", ui-sans-serif, system-ui, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "SFProLocalRange";
+  --figma-font-family-code: "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
   --figma-font-weight-default: 450;
   --figma-font-weight-strong: 550;
-  --figma-font-size-xs: 0.625rem;
-  --figma-line-height-xs: 0.875rem;
-  --figma-letter-spacing-xs: 0.00344rem;
-  --figma-font-size-sm: 0.6875rem;
+  --figma-font-size-xs: .625rem;
+  --figma-line-height-xs: .875rem;
+  --figma-letter-spacing-xs: .00344rem;
+  --figma-font-size-sm: .6875rem;
   --figma-line-height-sm: 1rem;
-  --figma-letter-spacing-sm: 0.00344rem;
-  --figma-font-size-md: 0.75rem;
+  --figma-letter-spacing-sm: .00344rem;
+  --figma-font-size-md: .75rem;
   --figma-line-height-md: 1.25rem;
-  --figma-letter-spacing-md: -0.00125rem;
-  --figma-font-size-lg: 0.8125rem;
+  --figma-letter-spacing-md: -.00125rem;
+  --figma-font-size-lg: .8125rem;
   --figma-line-height-lg: 1.375rem;
-  --figma-letter-spacing-lg: -0.002rem;
-  --figma-radius-sm: 0.125rem;
-  --figma-radius-md: 0.3125rem;
-  --figma-radius-lg: 0.8125rem;
+  --figma-letter-spacing-lg: -.002rem;
+  --figma-radius-sm: .125rem;
+  --figma-radius-md: .3125rem;
+  --figma-radius-lg: .8125rem;
   --figma-radius-full: 9999px;
   --figma-space-0: 0;
-  --figma-space-0\.5: 0.125rem;
-  --figma-space-1: 0.25rem;
-  --figma-space-1\.5: 0.375rem;
-  --figma-space-2: 0.5rem;
-  --figma-space-2\.5: 0.75rem;
+  --figma-space-0\.5: .125rem;
+  --figma-space-1: .25rem;
+  --figma-space-1\.5: .375rem;
+  --figma-space-2: .5rem;
+  --figma-space-2\.5: .75rem;
   --figma-space-3: 1rem;
   --figma-space-4: 1.5rem;
   --figma-space-5: 1.25rem;
   --figma-space-6: 1.75rem;
   --figma-space-7: 2rem;
   --figma-border-width-1: 1px;
-  --figma-border-width-4: 0.25rem;
+  --figma-border-width-4: .25rem;
   --figma-duration-100: 100ms;
   --figma-duration-200: 200ms;
   --figma-duration-300: 300ms;
@@ -48,53 +45,48 @@
   --figma-shadow-tooltip: 0 1px 3px 0 #0000001a, 0 5px 12px 0 #00000021, 0 0 0.5px 0 #00000026;
   --figma-shadow-menu: 0 2px 5px 0 #00000026, 0 10px 16px 0 #0000001f, 0 0 0.5px 0 #0000001f;
   --figma-shadow-modal: 0 2px 5px 0 #00000026, 0 10px 24px 0 #0000002e, 0 0 0.5px 0 #00000014;
-  --figma-shadow-slider:
-    0 1px 3px 0 #0000001a, 0 3px 8px 0 #0000001a, 0 0 0.5px 0 #0000002e, inset 0 0 0 0.5px #0000001a;
-  --font-figma:
-    'Inter', ui-sans-serif, system-ui, -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
-    'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif, 'SFProLocalRange';
-  --font-figma-code:
-    'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  --figma-shadow-slider: 0 1px 3px 0 #0000001a, 0 3px 8px 0 #0000001a, 0 0 0.5px 0 #0000002e, inset 0 0 0 0.5px #0000001a;
+  --font-figma: "Inter", ui-sans-serif, system-ui, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "SFProLocalRange";
+  --font-figma-code: "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
   --font-weight-figma-default: 450;
   --font-weight-figma-strong: 550;
-  --text-figma-xs: 0.625rem;
-  --text-figma-sm: 0.6875rem;
-  --text-figma-md: 0.75rem;
-  --text-figma-lg: 0.8125rem;
-  --leading-figma-xs: 0.875rem;
+  --text-figma-xs: .625rem;
+  --text-figma-sm: .6875rem;
+  --text-figma-md: .75rem;
+  --text-figma-lg: .8125rem;
+  --leading-figma-xs: .875rem;
   --leading-figma-sm: 1rem;
   --leading-figma-md: 1.25rem;
   --leading-figma-lg: 1.375rem;
-  --text-figma-xs--line-height: 0.875rem;
+  --text-figma-xs--line-height: .875rem;
   --text-figma-sm--line-height: 1rem;
   --text-figma-md--line-height: 1.25rem;
   --text-figma-lg--line-height: 1.375rem;
-  --tracking-figma-xs: 0.00344rem;
-  --tracking-figma-sm: 0.00344rem;
-  --tracking-figma-md: -0.00125rem;
-  --tracking-figma-lg: -0.002rem;
+  --tracking-figma-xs: .00344rem;
+  --tracking-figma-sm: .00344rem;
+  --tracking-figma-md: -.00125rem;
+  --tracking-figma-lg: -.002rem;
   --radius-figma-full: 9999px;
-  --radius-figma-lg: 0.8125rem;
-  --radius-figma-md: 0.3125rem;
-  --radius-figma-sm: 0.125rem;
+  --radius-figma-lg: .8125rem;
+  --radius-figma-md: .3125rem;
+  --radius-figma-sm: .125rem;
   --shadow-figma-menu: 0 2px 5px 0 #00000026, 0 10px 16px 0 #0000001f, 0 0 0.5px 0 #0000001f;
   --shadow-figma-modal: 0 2px 5px 0 #00000026, 0 10px 24px 0 #0000002e, 0 0 0.5px 0 #00000014;
-  --shadow-figma-slider:
-    0 1px 3px 0 #0000001a, 0 3px 8px 0 #0000001a, 0 0 0.5px 0 #0000002e, inset 0 0 0 0.5px #0000001a;
+  --shadow-figma-slider: 0 1px 3px 0 #0000001a, 0 3px 8px 0 #0000001a, 0 0 0.5px 0 #0000002e, inset 0 0 0 0.5px #0000001a;
   --shadow-figma-tooltip: 0 1px 3px 0 #0000001a, 0 5px 12px 0 #00000021, 0 0 0.5px 0 #00000026;
   --spacing-figma-0: 0;
-  --spacing-figma-0\.5: 0.125rem;
-  --spacing-figma-1: 0.25rem;
-  --spacing-figma-1\.5: 0.375rem;
-  --spacing-figma-2: 0.5rem;
-  --spacing-figma-2\.5: 0.75rem;
+  --spacing-figma-0\.5: .125rem;
+  --spacing-figma-1: .25rem;
+  --spacing-figma-1\.5: .375rem;
+  --spacing-figma-2: .5rem;
+  --spacing-figma-2\.5: .75rem;
   --spacing-figma-3: 1rem;
   --spacing-figma-4: 1.5rem;
   --spacing-figma-5: 1.25rem;
   --spacing-figma-6: 1.75rem;
   --spacing-figma-7: 2rem;
   --border-figma-1: 1px;
-  --border-figma-4: 0.25rem;
+  --border-figma-4: .25rem;
   --transition-duration-figma-100: 100ms;
   --transition-duration-figma-200: 200ms;
   --transition-duration-figma-300: 300ms;
@@ -107,9 +99,7 @@
   --z-index-figma-tooltip: 100;
 }
 
-:root,
-html.figjam,
-.figjam {
+:root, html.figjam, .figjam {
   --figma-color-bg-menu: #1e1e1e;
   --figma-color-bg-menu-disabled: #757575;
   --figma-color-bg-menu-hover: #2c2c2c;
