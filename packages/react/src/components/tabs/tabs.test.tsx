@@ -61,12 +61,17 @@ describe('Tabs', () => {
     await render(<Fixture />);
 
     await userEvent.click(page.getByRole('tab', { name: 'Tab A' }));
-    // Tab C is disabled: arrow navigation should skip it and wrap to Tab A
+    // Base UI: disabled tabs stay in the arrow-key order (focusable, aria-disabled) but cannot be selected.
     await userEvent.keyboard('{ArrowLeft}');
 
     await expect
       .element(page.getByRole('tab', { name: 'Tab C' }))
+      .toHaveAttribute('aria-disabled', 'true');
+    await expect
+      .element(page.getByRole('tab', { name: 'Tab C' }))
       .toHaveAttribute('aria-selected', 'false');
-    await expect.element(page.getByRole('tab', { name: 'Tab C' })).not.toHaveFocus();
+    await expect
+      .element(page.getByRole('tab', { name: 'Tab A' }))
+      .toHaveAttribute('aria-selected', 'true');
   });
 });

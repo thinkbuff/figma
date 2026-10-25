@@ -1,33 +1,44 @@
-import * as TabsPrimitive from '@radix-ui/react-tabs';
+import { Tabs } from '@base-ui/react/tabs';
 
 import { cn } from '~/utils';
+
+interface TabsRootProps extends Omit<React.ComponentPropsWithRef<typeof Tabs.Root>, 'className'> {
+  className?: string;
+}
+
+interface TabsListProps extends Omit<React.ComponentPropsWithRef<typeof Tabs.List>, 'className'> {
+  className?: string;
+}
+
+interface TabsTriggerProps extends Omit<React.ComponentPropsWithRef<typeof Tabs.Tab>, 'className'> {
+  className?: string;
+}
+
+interface TabsContentProps extends Omit<
+  React.ComponentPropsWithRef<typeof Tabs.Panel>,
+  'className'
+> {
+  className?: string;
+}
 
 /**
  * A set of layered sections of content—known as tab panels—that are displayed one at a time.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/tabs)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/tabs#api-reference)
+ * - [Docs](https://base-ui.com/react/components/tabs)
+ * - [API Reference](https://base-ui.com/react/components/tabs#api)
  */
-const TabsRoot: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Root>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <TabsPrimitive.Root
+const TabsRoot: React.FC<TabsRootProps> = ({ className, ref, ...props }) => (
+  <Tabs.Root
     className={cn('bg-figma', className)}
     {...props}
     ref={ref}
   />
 );
 
-TabsRoot.displayName = TabsPrimitive.Root.displayName;
+TabsRoot.displayName = 'Tabs';
 
-const TabsList: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.List>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <TabsPrimitive.List
+const TabsList: React.FC<TabsListProps> = ({ className, ref, ...props }) => (
+  <Tabs.List
     className={cn(
       'bg-figma',
       'inline-flex',
@@ -43,14 +54,10 @@ const TabsList: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.List>>
   />
 );
 
-TabsList.displayName = TabsPrimitive.List.displayName;
+TabsList.displayName = 'TabsList';
 
-const TabsTrigger: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Trigger>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <TabsPrimitive.Trigger
+const TabsTrigger: React.FC<TabsTriggerProps> = ({ className, ref, ...props }) => (
+  <Tabs.Tab
     className={cn(
       'inline-flex',
       'items-center',
@@ -60,8 +67,8 @@ const TabsTrigger: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Tri
       'text-figma-secondary',
       'bg-transparent',
       'hover:text-figma',
-      'data-[state=active]:text-figma data-[state=active]:font-bold',
-      'disabled:pointer-events-none',
+      'data-[active]:text-figma data-[active]:font-bold',
+      'data-[disabled]:pointer-events-none',
       className,
     )}
     {...props}
@@ -69,20 +76,16 @@ const TabsTrigger: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Tri
   />
 );
 
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+TabsTrigger.displayName = 'TabsTrigger';
 
-const TabsContent: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Content>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <TabsPrimitive.Content
+const TabsContent: React.FC<TabsContentProps> = ({ className, ref, ...props }) => (
+  <Tabs.Panel
     className={cn('bg-figma', className)}
     {...props}
     ref={ref}
   />
 );
 
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+TabsContent.displayName = 'TabsContent';
 
 export { TabsRoot as Root, TabsList as List, TabsTrigger as Trigger, TabsContent as Content };
