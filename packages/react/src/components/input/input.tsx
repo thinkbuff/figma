@@ -42,7 +42,7 @@ const Input: React.FC<InputProps> = ({
         className={cn(
           'peer',
           'relative',
-          'h-8',
+          'h-6',
           'flex',
           'items-center',
           wrapperProps?.className ?? '',
@@ -59,7 +59,9 @@ const Input: React.FC<InputProps> = ({
           className={cn(
             'inline-block',
             'h-full',
-            'px-2',
+            'py-1',
+            'pl-2',
+            'pr-0',
             inputVariants({ variant, disabled, invalid, className }),
           )}
           {...props}

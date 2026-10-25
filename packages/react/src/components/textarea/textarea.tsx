@@ -36,6 +36,7 @@ const Textarea: React.FC<TextareaProps> = ({
           'px-2',
           'py-1',
           'resize-none',
+          'break-words',
           textareaVariants({ variant, disabled, invalid, className }),
         )}
         {...props}
