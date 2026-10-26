@@ -15,7 +15,7 @@ export default defineConfig({
     ],
     rules: {
       curly: ['error', 'all'],
-      'unicorn/filename-case': ['warn', { case: 'kebabCase' }],
+      'unicorn/filename-case': ['error', { case: 'kebabCase' }],
       'typescript/consistent-type-imports': [
         'error',
         { prefer: 'type-imports', fixStyle: 'inline-type-imports' },

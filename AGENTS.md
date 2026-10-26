@@ -52,4 +52,6 @@ consumer smoke test. Per-component migration reports live in
 
 - Conventional Commits (commitlint enforced); pre-commit runs `vp check --fix`
   on staged files.
+- File names are kebab-case (`unicorn/filename-case` is an error); conventional
+  uppercase files like `README.md` and `AGENTS.md` are the exception.
 - Do not kill listeners on dev ports (Storybook uses 6006) you did not start.

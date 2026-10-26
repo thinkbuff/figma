@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { render } from 'vitest-browser-react';
 
-import { stories, themes } from './stories';
+import { renderStory, stories, themes } from './stories';
 
 // Dump computed styles for a story instead of comparing screenshots.
 // Usage: VRT_PROBE="Components-Button-Default" pnpm -F @thinkbuff/figma-react probe
@@ -47,7 +46,7 @@ for (const story of matched) {
   describe(story.id, () => {
     for (const theme of themes) {
       it(theme, async () => {
-        const { container } = await render(<story.component />);
+        const { container } = await renderStory(story);
         document.documentElement.classList.remove(...themes);
         document.documentElement.classList.add(theme);
         await document.fonts.ready;

@@ -1,8 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { render } from 'vitest-browser-react';
 import { page } from 'vitest/browser';
 
-import { stories, themes } from './stories';
+import { renderStory, stories, themes } from './stories';
 
 async function shot(name: string) {
   await document.fonts.ready;
@@ -17,7 +16,7 @@ for (const story of stories) {
     for (const theme of themes) {
       it(String(theme), async () => {
         expect.hasAssertions();
-        await render(<story.component />);
+        await renderStory(story);
         // the preview decorator already applied globals.theme; pin the
         // requested theme on <html> after render so it always wins
         document.documentElement.classList.remove(...themes);
