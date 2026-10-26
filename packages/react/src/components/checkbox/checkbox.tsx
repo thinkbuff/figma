@@ -1,6 +1,6 @@
 import { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox';
 
-import { MdiCheckBold, MdiMinusThick } from '~/icons';
+import { CheckmarkIcon, CheckmarkIndeterminateIcon } from '~/icons';
 import { addClassName } from '~/utils';
 
 interface CheckboxProps extends React.ComponentPropsWithRef<typeof CheckboxPrimitive.Root> {}
@@ -42,13 +42,13 @@ function Checkbox({
         'border-solid',
         'border-figma-border-strong',
         'bg-transparent',
-        'data-checked:border-transparent data-checked:bg-figma-brand data-checked:text-figma-icon-onbrand',
-        'data-indeterminate:text-figma-icon',
+        'data-checked:border-transparent data-checked:bg-figma-brand data-checked:icon-figma-onbrand',
+        'data-indeterminate:icon-figma',
         disabled
           ? [
               'border-figma-border-disabled-strong',
               'data-checked:border-transparent data-checked:bg-figma-border-disabled-strong',
-              'data-indeterminate:text-figma-icon-disabled',
+              'data-indeterminate:icon-figma-disabled',
             ]
           : [
               'focus-visible:outline-figma-border-selected',
@@ -60,8 +60,8 @@ function Checkbox({
       indeterminate={indeterminate}
       disabled={disabled}
     >
-      <CheckboxPrimitive.Indicator className="absolute inline-block size-2.5">
-        {indeterminate ? <MdiMinusThick /> : <MdiCheckBold className="-mt-px" />}
+      <CheckboxPrimitive.Indicator className="absolute inset-0 flex items-center justify-center">
+        {indeterminate ? <CheckmarkIndeterminateIcon size="4" /> : <CheckmarkIcon size="4" />}
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

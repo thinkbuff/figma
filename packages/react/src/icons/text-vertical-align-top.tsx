@@ -1,0 +1,18 @@
+/**
+ * Adapted from figma-kit. MIT License
+ * Copyright (c) 2024 Tigran Petrossian
+ * https://github.com/tigranpetrossian/figma-kit/blob/beta/LICENSE
+ */
+import { createIcon } from './create-icon';
+
+export const TextVerticalAlignTopIcon = createIcon({
+  displayName: 'TextVerticalAlignTop',
+  path: (
+    <path
+      fill="var(--color-icon, currentColor)"
+      fillRule="evenodd"
+      d="M5.5 5a.5.5 0 0 0 0 1h12a.5.5 0 0 0 0-1zm6.354 2.146a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 .708.708L11 8.707V16.5a.5.5 0 0 0 1 0V8.707l2.146 2.147a.5.5 0 0 0 .708-.708z"
+      clipRule="evenodd"
+    />
+  ),
+});

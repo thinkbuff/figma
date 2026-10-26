@@ -1,0 +1,18 @@
+/**
+ * Adapted from figma-kit. MIT License
+ * Copyright (c) 2024 Tigran Petrossian
+ * https://github.com/tigranpetrossian/figma-kit/blob/beta/LICENSE
+ */
+import { createIcon } from './create-icon';
+
+export const PlusIcon = createIcon({
+  displayName: 'Plus',
+  path: (
+    <path
+      stroke="var(--color-icon, currentColor)"
+      d="M12 6.5V17.5M6.5 12H17.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
+});

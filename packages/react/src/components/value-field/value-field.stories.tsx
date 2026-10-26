@@ -7,6 +7,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
+import { OpacityIcon } from '~/icons';
+
 import { ValueField } from './index';
 import type { RGBA } from './types';
 
@@ -195,7 +197,7 @@ function IconField() {
     <ValueField.Root style={{ width: 100 }}>
       <ValueField.Scrubber>
         <ValueField.Label>
-          <OpacityIcon />
+          <OpacityIcon size="4" />
         </ValueField.Label>
       </ValueField.Scrubber>
       <ValueField.Numeric
@@ -308,20 +310,6 @@ function HexWithAlphaField() {
         </ValueField.Root>
       </ValueField.Multi>
     </div>
-  );
-}
-
-function OpacityIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="var(--color-icon)"
-      aria-hidden="true"
-    >
-      <path d="M8 1C7.25 1 6.5 1.25 6 1.75L1.75 6C1.25 6.5 1 7.25 1 8C1 10.9 3.1 13.25 6 13.88V14C6 14.55 6.45 15 7 15H9C9.55 15 10 14.55 10 14V13.88C12.9 13.25 15 10.9 15 8C15 7.25 14.75 6.5 14.25 6L10 1.75C9.5 1.25 8.75 1 8 1Z" />
-    </svg>
   );
 }
 

@@ -6,7 +6,7 @@
 
 import { ContextMenu as ContextMenuPrimitive } from '@base-ui/react/context-menu';
 
-import { MdiCheckBold, MdiCircleMedium, MdiTriangle } from '~/icons';
+import { CheckmarkIcon, ChevronRightIcon, CircleIcon } from '~/icons';
 import { addClassName } from '~/utils';
 
 import {
@@ -59,12 +59,12 @@ function ContextMenuSubTrigger({
         className,
         menuItemClassName,
         'justify-between',
-        'data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
+        'data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary data-disabled:icon-figma-menu-tertiary',
       )}
       {...props}
     >
       {children}
-      <MdiTriangle className="ml-auto size-2 rotate-90 pl-6 -mr-2" />
+      <ChevronRightIcon className="ml-auto -mr-2" />
     </ContextMenuPrimitive.SubmenuTrigger>
   );
 }
@@ -148,7 +148,7 @@ function ContextMenuItem({
       className={addClassName(
         className,
         menuItemClassName,
-        'data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled',
+        'data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled data-disabled:icon-figma-menu-disabled',
       )}
       {...props}
     />
@@ -169,13 +169,13 @@ function ContextMenuCheckboxItem({
       className={addClassName(
         className,
         menuItemClassName,
-        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
+        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary data-disabled:icon-figma-menu-tertiary',
       )}
       {...props}
     >
       <ContextMenuPrimitive.CheckboxItemIndicator
         className={menuItemIndicatorClassName}
-        render={<MdiCheckBold />}
+        render={<CheckmarkIcon size="4" />}
       />
       {children}
     </ContextMenuPrimitive.CheckboxItem>
@@ -196,12 +196,12 @@ function ContextMenuRadioItem({
       className={addClassName(
         className,
         menuItemClassName,
-        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
+        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary data-disabled:icon-figma-menu-tertiary',
       )}
       {...props}
     >
       <ContextMenuPrimitive.RadioItemIndicator className="absolute left-1 w-4 flex items-center justify-center">
-        <MdiCircleMedium className="size-3" />
+        <CircleIcon size="4" />
       </ContextMenuPrimitive.RadioItemIndicator>
       {children}
     </ContextMenuPrimitive.RadioItem>

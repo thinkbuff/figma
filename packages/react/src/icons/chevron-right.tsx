@@ -1,0 +1,17 @@
+/**
+ * Adapted from figma-kit. MIT License
+ * Copyright (c) 2024 Tigran Petrossian
+ * https://github.com/tigranpetrossian/figma-kit/blob/beta/LICENSE
+ */
+import { createIcon } from './create-icon';
+
+export const ChevronRightIcon = createIcon({
+  displayName: 'ChevronRight',
+  path: (
+    <path
+      stroke="var(--color-icon, currentColor)"
+      strokeLinecap="round"
+      d="M11.121 14.121L13.243 12L11.12 9.879"
+    />
+  ),
+});

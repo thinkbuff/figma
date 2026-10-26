@@ -7,7 +7,7 @@
 import { Select as BaseSelect } from '@base-ui/react/select';
 import * as React from 'react';
 
-import { MdiCheckBold, MdiChevronDown, TablerChevronUp } from '~/icons';
+import { CheckmarkIcon, ChevronDownIcon, ChevronUpIcon } from '~/icons';
 import { cn } from '~/utils';
 
 import {
@@ -121,7 +121,7 @@ function NumericSelect(props: NumericSelectProps) {
         >
           <BaseSelect.Value className="pointer-events-none absolute top-0 left-2 h-6 w-0 overflow-hidden whitespace-nowrap opacity-0" />
           <BaseSelect.Icon className="flex items-center justify-center">
-            <MdiChevronDown className="size-4" />
+            <ChevronDownIcon size="4" />
           </BaseSelect.Icon>
         </BaseSelect.Trigger>
       </Multi>
@@ -142,7 +142,7 @@ function NumericSelect(props: NumericSelectProps) {
             onFocus={clearHighlightOnPopupFocus}
           >
             <BaseSelect.ScrollUpArrow className={menuScrollButtonClassName}>
-              <TablerChevronUp className="size-4" />
+              <ChevronUpIcon size="4" />
             </BaseSelect.ScrollUpArrow>
             <BaseSelect.List>
               {!valueOption && (
@@ -154,7 +154,7 @@ function NumericSelect(props: NumericSelectProps) {
                     onFocus={() => highlightItem(value)}
                   >
                     <BaseSelect.ItemIndicator className={menuItemIndicatorClassName}>
-                      <MdiCheckBold className="size-4" />
+                      <CheckmarkIcon size="4" />
                     </BaseSelect.ItemIndicator>
                     <BaseSelect.ItemText>{value}</BaseSelect.ItemText>
                   </BaseSelect.Item>
@@ -170,14 +170,14 @@ function NumericSelect(props: NumericSelectProps) {
                   onFocus={() => highlightItem(option)}
                 >
                   <BaseSelect.ItemIndicator className={menuItemIndicatorClassName}>
-                    <MdiCheckBold className="size-4" />
+                    <CheckmarkIcon size="4" />
                   </BaseSelect.ItemIndicator>
                   <BaseSelect.ItemText>{option}</BaseSelect.ItemText>
                 </BaseSelect.Item>
               ))}
             </BaseSelect.List>
             <BaseSelect.ScrollDownArrow className={menuScrollButtonClassName}>
-              <MdiChevronDown className="size-4" />
+              <ChevronDownIcon size="4" />
             </BaseSelect.ScrollDownArrow>
           </BaseSelect.Popup>
         </BaseSelect.Positioner>

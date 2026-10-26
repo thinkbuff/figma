@@ -6,6 +6,13 @@
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import {
+  AlignHorizontalCenterIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
+  TextAlignJustifiedIcon,
+} from '~/icons';
+
 import { Tooltip, TooltipProvider } from '../tooltip';
 import * as SegmentedControl from './segmented-control';
 
@@ -43,10 +50,10 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 const alignOptions = [
-  { value: 'left', label: 'Align left', icon: 'icon-[tabler--align-left]' },
-  { value: 'center', label: 'Align center', icon: 'icon-[tabler--align-center]' },
-  { value: 'right', label: 'Align right', icon: 'icon-[tabler--align-right]' },
-  { value: 'justify', label: 'Align justify', icon: 'icon-[tabler--align-justified]' },
+  { value: 'left', label: 'Align left', icon: <AlignLeftIcon size="4" /> },
+  { value: 'center', label: 'Align center', icon: <AlignHorizontalCenterIcon size="4" /> },
+  { value: 'right', label: 'Align right', icon: <AlignRightIcon size="4" /> },
+  { value: 'justify', label: 'Align justify', icon: <TextAlignJustifiedIcon size="4" /> },
 ];
 
 function AlignmentControl(props: Pick<StoryArgs, 'disabled' | 'fullWidth' | 'defaultValue'>) {
@@ -58,7 +65,7 @@ function AlignmentControl(props: Pick<StoryArgs, 'disabled' | 'fullWidth' | 'def
           value={option.value}
           aria-label={option.label}
         >
-          <span className={`${option.icon} size-4`}></span>
+          {option.icon}
         </SegmentedControl.Item>
       ))}
     </SegmentedControl.Root>
@@ -101,7 +108,7 @@ export const WithTooltips: Story = {
                   value={option.value}
                   aria-label={option.label}
                 >
-                  <span className={`${option.icon} size-4`}></span>
+                  {option.icon}
                 </SegmentedControl.Item>
               </div>
             </Tooltip>

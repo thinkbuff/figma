@@ -25,6 +25,7 @@ const menuItemClassName = [
   'px-2',
   'text-figma-sm leading-figma-sm',
   'text-figma-menu',
+  'icon-figma-menu',
   'cursor-default',
   'select-none',
   'outline-none',
@@ -32,7 +33,7 @@ const menuItemClassName = [
   'data-highlighted:bg-figma-selected-strong',
 ];
 
-const menuItemIndicatorClassName = 'absolute left-1 h-3 w-4';
+const menuItemIndicatorClassName = 'absolute left-1';
 
 const menuLabelClassName = [
   'flex',
@@ -46,7 +47,7 @@ const menuLabelClassName = [
 const menuSeparatorClassName = 'my-2 h-px w-full bg-figma-border-menu';
 
 const menuScrollButtonClassName =
-  'h-6 w-full flex cursor-default items-center justify-center bg-figma-menu hover:bg-figma-menu-hover';
+  'h-6 w-full flex cursor-default items-center justify-center bg-figma-menu hover:bg-figma-menu-hover icon-figma-menu';
 
 export {
   menuContentClassName,

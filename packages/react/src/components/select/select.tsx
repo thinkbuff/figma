@@ -1,6 +1,6 @@
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 
-import { MdiCheckBold, MdiChevronDown, TablerChevronDown, TablerChevronUp } from '~/icons';
+import { CheckmarkIcon, ChevronDownIcon, ChevronUpIcon } from '~/icons';
 import { addClassName, cn } from '~/utils';
 
 import {
@@ -106,8 +106,8 @@ function SelectTrigger({
       </div>
       <SelectPrimitive.Icon
         data-disabled={disabled}
-        className="pointer-events-none ml-1 mr-2 size-3 shrink-0 text-figma-icon-tertiary data-[disabled=true]:text-figma-icon-disabled group-hover:text-figma-icon"
-        render={<MdiChevronDown />}
+        className="pointer-events-none ml-1 mr-2 shrink-0 icon-figma-tertiary data-[disabled=true]:icon-figma-disabled group-hover:icon-figma"
+        render={<ChevronDownIcon size="3" />}
       />
     </SelectPrimitive.Trigger>
   );
@@ -176,13 +176,13 @@ function SelectContent({
           <SelectPrimitive.ScrollUpArrow
             className={cn(menuScrollButtonClassName, 'rounded-t-figma-lg')}
           >
-            <TablerChevronUp className="size-3.5" />
+            <ChevronUpIcon size="3.5" />
           </SelectPrimitive.ScrollUpArrow>
           <SelectPrimitive.List className="p-2">{children}</SelectPrimitive.List>
           <SelectPrimitive.ScrollDownArrow
             className={cn(menuScrollButtonClassName, 'rounded-b-figma-lg')}
           >
-            <TablerChevronDown className="size-3.5" />
+            <ChevronDownIcon size="3.5" />
           </SelectPrimitive.ScrollDownArrow>
         </SelectPrimitive.Popup>
       </SelectPrimitive.Positioner>
@@ -223,13 +223,13 @@ function SelectItem({ className, children, ref, ...props }: SelectItemProps) {
         'w-full',
         'pl-6',
         'pr-2',
-        'data-disabled:text-figma-menu-tertiary data-disabled:pointer-events-none',
+        'data-disabled:text-figma-menu-tertiary data-disabled:icon-figma-menu-tertiary data-disabled:pointer-events-none',
       )}
       {...props}
     >
       <SelectPrimitive.ItemIndicator
         className={menuItemIndicatorClassName}
-        render={<MdiCheckBold />}
+        render={<CheckmarkIcon size="4" />}
       />
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>

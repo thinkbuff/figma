@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react-vite';
 import type { ComponentType } from 'react';
 import { render } from 'vitest-browser-react';
 
-const modules = import.meta.glob('../../src/components/**/*.stories.tsx', { eager: true });
+const modules = import.meta.glob('../../src/**/*.stories.tsx', { eager: true });
 
 export const themes = ['figma-light', 'figma-dark', 'figjam'] as const;
 

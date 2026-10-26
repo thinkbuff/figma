@@ -1,0 +1,18 @@
+/**
+ * Adapted from figma-kit. MIT License
+ * Copyright (c) 2024 Tigran Petrossian
+ * https://github.com/tigranpetrossian/figma-kit/blob/beta/LICENSE
+ */
+import { createIcon } from './create-icon';
+
+export const EllipsisIcon = createIcon({
+  displayName: 'Ellipsis',
+  path: (
+    <path
+      fill="var(--color-icon, currentColor)"
+      fillRule="evenodd"
+      d="M7.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m6 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m4.5 1.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"
+      clipRule="evenodd"
+    />
+  ),
+});
