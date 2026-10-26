@@ -9,9 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const entries = Object.fromEntries(
   glob
-    .sync('src/**/*.ts', {
-      ignore: ['src/**/*.test.ts'],
-    })
+    .sync('src/**/*.ts', {})
     .map((file) => [
       path.relative('src', file.slice(0, file.length - path.extname(file).length)),
       path.resolve(__dirname, file),
@@ -21,7 +19,7 @@ const entries = Object.fromEntries(
 export default defineConfig({
   test: {
     environment: 'node',
-    include: ['src/**/*.test.ts'],
+    include: ['tests/**/*.test.ts'],
   },
   pack: {
     entry: entries,

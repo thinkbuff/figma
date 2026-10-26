@@ -26,7 +26,9 @@ const twMerge = extendTailwindMerge({
 
 /**
  * Merge classes
+ *
  * @param inputs
+ *
  * @returns
  */
 export function cn(...inputs: ClassValue[]) {

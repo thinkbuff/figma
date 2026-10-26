@@ -1,7 +1,8 @@
 import type { Preview } from '@storybook/react-vite';
-import React from 'react';
 
-import '../src/test-utils/styles.css';
+// @ts-ignore -- wildcard css declaration lives in tests/test-utils/styles.d.ts
+import '../tests/test-utils/styles.css';
+// @ts-ignore -- wildcard css declaration lives in tests/test-utils/styles.d.ts
 import './preview.css';
 
 const themes = [
@@ -25,7 +26,7 @@ const preview: Preview = {
       defaultValue: 'figma-light',
       toolbar: {
         icon: 'mirror',
-        items: themes,
+        items: [...themes],
         dynamicTitle: true,
       },
     },

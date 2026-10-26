@@ -5,6 +5,7 @@ export default defineConfig({
     plugins: ['import', 'jsdoc', 'eslint', 'typescript', 'unicorn', 'oxc', 'promise'],
     options: {
       typeAware: true,
+      typeCheck: true,
     },
     ignorePatterns: [
       '**/dist/**',
@@ -42,6 +43,11 @@ export default defineConfig({
       {
         files: ['**/*.test.{ts,tsx}', '**/*.vrt.test.{ts,tsx}'],
         plugins: ['vitest'],
+        rules: {
+          'typescript/unbound-method': 'off',
+          'vitest/no-disabled-tests': 'off',
+          'vitest/require-mock-type-parameters': 'off',
+        },
       },
     ],
   },
@@ -60,6 +66,12 @@ export default defineConfig({
       'pnpm-lock.yaml',
       'CHANGELOG.md',
     ],
+    jsdoc: {
+      capitalizeDescriptions: false,
+      lineWrappingStyle: 'balance',
+      commentLineStrategy: 'multiline',
+      separateTagGroups: true,
+    },
     sortPackageJson: {
       sortScripts: false,
     },

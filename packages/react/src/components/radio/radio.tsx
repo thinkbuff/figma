@@ -19,7 +19,8 @@ interface RadioGroupItemProps extends Omit<
 }
 
 /**
- * A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+ * A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be
+ * checked at a time.
  *
  * - [Docs](https://base-ui.com/react/components/radio)
  * - [API Reference](https://base-ui.com/react/components/radio#api)

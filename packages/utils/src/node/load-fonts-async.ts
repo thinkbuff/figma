@@ -24,6 +24,7 @@ export const DEFAULT_FONT_STYLES = [
  *
  * @param node - The TextNode to load fonts for.
  * @param fontStyles - An array of font styles to load.
+ *
  * @returns A promise that resolves when the fonts are loaded.
  */
 export async function loadFontsAsync(node: TextNode, fontStyles: string[] = []) {

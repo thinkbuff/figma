@@ -33,6 +33,11 @@ const baseUiSubpaths = Object.keys(
   .filter((key) => key !== '.' && !key.includes('*') && key !== './package.json')
   .map((key) => `@base-ui/react/${key.slice(2)}`);
 
+// BrowserProviderOption<T> is invariant over T and vite-plus resolves a
+// different vitest instance than the browser-playwright import, so the
+// provider option needs an opaque cast either way.
+const browserProvider = () => playwright() as never;
+
 const optimizeDeps = {
   include: [
     'react',
@@ -49,7 +54,7 @@ const optimizeDeps = {
 const entries = Object.fromEntries(
   glob
     .sync('src/**/*.{ts,tsx}', {
-      ignore: ['src/**/*.test.*', 'src/**/*.stories.*', 'src/test-utils/**'],
+      ignore: ['src/**/*.stories.*'],
     })
     .map((file) => [
       path.relative('src', file.slice(0, file.length - path.extname(file).length)),
@@ -67,17 +72,17 @@ export default defineConfig({
         test: {
           name: 'unit',
           environment: 'node',
-          include: ['src/**/*.test.ts'],
+          include: ['tests/**/*.test.ts'],
         },
       },
       {
         test: {
           name: 'browser',
-          include: ['src/**/*.test.tsx'],
-          setupFiles: ['./src/test-utils/setup.ts'],
+          include: ['tests/**/*.test.tsx', '!tests/visual/**'],
+          setupFiles: ['./tests/test-utils/setup.ts'],
           browser: {
             enabled: true,
-            provider: playwright(),
+            provider: browserProvider(),
             headless: true,
             instances: [{ browser: 'chromium' }],
           },
@@ -90,7 +95,7 @@ export default defineConfig({
           setupFiles: ['./tests/visual/vrt.setup.ts'],
           browser: {
             enabled: true,
-            provider: playwright(),
+            provider: browserProvider(),
             headless: true,
             viewport: { width: 800, height: 600 },
             instances: [{ browser: 'chromium' }],
@@ -107,7 +112,7 @@ export default defineConfig({
           setupFiles: ['./tests/visual/vrt.setup.ts'],
           browser: {
             enabled: true,
-            provider: playwright(),
+            provider: browserProvider(),
             headless: true,
             viewport: { width: 800, height: 600 },
             instances: [{ browser: 'chromium' }],

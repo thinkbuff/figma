@@ -7,17 +7,27 @@ export type MessageEventObject<
   K extends MessageEventTypes<T>,
 > = T[K] extends undefined
   ? {
-      /** unique message id */
+      /**
+       * unique message id
+       */
       key?: string;
-      /** message event type  */
+      /**
+       * message event type
+       */
       type: K;
     }
   : {
-      /** unique message id */
+      /**
+       * unique message id
+       */
       key?: string;
-      /** message event type  */
+      /**
+       * message event type
+       */
       type: K;
-      /** message event data */
+      /**
+       * message event data
+       */
       data: T[K];
     };
 
@@ -80,9 +90,13 @@ export function createMessageChannel<
       type: T,
       listener: MessageEventListener<MessageEvents, T>,
       options: {
-        /** unique id for the message */
+        /**
+         * unique id for the message
+         */
         key?: string;
-        /** Add a one-time listener for a given message. */
+        /**
+         * Add a one-time listener for a given message.
+         */
         once?: boolean;
       } = {},
     ) {
@@ -122,7 +136,9 @@ export function createMessageChannel<
       type: T,
       listener: MessageEventListener<MessageEvents, T>,
       options: {
-        /** unique id for the message */
+        /**
+         * unique id for the message
+         */
         key?: string;
       } = {},
     ) {
@@ -131,7 +147,8 @@ export function createMessageChannel<
       emitter.off(eventName, listener);
     },
     /**
-     * Removes all listeners for a specific message event type, or all listeners if no type is provided.
+     * Removes all listeners for a specific message event type, or all listeners if no type is
+     * provided.
      *
      * @param type - The type of the message event. If not provided, all listeners will be removed.
      */

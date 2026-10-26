@@ -38,7 +38,8 @@ interface DialogContentProps extends WithStringClassName<
 }
 
 /**
- * A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+ * A window overlaid on either the primary window or another dialog window, rendering the content
+ * underneath inert.
  *
  * - [Docs](https://base-ui.com/react/components/dialog)
  * - [API Reference](https://base-ui.com/react/components/dialog#api-reference)

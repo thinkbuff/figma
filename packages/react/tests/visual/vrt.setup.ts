@@ -1,4 +1,4 @@
-import '../../src/test-utils/styles.css';
+import '../test-utils/styles.css';
 import { setProjectAnnotations } from '@storybook/react-vite';
 
 import preview from '../../.storybook/preview';

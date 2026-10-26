@@ -127,7 +127,9 @@ interface TooltipProps
 }
 
 /**
- * A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+ * A popup that displays information related to an element when the element receives keyboard focus
+ * or the mouse hovers over it.
+ *
  * - [Docs](https://base-ui.com/react/components/tooltip)
  * - [API Reference](https://base-ui.com/react/components/tooltip#api)
  */

@@ -1,5 +1,6 @@
 import { composeStories } from '@storybook/react-vite';
 import type { Meta } from '@storybook/react-vite';
+import type { ComponentType } from 'react';
 import { render } from 'vitest-browser-react';
 
 const modules = import.meta.glob('../../src/components/**/*.stories.tsx', { eager: true });
@@ -7,7 +8,7 @@ const modules = import.meta.glob('../../src/components/**/*.stories.tsx', { eage
 export const themes = ['figma-light', 'figma-dark', 'figjam'] as const;
 
 export type StoryEntry = {
-  component: ReturnType<typeof composeStories>[string];
+  component: ComponentType;
   id: string;
   layout: string;
 };
@@ -28,7 +29,11 @@ for (const mod of Object.values(modules)) {
       (component as unknown as { parameters?: Record<string, unknown> }).parameters?.layout ??
       module.default.parameters?.layout ??
       'default';
-    stories.push({ component, id: kebab(`${module.default.title}-${exportName}`), layout });
+    stories.push({
+      component: component as ComponentType,
+      id: kebab(`${module.default.title}-${exportName}`),
+      layout,
+    });
   }
 }
 

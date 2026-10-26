@@ -5,6 +5,14 @@ Component library for Figma/FigJam plugin UIs: `packages/react` (React + Base UI
 consumer smoke test. Per-component migration reports live in
 `docs/migration/<track>/`.
 
+## Layout
+
+- Tests live in `packages/<pkg>/tests/` mirroring `src/` (e.g.
+  `src/components/x/x.test.tsx` → `tests/components/x/x.test.tsx`); shared
+  helpers in `packages/react/tests/test-utils/`; never colocate tests in `src/`.
+- React tests import sources via the `~` alias (`~/components/x/x`); theme and
+  utils tests use relative `../src/...` paths.
+
 ## Verify
 
 - `pnpm test` — unit + browser tests.

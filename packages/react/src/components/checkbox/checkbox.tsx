@@ -12,6 +12,7 @@ interface CheckboxProps extends Omit<
 
 /**
  * A control that allows the user to toggle between checked and not checked.
+ *
  * - [Docs](https://base-ui.com/react/components/checkbox)
  * - [API Reference](https://base-ui.com/react/components/checkbox#api)
  */
