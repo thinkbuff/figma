@@ -13,9 +13,16 @@ const InputContext = createContext<{
   invalid: false,
 });
 
-interface InputProps extends React.ComponentPropsWithRef<'input'>, InputVariantsProps {
+interface InputProps
+  extends Omit<React.ComponentPropsWithRef<'input'>, 'size'>, InputVariantsProps {
   invalid?: boolean;
   disabled?: boolean;
+  /**
+   * The control height. `'default'` is the 24px UI3 size, `'large'` is 32px.
+   *
+   * @default 'default'
+   */
+  size?: 'default' | 'large';
   /**
    * Selects the input's contents when clicked, unless the user is selecting manually.
    */
@@ -38,6 +45,7 @@ function Input({
   disabled,
   children,
   selectOnClick,
+  size = 'default',
   ref,
   ...props
 }: InputProps) {
@@ -49,7 +57,7 @@ function Input({
         className={cn(
           'peer',
           'relative',
-          'h-6',
+          size === 'large' ? 'h-8' : 'h-6',
           'flex',
           'items-center',
           wrapperProps?.className ?? '',

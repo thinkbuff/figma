@@ -12,16 +12,23 @@ const meta = {
   argTypes: {
     variant: {
       control: 'radio',
-      options: ['solid', 'outline', 'link'],
+      options: ['solid', 'outline', 'link', 'ghost'],
       table: {
         defaultValue: { summary: 'solid' },
       },
     },
     color: {
       control: 'radio',
-      options: ['primary', 'secondary', 'success', 'warning', 'danger'],
+      options: ['primary', 'secondary', 'success', 'warning', 'danger', 'inverse'],
       table: {
         defaultValue: { summary: 'primary' },
+      },
+    },
+    size: {
+      control: 'radio',
+      options: ['default', 'large'],
+      table: {
+        defaultValue: { summary: 'default' },
       },
     },
     disabled: {
@@ -68,6 +75,37 @@ export const Danger: Story = {
   args: {
     color: 'danger',
   },
+};
+
+export const Inverse: Story = {
+  args: {
+    color: 'inverse',
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: 'large',
+  },
+};
+
+export const FullWidth: Story = {
+  args: {
+    fullWidth: true,
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-64">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const WithIcon: Story = {

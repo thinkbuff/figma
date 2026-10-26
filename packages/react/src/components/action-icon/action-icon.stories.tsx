@@ -10,6 +10,20 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    size: {
+      control: 'inline-radio',
+      options: ['small', 'medium'],
+      table: {
+        defaultValue: { summary: 'small' },
+      },
+    },
+    activeAppearance: {
+      control: 'inline-radio',
+      options: ['subtle', 'solid'],
+      table: {
+        defaultValue: { summary: 'subtle' },
+      },
+    },
     disabled: {
       table: {
         defaultValue: { summary: 'false' },
@@ -52,6 +66,24 @@ export const Expanded = {
   },
   args: {
     'aria-expanded': true,
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: 'medium',
+  },
+};
+
+export const ExpandedSolid = {
+  argTypes: {
+    'aria-expanded': {
+      control: 'boolean',
+    },
+  },
+  args: {
+    'aria-expanded': true,
+    activeAppearance: 'solid',
   },
 };
 

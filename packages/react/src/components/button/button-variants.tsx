@@ -2,13 +2,10 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 export const buttonVariants = cva(
   [
-    'h-8',
-    'px-3',
     'inline-flex',
     'items-center',
     'justify-center',
     'shrink-0',
-    'w-fit',
     'select-none',
     'appearance-none',
     'rounded-figma-md',
@@ -40,6 +37,14 @@ export const buttonVariants = cva(
           'disabled:active:bg-transparent',
         ],
         link: ['hover:underline', 'disabled:text-figma-disabled disabled:no-underline'],
+        ghost: [
+          'text-figma',
+          'not-disabled:hover:bg-figma-hover',
+          'not-disabled:active:bg-figma-pressed',
+          'focus-visible:outline-figma-border-selected',
+          'aria-expanded:bg-figma-pressed',
+          'disabled:bg-transparent disabled:text-figma-disabled',
+        ],
       },
       color: {
         primary: 'btn-primary',
@@ -47,6 +52,15 @@ export const buttonVariants = cva(
         success: 'btn-success',
         warning: 'btn-warning',
         danger: 'btn-danger',
+        inverse: 'btn-inverse',
+      },
+      size: {
+        default: ['h-6', 'px-2'],
+        large: ['h-8', 'px-3'],
+      },
+      fullWidth: {
+        true: 'w-full max-w-full',
+        false: 'w-fit',
       },
     },
     compoundVariants: [
@@ -110,6 +124,18 @@ export const buttonVariants = cva(
           'focus-visible:outline-figma-border-ondanger-strong',
           'focus-visible:shadow-[0_0_0_1px_var(--figma-color-border-danger-strong)]',
           'aria-expanded:bg-figma-danger-pressed',
+        ],
+      },
+      {
+        variant: 'solid',
+        color: 'inverse',
+        className: [
+          'text-figma-oninverse',
+          'bg-figma-inverse',
+          'active:bg-figma-brand-pressed',
+          'focus-visible:outline-figma-border-onbrand-strong',
+          'focus-visible:shadow-[0_0_0_1px_var(--figma-color-border-selected)]',
+          'aria-expanded:bg-figma-brand-pressed',
         ],
       },
       {
@@ -200,6 +226,8 @@ export const buttonVariants = cva(
     defaultVariants: {
       variant: 'solid',
       color: 'primary',
+      size: 'default',
+      fullWidth: false,
     },
   },
 );

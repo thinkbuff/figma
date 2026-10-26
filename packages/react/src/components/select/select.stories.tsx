@@ -5,6 +5,7 @@ import * as Select from './select';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof Select.Content> & {
   disabled?: boolean;
+  size?: 'default' | 'large';
   value?: string | null;
 };
 
@@ -94,6 +95,13 @@ const meta: Meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    size: {
+      control: 'inline-radio',
+      options: ['default', 'large'],
+      table: {
+        defaultValue: { summary: 'default' },
+      },
+    },
     value: {
       control: 'text',
     },
@@ -175,7 +183,7 @@ const meta: Meta = {
       </div>
     ),
   ],
-  render: function Render({ disabled, ...props }) {
+  render: function Render({ disabled, size, ...props }) {
     const [args, updateArgs] = useArgs();
 
     return (
@@ -187,6 +195,7 @@ const meta: Meta = {
       >
         <Select.Trigger
           disabled={disabled}
+          size={size}
           placeholder="Select. color"
         />
         <Select.Content {...props}>
@@ -204,6 +213,13 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     value: 'blue',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    value: 'blue',
+    size: 'large',
   },
 };
 

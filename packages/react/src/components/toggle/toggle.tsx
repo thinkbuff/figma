@@ -16,14 +16,15 @@ function Toggle({ className, disabled, ref, ...props }: ToggleProps) {
       ref={ref}
       className={addClassName(
         className,
-        'size-8',
+        'size-6',
+        'icon-figma',
         'text-figma-sm leading-figma-sm',
         'text-figma',
         'inline-flex',
         'items-center',
         'justify-center',
         'shrink-0',
-        'rounded-figma-sm',
+        'rounded-figma-md',
         'font-figma-default',
         'cursor-default',
         'appearance-none',
@@ -43,13 +44,14 @@ function Toggle({ className, disabled, ref, ...props }: ToggleProps) {
               'pointer-events-none',
               'text-figma-disabled',
               'fill-figma-icon-disabled',
-              'data-pressed:bg-figma-disabled',
+              'icon-figma-disabled',
+              'data-pressed:bg-figma-disabled data-pressed:icon-figma-disabled',
             ]
           : [
               'hover:bg-figma-hover hover:text-figma-icon-hover hover:fill-figma-icon-hover',
-              'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-figma-border-brand-strong',
-              'data-pressed:bg-figma-brand data-pressed:text-figma-icon-onbrand data-pressed:fill-figma-icon-onbrand',
-              'data-pressed:hover:bg-figma-brand data-pressed:hover:text-figma-icon-onbrand data-pressed:hover:fill-figma-icon-onbrand',
+              'focus-visible:outline-figma-border-selected',
+              'data-pressed:bg-figma-selected data-pressed:icon-figma-brand',
+              'data-pressed:hover:bg-figma-selected data-pressed:hover:icon-figma-brand',
             ],
       )}
       {...props}

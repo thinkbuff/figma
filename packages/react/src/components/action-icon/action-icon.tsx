@@ -14,9 +14,31 @@ interface ActionIconProps extends Omit<React.ComponentPropsWithRef<'button'>, 'c
    * Accessible name for the icon-only button.
    */
   'aria-label': string;
+  /**
+   * The button size. `'small'` matches the UI3 `Button icon` spec (24px).
+   *
+   * @default 'small'
+   */
+  size?: 'small' | 'medium';
+  /**
+   * The look of the button when it is active (`aria-expanded`, e.g. it opened a
+   * popup). `'subtle'` tints the icon and background; `'solid'` fills the
+   * background.
+   *
+   * @default 'subtle'
+   */
+  activeAppearance?: 'subtle' | 'solid';
 }
 
-function ActionIcon({ className, disabled, render, ref, ...props }: ActionIconProps) {
+function ActionIcon({
+  className,
+  disabled,
+  render,
+  size = 'small',
+  activeAppearance = 'subtle',
+  ref,
+  ...props
+}: ActionIconProps) {
   return useRender({
     render,
     defaultTagName: 'button',
@@ -24,7 +46,10 @@ function ActionIcon({ className, disabled, render, ref, ...props }: ActionIconPr
     props: mergeProps<'button'>(
       {
         className: cn(
-          'size-8',
+          size === 'small' ? 'size-6' : 'size-8',
+          'icon-figma',
+          'text-figma-icon',
+          'fill-figma-icon',
           'text-figma-sm leading-figma-sm',
           'flex',
           'justify-center',
@@ -44,12 +69,24 @@ function ActionIcon({ className, disabled, render, ref, ...props }: ActionIconPr
           'transition-colors',
           'focus:not-focus-visible:outline-0 focus:not-focus-visible:outline-transparent',
           disabled
-            ? ['cursor-not-allowed', 'text-figma-icon-disabled', 'fill-figma-icon-disabled']
+            ? [
+                'cursor-not-allowed',
+                'icon-figma-disabled',
+                'text-figma-icon-disabled',
+                'fill-figma-icon-disabled',
+              ]
             : [
                 'hover:bg-figma-pressed',
                 'focus-visible:outline-figma-border-selected',
-                'aria-expanded:bg-figma-selected aria-expanded:text-figma-icon-brand aria-expanded:fill-figma-icon-brand',
-                'aria-expanded:hover:bg-figma-selected aria-expanded:hover:text-figma-icon-brand aria-expanded:hover:fill-figma-icon-brand',
+                activeAppearance === 'subtle'
+                  ? [
+                      'aria-expanded:bg-figma-selected aria-expanded:icon-figma-brand',
+                      'aria-expanded:hover:bg-figma-selected aria-expanded:hover:icon-figma-brand',
+                    ]
+                  : [
+                      'aria-expanded:bg-figma-selected-strong aria-expanded:icon-figma-onbrand',
+                      'aria-expanded:hover:bg-figma-selected-strong aria-expanded:hover:icon-figma-onbrand',
+                    ],
               ],
           className,
         ),

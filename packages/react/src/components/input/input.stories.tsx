@@ -20,6 +20,13 @@ const meta = {
         defaultValue: { summary: 'border' },
       },
     },
+    size: {
+      control: 'inline-radio',
+      options: ['default', 'large'],
+      table: {
+        defaultValue: { summary: 'default' },
+      },
+    },
     invalid: {
       table: {
         defaultValue: { summary: 'false' },
@@ -46,6 +53,12 @@ export const Default: Story = {};
 export const Border: Story = {
   args: {
     variant: 'border',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: 'large',
   },
 };
 

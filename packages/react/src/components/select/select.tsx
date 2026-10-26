@@ -55,6 +55,12 @@ SelectArrow.displayName = 'SelectArrow';
 
 interface SelectTriggerProps extends React.ComponentPropsWithRef<typeof SelectPrimitive.Trigger> {
   placeholder?: React.ComponentProps<typeof SelectPrimitive.Value>['placeholder'];
+  /**
+   * The control height. `'default'` is the 24px UI3 size, `'large'` is 32px.
+   *
+   * @default 'default'
+   */
+  size?: 'default' | 'large';
 }
 
 function SelectTrigger({
@@ -62,6 +68,7 @@ function SelectTrigger({
   children,
   disabled,
   placeholder,
+  size = 'default',
   ref,
   ...props
 }: SelectTriggerProps) {
@@ -71,7 +78,7 @@ function SelectTrigger({
         className,
         'relative',
         'w-full',
-        'h-6',
+        size === 'large' ? 'h-8' : 'h-6',
         'flex',
         'pl-2',
         'items-center',
@@ -106,7 +113,7 @@ function SelectTrigger({
       </div>
       <SelectPrimitive.Icon
         data-disabled={disabled}
-        className="pointer-events-none ml-1 mr-2 shrink-0 icon-figma-tertiary data-[disabled=true]:icon-figma-disabled group-hover:icon-figma"
+        className="pointer-events-none ml-1 mr-2 shrink-0 icon-figma data-[disabled=true]:icon-figma-disabled"
         render={<ChevronDownIcon />}
       />
     </SelectPrimitive.Trigger>
