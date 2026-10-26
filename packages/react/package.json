@@ -105,8 +105,8 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "react": "^18.2.0 || ^19",
-    "react-dom": "^18.2.0 || ^19"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "peerDependenciesMeta": {
     "@types/react": {

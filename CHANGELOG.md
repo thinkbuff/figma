@@ -32,7 +32,7 @@
 - `Select`: pass `items` to `Root` so the trigger shows labels; `position` → `alignItemWithTrigger`; `Item asChild` removed; the empty value is `null`; `Label` must be inside `Group`; focus returns to the trigger on close.
 - `Dialog` / `AlertDialog` / `Sheet`: `Overlay` renders Base UI `Backdrop`; `AlertDialog.Action` and `AlertDialog.Cancel` both close the dialog.
 - `Label` is a native `<label>`.
-- `react` / `react-dom` peer range is now `^18.2.0 || ^19`; Node `>=24.21.0`.
+- `react` / `react-dom` peer range is now `^19`: components forward `ref` as a prop, which React 18 cannot pass to function components. Node `>=24.21.0`.
 
 #### Theme tokens: UI3 sync
 
