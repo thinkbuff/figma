@@ -1,6 +1,7 @@
+import { mergeProps } from '@base-ui/react/merge-props';
 import { createContext, useContext } from 'react';
 
-import { cn } from '~/utils';
+import { cn, useSelectOnInputClick } from '~/utils';
 
 import { inputVariants, type InputVariantsProps } from './input-variants';
 
@@ -15,6 +16,10 @@ const InputContext = createContext<{
 interface InputProps extends React.ComponentPropsWithRef<'input'>, InputVariantsProps {
   invalid?: boolean;
   disabled?: boolean;
+  /**
+   * Selects the input's contents when clicked, unless the user is selecting manually.
+   */
+  selectOnClick?: boolean;
   /**
    * Props passed down to the root element of the Input component
    */
@@ -32,9 +37,11 @@ function Input({
   invalid,
   disabled,
   children,
+  selectOnClick,
   ref,
   ...props
 }: InputProps) {
+  const selectOnClickProps = useSelectOnInputClick();
   return (
     <InputContext.Provider value={{ disabled, invalid }}>
       <label
@@ -63,7 +70,7 @@ function Input({
             'pr-0',
             inputVariants({ variant, disabled, invalid, className }),
           )}
-          {...props}
+          {...mergeProps<'input'>(selectOnClick ? selectOnClickProps : {}, props)}
           disabled={disabled}
         />
       </label>
