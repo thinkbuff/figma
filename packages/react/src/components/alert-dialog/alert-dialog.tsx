@@ -14,22 +14,26 @@ const AlertDialogAction = AlertDialogPrimitive.Close;
 
 const AlertDialogCancel = AlertDialogPrimitive.Close;
 
-const AlertDialogOverlay: React.FC<
-  WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Backdrop>>
-> = ({ className, ref, ...props }) => (
-  <AlertDialogPrimitive.Backdrop
-    ref={ref}
-    className={cn(
-      'fixed',
-      'inset-0',
-      'z-50',
-      'bg-figma-overlay',
-      'transition-opacity duration-150 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
-      className,
-    )}
-    {...props}
-  />
-);
+function AlertDialogOverlay({
+  className,
+  ref,
+  ...props
+}: WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Backdrop>>) {
+  return (
+    <AlertDialogPrimitive.Backdrop
+      ref={ref}
+      className={cn(
+        'fixed',
+        'inset-0',
+        'z-50',
+        'bg-figma-overlay',
+        'transition-opacity duration-150 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
 AlertDialogOverlay.displayName = 'AlertDialogOverlay';
 
@@ -45,96 +49,105 @@ interface AlertDialogContentProps extends WithStringClassName<
  * - [Docs](https://base-ui.com/react/components/alert-dialog)
  * - [API Reference](https://base-ui.com/react/components/alert-dialog#api-reference)
  */
-const AlertDialogContent: React.FC<AlertDialogContentProps> = ({
-  className,
-  container,
-  ref,
-  ...props
-}) => (
-  <AlertDialogPortal container={container}>
-    <AlertDialogOverlay />
-    <AlertDialogPrimitive.Popup
-      ref={ref}
-      className={cn(
-        'fixed',
-        'grid',
-        'w-full',
-        'max-w-80',
-        'left-1/2',
-        'top-1/2',
-        '-translate-x-1/2',
-        '-translate-y-1/2',
-        'z-50',
-        'rounded-figma-lg',
-        'bg-figma',
-        'p-4',
-        'shadow-figma-modal',
-        'outline-none',
-        'transition-[opacity,scale] duration-150 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
-        className,
-      )}
-      {...props}
-    />
-  </AlertDialogPortal>
-);
+function AlertDialogContent({ className, container, ref, ...props }: AlertDialogContentProps) {
+  return (
+    <AlertDialogPortal container={container}>
+      <AlertDialogOverlay />
+      <AlertDialogPrimitive.Popup
+        ref={ref}
+        className={cn(
+          'fixed',
+          'grid',
+          'w-full',
+          'max-w-80',
+          'left-1/2',
+          'top-1/2',
+          '-translate-x-1/2',
+          '-translate-y-1/2',
+          'z-50',
+          'rounded-figma-lg',
+          'bg-figma',
+          'p-4',
+          'shadow-figma-modal',
+          'outline-none',
+          'transition-[opacity,scale] duration-150 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
+          className,
+        )}
+        {...props}
+      />
+    </AlertDialogPortal>
+  );
+}
 
 AlertDialogContent.displayName = 'AlertDialogContent';
 
-const AlertDialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({
+function AlertDialogHeader({
   className,
   children,
   ref,
   ...props
-}) => (
-  <div
-    ref={ref}
-    className={cn('flex', 'items-center', 'pb-6', className)}
-    {...props}
-  >
-    {children}
-  </div>
-);
+}: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <div
+      ref={ref}
+      className={cn('flex', 'items-center', 'pb-6', className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
 
 AlertDialogHeader.displayName = 'AlertDialogHeader';
 
-const AlertDialogFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({
+function AlertDialogFooter({
   className,
   children,
   ref,
   ...props
-}) => (
-  <div
-    ref={ref}
-    className={cn('flex', 'items-center', 'pt-6', className)}
-    {...props}
-  >
-    {children}
-  </div>
-);
+}: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <div
+      ref={ref}
+      className={cn('flex', 'items-center', 'pt-6', className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
 
 AlertDialogFooter.displayName = 'AlertDialogFooter';
 
-const AlertDialogTitle: React.FC<
-  WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Title>>
-> = ({ className, ref, ...props }) => (
-  <AlertDialogPrimitive.Title
-    ref={ref}
-    className={cn('text-figma', 'text-figma-sm leading-figma-sm', 'font-figma-strong', className)}
-    {...props}
-  />
-);
+function AlertDialogTitle({
+  className,
+  ref,
+  ...props
+}: WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Title>>) {
+  return (
+    <AlertDialogPrimitive.Title
+      ref={ref}
+      className={cn('text-figma', 'text-figma-sm leading-figma-sm', 'font-figma-strong', className)}
+      {...props}
+    />
+  );
+}
 
 AlertDialogTitle.displayName = 'AlertDialogTitle';
 
-const AlertDialogDescription: React.FC<
-  WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Description>>
-> = ({ className, ref, ...props }) => (
-  <AlertDialogPrimitive.Description
-    ref={ref}
-    className={cn('text-figma', 'text-figma-sm leading-figma-sm', className)}
-    {...props}
-  />
-);
+function AlertDialogDescription({
+  className,
+  ref,
+  ...props
+}: WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Description>>) {
+  return (
+    <AlertDialogPrimitive.Description
+      ref={ref}
+      className={cn('text-figma', 'text-figma-sm leading-figma-sm', className)}
+      {...props}
+    />
+  );
+}
 
 AlertDialogDescription.displayName = 'AlertDialogDescription';
 

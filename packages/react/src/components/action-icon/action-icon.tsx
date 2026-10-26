@@ -12,7 +12,7 @@ interface ActionIconProps extends Omit<React.ComponentPropsWithRef<'button'>, 'c
   render?: React.ReactElement;
 }
 
-const ActionIcon: React.FC<ActionIconProps> = ({ className, disabled, render, ref, ...props }) => {
+function ActionIcon({ className, disabled, render, ref, ...props }: ActionIconProps) {
   return useRender({
     render,
     defaultTagName: 'button',
@@ -54,7 +54,7 @@ const ActionIcon: React.FC<ActionIconProps> = ({ className, disabled, render, re
       props,
     ),
   });
-};
+}
 
 ActionIcon.displayName = 'ActionIcon';
 

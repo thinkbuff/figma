@@ -25,7 +25,7 @@ interface InputProps extends React.ComponentPropsWithRef<'input'>, InputVariants
     React.DataHTMLAttributes<HTMLLabelElement>;
 }
 
-const Input: React.FC<InputProps> = ({
+function Input({
   wrapperProps,
   className,
   variant,
@@ -34,7 +34,7 @@ const Input: React.FC<InputProps> = ({
   children,
   ref,
   ...props
-}) => {
+}: InputProps) {
   return (
     <InputContext.Provider value={{ disabled, invalid }}>
       <label
@@ -69,7 +69,7 @@ const Input: React.FC<InputProps> = ({
       </label>
     </InputContext.Provider>
   );
-};
+}
 
 Input.displayName = 'Input';
 
@@ -83,7 +83,7 @@ interface InputSlotProps extends React.ComponentPropsWithRef<'div'> {
 /**
  * Contains icons or buttons associated with an Input.
  */
-const InputSlot: React.FC<InputSlotProps> = ({ className, side = 'left', ref, ...props }) => {
+function InputSlot({ className, side = 'left', ref, ...props }: InputSlotProps) {
   const { disabled, invalid } = useContext(InputContext);
   return (
     <div
@@ -109,7 +109,7 @@ const InputSlot: React.FC<InputSlotProps> = ({ className, side = 'left', ref, ..
       data-disabled={disabled}
     />
   );
-};
+}
 
 InputSlot.displayName = 'InputSlot';
 

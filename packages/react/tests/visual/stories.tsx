@@ -13,12 +13,13 @@ export type StoryEntry = {
   layout: string;
 };
 
-const kebab = (value: string) =>
-  value
+function kebab(value: string) {
+  return value
     .replaceAll(/([a-z0-9])([A-Z])/g, '$1-$2')
     .replaceAll(/[^a-zA-Z0-9]+/g, '-')
     .replaceAll(/^-+|-+$/g, '')
     .toLowerCase();
+}
 
 export const stories: StoryEntry[] = [];
 for (const mod of Object.values(modules)) {

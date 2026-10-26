@@ -23,61 +23,54 @@ interface ToggleGroupItemProps extends Omit<
  * - [Docs](https://base-ui.com/react/components/toggle-group)
  * - [API Reference](https://base-ui.com/react/components/toggle-group#api)
  */
-const ToggleGroup: React.FC<ToggleGroupProps> = ({
-  className,
-  children,
-  disabled,
-  ref,
-  ...props
-}) => (
-  <BaseToggleGroup
-    ref={ref}
-    className={cn('group', 'inline-flex', 'bg-figma-secondary', 'rounded-figma-md', className)}
-    {...props}
-    disabled={disabled}
-  >
-    {children}
-  </BaseToggleGroup>
-);
+function ToggleGroup({ className, children, disabled, ref, ...props }: ToggleGroupProps) {
+  return (
+    <BaseToggleGroup
+      ref={ref}
+      className={cn('group', 'inline-flex', 'bg-figma-secondary', 'rounded-figma-md', className)}
+      {...props}
+      disabled={disabled}
+    >
+      {children}
+    </BaseToggleGroup>
+  );
+}
 
 ToggleGroup.displayName = 'ToggleGroup';
 
-const ToggleGroupItem: React.FC<ToggleGroupItemProps> = ({
-  className,
-  children,
-  ref,
-  ...props
-}) => (
-  <BaseToggle
-    ref={ref}
-    className={cn(
-      'h-6',
-      'min-w-6',
-      'w-fit',
-      'flex-[1_0_auto]',
-      'text-figma-sm leading-figma-sm',
-      'font-figma-default',
-      'flex',
-      'justify-center',
-      'items-center',
-      'whitespace-nowrap',
-      'cursor-default',
-      'appearance-none',
-      'text-figma',
-      'fill-figma-icon-secondary',
-      'bg-transparent',
-      'rounded-figma-md',
-      'transition-colors',
-      'focus-visible:outline-solid focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-figma-border-selected',
-      'data-pressed:bg-figma data-pressed:fill-figma-icon data-pressed:shadow-[inset_0_0_0_1px_var(--figma-color-border)]',
-      'disabled:text-figma-disabled disabled:fill-figma-icon-disabled',
-      className,
-    )}
-    {...props}
-  >
-    {children}
-  </BaseToggle>
-);
+function ToggleGroupItem({ className, children, ref, ...props }: ToggleGroupItemProps) {
+  return (
+    <BaseToggle
+      ref={ref}
+      className={cn(
+        'h-6',
+        'min-w-6',
+        'w-fit',
+        'flex-[1_0_auto]',
+        'text-figma-sm leading-figma-sm',
+        'font-figma-default',
+        'flex',
+        'justify-center',
+        'items-center',
+        'whitespace-nowrap',
+        'cursor-default',
+        'appearance-none',
+        'text-figma',
+        'fill-figma-icon-secondary',
+        'bg-transparent',
+        'rounded-figma-md',
+        'transition-colors',
+        'focus-visible:outline-solid focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-figma-border-selected',
+        'data-pressed:bg-figma data-pressed:fill-figma-icon data-pressed:shadow-[inset_0_0_0_1px_var(--figma-color-border)]',
+        'disabled:text-figma-disabled disabled:fill-figma-icon-disabled',
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </BaseToggle>
+  );
+}
 
 ToggleGroupItem.displayName = 'ToggleGroupItem';
 

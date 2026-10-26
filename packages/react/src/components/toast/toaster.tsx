@@ -11,7 +11,7 @@ type ToasterProps = React.ComponentProps<typeof SonnerToaster>;
  *
  * - [Docs](https://sonner.emilkowal.ski/)
  */
-const Toaster = ({ className, ...props }: ToasterProps) => {
+function Toaster({ className, ...props }: ToasterProps) {
   return (
     <SonnerToaster
       className={cn('toaster', 'group', className)}
@@ -42,6 +42,6 @@ const Toaster = ({ className, ...props }: ToasterProps) => {
       {...props}
     />
   );
-};
+}
 
 export { Toaster };

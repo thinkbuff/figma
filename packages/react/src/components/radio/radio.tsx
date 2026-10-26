@@ -25,7 +25,7 @@ interface RadioGroupItemProps extends Omit<
  * - [Docs](https://base-ui.com/react/components/radio)
  * - [API Reference](https://base-ui.com/react/components/radio#api)
  */
-const RadioGroup: React.FC<RadioGroupProps> = ({ className, inline = false, ref, ...props }) => {
+function RadioGroup({ className, inline = false, ref, ...props }: RadioGroupProps) {
   return (
     <RadioGroupPrimitive
       ref={ref}
@@ -33,11 +33,11 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ className, inline = false, ref,
       {...props}
     />
   );
-};
+}
 
 RadioGroup.displayName = 'RadioGroup';
 
-const RadioGroupItem: React.FC<RadioGroupItemProps> = ({ className, ref, ...props }) => {
+function RadioGroupItem({ className, ref, ...props }: RadioGroupItemProps) {
   return (
     <Radio.Root
       ref={ref}
@@ -64,7 +64,7 @@ const RadioGroupItem: React.FC<RadioGroupItemProps> = ({ className, ref, ...prop
       {...props}
     />
   );
-};
+}
 
 RadioGroupItem.displayName = 'RadioGroupItem';
 

@@ -11,19 +11,21 @@ interface ButtonProps
   className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ className, variant, color, ref, ...props }) => (
-  <BaseButton
-    ref={ref}
-    className={cn(
-      buttonVariants({
-        variant,
-        color,
-        className,
-      }),
-    )}
-    {...props}
-  />
-);
+function Button({ className, variant, color, ref, ...props }: ButtonProps) {
+  return (
+    <BaseButton
+      ref={ref}
+      className={cn(
+        buttonVariants({
+          variant,
+          color,
+          className,
+        }),
+      )}
+      {...props}
+    />
+  );
+}
 
 Button.displayName = 'Button';
 

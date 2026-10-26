@@ -24,7 +24,9 @@ execFileSync('pnpm', ['-F', '@thinkbuff/figma-react', 'test:visual:update', ...e
   stdio: 'inherit',
 });
 
-const hash = (file: string) => createHash('sha256').update(readFileSync(file)).digest('hex');
+function hash(file: string) {
+  return createHash('sha256').update(readFileSync(file)).digest('hex');
+}
 const changed: string[] = [];
 const added: string[] = [];
 for (const file of readdirSync(baselines).filter((f) => f.endsWith('.png'))) {

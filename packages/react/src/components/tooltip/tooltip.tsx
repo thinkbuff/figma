@@ -15,30 +15,32 @@ interface TooltipArrowProps extends Omit<
   className?: string;
 }
 
-const TooltipArrow: React.FC<TooltipArrowProps> = ({ className, ref, ...props }) => (
-  <TooltipPrimitive.Arrow
-    className={cn(
-      'fill-figma-bg-tooltip',
-      'data-[side=bottom]:-top-1.5 data-[side=bottom]:rotate-180',
-      'data-[side=top]:-bottom-1.5',
-      'data-[side=left]:right-[-10.5px] data-[side=left]:-rotate-90',
-      'data-[side=right]:left-[-10.5px] data-[side=right]:rotate-90',
-      className,
-    )}
-    ref={ref}
-    render={
-      <svg
-        width={14}
-        height={7}
-        viewBox="0 0 30 10"
-        preserveAspectRatio="none"
-      >
-        <polygon points="0,0 30,0 15,10" />
-      </svg>
-    }
-    {...props}
-  />
-);
+function TooltipArrow({ className, ref, ...props }: TooltipArrowProps) {
+  return (
+    <TooltipPrimitive.Arrow
+      className={cn(
+        'fill-figma-bg-tooltip',
+        'data-[side=bottom]:-top-1.5 data-[side=bottom]:rotate-180',
+        'data-[side=top]:-bottom-1.5',
+        'data-[side=left]:right-[-10.5px] data-[side=left]:-rotate-90',
+        'data-[side=right]:left-[-10.5px] data-[side=right]:rotate-90',
+        className,
+      )}
+      ref={ref}
+      render={
+        <svg
+          width={14}
+          height={7}
+          viewBox="0 0 30 10"
+          preserveAspectRatio="none"
+        >
+          <polygon points="0,0 30,0 15,10" />
+        </svg>
+      }
+      {...props}
+    />
+  );
+}
 
 TooltipArrow.displayName = 'TooltipArrow';
 
@@ -57,7 +59,7 @@ interface TooltipContentProps extends Omit<
   collisionPadding?: PositionerProps['collisionPadding'];
 }
 
-const TooltipContent: React.FC<TooltipContentProps> = ({
+function TooltipContent({
   className,
   container,
   side,
@@ -67,37 +69,39 @@ const TooltipContent: React.FC<TooltipContentProps> = ({
   collisionPadding,
   ref,
   ...props
-}) => (
-  <TooltipPrimitive.Portal container={container}>
-    <TooltipPrimitive.Positioner
-      className="z-50"
-      side={side}
-      align={align}
-      sideOffset={sideOffset}
-      alignOffset={alignOffset}
-      collisionPadding={collisionPadding}
-    >
-      <TooltipPrimitive.Popup
-        ref={ref}
-        className={cn(
-          'bg-figma-tooltip',
-          'text-figma-tooltip',
-          'fill-figma-icon-tooltip',
-          'px-2',
-          'py-1',
-          'min-h-6',
-          'whitespace-pre-wrap',
-          'break-words',
-          'rounded-figma-md',
-          'shadow-figma-tooltip',
-          'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
-          className,
-        )}
-        {...props}
-      />
-    </TooltipPrimitive.Positioner>
-  </TooltipPrimitive.Portal>
-);
+}: TooltipContentProps) {
+  return (
+    <TooltipPrimitive.Portal container={container}>
+      <TooltipPrimitive.Positioner
+        className="z-50"
+        side={side}
+        align={align}
+        sideOffset={sideOffset}
+        alignOffset={alignOffset}
+        collisionPadding={collisionPadding}
+      >
+        <TooltipPrimitive.Popup
+          ref={ref}
+          className={cn(
+            'bg-figma-tooltip',
+            'text-figma-tooltip',
+            'fill-figma-icon-tooltip',
+            'px-2',
+            'py-1',
+            'min-h-6',
+            'whitespace-pre-wrap',
+            'break-words',
+            'rounded-figma-md',
+            'shadow-figma-tooltip',
+            'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
+            className,
+          )}
+          {...props}
+        />
+      </TooltipPrimitive.Positioner>
+    </TooltipPrimitive.Portal>
+  );
+}
 
 TooltipContent.displayName = 'TooltipContent';
 
@@ -133,7 +137,7 @@ interface TooltipProps
  * - [Docs](https://base-ui.com/react/components/tooltip)
  * - [API Reference](https://base-ui.com/react/components/tooltip#api)
  */
-const Tooltip = ({
+function Tooltip({
   // Root props,
   open,
   defaultOpen,
@@ -149,29 +153,31 @@ const Tooltip = ({
   sideOffset = withArrow ? 9 : 4,
   // Tooltip Content props
   ...props
-}: TooltipProps) => (
-  <TooltipRoot
-    open={open}
-    defaultOpen={defaultOpen}
-    onOpenChange={onOpenChange}
-    disableHoverablePopup={disableHoverablePopup}
-  >
-    {children ? (
-      <TooltipTrigger
-        render={children as React.ReactElement}
-        delay={delay}
-        closeDelay={closeDelay}
-      />
-    ) : null}
-    <TooltipContent
-      sideOffset={sideOffset}
-      {...props}
+}: TooltipProps) {
+  return (
+    <TooltipRoot
+      open={open}
+      defaultOpen={defaultOpen}
+      onOpenChange={onOpenChange}
+      disableHoverablePopup={disableHoverablePopup}
     >
-      {content}
-      {withArrow ? <TooltipArrow /> : null}
-    </TooltipContent>
-  </TooltipRoot>
-);
+      {children ? (
+        <TooltipTrigger
+          render={children as React.ReactElement}
+          delay={delay}
+          closeDelay={closeDelay}
+        />
+      ) : null}
+      <TooltipContent
+        sideOffset={sideOffset}
+        {...props}
+      >
+        {content}
+        {withArrow ? <TooltipArrow /> : null}
+      </TooltipContent>
+    </TooltipRoot>
+  );
+}
 
 Tooltip.displayName = 'Tooltip';
 

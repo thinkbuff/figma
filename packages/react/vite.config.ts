@@ -36,7 +36,9 @@ const baseUiSubpaths = Object.keys(
 // BrowserProviderOption<T> is invariant over T and vite-plus resolves a
 // different vitest instance than the browser-playwright import, so the
 // provider option needs an opaque cast either way.
-const browserProvider = () => playwright() as never;
+function browserProvider() {
+  return playwright() as never;
+}
 
 const optimizeDeps = {
   include: [

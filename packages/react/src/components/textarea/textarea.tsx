@@ -11,7 +11,7 @@ interface TextareaProps extends React.ComponentPropsWithRef<'textarea'>, Textare
   disabled?: boolean;
 }
 
-const Textarea: React.FC<TextareaProps> = ({
+function Textarea({
   className,
   variant,
   invalid,
@@ -19,7 +19,7 @@ const Textarea: React.FC<TextareaProps> = ({
   children,
   ref,
   ...props
-}) => {
+}: TextareaProps) {
   return (
     <div
       className={cn('peer', 'relative')}
@@ -44,7 +44,7 @@ const Textarea: React.FC<TextareaProps> = ({
       />
     </div>
   );
-};
+}
 
 Textarea.displayName = 'Textarea';
 

@@ -27,60 +27,68 @@ interface TabsContentProps extends Omit<
  * - [Docs](https://base-ui.com/react/components/tabs)
  * - [API Reference](https://base-ui.com/react/components/tabs#api)
  */
-const TabsRoot: React.FC<TabsRootProps> = ({ className, ref, ...props }) => (
-  <Tabs.Root
-    className={cn('bg-figma', className)}
-    {...props}
-    ref={ref}
-  />
-);
+function TabsRoot({ className, ref, ...props }: TabsRootProps) {
+  return (
+    <Tabs.Root
+      className={cn('bg-figma', className)}
+      {...props}
+      ref={ref}
+    />
+  );
+}
 
 TabsRoot.displayName = 'Tabs';
 
-const TabsList: React.FC<TabsListProps> = ({ className, ref, ...props }) => (
-  <Tabs.List
-    className={cn('flex', 'gap-1', 'overflow-y-auto', className)}
-    {...props}
-    ref={ref}
-  />
-);
+function TabsList({ className, ref, ...props }: TabsListProps) {
+  return (
+    <Tabs.List
+      className={cn('flex', 'gap-1', 'overflow-y-auto', className)}
+      {...props}
+      ref={ref}
+    />
+  );
+}
 
 TabsList.displayName = 'TabsList';
 
-const TabsTrigger: React.FC<TabsTriggerProps> = ({ className, ref, ...props }) => (
-  <Tabs.Tab
-    className={cn(
-      'flex',
-      'items-center',
-      'justify-center',
-      'shrink-0',
-      'h-6',
-      'px-2',
-      'text-figma-sm leading-figma-sm',
-      'font-figma-default',
-      'text-figma-secondary',
-      'fill-figma-icon-secondary',
-      'whitespace-nowrap',
-      'rounded-figma-md',
-      'not-data-disabled:hover:bg-figma-secondary',
-      'data-active:font-figma-strong data-active:text-figma data-active:fill-figma-icon data-active:bg-figma-secondary',
-      'data-disabled:text-figma-disabled',
-      className,
-    )}
-    {...props}
-    ref={ref}
-  />
-);
+function TabsTrigger({ className, ref, ...props }: TabsTriggerProps) {
+  return (
+    <Tabs.Tab
+      className={cn(
+        'flex',
+        'items-center',
+        'justify-center',
+        'shrink-0',
+        'h-6',
+        'px-2',
+        'text-figma-sm leading-figma-sm',
+        'font-figma-default',
+        'text-figma-secondary',
+        'fill-figma-icon-secondary',
+        'whitespace-nowrap',
+        'rounded-figma-md',
+        'not-data-disabled:hover:bg-figma-secondary',
+        'data-active:font-figma-strong data-active:text-figma data-active:fill-figma-icon data-active:bg-figma-secondary',
+        'data-disabled:text-figma-disabled',
+        className,
+      )}
+      {...props}
+      ref={ref}
+    />
+  );
+}
 
 TabsTrigger.displayName = 'TabsTrigger';
 
-const TabsContent: React.FC<TabsContentProps> = ({ className, ref, ...props }) => (
-  <Tabs.Panel
-    className={cn('bg-figma', className)}
-    {...props}
-    ref={ref}
-  />
-);
+function TabsContent({ className, ref, ...props }: TabsContentProps) {
+  return (
+    <Tabs.Panel
+      className={cn('bg-figma', className)}
+      {...props}
+      ref={ref}
+    />
+  );
+}
 
 TabsContent.displayName = 'TabsContent';
 

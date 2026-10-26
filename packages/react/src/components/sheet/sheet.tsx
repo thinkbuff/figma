@@ -13,23 +13,27 @@ const SheetClose = SheetPrimitive.Close;
 
 const SheetPortal = SheetPrimitive.Portal;
 
-const SheetOverlay: React.FC<
-  WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Backdrop>>
-> = ({ className, ref, ...props }) => (
-  <SheetPrimitive.Backdrop
-    ref={ref}
-    className={cn(
-      'fixed',
-      'inset-0',
-      'z-50',
-      'bg-figma-overlay',
-      'backdrop-blur',
-      'transition-opacity duration-200 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
-      className,
-    )}
-    {...props}
-  />
-);
+function SheetOverlay({
+  className,
+  ref,
+  ...props
+}: WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Backdrop>>) {
+  return (
+    <SheetPrimitive.Backdrop
+      ref={ref}
+      className={cn(
+        'fixed',
+        'inset-0',
+        'z-50',
+        'bg-figma-overlay',
+        'backdrop-blur',
+        'transition-opacity duration-200 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
 SheetOverlay.displayName = 'SheetOverlay';
 
@@ -97,14 +101,7 @@ export interface SheetContentProps
  * - [Docs](https://base-ui.com/react/components/dialog)
  * - [API Reference](https://base-ui.com/react/components/dialog#api-reference)
  */
-const SheetContent: React.FC<SheetContentProps> = ({
-  className,
-  children,
-  container,
-  side,
-  ref,
-  ...props
-}) => {
+function SheetContent({ className, children, container, side, ref, ...props }: SheetContentProps) {
   return (
     <SheetPortal container={container}>
       <SheetOverlay />
@@ -117,75 +114,81 @@ const SheetContent: React.FC<SheetContentProps> = ({
       </SheetPrimitive.Popup>
     </SheetPortal>
   );
-};
+}
 
 SheetContent.displayName = 'SheetContent';
 
-const SheetHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      'flex',
-      'items-center',
-      'px-4',
-      'text-left',
-      'min-h-10',
-      'border-b',
-      'border-solid',
-      'border-figma',
-      className,
-    )}
-    {...props}
-  ></div>
-);
+function SheetHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      className={cn(
+        'flex',
+        'items-center',
+        'px-4',
+        'text-left',
+        'min-h-10',
+        'border-b',
+        'border-solid',
+        'border-figma',
+        className,
+      )}
+      {...props}
+    ></div>
+  );
+}
 
 SheetHeader.displayName = 'SheetHeader';
 
-const SheetFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      'flex',
-      'items-center',
-      'px-4',
-      'text-left',
-      'min-h-10',
-      'border-t',
-      'border-solid',
-      'border-figma',
-      className,
-    )}
-    {...props}
-  ></div>
-);
+function SheetFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      className={cn(
+        'flex',
+        'items-center',
+        'px-4',
+        'text-left',
+        'min-h-10',
+        'border-t',
+        'border-solid',
+        'border-figma',
+        className,
+      )}
+      {...props}
+    ></div>
+  );
+}
 
 SheetFooter.displayName = 'SheetFooter';
 
-const SheetTitle: React.FC<
-  WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Title>>
-> = ({ className, ref, ...props }) => (
-  <SheetPrimitive.Title
-    ref={ref}
-    className={cn('text-figma', 'text-figma-sm leading-figma-sm', 'font-figma-strong', className)}
-    {...props}
-  />
-);
+function SheetTitle({
+  className,
+  ref,
+  ...props
+}: WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Title>>) {
+  return (
+    <SheetPrimitive.Title
+      ref={ref}
+      className={cn('text-figma', 'text-figma-sm leading-figma-sm', 'font-figma-strong', className)}
+      {...props}
+    />
+  );
+}
 
 SheetTitle.displayName = 'SheetTitle';
 
-const SheetDescription: React.FC<
-  WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Description>>
-> = ({ className, ref, ...props }) => (
-  <SheetPrimitive.Description
-    ref={ref}
-    className={cn('text-figma-secondary', className)}
-    {...props}
-  />
-);
+function SheetDescription({
+  className,
+  ref,
+  ...props
+}: WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Description>>) {
+  return (
+    <SheetPrimitive.Description
+      ref={ref}
+      className={cn('text-figma-secondary', className)}
+      {...props}
+    />
+  );
+}
 
 SheetDescription.displayName = 'SheetDescription';
 
