@@ -19,10 +19,10 @@ interface InputProps extends React.ComponentPropsWithRef<'input'>, InputVariants
    * Props passed down to the root element of the Input component
    */
   wrapperProps?: Omit<
-    React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+    React.DetailedHTMLProps<React.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>,
     'ref'
   > &
-    React.DataHTMLAttributes<'div'>;
+    React.DataHTMLAttributes<HTMLLabelElement>;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -37,7 +37,7 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <InputContext.Provider value={{ disabled, invalid }}>
-      <div
+      <label
         {...wrapperProps}
         className={cn(
           'peer',
@@ -49,7 +49,6 @@ const Input: React.FC<InputProps> = ({
         )}
         data-disabled={disabled}
         data-invalid={invalid}
-        onClick={() => (ref as React.RefObject<HTMLInputElement>).current?.focus?.()}
       >
         {children}
         <input
@@ -67,7 +66,7 @@ const Input: React.FC<InputProps> = ({
           {...props}
           disabled={disabled}
         />
-      </div>
+      </label>
     </InputContext.Provider>
   );
 };

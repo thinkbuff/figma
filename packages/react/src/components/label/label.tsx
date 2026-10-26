@@ -1,6 +1,7 @@
 import { cn } from '~/utils';
 
 const Label: React.FC<React.ComponentPropsWithRef<'label'>> = ({ className, ref, ...props }) => (
+  // oxlint-disable-next-line jsx-a11y/label-has-associated-control -- primitive; the caller associates via htmlFor or nesting
   <label
     ref={ref}
     className={cn(
