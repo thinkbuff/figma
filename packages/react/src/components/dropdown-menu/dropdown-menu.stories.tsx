@@ -82,7 +82,7 @@ const meta = {
       >
         <DropdownMenu.Trigger
           render={
-            <ActionIcon>
+            <ActionIcon aria-label="Open menu">
               <span className="icon-[tabler--menu-2] size-4"></span>
             </ActionIcon>
           }

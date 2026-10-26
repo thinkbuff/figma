@@ -92,6 +92,7 @@ export const WithSlots: Story = {
       </InputSlot>
       <InputSlot side="right">
         <ActionIcon
+          aria-label="Clear"
           disabled={args.disabled}
           className="mx-1 size-6 text-figma-icon-secondary focus:outline-transparent"
           onClick={(e) => e.stopPropagation()}

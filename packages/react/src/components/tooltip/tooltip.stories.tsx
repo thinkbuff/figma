@@ -107,7 +107,7 @@ export const Default: Story = {
             updateArgs({ open: value });
           }}
         >
-          <ActionIcon>
+          <ActionIcon aria-label="Adjust">
             <span className="icon-[tabler--adjustments-alt] size-4"></span>
           </ActionIcon>
         </Tooltip>

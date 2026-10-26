@@ -54,7 +54,10 @@ const meta = {
             <Sheet.Title>Edit profile</Sheet.Title>
             <Sheet.Close
               render={
-                <ActionIcon className="-mr-2">
+                <ActionIcon
+                  aria-label="Close"
+                  className="-mr-2"
+                >
                   <span className="icon-[mdi--window-close] size-4"></span>
                 </ActionIcon>
               }

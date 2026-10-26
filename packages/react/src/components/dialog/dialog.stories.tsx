@@ -59,7 +59,10 @@ const meta: Meta = {
             <Dialog.Title>Edit profile</Dialog.Title>
             <Dialog.Close
               render={
-                <ActionIcon className="-mr-2 -mt-2">
+                <ActionIcon
+                  aria-label="Close"
+                  className="-mr-2 -mt-2"
+                >
                   <span className="icon-[mdi--window-close] size-4"></span>
                 </ActionIcon>
               }

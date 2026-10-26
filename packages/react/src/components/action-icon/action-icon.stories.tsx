@@ -18,6 +18,7 @@ const meta = {
   },
   args: {
     disabled: false,
+    'aria-label': 'Add',
   },
   render: (args) => (
     <ActionIcon {...args}>

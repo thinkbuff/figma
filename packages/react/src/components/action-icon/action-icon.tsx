@@ -10,6 +10,10 @@ interface ActionIconProps extends Omit<React.ComponentPropsWithRef<'button'>, 'c
    * Read [Render](https://base-ui.com/react/utils/use-render) guide for more details.
    */
   render?: React.ReactElement;
+  /**
+   * Accessible name for the icon-only button.
+   */
+  'aria-label': string;
 }
 
 function ActionIcon({ className, disabled, render, ref, ...props }: ActionIconProps) {
