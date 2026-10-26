@@ -101,7 +101,7 @@ function SelectTrigger({
       ref={ref}
       disabled={disabled}
     >
-      <div className="pointer-events-none flex items-center group-hover:grow group-data-popup-open:grow">
+      <div className="pointer-events-none flex items-center grow">
         {children ?? <SelectValue placeholder={placeholder} />}
       </div>
       <SelectPrimitive.Icon
