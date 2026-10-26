@@ -69,8 +69,9 @@
     "build-storybook": "storybook build",
     "prepublishOnly": "pnpm build",
     "test": "vitest run --project browser --project unit",
-    "test:visual": "vitest run --project vrt",
-    "test:visual:update": "vitest run --project vrt --update"
+    "test:visual": "rm -rf node_modules/.vite && vitest run --project vrt",
+    "test:visual:update": "rm -rf node_modules/.vite && vitest run --project vrt --update",
+    "probe": "rm -rf node_modules/.vite && vitest run --project probe --reporter=verbose"
   },
   "dependencies": {
     "@base-ui/react": "catalog:",

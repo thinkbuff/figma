@@ -32,6 +32,14 @@ export default defineConfig({
         },
       },
       {
+        files: ['packages/react/tests/**/*.test.{ts,tsx}'],
+        plugins: ['vitest'],
+        rules: {
+          // vrt describe/it titles are story ids and theme names — dynamic by design
+          'vitest/valid-title': 'off',
+        },
+      },
+      {
         files: ['**/*.test.{ts,tsx}', '**/*.vrt.test.{ts,tsx}'],
         plugins: ['vitest'],
       },

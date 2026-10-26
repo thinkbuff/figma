@@ -97,6 +97,23 @@ export default defineConfig({
           },
         },
       },
+      {
+        define: {
+          'import.meta.env.VRT_PROBE': JSON.stringify(process.env.VRT_PROBE ?? ''),
+        },
+        test: {
+          name: 'probe',
+          include: ['tests/visual/probe.test.tsx'],
+          setupFiles: ['./tests/visual/vrt.setup.ts'],
+          browser: {
+            enabled: true,
+            provider: playwright(),
+            headless: true,
+            viewport: { width: 800, height: 600 },
+            instances: [{ browser: 'chromium' }],
+          },
+        },
+      },
     ],
   },
   pack: {
