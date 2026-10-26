@@ -222,6 +222,9 @@ catalogs:
       specifier: ^2.0.8
       version: 2.0.8
   runtime:
+    '@emmetio/math-expression':
+      specifier: ^1.0.5
+      version: 1.0.5
     eventemitter3:
       specifier: ^5.0.4
       version: 5.0.4
@@ -328,6 +331,9 @@ importers:
       '@base-ui/react':
         specifier: catalog:react
         version: 1.9.0(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      '@emmetio/math-expression':
+        specifier: catalog:runtime
+        version: 1.0.5
       '@thinkbuff/figma-theme':
         specifier: workspace:^
         version: link:../theme
@@ -700,6 +706,12 @@ packages:
 
   '@cyberalien/svg-utils@1.2.21':
     resolution: {integrity: sha512-exLnXg7+DfTRHD6Qm0SbWLXAICO0L4SdYevvY3irn3bU6zJ+WvIS6ogomE3T7EXE3krJjCpUKmkiRq4Mp/HoTw==}
+
+  '@emmetio/math-expression@1.0.5':
+    resolution: {integrity: sha512-qf5SXD/ViS04rXSeDg9CRGM10xLC9dVaKIbMHrrwxYr5LNB/C0rOfokhGSBwnVQKcidLmdRJeNWH1V1tppZ84Q==}
+
+  '@emmetio/scanner@1.0.4':
+    resolution: {integrity: sha512-IqRuJtQff7YHHBk4G8YZ45uB9BaAGcwQeVzgj/zj8/UdOhtQpEIupUhSk8dys6spFIWVZVeK20CzGEnqR5SbqA==}
 
   '@emnapi/core@1.11.0':
     resolution: {integrity: sha512-l9Oo58x0HOP5znGzVhYW9U3e5wVuA4LAZU2AGezTmkhO1CgQRFDhDg4nneHsu/t3WniXg9QrG2nIXL/ZS8ln8Q==}
@@ -3922,6 +3934,12 @@ snapshots:
   '@cyberalien/svg-utils@1.2.21':
     dependencies:
       '@iconify/types': 2.0.0
+
+  '@emmetio/math-expression@1.0.5':
+    dependencies:
+      '@emmetio/scanner': 1.0.4
+
+  '@emmetio/scanner@1.0.4': {}
 
   '@emnapi/core@1.11.0':
     dependencies:
