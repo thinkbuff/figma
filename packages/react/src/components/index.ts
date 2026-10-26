@@ -10,7 +10,6 @@ export * from './label';
 export * from './popover';
 export * from './radio';
 export * from './scroll-area';
-export * from './segmented-control';
 export * from './select';
 export * from './separator';
 export * from './sheet';

@@ -3,7 +3,12 @@ import { ToggleGroup as BaseToggleGroup } from '@base-ui/react/toggle-group';
 
 import { addClassName } from '~/utils';
 
-interface ToggleGroupProps extends React.ComponentPropsWithRef<typeof BaseToggleGroup> {}
+interface ToggleGroupProps extends React.ComponentPropsWithRef<typeof BaseToggleGroup> {
+  /**
+   * Stretches the control to fill the available width.
+   */
+  fullWidth?: boolean | undefined;
+}
 
 interface ToggleGroupItemProps extends React.ComponentPropsWithRef<typeof BaseToggle> {}
 
@@ -13,14 +18,21 @@ interface ToggleGroupItemProps extends React.ComponentPropsWithRef<typeof BaseTo
  * - [Docs](https://base-ui.com/react/components/toggle-group)
  * - [API Reference](https://base-ui.com/react/components/toggle-group#api)
  */
-function ToggleGroup({ className, children, disabled, ref, ...props }: ToggleGroupProps) {
+function ToggleGroup({
+  className,
+  children,
+  disabled,
+  fullWidth,
+  ref,
+  ...props
+}: ToggleGroupProps) {
   return (
     <BaseToggleGroup
       ref={ref}
       className={addClassName(
         className,
         'group',
-        'inline-flex',
+        fullWidth ? 'flex' : 'inline-flex',
         'bg-figma-secondary',
         'rounded-figma-md',
       )}
@@ -70,5 +82,24 @@ function ToggleGroupItem({ className, children, ref, ...props }: ToggleGroupItem
 
 ToggleGroupItem.displayName = 'ToggleGroupItem';
 
-export { ToggleGroup, ToggleGroupItem };
+function ToggleGroupText({ className, ref, ...props }: React.ComponentPropsWithRef<'span'>) {
+  return (
+    <span
+      ref={ref}
+      className={addClassName(
+        className,
+        'flex',
+        'items-center',
+        'p-2',
+        'gap-1.5',
+        'group-data-disabled:text-figma-disabled',
+      )}
+      {...props}
+    />
+  );
+}
+
+ToggleGroupText.displayName = 'ToggleGroupText';
+
+export { ToggleGroup, ToggleGroupItem, ToggleGroupText };
 export type { ToggleGroupProps, ToggleGroupItemProps };

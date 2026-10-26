@@ -1,8 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 
+import {
+  AlignHorizontalCenterIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
+  TextAlignJustifiedIcon,
+} from '~/icons';
+
 import { Tooltip, TooltipProvider } from '../tooltip';
-import { ToggleGroup, ToggleGroupItem } from './toggle-group';
+import { ToggleGroup, ToggleGroupItem, ToggleGroupText } from './toggle-group';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof ToggleGroup>;
 
@@ -180,6 +187,59 @@ export const Disabled: Story = {
   args: {
     value: ['vertical'],
     disabled: true,
+  },
+};
+
+const alignOptions = [
+  { value: 'left', label: 'Align left', icon: <AlignLeftIcon size="4" /> },
+  { value: 'center', label: 'Align center', icon: <AlignHorizontalCenterIcon size="4" /> },
+  { value: 'right', label: 'Align right', icon: <AlignRightIcon size="4" /> },
+  { value: 'justify', label: 'Align justify', icon: <TextAlignJustifiedIcon size="4" /> },
+];
+
+export const FullWidth: Story = {
+  render: function Render() {
+    return (
+      <ToggleGroup
+        fullWidth
+        defaultValue={['left']}
+      >
+        {alignOptions.map((option) => (
+          <ToggleGroupItem
+            key={option.value}
+            value={option.value}
+            aria-label={option.label}
+          >
+            {option.icon}
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
+    );
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 240 }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const Text: Story = {
+  render: function Render() {
+    return (
+      <ToggleGroup defaultValue={['minimalist']}>
+        <ToggleGroupItem value="minimalist">
+          <ToggleGroupText>Minimalist</ToggleGroupText>
+        </ToggleGroupItem>
+        <ToggleGroupItem value="modern">
+          <ToggleGroupText>Modern</ToggleGroupText>
+        </ToggleGroupItem>
+        <ToggleGroupItem value="retro">
+          <ToggleGroupText>Retro</ToggleGroupText>
+        </ToggleGroupItem>
+      </ToggleGroup>
+    );
   },
 };
 
