@@ -121,7 +121,7 @@ function NumericSelect(props: NumericSelectProps) {
         >
           <BaseSelect.Value className="pointer-events-none absolute top-0 left-2 h-6 w-0 overflow-hidden whitespace-nowrap opacity-0" />
           <BaseSelect.Icon className="flex items-center justify-center">
-            <ChevronDownIcon size="4" />
+            <ChevronDownIcon />
           </BaseSelect.Icon>
         </BaseSelect.Trigger>
       </Multi>
@@ -138,13 +138,18 @@ function NumericSelect(props: NumericSelectProps) {
           collisionPadding={0}
         >
           <BaseSelect.Popup
-            className={cn(menuPopupClassName, 'min-w-20 p-2')}
+            className={cn(
+              menuPopupClassName,
+              'relative flex flex-col overflow-hidden min-w-20 p-2',
+            )}
             onFocus={clearHighlightOnPopupFocus}
           >
-            <BaseSelect.ScrollUpArrow className={menuScrollButtonClassName}>
-              <ChevronUpIcon size="4" />
+            <BaseSelect.ScrollUpArrow
+              className={cn(menuScrollButtonClassName, 'absolute inset-x-0 top-0 z-10')}
+            >
+              <ChevronUpIcon />
             </BaseSelect.ScrollUpArrow>
-            <BaseSelect.List>
+            <BaseSelect.List className="min-h-0 overflow-y-auto">
               {!valueOption && (
                 <>
                   <BaseSelect.Item
@@ -176,8 +181,10 @@ function NumericSelect(props: NumericSelectProps) {
                 </BaseSelect.Item>
               ))}
             </BaseSelect.List>
-            <BaseSelect.ScrollDownArrow className={menuScrollButtonClassName}>
-              <ChevronDownIcon size="4" />
+            <BaseSelect.ScrollDownArrow
+              className={cn(menuScrollButtonClassName, 'absolute inset-x-0 bottom-0 z-10')}
+            >
+              <ChevronDownIcon />
             </BaseSelect.ScrollDownArrow>
           </BaseSelect.Popup>
         </BaseSelect.Positioner>

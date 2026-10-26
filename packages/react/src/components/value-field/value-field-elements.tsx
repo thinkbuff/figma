@@ -52,7 +52,7 @@ function Root({ className, disabled, ref, children, ...props }: RootProps) {
           'text-figma',
           context?.inMulti
             ? [
-                '-mt-px grow',
+                '-mt-px grow min-w-0',
                 'rounded-none bg-transparent outline-0',
                 'first:rounded-l-figma-md last:rounded-r-figma-md',
                 'not-first:border-l not-first:border-figma-bg',

@@ -107,7 +107,7 @@ function SelectTrigger({
       <SelectPrimitive.Icon
         data-disabled={disabled}
         className="pointer-events-none ml-1 mr-2 shrink-0 icon-figma-tertiary data-[disabled=true]:icon-figma-disabled group-hover:icon-figma"
-        render={<ChevronDownIcon size="3" />}
+        render={<ChevronDownIcon />}
       />
     </SelectPrimitive.Trigger>
   );
@@ -165,6 +165,7 @@ function SelectContent({
             className,
             menuPopupClassName,
             'relative',
+            'flex flex-col overflow-hidden',
             'w-full',
             'min-w-(--anchor-width)',
             'max-h-(--available-height)',
@@ -174,15 +175,23 @@ function SelectContent({
         >
           {withArrow && !alignItemWithTrigger && <SelectArrow />}
           <SelectPrimitive.ScrollUpArrow
-            className={cn(menuScrollButtonClassName, 'rounded-t-figma-lg')}
+            className={cn(
+              menuScrollButtonClassName,
+              'absolute inset-x-0 top-0 z-10 rounded-t-figma-lg',
+            )}
           >
-            <ChevronUpIcon size="3.5" />
+            <ChevronUpIcon />
           </SelectPrimitive.ScrollUpArrow>
-          <SelectPrimitive.List className="p-2">{children}</SelectPrimitive.List>
+          <SelectPrimitive.List className="min-h-0 overflow-y-auto p-2">
+            {children}
+          </SelectPrimitive.List>
           <SelectPrimitive.ScrollDownArrow
-            className={cn(menuScrollButtonClassName, 'rounded-b-figma-lg')}
+            className={cn(
+              menuScrollButtonClassName,
+              'absolute inset-x-0 bottom-0 z-10 rounded-b-figma-lg',
+            )}
           >
-            <ChevronDownIcon size="3.5" />
+            <ChevronDownIcon />
           </SelectPrimitive.ScrollDownArrow>
         </SelectPrimitive.Popup>
       </SelectPrimitive.Positioner>

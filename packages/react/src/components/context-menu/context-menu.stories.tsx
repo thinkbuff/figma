@@ -6,6 +6,8 @@
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { cn } from '~/utils';
+
 import * as ContextMenu from './context-menu';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof ContextMenu.Content>;
@@ -21,9 +23,15 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-function TriggerBox() {
+function TriggerBox({ className, ...props }: React.ComponentPropsWithRef<'div'>) {
   return (
-    <div className="flex h-20 w-50 items-center justify-center rounded-md border border-figma-border text-figma-text-secondary">
+    <div
+      {...props}
+      className={cn(
+        'flex h-20 w-50 items-center justify-center rounded-md border border-figma-border text-figma-text-secondary',
+        className,
+      )}
+    >
       Right click here
     </div>
   );
