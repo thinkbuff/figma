@@ -43,7 +43,9 @@ async function createImageByUrlOrBytes(params: Pick<ImageCreateParams, 'url' | '
  *
  * @returns A promise that resolves to the created image paint.
  */
-export async function createImagePaint(params: ImageCreateParams) {
+export async function createImagePaint(
+  params: ImageCreateParams,
+): Promise<WritableDeep<ImagePaint>> {
   const { key, options = {} } = params;
   if (imagePaints.has(key)) {
     return imagePaints.get(key) as WritableDeep<ImagePaint>;
@@ -71,7 +73,7 @@ export async function createImagePaint(params: ImageCreateParams) {
  *
  * @returns A promise that resolves to the created image paint.
  */
-export function getImagePaint(params: ImageCreateParams) {
+export function getImagePaint(params: ImageCreateParams): Promise<WritableDeep<ImagePaint>> {
   return createImagePaint(params);
 }
 
@@ -83,6 +85,6 @@ export function getImagePaint(params: ImageCreateParams) {
  * @returns The image paint associated with the provided key, or undefined if it does not exist in
  *   the cache.
  */
-export function getImagePaintFromCache(key: string) {
+export function getImagePaintFromCache(key: string): WritableDeep<ImagePaint> | undefined {
   return imagePaints.get(key);
 }

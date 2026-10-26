@@ -24,18 +24,18 @@ catalogs:
     '@vitejs/plugin-react': ^6.1.2
     react: ^19.3.1
     react-dom: ^19.3.1
-    sonner: ^2.0.3
+    sonner: ^2.0.8
   runtime:
-    eventemitter3: ^5.0.1
+    eventemitter3: ^5.0.4
   storybook:
-    '@storybook/addon-docs': 10.6.2
-    '@storybook/react-vite': 10.6.2
-    storybook: 10.6.2
+    '@storybook/addon-docs': 10.6.3
+    '@storybook/react-vite': 10.6.3
+    storybook: 10.6.3
   tailwind:
     '@tailwindcss/vite': ^4.3.3
     class-variance-authority: ^0.7.1
     clsx: ^2.1.1
-    tailwind-merge: ^3.3.0
+    tailwind-merge: ^3.7.0
     tailwindcss: ^4.3.3
   test:
     '@vitest/browser': 5.0.5
@@ -50,12 +50,12 @@ catalogs:
     vite-plus: 1.4.0
   types:
     '@types/node': ^24.19.2
-    type-fest: ^4.41.0
+    type-fest: ^5.10.0
 
 cleanupUnusedCatalogs: true
 
 minimumReleaseAge: 60
 
-onlyBuiltDependencies:
-  - esbuild
-  - simple-git-hooks
+allowBuilds:
+  esbuild: true
+  simple-git-hooks: true
