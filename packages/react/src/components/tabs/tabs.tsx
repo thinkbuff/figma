@@ -1,25 +1,14 @@
 import { Tabs } from '@base-ui/react/tabs';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
-interface TabsRootProps extends Omit<React.ComponentPropsWithRef<typeof Tabs.Root>, 'className'> {
-  className?: string;
-}
+interface TabsRootProps extends React.ComponentPropsWithRef<typeof Tabs.Root> {}
 
-interface TabsListProps extends Omit<React.ComponentPropsWithRef<typeof Tabs.List>, 'className'> {
-  className?: string;
-}
+interface TabsListProps extends React.ComponentPropsWithRef<typeof Tabs.List> {}
 
-interface TabsTriggerProps extends Omit<React.ComponentPropsWithRef<typeof Tabs.Tab>, 'className'> {
-  className?: string;
-}
+interface TabsTriggerProps extends React.ComponentPropsWithRef<typeof Tabs.Tab> {}
 
-interface TabsContentProps extends Omit<
-  React.ComponentPropsWithRef<typeof Tabs.Panel>,
-  'className'
-> {
-  className?: string;
-}
+interface TabsContentProps extends React.ComponentPropsWithRef<typeof Tabs.Panel> {}
 
 /**
  * A set of layered sections of content—known as tab panels—that are displayed one at a time.
@@ -30,7 +19,7 @@ interface TabsContentProps extends Omit<
 function TabsRoot({ className, ref, ...props }: TabsRootProps) {
   return (
     <Tabs.Root
-      className={cn('bg-figma', className)}
+      className={addClassName(className, 'bg-figma')}
       {...props}
       ref={ref}
     />
@@ -42,7 +31,7 @@ TabsRoot.displayName = 'Tabs';
 function TabsList({ className, ref, ...props }: TabsListProps) {
   return (
     <Tabs.List
-      className={cn('flex', 'gap-1', 'overflow-y-auto', className)}
+      className={addClassName(className, 'flex', 'gap-1', 'overflow-y-auto')}
       {...props}
       ref={ref}
     />
@@ -54,7 +43,8 @@ TabsList.displayName = 'TabsList';
 function TabsTrigger({ className, ref, ...props }: TabsTriggerProps) {
   return (
     <Tabs.Tab
-      className={cn(
+      className={addClassName(
+        className,
         'flex',
         'items-center',
         'justify-center',
@@ -70,7 +60,6 @@ function TabsTrigger({ className, ref, ...props }: TabsTriggerProps) {
         'not-data-disabled:hover:bg-figma-secondary',
         'data-active:font-figma-strong data-active:text-figma data-active:fill-figma-icon data-active:bg-figma-secondary',
         'data-disabled:text-figma-disabled',
-        className,
       )}
       {...props}
       ref={ref}
@@ -83,7 +72,7 @@ TabsTrigger.displayName = 'TabsTrigger';
 function TabsContent({ className, ref, ...props }: TabsContentProps) {
   return (
     <Tabs.Panel
-      className={cn('bg-figma', className)}
+      className={addClassName(className, 'bg-figma')}
       {...props}
       ref={ref}
     />

@@ -1,6 +1,6 @@
 import { Separator as BaseSeparator } from '@base-ui/react/separator';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
 /**
  * Visually or semantically separates content.
@@ -19,12 +19,12 @@ function Separator({
       ref={ref}
       role={decorative ? 'none' : 'separator'}
       orientation={orientation}
-      className={cn(
+      className={addClassName(
+        className,
         'block',
         'shrink-0',
         'bg-figma-border',
         orientation === 'horizontal' ? 'w-full h-px' : 'w-px h-full',
-        className,
       )}
       {...props}
     />

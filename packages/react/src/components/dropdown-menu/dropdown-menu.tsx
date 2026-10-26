@@ -1,9 +1,15 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
 
 import { MdiCheckBold, MdiCircleMedium, MdiTriangle } from '~/icons';
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
-type WithStringClassName<T> = Omit<T, 'className'> & { className?: string };
+import {
+  menuContentClassName,
+  menuItemClassName,
+  menuItemIndicatorClassName,
+  menuLabelClassName,
+  menuSeparatorClassName,
+} from '../menu/menu-classes';
 
 type PositionerProps = React.ComponentPropsWithRef<typeof MenuPrimitive.Positioner>;
 
@@ -17,13 +23,13 @@ function DropdownMenuGroup({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof MenuPrimitive.Group>>) {
+}: React.ComponentPropsWithRef<typeof MenuPrimitive.Group>) {
   return (
     <MenuPrimitive.Group
       ref={ref}
-      className={cn(
-        'py-2 first:pt-0 last:pb-0 not-first:border-t not-first:border-solid not-first:border-figma-border-menu',
+      className={addClassName(
         className,
+        'py-2 first:pt-0 last:pb-0 not-first:border-t not-first:border-solid not-first:border-figma-border-menu',
       )}
       {...props}
     />
@@ -38,17 +44,17 @@ function DropdownMenuArrow({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof MenuPrimitive.Arrow>>) {
+}: React.ComponentPropsWithRef<typeof MenuPrimitive.Arrow>) {
   return (
     <MenuPrimitive.Arrow
       ref={ref}
-      className={cn(
+      className={addClassName(
+        className,
         'fill-figma-bg-menu',
         'data-[side=bottom]:-top-1.25 data-[side=bottom]:rotate-180',
         'data-[side=top]:-bottom-1.25',
         'data-[side=left]:right-[-7.5px] data-[side=left]:-rotate-90',
         'data-[side=right]:left-[-7.5px] data-[side=right]:rotate-90',
-        className,
       )}
       render={
         <svg
@@ -72,26 +78,15 @@ function DropdownMenuSubTrigger({
   children,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof MenuPrimitive.SubmenuTrigger>>) {
+}: React.ComponentPropsWithRef<typeof MenuPrimitive.SubmenuTrigger>) {
   return (
     <MenuPrimitive.SubmenuTrigger
       ref={ref}
-      className={cn(
-        'relative',
-        'flex',
-        'items-center',
-        'justify-between',
-        'h-6',
-        'px-2',
-        'text-figma-sm leading-figma-sm',
-        'text-figma-menu',
-        'cursor-default',
-        'select-none',
-        'outline-none',
-        'rounded-figma-md',
-        'data-highlighted:bg-figma-selected-strong',
-        'data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
+      className={addClassName(
         className,
+        menuItemClassName,
+        'justify-between',
+        'data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
       )}
       {...props}
     >
@@ -103,9 +98,7 @@ function DropdownMenuSubTrigger({
 
 DropdownMenuSubTrigger.displayName = 'DropdownMenuSubTrigger';
 
-interface DropdownMenuContentProps extends WithStringClassName<
-  React.ComponentPropsWithRef<typeof MenuPrimitive.Popup>
-> {
+interface DropdownMenuContentProps extends React.ComponentPropsWithRef<typeof MenuPrimitive.Popup> {
   container?: PortalContainer;
   side?: PositionerProps['side'];
   align?: PositionerProps['align'];
@@ -114,17 +107,7 @@ interface DropdownMenuContentProps extends WithStringClassName<
   collisionPadding?: PositionerProps['collisionPadding'];
 }
 
-const popupClassName = [
-  'text-figma-sm text-figma-menu',
-  'bg-figma-menu',
-  'min-w-20',
-  'rounded-figma-lg',
-  'border-none',
-  'p-2',
-  'shadow-figma-menu',
-  'outline-none',
-  'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
-];
+const popupClassName = menuContentClassName;
 
 function DropdownMenuPopup({
   className,
@@ -149,7 +132,7 @@ function DropdownMenuPopup({
       >
         <MenuPrimitive.Popup
           ref={ref}
-          className={cn(popupClassName, className)}
+          className={addClassName(className, popupClassName)}
           {...props}
         />
       </MenuPrimitive.Positioner>
@@ -172,7 +155,7 @@ DropdownMenuSubContent.displayName = 'DropdownMenuSubContent';
 function DropdownMenuContent({ className, sideOffset = 4, ...props }: DropdownMenuContentProps) {
   return (
     <DropdownMenuPopup
-      className={cn('group', className)}
+      className={addClassName(className, 'group')}
       sideOffset={sideOffset}
       {...props}
     />
@@ -181,33 +164,18 @@ function DropdownMenuContent({ className, sideOffset = 4, ...props }: DropdownMe
 
 DropdownMenuContent.displayName = 'DropdownMenuContent';
 
-const itemClassName = [
-  'relative',
-  'flex',
-  'items-center',
-  'h-6',
-  'px-2',
-  'text-figma-sm leading-figma-sm',
-  'text-figma-menu',
-  'cursor-default',
-  'select-none',
-  'outline-none',
-  'rounded-figma-md',
-  'data-highlighted:bg-figma-selected-strong',
-];
-
 function DropdownMenuItem({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof MenuPrimitive.Item>>) {
+}: React.ComponentPropsWithRef<typeof MenuPrimitive.Item>) {
   return (
     <MenuPrimitive.Item
       ref={ref}
-      className={cn(
-        itemClassName,
-        'data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled',
+      className={addClassName(
         className,
+        menuItemClassName,
+        'data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled',
       )}
       {...props}
     />
@@ -221,19 +189,19 @@ function DropdownMenuCheckboxItem({
   children,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof MenuPrimitive.CheckboxItem>>) {
+}: React.ComponentPropsWithRef<typeof MenuPrimitive.CheckboxItem>) {
   return (
     <MenuPrimitive.CheckboxItem
       ref={ref}
-      className={cn(
-        itemClassName,
-        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
+      className={addClassName(
         className,
+        menuItemClassName,
+        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
       )}
       {...props}
     >
       <MenuPrimitive.CheckboxItemIndicator
-        className="absolute left-1 h-3 w-4"
+        className={menuItemIndicatorClassName}
         render={<MdiCheckBold />}
       />
       {children}
@@ -248,14 +216,14 @@ function DropdownMenuRadioItem({
   children,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof MenuPrimitive.RadioItem>>) {
+}: React.ComponentPropsWithRef<typeof MenuPrimitive.RadioItem>) {
   return (
     <MenuPrimitive.RadioItem
       ref={ref}
-      className={cn(
-        itemClassName,
-        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
+      className={addClassName(
         className,
+        menuItemClassName,
+        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary',
       )}
       {...props}
     >
@@ -276,19 +244,11 @@ function DropdownMenuLabel({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof MenuPrimitive.GroupLabel>>) {
+}: React.ComponentPropsWithRef<typeof MenuPrimitive.GroupLabel>) {
   return (
     <MenuPrimitive.GroupLabel
       ref={ref}
-      className={cn(
-        'flex',
-        'items-center',
-        'h-6',
-        'px-2',
-        'text-figma-sm leading-figma-sm',
-        'text-figma-menu-tertiary',
-        className,
-      )}
+      className={addClassName(className, menuLabelClassName)}
       {...props}
     />
   );
@@ -300,11 +260,11 @@ function DropdownMenuSeparator({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof MenuPrimitive.Separator>>) {
+}: React.ComponentPropsWithRef<typeof MenuPrimitive.Separator>) {
   return (
     <MenuPrimitive.Separator
       ref={ref}
-      className={cn('my-2 h-px w-full bg-figma-border-menu', className)}
+      className={addClassName(className, menuSeparatorClassName)}
       {...props}
     />
   );

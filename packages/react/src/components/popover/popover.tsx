@@ -1,6 +1,6 @@
 import { Popover as PopoverPrimitive } from '@base-ui/react/popover';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
 const PopoverRoot = PopoverPrimitive.Root;
 
@@ -13,24 +13,19 @@ function PopoverAnchor(props: React.ComponentPropsWithRef<'div'>) {
 
 const PopoverClose = PopoverPrimitive.Close;
 
-interface PopoverArrowProps extends Omit<
-  React.ComponentPropsWithRef<typeof PopoverPrimitive.Arrow>,
-  'className'
-> {
-  className?: string;
-}
+interface PopoverArrowProps extends React.ComponentPropsWithRef<typeof PopoverPrimitive.Arrow> {}
 
 function PopoverArrow({ className, ref, ...props }: PopoverArrowProps) {
   return (
     <PopoverPrimitive.Arrow
       ref={ref}
-      className={cn(
+      className={addClassName(
+        className,
         'text-figma-border fill-figma-bg',
         'data-[side=bottom]:-top-1.75 data-[side=bottom]:rotate-180',
         'data-[side=top]:-bottom-1.75',
         'data-[side=left]:right-[-10.5px] data-[side=left]:-rotate-90',
         'data-[side=right]:left-[-10.5px] data-[side=right]:rotate-90',
-        className,
       )}
       render={
         <svg
@@ -60,17 +55,13 @@ PopoverArrow.displayName = 'PopoverArrow';
 
 type PositionerProps = React.ComponentPropsWithRef<typeof PopoverPrimitive.Positioner>;
 
-interface PopoverContentProps extends Omit<
-  React.ComponentPropsWithRef<typeof PopoverPrimitive.Popup>,
-  'className'
-> {
+interface PopoverContentProps extends React.ComponentPropsWithRef<typeof PopoverPrimitive.Popup> {
   /**
    * Specify a container element to portal the content into.
    *
    * @default document.body
    */
   container?: React.ComponentProps<typeof PopoverPrimitive.Portal>['container'];
-  className?: string;
   side?: PositionerProps['side'];
   align?: PositionerProps['align'];
   sideOffset?: PositionerProps['sideOffset'];
@@ -107,7 +98,8 @@ function PopoverContent({
       >
         <PopoverPrimitive.Popup
           ref={ref}
-          className={cn(
+          className={addClassName(
+            className,
             'w-auto',
             'text-figma',
             'text-figma-sm leading-figma-sm',
@@ -118,7 +110,6 @@ function PopoverContent({
             'shadow-figma-elevation-500',
             'will-change-[transform,opacity]',
             'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
-            className,
           )}
           {...props}
         />

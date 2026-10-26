@@ -1,9 +1,16 @@
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 
 import { MdiCheckBold, MdiChevronDown, TablerChevronDown, TablerChevronUp } from '~/icons';
-import { cn } from '~/utils';
+import { addClassName, cn } from '~/utils';
 
-type WithStringClassName<T> = Omit<T, 'className'> & { className?: string };
+import {
+  menuItemClassName,
+  menuItemIndicatorClassName,
+  menuLabelClassName,
+  menuPopupClassName,
+  menuScrollButtonClassName,
+  menuSeparatorClassName,
+} from '../menu/menu-classes';
 
 type PositionerProps = React.ComponentPropsWithRef<typeof SelectPrimitive.Positioner>;
 
@@ -17,16 +24,16 @@ function SelectArrow({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof SelectPrimitive.Arrow>>) {
+}: React.ComponentPropsWithRef<typeof SelectPrimitive.Arrow>) {
   return (
     <SelectPrimitive.Arrow
-      className={cn(
+      className={addClassName(
+        className,
         'z-10 fill-figma-bg-menu',
         'data-[side=bottom]:-top-1.25 data-[side=bottom]:rotate-180',
         'data-[side=top]:-bottom-1.25',
         'data-[side=left]:right-[-7.5px] data-[side=left]:-rotate-90',
         'data-[side=right]:left-[-7.5px] data-[side=right]:rotate-90',
-        className,
       )}
       render={
         <svg
@@ -46,9 +53,7 @@ function SelectArrow({
 
 SelectArrow.displayName = 'SelectArrow';
 
-interface SelectTriggerProps extends WithStringClassName<
-  React.ComponentPropsWithRef<typeof SelectPrimitive.Trigger>
-> {
+interface SelectTriggerProps extends React.ComponentPropsWithRef<typeof SelectPrimitive.Trigger> {
   placeholder?: React.ComponentProps<typeof SelectPrimitive.Value>['placeholder'];
 }
 
@@ -62,7 +67,8 @@ function SelectTrigger({
 }: SelectTriggerProps) {
   return (
     <SelectPrimitive.Trigger
-      className={cn(
+      className={addClassName(
+        className,
         'relative',
         'w-full',
         'h-6',
@@ -90,7 +96,6 @@ function SelectTrigger({
               'focus-visible:border-figma-selected focus-visible:outline-figma-border-selected',
               'data-popup-open:outline-figma-border-selected',
             ],
-        className,
       )}
       {...props}
       ref={ref}
@@ -110,9 +115,7 @@ function SelectTrigger({
 
 SelectTrigger.displayName = 'SelectTrigger';
 
-interface SelectContentProps extends WithStringClassName<
-  React.ComponentPropsWithRef<typeof SelectPrimitive.Popup>
-> {
+interface SelectContentProps extends React.ComponentPropsWithRef<typeof SelectPrimitive.Popup> {
   container?: React.ComponentProps<typeof SelectPrimitive.Portal>['container'];
   /**
    * Render an arrow pointing at the trigger. Only visible when `alignItemWithTrigger` is false.
@@ -158,27 +161,27 @@ function SelectContent({
         collisionPadding={collisionPadding}
       >
         <SelectPrimitive.Popup
-          className={cn(
+          className={addClassName(
+            className,
+            menuPopupClassName,
             'relative',
-            'text-figma-menu',
             'w-full',
-            'bg-figma-menu',
-            'rounded-figma-lg',
-            'shadow-figma-menu',
             'min-w-(--anchor-width)',
             'max-h-(--available-height)',
-            'outline-none',
-            className,
           )}
           {...props}
           ref={ref}
         >
           {withArrow && !alignItemWithTrigger && <SelectArrow />}
-          <SelectPrimitive.ScrollUpArrow className="h-6 w-full flex cursor-default items-center justify-center bg-figma-menu hover:bg-figma-menu-hover rounded-t-figma-lg">
+          <SelectPrimitive.ScrollUpArrow
+            className={cn(menuScrollButtonClassName, 'rounded-t-figma-lg')}
+          >
             <TablerChevronUp className="size-3.5" />
           </SelectPrimitive.ScrollUpArrow>
           <SelectPrimitive.List className="p-2">{children}</SelectPrimitive.List>
-          <SelectPrimitive.ScrollDownArrow className="h-6 w-full flex cursor-default items-center justify-center bg-figma-menu hover:bg-figma-menu-hover rounded-b-figma-lg">
+          <SelectPrimitive.ScrollDownArrow
+            className={cn(menuScrollButtonClassName, 'rounded-b-figma-lg')}
+          >
             <TablerChevronDown className="size-3.5" />
           </SelectPrimitive.ScrollDownArrow>
         </SelectPrimitive.Popup>
@@ -196,17 +199,10 @@ function SelectLabel({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof SelectPrimitive.GroupLabel>>) {
+}: React.ComponentPropsWithRef<typeof SelectPrimitive.GroupLabel>) {
   return (
     <SelectPrimitive.GroupLabel
-      className={cn(
-        'text-figma-sm leading-figma-sm',
-        'text-figma-menu-tertiary',
-        'h-6',
-        'px-2',
-        'font-medium',
-        className,
-      )}
+      className={addClassName(className, menuLabelClassName, 'font-medium')}
       {...props}
       ref={ref}
     />
@@ -215,35 +211,24 @@ function SelectLabel({
 
 SelectLabel.displayName = 'SelectLabel';
 
-type SelectItemProps = WithStringClassName<
-  React.ComponentPropsWithRef<typeof SelectPrimitive.Item>
->;
+type SelectItemProps = React.ComponentPropsWithRef<typeof SelectPrimitive.Item>;
 
 function SelectItem({ className, children, ref, ...props }: SelectItemProps) {
   return (
     <SelectPrimitive.Item
       ref={ref}
-      className={cn(
-        'relative',
+      className={addClassName(
+        className,
+        menuItemClassName,
         'w-full',
-        'h-6',
-        'flex',
-        'items-center',
-        'text-figma-sm leading-figma-sm',
         'pl-6',
         'pr-2',
-        'cursor-default',
-        'select-none',
-        'outline-0',
-        'rounded-figma-md',
-        'data-highlighted:bg-figma-selected-strong',
         'data-disabled:text-figma-menu-tertiary data-disabled:pointer-events-none',
-        className,
       )}
       {...props}
     >
       <SelectPrimitive.ItemIndicator
-        className="absolute left-1 h-3 w-4"
+        className={menuItemIndicatorClassName}
         render={<MdiCheckBold />}
       />
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -257,10 +242,10 @@ function SelectSeparator({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof SelectPrimitive.Separator>>) {
+}: React.ComponentPropsWithRef<typeof SelectPrimitive.Separator>) {
   return (
     <SelectPrimitive.Separator
-      className={cn('w-full', 'border-t', 'border-figma-menu', 'my-2', 'h-px', className)}
+      className={addClassName(className, menuSeparatorClassName)}
       {...props}
       ref={ref}
     />

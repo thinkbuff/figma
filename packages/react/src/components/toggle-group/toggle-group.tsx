@@ -1,21 +1,11 @@
 import { Toggle as BaseToggle } from '@base-ui/react/toggle';
 import { ToggleGroup as BaseToggleGroup } from '@base-ui/react/toggle-group';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
-interface ToggleGroupProps extends Omit<
-  React.ComponentPropsWithRef<typeof BaseToggleGroup>,
-  'className'
-> {
-  className?: string;
-}
+interface ToggleGroupProps extends React.ComponentPropsWithRef<typeof BaseToggleGroup> {}
 
-interface ToggleGroupItemProps extends Omit<
-  React.ComponentPropsWithRef<typeof BaseToggle>,
-  'className'
-> {
-  className?: string;
-}
+interface ToggleGroupItemProps extends React.ComponentPropsWithRef<typeof BaseToggle> {}
 
 /**
  * A set of two-state buttons that can be toggled on or off.
@@ -27,7 +17,13 @@ function ToggleGroup({ className, children, disabled, ref, ...props }: ToggleGro
   return (
     <BaseToggleGroup
       ref={ref}
-      className={cn('group', 'inline-flex', 'bg-figma-secondary', 'rounded-figma-md', className)}
+      className={addClassName(
+        className,
+        'group',
+        'inline-flex',
+        'bg-figma-secondary',
+        'rounded-figma-md',
+      )}
       {...props}
       disabled={disabled}
     >
@@ -42,7 +38,8 @@ function ToggleGroupItem({ className, children, ref, ...props }: ToggleGroupItem
   return (
     <BaseToggle
       ref={ref}
-      className={cn(
+      className={addClassName(
+        className,
         'h-6',
         'min-w-6',
         'w-fit',
@@ -63,7 +60,6 @@ function ToggleGroupItem({ className, children, ref, ...props }: ToggleGroupItem
         'focus-visible:outline-solid focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-figma-border-selected',
         'data-pressed:bg-figma data-pressed:fill-figma-icon data-pressed:shadow-[inset_0_0_0_1px_var(--figma-color-border)]',
         'disabled:text-figma-disabled disabled:fill-figma-icon-disabled',
-        className,
       )}
       {...props}
     >

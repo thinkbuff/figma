@@ -1,8 +1,6 @@
 import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
 
-import { cn } from '~/utils';
-
-type WithStringClassName<T> = Omit<T, 'className'> & { className?: string };
+import { addClassName, cn } from '~/utils';
 
 const AlertDialogRoot = AlertDialogPrimitive.Root;
 
@@ -18,17 +16,17 @@ function AlertDialogOverlay({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Backdrop>>) {
+}: React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Backdrop>) {
   return (
     <AlertDialogPrimitive.Backdrop
       ref={ref}
-      className={cn(
+      className={addClassName(
+        className,
         'fixed',
         'inset-0',
         'z-50',
         'bg-figma-overlay',
         'transition-opacity duration-150 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
-        className,
       )}
       {...props}
     />
@@ -37,8 +35,8 @@ function AlertDialogOverlay({
 
 AlertDialogOverlay.displayName = 'AlertDialogOverlay';
 
-interface AlertDialogContentProps extends WithStringClassName<
-  React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Popup>
+interface AlertDialogContentProps extends React.ComponentPropsWithRef<
+  typeof AlertDialogPrimitive.Popup
 > {
   container?: React.ComponentProps<typeof AlertDialogPrimitive.Portal>['container'];
 }
@@ -55,7 +53,8 @@ function AlertDialogContent({ className, container, ref, ...props }: AlertDialog
       <AlertDialogOverlay />
       <AlertDialogPrimitive.Popup
         ref={ref}
-        className={cn(
+        className={addClassName(
+          className,
           'fixed',
           'grid',
           'w-full',
@@ -71,7 +70,6 @@ function AlertDialogContent({ className, container, ref, ...props }: AlertDialog
           'shadow-figma-modal',
           'outline-none',
           'transition-[opacity,scale] duration-150 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
-          className,
         )}
         {...props}
       />
@@ -123,11 +121,16 @@ function AlertDialogTitle({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Title>>) {
+}: React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Title>) {
   return (
     <AlertDialogPrimitive.Title
       ref={ref}
-      className={cn('text-figma', 'text-figma-sm leading-figma-sm', 'font-figma-strong', className)}
+      className={addClassName(
+        className,
+        'text-figma',
+        'text-figma-sm leading-figma-sm',
+        'font-figma-strong',
+      )}
       {...props}
     />
   );
@@ -139,11 +142,11 @@ function AlertDialogDescription({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Description>>) {
+}: React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Description>) {
   return (
     <AlertDialogPrimitive.Description
       ref={ref}
-      className={cn('text-figma', 'text-figma-sm leading-figma-sm', className)}
+      className={addClassName(className, 'text-figma', 'text-figma-sm leading-figma-sm')}
       {...props}
     />
   );

@@ -1,6 +1,6 @@
 import { Tooltip as TooltipPrimitive } from '@base-ui/react/tooltip';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
 const TooltipProvider = TooltipPrimitive.Provider;
 
@@ -8,23 +8,18 @@ const TooltipRoot = TooltipPrimitive.Root;
 
 const TooltipTrigger = TooltipPrimitive.Trigger;
 
-interface TooltipArrowProps extends Omit<
-  React.ComponentPropsWithRef<typeof TooltipPrimitive.Arrow>,
-  'className'
-> {
-  className?: string;
-}
+interface TooltipArrowProps extends React.ComponentPropsWithRef<typeof TooltipPrimitive.Arrow> {}
 
 function TooltipArrow({ className, ref, ...props }: TooltipArrowProps) {
   return (
     <TooltipPrimitive.Arrow
-      className={cn(
+      className={addClassName(
+        className,
         'fill-figma-bg-tooltip',
         'data-[side=bottom]:-top-1.5 data-[side=bottom]:rotate-180',
         'data-[side=top]:-bottom-1.5',
         'data-[side=left]:right-[-10.5px] data-[side=left]:-rotate-90',
         'data-[side=right]:left-[-10.5px] data-[side=right]:rotate-90',
-        className,
       )}
       ref={ref}
       render={
@@ -46,11 +41,7 @@ TooltipArrow.displayName = 'TooltipArrow';
 
 type PositionerProps = React.ComponentPropsWithRef<typeof TooltipPrimitive.Positioner>;
 
-interface TooltipContentProps extends Omit<
-  React.ComponentPropsWithRef<typeof TooltipPrimitive.Popup>,
-  'className'
-> {
-  className?: string;
+interface TooltipContentProps extends React.ComponentPropsWithRef<typeof TooltipPrimitive.Popup> {
   container?: React.ComponentProps<typeof TooltipPrimitive.Portal>['container'];
   side?: PositionerProps['side'];
   align?: PositionerProps['align'];
@@ -82,7 +73,8 @@ function TooltipContent({
       >
         <TooltipPrimitive.Popup
           ref={ref}
-          className={cn(
+          className={addClassName(
+            className,
             'bg-figma-tooltip',
             'text-figma-tooltip',
             'fill-figma-icon-tooltip',
@@ -94,7 +86,6 @@ function TooltipContent({
             'rounded-figma-md',
             'shadow-figma-tooltip',
             'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
-            className,
           )}
           {...props}
         />

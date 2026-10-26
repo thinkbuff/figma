@@ -1,24 +1,21 @@
 import { ScrollArea as ScrollAreaPrimitive } from '@base-ui/react/scroll-area';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
-interface ScrollBarProps extends Omit<
-  React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Scrollbar>,
-  'className'
-> {
-  className?: string;
-}
+interface ScrollBarProps extends React.ComponentPropsWithRef<
+  typeof ScrollAreaPrimitive.Scrollbar
+> {}
 
 function ScrollBar({ className, orientation = 'vertical', ref, ...props }: ScrollBarProps) {
   return (
     <ScrollAreaPrimitive.Scrollbar
       ref={ref}
       orientation={orientation}
-      className={cn(
+      className={addClassName(
+        className,
         'flex touch-none select-none transition-all opacity-0 data-hovering:opacity-100 data-scrolling:opacity-100',
         orientation === 'vertical' && 'h-full w-1.5 border-l border-l-transparent p-px',
         orientation === 'horizontal' && 'h-1.5 border-t border-t-transparent p-px',
-        className,
       )}
       {...props}
     >
@@ -29,12 +26,7 @@ function ScrollBar({ className, orientation = 'vertical', ref, ...props }: Scrol
 
 ScrollBar.displayName = 'ScrollBar';
 
-interface ScrollAreaProps extends Omit<
-  React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Root>,
-  'className'
-> {
-  className?: string;
-}
+interface ScrollAreaProps extends React.ComponentPropsWithRef<typeof ScrollAreaPrimitive.Root> {}
 
 /**
  * Augments native scroll functionality for custom, cross-browser styling.
@@ -46,7 +38,7 @@ function ScrollArea({ className, children, ref, ...props }: ScrollAreaProps) {
   return (
     <ScrollAreaPrimitive.Root
       ref={ref}
-      className={cn('relative overflow-hidden', className)}
+      className={addClassName(className, 'relative overflow-hidden')}
       {...props}
     >
       <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">

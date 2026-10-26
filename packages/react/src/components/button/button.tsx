@@ -1,27 +1,19 @@
 import { Button as BaseButton } from '@base-ui/react/button';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
 import { buttonVariants, type ButtonVariantsProps } from './button-variants';
 
 interface ButtonProps
   extends
-    Omit<React.ComponentPropsWithRef<typeof BaseButton>, 'color' | 'className'>,
-    ButtonVariantsProps {
-  className?: string;
-}
+    Omit<React.ComponentPropsWithRef<typeof BaseButton>, 'color'>,
+    Omit<ButtonVariantsProps, 'class' | 'className'> {}
 
 function Button({ className, variant, color, ref, ...props }: ButtonProps) {
   return (
     <BaseButton
       ref={ref}
-      className={cn(
-        buttonVariants({
-          variant,
-          color,
-          className,
-        }),
-      )}
+      className={addClassName(className, buttonVariants({ variant, color }))}
       {...props}
     />
   );

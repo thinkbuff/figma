@@ -1,8 +1,6 @@
 import { Dialog as DialogPrimitive } from '@base-ui/react/dialog';
 
-import { cn } from '~/utils';
-
-type WithStringClassName<T> = Omit<T, 'className'> & { className?: string };
+import { addClassName, cn } from '~/utils';
 
 const DialogRoot = DialogPrimitive.Root;
 
@@ -16,17 +14,17 @@ function DialogOverlay({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof DialogPrimitive.Backdrop>>) {
+}: React.ComponentPropsWithRef<typeof DialogPrimitive.Backdrop>) {
   return (
     <DialogPrimitive.Backdrop
       ref={ref}
-      className={cn(
+      className={addClassName(
+        className,
         'fixed',
         'inset-0',
         'z-50',
         'bg-figma-overlay',
         'transition-opacity duration-150 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
-        className,
       )}
       {...props}
     />
@@ -35,9 +33,7 @@ function DialogOverlay({
 
 DialogOverlay.displayName = 'DialogOverlay';
 
-interface DialogContentProps extends WithStringClassName<
-  React.ComponentPropsWithRef<typeof DialogPrimitive.Popup>
-> {
+interface DialogContentProps extends React.ComponentPropsWithRef<typeof DialogPrimitive.Popup> {
   container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
 }
 
@@ -54,7 +50,8 @@ function DialogContent({ className, container, ref, ...props }: DialogContentPro
       <DialogOverlay />
       <DialogPrimitive.Popup
         ref={ref}
-        className={cn(
+        className={addClassName(
+          className,
           'fixed',
           'grid',
           'w-full',
@@ -70,7 +67,6 @@ function DialogContent({ className, container, ref, ...props }: DialogContentPro
           'shadow-figma-modal',
           'outline-none',
           'transition-[opacity,scale] duration-150 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
-          className,
         )}
         {...props}
       />
@@ -112,11 +108,16 @@ function DialogTitle({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof DialogPrimitive.Title>>) {
+}: React.ComponentPropsWithRef<typeof DialogPrimitive.Title>) {
   return (
     <DialogPrimitive.Title
       ref={ref}
-      className={cn('text-figma', 'text-figma-sm leading-figma-sm', 'font-figma-strong', className)}
+      className={addClassName(
+        className,
+        'text-figma',
+        'text-figma-sm leading-figma-sm',
+        'font-figma-strong',
+      )}
       {...props}
     />
   );
@@ -128,11 +129,11 @@ function DialogDescription({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof DialogPrimitive.Description>>) {
+}: React.ComponentPropsWithRef<typeof DialogPrimitive.Description>) {
   return (
     <DialogPrimitive.Description
       ref={ref}
-      className={cn('text-figma', 'text-figma-sm leading-figma-sm', className)}
+      className={addClassName(className, 'text-figma', 'text-figma-sm leading-figma-sm')}
       {...props}
     />
   );

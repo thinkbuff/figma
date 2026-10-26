@@ -1,13 +1,8 @@
 import { Switch as SwitchPrimitives } from '@base-ui/react/switch';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
-interface SwitchProps extends Omit<
-  React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>,
-  'className'
-> {
-  className?: string;
-}
+interface SwitchProps extends React.ComponentPropsWithRef<typeof SwitchPrimitives.Root> {}
 
 /**
  * A control that allows the user to toggle between checked and not checked.
@@ -18,7 +13,8 @@ interface SwitchProps extends Omit<
 function Switch({ className, ref, ...props }: SwitchProps) {
   return (
     <SwitchPrimitives.Root
-      className={cn(
+      className={addClassName(
+        className,
         'peer',
         'relative',
         'block',
@@ -44,7 +40,6 @@ function Switch({ className, ref, ...props }: SwitchProps) {
         'data-checked:active:before:bg-figma-brand-pressed',
         'data-disabled:data-unchecked:before:bg-figma-disabled',
         'data-disabled:data-checked:before:bg-figma-tertiary',
-        className,
       )}
       {...props}
       ref={ref}

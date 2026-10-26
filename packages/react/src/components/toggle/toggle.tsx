@@ -1,10 +1,8 @@
 import { Toggle as BaseToggle } from '@base-ui/react/toggle';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
-interface ToggleProps extends Omit<React.ComponentPropsWithRef<typeof BaseToggle>, 'className'> {
-  className?: string;
-}
+interface ToggleProps extends React.ComponentPropsWithRef<typeof BaseToggle> {}
 
 /**
  * A two-state button that can be either on or off.
@@ -16,7 +14,8 @@ function Toggle({ className, disabled, ref, ...props }: ToggleProps) {
   return (
     <BaseToggle
       ref={ref}
-      className={cn(
+      className={addClassName(
+        className,
         'size-8',
         'text-figma-sm leading-figma-sm',
         'text-figma',
@@ -52,7 +51,6 @@ function Toggle({ className, disabled, ref, ...props }: ToggleProps) {
               'data-pressed:bg-figma-brand data-pressed:text-figma-icon-onbrand data-pressed:fill-figma-icon-onbrand',
               'data-pressed:hover:bg-figma-brand data-pressed:hover:text-figma-icon-onbrand data-pressed:hover:fill-figma-icon-onbrand',
             ],
-        className,
       )}
       {...props}
       disabled={disabled}

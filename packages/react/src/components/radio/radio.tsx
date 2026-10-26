@@ -1,22 +1,13 @@
 import { Radio } from '@base-ui/react/radio';
 import { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
-interface RadioGroupProps extends Omit<
-  React.ComponentPropsWithRef<typeof RadioGroupPrimitive>,
-  'className'
-> {
-  className?: string;
+interface RadioGroupProps extends React.ComponentPropsWithRef<typeof RadioGroupPrimitive> {
   inline?: boolean;
 }
 
-interface RadioGroupItemProps extends Omit<
-  React.ComponentPropsWithRef<typeof Radio.Root>,
-  'className'
-> {
-  className?: string;
-}
+interface RadioGroupItemProps extends React.ComponentPropsWithRef<typeof Radio.Root> {}
 
 /**
  * A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be
@@ -29,7 +20,7 @@ function RadioGroup({ className, inline = false, ref, ...props }: RadioGroupProp
   return (
     <RadioGroupPrimitive
       ref={ref}
-      className={cn('flex', inline ? 'flex-row gap-5' : 'flex-col gap-2', className)}
+      className={addClassName(className, 'flex', inline ? 'flex-row gap-5' : 'flex-col gap-2')}
       {...props}
     />
   );
@@ -41,7 +32,8 @@ function RadioGroupItem({ className, ref, ...props }: RadioGroupItemProps) {
   return (
     <Radio.Root
       ref={ref}
-      className={cn(
+      className={addClassName(
+        className,
         'peer',
         'size-4',
         'aspect-square',
@@ -59,7 +51,6 @@ function RadioGroupItem({ className, ref, ...props }: RadioGroupItemProps) {
         'outline-figma-icon',
         'not-data-disabled:focus-visible:outline-figma-border-selected',
         'data-disabled:outline-figma-icon-disabled',
-        className,
       )}
       {...props}
     />

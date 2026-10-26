@@ -1,14 +1,9 @@
 import { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox';
 
 import { MdiCheckBold, MdiMinusThick } from '~/icons';
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
-interface CheckboxProps extends Omit<
-  React.ComponentPropsWithRef<typeof CheckboxPrimitive.Root>,
-  'className'
-> {
-  className?: string;
-}
+interface CheckboxProps extends React.ComponentPropsWithRef<typeof CheckboxPrimitive.Root> {}
 
 /**
  * A control that allows the user to toggle between checked and not checked.
@@ -27,7 +22,8 @@ function Checkbox({
   return (
     <CheckboxPrimitive.Root
       ref={ref}
-      className={cn(
+      className={addClassName(
+        className,
         'peer',
         'relative',
         'size-4',
@@ -58,7 +54,6 @@ function Checkbox({
               'focus-visible:outline-figma-border-selected',
               'data-checked:focus-visible:border-figma-icon-onbrand data-checked:focus-visible:outline-figma-border-selected-strong',
             ],
-        className,
       )}
       {...props}
       checked={checked}

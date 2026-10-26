@@ -1,9 +1,7 @@
 import { Dialog as SheetPrimitive } from '@base-ui/react/dialog';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { cn } from '~/utils';
-
-type WithStringClassName<T> = Omit<T, 'className'> & { className?: string };
+import { addClassName, cn } from '~/utils';
 
 const SheetRoot = SheetPrimitive.Root;
 
@@ -17,18 +15,18 @@ function SheetOverlay({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Backdrop>>) {
+}: React.ComponentPropsWithRef<typeof SheetPrimitive.Backdrop>) {
   return (
     <SheetPrimitive.Backdrop
       ref={ref}
-      className={cn(
+      className={addClassName(
+        className,
         'fixed',
         'inset-0',
         'z-50',
         'bg-figma-overlay',
         'backdrop-blur',
         'transition-opacity duration-200 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
-        className,
       )}
       {...props}
     />
@@ -90,7 +88,7 @@ const sheetVariants = cva(
 
 export interface SheetContentProps
   extends
-    WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Popup>>,
+    React.ComponentPropsWithRef<typeof SheetPrimitive.Popup>,
     VariantProps<typeof sheetVariants> {
   container?: React.ComponentProps<typeof SheetPrimitive.Portal>['container'];
 }
@@ -107,7 +105,7 @@ function SheetContent({ className, children, container, side, ref, ...props }: S
       <SheetOverlay />
       <SheetPrimitive.Popup
         ref={ref}
-        className={cn(sheetVariants({ side }), className)}
+        className={addClassName(className, sheetVariants({ side }))}
         {...props}
       >
         {children}
@@ -164,11 +162,16 @@ function SheetTitle({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Title>>) {
+}: React.ComponentPropsWithRef<typeof SheetPrimitive.Title>) {
   return (
     <SheetPrimitive.Title
       ref={ref}
-      className={cn('text-figma', 'text-figma-sm leading-figma-sm', 'font-figma-strong', className)}
+      className={addClassName(
+        className,
+        'text-figma',
+        'text-figma-sm leading-figma-sm',
+        'font-figma-strong',
+      )}
       {...props}
     />
   );
@@ -180,11 +183,11 @@ function SheetDescription({
   className,
   ref,
   ...props
-}: WithStringClassName<React.ComponentPropsWithRef<typeof SheetPrimitive.Description>>) {
+}: React.ComponentPropsWithRef<typeof SheetPrimitive.Description>) {
   return (
     <SheetPrimitive.Description
       ref={ref}
-      className={cn('text-figma-secondary', className)}
+      className={addClassName(className, 'text-figma-secondary')}
       {...props}
     />
   );

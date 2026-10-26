@@ -1,13 +1,8 @@
 import { Slider as SliderPrimitive } from '@base-ui/react/slider';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
-interface SliderRootProps extends Omit<
-  React.ComponentPropsWithRef<typeof SliderPrimitive.Root>,
-  'className'
-> {
-  className?: string;
-}
+interface SliderRootProps extends React.ComponentPropsWithRef<typeof SliderPrimitive.Root> {}
 
 function toArray(value: number | readonly number[]) {
   return typeof value === 'number' ? [value] : value;
@@ -17,7 +12,8 @@ function SliderRoot({ className, children, ref, ...props }: SliderRootProps) {
   return (
     <SliderPrimitive.Root
       thumbAlignment="center"
-      className={cn(
+      className={addClassName(
+        className,
         'relative',
         'flex',
         'items-center',
@@ -28,7 +24,6 @@ function SliderRoot({ className, children, ref, ...props }: SliderRootProps) {
         'select-none',
         'border-0 border-x-8 border-solid border-transparent',
         'data-[orientation=vertical]:flex-col data-[orientation=vertical]:w-6 data-[orientation=vertical]:h-full data-[orientation=vertical]:border-x-0 data-[orientation=vertical]:border-y-8',
-        className,
       )}
       {...props}
       ref={ref}
@@ -46,12 +41,11 @@ function SliderTrack({
   className,
   ref,
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof SliderPrimitive.Track>, 'className'> & {
-  className?: string;
-}) {
+}: React.ComponentPropsWithRef<typeof SliderPrimitive.Track>) {
   return (
     <SliderPrimitive.Track
-      className={cn(
+      className={addClassName(
+        className,
         'static',
         'h-4',
         'grow',
@@ -61,7 +55,6 @@ function SliderTrack({
         'outline-solid outline-1 -outline-offset-1 outline-[#0000001a] dark:outline-[#ffffff1a]',
         'data-[orientation=horizontal]:-mx-2',
         'data-[orientation=vertical]:w-4 data-[orientation=vertical]:-my-2',
-        className,
       )}
       {...props}
       ref={ref}
@@ -75,12 +68,11 @@ function SliderRange({
   className,
   ref,
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof SliderPrimitive.Indicator>, 'className'> & {
-  className?: string;
-}) {
+}: React.ComponentPropsWithRef<typeof SliderPrimitive.Indicator>) {
   return (
     <SliderPrimitive.Indicator
-      className={cn(
+      className={addClassName(
+        className,
         'absolute',
         'block',
         'rounded-full',
@@ -89,7 +81,6 @@ function SliderRange({
         'data-[orientation=horizontal]:h-4 data-[orientation=horizontal]:px-2 data-[orientation=horizontal]:-ml-2',
         'data-[orientation=vertical]:w-4 data-[orientation=vertical]:py-2 data-[orientation=vertical]:-mt-2',
         'data-disabled:bg-figma-disabled',
-        className,
       )}
       {...props}
       ref={ref}
@@ -103,12 +94,11 @@ function SliderThumb({
   className,
   ref,
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof SliderPrimitive.Thumb>, 'className'> & {
-  className?: string;
-}) {
+}: React.ComponentPropsWithRef<typeof SliderPrimitive.Thumb>) {
   return (
     <SliderPrimitive.Thumb
-      className={cn(
+      className={addClassName(
+        className,
         'block',
         'z-10',
         'size-4',
@@ -121,7 +111,6 @@ function SliderThumb({
         'outline-0',
         'focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-figma-border-selected',
         'data-disabled:border-0 data-disabled:bg-figma-disabled-secondary data-disabled:shadow-none data-disabled:pointer-events-none',
-        className,
       )}
       {...props}
       ref={ref}
