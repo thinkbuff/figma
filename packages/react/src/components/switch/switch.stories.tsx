@@ -45,6 +45,12 @@ export const Checked: Story = {
   },
 };
 
+export const Mixed: Story = {
+  args: {
+    indeterminate: true,
+  },
+};
+
 export const Disabled: Story = {
   args: {
     disabled: true,

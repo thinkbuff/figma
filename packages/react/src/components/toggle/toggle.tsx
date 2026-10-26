@@ -50,8 +50,8 @@ function Toggle({ className, disabled, ref, ...props }: ToggleProps) {
           : [
               'hover:bg-figma-hover hover:text-figma-icon-hover hover:fill-figma-icon-hover',
               'focus-visible:outline-figma-border-selected',
-              'data-pressed:bg-figma-selected data-pressed:icon-figma-brand',
-              'data-pressed:hover:bg-figma-selected data-pressed:hover:icon-figma-brand',
+              'data-pressed:bg-figma-selected',
+              'data-pressed:hover:bg-figma-selected',
             ],
       )}
       {...props}

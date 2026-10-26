@@ -2,7 +2,13 @@ import { Switch as SwitchPrimitives } from '@base-ui/react/switch';
 
 import { addClassName } from '~/utils';
 
-interface SwitchProps extends React.ComponentPropsWithRef<typeof SwitchPrimitives.Root> {}
+interface SwitchProps extends React.ComponentPropsWithRef<typeof SwitchPrimitives.Root> {
+  /**
+   * Marks the switch as indeterminate (UI3 "Mixed" state). Renders a bar
+   * instead of the knob and sets `aria-checked="mixed"`.
+   */
+  indeterminate?: boolean;
+}
 
 /**
  * A control that allows the user to toggle between checked and not checked.
@@ -10,9 +16,11 @@ interface SwitchProps extends React.ComponentPropsWithRef<typeof SwitchPrimitive
  * - [Docs](https://base-ui.com/react/components/switch)
  * - [API Reference](https://base-ui.com/react/components/switch#api)
  */
-function Switch({ className, ref, ...props }: SwitchProps) {
+function Switch({ className, indeterminate = false, ref, ...props }: SwitchProps) {
   return (
     <SwitchPrimitives.Root
+      data-mixed={indeterminate || undefined}
+      {...(indeterminate ? { 'aria-checked': 'mixed' as const } : {})}
       className={addClassName(
         className,
         'peer',
@@ -37,14 +45,20 @@ function Switch({ className, ref, ...props }: SwitchProps) {
         'data-unchecked:before:bg-figma-secondary',
         'data-unchecked:active:before:bg-figma-tertiary',
         'data-checked:before:bg-figma-brand',
+        'data-mixed:data-unchecked:before:bg-figma-brand',
         'data-checked:active:before:bg-figma-brand-pressed',
+        'data-mixed:data-unchecked:active:before:bg-figma-brand-pressed',
         'data-disabled:data-unchecked:before:bg-figma-disabled',
         'data-disabled:data-checked:before:bg-figma-tertiary',
+        'data-disabled:data-mixed:before:bg-figma-tertiary',
       )}
       {...props}
       ref={ref}
     >
-      <SwitchPrimitives.Thumb className="pointer-events-none absolute top-1 left-1 h-2 w-3 rounded-full outline-solid outline-1 outline-[#00000033] bg-figma-icon-onbrand transition-all duration-[80ms] data-checked:left-[calc(100%-16px)] data-checked:outline-[#0000001a] data-disabled:bg-figma-icon-ondisabled" />
+      <SwitchPrimitives.Thumb
+        data-mixed={indeterminate || undefined}
+        className="pointer-events-none absolute top-1 left-1 h-2 w-3 rounded-full outline-solid outline-1 outline-[#00000033] bg-figma-icon-onbrand transition-all duration-[80ms] data-checked:left-[calc(100%-16px)] data-checked:outline-[#0000001a] data-disabled:bg-figma-icon-ondisabled data-mixed:left-1/2 data-mixed:top-1/2 data-mixed:-translate-x-1/2 data-mixed:-translate-y-1/2 data-mixed:h-0.5 data-mixed:w-2 data-mixed:rounded-xs data-mixed:outline-none"
+      />
     </SwitchPrimitives.Root>
   );
 }
