@@ -21,7 +21,7 @@
 | `will-change-(a,b)` | `will-change-[a,b]` | |
 | `i-mdi-*` / `i-tabler-*` (components) | inline SVG in `src/icons/` | exact path data, license comments |
 | `i-mdi-*` / `i-tabler-*` (stories) | `icon-[mdi--*]` / `icon-[tabler--*]` | `@iconify/tailwind4` |
-| `animate-in/out`, `fade-*`, `zoom-*`, `slide-*`, `animate-duration-*` | removed | inventory in `.migration/animations.md`; reimplemented in step 6 |
+| `animate-in/out`, `fade-*`, `zoom-*`, `slide-*`, `animate-duration-*` | removed | inventory in `animations.md`; reimplemented in step 6 |
 
 ## Root causes fixed during verification
 

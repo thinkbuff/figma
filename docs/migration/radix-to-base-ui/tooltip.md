@@ -20,7 +20,7 @@ Leftover scan: `rg "@radix-ui" src/components/tooltip/` → 0.
 ## Left alone
 
 - `index.ts`; radix dep stays until step 7.
-- Tooltip had no animation classes (per `.migration/animations.md`) — no `data-[starting-style]` transitions added.
+- Tooltip had no animation classes (per `animations.md`) — no `data-[starting-style]` transitions added.
 
 ## API changes (for CHANGELOG)
 

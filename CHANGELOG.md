@@ -45,7 +45,7 @@
 - `ActionIcon` open state (`aria-expanded`) is now subtle (`bg-selected` with a brand icon) instead of solid brand.
 - Inline `RadioGroup` items are 20px apart (were 8px).
 
-Per-component details, behavior notes and QA checklists live in `.migration/`.
+Per-component details, behavior notes and QA checklists live in `docs/migration/`.
 
 ### 🚀 Features
 
