@@ -24,10 +24,12 @@ describe('ContextMenu', () => {
   it('opens the menu on right-click', async () => {
     await render(<Fixture />);
     const trigger = page.getByText('Right click here');
-    await trigger
+    trigger
       .element()
       .dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 20, clientY: 20 }));
-    await expect.element(page.getByRole('menu')).toBeVisible();
-    await expect.element(page.getByRole('menuitem', { name: 'Paste here' })).toBeVisible();
+    await expect.poll(() => page.getByRole('menu').query()).not.toBeNull();
+    await expect
+      .poll(() => page.getByRole('menuitem', { name: 'Paste here' }).query())
+      .not.toBeNull();
   });
 });

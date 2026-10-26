@@ -1,6 +1,7 @@
 import { Tabs } from '@base-ui/react/tabs';
+import * as React from 'react';
 
-import { addClassName } from '~/utils';
+import { addClassName, useComposedRefs } from '~/utils';
 
 interface TabsRootProps extends React.ComponentPropsWithRef<typeof Tabs.Root> {}
 
@@ -41,8 +42,16 @@ function TabsList({ className, ref, ...props }: TabsListProps) {
 TabsList.displayName = 'TabsList';
 
 function TabsTrigger({ className, ref, ...props }: TabsTriggerProps) {
+  // Freeze the measured width on mount so switching to the active (bolder)
+  // weight doesn't shift siblings.
+  const fixedWidthRef = React.useCallback((node: HTMLButtonElement | null) => {
+    if (node !== null) {
+      node.style.width = `${node.getBoundingClientRect().width}px`;
+    }
+  }, []);
   return (
     <Tabs.Tab
+      ref={useComposedRefs(ref, fixedWidthRef)}
       className={addClassName(
         className,
         'flex',
@@ -62,7 +71,6 @@ function TabsTrigger({ className, ref, ...props }: TabsTriggerProps) {
         'data-disabled:text-figma-disabled',
       )}
       {...props}
-      ref={ref}
     />
   );
 }

@@ -52,7 +52,7 @@ function Checkbox({
             ]
           : [
               'focus-visible:outline-figma-border-selected',
-              'data-checked:focus-visible:border-figma-icon-onbrand data-checked:focus-visible:outline-figma-border-selected-strong',
+              'data-checked:focus-visible:border-figma-icon-onbrand data-checked:focus-visible:outline-figma-border-selected-strong data-checked:focus-visible:outline-offset-0',
             ],
       )}
       {...props}

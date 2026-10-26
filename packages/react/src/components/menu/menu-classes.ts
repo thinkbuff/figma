@@ -15,7 +15,13 @@ const menuPopupClassName = [
   'origin-(--transform-origin) transition-[opacity,scale] duration-100 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
 ];
 
-const menuContentClassName = [menuPopupClassName, 'min-w-20', 'border-none', 'p-2'];
+const menuContentClassName = [
+  menuPopupClassName,
+  'min-w-20',
+  'border-none',
+  'p-2',
+  'max-h-(--available-height) overflow-y-auto',
+];
 
 const menuItemClassName = [
   'relative',

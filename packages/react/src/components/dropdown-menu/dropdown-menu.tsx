@@ -91,7 +91,9 @@ function DropdownMenuSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto -mr-2" />
+      <span className="ml-auto -mr-2 flex items-center pl-6">
+        <ChevronRightIcon />
+      </span>
     </MenuPrimitive.SubmenuTrigger>
   );
 }
