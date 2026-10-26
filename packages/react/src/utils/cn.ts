@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from 'clsx';
 import { extendTailwindMerge } from 'tailwind-merge';
 
-const twMerge = extendTailwindMerge({
+const twMerge = extendTailwindMerge<'icon-color'>({
   extend: {
     theme: {
       text: [
@@ -20,6 +20,7 @@ const twMerge = extendTailwindMerge({
     },
     classGroups: {
       'font-weight': [{ font: ['figma-default', 'figma-strong'] }],
+      'icon-color': [{ icon: [(classPart: string) => classPart.startsWith('figma')] }],
     },
   },
 });

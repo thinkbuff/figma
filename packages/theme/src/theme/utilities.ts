@@ -51,6 +51,7 @@ const scopedUtilityDefinitions: Record<ThemeColorScope, UtilityDefinition[]> = {
       property: UTILITY_PROPERTIES[utilityName],
       withScope: true,
     })),
+    { utilityName: 'icon', property: '--color-icon', withScope: true },
   ],
   border: [
     { utilityName: 'border', property: 'border-color', withScope: false },
@@ -59,12 +60,16 @@ const scopedUtilityDefinitions: Record<ThemeColorScope, UtilityDefinition[]> = {
       property: UTILITY_PROPERTIES[utilityName],
       withScope: true,
     })),
+    { utilityName: 'icon', property: '--color-icon', withScope: true },
   ],
-  icon: UTILITY_NAMES.map((utilityName) => ({
-    utilityName,
-    property: UTILITY_PROPERTIES[utilityName],
-    withScope: true,
-  })),
+  icon: [
+    ...UTILITY_NAMES.map((utilityName) => ({
+      utilityName,
+      property: UTILITY_PROPERTIES[utilityName],
+      withScope: true,
+    })),
+    { utilityName: 'icon', property: '--color-icon', withScope: false },
+  ],
   text: [
     { utilityName: 'text', property: 'color', withScope: false },
     ...UTILITY_NAMES.map((utilityName) => ({
@@ -72,6 +77,7 @@ const scopedUtilityDefinitions: Record<ThemeColorScope, UtilityDefinition[]> = {
       property: UTILITY_PROPERTIES[utilityName],
       withScope: true,
     })),
+    { utilityName: 'icon', property: '--color-icon', withScope: true },
   ],
 };
 

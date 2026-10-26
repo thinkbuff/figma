@@ -26,6 +26,10 @@
   stroke: var(--figma-color-bg);
 }
 
+@utility icon-figma-bg {
+  --color-icon: var(--figma-color-bg);
+}
+
 @utility bg-figma-brand {
   background-color: var(--figma-color-bg-brand);
 }
@@ -52,6 +56,10 @@
 
 @utility stroke-figma-bg-brand {
   stroke: var(--figma-color-bg-brand);
+}
+
+@utility icon-figma-bg-brand {
+  --color-icon: var(--figma-color-bg-brand);
 }
 
 @utility bg-figma-brand-hover {
@@ -82,6 +90,10 @@
   stroke: var(--figma-color-bg-brand-hover);
 }
 
+@utility icon-figma-bg-brand-hover {
+  --color-icon: var(--figma-color-bg-brand-hover);
+}
+
 @utility bg-figma-brand-pressed {
   background-color: var(--figma-color-bg-brand-pressed);
 }
@@ -108,6 +120,10 @@
 
 @utility stroke-figma-bg-brand-pressed {
   stroke: var(--figma-color-bg-brand-pressed);
+}
+
+@utility icon-figma-bg-brand-pressed {
+  --color-icon: var(--figma-color-bg-brand-pressed);
 }
 
 @utility bg-figma-brand-secondary {
@@ -138,6 +154,10 @@
   stroke: var(--figma-color-bg-brand-secondary);
 }
 
+@utility icon-figma-bg-brand-secondary {
+  --color-icon: var(--figma-color-bg-brand-secondary);
+}
+
 @utility bg-figma-brand-tertiary {
   background-color: var(--figma-color-bg-brand-tertiary);
 }
@@ -164,6 +184,10 @@
 
 @utility stroke-figma-bg-brand-tertiary {
   stroke: var(--figma-color-bg-brand-tertiary);
+}
+
+@utility icon-figma-bg-brand-tertiary {
+  --color-icon: var(--figma-color-bg-brand-tertiary);
 }
 
 @utility bg-figma-component {
@@ -194,6 +218,10 @@
   stroke: var(--figma-color-bg-component);
 }
 
+@utility icon-figma-bg-component {
+  --color-icon: var(--figma-color-bg-component);
+}
+
 @utility bg-figma-component-hover {
   background-color: var(--figma-color-bg-component-hover);
 }
@@ -220,6 +248,10 @@
 
 @utility stroke-figma-bg-component-hover {
   stroke: var(--figma-color-bg-component-hover);
+}
+
+@utility icon-figma-bg-component-hover {
+  --color-icon: var(--figma-color-bg-component-hover);
 }
 
 @utility bg-figma-component-pressed {
@@ -250,6 +282,10 @@
   stroke: var(--figma-color-bg-component-pressed);
 }
 
+@utility icon-figma-bg-component-pressed {
+  --color-icon: var(--figma-color-bg-component-pressed);
+}
+
 @utility bg-figma-component-secondary {
   background-color: var(--figma-color-bg-component-secondary);
 }
@@ -276,6 +312,10 @@
 
 @utility stroke-figma-bg-component-secondary {
   stroke: var(--figma-color-bg-component-secondary);
+}
+
+@utility icon-figma-bg-component-secondary {
+  --color-icon: var(--figma-color-bg-component-secondary);
 }
 
 @utility bg-figma-component-tertiary {
@@ -306,6 +346,10 @@
   stroke: var(--figma-color-bg-component-tertiary);
 }
 
+@utility icon-figma-bg-component-tertiary {
+  --color-icon: var(--figma-color-bg-component-tertiary);
+}
+
 @utility bg-figma-danger {
   background-color: var(--figma-color-bg-danger);
 }
@@ -332,6 +376,10 @@
 
 @utility stroke-figma-bg-danger {
   stroke: var(--figma-color-bg-danger);
+}
+
+@utility icon-figma-bg-danger {
+  --color-icon: var(--figma-color-bg-danger);
 }
 
 @utility bg-figma-danger-hover {
@@ -362,6 +410,10 @@
   stroke: var(--figma-color-bg-danger-hover);
 }
 
+@utility icon-figma-bg-danger-hover {
+  --color-icon: var(--figma-color-bg-danger-hover);
+}
+
 @utility bg-figma-danger-pressed {
   background-color: var(--figma-color-bg-danger-pressed);
 }
@@ -388,6 +440,10 @@
 
 @utility stroke-figma-bg-danger-pressed {
   stroke: var(--figma-color-bg-danger-pressed);
+}
+
+@utility icon-figma-bg-danger-pressed {
+  --color-icon: var(--figma-color-bg-danger-pressed);
 }
 
 @utility bg-figma-danger-secondary {
@@ -418,6 +474,10 @@
   stroke: var(--figma-color-bg-danger-secondary);
 }
 
+@utility icon-figma-bg-danger-secondary {
+  --color-icon: var(--figma-color-bg-danger-secondary);
+}
+
 @utility bg-figma-danger-tertiary {
   background-color: var(--figma-color-bg-danger-tertiary);
 }
@@ -444,6 +504,10 @@
 
 @utility stroke-figma-bg-danger-tertiary {
   stroke: var(--figma-color-bg-danger-tertiary);
+}
+
+@utility icon-figma-bg-danger-tertiary {
+  --color-icon: var(--figma-color-bg-danger-tertiary);
 }
 
 @utility bg-figma-disabled {
@@ -474,6 +538,10 @@
   stroke: var(--figma-color-bg-disabled);
 }
 
+@utility icon-figma-bg-disabled {
+  --color-icon: var(--figma-color-bg-disabled);
+}
+
 @utility bg-figma-disabled-secondary {
   background-color: var(--figma-color-bg-disabled-secondary);
 }
@@ -500,6 +568,10 @@
 
 @utility stroke-figma-bg-disabled-secondary {
   stroke: var(--figma-color-bg-disabled-secondary);
+}
+
+@utility icon-figma-bg-disabled-secondary {
+  --color-icon: var(--figma-color-bg-disabled-secondary);
 }
 
 @utility bg-figma-hover {
@@ -530,6 +602,10 @@
   stroke: var(--figma-color-bg-hover);
 }
 
+@utility icon-figma-bg-hover {
+  --color-icon: var(--figma-color-bg-hover);
+}
+
 @utility bg-figma-inverse {
   background-color: var(--figma-color-bg-inverse);
 }
@@ -556,6 +632,10 @@
 
 @utility stroke-figma-bg-inverse {
   stroke: var(--figma-color-bg-inverse);
+}
+
+@utility icon-figma-bg-inverse {
+  --color-icon: var(--figma-color-bg-inverse);
 }
 
 @utility bg-figma-menu {
@@ -586,6 +666,10 @@
   stroke: var(--figma-color-bg-menu);
 }
 
+@utility icon-figma-bg-menu {
+  --color-icon: var(--figma-color-bg-menu);
+}
+
 @utility bg-figma-menu-disabled {
   background-color: var(--figma-color-bg-menu-disabled);
 }
@@ -612,6 +696,10 @@
 
 @utility stroke-figma-bg-menu-disabled {
   stroke: var(--figma-color-bg-menu-disabled);
+}
+
+@utility icon-figma-bg-menu-disabled {
+  --color-icon: var(--figma-color-bg-menu-disabled);
 }
 
 @utility bg-figma-menu-hover {
@@ -642,6 +730,10 @@
   stroke: var(--figma-color-bg-menu-hover);
 }
 
+@utility icon-figma-bg-menu-hover {
+  --color-icon: var(--figma-color-bg-menu-hover);
+}
+
 @utility bg-figma-menu-pressed {
   background-color: var(--figma-color-bg-menu-pressed);
 }
@@ -668,6 +760,10 @@
 
 @utility stroke-figma-bg-menu-pressed {
   stroke: var(--figma-color-bg-menu-pressed);
+}
+
+@utility icon-figma-bg-menu-pressed {
+  --color-icon: var(--figma-color-bg-menu-pressed);
 }
 
 @utility bg-figma-menu-secondary {
@@ -698,6 +794,10 @@
   stroke: var(--figma-color-bg-menu-secondary);
 }
 
+@utility icon-figma-bg-menu-secondary {
+  --color-icon: var(--figma-color-bg-menu-secondary);
+}
+
 @utility bg-figma-menu-selected {
   background-color: var(--figma-color-bg-menu-selected);
 }
@@ -724,6 +824,10 @@
 
 @utility stroke-figma-bg-menu-selected {
   stroke: var(--figma-color-bg-menu-selected);
+}
+
+@utility icon-figma-bg-menu-selected {
+  --color-icon: var(--figma-color-bg-menu-selected);
 }
 
 @utility bg-figma-menu-selected-hover {
@@ -754,6 +858,10 @@
   stroke: var(--figma-color-bg-menu-selected-hover);
 }
 
+@utility icon-figma-bg-menu-selected-hover {
+  --color-icon: var(--figma-color-bg-menu-selected-hover);
+}
+
 @utility bg-figma-menu-selected-pressed {
   background-color: var(--figma-color-bg-menu-selected-pressed);
 }
@@ -780,6 +888,10 @@
 
 @utility stroke-figma-bg-menu-selected-pressed {
   stroke: var(--figma-color-bg-menu-selected-pressed);
+}
+
+@utility icon-figma-bg-menu-selected-pressed {
+  --color-icon: var(--figma-color-bg-menu-selected-pressed);
 }
 
 @utility bg-figma-menu-selected-secondary {
@@ -810,6 +922,10 @@
   stroke: var(--figma-color-bg-menu-selected-secondary);
 }
 
+@utility icon-figma-bg-menu-selected-secondary {
+  --color-icon: var(--figma-color-bg-menu-selected-secondary);
+}
+
 @utility bg-figma-menu-selected-tertiary {
   background-color: var(--figma-color-bg-menu-selected-tertiary);
 }
@@ -836,6 +952,10 @@
 
 @utility stroke-figma-bg-menu-selected-tertiary {
   stroke: var(--figma-color-bg-menu-selected-tertiary);
+}
+
+@utility icon-figma-bg-menu-selected-tertiary {
+  --color-icon: var(--figma-color-bg-menu-selected-tertiary);
 }
 
 @utility bg-figma-menu-tertiary {
@@ -866,6 +986,10 @@
   stroke: var(--figma-color-bg-menu-tertiary);
 }
 
+@utility icon-figma-bg-menu-tertiary {
+  --color-icon: var(--figma-color-bg-menu-tertiary);
+}
+
 @utility bg-figma-onselected {
   background-color: var(--figma-color-bg-onselected);
 }
@@ -892,6 +1016,10 @@
 
 @utility stroke-figma-bg-onselected {
   stroke: var(--figma-color-bg-onselected);
+}
+
+@utility icon-figma-bg-onselected {
+  --color-icon: var(--figma-color-bg-onselected);
 }
 
 @utility bg-figma-onselected-hover {
@@ -922,6 +1050,10 @@
   stroke: var(--figma-color-bg-onselected-hover);
 }
 
+@utility icon-figma-bg-onselected-hover {
+  --color-icon: var(--figma-color-bg-onselected-hover);
+}
+
 @utility bg-figma-onselected-pressed {
   background-color: var(--figma-color-bg-onselected-pressed);
 }
@@ -948,6 +1080,10 @@
 
 @utility stroke-figma-bg-onselected-pressed {
   stroke: var(--figma-color-bg-onselected-pressed);
+}
+
+@utility icon-figma-bg-onselected-pressed {
+  --color-icon: var(--figma-color-bg-onselected-pressed);
 }
 
 @utility bg-figma-pressed {
@@ -978,6 +1114,10 @@
   stroke: var(--figma-color-bg-pressed);
 }
 
+@utility icon-figma-bg-pressed {
+  --color-icon: var(--figma-color-bg-pressed);
+}
+
 @utility bg-figma-secondary {
   background-color: var(--figma-color-bg-secondary);
 }
@@ -1004,6 +1144,10 @@
 
 @utility stroke-figma-bg-secondary {
   stroke: var(--figma-color-bg-secondary);
+}
+
+@utility icon-figma-bg-secondary {
+  --color-icon: var(--figma-color-bg-secondary);
 }
 
 @utility bg-figma-selected {
@@ -1034,6 +1178,10 @@
   stroke: var(--figma-color-bg-selected);
 }
 
+@utility icon-figma-bg-selected {
+  --color-icon: var(--figma-color-bg-selected);
+}
+
 @utility bg-figma-selected-hover {
   background-color: var(--figma-color-bg-selected-hover);
 }
@@ -1060,6 +1208,10 @@
 
 @utility stroke-figma-bg-selected-hover {
   stroke: var(--figma-color-bg-selected-hover);
+}
+
+@utility icon-figma-bg-selected-hover {
+  --color-icon: var(--figma-color-bg-selected-hover);
 }
 
 @utility bg-figma-selected-pressed {
@@ -1090,6 +1242,10 @@
   stroke: var(--figma-color-bg-selected-pressed);
 }
 
+@utility icon-figma-bg-selected-pressed {
+  --color-icon: var(--figma-color-bg-selected-pressed);
+}
+
 @utility bg-figma-selected-secondary {
   background-color: var(--figma-color-bg-selected-secondary);
 }
@@ -1116,6 +1272,10 @@
 
 @utility stroke-figma-bg-selected-secondary {
   stroke: var(--figma-color-bg-selected-secondary);
+}
+
+@utility icon-figma-bg-selected-secondary {
+  --color-icon: var(--figma-color-bg-selected-secondary);
 }
 
 @utility bg-figma-selected-strong {
@@ -1146,6 +1306,10 @@
   stroke: var(--figma-color-bg-selected-strong);
 }
 
+@utility icon-figma-bg-selected-strong {
+  --color-icon: var(--figma-color-bg-selected-strong);
+}
+
 @utility bg-figma-selected-tertiary {
   background-color: var(--figma-color-bg-selected-tertiary);
 }
@@ -1172,6 +1336,10 @@
 
 @utility stroke-figma-bg-selected-tertiary {
   stroke: var(--figma-color-bg-selected-tertiary);
+}
+
+@utility icon-figma-bg-selected-tertiary {
+  --color-icon: var(--figma-color-bg-selected-tertiary);
 }
 
 @utility bg-figma-success {
@@ -1202,6 +1370,10 @@
   stroke: var(--figma-color-bg-success);
 }
 
+@utility icon-figma-bg-success {
+  --color-icon: var(--figma-color-bg-success);
+}
+
 @utility bg-figma-success-hover {
   background-color: var(--figma-color-bg-success-hover);
 }
@@ -1228,6 +1400,10 @@
 
 @utility stroke-figma-bg-success-hover {
   stroke: var(--figma-color-bg-success-hover);
+}
+
+@utility icon-figma-bg-success-hover {
+  --color-icon: var(--figma-color-bg-success-hover);
 }
 
 @utility bg-figma-success-pressed {
@@ -1258,6 +1434,10 @@
   stroke: var(--figma-color-bg-success-pressed);
 }
 
+@utility icon-figma-bg-success-pressed {
+  --color-icon: var(--figma-color-bg-success-pressed);
+}
+
 @utility bg-figma-success-secondary {
   background-color: var(--figma-color-bg-success-secondary);
 }
@@ -1284,6 +1464,10 @@
 
 @utility stroke-figma-bg-success-secondary {
   stroke: var(--figma-color-bg-success-secondary);
+}
+
+@utility icon-figma-bg-success-secondary {
+  --color-icon: var(--figma-color-bg-success-secondary);
 }
 
 @utility bg-figma-success-tertiary {
@@ -1314,6 +1498,10 @@
   stroke: var(--figma-color-bg-success-tertiary);
 }
 
+@utility icon-figma-bg-success-tertiary {
+  --color-icon: var(--figma-color-bg-success-tertiary);
+}
+
 @utility bg-figma-tertiary {
   background-color: var(--figma-color-bg-tertiary);
 }
@@ -1340,6 +1528,10 @@
 
 @utility stroke-figma-bg-tertiary {
   stroke: var(--figma-color-bg-tertiary);
+}
+
+@utility icon-figma-bg-tertiary {
+  --color-icon: var(--figma-color-bg-tertiary);
 }
 
 @utility bg-figma-tooltip {
@@ -1370,6 +1562,10 @@
   stroke: var(--figma-color-bg-tooltip);
 }
 
+@utility icon-figma-bg-tooltip {
+  --color-icon: var(--figma-color-bg-tooltip);
+}
+
 @utility bg-figma-tooltip-disabled {
   background-color: var(--figma-color-bg-tooltip-disabled);
 }
@@ -1396,6 +1592,10 @@
 
 @utility stroke-figma-bg-tooltip-disabled {
   stroke: var(--figma-color-bg-tooltip-disabled);
+}
+
+@utility icon-figma-bg-tooltip-disabled {
+  --color-icon: var(--figma-color-bg-tooltip-disabled);
 }
 
 @utility bg-figma-tooltip-hover {
@@ -1426,6 +1626,10 @@
   stroke: var(--figma-color-bg-tooltip-hover);
 }
 
+@utility icon-figma-bg-tooltip-hover {
+  --color-icon: var(--figma-color-bg-tooltip-hover);
+}
+
 @utility bg-figma-tooltip-pressed {
   background-color: var(--figma-color-bg-tooltip-pressed);
 }
@@ -1452,6 +1656,10 @@
 
 @utility stroke-figma-bg-tooltip-pressed {
   stroke: var(--figma-color-bg-tooltip-pressed);
+}
+
+@utility icon-figma-bg-tooltip-pressed {
+  --color-icon: var(--figma-color-bg-tooltip-pressed);
 }
 
 @utility bg-figma-tooltip-secondary {
@@ -1482,6 +1690,10 @@
   stroke: var(--figma-color-bg-tooltip-secondary);
 }
 
+@utility icon-figma-bg-tooltip-secondary {
+  --color-icon: var(--figma-color-bg-tooltip-secondary);
+}
+
 @utility bg-figma-tooltip-selected {
   background-color: var(--figma-color-bg-tooltip-selected);
 }
@@ -1508,6 +1720,10 @@
 
 @utility stroke-figma-bg-tooltip-selected {
   stroke: var(--figma-color-bg-tooltip-selected);
+}
+
+@utility icon-figma-bg-tooltip-selected {
+  --color-icon: var(--figma-color-bg-tooltip-selected);
 }
 
 @utility bg-figma-tooltip-selected-hover {
@@ -1538,6 +1754,10 @@
   stroke: var(--figma-color-bg-tooltip-selected-hover);
 }
 
+@utility icon-figma-bg-tooltip-selected-hover {
+  --color-icon: var(--figma-color-bg-tooltip-selected-hover);
+}
+
 @utility bg-figma-tooltip-selected-pressed {
   background-color: var(--figma-color-bg-tooltip-selected-pressed);
 }
@@ -1564,6 +1784,10 @@
 
 @utility stroke-figma-bg-tooltip-selected-pressed {
   stroke: var(--figma-color-bg-tooltip-selected-pressed);
+}
+
+@utility icon-figma-bg-tooltip-selected-pressed {
+  --color-icon: var(--figma-color-bg-tooltip-selected-pressed);
 }
 
 @utility bg-figma-tooltip-selected-secondary {
@@ -1594,6 +1818,10 @@
   stroke: var(--figma-color-bg-tooltip-selected-secondary);
 }
 
+@utility icon-figma-bg-tooltip-selected-secondary {
+  --color-icon: var(--figma-color-bg-tooltip-selected-secondary);
+}
+
 @utility bg-figma-tooltip-selected-tertiary {
   background-color: var(--figma-color-bg-tooltip-selected-tertiary);
 }
@@ -1620,6 +1848,10 @@
 
 @utility stroke-figma-bg-tooltip-selected-tertiary {
   stroke: var(--figma-color-bg-tooltip-selected-tertiary);
+}
+
+@utility icon-figma-bg-tooltip-selected-tertiary {
+  --color-icon: var(--figma-color-bg-tooltip-selected-tertiary);
 }
 
 @utility bg-figma-tooltip-tertiary {
@@ -1650,6 +1882,10 @@
   stroke: var(--figma-color-bg-tooltip-tertiary);
 }
 
+@utility icon-figma-bg-tooltip-tertiary {
+  --color-icon: var(--figma-color-bg-tooltip-tertiary);
+}
+
 @utility bg-figma-warning {
   background-color: var(--figma-color-bg-warning);
 }
@@ -1676,6 +1912,10 @@
 
 @utility stroke-figma-bg-warning {
   stroke: var(--figma-color-bg-warning);
+}
+
+@utility icon-figma-bg-warning {
+  --color-icon: var(--figma-color-bg-warning);
 }
 
 @utility bg-figma-warning-hover {
@@ -1706,6 +1946,10 @@
   stroke: var(--figma-color-bg-warning-hover);
 }
 
+@utility icon-figma-bg-warning-hover {
+  --color-icon: var(--figma-color-bg-warning-hover);
+}
+
 @utility bg-figma-warning-pressed {
   background-color: var(--figma-color-bg-warning-pressed);
 }
@@ -1732,6 +1976,10 @@
 
 @utility stroke-figma-bg-warning-pressed {
   stroke: var(--figma-color-bg-warning-pressed);
+}
+
+@utility icon-figma-bg-warning-pressed {
+  --color-icon: var(--figma-color-bg-warning-pressed);
 }
 
 @utility bg-figma-warning-secondary {
@@ -1762,6 +2010,10 @@
   stroke: var(--figma-color-bg-warning-secondary);
 }
 
+@utility icon-figma-bg-warning-secondary {
+  --color-icon: var(--figma-color-bg-warning-secondary);
+}
+
 @utility bg-figma-warning-tertiary {
   background-color: var(--figma-color-bg-warning-tertiary);
 }
@@ -1788,6 +2040,10 @@
 
 @utility stroke-figma-bg-warning-tertiary {
   stroke: var(--figma-color-bg-warning-tertiary);
+}
+
+@utility icon-figma-bg-warning-tertiary {
+  --color-icon: var(--figma-color-bg-warning-tertiary);
 }
 
 @utility border-figma {
@@ -1818,6 +2074,10 @@
   stroke: var(--figma-color-border);
 }
 
+@utility icon-figma-border {
+  --color-icon: var(--figma-color-border);
+}
+
 @utility border-figma-brand {
   border-color: var(--figma-color-border-brand);
 }
@@ -1844,6 +2104,10 @@
 
 @utility stroke-figma-border-brand {
   stroke: var(--figma-color-border-brand);
+}
+
+@utility icon-figma-border-brand {
+  --color-icon: var(--figma-color-border-brand);
 }
 
 @utility border-figma-brand-strong {
@@ -1874,6 +2138,10 @@
   stroke: var(--figma-color-border-brand-strong);
 }
 
+@utility icon-figma-border-brand-strong {
+  --color-icon: var(--figma-color-border-brand-strong);
+}
+
 @utility border-figma-component {
   border-color: var(--figma-color-border-component);
 }
@@ -1900,6 +2168,10 @@
 
 @utility stroke-figma-border-component {
   stroke: var(--figma-color-border-component);
+}
+
+@utility icon-figma-border-component {
+  --color-icon: var(--figma-color-border-component);
 }
 
 @utility border-figma-component-hover {
@@ -1930,6 +2202,10 @@
   stroke: var(--figma-color-border-component-hover);
 }
 
+@utility icon-figma-border-component-hover {
+  --color-icon: var(--figma-color-border-component-hover);
+}
+
 @utility border-figma-component-strong {
   border-color: var(--figma-color-border-component-strong);
 }
@@ -1956,6 +2232,10 @@
 
 @utility stroke-figma-border-component-strong {
   stroke: var(--figma-color-border-component-strong);
+}
+
+@utility icon-figma-border-component-strong {
+  --color-icon: var(--figma-color-border-component-strong);
 }
 
 @utility border-figma-danger {
@@ -1986,6 +2266,10 @@
   stroke: var(--figma-color-border-danger);
 }
 
+@utility icon-figma-border-danger {
+  --color-icon: var(--figma-color-border-danger);
+}
+
 @utility border-figma-danger-strong {
   border-color: var(--figma-color-border-danger-strong);
 }
@@ -2012,6 +2296,10 @@
 
 @utility stroke-figma-border-danger-strong {
   stroke: var(--figma-color-border-danger-strong);
+}
+
+@utility icon-figma-border-danger-strong {
+  --color-icon: var(--figma-color-border-danger-strong);
 }
 
 @utility border-figma-disabled {
@@ -2042,6 +2330,10 @@
   stroke: var(--figma-color-border-disabled);
 }
 
+@utility icon-figma-border-disabled {
+  --color-icon: var(--figma-color-border-disabled);
+}
+
 @utility border-figma-disabled-strong {
   border-color: var(--figma-color-border-disabled-strong);
 }
@@ -2068,6 +2360,10 @@
 
 @utility stroke-figma-border-disabled-strong {
   stroke: var(--figma-color-border-disabled-strong);
+}
+
+@utility icon-figma-border-disabled-strong {
+  --color-icon: var(--figma-color-border-disabled-strong);
 }
 
 @utility border-figma-menu {
@@ -2098,6 +2394,10 @@
   stroke: var(--figma-color-border-menu);
 }
 
+@utility icon-figma-border-menu {
+  --color-icon: var(--figma-color-border-menu);
+}
+
 @utility border-figma-menu-disabled {
   border-color: var(--figma-color-border-menu-disabled);
 }
@@ -2124,6 +2424,10 @@
 
 @utility stroke-figma-border-menu-disabled {
   stroke: var(--figma-color-border-menu-disabled);
+}
+
+@utility icon-figma-border-menu-disabled {
+  --color-icon: var(--figma-color-border-menu-disabled);
 }
 
 @utility border-figma-menu-disabled-strong {
@@ -2154,6 +2458,10 @@
   stroke: var(--figma-color-border-menu-disabled-strong);
 }
 
+@utility icon-figma-border-menu-disabled-strong {
+  --color-icon: var(--figma-color-border-menu-disabled-strong);
+}
+
 @utility border-figma-menu-onselected {
   border-color: var(--figma-color-border-menu-onselected);
 }
@@ -2180,6 +2488,10 @@
 
 @utility stroke-figma-border-menu-onselected {
   stroke: var(--figma-color-border-menu-onselected);
+}
+
+@utility icon-figma-border-menu-onselected {
+  --color-icon: var(--figma-color-border-menu-onselected);
 }
 
 @utility border-figma-menu-onselected-strong {
@@ -2210,6 +2522,10 @@
   stroke: var(--figma-color-border-menu-onselected-strong);
 }
 
+@utility icon-figma-border-menu-onselected-strong {
+  --color-icon: var(--figma-color-border-menu-onselected-strong);
+}
+
 @utility border-figma-menu-selected {
   border-color: var(--figma-color-border-menu-selected);
 }
@@ -2236,6 +2552,10 @@
 
 @utility stroke-figma-border-menu-selected {
   stroke: var(--figma-color-border-menu-selected);
+}
+
+@utility icon-figma-border-menu-selected {
+  --color-icon: var(--figma-color-border-menu-selected);
 }
 
 @utility border-figma-menu-selected-strong {
@@ -2266,6 +2586,10 @@
   stroke: var(--figma-color-border-menu-selected-strong);
 }
 
+@utility icon-figma-border-menu-selected-strong {
+  --color-icon: var(--figma-color-border-menu-selected-strong);
+}
+
 @utility border-figma-menu-strong {
   border-color: var(--figma-color-border-menu-strong);
 }
@@ -2292,6 +2616,10 @@
 
 @utility stroke-figma-border-menu-strong {
   stroke: var(--figma-color-border-menu-strong);
+}
+
+@utility icon-figma-border-menu-strong {
+  --color-icon: var(--figma-color-border-menu-strong);
 }
 
 @utility border-figma-onbrand {
@@ -2322,6 +2650,10 @@
   stroke: var(--figma-color-border-onbrand);
 }
 
+@utility icon-figma-border-onbrand {
+  --color-icon: var(--figma-color-border-onbrand);
+}
+
 @utility border-figma-onbrand-strong {
   border-color: var(--figma-color-border-onbrand-strong);
 }
@@ -2348,6 +2680,10 @@
 
 @utility stroke-figma-border-onbrand-strong {
   stroke: var(--figma-color-border-onbrand-strong);
+}
+
+@utility icon-figma-border-onbrand-strong {
+  --color-icon: var(--figma-color-border-onbrand-strong);
 }
 
 @utility border-figma-oncomponent {
@@ -2378,6 +2714,10 @@
   stroke: var(--figma-color-border-oncomponent);
 }
 
+@utility icon-figma-border-oncomponent {
+  --color-icon: var(--figma-color-border-oncomponent);
+}
+
 @utility border-figma-oncomponent-strong {
   border-color: var(--figma-color-border-oncomponent-strong);
 }
@@ -2404,6 +2744,10 @@
 
 @utility stroke-figma-border-oncomponent-strong {
   stroke: var(--figma-color-border-oncomponent-strong);
+}
+
+@utility icon-figma-border-oncomponent-strong {
+  --color-icon: var(--figma-color-border-oncomponent-strong);
 }
 
 @utility border-figma-ondanger {
@@ -2434,6 +2778,10 @@
   stroke: var(--figma-color-border-ondanger);
 }
 
+@utility icon-figma-border-ondanger {
+  --color-icon: var(--figma-color-border-ondanger);
+}
+
 @utility border-figma-ondanger-strong {
   border-color: var(--figma-color-border-ondanger-strong);
 }
@@ -2460,6 +2808,10 @@
 
 @utility stroke-figma-border-ondanger-strong {
   stroke: var(--figma-color-border-ondanger-strong);
+}
+
+@utility icon-figma-border-ondanger-strong {
+  --color-icon: var(--figma-color-border-ondanger-strong);
 }
 
 @utility border-figma-onselected {
@@ -2490,6 +2842,10 @@
   stroke: var(--figma-color-border-onselected);
 }
 
+@utility icon-figma-border-onselected {
+  --color-icon: var(--figma-color-border-onselected);
+}
+
 @utility border-figma-onselected-strong {
   border-color: var(--figma-color-border-onselected-strong);
 }
@@ -2516,6 +2872,10 @@
 
 @utility stroke-figma-border-onselected-strong {
   stroke: var(--figma-color-border-onselected-strong);
+}
+
+@utility icon-figma-border-onselected-strong {
+  --color-icon: var(--figma-color-border-onselected-strong);
 }
 
 @utility border-figma-onsuccess {
@@ -2546,6 +2906,10 @@
   stroke: var(--figma-color-border-onsuccess);
 }
 
+@utility icon-figma-border-onsuccess {
+  --color-icon: var(--figma-color-border-onsuccess);
+}
+
 @utility border-figma-onsuccess-strong {
   border-color: var(--figma-color-border-onsuccess-strong);
 }
@@ -2572,6 +2936,10 @@
 
 @utility stroke-figma-border-onsuccess-strong {
   stroke: var(--figma-color-border-onsuccess-strong);
+}
+
+@utility icon-figma-border-onsuccess-strong {
+  --color-icon: var(--figma-color-border-onsuccess-strong);
 }
 
 @utility border-figma-onwarning {
@@ -2602,6 +2970,10 @@
   stroke: var(--figma-color-border-onwarning);
 }
 
+@utility icon-figma-border-onwarning {
+  --color-icon: var(--figma-color-border-onwarning);
+}
+
 @utility border-figma-onwarning-strong {
   border-color: var(--figma-color-border-onwarning-strong);
 }
@@ -2628,6 +3000,10 @@
 
 @utility stroke-figma-border-onwarning-strong {
   stroke: var(--figma-color-border-onwarning-strong);
+}
+
+@utility icon-figma-border-onwarning-strong {
+  --color-icon: var(--figma-color-border-onwarning-strong);
 }
 
 @utility border-figma-selected {
@@ -2658,6 +3034,10 @@
   stroke: var(--figma-color-border-selected);
 }
 
+@utility icon-figma-border-selected {
+  --color-icon: var(--figma-color-border-selected);
+}
+
 @utility border-figma-selected-strong {
   border-color: var(--figma-color-border-selected-strong);
 }
@@ -2684,6 +3064,10 @@
 
 @utility stroke-figma-border-selected-strong {
   stroke: var(--figma-color-border-selected-strong);
+}
+
+@utility icon-figma-border-selected-strong {
+  --color-icon: var(--figma-color-border-selected-strong);
 }
 
 @utility border-figma-strong {
@@ -2714,6 +3098,10 @@
   stroke: var(--figma-color-border-strong);
 }
 
+@utility icon-figma-border-strong {
+  --color-icon: var(--figma-color-border-strong);
+}
+
 @utility border-figma-success {
   border-color: var(--figma-color-border-success);
 }
@@ -2740,6 +3128,10 @@
 
 @utility stroke-figma-border-success {
   stroke: var(--figma-color-border-success);
+}
+
+@utility icon-figma-border-success {
+  --color-icon: var(--figma-color-border-success);
 }
 
 @utility border-figma-success-strong {
@@ -2770,6 +3162,10 @@
   stroke: var(--figma-color-border-success-strong);
 }
 
+@utility icon-figma-border-success-strong {
+  --color-icon: var(--figma-color-border-success-strong);
+}
+
 @utility border-figma-tooltip {
   border-color: var(--figma-color-border-tooltip);
 }
@@ -2796,6 +3192,10 @@
 
 @utility stroke-figma-border-tooltip {
   stroke: var(--figma-color-border-tooltip);
+}
+
+@utility icon-figma-border-tooltip {
+  --color-icon: var(--figma-color-border-tooltip);
 }
 
 @utility border-figma-tooltip-disabled {
@@ -2826,6 +3226,10 @@
   stroke: var(--figma-color-border-tooltip-disabled);
 }
 
+@utility icon-figma-border-tooltip-disabled {
+  --color-icon: var(--figma-color-border-tooltip-disabled);
+}
+
 @utility border-figma-tooltip-disabled-strong {
   border-color: var(--figma-color-border-tooltip-disabled-strong);
 }
@@ -2852,6 +3256,10 @@
 
 @utility stroke-figma-border-tooltip-disabled-strong {
   stroke: var(--figma-color-border-tooltip-disabled-strong);
+}
+
+@utility icon-figma-border-tooltip-disabled-strong {
+  --color-icon: var(--figma-color-border-tooltip-disabled-strong);
 }
 
 @utility border-figma-tooltip-onselected {
@@ -2882,6 +3290,10 @@
   stroke: var(--figma-color-border-tooltip-onselected);
 }
 
+@utility icon-figma-border-tooltip-onselected {
+  --color-icon: var(--figma-color-border-tooltip-onselected);
+}
+
 @utility border-figma-tooltip-onselected-strong {
   border-color: var(--figma-color-border-tooltip-onselected-strong);
 }
@@ -2908,6 +3320,10 @@
 
 @utility stroke-figma-border-tooltip-onselected-strong {
   stroke: var(--figma-color-border-tooltip-onselected-strong);
+}
+
+@utility icon-figma-border-tooltip-onselected-strong {
+  --color-icon: var(--figma-color-border-tooltip-onselected-strong);
 }
 
 @utility border-figma-tooltip-selected {
@@ -2938,6 +3354,10 @@
   stroke: var(--figma-color-border-tooltip-selected);
 }
 
+@utility icon-figma-border-tooltip-selected {
+  --color-icon: var(--figma-color-border-tooltip-selected);
+}
+
 @utility border-figma-tooltip-selected-strong {
   border-color: var(--figma-color-border-tooltip-selected-strong);
 }
@@ -2964,6 +3384,10 @@
 
 @utility stroke-figma-border-tooltip-selected-strong {
   stroke: var(--figma-color-border-tooltip-selected-strong);
+}
+
+@utility icon-figma-border-tooltip-selected-strong {
+  --color-icon: var(--figma-color-border-tooltip-selected-strong);
 }
 
 @utility border-figma-tooltip-strong {
@@ -2994,6 +3418,10 @@
   stroke: var(--figma-color-border-tooltip-strong);
 }
 
+@utility icon-figma-border-tooltip-strong {
+  --color-icon: var(--figma-color-border-tooltip-strong);
+}
+
 @utility border-figma-warning {
   border-color: var(--figma-color-border-warning);
 }
@@ -3020,6 +3448,10 @@
 
 @utility stroke-figma-border-warning {
   stroke: var(--figma-color-border-warning);
+}
+
+@utility icon-figma-border-warning {
+  --color-icon: var(--figma-color-border-warning);
 }
 
 @utility border-figma-warning-strong {
@@ -3050,6 +3482,10 @@
   stroke: var(--figma-color-border-warning-strong);
 }
 
+@utility icon-figma-border-warning-strong {
+  --color-icon: var(--figma-color-border-warning-strong);
+}
+
 @utility bg-figma-icon {
   background-color: var(--figma-color-icon);
 }
@@ -3072,6 +3508,10 @@
 
 @utility stroke-figma-icon {
   stroke: var(--figma-color-icon);
+}
+
+@utility icon-figma {
+  --color-icon: var(--figma-color-icon);
 }
 
 @utility bg-figma-icon-brand {
@@ -3098,6 +3538,10 @@
   stroke: var(--figma-color-icon-brand);
 }
 
+@utility icon-figma-brand {
+  --color-icon: var(--figma-color-icon-brand);
+}
+
 @utility bg-figma-icon-brand-pressed {
   background-color: var(--figma-color-icon-brand-pressed);
 }
@@ -3120,6 +3564,10 @@
 
 @utility stroke-figma-icon-brand-pressed {
   stroke: var(--figma-color-icon-brand-pressed);
+}
+
+@utility icon-figma-brand-pressed {
+  --color-icon: var(--figma-color-icon-brand-pressed);
 }
 
 @utility bg-figma-icon-brand-secondary {
@@ -3146,6 +3594,10 @@
   stroke: var(--figma-color-icon-brand-secondary);
 }
 
+@utility icon-figma-brand-secondary {
+  --color-icon: var(--figma-color-icon-brand-secondary);
+}
+
 @utility bg-figma-icon-brand-tertiary {
   background-color: var(--figma-color-icon-brand-tertiary);
 }
@@ -3168,6 +3620,10 @@
 
 @utility stroke-figma-icon-brand-tertiary {
   stroke: var(--figma-color-icon-brand-tertiary);
+}
+
+@utility icon-figma-brand-tertiary {
+  --color-icon: var(--figma-color-icon-brand-tertiary);
 }
 
 @utility bg-figma-icon-component {
@@ -3194,6 +3650,10 @@
   stroke: var(--figma-color-icon-component);
 }
 
+@utility icon-figma-component {
+  --color-icon: var(--figma-color-icon-component);
+}
+
 @utility bg-figma-icon-component-pressed {
   background-color: var(--figma-color-icon-component-pressed);
 }
@@ -3216,6 +3676,10 @@
 
 @utility stroke-figma-icon-component-pressed {
   stroke: var(--figma-color-icon-component-pressed);
+}
+
+@utility icon-figma-component-pressed {
+  --color-icon: var(--figma-color-icon-component-pressed);
 }
 
 @utility bg-figma-icon-component-secondary {
@@ -3242,6 +3706,10 @@
   stroke: var(--figma-color-icon-component-secondary);
 }
 
+@utility icon-figma-component-secondary {
+  --color-icon: var(--figma-color-icon-component-secondary);
+}
+
 @utility bg-figma-icon-component-tertiary {
   background-color: var(--figma-color-icon-component-tertiary);
 }
@@ -3264,6 +3732,10 @@
 
 @utility stroke-figma-icon-component-tertiary {
   stroke: var(--figma-color-icon-component-tertiary);
+}
+
+@utility icon-figma-component-tertiary {
+  --color-icon: var(--figma-color-icon-component-tertiary);
 }
 
 @utility bg-figma-icon-danger {
@@ -3290,6 +3762,10 @@
   stroke: var(--figma-color-icon-danger);
 }
 
+@utility icon-figma-danger {
+  --color-icon: var(--figma-color-icon-danger);
+}
+
 @utility bg-figma-icon-danger-hover {
   background-color: var(--figma-color-icon-danger-hover);
 }
@@ -3312,6 +3788,10 @@
 
 @utility stroke-figma-icon-danger-hover {
   stroke: var(--figma-color-icon-danger-hover);
+}
+
+@utility icon-figma-danger-hover {
+  --color-icon: var(--figma-color-icon-danger-hover);
 }
 
 @utility bg-figma-icon-danger-pressed {
@@ -3338,6 +3818,10 @@
   stroke: var(--figma-color-icon-danger-pressed);
 }
 
+@utility icon-figma-danger-pressed {
+  --color-icon: var(--figma-color-icon-danger-pressed);
+}
+
 @utility bg-figma-icon-danger-secondary {
   background-color: var(--figma-color-icon-danger-secondary);
 }
@@ -3360,6 +3844,10 @@
 
 @utility stroke-figma-icon-danger-secondary {
   stroke: var(--figma-color-icon-danger-secondary);
+}
+
+@utility icon-figma-danger-secondary {
+  --color-icon: var(--figma-color-icon-danger-secondary);
 }
 
 @utility bg-figma-icon-danger-secondary-hover {
@@ -3386,6 +3874,10 @@
   stroke: var(--figma-color-icon-danger-secondary-hover);
 }
 
+@utility icon-figma-danger-secondary-hover {
+  --color-icon: var(--figma-color-icon-danger-secondary-hover);
+}
+
 @utility bg-figma-icon-danger-tertiary {
   background-color: var(--figma-color-icon-danger-tertiary);
 }
@@ -3408,6 +3900,10 @@
 
 @utility stroke-figma-icon-danger-tertiary {
   stroke: var(--figma-color-icon-danger-tertiary);
+}
+
+@utility icon-figma-danger-tertiary {
+  --color-icon: var(--figma-color-icon-danger-tertiary);
 }
 
 @utility bg-figma-icon-disabled {
@@ -3434,6 +3930,10 @@
   stroke: var(--figma-color-icon-disabled);
 }
 
+@utility icon-figma-disabled {
+  --color-icon: var(--figma-color-icon-disabled);
+}
+
 @utility bg-figma-icon-hover {
   background-color: var(--figma-color-icon-hover);
 }
@@ -3456,6 +3956,10 @@
 
 @utility stroke-figma-icon-hover {
   stroke: var(--figma-color-icon-hover);
+}
+
+@utility icon-figma-hover {
+  --color-icon: var(--figma-color-icon-hover);
 }
 
 @utility bg-figma-icon-menu {
@@ -3482,6 +3986,10 @@
   stroke: var(--figma-color-icon-menu);
 }
 
+@utility icon-figma-menu {
+  --color-icon: var(--figma-color-icon-menu);
+}
+
 @utility bg-figma-icon-menu-danger {
   background-color: var(--figma-color-icon-menu-danger);
 }
@@ -3504,6 +4012,10 @@
 
 @utility stroke-figma-icon-menu-danger {
   stroke: var(--figma-color-icon-menu-danger);
+}
+
+@utility icon-figma-menu-danger {
+  --color-icon: var(--figma-color-icon-menu-danger);
 }
 
 @utility bg-figma-icon-menu-disabled {
@@ -3530,6 +4042,10 @@
   stroke: var(--figma-color-icon-menu-disabled);
 }
 
+@utility icon-figma-menu-disabled {
+  --color-icon: var(--figma-color-icon-menu-disabled);
+}
+
 @utility bg-figma-icon-menu-hover {
   background-color: var(--figma-color-icon-menu-hover);
 }
@@ -3552,6 +4068,10 @@
 
 @utility stroke-figma-icon-menu-hover {
   stroke: var(--figma-color-icon-menu-hover);
+}
+
+@utility icon-figma-menu-hover {
+  --color-icon: var(--figma-color-icon-menu-hover);
 }
 
 @utility bg-figma-icon-menu-ondisabled {
@@ -3578,6 +4098,10 @@
   stroke: var(--figma-color-icon-menu-ondisabled);
 }
 
+@utility icon-figma-menu-ondisabled {
+  --color-icon: var(--figma-color-icon-menu-ondisabled);
+}
+
 @utility bg-figma-icon-menu-onselected {
   background-color: var(--figma-color-icon-menu-onselected);
 }
@@ -3600,6 +4124,10 @@
 
 @utility stroke-figma-icon-menu-onselected {
   stroke: var(--figma-color-icon-menu-onselected);
+}
+
+@utility icon-figma-menu-onselected {
+  --color-icon: var(--figma-color-icon-menu-onselected);
 }
 
 @utility bg-figma-icon-menu-pressed {
@@ -3626,6 +4154,10 @@
   stroke: var(--figma-color-icon-menu-pressed);
 }
 
+@utility icon-figma-menu-pressed {
+  --color-icon: var(--figma-color-icon-menu-pressed);
+}
+
 @utility bg-figma-icon-menu-secondary {
   background-color: var(--figma-color-icon-menu-secondary);
 }
@@ -3648,6 +4180,10 @@
 
 @utility stroke-figma-icon-menu-secondary {
   stroke: var(--figma-color-icon-menu-secondary);
+}
+
+@utility icon-figma-menu-secondary {
+  --color-icon: var(--figma-color-icon-menu-secondary);
 }
 
 @utility bg-figma-icon-menu-secondary-hover {
@@ -3674,6 +4210,10 @@
   stroke: var(--figma-color-icon-menu-secondary-hover);
 }
 
+@utility icon-figma-menu-secondary-hover {
+  --color-icon: var(--figma-color-icon-menu-secondary-hover);
+}
+
 @utility bg-figma-icon-menu-selected {
   background-color: var(--figma-color-icon-menu-selected);
 }
@@ -3696,6 +4236,10 @@
 
 @utility stroke-figma-icon-menu-selected {
   stroke: var(--figma-color-icon-menu-selected);
+}
+
+@utility icon-figma-menu-selected {
+  --color-icon: var(--figma-color-icon-menu-selected);
 }
 
 @utility bg-figma-icon-menu-selected-secondary {
@@ -3722,6 +4266,10 @@
   stroke: var(--figma-color-icon-menu-selected-secondary);
 }
 
+@utility icon-figma-menu-selected-secondary {
+  --color-icon: var(--figma-color-icon-menu-selected-secondary);
+}
+
 @utility bg-figma-icon-menu-selected-tertiary {
   background-color: var(--figma-color-icon-menu-selected-tertiary);
 }
@@ -3744,6 +4292,10 @@
 
 @utility stroke-figma-icon-menu-selected-tertiary {
   stroke: var(--figma-color-icon-menu-selected-tertiary);
+}
+
+@utility icon-figma-menu-selected-tertiary {
+  --color-icon: var(--figma-color-icon-menu-selected-tertiary);
 }
 
 @utility bg-figma-icon-menu-tertiary {
@@ -3770,6 +4322,10 @@
   stroke: var(--figma-color-icon-menu-tertiary);
 }
 
+@utility icon-figma-menu-tertiary {
+  --color-icon: var(--figma-color-icon-menu-tertiary);
+}
+
 @utility bg-figma-icon-menu-tertiary-hover {
   background-color: var(--figma-color-icon-menu-tertiary-hover);
 }
@@ -3792,6 +4348,10 @@
 
 @utility stroke-figma-icon-menu-tertiary-hover {
   stroke: var(--figma-color-icon-menu-tertiary-hover);
+}
+
+@utility icon-figma-menu-tertiary-hover {
+  --color-icon: var(--figma-color-icon-menu-tertiary-hover);
 }
 
 @utility bg-figma-icon-menu-warning {
@@ -3818,6 +4378,10 @@
   stroke: var(--figma-color-icon-menu-warning);
 }
 
+@utility icon-figma-menu-warning {
+  --color-icon: var(--figma-color-icon-menu-warning);
+}
+
 @utility bg-figma-icon-onbrand {
   background-color: var(--figma-color-icon-onbrand);
 }
@@ -3840,6 +4404,10 @@
 
 @utility stroke-figma-icon-onbrand {
   stroke: var(--figma-color-icon-onbrand);
+}
+
+@utility icon-figma-onbrand {
+  --color-icon: var(--figma-color-icon-onbrand);
 }
 
 @utility bg-figma-icon-onbrand-secondary {
@@ -3866,6 +4434,10 @@
   stroke: var(--figma-color-icon-onbrand-secondary);
 }
 
+@utility icon-figma-onbrand-secondary {
+  --color-icon: var(--figma-color-icon-onbrand-secondary);
+}
+
 @utility bg-figma-icon-onbrand-tertiary {
   background-color: var(--figma-color-icon-onbrand-tertiary);
 }
@@ -3888,6 +4460,10 @@
 
 @utility stroke-figma-icon-onbrand-tertiary {
   stroke: var(--figma-color-icon-onbrand-tertiary);
+}
+
+@utility icon-figma-onbrand-tertiary {
+  --color-icon: var(--figma-color-icon-onbrand-tertiary);
 }
 
 @utility bg-figma-icon-oncomponent {
@@ -3914,6 +4490,10 @@
   stroke: var(--figma-color-icon-oncomponent);
 }
 
+@utility icon-figma-oncomponent {
+  --color-icon: var(--figma-color-icon-oncomponent);
+}
+
 @utility bg-figma-icon-oncomponent-secondary {
   background-color: var(--figma-color-icon-oncomponent-secondary);
 }
@@ -3936,6 +4516,10 @@
 
 @utility stroke-figma-icon-oncomponent-secondary {
   stroke: var(--figma-color-icon-oncomponent-secondary);
+}
+
+@utility icon-figma-oncomponent-secondary {
+  --color-icon: var(--figma-color-icon-oncomponent-secondary);
 }
 
 @utility bg-figma-icon-oncomponent-tertiary {
@@ -3962,6 +4546,10 @@
   stroke: var(--figma-color-icon-oncomponent-tertiary);
 }
 
+@utility icon-figma-oncomponent-tertiary {
+  --color-icon: var(--figma-color-icon-oncomponent-tertiary);
+}
+
 @utility bg-figma-icon-ondanger {
   background-color: var(--figma-color-icon-ondanger);
 }
@@ -3984,6 +4572,10 @@
 
 @utility stroke-figma-icon-ondanger {
   stroke: var(--figma-color-icon-ondanger);
+}
+
+@utility icon-figma-ondanger {
+  --color-icon: var(--figma-color-icon-ondanger);
 }
 
 @utility bg-figma-icon-ondanger-secondary {
@@ -4010,6 +4602,10 @@
   stroke: var(--figma-color-icon-ondanger-secondary);
 }
 
+@utility icon-figma-ondanger-secondary {
+  --color-icon: var(--figma-color-icon-ondanger-secondary);
+}
+
 @utility bg-figma-icon-ondanger-tertiary {
   background-color: var(--figma-color-icon-ondanger-tertiary);
 }
@@ -4032,6 +4628,10 @@
 
 @utility stroke-figma-icon-ondanger-tertiary {
   stroke: var(--figma-color-icon-ondanger-tertiary);
+}
+
+@utility icon-figma-ondanger-tertiary {
+  --color-icon: var(--figma-color-icon-ondanger-tertiary);
 }
 
 @utility bg-figma-icon-ondisabled {
@@ -4058,6 +4658,10 @@
   stroke: var(--figma-color-icon-ondisabled);
 }
 
+@utility icon-figma-ondisabled {
+  --color-icon: var(--figma-color-icon-ondisabled);
+}
+
 @utility bg-figma-icon-oninverse {
   background-color: var(--figma-color-icon-oninverse);
 }
@@ -4080,6 +4684,10 @@
 
 @utility stroke-figma-icon-oninverse {
   stroke: var(--figma-color-icon-oninverse);
+}
+
+@utility icon-figma-oninverse {
+  --color-icon: var(--figma-color-icon-oninverse);
 }
 
 @utility bg-figma-icon-onselected {
@@ -4106,6 +4714,10 @@
   stroke: var(--figma-color-icon-onselected);
 }
 
+@utility icon-figma-onselected {
+  --color-icon: var(--figma-color-icon-onselected);
+}
+
 @utility bg-figma-icon-onselected-secondary {
   background-color: var(--figma-color-icon-onselected-secondary);
 }
@@ -4128,6 +4740,10 @@
 
 @utility stroke-figma-icon-onselected-secondary {
   stroke: var(--figma-color-icon-onselected-secondary);
+}
+
+@utility icon-figma-onselected-secondary {
+  --color-icon: var(--figma-color-icon-onselected-secondary);
 }
 
 @utility bg-figma-icon-onselected-strong {
@@ -4154,6 +4770,10 @@
   stroke: var(--figma-color-icon-onselected-strong);
 }
 
+@utility icon-figma-onselected-strong {
+  --color-icon: var(--figma-color-icon-onselected-strong);
+}
+
 @utility bg-figma-icon-onselected-tertiary {
   background-color: var(--figma-color-icon-onselected-tertiary);
 }
@@ -4176,6 +4796,10 @@
 
 @utility stroke-figma-icon-onselected-tertiary {
   stroke: var(--figma-color-icon-onselected-tertiary);
+}
+
+@utility icon-figma-onselected-tertiary {
+  --color-icon: var(--figma-color-icon-onselected-tertiary);
 }
 
 @utility bg-figma-icon-onsuccess {
@@ -4202,6 +4826,10 @@
   stroke: var(--figma-color-icon-onsuccess);
 }
 
+@utility icon-figma-onsuccess {
+  --color-icon: var(--figma-color-icon-onsuccess);
+}
+
 @utility bg-figma-icon-onsuccess-secondary {
   background-color: var(--figma-color-icon-onsuccess-secondary);
 }
@@ -4224,6 +4852,10 @@
 
 @utility stroke-figma-icon-onsuccess-secondary {
   stroke: var(--figma-color-icon-onsuccess-secondary);
+}
+
+@utility icon-figma-onsuccess-secondary {
+  --color-icon: var(--figma-color-icon-onsuccess-secondary);
 }
 
 @utility bg-figma-icon-onsuccess-tertiary {
@@ -4250,6 +4882,10 @@
   stroke: var(--figma-color-icon-onsuccess-tertiary);
 }
 
+@utility icon-figma-onsuccess-tertiary {
+  --color-icon: var(--figma-color-icon-onsuccess-tertiary);
+}
+
 @utility bg-figma-icon-onwarning {
   background-color: var(--figma-color-icon-onwarning);
 }
@@ -4272,6 +4908,10 @@
 
 @utility stroke-figma-icon-onwarning {
   stroke: var(--figma-color-icon-onwarning);
+}
+
+@utility icon-figma-onwarning {
+  --color-icon: var(--figma-color-icon-onwarning);
 }
 
 @utility bg-figma-icon-onwarning-secondary {
@@ -4298,6 +4938,10 @@
   stroke: var(--figma-color-icon-onwarning-secondary);
 }
 
+@utility icon-figma-onwarning-secondary {
+  --color-icon: var(--figma-color-icon-onwarning-secondary);
+}
+
 @utility bg-figma-icon-onwarning-tertiary {
   background-color: var(--figma-color-icon-onwarning-tertiary);
 }
@@ -4320,6 +4964,10 @@
 
 @utility stroke-figma-icon-onwarning-tertiary {
   stroke: var(--figma-color-icon-onwarning-tertiary);
+}
+
+@utility icon-figma-onwarning-tertiary {
+  --color-icon: var(--figma-color-icon-onwarning-tertiary);
 }
 
 @utility bg-figma-icon-pressed {
@@ -4346,6 +4994,10 @@
   stroke: var(--figma-color-icon-pressed);
 }
 
+@utility icon-figma-pressed {
+  --color-icon: var(--figma-color-icon-pressed);
+}
+
 @utility bg-figma-icon-secondary {
   background-color: var(--figma-color-icon-secondary);
 }
@@ -4368,6 +5020,10 @@
 
 @utility stroke-figma-icon-secondary {
   stroke: var(--figma-color-icon-secondary);
+}
+
+@utility icon-figma-secondary {
+  --color-icon: var(--figma-color-icon-secondary);
 }
 
 @utility bg-figma-icon-secondary-hover {
@@ -4394,6 +5050,10 @@
   stroke: var(--figma-color-icon-secondary-hover);
 }
 
+@utility icon-figma-secondary-hover {
+  --color-icon: var(--figma-color-icon-secondary-hover);
+}
+
 @utility bg-figma-icon-selected {
   background-color: var(--figma-color-icon-selected);
 }
@@ -4416,6 +5076,10 @@
 
 @utility stroke-figma-icon-selected {
   stroke: var(--figma-color-icon-selected);
+}
+
+@utility icon-figma-selected {
+  --color-icon: var(--figma-color-icon-selected);
 }
 
 @utility bg-figma-icon-selected-secondary {
@@ -4442,6 +5106,10 @@
   stroke: var(--figma-color-icon-selected-secondary);
 }
 
+@utility icon-figma-selected-secondary {
+  --color-icon: var(--figma-color-icon-selected-secondary);
+}
+
 @utility bg-figma-icon-selected-tertiary {
   background-color: var(--figma-color-icon-selected-tertiary);
 }
@@ -4464,6 +5132,10 @@
 
 @utility stroke-figma-icon-selected-tertiary {
   stroke: var(--figma-color-icon-selected-tertiary);
+}
+
+@utility icon-figma-selected-tertiary {
+  --color-icon: var(--figma-color-icon-selected-tertiary);
 }
 
 @utility bg-figma-icon-success {
@@ -4490,6 +5162,10 @@
   stroke: var(--figma-color-icon-success);
 }
 
+@utility icon-figma-success {
+  --color-icon: var(--figma-color-icon-success);
+}
+
 @utility bg-figma-icon-success-pressed {
   background-color: var(--figma-color-icon-success-pressed);
 }
@@ -4512,6 +5188,10 @@
 
 @utility stroke-figma-icon-success-pressed {
   stroke: var(--figma-color-icon-success-pressed);
+}
+
+@utility icon-figma-success-pressed {
+  --color-icon: var(--figma-color-icon-success-pressed);
 }
 
 @utility bg-figma-icon-success-secondary {
@@ -4538,6 +5218,10 @@
   stroke: var(--figma-color-icon-success-secondary);
 }
 
+@utility icon-figma-success-secondary {
+  --color-icon: var(--figma-color-icon-success-secondary);
+}
+
 @utility bg-figma-icon-success-tertiary {
   background-color: var(--figma-color-icon-success-tertiary);
 }
@@ -4560,6 +5244,10 @@
 
 @utility stroke-figma-icon-success-tertiary {
   stroke: var(--figma-color-icon-success-tertiary);
+}
+
+@utility icon-figma-success-tertiary {
+  --color-icon: var(--figma-color-icon-success-tertiary);
 }
 
 @utility bg-figma-icon-tertiary {
@@ -4586,6 +5274,10 @@
   stroke: var(--figma-color-icon-tertiary);
 }
 
+@utility icon-figma-tertiary {
+  --color-icon: var(--figma-color-icon-tertiary);
+}
+
 @utility bg-figma-icon-tertiary-hover {
   background-color: var(--figma-color-icon-tertiary-hover);
 }
@@ -4608,6 +5300,10 @@
 
 @utility stroke-figma-icon-tertiary-hover {
   stroke: var(--figma-color-icon-tertiary-hover);
+}
+
+@utility icon-figma-tertiary-hover {
+  --color-icon: var(--figma-color-icon-tertiary-hover);
 }
 
 @utility bg-figma-icon-tooltip {
@@ -4634,6 +5330,10 @@
   stroke: var(--figma-color-icon-tooltip);
 }
 
+@utility icon-figma-tooltip {
+  --color-icon: var(--figma-color-icon-tooltip);
+}
+
 @utility bg-figma-icon-tooltip-danger {
   background-color: var(--figma-color-icon-tooltip-danger);
 }
@@ -4656,6 +5356,10 @@
 
 @utility stroke-figma-icon-tooltip-danger {
   stroke: var(--figma-color-icon-tooltip-danger);
+}
+
+@utility icon-figma-tooltip-danger {
+  --color-icon: var(--figma-color-icon-tooltip-danger);
 }
 
 @utility bg-figma-icon-tooltip-disabled {
@@ -4682,6 +5386,10 @@
   stroke: var(--figma-color-icon-tooltip-disabled);
 }
 
+@utility icon-figma-tooltip-disabled {
+  --color-icon: var(--figma-color-icon-tooltip-disabled);
+}
+
 @utility bg-figma-icon-tooltip-hover {
   background-color: var(--figma-color-icon-tooltip-hover);
 }
@@ -4704,6 +5412,10 @@
 
 @utility stroke-figma-icon-tooltip-hover {
   stroke: var(--figma-color-icon-tooltip-hover);
+}
+
+@utility icon-figma-tooltip-hover {
+  --color-icon: var(--figma-color-icon-tooltip-hover);
 }
 
 @utility bg-figma-icon-tooltip-ondisabled {
@@ -4730,6 +5442,10 @@
   stroke: var(--figma-color-icon-tooltip-ondisabled);
 }
 
+@utility icon-figma-tooltip-ondisabled {
+  --color-icon: var(--figma-color-icon-tooltip-ondisabled);
+}
+
 @utility bg-figma-icon-tooltip-onselected {
   background-color: var(--figma-color-icon-tooltip-onselected);
 }
@@ -4752,6 +5468,10 @@
 
 @utility stroke-figma-icon-tooltip-onselected {
   stroke: var(--figma-color-icon-tooltip-onselected);
+}
+
+@utility icon-figma-tooltip-onselected {
+  --color-icon: var(--figma-color-icon-tooltip-onselected);
 }
 
 @utility bg-figma-icon-tooltip-pressed {
@@ -4778,6 +5498,10 @@
   stroke: var(--figma-color-icon-tooltip-pressed);
 }
 
+@utility icon-figma-tooltip-pressed {
+  --color-icon: var(--figma-color-icon-tooltip-pressed);
+}
+
 @utility bg-figma-icon-tooltip-secondary {
   background-color: var(--figma-color-icon-tooltip-secondary);
 }
@@ -4800,6 +5524,10 @@
 
 @utility stroke-figma-icon-tooltip-secondary {
   stroke: var(--figma-color-icon-tooltip-secondary);
+}
+
+@utility icon-figma-tooltip-secondary {
+  --color-icon: var(--figma-color-icon-tooltip-secondary);
 }
 
 @utility bg-figma-icon-tooltip-secondary-hover {
@@ -4826,6 +5554,10 @@
   stroke: var(--figma-color-icon-tooltip-secondary-hover);
 }
 
+@utility icon-figma-tooltip-secondary-hover {
+  --color-icon: var(--figma-color-icon-tooltip-secondary-hover);
+}
+
 @utility bg-figma-icon-tooltip-selected {
   background-color: var(--figma-color-icon-tooltip-selected);
 }
@@ -4848,6 +5580,10 @@
 
 @utility stroke-figma-icon-tooltip-selected {
   stroke: var(--figma-color-icon-tooltip-selected);
+}
+
+@utility icon-figma-tooltip-selected {
+  --color-icon: var(--figma-color-icon-tooltip-selected);
 }
 
 @utility bg-figma-icon-tooltip-selected-secondary {
@@ -4874,6 +5610,10 @@
   stroke: var(--figma-color-icon-tooltip-selected-secondary);
 }
 
+@utility icon-figma-tooltip-selected-secondary {
+  --color-icon: var(--figma-color-icon-tooltip-selected-secondary);
+}
+
 @utility bg-figma-icon-tooltip-selected-tertiary {
   background-color: var(--figma-color-icon-tooltip-selected-tertiary);
 }
@@ -4896,6 +5636,10 @@
 
 @utility stroke-figma-icon-tooltip-selected-tertiary {
   stroke: var(--figma-color-icon-tooltip-selected-tertiary);
+}
+
+@utility icon-figma-tooltip-selected-tertiary {
+  --color-icon: var(--figma-color-icon-tooltip-selected-tertiary);
 }
 
 @utility bg-figma-icon-tooltip-tertiary {
@@ -4922,6 +5666,10 @@
   stroke: var(--figma-color-icon-tooltip-tertiary);
 }
 
+@utility icon-figma-tooltip-tertiary {
+  --color-icon: var(--figma-color-icon-tooltip-tertiary);
+}
+
 @utility bg-figma-icon-tooltip-tertiary-hover {
   background-color: var(--figma-color-icon-tooltip-tertiary-hover);
 }
@@ -4944,6 +5692,10 @@
 
 @utility stroke-figma-icon-tooltip-tertiary-hover {
   stroke: var(--figma-color-icon-tooltip-tertiary-hover);
+}
+
+@utility icon-figma-tooltip-tertiary-hover {
+  --color-icon: var(--figma-color-icon-tooltip-tertiary-hover);
 }
 
 @utility bg-figma-icon-tooltip-warning {
@@ -4970,6 +5722,10 @@
   stroke: var(--figma-color-icon-tooltip-warning);
 }
 
+@utility icon-figma-tooltip-warning {
+  --color-icon: var(--figma-color-icon-tooltip-warning);
+}
+
 @utility bg-figma-icon-warning {
   background-color: var(--figma-color-icon-warning);
 }
@@ -4992,6 +5748,10 @@
 
 @utility stroke-figma-icon-warning {
   stroke: var(--figma-color-icon-warning);
+}
+
+@utility icon-figma-warning {
+  --color-icon: var(--figma-color-icon-warning);
 }
 
 @utility bg-figma-icon-warning-pressed {
@@ -5018,6 +5778,10 @@
   stroke: var(--figma-color-icon-warning-pressed);
 }
 
+@utility icon-figma-warning-pressed {
+  --color-icon: var(--figma-color-icon-warning-pressed);
+}
+
 @utility bg-figma-icon-warning-secondary {
   background-color: var(--figma-color-icon-warning-secondary);
 }
@@ -5042,6 +5806,10 @@
   stroke: var(--figma-color-icon-warning-secondary);
 }
 
+@utility icon-figma-warning-secondary {
+  --color-icon: var(--figma-color-icon-warning-secondary);
+}
+
 @utility bg-figma-icon-warning-tertiary {
   background-color: var(--figma-color-icon-warning-tertiary);
 }
@@ -5064,6 +5832,10 @@
 
 @utility stroke-figma-icon-warning-tertiary {
   stroke: var(--figma-color-icon-warning-tertiary);
+}
+
+@utility icon-figma-warning-tertiary {
+  --color-icon: var(--figma-color-icon-warning-tertiary);
 }
 
 @utility text-figma {
@@ -5094,6 +5866,10 @@
   stroke: var(--figma-color-text);
 }
 
+@utility icon-figma-text {
+  --color-icon: var(--figma-color-text);
+}
+
 @utility text-figma-brand {
   color: var(--figma-color-text-brand);
 }
@@ -5120,6 +5896,10 @@
 
 @utility stroke-figma-text-brand {
   stroke: var(--figma-color-text-brand);
+}
+
+@utility icon-figma-text-brand {
+  --color-icon: var(--figma-color-text-brand);
 }
 
 @utility text-figma-brand-secondary {
@@ -5150,6 +5930,10 @@
   stroke: var(--figma-color-text-brand-secondary);
 }
 
+@utility icon-figma-text-brand-secondary {
+  --color-icon: var(--figma-color-text-brand-secondary);
+}
+
 @utility text-figma-brand-tertiary {
   color: var(--figma-color-text-brand-tertiary);
 }
@@ -5176,6 +5960,10 @@
 
 @utility stroke-figma-text-brand-tertiary {
   stroke: var(--figma-color-text-brand-tertiary);
+}
+
+@utility icon-figma-text-brand-tertiary {
+  --color-icon: var(--figma-color-text-brand-tertiary);
 }
 
 @utility text-figma-component {
@@ -5206,6 +5994,10 @@
   stroke: var(--figma-color-text-component);
 }
 
+@utility icon-figma-text-component {
+  --color-icon: var(--figma-color-text-component);
+}
+
 @utility text-figma-component-pressed {
   color: var(--figma-color-text-component-pressed);
 }
@@ -5232,6 +6024,10 @@
 
 @utility stroke-figma-text-component-pressed {
   stroke: var(--figma-color-text-component-pressed);
+}
+
+@utility icon-figma-text-component-pressed {
+  --color-icon: var(--figma-color-text-component-pressed);
 }
 
 @utility text-figma-component-secondary {
@@ -5262,6 +6058,10 @@
   stroke: var(--figma-color-text-component-secondary);
 }
 
+@utility icon-figma-text-component-secondary {
+  --color-icon: var(--figma-color-text-component-secondary);
+}
+
 @utility text-figma-component-tertiary {
   color: var(--figma-color-text-component-tertiary);
 }
@@ -5288,6 +6088,10 @@
 
 @utility stroke-figma-text-component-tertiary {
   stroke: var(--figma-color-text-component-tertiary);
+}
+
+@utility icon-figma-text-component-tertiary {
+  --color-icon: var(--figma-color-text-component-tertiary);
 }
 
 @utility text-figma-danger {
@@ -5318,6 +6122,10 @@
   stroke: var(--figma-color-text-danger);
 }
 
+@utility icon-figma-text-danger {
+  --color-icon: var(--figma-color-text-danger);
+}
+
 @utility text-figma-danger-secondary {
   color: var(--figma-color-text-danger-secondary);
 }
@@ -5344,6 +6152,10 @@
 
 @utility stroke-figma-text-danger-secondary {
   stroke: var(--figma-color-text-danger-secondary);
+}
+
+@utility icon-figma-text-danger-secondary {
+  --color-icon: var(--figma-color-text-danger-secondary);
 }
 
 @utility text-figma-danger-tertiary {
@@ -5374,6 +6186,10 @@
   stroke: var(--figma-color-text-danger-tertiary);
 }
 
+@utility icon-figma-text-danger-tertiary {
+  --color-icon: var(--figma-color-text-danger-tertiary);
+}
+
 @utility text-figma-disabled {
   color: var(--figma-color-text-disabled);
 }
@@ -5400,6 +6216,10 @@
 
 @utility stroke-figma-text-disabled {
   stroke: var(--figma-color-text-disabled);
+}
+
+@utility icon-figma-text-disabled {
+  --color-icon: var(--figma-color-text-disabled);
 }
 
 @utility text-figma-hover {
@@ -5430,6 +6250,10 @@
   stroke: var(--figma-color-text-hover);
 }
 
+@utility icon-figma-text-hover {
+  --color-icon: var(--figma-color-text-hover);
+}
+
 @utility text-figma-menu {
   color: var(--figma-color-text-menu);
 }
@@ -5456,6 +6280,10 @@
 
 @utility stroke-figma-text-menu {
   stroke: var(--figma-color-text-menu);
+}
+
+@utility icon-figma-text-menu {
+  --color-icon: var(--figma-color-text-menu);
 }
 
 @utility text-figma-menu-danger {
@@ -5486,6 +6314,10 @@
   stroke: var(--figma-color-text-menu-danger);
 }
 
+@utility icon-figma-text-menu-danger {
+  --color-icon: var(--figma-color-text-menu-danger);
+}
+
 @utility text-figma-menu-disabled {
   color: var(--figma-color-text-menu-disabled);
 }
@@ -5512,6 +6344,10 @@
 
 @utility stroke-figma-text-menu-disabled {
   stroke: var(--figma-color-text-menu-disabled);
+}
+
+@utility icon-figma-text-menu-disabled {
+  --color-icon: var(--figma-color-text-menu-disabled);
 }
 
 @utility text-figma-menu-hover {
@@ -5542,6 +6378,10 @@
   stroke: var(--figma-color-text-menu-hover);
 }
 
+@utility icon-figma-text-menu-hover {
+  --color-icon: var(--figma-color-text-menu-hover);
+}
+
 @utility text-figma-menu-ondisabled {
   color: var(--figma-color-text-menu-ondisabled);
 }
@@ -5568,6 +6408,10 @@
 
 @utility stroke-figma-text-menu-ondisabled {
   stroke: var(--figma-color-text-menu-ondisabled);
+}
+
+@utility icon-figma-text-menu-ondisabled {
+  --color-icon: var(--figma-color-text-menu-ondisabled);
 }
 
 @utility text-figma-menu-onselected {
@@ -5598,6 +6442,10 @@
   stroke: var(--figma-color-text-menu-onselected);
 }
 
+@utility icon-figma-text-menu-onselected {
+  --color-icon: var(--figma-color-text-menu-onselected);
+}
+
 @utility text-figma-menu-secondary {
   color: var(--figma-color-text-menu-secondary);
 }
@@ -5624,6 +6472,10 @@
 
 @utility stroke-figma-text-menu-secondary {
   stroke: var(--figma-color-text-menu-secondary);
+}
+
+@utility icon-figma-text-menu-secondary {
+  --color-icon: var(--figma-color-text-menu-secondary);
 }
 
 @utility text-figma-menu-secondary-hover {
@@ -5654,6 +6506,10 @@
   stroke: var(--figma-color-text-menu-secondary-hover);
 }
 
+@utility icon-figma-text-menu-secondary-hover {
+  --color-icon: var(--figma-color-text-menu-secondary-hover);
+}
+
 @utility text-figma-menu-selected {
   color: var(--figma-color-text-menu-selected);
 }
@@ -5680,6 +6536,10 @@
 
 @utility stroke-figma-text-menu-selected {
   stroke: var(--figma-color-text-menu-selected);
+}
+
+@utility icon-figma-text-menu-selected {
+  --color-icon: var(--figma-color-text-menu-selected);
 }
 
 @utility text-figma-menu-selected-secondary {
@@ -5710,6 +6570,10 @@
   stroke: var(--figma-color-text-menu-selected-secondary);
 }
 
+@utility icon-figma-text-menu-selected-secondary {
+  --color-icon: var(--figma-color-text-menu-selected-secondary);
+}
+
 @utility text-figma-menu-selected-tertiary {
   color: var(--figma-color-text-menu-selected-tertiary);
 }
@@ -5736,6 +6600,10 @@
 
 @utility stroke-figma-text-menu-selected-tertiary {
   stroke: var(--figma-color-text-menu-selected-tertiary);
+}
+
+@utility icon-figma-text-menu-selected-tertiary {
+  --color-icon: var(--figma-color-text-menu-selected-tertiary);
 }
 
 @utility text-figma-menu-tertiary {
@@ -5766,6 +6634,10 @@
   stroke: var(--figma-color-text-menu-tertiary);
 }
 
+@utility icon-figma-text-menu-tertiary {
+  --color-icon: var(--figma-color-text-menu-tertiary);
+}
+
 @utility text-figma-menu-tertiary-hover {
   color: var(--figma-color-text-menu-tertiary-hover);
 }
@@ -5792,6 +6664,10 @@
 
 @utility stroke-figma-text-menu-tertiary-hover {
   stroke: var(--figma-color-text-menu-tertiary-hover);
+}
+
+@utility icon-figma-text-menu-tertiary-hover {
+  --color-icon: var(--figma-color-text-menu-tertiary-hover);
 }
 
 @utility text-figma-menu-warning {
@@ -5822,6 +6698,10 @@
   stroke: var(--figma-color-text-menu-warning);
 }
 
+@utility icon-figma-text-menu-warning {
+  --color-icon: var(--figma-color-text-menu-warning);
+}
+
 @utility text-figma-onbrand {
   color: var(--figma-color-text-onbrand);
 }
@@ -5848,6 +6728,10 @@
 
 @utility stroke-figma-text-onbrand {
   stroke: var(--figma-color-text-onbrand);
+}
+
+@utility icon-figma-text-onbrand {
+  --color-icon: var(--figma-color-text-onbrand);
 }
 
 @utility text-figma-onbrand-secondary {
@@ -5878,6 +6762,10 @@
   stroke: var(--figma-color-text-onbrand-secondary);
 }
 
+@utility icon-figma-text-onbrand-secondary {
+  --color-icon: var(--figma-color-text-onbrand-secondary);
+}
+
 @utility text-figma-onbrand-tertiary {
   color: var(--figma-color-text-onbrand-tertiary);
 }
@@ -5904,6 +6792,10 @@
 
 @utility stroke-figma-text-onbrand-tertiary {
   stroke: var(--figma-color-text-onbrand-tertiary);
+}
+
+@utility icon-figma-text-onbrand-tertiary {
+  --color-icon: var(--figma-color-text-onbrand-tertiary);
 }
 
 @utility text-figma-oncomponent {
@@ -5934,6 +6826,10 @@
   stroke: var(--figma-color-text-oncomponent);
 }
 
+@utility icon-figma-text-oncomponent {
+  --color-icon: var(--figma-color-text-oncomponent);
+}
+
 @utility text-figma-oncomponent-secondary {
   color: var(--figma-color-text-oncomponent-secondary);
 }
@@ -5960,6 +6856,10 @@
 
 @utility stroke-figma-text-oncomponent-secondary {
   stroke: var(--figma-color-text-oncomponent-secondary);
+}
+
+@utility icon-figma-text-oncomponent-secondary {
+  --color-icon: var(--figma-color-text-oncomponent-secondary);
 }
 
 @utility text-figma-oncomponent-tertiary {
@@ -5990,6 +6890,10 @@
   stroke: var(--figma-color-text-oncomponent-tertiary);
 }
 
+@utility icon-figma-text-oncomponent-tertiary {
+  --color-icon: var(--figma-color-text-oncomponent-tertiary);
+}
+
 @utility text-figma-ondanger {
   color: var(--figma-color-text-ondanger);
 }
@@ -6016,6 +6920,10 @@
 
 @utility stroke-figma-text-ondanger {
   stroke: var(--figma-color-text-ondanger);
+}
+
+@utility icon-figma-text-ondanger {
+  --color-icon: var(--figma-color-text-ondanger);
 }
 
 @utility text-figma-ondanger-secondary {
@@ -6046,6 +6954,10 @@
   stroke: var(--figma-color-text-ondanger-secondary);
 }
 
+@utility icon-figma-text-ondanger-secondary {
+  --color-icon: var(--figma-color-text-ondanger-secondary);
+}
+
 @utility text-figma-ondanger-tertiary {
   color: var(--figma-color-text-ondanger-tertiary);
 }
@@ -6072,6 +6984,10 @@
 
 @utility stroke-figma-text-ondanger-tertiary {
   stroke: var(--figma-color-text-ondanger-tertiary);
+}
+
+@utility icon-figma-text-ondanger-tertiary {
+  --color-icon: var(--figma-color-text-ondanger-tertiary);
 }
 
 @utility text-figma-ondisabled {
@@ -6102,6 +7018,10 @@
   stroke: var(--figma-color-text-ondisabled);
 }
 
+@utility icon-figma-text-ondisabled {
+  --color-icon: var(--figma-color-text-ondisabled);
+}
+
 @utility text-figma-oninverse {
   color: var(--figma-color-text-oninverse);
 }
@@ -6128,6 +7048,10 @@
 
 @utility stroke-figma-text-oninverse {
   stroke: var(--figma-color-text-oninverse);
+}
+
+@utility icon-figma-text-oninverse {
+  --color-icon: var(--figma-color-text-oninverse);
 }
 
 @utility text-figma-onselected {
@@ -6158,6 +7082,10 @@
   stroke: var(--figma-color-text-onselected);
 }
 
+@utility icon-figma-text-onselected {
+  --color-icon: var(--figma-color-text-onselected);
+}
+
 @utility text-figma-onselected-secondary {
   color: var(--figma-color-text-onselected-secondary);
 }
@@ -6184,6 +7112,10 @@
 
 @utility stroke-figma-text-onselected-secondary {
   stroke: var(--figma-color-text-onselected-secondary);
+}
+
+@utility icon-figma-text-onselected-secondary {
+  --color-icon: var(--figma-color-text-onselected-secondary);
 }
 
 @utility text-figma-onselected-strong {
@@ -6214,6 +7146,10 @@
   stroke: var(--figma-color-text-onselected-strong);
 }
 
+@utility icon-figma-text-onselected-strong {
+  --color-icon: var(--figma-color-text-onselected-strong);
+}
+
 @utility text-figma-onselected-tertiary {
   color: var(--figma-color-text-onselected-tertiary);
 }
@@ -6240,6 +7176,10 @@
 
 @utility stroke-figma-text-onselected-tertiary {
   stroke: var(--figma-color-text-onselected-tertiary);
+}
+
+@utility icon-figma-text-onselected-tertiary {
+  --color-icon: var(--figma-color-text-onselected-tertiary);
 }
 
 @utility text-figma-onsuccess {
@@ -6270,6 +7210,10 @@
   stroke: var(--figma-color-text-onsuccess);
 }
 
+@utility icon-figma-text-onsuccess {
+  --color-icon: var(--figma-color-text-onsuccess);
+}
+
 @utility text-figma-onsuccess-secondary {
   color: var(--figma-color-text-onsuccess-secondary);
 }
@@ -6296,6 +7240,10 @@
 
 @utility stroke-figma-text-onsuccess-secondary {
   stroke: var(--figma-color-text-onsuccess-secondary);
+}
+
+@utility icon-figma-text-onsuccess-secondary {
+  --color-icon: var(--figma-color-text-onsuccess-secondary);
 }
 
 @utility text-figma-onsuccess-tertiary {
@@ -6326,6 +7274,10 @@
   stroke: var(--figma-color-text-onsuccess-tertiary);
 }
 
+@utility icon-figma-text-onsuccess-tertiary {
+  --color-icon: var(--figma-color-text-onsuccess-tertiary);
+}
+
 @utility text-figma-onwarning {
   color: var(--figma-color-text-onwarning);
 }
@@ -6352,6 +7304,10 @@
 
 @utility stroke-figma-text-onwarning {
   stroke: var(--figma-color-text-onwarning);
+}
+
+@utility icon-figma-text-onwarning {
+  --color-icon: var(--figma-color-text-onwarning);
 }
 
 @utility text-figma-onwarning-secondary {
@@ -6382,6 +7338,10 @@
   stroke: var(--figma-color-text-onwarning-secondary);
 }
 
+@utility icon-figma-text-onwarning-secondary {
+  --color-icon: var(--figma-color-text-onwarning-secondary);
+}
+
 @utility text-figma-onwarning-tertiary {
   color: var(--figma-color-text-onwarning-tertiary);
 }
@@ -6408,6 +7368,10 @@
 
 @utility stroke-figma-text-onwarning-tertiary {
   stroke: var(--figma-color-text-onwarning-tertiary);
+}
+
+@utility icon-figma-text-onwarning-tertiary {
+  --color-icon: var(--figma-color-text-onwarning-tertiary);
 }
 
 @utility text-figma-secondary {
@@ -6438,6 +7402,10 @@
   stroke: var(--figma-color-text-secondary);
 }
 
+@utility icon-figma-text-secondary {
+  --color-icon: var(--figma-color-text-secondary);
+}
+
 @utility text-figma-secondary-hover {
   color: var(--figma-color-text-secondary-hover);
 }
@@ -6464,6 +7432,10 @@
 
 @utility stroke-figma-text-secondary-hover {
   stroke: var(--figma-color-text-secondary-hover);
+}
+
+@utility icon-figma-text-secondary-hover {
+  --color-icon: var(--figma-color-text-secondary-hover);
 }
 
 @utility text-figma-selected {
@@ -6494,6 +7466,10 @@
   stroke: var(--figma-color-text-selected);
 }
 
+@utility icon-figma-text-selected {
+  --color-icon: var(--figma-color-text-selected);
+}
+
 @utility text-figma-selected-secondary {
   color: var(--figma-color-text-selected-secondary);
 }
@@ -6520,6 +7496,10 @@
 
 @utility stroke-figma-text-selected-secondary {
   stroke: var(--figma-color-text-selected-secondary);
+}
+
+@utility icon-figma-text-selected-secondary {
+  --color-icon: var(--figma-color-text-selected-secondary);
 }
 
 @utility text-figma-selected-tertiary {
@@ -6550,6 +7530,10 @@
   stroke: var(--figma-color-text-selected-tertiary);
 }
 
+@utility icon-figma-text-selected-tertiary {
+  --color-icon: var(--figma-color-text-selected-tertiary);
+}
+
 @utility text-figma-success {
   color: var(--figma-color-text-success);
 }
@@ -6576,6 +7560,10 @@
 
 @utility stroke-figma-text-success {
   stroke: var(--figma-color-text-success);
+}
+
+@utility icon-figma-text-success {
+  --color-icon: var(--figma-color-text-success);
 }
 
 @utility text-figma-success-secondary {
@@ -6606,6 +7594,10 @@
   stroke: var(--figma-color-text-success-secondary);
 }
 
+@utility icon-figma-text-success-secondary {
+  --color-icon: var(--figma-color-text-success-secondary);
+}
+
 @utility text-figma-success-tertiary {
   color: var(--figma-color-text-success-tertiary);
 }
@@ -6632,6 +7624,10 @@
 
 @utility stroke-figma-text-success-tertiary {
   stroke: var(--figma-color-text-success-tertiary);
+}
+
+@utility icon-figma-text-success-tertiary {
+  --color-icon: var(--figma-color-text-success-tertiary);
 }
 
 @utility text-figma-tertiary {
@@ -6662,6 +7658,10 @@
   stroke: var(--figma-color-text-tertiary);
 }
 
+@utility icon-figma-text-tertiary {
+  --color-icon: var(--figma-color-text-tertiary);
+}
+
 @utility text-figma-tertiary-hover {
   color: var(--figma-color-text-tertiary-hover);
 }
@@ -6688,6 +7688,10 @@
 
 @utility stroke-figma-text-tertiary-hover {
   stroke: var(--figma-color-text-tertiary-hover);
+}
+
+@utility icon-figma-text-tertiary-hover {
+  --color-icon: var(--figma-color-text-tertiary-hover);
 }
 
 @utility text-figma-tooltip {
@@ -6718,6 +7722,10 @@
   stroke: var(--figma-color-text-tooltip);
 }
 
+@utility icon-figma-text-tooltip {
+  --color-icon: var(--figma-color-text-tooltip);
+}
+
 @utility text-figma-tooltip-danger {
   color: var(--figma-color-text-tooltip-danger);
 }
@@ -6744,6 +7752,10 @@
 
 @utility stroke-figma-text-tooltip-danger {
   stroke: var(--figma-color-text-tooltip-danger);
+}
+
+@utility icon-figma-text-tooltip-danger {
+  --color-icon: var(--figma-color-text-tooltip-danger);
 }
 
 @utility text-figma-tooltip-disabled {
@@ -6774,6 +7786,10 @@
   stroke: var(--figma-color-text-tooltip-disabled);
 }
 
+@utility icon-figma-text-tooltip-disabled {
+  --color-icon: var(--figma-color-text-tooltip-disabled);
+}
+
 @utility text-figma-tooltip-hover {
   color: var(--figma-color-text-tooltip-hover);
 }
@@ -6800,6 +7816,10 @@
 
 @utility stroke-figma-text-tooltip-hover {
   stroke: var(--figma-color-text-tooltip-hover);
+}
+
+@utility icon-figma-text-tooltip-hover {
+  --color-icon: var(--figma-color-text-tooltip-hover);
 }
 
 @utility text-figma-tooltip-ondisabled {
@@ -6830,6 +7850,10 @@
   stroke: var(--figma-color-text-tooltip-ondisabled);
 }
 
+@utility icon-figma-text-tooltip-ondisabled {
+  --color-icon: var(--figma-color-text-tooltip-ondisabled);
+}
+
 @utility text-figma-tooltip-onselected {
   color: var(--figma-color-text-tooltip-onselected);
 }
@@ -6856,6 +7880,10 @@
 
 @utility stroke-figma-text-tooltip-onselected {
   stroke: var(--figma-color-text-tooltip-onselected);
+}
+
+@utility icon-figma-text-tooltip-onselected {
+  --color-icon: var(--figma-color-text-tooltip-onselected);
 }
 
 @utility text-figma-tooltip-secondary {
@@ -6886,6 +7914,10 @@
   stroke: var(--figma-color-text-tooltip-secondary);
 }
 
+@utility icon-figma-text-tooltip-secondary {
+  --color-icon: var(--figma-color-text-tooltip-secondary);
+}
+
 @utility text-figma-tooltip-secondary-hover {
   color: var(--figma-color-text-tooltip-secondary-hover);
 }
@@ -6912,6 +7944,10 @@
 
 @utility stroke-figma-text-tooltip-secondary-hover {
   stroke: var(--figma-color-text-tooltip-secondary-hover);
+}
+
+@utility icon-figma-text-tooltip-secondary-hover {
+  --color-icon: var(--figma-color-text-tooltip-secondary-hover);
 }
 
 @utility text-figma-tooltip-selected {
@@ -6942,6 +7978,10 @@
   stroke: var(--figma-color-text-tooltip-selected);
 }
 
+@utility icon-figma-text-tooltip-selected {
+  --color-icon: var(--figma-color-text-tooltip-selected);
+}
+
 @utility text-figma-tooltip-selected-secondary {
   color: var(--figma-color-text-tooltip-selected-secondary);
 }
@@ -6968,6 +8008,10 @@
 
 @utility stroke-figma-text-tooltip-selected-secondary {
   stroke: var(--figma-color-text-tooltip-selected-secondary);
+}
+
+@utility icon-figma-text-tooltip-selected-secondary {
+  --color-icon: var(--figma-color-text-tooltip-selected-secondary);
 }
 
 @utility text-figma-tooltip-selected-tertiary {
@@ -6998,6 +8042,10 @@
   stroke: var(--figma-color-text-tooltip-selected-tertiary);
 }
 
+@utility icon-figma-text-tooltip-selected-tertiary {
+  --color-icon: var(--figma-color-text-tooltip-selected-tertiary);
+}
+
 @utility text-figma-tooltip-tertiary {
   color: var(--figma-color-text-tooltip-tertiary);
 }
@@ -7024,6 +8072,10 @@
 
 @utility stroke-figma-text-tooltip-tertiary {
   stroke: var(--figma-color-text-tooltip-tertiary);
+}
+
+@utility icon-figma-text-tooltip-tertiary {
+  --color-icon: var(--figma-color-text-tooltip-tertiary);
 }
 
 @utility text-figma-tooltip-tertiary-hover {
@@ -7054,6 +8106,10 @@
   stroke: var(--figma-color-text-tooltip-tertiary-hover);
 }
 
+@utility icon-figma-text-tooltip-tertiary-hover {
+  --color-icon: var(--figma-color-text-tooltip-tertiary-hover);
+}
+
 @utility text-figma-tooltip-warning {
   color: var(--figma-color-text-tooltip-warning);
 }
@@ -7080,6 +8136,10 @@
 
 @utility stroke-figma-text-tooltip-warning {
   stroke: var(--figma-color-text-tooltip-warning);
+}
+
+@utility icon-figma-text-tooltip-warning {
+  --color-icon: var(--figma-color-text-tooltip-warning);
 }
 
 @utility text-figma-warning {
@@ -7110,6 +8170,10 @@
   stroke: var(--figma-color-text-warning);
 }
 
+@utility icon-figma-text-warning {
+  --color-icon: var(--figma-color-text-warning);
+}
+
 @utility text-figma-warning-secondary {
   color: var(--figma-color-text-warning-secondary);
 }
@@ -7138,6 +8202,10 @@
   stroke: var(--figma-color-text-warning-secondary);
 }
 
+@utility icon-figma-text-warning-secondary {
+  --color-icon: var(--figma-color-text-warning-secondary);
+}
+
 @utility text-figma-warning-tertiary {
   color: var(--figma-color-text-warning-tertiary);
 }
@@ -7164,6 +8232,10 @@
 
 @utility stroke-figma-text-warning-tertiary {
   stroke: var(--figma-color-text-warning-tertiary);
+}
+
+@utility icon-figma-text-warning-tertiary {
+  --color-icon: var(--figma-color-text-warning-tertiary);
 }
 
 @utility accent-figma-brand {
