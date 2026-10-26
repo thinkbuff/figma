@@ -121,6 +121,19 @@ export const RangeSlider: Story = {
   },
 };
 
+export const Stepper: Story = {
+  args: {
+    hints: [0, 25, 50, 75, 100],
+  },
+};
+
+export const Delta: Story = {
+  args: {
+    hints: [0, 25, 50, 75, 100],
+    baseValue: 50,
+  },
+};
+
 export const CustomStyle: Story = {
   render: function Render(args) {
     const [{ value: values }, updateArgs] = useArgs<{

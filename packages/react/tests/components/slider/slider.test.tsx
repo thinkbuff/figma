@@ -96,6 +96,55 @@ describe('Slider', () => {
     expect(onValueChange).not.toHaveBeenCalled();
   });
 
+  it('renders hint ticks and emphasizes the base value', async () => {
+    const { container } = await render(
+      <Slider
+        defaultValue={[50]}
+        hints={[0, 25, 50, 75, 100]}
+        baseValue={50}
+      />,
+    );
+
+    const hints = container.querySelectorAll('[data-hint]');
+    expect(hints).toHaveLength(5);
+    const emphasized = container.querySelectorAll('[data-hint].bg-figma-icon');
+    expect(emphasized).toHaveLength(1);
+  });
+
+  it('does not snap keyboard steps, so hints are escapable', async () => {
+    await render(
+      <Slider
+        defaultValue={[50]}
+        hints={[50]}
+        step={1}
+      />,
+    );
+
+    const slider = page.getByRole('slider');
+    (slider.element() as HTMLElement).focus();
+
+    // 50 -> 49 must stay there even though 49 is inside the snap threshold.
+    await userEvent.keyboard('{ArrowLeft}');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '49');
+  });
+
+  it('snaps pointer input to the nearest hint within the threshold', async () => {
+    const { container } = await render(
+      <Slider
+        defaultValue={[0]}
+        hints={[50]}
+        step={1}
+      />,
+    );
+
+    const slider = page.getByRole('slider');
+    const root = page.elementLocator(container.firstElementChild as Element);
+    const rect = (root.element() as HTMLElement).getBoundingClientRect();
+    // click at ~49% of the track: inside the 2% snap window around 50
+    await clickAt(root, rect.width * 0.49, rect.height / 2);
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '50');
+  });
+
   it('exposes aria-orientation for vertical sliders', async () => {
     await render(
       <Slider

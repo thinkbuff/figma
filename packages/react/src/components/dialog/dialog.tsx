@@ -35,6 +35,15 @@ DialogOverlay.displayName = 'DialogOverlay';
 
 interface DialogContentProps extends React.ComponentPropsWithRef<typeof DialogPrimitive.Popup> {
   container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
+  /**
+   * UI3 template width: `default` is 320px, `large` is 480px.
+   */
+  size?: 'default' | 'large';
+  /**
+   * Vertical placement. UI3 modals hang near the top (`top`) rather than
+   * dead-center.
+   */
+  placement?: 'top' | 'center';
 }
 
 /**
@@ -44,7 +53,14 @@ interface DialogContentProps extends React.ComponentPropsWithRef<typeof DialogPr
  * - [Docs](https://base-ui.com/react/components/dialog)
  * - [API Reference](https://base-ui.com/react/components/dialog#api-reference)
  */
-function DialogContent({ className, container, ref, ...props }: DialogContentProps) {
+function DialogContent({
+  className,
+  container,
+  size,
+  placement,
+  ref,
+  ...props
+}: DialogContentProps) {
   return (
     <DialogPortal container={container}>
       <DialogOverlay />
@@ -53,17 +69,16 @@ function DialogContent({ className, container, ref, ...props }: DialogContentPro
         className={addClassName(
           className,
           'fixed',
-          'grid',
           'w-full',
-          'max-w-80',
+          size === 'large' ? 'max-w-120' : 'max-w-80',
+          placement === 'center' ? 'top-1/2 -translate-y-1/2' : 'top-[min(10vh,80px)]',
           'left-1/2',
-          'top-1/2',
           '-translate-x-1/2',
-          '-translate-y-1/2',
           'z-50',
+          'max-h-[80%]',
+          'overflow-y-auto',
           'rounded-figma-lg',
           'bg-figma',
-          'p-6',
           'shadow-figma-modal',
           'outline-none',
           'transition-[opacity,scale] duration-150 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
@@ -80,7 +95,15 @@ function DialogHeader({ className, children, ref, ...props }: React.ComponentPro
   return (
     <div
       ref={ref}
-      className={cn('flex', 'items-center', 'pb-6', className)}
+      className={cn(
+        'flex',
+        'h-10',
+        'items-center',
+        'px-2',
+        'border-b',
+        'border-figma-border',
+        className,
+      )}
       {...props}
     >
       {children}
@@ -90,11 +113,31 @@ function DialogHeader({ className, children, ref, ...props }: React.ComponentPro
 
 DialogHeader.displayName = 'DialogHeader';
 
+function DialogSection({ className, ref, ...props }: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <div
+      ref={ref}
+      className={cn('p-4', 'border-b', 'border-figma-border', 'last:border-b-0', className)}
+      {...props}
+    />
+  );
+}
+
+DialogSection.displayName = 'DialogSection';
+
 function DialogFooter({ className, children, ref, ...props }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
       ref={ref}
-      className={cn('flex', 'items-center', 'pt-6', className)}
+      className={cn(
+        'flex',
+        'h-10',
+        'items-center',
+        'px-2',
+        'border-t',
+        'border-figma-border',
+        className,
+      )}
       {...props}
     >
       {children}
@@ -149,6 +192,7 @@ export {
   DialogContent as Content,
   DialogHeader as Header,
   DialogFooter as Footer,
+  DialogSection as Section,
   DialogTitle as Title,
   DialogDescription as Description,
   DialogClose as Close,

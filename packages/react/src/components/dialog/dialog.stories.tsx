@@ -59,19 +59,18 @@ const meta: Meta = {
             <Dialog.Title>Edit profile</Dialog.Title>
             <Dialog.Close
               render={
-                <ActionIcon
-                  aria-label="Close"
-                  className="-mr-2 -mt-2"
-                >
+                <ActionIcon aria-label="Close">
                   <span className="icon-[mdi--window-close] size-4"></span>
                 </ActionIcon>
               }
             />
           </Dialog.Header>
-          <Dialog.Description>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </Dialog.Description>
-          <div className="grid gap-4 p-4">
+          <Dialog.Section>
+            <Dialog.Description>
+              Make changes to your profile here. Click save when you&apos;re done.
+            </Dialog.Description>
+          </Dialog.Section>
+          <Dialog.Section className="grid gap-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label
                 htmlFor="name"
@@ -104,8 +103,8 @@ const meta: Meta = {
                 }}
               />
             </div>
-          </div>
-          <Dialog.Footer className="justify-end gap-3">
+          </Dialog.Section>
+          <Dialog.Footer className="justify-end gap-2">
             <Dialog.Close
               render={
                 <Button
@@ -136,5 +135,11 @@ const meta: Meta = {
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+export const Large: Story = {
+  args: {
+    size: 'large',
+  },
+};
 
 export default meta;
