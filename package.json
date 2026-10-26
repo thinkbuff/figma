@@ -12,6 +12,7 @@
     "lint:fix": "vp lint --fix",
     "fmt": "vp fmt",
     "fmt:check": "vp fmt --check",
+    "deps": "taze -r -I -l",
     "check": "vp check",
     "typecheck": "pnpm run -r typecheck",
     "build": "pnpm run -r build",
@@ -25,15 +26,16 @@
     "prepare": "simple-git-hooks"
   },
   "devDependencies": {
-    "@commitlint/cli": "catalog:",
-    "@commitlint/config-conventional": "catalog:",
-    "@types/node": "catalog:",
-    "changelogen": "catalog:",
-    "glob": "catalog:",
-    "simple-git-hooks": "catalog:",
-    "tsx": "catalog:",
-    "typescript": "catalog:",
-    "vite-plus": "catalog:"
+    "@commitlint/cli": "catalog:cli",
+    "@commitlint/config-conventional": "catalog:cli",
+    "@types/node": "catalog:types",
+    "changelogen": "catalog:cli",
+    "glob": "catalog:toolchain",
+    "simple-git-hooks": "catalog:cli",
+    "taze": "catalog:cli",
+    "tsx": "catalog:cli",
+    "typescript": "catalog:toolchain",
+    "vite-plus": "catalog:toolchain"
   },
   "simple-git-hooks": {
     "pre-commit": "vp staged",

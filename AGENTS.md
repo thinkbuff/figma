@@ -19,6 +19,7 @@ consumer smoke test. Per-component migration reports live in
 - `pnpm test:visual` — pixel-exact screenshot suite (207 baselines). CI does not
   run it; always run locally before finishing UI work.
 - `pnpm typecheck`, `pnpm check`, `pnpm build`.
+- `pnpm deps` — taze interactive dependency updates (`-r -I -l`).
 - `pnpm -F @thinkbuff/figma-react build-storybook` after component changes.
 
 ## Visual tests

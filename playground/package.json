@@ -16,14 +16,14 @@
     "react-dom": "catalog:react"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "catalog:",
+    "@tailwindcss/vite": "catalog:tailwind",
     "@thinkbuff/figma-theme": "workspace:*",
     "@types/react": "catalog:react",
     "@types/react-dom": "catalog:react",
     "@vitejs/plugin-react": "catalog:react",
-    "tailwindcss": "catalog:",
-    "typescript": "catalog:",
-    "vite": "catalog:",
-    "vite-plus": "catalog:"
+    "tailwindcss": "catalog:tailwind",
+    "typescript": "catalog:toolchain",
+    "vite": "catalog:toolchain",
+    "vite-plus": "catalog:toolchain"
   }
 }

@@ -55,15 +55,15 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "eventemitter3": "catalog:",
-    "type-fest": "catalog:"
+    "eventemitter3": "catalog:runtime",
+    "type-fest": "catalog:types"
   },
   "devDependencies": {
     "@figma/plugin-typings": "catalog:figma",
     "@figma/widget-typings": "catalog:figma",
-    "typescript": "catalog:",
-    "vite-plus": "catalog:",
-    "vitest": "catalog:"
+    "typescript": "catalog:toolchain",
+    "vite-plus": "catalog:toolchain",
+    "vitest": "catalog:test"
   },
   "peerDependencies": {
     "@figma/plugin-typings": "*",

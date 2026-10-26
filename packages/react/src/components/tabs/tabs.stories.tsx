@@ -3,7 +3,7 @@ import { useArgs } from 'storybook/preview-api';
 
 import * as Tabs from './tabs';
 
-const meta = {
+const meta: Meta = {
   title: 'Components/Tabs',
   component: Tabs.Root,
   parameters: {
@@ -67,7 +67,7 @@ const meta = {
       </Tabs.Root>
     );
   },
-} satisfies Meta<typeof Tabs.Root>;
+} satisfies Meta;
 
 type Story = StoryObj<typeof meta>;
 

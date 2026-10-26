@@ -14,7 +14,7 @@ type StoryArgs = React.ComponentPropsWithRef<typeof Dialog.Content> & {
   open?: boolean;
 };
 
-const meta = {
+const meta: Meta = {
   title: 'Components/Dialog',
   component: Dialog.Content,
   parameters: {

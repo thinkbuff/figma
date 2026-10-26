@@ -64,9 +64,9 @@
     "test": "vitest run"
   },
   "devDependencies": {
-    "tsx": "catalog:",
-    "typescript": "catalog:",
-    "vite-plus": "catalog:",
-    "vitest": "catalog:"
+    "tsx": "catalog:cli",
+    "typescript": "catalog:toolchain",
+    "vite-plus": "catalog:toolchain",
+    "vitest": "catalog:test"
   }
 }

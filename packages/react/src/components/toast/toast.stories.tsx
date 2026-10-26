@@ -4,7 +4,7 @@ import { Button } from '../button';
 import { toast } from './toast';
 import { Toaster } from './toaster';
 
-const meta = {
+const meta: Meta = {
   title: 'Components/Toast',
   component: Toaster,
   parameters: {
@@ -22,7 +22,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Toaster>;
+} satisfies Meta;
 
 type Story = StoryObj<typeof meta>;
 

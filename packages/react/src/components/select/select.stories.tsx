@@ -77,7 +77,7 @@ const optionWithIconItems: Record<string, React.ReactNode> = {
   ),
 };
 
-const meta = {
+const meta: Meta = {
   title: 'Components/Select',
   component: Select.Content,
   parameters: {
