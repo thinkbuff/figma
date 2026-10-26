@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "vitest.explorer",
+    "oxc.oxc-vscode",
+    "antfu.pnpm-catalog-lens",
+    "bradlc.vscode-tailwindcss"
+  ]
+}

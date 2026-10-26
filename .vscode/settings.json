@@ -1,27 +1,33 @@
 {
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
+    "source.fixAll.oxc": "explicit",
     "source.organizeImports": "never"
   },
-  "eslint.useFlatConfig": true,
-  "eslint.workingDirectories": [
-    {
-      "pattern": "./apps/*/"
-    },
-    {
-      "pattern": "./packages/*/"
-    }
-  ],
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": [
-    "onbrand",
-    "oncomponent",
-    "ondanger",
-    "ondisabled",
-    "oninverse",
-    "onselected",
-    "onwarning"
-  ]
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .oxlint*, oxlint*, .oxfmt*, oxfmt*, .prettier*, prettier*, .editorconfig",
+    "tsconfig.json": "tsconfig.*.json, env.d.ts, *.tsbuildinfo",
+    "vite.config.*": "jsconfig*, vitest.config.*, playwright.config.*"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "tailwindCSS.classAttributes": ["class", "className"],
+  "tailwindCSS.classFunctions": ["cn", "cva", "clsx", "addClassName"]
 }
