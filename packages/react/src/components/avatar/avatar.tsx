@@ -15,9 +15,9 @@ const palette = {
 type AvatarColor = keyof typeof palette;
 
 const sizes = {
-  small: 'size-4 text-figma-xs',
-  default: 'size-6 text-figma-sm',
-  large: 'size-8 text-figma-lg',
+  small: 'size-4 text-figma-body-small leading-figma-body-small font-figma-strong',
+  default: 'size-6 text-figma-lg leading-figma-lg font-figma-default',
+  large: 'size-8 text-figma-lg leading-figma-lg font-figma-strong',
 } as const;
 
 interface AvatarProps extends React.ComponentPropsWithRef<'span'> {
@@ -71,7 +71,7 @@ function Avatar({
       role="img"
       aria-label={name}
       className={cn(
-        'inline-flex select-none items-center justify-center overflow-hidden font-figma-default leading-none',
+        'inline-flex select-none items-center justify-center overflow-hidden leading-none',
         sizes[size],
         shape === 'circle' ? 'rounded-full' : 'rounded-figma-md',
         !src && palette[color],
