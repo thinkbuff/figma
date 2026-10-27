@@ -3,7 +3,7 @@ import { cn } from '~/utils';
 type BadgeColor = 'default' | 'brand' | 'component' | 'danger' | 'warning' | 'success' | 'selected';
 
 const strongColors: Record<BadgeColor, string> = {
-  default: 'bg-figma-inverse text-figma-onbrand',
+  default: 'bg-figma-inverse text-figma-oninverse',
   brand: 'bg-figma-brand text-figma-onbrand',
   component: 'bg-figma-component text-figma-oncomponent',
   danger: 'bg-figma-danger text-figma-ondanger',
@@ -13,20 +13,18 @@ const strongColors: Record<BadgeColor, string> = {
 };
 
 const lightColors: Record<BadgeColor, string> = {
-  // Neutral light is a gray fill, not an outline (UI3 "Neutral" badge).
-  default: 'bg-figma-secondary text-figma',
+  default: 'border border-figma text-figma',
   brand: 'border border-figma-brand text-figma-brand',
   component: 'border border-figma-component text-figma-component',
   danger: 'border border-figma-danger text-figma-danger',
   warning: 'border border-figma-warning text-figma-warning',
   success: 'border border-figma-success text-figma-success',
-  selected: 'border border-figma-selected text-figma-selected',
+  selected: 'border border-figma-onselected text-figma-brand',
 };
 
 interface BadgeProps extends React.ComponentPropsWithRef<'span'> {
   /**
-   * `strong` is the filled form, `light` is the outline form (a gray fill
-   * for the neutral badge).
+   * `strong` is the filled form, `light` is the outline form.
    */
   variant?: 'strong' | 'light';
   color?: BadgeColor;
@@ -58,7 +56,7 @@ function Badge({
       ref={ref}
       className={cn(
         'inline-flex items-center gap-1 rounded-figma-md text-figma-sm leading-figma-sm select-none',
-        size === 'small' ? 'h-3.5 px-1' : 'h-4 px-1.5',
+        size === 'small' ? 'h-3.5 px-1' : 'h-4 px-1',
         variant === 'strong' ? strongColors[color] : lightColors[color],
         className,
       )}
