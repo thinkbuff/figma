@@ -140,8 +140,9 @@ describe('Slider', () => {
     const slider = page.getByRole('slider');
     const root = page.elementLocator(container.firstElementChild as Element);
     const rect = (root.element() as HTMLElement).getBoundingClientRect();
-    // click at ~49% of the track: inside the 2% snap window around 50
-    await clickAt(root, rect.width * 0.49, rect.height / 2);
+    // click at ~48% of the draggable area (inset by 16px on each side):
+    // inside the 2% snap window around 50
+    await clickAt(root, 16 + (rect.width - 32) * 0.48, rect.height / 2);
     await expect.element(slider).toHaveAttribute('aria-valuenow', '50');
   });
 
