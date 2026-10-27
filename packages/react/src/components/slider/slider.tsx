@@ -156,11 +156,11 @@ function SliderHint({ hint, baseValue, min, max, orientation = 'horizontal' }: S
       data-hint=""
       data-orientation={orientation}
       className={cn(
-        'pointer-events-none absolute block size-1 rounded-full bg-figma-icon-tertiary',
+        'pointer-events-none absolute block size-1 rounded-full bg-black/30',
         horizontal
           ? 'top-1/2 -translate-y-1/2 -translate-x-1/2'
           : 'left-1/2 -translate-x-1/2 translate-y-1/2',
-        hint === baseValue && 'bg-figma-icon',
+        hint === baseValue && 'bg-black/85',
       )}
       style={horizontal ? { left: `${offset}%` } : { bottom: `${offset}%` }}
     />
@@ -295,7 +295,9 @@ function Slider({
             index={index}
             className={cn(
               v === baseValue && 'bg-figma-icon-onbrand',
-              variant && variant !== 'gradient' && 'flex items-center justify-center',
+              (variant || v === baseValue) &&
+                variant !== 'gradient' &&
+                'flex items-center justify-center',
               variant === 'gradient' &&
                 'size-5 border-0 rounded-figma-md bg-figma p-0.5 shadow-figma-elevation-200 outline-1 -outline-offset-1 outline-solid outline-[#0000001a]',
             )}
@@ -315,6 +317,12 @@ function Slider({
                         }${CHECKERBOARD}`,
                       }
                 }
+              />
+            )}
+            {variant === undefined && v === baseValue && (
+              <span
+                data-thumb-fill=""
+                className="block size-1.5 rounded-full bg-figma-icon-secondary"
               />
             )}
             {variant === 'gradient' && (

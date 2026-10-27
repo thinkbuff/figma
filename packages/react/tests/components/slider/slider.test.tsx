@@ -107,7 +107,7 @@ describe('Slider', () => {
 
     const hints = container.querySelectorAll('[data-hint]');
     expect(hints).toHaveLength(5);
-    const emphasized = container.querySelectorAll('[data-hint].bg-figma-icon');
+    const emphasized = container.querySelectorAll('[data-hint].bg-black\\/85');
     expect(emphasized).toHaveLength(1);
   });
 
