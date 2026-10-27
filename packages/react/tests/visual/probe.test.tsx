@@ -32,8 +32,9 @@ function dump(el: Element, depth: number, lines: string[]) {
   const style = getComputedStyle(el);
   const rect = el.getBoundingClientRect();
   const className = (el.getAttribute('class') ?? '').trim().replaceAll(/\s+/g, ' .');
+  const scroll = `scroll:${el.scrollLeft.toFixed(1)},${el.scrollTop.toFixed(1)} left:${rect.left.toFixed(1)}`;
   lines.push(
-    `${'  '.repeat(depth)}<${el.tagName.toLowerCase()}> .${className} ${rect.width.toFixed(1)}x${rect.height.toFixed(1)}`,
+    `${'  '.repeat(depth)}<${el.tagName.toLowerCase()}> .${className} ${rect.width.toFixed(1)}x${rect.height.toFixed(1)} ${scroll}`,
   );
   const props = cssProps.map((prop) => `${prop}:${style.getPropertyValue(prop)}`).join(' ');
   lines.push(`${'  '.repeat(depth + 1)}${props}`);
@@ -51,6 +52,12 @@ for (const story of matched) {
         document.documentElement.classList.add(theme);
         await document.fonts.ready;
         const lines: string[] = [];
+        const activeEl = document.activeElement;
+        if (activeEl && activeEl !== document.body) {
+          lines.push(
+            `activeElement: <${activeEl.tagName.toLowerCase()}> .${(activeEl.getAttribute('class') ?? '').trim()}`,
+          );
+        }
         for (const child of container.children) {
           dump(child, 0, lines);
         }
