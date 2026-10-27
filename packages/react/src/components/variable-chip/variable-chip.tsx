@@ -41,7 +41,7 @@ function VariableChip({
       data-on-selected={onSelected || undefined}
       data-disabled={disabled || undefined}
       className={cn(
-        'inline-flex h-4 select-none items-center rounded-figma-md border px-1.5',
+        'inline-flex h-4.5 select-none items-center truncate rounded-figma-md border px-1',
         'text-figma-sm leading-figma-sm',
         onSelected
           ? 'border-figma-onselected bg-figma-onselected'
@@ -49,7 +49,7 @@ function VariableChip({
             ? 'border-figma-border-selected bg-figma-selected'
             : variant === 'sunken'
               ? 'border-figma bg-figma-secondary'
-              : 'border-figma bg-figma',
+              : cn('border-figma bg-figma', !disabled && 'hover:bg-figma-tertiary'),
         disabled ? 'text-figma-disabled' : 'text-figma',
         className,
       )}
