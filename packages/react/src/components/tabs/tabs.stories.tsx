@@ -73,4 +73,29 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
+export const Overflow: Story = {
+  argTypes: { value: { control: false } },
+  render: (args) => (
+    <Tabs.Root
+      {...args}
+      className="w-48"
+      defaultValue="first"
+    >
+      <Tabs.List
+        scrollable
+        className="h-9"
+      >
+        {['first', 'second', 'third', 'fourth'].map((v) => (
+          <Tabs.Trigger
+            key={v}
+            value={v}
+          >
+            {v} tab
+          </Tabs.Trigger>
+        ))}
+      </Tabs.List>
+    </Tabs.Root>
+  ),
+};
+
 export default meta;

@@ -5,7 +5,13 @@ import { addClassName, useComposedRefs } from '~/utils';
 
 interface TabsRootProps extends React.ComponentPropsWithRef<typeof Tabs.Root> {}
 
-interface TabsListProps extends React.ComponentPropsWithRef<typeof Tabs.List> {}
+interface TabsListProps extends React.ComponentPropsWithRef<typeof Tabs.List> {
+  /**
+   * UI3 "Overflow" behavior — horizontal scrolling with a right-edge
+   * gradient fade on the visible frame.
+   */
+  scrollable?: boolean;
+}
 
 interface TabsTriggerProps extends React.ComponentPropsWithRef<typeof Tabs.Tab> {}
 
@@ -29,10 +35,17 @@ function TabsRoot({ className, ref, ...props }: TabsRootProps) {
 
 TabsRoot.displayName = 'Tabs';
 
-function TabsList({ className, ref, ...props }: TabsListProps) {
+function TabsList({ className, scrollable, ref, ...props }: TabsListProps) {
   return (
     <Tabs.List
-      className={addClassName(className, 'flex', 'gap-1', 'overflow-y-auto')}
+      className={addClassName(
+        className,
+        'flex',
+        'gap-1',
+        scrollable
+          ? 'overflow-x-auto overflow-y-hidden [mask-image:linear-gradient(to_right,black_88%,transparent)]'
+          : 'overflow-y-auto',
+      )}
       {...props}
       ref={ref}
     />

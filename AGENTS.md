@@ -52,6 +52,9 @@ consumer smoke test. Per-component migration reports live in
 
 - Base UI conventions: `render` prop (never `asChild`), `aria-expanded` for
   open-state styling, `addClassName` for callback classNames, `cn()` to merge.
+- Controlled `Tabs.Root value` scrolls the tab list to the end on mount (Base UI
+  composite scrolls the active item into view). Prefer `defaultValue` unless
+  external state control is required.
 - Prefer canonical Tailwind forms (`data-popup-open`, `inset-0.5`,
   `-top-1.25`) over bracket variants and arbitrary values.
 - Component styles live in `packages/react/styles.css` under
