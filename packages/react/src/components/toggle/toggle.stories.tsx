@@ -51,4 +51,17 @@ export const Disabled: Story = {
   },
 };
 
+export const WithStroke: Story = {
+  args: {
+    stroke: true,
+  },
+};
+
+export const WithStrokePressed: Story = {
+  args: {
+    stroke: true,
+    pressed: true,
+  },
+};
+
 export default meta;

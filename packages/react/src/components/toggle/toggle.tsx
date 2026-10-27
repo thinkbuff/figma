@@ -2,7 +2,12 @@ import { Toggle as BaseToggle } from '@base-ui/react/toggle';
 
 import { addClassName } from '~/utils';
 
-interface ToggleProps extends React.ComponentPropsWithRef<typeof BaseToggle> {}
+interface ToggleProps extends React.ComponentPropsWithRef<typeof BaseToggle> {
+  /**
+   * Persistent stroked border — the spec's "Dialog Toggle w/ Stroke".
+   */
+  stroke?: boolean;
+}
 
 /**
  * A two-state button that can be either on or off.
@@ -10,7 +15,7 @@ interface ToggleProps extends React.ComponentPropsWithRef<typeof BaseToggle> {}
  * - [Docs](https://base-ui.com/react/components/toggle)
  * - [API Reference](https://base-ui.com/react/components/toggle#api)
  */
-function Toggle({ className, disabled, ref, ...props }: ToggleProps) {
+function Toggle({ className, disabled, stroke = false, ref, ...props }: ToggleProps) {
   return (
     <BaseToggle
       ref={ref}
@@ -38,6 +43,7 @@ function Toggle({ className, disabled, ref, ...props }: ToggleProps) {
         'outline-transparent',
         'transition-colors',
         'focus:not-focus-visible:outline-0 focus:not-focus-visible:outline-transparent',
+        stroke && 'border border-solid border-figma data-pressed:border-figma-brand',
         disabled
           ? [
               'cursor-not-allowed',
