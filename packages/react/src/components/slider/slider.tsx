@@ -304,7 +304,7 @@ function Slider({
                 variant !== 'gradient' &&
                 'flex items-center justify-center',
               variant === 'gradient' &&
-                'size-5 border-0 rounded-figma-md bg-figma p-0.5 shadow-figma-elevation-200 outline-1 -outline-offset-1 outline-solid outline-[#0000001a]',
+                'group/thumb size-4 border-0 bg-transparent shadow-none focus-visible:outline-0',
             )}
           >
             {variant && variant !== 'gradient' && (
@@ -333,11 +333,27 @@ function Slider({
             {variant === 'gradient' && (
               <span
                 data-thumb-fill=""
-                className="block size-full rounded-[3px] outline-1 -outline-offset-1 outline-solid outline-[#0000001a]"
-                style={{
-                  background: `${thumbFill ? `${toLayer(thumbFill)}, ` : ''}${CHECKERBOARD}`,
-                }}
-              />
+                className="absolute bottom-[19px] left-1/2 block -translate-x-1/2"
+              >
+                <span
+                  className={cn(
+                    'relative block size-6 rounded-figma-md bg-figma p-0.5',
+                    'outline-1 -outline-offset-1 outline-solid outline-[#0000001a]',
+                    'drop-shadow-[0_1px_4px_rgba(0,0,0,0.25)]',
+                    'after:absolute after:bottom-[-4px] after:left-1/2 after:block after:size-3',
+                    'after:-translate-x-1/2 after:rotate-45 after:rounded-[2px] after:bg-inherit',
+                    "after:-z-10 after:content-['']",
+                    'group-focus-within/thumb:bg-figma-selected-strong',
+                  )}
+                >
+                  <span
+                    className="block size-full rounded-[4px] outline-1 -outline-offset-1 outline-solid outline-[#0000001a]"
+                    style={{
+                      background: `${thumbFill ? `${toLayer(thumbFill)}, ` : ''}${CHECKERBOARD}`,
+                    }}
+                  />
+                </span>
+              </span>
             )}
           </SliderThumb>
         );
