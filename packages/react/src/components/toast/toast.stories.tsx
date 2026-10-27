@@ -73,6 +73,25 @@ export const Default: Story = {
         <Button
           variant="outline"
           onClick={() =>
+            toast('Event has been created', {
+              description: 'Monday, January 3rd at 6:00pm',
+              duration: 1_000_000,
+              action: {
+                label: 'Action',
+                onClick: () => console.log('Action'),
+              },
+              cancel: {
+                label: 'Dismiss',
+                onClick: () => console.log('Dismiss'),
+              },
+            })
+          }
+        >
+          Action + Dismiss
+        </Button>
+        <Button
+          variant="outline"
+          onClick={() =>
             toast.success('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
               duration: 1_000_000,

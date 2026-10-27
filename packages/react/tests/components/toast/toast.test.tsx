@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
 import { page } from 'vitest/browser';
 
@@ -34,5 +34,30 @@ describe('Toast', () => {
 
     toast.dismiss(id);
     await expect.element(page.getByText('Temporary message')).not.toBeInTheDocument();
+  });
+
+  it('renders the action/dismiss rail', async () => {
+    await render(<Toaster />);
+
+    const onAction = vi.fn();
+    const onCancel = vi.fn();
+    toast('Short descriptive message', {
+      duration: 60_000,
+      action: { label: 'Action', onClick: onAction },
+      cancel: { label: 'Dismiss', onClick: onCancel },
+    });
+
+    const action = page.getByRole('button', { name: 'Action' });
+    const dismiss = page.getByRole('button', { name: 'Dismiss' });
+    await expect.element(action).toBeVisible();
+    await expect.element(dismiss).toBeVisible();
+    // rail cells: action in the top cell, dismiss in the bottom cell
+    await expect.element(action).toHaveAttribute('data-action');
+    await expect.element(dismiss).toHaveAttribute('data-cancel');
+
+    await action.click();
+    expect(onAction).toHaveBeenCalled();
+    // action click dismisses the toast
+    await expect.element(page.getByText('Short descriptive message')).not.toBeInTheDocument();
   });
 });
