@@ -343,7 +343,7 @@ function Slider({
                     'after:absolute after:bottom-[-5px] after:left-1/2 after:block after:h-1.5 after:w-3',
                     'after:-translate-x-1/2 after:bg-inherit after:content-[""]',
                     'after:[clip-path:polygon(0_0,100%_0,58%_100%,42%_100%)]',
-                    'group-focus-within/thumb:bg-figma-selected-strong',
+                    'group-focus-within/thumb:bg-figma-selected-strong group-focus-within/thumb:p-1',
                   )}
                 >
                   <span
