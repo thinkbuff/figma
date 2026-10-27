@@ -65,6 +65,55 @@ export const Disabled: Story = {
   },
 };
 
+export const Variants: Story = {
+  render: function Render(args) {
+    const [{ checked }, updateArgs] = useArgs();
+    const variants = ['default', 'muted', 'ghost'] as const;
+    return (
+      <div className="flex flex-col gap-3">
+        {variants.map((variant) => (
+          <div
+            key={variant}
+            className="flex items-center gap-2"
+          >
+            <Checkbox
+              {...args}
+              variant={variant}
+              checked={checked}
+              onCheckedChange={(value) => updateArgs({ checked: value })}
+            />
+            <Label>{variant}</Label>
+          </div>
+        ))}
+      </div>
+    );
+  },
+};
+
+export const WithDescription: Story = {
+  render: function Render(args) {
+    const [{ checked }, updateArgs] = useArgs();
+    return (
+      <div className="flex w-64 items-start gap-2">
+        <Checkbox
+          id="checkbox-desc"
+          {...args}
+          variant="muted"
+          checked={checked}
+          onCheckedChange={(value) => updateArgs({ checked: value })}
+        />
+        <div className="flex flex-col">
+          <Label htmlFor="checkbox-desc">Off, Normal + Muted</Label>
+          <span className="text-figma-sm leading-figma-sm text-figma-secondary">
+            Helpful description of the setting which may briefly highlight side effects or
+            conditions of the setting.
+          </span>
+        </div>
+      </div>
+    );
+  },
+};
+
 export const WithLabel: Story = {
   argTypes: {
     indeterminate: {

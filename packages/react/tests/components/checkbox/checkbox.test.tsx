@@ -105,3 +105,44 @@ describe('Checkbox', () => {
     await expect.element(checkbox).toHaveAttribute('aria-checked', 'true');
   });
 });
+
+describe('Checkbox variants', () => {
+  it('muted renders a tertiary box with a secondary check', async () => {
+    await render(
+      <Checkbox
+        aria-label="Muted"
+        variant="muted"
+        checked
+        data-testid="muted"
+      />,
+    );
+
+    const box = document.querySelector<HTMLElement>('[data-testid="muted"]')!;
+    const probe = document.createElement('div');
+    document.body.appendChild(probe);
+    probe.style.backgroundColor = 'var(--figma-color-bg-tertiary)';
+    const tertiary = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+
+    expect(getComputedStyle(box).backgroundColor).toBe(tertiary);
+  });
+
+  it('ghost renders a dark icon-colored box', async () => {
+    await render(
+      <Checkbox
+        aria-label="Ghost"
+        variant="ghost"
+        data-testid="ghost"
+      />,
+    );
+
+    const box = document.querySelector<HTMLElement>('[data-testid="ghost"]')!;
+    const probe = document.createElement('div');
+    document.body.appendChild(probe);
+    probe.style.backgroundColor = 'var(--figma-color-icon)';
+    const iconColor = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+
+    expect(getComputedStyle(box).backgroundColor).toBe(iconColor);
+  });
+});
