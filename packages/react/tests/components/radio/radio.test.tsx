@@ -148,3 +148,59 @@ describe('RadioGroupItem checked state', () => {
     expect(getComputedStyle(unchecked).backgroundColor).toBe(bgColor);
   });
 });
+
+describe('RadioGroupItem button variant', () => {
+  it('renders a pill label radio that checks on click', async () => {
+    await render(
+      <Radio.Group defaultValue="a">
+        <Radio.GroupItem
+          value="a"
+          variant="button"
+        >
+          Alpha
+        </Radio.GroupItem>
+        <Radio.GroupItem
+          value="b"
+          variant="button"
+        >
+          Beta
+        </Radio.GroupItem>
+      </Radio.Group>,
+    );
+
+    const alpha = page.getByRole('radio', { name: 'Alpha' });
+    const beta = page.getByRole('radio', { name: 'Beta' });
+    await expect.element(alpha).toBeVisible();
+    await expect.element(alpha).toHaveAttribute('aria-checked', 'true');
+
+    await userEvent.click(beta);
+    await expect.element(beta).toHaveAttribute('aria-checked', 'true');
+    await expect.element(alpha).toHaveAttribute('aria-checked', 'false');
+  });
+
+  it('applies the selected fill and border when checked', async () => {
+    await render(
+      <Radio.Group defaultValue="a">
+        <Radio.GroupItem
+          value="a"
+          variant="button"
+          data-testid="pill"
+        />
+        ,
+      </Radio.Group>,
+    );
+
+    const pill = document.querySelector<HTMLElement>('[data-testid="pill"]')!;
+    const probe = document.createElement('div');
+    document.body.appendChild(probe);
+    probe.style.backgroundColor = 'var(--figma-color-bg-selected)';
+    const selectedBg = getComputedStyle(probe).backgroundColor;
+    probe.style.borderColor = 'var(--figma-color-border-brand)';
+    const brandBorder = getComputedStyle(probe).borderColor;
+    probe.remove();
+
+    const style = getComputedStyle(pill);
+    expect(style.backgroundColor).toBe(selectedBg);
+    expect(style.borderColor).toBe(brandBorder);
+  });
+});

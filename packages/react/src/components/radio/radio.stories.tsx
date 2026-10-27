@@ -92,4 +92,34 @@ export const Disabled: Story = {
   },
 };
 
+export const Buttons: Story = {
+  render: function Render() {
+    const [{ value }, updateArgs] = useArgs();
+    return (
+      <Radio.Group
+        className="w-48 gap-2"
+        value={value}
+        onValueChange={(changed) => updateArgs({ value: changed })}
+      >
+        {['all', 'only', 'none'].map((option) => (
+          <Radio.GroupItem
+            key={option}
+            value={option}
+            variant="button"
+          >
+            {option === 'all' ? 'All' : option === 'only' ? 'Only' : 'None'}
+          </Radio.GroupItem>
+        ))}
+        <Radio.GroupItem
+          value="disabled"
+          variant="button"
+          disabled
+        >
+          Disabled
+        </Radio.GroupItem>
+      </Radio.Group>
+    );
+  },
+};
+
 export default meta;

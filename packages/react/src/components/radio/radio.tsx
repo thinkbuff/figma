@@ -7,7 +7,12 @@ interface RadioGroupProps extends React.ComponentPropsWithRef<typeof RadioGroupP
   inline?: boolean;
 }
 
-interface RadioGroupItemProps extends React.ComponentPropsWithRef<typeof Radio.Root> {}
+interface RadioGroupItemProps extends React.ComponentPropsWithRef<typeof Radio.Root> {
+  /**
+   * `input` renders the spec circle; `button` renders a label pill with no circle.
+   */
+  variant?: 'input' | 'button';
+}
 
 /**
  * A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be
@@ -28,29 +33,18 @@ function RadioGroup({ className, inline = false, ref, ...props }: RadioGroupProp
 
 RadioGroup.displayName = 'RadioGroup';
 
-function RadioGroupItem({ className, ref, ...props }: RadioGroupItemProps) {
+function RadioGroupItem({ className, variant = 'input', ref, ...props }: RadioGroupItemProps) {
   return (
     <Radio.Root
       ref={ref}
       className={addClassName(
         className,
         'peer',
-        'size-4',
-        'aspect-square',
         'cursor-default',
-        'border-4',
-        'border-solid',
-        'border-transparent',
-        'rounded-full',
         'bg-figma',
-        'data-checked:bg-figma-icon data-checked:border-figma-bg',
-        'data-disabled:data-checked:bg-figma-icon-disabled',
-        'outline-solid',
-        'outline-1',
-        '-outline-offset-1',
-        'outline-figma-icon',
-        'not-data-disabled:focus-visible:outline-figma-border-selected',
-        'data-disabled:outline-figma-icon-disabled',
+        variant === 'input'
+          ? 'size-4 aspect-square border-4 border-solid border-transparent rounded-full data-checked:bg-figma-icon data-checked:border-figma-bg data-disabled:data-checked:bg-figma-icon-disabled outline-solid outline-1 -outline-offset-1 outline-figma-icon not-data-disabled:focus-visible:outline-figma-border-selected data-disabled:outline-figma-icon-disabled'
+          : 'flex h-6 w-full items-center justify-center rounded-figma-md border border-solid border-figma px-3 text-figma-sm leading-figma-sm text-figma data-checked:border-figma-brand data-checked:bg-figma-selected not-data-disabled:focus-visible:border-figma-border-selected data-disabled:border-figma-disabled data-disabled:text-figma-disabled',
       )}
       {...props}
     />
