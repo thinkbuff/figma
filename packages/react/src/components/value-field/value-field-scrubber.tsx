@@ -260,9 +260,10 @@ function Scrubber(props: ScrubberProps) {
         'cursor-ew-resize',
         'text-figma-secondary icon-figma-secondary',
         // An empty scrubber collapses to a 4px drag strip over the input's left edge;
-        // a populated one pushes the input against its content.
+        // a populated one pushes the input against its content. In a Multi cell the
+        // input's 4px inset already accounts for the spec's inter-cell gap.
         'empty:absolute empty:inset-y-0 empty:left-0 empty:z-figma-1 empty:w-1',
-        'not-empty:-mr-2',
+        context?.inMulti ? '' : 'not-empty:-mr-2',
         'data-disabled:cursor-default data-disabled:text-figma-disabled data-disabled:icon-figma-disabled',
         className,
       )}

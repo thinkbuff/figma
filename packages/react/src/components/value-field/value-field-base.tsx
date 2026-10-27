@@ -181,8 +181,7 @@ function Base<V>(props: BaseProps<V>) {
         'cursor-default outline-none',
         'font-figma text-figma-sm leading-figma-sm tracking-figma-sm font-figma-default',
         'text-figma placeholder:text-figma-tertiary',
-        context?.inMulti ? 'pl-[7px]' : 'pl-2',
-        'pr-1',
+        context?.inMulti ? 'pl-1 pr-1' : 'pl-2 pr-2',
         'disabled:cursor-not-allowed disabled:text-figma-disabled',
         className,
       )}

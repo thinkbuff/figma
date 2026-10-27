@@ -7,7 +7,7 @@ interface SwatchProps extends React.ComponentPropsWithRef<'span'> {
    */
   fill?: string;
   /**
-   * `default` is 16px (matches the Value-Field label slot), `small` is 12px.
+   * `default` is 14px (the UI3 chit inside a 24px field cell), `small` is 12px.
    */
   size?: 'default' | 'small';
 }
@@ -22,9 +22,9 @@ function Swatch({ fill, size = 'default', className, style, ref, ...props }: Swa
       ref={ref}
       aria-hidden="true"
       className={cn(
-        'relative inline-block overflow-hidden rounded',
+        'relative inline-block overflow-hidden rounded-figma-sm',
         'after:absolute after:inset-0 after:rounded-[inherit] after:shadow-[inset_0_0_0_1px_#0000001a] dark:after:shadow-[inset_0_0_0_1px_#ffffff1a]',
-        size === 'small' ? 'size-3' : 'size-4',
+        size === 'small' ? 'size-3' : 'size-3.5',
         className,
       )}
       style={style}

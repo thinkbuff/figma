@@ -8,6 +8,7 @@ import { inputVariants, type InputVariantsProps } from './input-variants';
 const InputContext = createContext<{
   disabled?: boolean;
   invalid?: boolean;
+  size?: 'default' | 'large';
 }>({
   disabled: false,
   invalid: false,
@@ -51,7 +52,7 @@ function Input({
 }: InputProps) {
   const selectOnClickProps = useSelectOnInputClick();
   return (
-    <InputContext.Provider value={{ disabled, invalid }}>
+    <InputContext.Provider value={{ disabled, invalid, size }}>
       <label
         {...wrapperProps}
         className={cn(
@@ -75,7 +76,7 @@ function Input({
             'h-full',
             'py-1',
             'pl-2',
-            'pr-0',
+            'pr-2',
             inputVariants({ variant, disabled, invalid, className }),
           )}
           {...mergeProps<'input'>(selectOnClick ? selectOnClickProps : {}, props)}
@@ -99,7 +100,8 @@ interface InputSlotProps extends React.ComponentPropsWithRef<'div'> {
  * Contains icons or buttons associated with an Input.
  */
 function InputSlot({ className, side = 'left', ref, ...props }: InputSlotProps) {
-  const { disabled, invalid } = useContext(InputContext);
+  const { disabled, invalid, size } = useContext(InputContext);
+  const large = size === 'large';
   return (
     <div
       ref={ref}
@@ -107,11 +109,14 @@ function InputSlot({ className, side = 'left', ref, ...props }: InputSlotProps) 
         'absolute',
         'flex',
         'shrink-0',
-        'w-8',
+        'w-6',
         'items-center',
         'justify-center',
         'transition-colors',
-        side === 'left' ? ['left-0', '[&~input]:pl-8'] : ['right-0', '[&~input]:pr-8'],
+        // UI3 icon cells are 24px; on 32px inputs they sit inside a 4px inset.
+        side === 'left'
+          ? [large ? 'left-1 [&~input]:pl-7' : 'left-0 [&~input]:pl-6']
+          : [large ? 'right-1 [&~input]:pr-7' : 'right-0 [&~input]:pr-6'],
         disabled
           ? ['cursor-not-allowed', 'text-figma-disabled', 'fill-figma-icon-disabled']
           : ['cursor-default', 'text-figma-secondary', 'fill-figma-icon-secondary'],

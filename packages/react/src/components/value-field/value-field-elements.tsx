@@ -58,7 +58,7 @@ function Root({ className, disabled, ref, children, ...props }: RootProps) {
                 'not-first:border-l not-first:border-figma-bg',
               ]
             : [
-                'rounded-figma-md px-px',
+                'rounded-figma-md overflow-clip',
                 'bg-figma-secondary',
                 'outline-1 -outline-offset-1 outline-solid outline-transparent',
                 'not-data-disabled:hover:outline-figma-border',
@@ -119,8 +119,12 @@ function Label({ className, ref, ...props }: LabelProps) {
       className={cn(
         'flex size-6 shrink-0 items-center justify-center self-stretch',
         'text-figma-secondary icon-figma-secondary',
+        // A leading label's input sits flush against the cell — the spec pads
+        // text to the icon cell edge, not past it. In a Multi cell the input's
+        // own 4px inset supplies the inter-cell gap instead.
         // Suffix labels sit narrower; labels nested in a Scrubber keep size-6.
         // The parent <label> element is the Root.
+        context?.inMulti ? '' : '[&+input]:pl-0',
         '[label>&]:last:w-5',
         'data-disabled:text-figma-disabled data-disabled:icon-figma-disabled',
         className,
