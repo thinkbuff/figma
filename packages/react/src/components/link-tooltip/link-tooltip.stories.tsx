@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { FrameIcon, LinkIcon, PlayIcon } from '~/icons';
+import { FolderIcon, FrameIcon, LinkIcon, MailIcon, PlayIcon } from '~/icons';
 
 import { LinkTooltip, LinkTooltipAction, LinkTooltipInput, LinkTooltipItem } from './link-tooltip';
 
@@ -33,7 +33,7 @@ export const LinkActions: Story = {
         </LinkTooltipItem>
       </LinkTooltip>
       <LinkTooltip arrow>
-        <LinkTooltipItem icon={<LinkIcon size="4" />}>
+        <LinkTooltipItem icon={<MailIcon size="4" />}>
           <LinkTooltipAction>Copy mail@mail.com</LinkTooltipAction>
           <LinkTooltipAction>Send mail</LinkTooltipAction>
           <LinkTooltipAction>Edit</LinkTooltipAction>
@@ -48,6 +48,12 @@ export const LinkActions: Story = {
       <LinkTooltip arrow>
         <LinkTooltipItem icon={<FrameIcon size="4" />}>
           <LinkTooltipAction>Go to frame</LinkTooltipAction>
+          <LinkTooltipAction>Edit</LinkTooltipAction>
+        </LinkTooltipItem>
+      </LinkTooltip>
+      <LinkTooltip arrow>
+        <LinkTooltipItem icon={<FolderIcon size="4" />}>
+          <LinkTooltipAction>Open file</LinkTooltipAction>
           <LinkTooltipAction>Edit</LinkTooltipAction>
         </LinkTooltipItem>
       </LinkTooltip>
