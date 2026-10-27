@@ -18,18 +18,18 @@ function TooltipArrow({ className, ref, ...props }: TooltipArrowProps) {
         'fill-figma-bg-tooltip',
         'data-[side=bottom]:-top-1.5 data-[side=bottom]:rotate-180',
         'data-[side=top]:-bottom-1.5',
-        'data-[side=left]:right-[-10.5px] data-[side=left]:-rotate-90',
-        'data-[side=right]:left-[-10.5px] data-[side=right]:rotate-90',
+        'data-[side=left]:right-[-9px] data-[side=left]:-rotate-90',
+        'data-[side=right]:left-[-9px] data-[side=right]:rotate-90',
       )}
       ref={ref}
       render={
         <svg
-          width={14}
-          height={7}
-          viewBox="0 0 30 10"
+          width={12}
+          height={6}
+          viewBox="0 0 12 6"
           preserveAspectRatio="none"
         >
-          <polygon points="0,0 30,0 15,10" />
+          <polygon points="0,0 12,0 6,6" />
         </svg>
       }
       {...props}
@@ -78,6 +78,9 @@ function TooltipContent({
             'bg-figma-tooltip',
             'text-figma-tooltip',
             'fill-figma-icon-tooltip',
+            'font-figma-default',
+            'text-figma-sm leading-figma-sm',
+            'max-w-50',
             'px-2',
             'py-1',
             'min-h-6',

@@ -6,20 +6,21 @@ const linkTooltipChrome = [
   'relative inline-flex flex-col',
   'bg-figma-tooltip text-figma-tooltip',
   'rounded-figma-md shadow-figma-tooltip',
+  'max-w-57.5',
 ];
 
 function LinkTooltipArrow({ className, ...props }: React.ComponentPropsWithRef<'svg'>) {
   return (
     <svg
-      width={14}
-      height={7}
-      viewBox="0 0 30 10"
+      width={12}
+      height={6}
+      viewBox="0 0 12 6"
       preserveAspectRatio="none"
       className={cn('fill-figma-bg-tooltip absolute', className)}
       aria-hidden="true"
       {...props}
     >
-      <polygon points="0,0 30,0 15,10" />
+      <polygon points="0,0 12,0 6,6" />
     </svg>
   );
 }
@@ -124,7 +125,7 @@ function LinkTooltipInput({ className, ref, ...props }: React.ComponentPropsWith
     <input
       ref={ref}
       className={cn(
-        'h-7 w-44 bg-transparent px-2',
+        'h-6 w-46 bg-transparent px-2',
         'text-figma-sm leading-figma-sm text-figma-tooltip',
         'cursor-default outline-none',
         'placeholder:text-figma-tooltip-secondary',
@@ -153,7 +154,7 @@ function LinkTooltipItem({ icon, className, children, ref, ...props }: LinkToolt
     <div
       ref={ref}
       className={cn(
-        'flex h-7 items-stretch overflow-hidden rounded-figma-md icon-figma-tooltip-secondary',
+        'flex h-6 items-stretch overflow-hidden rounded-figma-md icon-figma-tooltip-secondary',
         className,
       )}
       {...props}
