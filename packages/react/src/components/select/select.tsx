@@ -128,7 +128,7 @@ function SelectTrigger({
       </div>
       <SelectPrimitive.Icon
         data-disabled={disabled}
-        className="pointer-events-none ml-1 mr-2 shrink-0 icon-figma data-[disabled=true]:icon-figma-disabled"
+        className="pointer-events-none ml-1 flex w-6 shrink-0 items-center justify-center icon-figma data-[disabled=true]:icon-figma-disabled"
         render={<ChevronDownIcon />}
       />
     </SelectPrimitive.Trigger>
