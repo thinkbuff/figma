@@ -21,7 +21,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => (
     <VisualBell.Root {...args}>
-      <VisualBell.Label icon={<CircleIcon size="4" />}>Default messaging bell</VisualBell.Label>
+      <VisualBell.Label icon={<CircleIcon size="6" />}>Default messaging bell</VisualBell.Label>
       <VisualBell.Actions>
         <VisualBell.Action>Action</VisualBell.Action>
         <VisualBell.Action>Action</VisualBell.Action>
@@ -63,7 +63,7 @@ export const Spotlight: Story = {
           key={color}
           color={color}
         >
-          <VisualBell.Label icon={<DrawIcon size="4" />}>
+          <VisualBell.Label icon={<DrawIcon size="6" />}>
             Spotlight on Tim Van Damme
           </VisualBell.Label>
           <VisualBell.Actions>

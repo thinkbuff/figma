@@ -4,11 +4,11 @@ import { cn } from '~/utils';
 type VisualBellColor = 'default' | 'danger' | 'brand' | 'success' | 'component';
 
 const colors: Record<VisualBellColor, string> = {
-  default: 'bg-figma-inverse text-figma-onbrand',
-  danger: 'bg-figma-danger text-figma-ondanger',
-  brand: 'bg-figma-brand text-figma-onbrand',
-  success: 'bg-figma-success text-figma-onsuccess',
-  component: 'bg-figma-component text-figma-oncomponent',
+  default: 'bg-[#2c2c2c] text-figma-onbrand [--bell-edge:rgba(255,255,255,0.1)]',
+  danger: 'bg-figma-danger text-figma-ondanger [--bell-edge:rgba(0,0,0,0.1)]',
+  brand: 'bg-figma-brand text-figma-onbrand [--bell-edge:rgba(255,255,255,0.1)]',
+  success: 'bg-figma-success text-figma-onsuccess [--bell-edge:rgba(255,255,255,0.1)]',
+  component: 'bg-figma-component text-figma-oncomponent [--bell-edge:rgba(255,255,255,0.1)]',
 };
 
 interface VisualBellRootProps extends React.ComponentPropsWithRef<'div'> {
@@ -26,7 +26,7 @@ function VisualBellRoot({ color = 'default', className, ref, ...props }: VisualB
       // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a div pill is intentional; role=status announces it politely
       role="status"
       className={cn(
-        'inline-flex h-8 items-center gap-2 overflow-hidden rounded-full pl-3 pr-1 text-figma-sm leading-figma-sm shadow-figma-elevation-400',
+        'inline-flex h-10 items-center gap-2 overflow-hidden rounded-figma-lg px-2 text-figma-sm leading-figma-sm shadow-figma-elevation-100',
         colors[color],
         className,
       )}
@@ -39,7 +39,7 @@ VisualBellRoot.displayName = 'VisualBellRoot';
 
 interface VisualBellLabelProps extends React.ComponentPropsWithRef<'span'> {
   /**
-   * Leading 16px status icon.
+   * Leading 24px status icon.
    */
   icon?: React.ReactNode;
 }
@@ -48,7 +48,7 @@ function VisualBellLabel({ icon, className, children, ref, ...props }: VisualBel
   return (
     <span
       ref={ref}
-      className={cn('flex items-center gap-1', className)}
+      className={cn('flex items-center gap-1 font-figma-strong', className)}
       {...props}
     >
       {icon}
@@ -63,7 +63,7 @@ function VisualBellActions({ className, ref, ...props }: React.ComponentPropsWit
   return (
     <span
       ref={ref}
-      className={cn('flex items-center gap-1', className)}
+      className={cn('flex items-center gap-2', className)}
       {...props}
     />
   );
@@ -82,7 +82,7 @@ function VisualBellAction({
       ref={ref}
       type={type}
       className={cn(
-        'flex h-6 items-center rounded-figma-md border border-white/25 px-2 text-figma-sm leading-figma-sm',
+        'flex h-6 items-center rounded-figma-md border border-(--bell-edge) px-2 text-figma-sm leading-figma-sm',
         'hover:bg-white/10 active:bg-white/15',
         className,
       )}
@@ -96,7 +96,7 @@ VisualBellAction.displayName = 'VisualBellAction';
 function VisualBellDismiss({ className, ref, ...props }: React.ComponentPropsWithRef<'button'>) {
   return (
     <>
-      <span className="mx-0.5 w-px self-stretch bg-white/20" />
+      <span className="w-px self-stretch bg-(--bell-edge)" />
       <button
         ref={ref}
         type="button"
@@ -108,7 +108,7 @@ function VisualBellDismiss({ className, ref, ...props }: React.ComponentPropsWit
         )}
         {...props}
       >
-        <CloseIcon size="4" />
+        <CloseIcon size="6" />
       </button>
     </>
   );
