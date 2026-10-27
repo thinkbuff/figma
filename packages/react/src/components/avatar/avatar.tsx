@@ -65,9 +65,9 @@ function Avatar({
     (children ?? name?.charAt(0).toUpperCase() ?? '')
   );
   return (
-    // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a span is intentional; the img case renders a real <img> inside
     <span
       ref={ref}
+      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a span is intentional; the img case renders a real <img> inside
       role="img"
       aria-label={name}
       className={cn(
