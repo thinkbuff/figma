@@ -3,10 +3,9 @@ import { Popover as PopoverPrimitive } from '@base-ui/react/popover';
 import { addClassName, cn } from '~/utils';
 
 const linkTooltipChrome = [
-  'relative inline-flex flex-col',
+  'relative inline-flex w-fit flex-col',
   'bg-figma-tooltip text-figma-tooltip',
   'rounded-figma-md shadow-figma-tooltip',
-  'max-w-57.5',
 ];
 
 function LinkTooltipArrow({ className, ...props }: React.ComponentPropsWithRef<'svg'>) {
