@@ -37,6 +37,7 @@ function ToggleGroup({
         'rounded-figma-md',
       )}
       {...props}
+      data-full-width={fullWidth || undefined}
       disabled={disabled}
     >
       {children}
@@ -56,6 +57,7 @@ function ToggleGroupItem({ className, children, ref, ...props }: ToggleGroupItem
         'min-w-6',
         'w-fit',
         'flex-[1_0_auto]',
+        'group-data-[full-width]:min-w-0 group-data-[full-width]:flex-1',
         'text-figma-sm leading-figma-sm',
         'font-figma-default',
         'flex',
@@ -64,13 +66,13 @@ function ToggleGroupItem({ className, children, ref, ...props }: ToggleGroupItem
         'whitespace-nowrap',
         'cursor-default',
         'appearance-none',
-        'text-figma',
+        'text-figma-secondary',
         'fill-figma-icon-secondary',
         'bg-transparent',
         'rounded-figma-md',
         'transition-colors',
         'focus-visible:outline-solid focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-figma-border-selected',
-        'data-pressed:bg-figma data-pressed:fill-figma-icon data-pressed:shadow-[inset_0_0_0_1px_var(--figma-color-border)]',
+        'data-pressed:bg-figma data-pressed:text-figma data-pressed:fill-figma-icon data-pressed:shadow-[inset_0_0_0_1px_var(--figma-color-border)]',
         'disabled:text-figma-disabled disabled:fill-figma-icon-disabled',
       )}
       {...props}
@@ -92,6 +94,8 @@ function ToggleGroupText({ className, ref, ...props }: React.ComponentPropsWithR
         'items-center',
         'p-2',
         'gap-1.5',
+        'min-w-0',
+        'truncate',
         'group-data-disabled:text-figma-disabled',
       )}
       {...props}
