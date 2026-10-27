@@ -78,7 +78,10 @@ function LinkTooltipItem({ icon, className, children, ref, ...props }: LinkToolt
   return (
     <div
       ref={ref}
-      className={cn('flex h-7 items-stretch icon-figma-tooltip-secondary', className)}
+      className={cn(
+        'flex h-7 items-stretch overflow-hidden rounded-figma-md icon-figma-tooltip-secondary',
+        className,
+      )}
       {...props}
     >
       {icon ? <span className="flex w-6 shrink-0 items-center justify-center">{icon}</span> : null}

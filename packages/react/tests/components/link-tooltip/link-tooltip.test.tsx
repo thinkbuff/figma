@@ -34,4 +34,20 @@ describe('LinkTooltip', () => {
     expect(buttons[1]).toHaveTextContent('Edit');
     expect(container.querySelector('svg[aria-hidden=true]')).toBeTruthy();
   });
+
+  it('clips action hover backgrounds to the rounded corner', async () => {
+    const { container } = await render(
+      <LinkTooltip arrow>
+        <LinkTooltipItem>
+          <LinkTooltipAction>Open google.com</LinkTooltipAction>
+          <LinkTooltipAction>Edit</LinkTooltipAction>
+        </LinkTooltipItem>
+      </LinkTooltip>,
+    );
+    const item = container.querySelector<HTMLElement>('.overflow-hidden');
+    expect(item).toBeTruthy();
+    const style = getComputedStyle(item!);
+    expect(style.overflowX).toBe('hidden');
+    expect(parseFloat(style.borderTopRightRadius)).toBeGreaterThan(0);
+  });
 });
