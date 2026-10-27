@@ -17,6 +17,7 @@ export * from './separator';
 export * from './sheet';
 export * from './slider';
 export * from './switch';
+export * from './swatch';
 export * from './tabs';
 export * from './textarea';
 export * from './toast';
