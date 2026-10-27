@@ -9,6 +9,7 @@ export * from './dialog';
 export * from './dropdown-menu';
 export * from './input';
 export * from './label';
+export * from './link-tooltip';
 export * from './popover';
 export * from './radio';
 export * from './scroll-area';

@@ -116,4 +116,13 @@ export const Default: Story = {
   },
 };
 
+export const WithHotkey: Story = {
+  args: {
+    content: 'Paste',
+    hotkey: '⌘V',
+    open: true,
+  },
+  render: Default.render,
+};
+
 export default meta;

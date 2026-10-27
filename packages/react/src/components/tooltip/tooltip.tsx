@@ -106,6 +106,10 @@ interface TooltipProps
    */
   content: React.ReactNode;
   /**
+   * Optional hotkey hint rendered dimmed after the content (UI3 "⌘V").
+   */
+  hotkey?: React.ReactNode;
+  /**
    * The container of the tooltip
    */
   container?: React.ComponentProps<typeof TooltipPrimitive.Portal>['container'];
@@ -140,6 +144,7 @@ function Tooltip({
   children,
   // Tooltip Content
   content,
+  hotkey,
   withArrow = true,
   sideOffset = withArrow ? 9 : 4,
   // Tooltip Content props
@@ -164,6 +169,7 @@ function Tooltip({
         {...props}
       >
         {content}
+        {hotkey ? <span className="text-figma-tooltip-secondary ml-1">{hotkey}</span> : null}
         {withArrow ? <TooltipArrow /> : null}
       </TooltipContent>
     </TooltipRoot>
