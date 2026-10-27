@@ -107,7 +107,7 @@ describe('Checkbox', () => {
 });
 
 describe('Checkbox variants', () => {
-  it('muted renders a tertiary box with a secondary check', async () => {
+  it('muted renders a secondary box with a secondary check', async () => {
     await render(
       <Checkbox
         aria-label="Muted"
@@ -120,14 +120,14 @@ describe('Checkbox variants', () => {
     const box = document.querySelector<HTMLElement>('[data-testid="muted"]')!;
     const probe = document.createElement('div');
     document.body.appendChild(probe);
-    probe.style.backgroundColor = 'var(--figma-color-bg-tertiary)';
-    const tertiary = getComputedStyle(probe).backgroundColor;
+    probe.style.backgroundColor = 'var(--figma-color-bg-secondary)';
+    const secondary = getComputedStyle(probe).backgroundColor;
     probe.remove();
 
-    expect(getComputedStyle(box).backgroundColor).toBe(tertiary);
+    expect(getComputedStyle(box).backgroundColor).toBe(secondary);
   });
 
-  it('ghost renders a dark icon-colored box', async () => {
+  it('ghost renders a dark menu-colored box', async () => {
     await render(
       <Checkbox
         aria-label="Ghost"
@@ -139,10 +139,10 @@ describe('Checkbox variants', () => {
     const box = document.querySelector<HTMLElement>('[data-testid="ghost"]')!;
     const probe = document.createElement('div');
     document.body.appendChild(probe);
-    probe.style.backgroundColor = 'var(--figma-color-icon)';
-    const iconColor = getComputedStyle(probe).backgroundColor;
+    probe.style.backgroundColor = 'var(--figma-color-bg-menu)';
+    const menuColor = getComputedStyle(probe).backgroundColor;
     probe.remove();
 
-    expect(getComputedStyle(box).backgroundColor).toBe(iconColor);
+    expect(getComputedStyle(box).backgroundColor).toBe(menuColor);
   });
 });

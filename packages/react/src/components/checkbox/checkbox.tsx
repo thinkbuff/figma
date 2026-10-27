@@ -49,39 +49,55 @@ function Checkbox({
         'border-solid',
         variant === 'muted'
           ? [
-              'border-transparent',
-              'bg-figma-tertiary',
-              'data-checked:bg-figma-tertiary data-checked:icon-figma-secondary',
-              'data-indeterminate:icon-figma-secondary',
+              'border-figma',
+              'bg-figma-secondary',
+              'data-checked:icon-figma-secondary data-checked:focus-visible:icon-figma',
+              'data-indeterminate:icon-figma',
               disabled
-                ? 'bg-figma-disabled data-checked:bg-figma-disabled data-checked:icon-figma-onbrand data-indeterminate:bg-figma-disabled data-indeterminate:icon-figma-onbrand'
-                : 'focus-visible:bg-figma focus-visible:outline-figma-border-selected',
+                ? [
+                    'border-figma-border-disabled bg-transparent',
+                    'data-checked:border-transparent data-checked:bg-figma-disabled data-checked:icon-figma-bg',
+                    'data-indeterminate:border-transparent data-indeterminate:bg-figma-disabled data-indeterminate:icon-figma-disabled',
+                  ]
+                : [
+                    'focus-visible:border-figma-border-selected-strong',
+                    'data-checked:focus-visible:shadow-[inset_0_0_0_2px_var(--figma-color-bg)]',
+                    'data-indeterminate:focus-visible:shadow-[inset_0_0_0_2px_var(--figma-color-bg)]',
+                  ],
             ]
           : variant === 'ghost'
             ? [
-                'border-transparent',
-                'bg-figma-icon',
-                'data-checked:bg-figma-icon data-checked:icon-figma-onbrand',
+                'border-0',
+                'bg-figma-menu',
+                'data-checked:icon-figma-onbrand',
                 'data-indeterminate:icon-figma-onbrand',
                 disabled
-                  ? 'bg-figma-icon-disabled data-checked:bg-figma-icon-disabled data-checked:icon-figma-onbrand data-indeterminate:bg-figma-icon-disabled'
-                  : 'focus-visible:outline-figma-border-selected',
-              ]
-            : [
-                'border-figma-border-strong',
-                'bg-transparent',
-                'data-checked:border-transparent data-checked:bg-figma-brand data-checked:icon-figma-onbrand',
-                'data-indeterminate:border-transparent data-indeterminate:bg-figma-brand data-indeterminate:icon-figma-onbrand',
-                disabled
                   ? [
-                      'border-figma-border-disabled-strong',
-                      'data-checked:border-transparent data-checked:bg-figma-border-disabled-strong data-checked:icon-figma-onbrand',
-                      'data-indeterminate:border-transparent data-indeterminate:bg-figma-border-disabled-strong data-indeterminate:icon-figma-onbrand',
+                      'bg-figma-icon-disabled',
+                      'data-checked:bg-figma-icon-disabled data-checked:icon-figma-bg',
+                      'data-indeterminate:bg-figma-icon-disabled data-indeterminate:icon-figma-disabled',
                     ]
                   : [
-                      'focus-visible:outline-figma-border-selected',
-                      'data-checked:focus-visible:border-figma-icon-onbrand data-checked:focus-visible:outline-figma-border-selected-strong data-checked:focus-visible:outline-offset-0',
-                      'data-indeterminate:focus-visible:border-figma-icon-onbrand data-indeterminate:focus-visible:outline-figma-border-selected-strong data-indeterminate:focus-visible:outline-offset-0',
+                      'focus-visible:border focus-visible:border-figma-border-selected-strong',
+                      'data-checked:focus-visible:border-figma-border-selected',
+                      'data-indeterminate:focus-visible:border-figma-border-selected',
+                    ],
+              ]
+            : [
+                'border-figma',
+                'bg-figma-secondary',
+                'data-checked:border-figma-border-selected-strong data-checked:bg-figma-brand data-checked:icon-figma-onbrand',
+                'data-indeterminate:border-figma-border-selected-strong data-indeterminate:bg-figma-brand data-indeterminate:icon-figma-onbrand',
+                disabled
+                  ? [
+                      'border-figma-border-disabled bg-transparent',
+                      'data-checked:border-transparent data-checked:bg-figma-disabled data-checked:icon-figma-bg',
+                      'data-indeterminate:border-transparent data-indeterminate:bg-figma-disabled data-indeterminate:icon-figma-disabled',
+                    ]
+                  : [
+                      'focus-visible:border-figma-border-selected-strong',
+                      'data-checked:focus-visible:shadow-[inset_0_0_0_2px_var(--figma-color-bg)]',
+                      'data-indeterminate:focus-visible:shadow-[inset_0_0_0_2px_var(--figma-color-bg)]',
                     ],
               ],
       )}

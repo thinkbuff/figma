@@ -11,7 +11,7 @@ export const CheckmarkIndeterminateIcon = createIcon({
   path: (
     <path
       fill="var(--color-icon, currentColor)"
-      d="M4 8a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z"
+      d="M4 8c0-.27614.22386-.5.5-.5h7c.27614 0 .5.22386.5.5s-.22386.5-.5.5h-7c-.27614 0-.5-.22386-.5-.5Z"
     />
   ),
 });
