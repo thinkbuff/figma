@@ -32,7 +32,7 @@ function DropdownMenuGroup({
       ref={ref}
       className={addClassName(
         className,
-        'py-2 first:pt-0 last:pb-0 not-first:border-t not-first:border-solid not-first:border-figma-border-menu',
+        'py-2 first:pt-0 last:pb-0 not-first:mt-[7.5px] not-first:pt-[7.5px] not-first:border-t not-first:border-solid not-first:border-figma-border-menu',
       )}
       {...props}
     />

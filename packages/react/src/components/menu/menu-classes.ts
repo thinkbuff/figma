@@ -50,12 +50,12 @@ const menuLabelClassName = [
   'text-figma-menu-tertiary',
 ];
 
-const menuSeparatorClassName = 'my-2 h-px w-full bg-figma-border-menu';
+const menuSeparatorClassName = 'my-[7.5px] -mx-2 h-px bg-figma-border-menu';
 
 const menuScrollButtonClassName =
   'h-6 w-full flex cursor-default items-center justify-center bg-figma-menu hover:bg-figma-menu-hover icon-figma-menu';
 
-const menuItemTrailClassName = 'ml-auto flex items-center pl-6';
+const menuItemTrailClassName = 'ml-auto flex items-center pl-6 text-figma-menu-secondary';
 
 const menuItemBadgeClassName =
   'flex h-5 items-center rounded-figma-md bg-figma-menu px-1.5 text-figma-menu';
