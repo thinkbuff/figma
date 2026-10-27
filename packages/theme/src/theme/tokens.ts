@@ -54,7 +54,8 @@ export function parseThemeTokenName(value: string): ParsedThemeTokenName | null 
 
 /**
  * Theme source backed by this package's checked-in color data.
- * The shared tokens are the local menu/toolbar/tooltip scale.
+ * The shared tokens are the mode-invariant menu/tooltip chrome; accent tokens
+ * follow each editor mode and live in the per-theme maps.
  */
 export const docsThemeTokenSource: ThemeTokenSource = {
   shared: {},

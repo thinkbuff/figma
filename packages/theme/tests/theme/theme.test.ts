@@ -17,7 +17,9 @@ describe('@thinkbuff/figma-theme', () => {
     expect(Object.keys(docsThemeTokenSource.shared)).toHaveLength(0);
     expect(docsThemeTokenSource.themes['figma-light']['--figma-color-bg']).toBeDefined();
     expect(localThemeTokenSource.shared['--figma-color-bg-menu']).toBe('#1e1e1e');
-    expect(localThemeTokenSource.shared['--figma-color-text-tooltip-warning']).toBeDefined();
+    expect(localThemeTokenSource.shared['--figma-color-text-tooltip']).toBeDefined();
+    expect(localThemeTokenSource.shared['--figma-color-text-tooltip-warning']).toBeUndefined();
+    expect(docsThemeTokenSource.themes['figjam']['--figma-color-bg-menu-selected']).toBe('#9747ff');
   });
 
   it('uses an explicit contract for locally exposed utility tokens', () => {
