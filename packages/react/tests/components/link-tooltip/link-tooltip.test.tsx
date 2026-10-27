@@ -6,7 +6,9 @@ import {
   LinkTooltipAction,
   LinkTooltipInput,
   LinkTooltipItem,
+  LinkTooltipPopup,
 } from '~/components/link-tooltip/link-tooltip';
+import { Root as PopoverRoot, Trigger as PopoverTrigger } from '~/components/popover';
 
 describe('LinkTooltip', () => {
   it('renders the URL input row', async () => {
@@ -49,5 +51,24 @@ describe('LinkTooltip', () => {
     const style = getComputedStyle(item!);
     expect(style.overflowX).toBe('hidden');
     expect(parseFloat(style.borderTopRightRadius)).toBeGreaterThan(0);
+  });
+
+  it('renders the popup anchored to the trigger with a side-aware arrow', async () => {
+    await render(
+      <PopoverRoot open>
+        <PopoverTrigger render={<button>field</button>} />
+        <LinkTooltipPopup side="bottom">
+          <LinkTooltipItem>
+            <LinkTooltipAction>Edit</LinkTooltipAction>
+          </LinkTooltipItem>
+        </LinkTooltipPopup>
+      </PopoverRoot>,
+    );
+    const positioner = document.querySelector<HTMLElement>('[data-side]');
+    expect(positioner).toBeTruthy();
+    expect(positioner).toHaveAttribute('data-side', 'bottom');
+    const buttons = document.querySelectorAll('[data-side] button');
+    expect(buttons[0]).toHaveTextContent('Edit');
+    expect(document.querySelector('[data-side] svg[aria-hidden=true]')).toBeTruthy();
   });
 });

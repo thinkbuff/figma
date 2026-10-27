@@ -1,4 +1,28 @@
-import { cn } from '~/utils';
+import { Popover as PopoverPrimitive } from '@base-ui/react/popover';
+
+import { addClassName, cn } from '~/utils';
+
+const linkTooltipChrome = [
+  'relative inline-flex flex-col',
+  'bg-figma-tooltip text-figma-tooltip',
+  'rounded-figma-md shadow-figma-tooltip',
+];
+
+function LinkTooltipArrow({ className, ...props }: React.ComponentPropsWithRef<'svg'>) {
+  return (
+    <svg
+      width={14}
+      height={7}
+      viewBox="0 0 30 10"
+      preserveAspectRatio="none"
+      className={cn('fill-figma-bg-tooltip absolute', className)}
+      aria-hidden="true"
+      {...props}
+    >
+      <polygon points="0,0 30,0 15,10" />
+    </svg>
+  );
+}
 
 interface LinkTooltipProps extends React.ComponentPropsWithRef<'div'> {
   /**
@@ -15,32 +39,82 @@ function LinkTooltip({ arrow, className, children, ref, ...props }: LinkTooltipP
   return (
     <div
       ref={ref}
-      className={cn(
-        'relative inline-flex flex-col',
-        'bg-figma-tooltip text-figma-tooltip',
-        'rounded-figma-md shadow-figma-tooltip',
-        className,
-      )}
+      className={cn(linkTooltipChrome, className)}
       {...props}
     >
       {children}
-      {arrow ? (
-        <svg
-          width={14}
-          height={7}
-          viewBox="0 0 30 10"
-          preserveAspectRatio="none"
-          className="fill-figma-bg-tooltip absolute -bottom-1.5 left-1/2 -translate-x-1/2"
-          aria-hidden="true"
-        >
-          <polygon points="0,0 30,0 15,10" />
-        </svg>
-      ) : null}
+      {arrow ? <LinkTooltipArrow className="-bottom-1.5 left-1/2 -translate-x-1/2" /> : null}
     </div>
   );
 }
 
 LinkTooltip.displayName = 'LinkTooltip';
+
+type PositionerProps = React.ComponentPropsWithRef<typeof PopoverPrimitive.Positioner>;
+
+interface LinkTooltipPopupProps extends React.ComponentPropsWithRef<typeof PopoverPrimitive.Popup> {
+  /**
+   * Renders the arrow on the edge facing the anchor (side-aware).
+   *
+   * @default true
+   */
+  arrow?: boolean;
+  /**
+   * Specify a container element to portal the popup into.
+   *
+   * @default document.body
+   */
+  container?: React.ComponentProps<typeof PopoverPrimitive.Portal>['container'];
+  side?: PositionerProps['side'];
+  align?: PositionerProps['align'];
+  sideOffset?: PositionerProps['sideOffset'];
+  alignOffset?: PositionerProps['alignOffset'];
+  collisionPadding?: PositionerProps['collisionPadding'];
+}
+
+/**
+ * The link tooltip rendered as a popover popup — anchors it to a field or
+ * link and keeps it open for interaction. Compose inside `Popover.Root`.
+ */
+function LinkTooltipPopup({
+  arrow = true,
+  container,
+  side = 'top',
+  align = 'center',
+  sideOffset = 7,
+  alignOffset,
+  collisionPadding,
+  className,
+  children,
+  ref,
+  ...props
+}: LinkTooltipPopupProps) {
+  return (
+    <PopoverPrimitive.Portal container={container}>
+      <PopoverPrimitive.Positioner
+        className="group/positioner z-50"
+        side={side}
+        align={align}
+        sideOffset={sideOffset}
+        alignOffset={alignOffset}
+        collisionPadding={collisionPadding}
+      >
+        <PopoverPrimitive.Popup
+          ref={ref}
+          className={addClassName(className, linkTooltipChrome, 'outline-0')}
+          {...props}
+        >
+          {children}
+          {arrow ? (
+            <LinkTooltipArrow className="left-1/2 -translate-x-1/2 group-data-[side=bottom]/positioner:-top-1.5 group-data-[side=bottom]/positioner:rotate-180 group-data-[side=top]/positioner:-bottom-1.5" />
+          ) : null}
+        </PopoverPrimitive.Popup>
+      </PopoverPrimitive.Positioner>
+    </PopoverPrimitive.Portal>
+  );
+}
+
+LinkTooltipPopup.displayName = 'LinkTooltipPopup';
 
 /**
  * The "Type or paste URL" input row.
@@ -122,5 +196,5 @@ function LinkTooltipAction({
 
 LinkTooltipAction.displayName = 'LinkTooltipAction';
 
-export { LinkTooltip, LinkTooltipInput, LinkTooltipItem, LinkTooltipAction };
-export type { LinkTooltipProps, LinkTooltipItemProps };
+export { LinkTooltip, LinkTooltipPopup, LinkTooltipInput, LinkTooltipItem, LinkTooltipAction };
+export type { LinkTooltipProps, LinkTooltipPopupProps, LinkTooltipItemProps };
