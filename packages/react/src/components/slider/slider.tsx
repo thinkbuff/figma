@@ -59,6 +59,7 @@ SliderRoot.displayName = 'SliderRoot';
 
 function SliderTrack({
   className,
+  children,
   ref,
   ...props
 }: React.ComponentPropsWithRef<typeof SliderPrimitive.Track>) {
@@ -78,7 +79,11 @@ function SliderTrack({
       )}
       {...props}
       ref={ref}
-    />
+    >
+      <div className="absolute group-data-[orientation=horizontal]:inset-x-2 group-data-[orientation=horizontal]:top-0 group-data-[orientation=horizontal]:h-full group-data-[orientation=vertical]:inset-y-2 group-data-[orientation=vertical]:left-0 group-data-[orientation=vertical]:w-full">
+        {children}
+      </div>
+    </SliderPrimitive.Track>
   );
 }
 
