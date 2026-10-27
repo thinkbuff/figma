@@ -2,7 +2,7 @@ export const SharedFoundationVariables = {
   '--figma-font-family-default':
     '"Inter", ui-sans-serif, system-ui, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "SFProLocalRange"',
   '--figma-font-family-code':
-    '"SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace',
+    '"Roboto Mono", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace',
   '--figma-font-weight-default': '450',
   '--figma-font-weight-strong': '550',
   // Typography scale is ordered by rendered size, not semantic importance.
