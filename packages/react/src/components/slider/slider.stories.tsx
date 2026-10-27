@@ -134,6 +134,31 @@ export const Delta: Story = {
   },
 };
 
+export const Hue: Story = {
+  args: {
+    variant: 'hue',
+    value: [210],
+    max: 360,
+  },
+};
+
+export const Opacity: Story = {
+  args: {
+    variant: 'opacity',
+    fill: '#9747ff',
+    value: [60],
+  },
+};
+
+export const Gradient: Story = {
+  args: {
+    variant: 'gradient',
+    fill: 'linear-gradient(to right, rgba(151, 71, 255, 0), #9747ff)',
+    thumbFills: ['rgba(151, 71, 255, 0.4)', '#9747ff'],
+    value: [20, 80],
+  },
+};
+
 export const CustomStyle: Story = {
   render: function Render(args) {
     const [{ value: values }, updateArgs] = useArgs<{

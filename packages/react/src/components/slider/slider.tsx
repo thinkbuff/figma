@@ -167,6 +167,17 @@ function SliderHint({ hint, baseValue, min, max, orientation = 'horizontal' }: S
   );
 }
 
+const HUE_TRACK =
+  'linear-gradient(to right, hsl(0 100% 50%), hsl(60 100% 50%), hsl(120 100% 50%), hsl(180 100% 50%), hsl(240 100% 50%), hsl(300 100% 50%), hsl(360 100% 50%))';
+
+const CHECKERBOARD = 'repeating-conic-gradient(#00000026 0% 25%, transparent 0% 50%) 0 0 / 8px 8px';
+
+// A bare color can't be a non-final `background` layer — wrap it as a
+// solid gradient so it can stack above the checkerboard.
+function toLayer(fill: string) {
+  return /gradient|url\(/.test(fill) ? fill : `linear-gradient(${fill}, ${fill})`;
+}
+
 interface SliderProps extends React.ComponentPropsWithRef<typeof SliderRoot> {
   /**
    * Values shown as tick marks on the track. Pointer values snap to the
@@ -178,6 +189,26 @@ interface SliderProps extends React.ComponentPropsWithRef<typeof SliderRoot> {
    * emphasized and the thumb at that value renders filled.
    */
   baseValue?: number;
+  /**
+   * UI3 "Slider Color" / "Slider Gradient" presentation:
+   *
+   * - `'hue'` paints the spectrum track and derives the thumb's inner color disc from the value.
+   * - `'opacity'` paints a checkerboard fading into `fill`; the thumb disc shows `fill` at the
+   *   value's alpha.
+   * - `'gradient'` renders `fill` on the track and square chit.24-style thumbs (spec's gradient stop
+   *   handles).
+   */
+  variant?: 'hue' | 'opacity' | 'gradient';
+  /**
+   * The color being edited: the fade-in endpoint for `variant="opacity"`,
+   * the track paint for `variant="gradient"`, and the thumb preview fill.
+   */
+  fill?: string;
+  /**
+   * Per-thumb preview fills — e.g. each gradient stop's own color.
+   * Overrides `fill` inside the thumb at that index.
+   */
+  thumbFills?: string[];
 }
 
 /**
@@ -190,6 +221,9 @@ function Slider({
   ref,
   hints,
   baseValue,
+  variant,
+  fill,
+  thumbFills,
   value: valueProp,
   defaultValue,
   onValueChange,
@@ -209,6 +243,7 @@ function Slider({
   );
   const value = isControlled ? valueProp : innerValue;
   const values = toArray(value);
+  const trackFill = fill;
 
   return (
     <SliderRoot
@@ -234,16 +269,66 @@ function Slider({
           : undefined
       }
     >
-      <SliderTrack>
-        <SliderRange />
+      <SliderTrack
+        className={variant && cn('bg-transparent outline-none', 'overflow-hidden')}
+        style={
+          variant === 'hue'
+            ? { background: HUE_TRACK }
+            : variant === 'opacity'
+              ? {
+                  background: `${trackFill ? `linear-gradient(to right, transparent, ${trackFill}), ` : ''}${CHECKERBOARD}`,
+                }
+              : variant === 'gradient'
+                ? {
+                    background: `${trackFill ? `${toLayer(trackFill)}, ` : ''}${CHECKERBOARD}`,
+                  }
+                : undefined
+        }
+      >
+        {variant === undefined && <SliderRange />}
       </SliderTrack>
-      {values.map((v: number, index: number) => (
-        <SliderThumb
-          key={index}
-          index={index}
-          className={v === baseValue ? 'bg-figma-icon-onbrand' : undefined}
-        />
-      ))}
+      {values.map((v: number, index: number) => {
+        const thumbFill = thumbFills?.[index] ?? trackFill;
+        return (
+          <SliderThumb
+            key={index}
+            index={index}
+            className={cn(
+              v === baseValue && 'bg-figma-icon-onbrand',
+              variant && variant !== 'gradient' && 'flex items-center justify-center',
+              variant === 'gradient' &&
+                'size-5 border-0 rounded-figma-md bg-figma p-0.5 shadow-figma-elevation-200 outline-1 -outline-offset-1 outline-solid outline-[#0000001a]',
+            )}
+          >
+            {variant && variant !== 'gradient' && (
+              <span
+                data-thumb-fill=""
+                className="block size-1.5 rounded-full"
+                style={
+                  variant === 'hue'
+                    ? { background: `hsl(${((v - min) / (max - min)) * 360} 100% 50%)` }
+                    : {
+                        background: `${
+                          thumbFill
+                            ? `linear-gradient(color-mix(in srgb, ${thumbFill} ${(((v - min) / (max - min)) * 100).toFixed(1)}%, transparent), color-mix(in srgb, ${thumbFill} ${(((v - min) / (max - min)) * 100).toFixed(1)}%, transparent)), `
+                            : ''
+                        }${CHECKERBOARD}`,
+                      }
+                }
+              />
+            )}
+            {variant === 'gradient' && (
+              <span
+                data-thumb-fill=""
+                className="block size-full rounded-[3px] outline-1 -outline-offset-1 outline-solid outline-[#0000001a]"
+                style={{
+                  background: `${thumbFill ? `${toLayer(thumbFill)}, ` : ''}${CHECKERBOARD}`,
+                }}
+              />
+            )}
+          </SliderThumb>
+        );
+      })}
       {hints?.map((hint) => (
         <SliderHint
           key={hint}
