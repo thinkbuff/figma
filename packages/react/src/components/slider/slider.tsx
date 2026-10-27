@@ -103,8 +103,8 @@ function SliderRange({
         'rounded-full',
         'bg-figma-brand',
         'box-content',
-        'data-[orientation=horizontal]:h-4 data-[orientation=horizontal]:px-2 data-[orientation=horizontal]:-ml-2',
-        'data-[orientation=vertical]:w-4 data-[orientation=vertical]:py-2 data-[orientation=vertical]:-mt-2',
+        'data-[orientation=horizontal]:h-4 data-[orientation=horizontal]:px-1.5 data-[orientation=horizontal]:-ml-1.5',
+        'data-[orientation=vertical]:w-4 data-[orientation=vertical]:py-1.5 data-[orientation=vertical]:-mt-1.5',
         'data-disabled:bg-figma-disabled',
       )}
       {...props}
@@ -124,6 +124,7 @@ function SliderThumb({
     <SliderPrimitive.Thumb
       className={addClassName(
         className,
+        'relative',
         'block',
         'z-10',
         'size-4',
@@ -134,8 +135,9 @@ function SliderThumb({
         'bg-transparent',
         'shadow-figma-elevation-200',
         'outline-0',
+        'after:pointer-events-none after:absolute after:inset-1 after:rounded-full after:content-[""] after:shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.1)]',
         'focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-figma-border-selected',
-        'data-disabled:border-0 data-disabled:bg-figma-disabled-secondary data-disabled:shadow-none data-disabled:pointer-events-none',
+        'data-disabled:border-0 data-disabled:bg-figma-disabled-secondary data-disabled:shadow-none data-disabled:pointer-events-none data-disabled:after:hidden',
       )}
       {...props}
       ref={ref}
@@ -171,6 +173,9 @@ function SliderHint({ hint, baseValue, min, max, orientation = 'horizontal' }: S
     />
   );
 }
+
+// UI3 paints a white sheen fading down over the hue/opacity/gradient fills.
+const TRACK_SHEEN = 'linear-gradient(to bottom, rgb(255 255 255), rgb(255 255 255 / 0))';
 
 const HUE_TRACK =
   'linear-gradient(to right, hsl(0 100% 50%), hsl(60 100% 50%), hsl(120 100% 50%), hsl(180 100% 50%), hsl(240 100% 50%), hsl(300 100% 50%), hsl(360 100% 50%))';
@@ -278,14 +283,14 @@ function Slider({
         className={variant && cn('bg-transparent outline-none', 'overflow-hidden')}
         style={
           variant === 'hue'
-            ? { background: HUE_TRACK }
+            ? { background: `${TRACK_SHEEN}, ${HUE_TRACK}` }
             : variant === 'opacity'
               ? {
-                  background: `${trackFill ? `linear-gradient(to right, transparent, ${trackFill}), ` : ''}${CHECKERBOARD}`,
+                  background: `${TRACK_SHEEN}, ${trackFill ? `linear-gradient(to right, transparent, ${trackFill}), ` : ''}${CHECKERBOARD}`,
                 }
               : variant === 'gradient'
                 ? {
-                    background: `${trackFill ? `${toLayer(trackFill)}, ` : ''}${CHECKERBOARD}`,
+                    background: `${TRACK_SHEEN}, ${trackFill ? `${toLayer(trackFill)}, ` : ''}${CHECKERBOARD}`,
                   }
                 : undefined
         }
@@ -304,7 +309,7 @@ function Slider({
                 variant !== 'gradient' &&
                 'flex items-center justify-center',
               variant === 'gradient' &&
-                'group/thumb size-4 border-0 bg-transparent shadow-none focus-visible:outline-0',
+                'group/thumb size-4 border-0 bg-transparent shadow-none focus-visible:outline-0 after:hidden',
             )}
           >
             {variant && variant !== 'gradient' && (
@@ -339,7 +344,7 @@ function Slider({
                   className={cn(
                     'relative block size-6 rounded-figma-md bg-figma p-1.25',
                     'outline-1 -outline-offset-1 outline-solid outline-[#0000001a]',
-                    'drop-shadow-[0_1px_4px_rgba(0,0,0,0.25)]',
+                    'drop-shadow-[0_0_0.25px_rgba(0,0,0,0.18),0_3px_4px_rgba(0,0,0,0.1),0_1px_1.5px_rgba(0,0,0,0.1)]',
                     'after:absolute after:bottom-[-5px] after:left-1/2 after:block after:h-1.5 after:w-3',
                     'after:-translate-x-1/2 after:bg-inherit after:content-[""]',
                     'after:[clip-path:polygon(0_0,100%_0,58%_100%,42%_100%)]',
@@ -347,7 +352,7 @@ function Slider({
                   )}
                 >
                   <span
-                    className="block size-full rounded-[4px] outline-1 -outline-offset-1 outline-solid outline-[#0000001a]"
+                    className="block size-full rounded-figma-sm outline-1 -outline-offset-1 outline-solid outline-[#0000001a]"
                     style={{
                       background: `${thumbFill ? `${toLayer(thumbFill)}, ` : ''}${CHECKERBOARD}, linear-gradient(#fff, #fff)`,
                     }}
