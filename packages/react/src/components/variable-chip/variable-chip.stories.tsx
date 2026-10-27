@@ -33,7 +33,7 @@ function Field({
   return (
     <div
       className={cn(
-        'flex h-6 w-36 items-center gap-1 rounded-figma-md bg-figma-secondary pl-2 pr-1',
+        'flex h-6 w-22 items-center gap-1 rounded-figma-md bg-figma-secondary pl-1 pr-2',
         '-outline-offset-1 outline-1 outline-solid',
         state === 'focus'
           ? 'outline-figma-border-selected'
