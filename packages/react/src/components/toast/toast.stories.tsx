@@ -186,22 +186,6 @@ export const Default: Story = {
         >
           Loading
         </Button>
-        <Button
-          variant="outline"
-          onClick={() => {
-            toast('Event has been created', {
-              description: 'Monday, January 3rd at 6:00pm',
-              duration: 6000,
-              closeButton: true,
-              action: {
-                label: 'Undo',
-                onClick: () => console.log('Undo'),
-              },
-            });
-          }}
-        >
-          CloseButton
-        </Button>
       </div>
     );
   },

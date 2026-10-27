@@ -34,8 +34,7 @@ function Toaster({ className, ...props }: ToasterProps) {
             'col-start-3 row-start-1 flex min-h-7 items-center justify-center self-stretch border-l border-white/15 px-4 font-medium text-figma-onbrand hover:bg-white/10 active:bg-white/15',
           cancelButton:
             'col-start-3 row-start-1 flex min-h-7 items-center justify-center self-stretch border-l border-white/15 px-4 font-medium text-figma-onbrand group-has-[[data-action]]:row-start-2 group-has-[[data-action]]:border-t hover:bg-white/10 active:bg-white/15',
-          closeButton:
-            'absolute top-0 right-0 z-10 col-span-full row-span-full flex size-5 translate-x-1/3 -translate-y-1/3 cursor-default items-center justify-center rounded-full border border-white/25 border-solid bg-figma-inverse text-figma-onbrand opacity-0 transition-opacity hover:bg-white/15 group-hover:opacity-100 [&_svg]:size-3',
+          closeButton: 'hidden',
         },
       }}
       {...props}
