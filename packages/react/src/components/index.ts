@@ -25,4 +25,5 @@ export * from './toggle';
 export * from './toggle-group';
 export * from './tooltip';
 export * from './value-field';
+export * from './variable-chip';
 export * from './visual-bell';

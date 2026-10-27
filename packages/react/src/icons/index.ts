@@ -49,6 +49,7 @@ export { LayersCollapseIcon } from './layers-collapse';
 export { LetterSpacingIcon } from './letter-spacing';
 export { LineHeightIcon } from './line-height';
 export { LinkIcon } from './link';
+export { LinkBrokenIcon } from './link-broken';
 export { ListBulletedIcon } from './list-bulleted';
 export { ListNumberedIcon } from './list-numbered';
 export { MinusIcon } from './minus';
