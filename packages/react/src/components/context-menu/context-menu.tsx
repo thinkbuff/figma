@@ -9,6 +9,7 @@ import { ContextMenu as ContextMenuPrimitive } from '@base-ui/react/context-menu
 import { CheckmarkIcon, ChevronRightIcon, CircleIcon } from '~/icons';
 import { addClassName } from '~/utils';
 
+import { ItemBadge, ItemCheck, ItemShortcut } from '../dropdown-menu/dropdown-menu';
 import {
   menuContentClassName,
   menuItemClassName,
@@ -254,6 +255,9 @@ export {
   ContextMenuContent as Content,
   ContextMenuGroup as Group,
   ContextMenuItem as Item,
+  ItemBadge,
+  ItemCheck,
+  ItemShortcut,
   ContextMenuLabel as Label,
   ContextMenuRadioGroup as RadioGroup,
   ContextMenuRadioItem as RadioItem,

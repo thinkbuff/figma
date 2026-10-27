@@ -1,14 +1,17 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
 
 import { CheckmarkIcon, ChevronRightIcon, CircleIcon } from '~/icons';
-import { addClassName } from '~/utils';
+import { addClassName, cn } from '~/utils';
 
 import {
   menuContentClassName,
+  menuItemBadgeClassName,
+  menuItemCheckClassName,
   menuItemClassName,
   menuItemIndicatorClassName,
   menuLabelClassName,
   menuSeparatorClassName,
+  menuItemTrailClassName,
 } from '../menu/menu-classes';
 
 type PositionerProps = React.ComponentPropsWithRef<typeof MenuPrimitive.Positioner>;
@@ -274,6 +277,69 @@ function DropdownMenuSeparator({
 
 DropdownMenuSeparator.displayName = 'DropdownMenuSeparator';
 
+/**
+ * Right-aligned trail for keyboard shortcuts or other trailing text.
+ * Render inside `Item`, `CheckboxItem`, or `RadioItem`.
+ */
+function DropdownMenuItemShortcut({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<'span'>) {
+  return (
+    <span
+      ref={ref}
+      className={cn(menuItemTrailClassName, className)}
+      {...props}
+    />
+  );
+}
+
+DropdownMenuItemShortcut.displayName = 'DropdownMenuItemShortcut';
+
+/**
+ * Right-aligned badge trail — a menu-colored chip that only surfaces on a
+ * highlighted row, matching the spec's trailing "Menu" chip.
+ */
+function DropdownMenuItemBadge({
+  className,
+  children,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<'span'>) {
+  return (
+    <span
+      ref={ref}
+      className={cn(menuItemTrailClassName, className)}
+      {...props}
+    >
+      <span className={menuItemBadgeClassName}>{children}</span>
+    </span>
+  );
+}
+
+DropdownMenuItemBadge.displayName = 'DropdownMenuItemBadge';
+
+/**
+ * Right-aligned check trail — the spec's small brand chip used as a trailing
+ * selection indicator.
+ */
+function DropdownMenuItemCheck({ className, ref, ...props }: React.ComponentPropsWithRef<'span'>) {
+  return (
+    <span
+      ref={ref}
+      className={cn(menuItemTrailClassName, className)}
+      {...props}
+    >
+      <span className={menuItemCheckClassName}>
+        <CheckmarkIcon size="2.5" />
+      </span>
+    </span>
+  );
+}
+
+DropdownMenuItemCheck.displayName = 'DropdownMenuItemCheck';
+
 export {
   DropdownMenuRoot as Root,
   DropdownMenuTrigger as Trigger,
@@ -282,6 +348,9 @@ export {
   DropdownMenuContent as Content,
   DropdownMenuGroup as Group,
   DropdownMenuItem as Item,
+  DropdownMenuItemBadge as ItemBadge,
+  DropdownMenuItemCheck as ItemCheck,
+  DropdownMenuItemShortcut as ItemShortcut,
   DropdownMenuLabel as Label,
   DropdownMenuRadioGroup as RadioGroup,
   DropdownMenuRadioItem as RadioItem,

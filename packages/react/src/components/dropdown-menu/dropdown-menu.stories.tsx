@@ -92,19 +92,28 @@ const meta = {
           className="min-w-60"
         >
           <DropdownMenu.Item>
-            New Tab <span className="ml-auto">⌘+T</span>
+            New Tab <DropdownMenu.ItemShortcut>⌘+T</DropdownMenu.ItemShortcut>
           </DropdownMenu.Item>
           <DropdownMenu.Item>
-            New Window <span className="ml-auto">⌘+N</span>
+            New Window <DropdownMenu.ItemShortcut>⌘+N</DropdownMenu.ItemShortcut>
           </DropdownMenu.Item>
           <DropdownMenu.Item disabled>
-            New Private Window <span className="ml-auto">⇧+⌘+N</span>
+            New Private Window <DropdownMenu.ItemShortcut>⇧+⌘+N</DropdownMenu.ItemShortcut>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            File Menu <DropdownMenu.ItemBadge>Menu</DropdownMenu.ItemBadge>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            Selected <DropdownMenu.ItemCheck />
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            Item count <DropdownMenu.ItemShortcut>250</DropdownMenu.ItemShortcut>
           </DropdownMenu.Item>
           <DropdownMenu.Sub>
             <DropdownMenu.SubTrigger>More Tools</DropdownMenu.SubTrigger>
             <DropdownMenu.SubContent className="min-w-40">
               <DropdownMenu.Item>
-                Save Page As <span className="ml-auto">⌘+S</span>
+                Save Page As <DropdownMenu.ItemShortcut>⌘+S</DropdownMenu.ItemShortcut>
               </DropdownMenu.Item>
               <DropdownMenu.Item>Create Shortcut</DropdownMenu.Item>
               <DropdownMenu.Item>Name Window</DropdownMenu.Item>
