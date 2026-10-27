@@ -39,25 +39,24 @@ function Switch({ className, indeterminate = false, ref, ...props }: SwitchProps
         '-outline-offset-1',
         'outline-transparent',
         'transition-[background-position] duration-[80ms]',
-        'focus-visible:outline-figma-border-selected-strong focus-visible:before:inset-0.5',
-        'before:absolute before:inset-0 before:rounded-full before:border before:border-solid before:border-[#00000033] before:content-[""]',
-        'dark:before:border-[#ffffff33]',
-        'data-unchecked:before:bg-figma-secondary',
-        'data-unchecked:active:before:bg-figma-tertiary',
+        'focus-visible:outline-figma-border-selected focus-visible:before:inset-[3px]',
+        'data-checked:focus-visible:outline-figma-border-selected-strong',
+        'data-mixed:focus-visible:outline-figma-border-selected-strong',
+        'before:absolute before:inset-0 before:rounded-full before:content-[""]',
+        'data-unchecked:before:bg-figma-tertiary',
         'data-checked:before:bg-figma-brand',
         'data-mixed:data-unchecked:before:bg-figma-brand',
         'data-checked:active:before:bg-figma-brand-pressed',
         'data-mixed:data-unchecked:active:before:bg-figma-brand-pressed',
         'data-disabled:data-unchecked:before:bg-figma-disabled',
         'data-disabled:data-checked:before:bg-figma-tertiary',
-        'data-disabled:data-mixed:before:bg-figma-tertiary',
       )}
       {...props}
       ref={ref}
     >
       <SwitchPrimitives.Thumb
         data-mixed={indeterminate || undefined}
-        className="pointer-events-none absolute top-1 left-1 h-2 w-3 rounded-full outline-solid outline-1 outline-[#00000033] bg-figma-icon-onbrand transition-all duration-[80ms] data-checked:left-[calc(100%-16px)] data-checked:outline-[#0000001a] data-disabled:bg-figma-icon-ondisabled data-mixed:left-1/2 data-mixed:top-1/2 data-mixed:-translate-x-1/2 data-mixed:-translate-y-1/2 data-mixed:h-0.5 data-mixed:w-2 data-mixed:rounded-xs data-mixed:outline-none"
+        className="pointer-events-none absolute top-px left-px size-3.5 rounded-full bg-figma-icon-onbrand transition-all duration-[80ms] data-checked:left-[calc(100%-15px)] data-disabled:bg-figma-icon-ondisabled data-mixed:left-1/2 data-mixed:top-1/2 data-mixed:-translate-x-1/2 data-mixed:-translate-y-1/2 data-mixed:h-px data-mixed:w-2 data-mixed:rounded-xs"
       />
     </SwitchPrimitives.Root>
   );
