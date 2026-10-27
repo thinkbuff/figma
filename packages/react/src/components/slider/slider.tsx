@@ -42,8 +42,8 @@ function SliderRoot({ className, children, ref, ...props }: SliderRootProps) {
         'h-6',
         'touch-none',
         'select-none',
-        'border-0 border-x-[16px] border-solid border-transparent',
-        'data-[orientation=vertical]:flex-col data-[orientation=vertical]:w-6 data-[orientation=vertical]:h-full data-[orientation=vertical]:border-x-0 data-[orientation=vertical]:border-y-[16px]',
+        'border-0 border-x-8 border-solid border-transparent',
+        'data-[orientation=vertical]:flex-col data-[orientation=vertical]:w-6 data-[orientation=vertical]:h-full data-[orientation=vertical]:border-x-0 data-[orientation=vertical]:border-y-8',
       )}
       {...props}
       ref={ref}
@@ -73,8 +73,8 @@ function SliderTrack({
         'rounded-full',
         'bg-figma-secondary',
         'outline-solid outline-1 -outline-offset-1 outline-[#0000001a] dark:outline-[#ffffff1a]',
-        'data-[orientation=horizontal]:-mx-4',
-        'data-[orientation=vertical]:w-4 data-[orientation=vertical]:-my-4',
+        'data-[orientation=horizontal]:-mx-2',
+        'data-[orientation=vertical]:w-4 data-[orientation=vertical]:-my-2',
       )}
       {...props}
       ref={ref}
@@ -98,8 +98,8 @@ function SliderRange({
         'rounded-full',
         'bg-figma-brand',
         'box-content',
-        'data-[orientation=horizontal]:h-4 data-[orientation=horizontal]:px-4 data-[orientation=horizontal]:-ml-4',
-        'data-[orientation=vertical]:w-4 data-[orientation=vertical]:py-4 data-[orientation=vertical]:-mt-4',
+        'data-[orientation=horizontal]:h-4 data-[orientation=horizontal]:px-2 data-[orientation=horizontal]:-ml-2',
+        'data-[orientation=vertical]:w-4 data-[orientation=vertical]:py-2 data-[orientation=vertical]:-mt-2',
         'data-disabled:bg-figma-disabled',
       )}
       {...props}
