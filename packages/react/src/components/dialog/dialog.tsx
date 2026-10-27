@@ -117,7 +117,7 @@ function DialogSection({ className, ref, ...props }: React.ComponentPropsWithRef
   return (
     <div
       ref={ref}
-      className={cn('p-4', 'border-b', 'border-figma-border', 'last:border-b-0', className)}
+      className={cn('px-4 py-2', 'border-b', 'border-figma-border', 'last:border-b-0', className)}
       {...props}
     />
   );
