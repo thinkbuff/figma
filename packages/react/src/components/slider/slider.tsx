@@ -69,7 +69,7 @@ function SliderTrack({
         'static',
         'h-4',
         'grow',
-        'overflow-visible',
+        'overflow-hidden',
         'rounded-full',
         'bg-figma-secondary',
         'outline-solid outline-1 -outline-offset-1 outline-[#0000001a] dark:outline-[#ffffff1a]',
