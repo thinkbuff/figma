@@ -21,9 +21,9 @@ function Toaster({ className, ...props }: ToasterProps) {
         classNames: {
           toast:
             'group toast grid min-h-10 w-[var(--width)] auto-rows-fr grid-cols-[auto_1fr_auto] items-stretch rounded-figma-md bg-figma-inverse text-figma-sm leading-figma-sm text-figma-onbrand shadow-figma-elevation-400',
-          icon: 'col-start-1 row-start-1 row-end-[-1] flex items-center pl-3 [&_svg]:size-4 [&_.sonner-loading-bar]:bg-figma-onbrand',
+          icon: 'relative col-start-1 row-start-1 flex w-7 items-center justify-center self-stretch [&_svg]:size-4 [&_.sonner-loading-wrapper]:inset-0 [&_.sonner-loading-wrapper]:m-auto [&_.sonner-spinner]:top-0 [&_.sonner-spinner]:left-0 [&_.sonner-loading-bar]:bg-figma-onbrand group-has-[[data-action]]:group-has-[[data-cancel]]:row-end-3',
           content:
-            'col-start-2 row-start-1 row-end-[-1] flex flex-col justify-center gap-0.5 px-3 py-2.5',
+            'col-start-2 row-start-1 flex flex-col justify-center gap-0.5 self-stretch px-3 py-2.5 group-has-[[data-icon]]:pl-2 group-has-[[data-action]]:group-has-[[data-cancel]]:row-end-3',
           title: 'text-figma-sm',
           description: 'text-figma-sm leading-figma-sm text-white/70',
           success: '[&_[data-icon]]:text-figma-success',
@@ -35,7 +35,7 @@ function Toaster({ className, ...props }: ToasterProps) {
           cancelButton:
             'col-start-3 row-start-1 flex min-h-7 items-center justify-center self-stretch border-l border-white/15 px-4 font-medium text-figma-onbrand group-has-[[data-action]]:row-start-2 group-has-[[data-action]]:border-t hover:bg-white/10 active:bg-white/15',
           closeButton:
-            'right-0 left-auto translate-x-[40%] -translate-y-[40%] border border-white/25 border-solid bg-figma-inverse text-figma-onbrand opacity-0 hover:bg-white/15 group-hover:opacity-100',
+            'absolute top-0 right-0 z-10 col-span-full row-span-full flex size-5 translate-x-1/3 -translate-y-1/3 cursor-default items-center justify-center rounded-full border border-white/25 border-solid bg-figma-inverse text-figma-onbrand opacity-0 transition-opacity hover:bg-white/15 group-hover:opacity-100 [&_svg]:size-3',
         },
       }}
       {...props}
