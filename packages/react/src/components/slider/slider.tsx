@@ -333,16 +333,16 @@ function Slider({
             {variant === 'gradient' && (
               <span
                 data-thumb-fill=""
-                className="absolute bottom-[19px] left-1/2 block -translate-x-1/2"
+                className="absolute bottom-[21px] left-1/2 block -translate-x-1/2"
               >
                 <span
                   className={cn(
                     'relative block size-6 rounded-figma-md bg-figma p-0.5',
                     'outline-1 -outline-offset-1 outline-solid outline-[#0000001a]',
                     'drop-shadow-[0_1px_4px_rgba(0,0,0,0.25)]',
-                    'after:absolute after:bottom-[-4px] after:left-1/2 after:block after:size-3',
-                    'after:-translate-x-1/2 after:rotate-45 after:rounded-[2px] after:bg-inherit',
-                    "after:-z-10 after:content-['']",
+                    'after:absolute after:bottom-[-5px] after:left-1/2 after:block after:h-1.5 after:w-3',
+                    'after:-translate-x-1/2 after:bg-inherit after:content-[""]',
+                    'after:[clip-path:polygon(0_0,100%_0,58%_100%,42%_100%)]',
                     'group-focus-within/thumb:bg-figma-selected-strong',
                   )}
                 >
