@@ -273,10 +273,11 @@ export const CustomTrigger: Story = {
         value={args.value}
         onValueChange={(value) => updateArgs({ value })}
       >
-        <Select.Trigger disabled={disabled}>
-          <span className="icon-[tabler--droplet] h-3 w-8 text-figma-secondary -ml-2"></span>
-          <Select.Value placeholder="Select. an option" />
-        </Select.Trigger>
+        <Select.Trigger
+          disabled={disabled}
+          icon={<span className="icon-[tabler--droplet] size-3"></span>}
+          placeholder="Select. an option"
+        />
         <Select.Content {...props}>
           <Select.Group>
             <Select.Item value="pass-through">Pass through</Select.Item>

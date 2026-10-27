@@ -56,6 +56,10 @@ SelectArrow.displayName = 'SelectArrow';
 interface SelectTriggerProps extends React.ComponentPropsWithRef<typeof SelectPrimitive.Trigger> {
   placeholder?: React.ComponentProps<typeof SelectPrimitive.Value>['placeholder'];
   /**
+   * Leading icon rendered before the value — the spec's icon-lead variant.
+   */
+  icon?: React.ReactNode;
+  /**
    * The control height. `'default'` is the 24px UI3 size, `'large'` is 32px.
    *
    * @default 'default'
@@ -67,6 +71,7 @@ function SelectTrigger({
   className,
   children,
   disabled,
+  icon,
   placeholder,
   size = 'default',
   ref,
@@ -109,6 +114,16 @@ function SelectTrigger({
       disabled={disabled}
     >
       <div className="pointer-events-none flex items-center grow">
+        {icon && (
+          <span
+            className={cn(
+              'mr-1 flex w-4 shrink-0 items-center justify-center',
+              disabled ? 'icon-figma-disabled' : 'icon-figma-secondary',
+            )}
+          >
+            {icon}
+          </span>
+        )}
         {children ?? <SelectValue placeholder={placeholder} />}
       </div>
       <SelectPrimitive.Icon
