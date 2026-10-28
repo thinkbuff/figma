@@ -19,11 +19,11 @@ function Fixture({
       onOpenChange={onOpenChange}
       open={open}
     >
-      <Sheet.Trigger render={<Button variant="outline">Open sheet</Button>} />
+      <Sheet.Trigger render={<Button variant="secondary">Open sheet</Button>} />
       <Sheet.Content>
         <Sheet.Header>
           <Sheet.Title>Sheet title</Sheet.Title>
-          <Sheet.Close render={<Button variant="outline">Close</Button>} />
+          <Sheet.Close render={<Button variant="secondary">Close</Button>} />
         </Sheet.Header>
         <Sheet.Description>Sheet description goes here.</Sheet.Description>
       </Sheet.Content>

@@ -16,6 +16,23 @@
 - Utilities follow the theme's utility contract (`text-figma-sm`, `rounded-figma-sm`, `bg-figma-*`, …). Dark mode is `.figma-dark`; FigJam is `.figjam`.
 - Components use inline SVG icons, so no icon preset is needed.
 
+#### `Button` API rework
+
+- `variant` + `color` collapsed into a single `variant`: `primary`, `secondary`, `destructive`, `secondary-destructive`, `inverse`, `success`, `figjam`, `link`, `link-danger`, `ghost`. `size="wide"` replaces `fullWidth`; new `icon` slot prop.
+
+| Before | After |
+| --- | --- |
+| `variant="solid" color="primary"` (default) | `variant="primary"` |
+| `variant="solid" color="danger"` | `variant="destructive"` |
+| `variant="solid" color="success"` | `variant="success"` |
+| `variant="solid" color="inverse"` | `variant="inverse"` |
+| `variant="outline"` / `color="secondary"` | `variant="secondary"` |
+| `variant="outline" color="danger"` | `variant="secondary-destructive"` |
+| `variant="link" color="danger"` | `variant="link-danger"` |
+| `variant="link"` | `variant="link"` |
+| `variant="ghost"` | `variant="ghost"` |
+| `fullWidth` | `size="wide"` |
+
 #### Tokens: generated from `packages/theme/tokens/`
 
 - `@thinkbuff/figma-theme/colors` no longer exports `BaseThemeCSSVariables`/`BaseThemeCSSVariableKey` — each mode map is complete on its own.

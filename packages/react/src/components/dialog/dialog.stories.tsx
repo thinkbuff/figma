@@ -53,7 +53,7 @@ const meta: Meta = {
           updateArgs({ open: value });
         }}
       >
-        <Dialog.Trigger render={<Button variant="outline">Edit profile</Button>} />
+        <Dialog.Trigger render={<Button variant="secondary">Edit profile</Button>} />
         <Dialog.Content {...props}>
           <Dialog.Header className="justify-between">
             <Dialog.Title>Edit profile</Dialog.Title>
@@ -105,16 +105,7 @@ const meta: Meta = {
             </div>
           </Dialog.Section>
           <Dialog.Footer className="justify-end gap-2">
-            <Dialog.Close
-              render={
-                <Button
-                  variant="outline"
-                  color="secondary"
-                >
-                  Cancel
-                </Button>
-              }
-            />
+            <Dialog.Close render={<Button variant="secondary">Cancel</Button>} />
             <Button
               onClick={() => {
                 toast.success('Profile has been updated', {

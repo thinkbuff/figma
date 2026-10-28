@@ -13,6 +13,15 @@ export const semanticUtilities = {
   'bg-figma-overlay': 'background-color: rgba(0, 0, 0, 0.5);',
   'fill-figma-elevated': 'fill: var(--figma-color-bg);',
   'fill-figma-inverse': 'fill: var(--figma-color-bg-inverse);',
+  'bg-figma-bgtransparentsecondary': 'background-color: var(--figma-color-bgtransparentsecondary);',
+  'bg-figma-bgtransparent-secondary-hover':
+    'background-color: var(--figma-color-bgtransparent-secondary-hover);',
+  'bg-figma-bgtransparent-secondary-pressed':
+    'background-color: var(--figma-color-bgtransparent-secondary-pressed);',
+  'bg-figma-bghovertransparent': 'background-color: var(--figma-color-bghovertransparent);',
+  'outline-figma-bordertranslucent': 'outline-color: var(--figma-color-bordertranslucent);',
+  'shadow-figma-focus-inset':
+    'box-shadow: inset 0 0 0 2px var(--figma-color-border-onbrand-strong);',
   'outline-figma-transparent': 'outline-color: transparent;',
   'ring-figma': '--tw-ring-color: var(--figma-color-border-selected);',
   'ring-offset-figma': '--tw-ring-offset-color: var(--figma-color-bg);',

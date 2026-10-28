@@ -19,11 +19,11 @@ function Fixture({
       onOpenChange={onOpenChange}
       open={open}
     >
-      <Dialog.Trigger render={<Button variant="outline">Edit profile</Button>} />
+      <Dialog.Trigger render={<Button variant="secondary">Edit profile</Button>} />
       <Dialog.Content>
         <Dialog.Header>
           <Dialog.Title>Edit profile</Dialog.Title>
-          <Dialog.Close render={<Button variant="outline">Close</Button>} />
+          <Dialog.Close render={<Button variant="secondary">Close</Button>} />
         </Dialog.Header>
         <Dialog.Description>Make changes to your profile here.</Dialog.Description>
       </Dialog.Content>

@@ -31,7 +31,7 @@ export const Default: Story = {
     return (
       <div className="flex flex-wrap items-center gap-2">
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast('Event has been created', {
               duration: 1_000_000,
@@ -41,7 +41,7 @@ export const Default: Story = {
           Default
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -56,7 +56,7 @@ export const Default: Story = {
           Action
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -71,7 +71,7 @@ export const Default: Story = {
           Cancel
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -90,7 +90,7 @@ export const Default: Story = {
           Action + Dismiss
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast.success('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -105,7 +105,7 @@ export const Default: Story = {
           Success
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast.info('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -120,7 +120,7 @@ export const Default: Story = {
           Info
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast.warning('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -135,7 +135,7 @@ export const Default: Story = {
           Warning
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast.error('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -150,7 +150,7 @@ export const Default: Story = {
           Error
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() => {
             toast.promise(
               new Promise<{ name: string }>((resolve) =>
@@ -172,7 +172,7 @@ export const Default: Story = {
           Promise
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() => {
             toast.loading('Loading toast...', {
               duration: 2000,

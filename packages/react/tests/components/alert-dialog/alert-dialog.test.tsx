@@ -10,14 +10,14 @@ import { clickOutside } from '../../test-utils';
 function Fixture() {
   return (
     <AlertDialog.Root>
-      <AlertDialog.Trigger render={<Button variant="outline">Delete account</Button>} />
+      <AlertDialog.Trigger render={<Button variant="secondary">Delete account</Button>} />
       <AlertDialog.Content>
         <AlertDialog.Header>
           <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
         </AlertDialog.Header>
         <AlertDialog.Description>This action cannot be undone.</AlertDialog.Description>
         <AlertDialog.Footer>
-          <AlertDialog.Cancel render={<Button variant="outline">Cancel</Button>} />
+          <AlertDialog.Cancel render={<Button variant="secondary">Cancel</Button>} />
           <AlertDialog.Action render={<Button>Yes, delete account</Button>} />
         </AlertDialog.Footer>
       </AlertDialog.Content>

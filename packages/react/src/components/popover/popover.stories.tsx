@@ -101,7 +101,7 @@ const meta = {
         open={open}
         onOpenChange={(value) => updateArgs({ open: value })}
       >
-        <Popover.Trigger render={<Button variant="outline">Open</Button>} />
+        <Popover.Trigger render={<Button variant="secondary">Open</Button>} />
         <Popover.Content
           {...props}
           className="w-60 p-4"

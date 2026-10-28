@@ -10,7 +10,7 @@ import { clickOutside } from '../../test-utils';
 function Fixture() {
   return (
     <Popover.Root>
-      <Popover.Trigger render={<Button variant="outline">Open popover</Button>} />
+      <Popover.Trigger render={<Button variant="secondary">Open popover</Button>} />
       <Popover.Content>
         <div>Popover content</div>
       </Popover.Content>

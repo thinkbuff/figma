@@ -13006,6 +13006,30 @@
   fill: var(--figma-color-bg-inverse);
 }
 
+@utility bg-figma-bgtransparentsecondary {
+  background-color: var(--figma-color-bgtransparentsecondary);
+}
+
+@utility bg-figma-bgtransparent-secondary-hover {
+  background-color: var(--figma-color-bgtransparent-secondary-hover);
+}
+
+@utility bg-figma-bgtransparent-secondary-pressed {
+  background-color: var(--figma-color-bgtransparent-secondary-pressed);
+}
+
+@utility bg-figma-bghovertransparent {
+  background-color: var(--figma-color-bghovertransparent);
+}
+
+@utility outline-figma-bordertranslucent {
+  outline-color: var(--figma-color-bordertranslucent);
+}
+
+@utility shadow-figma-focus-inset {
+  box-shadow: inset 0 0 0 2px var(--figma-color-border-onbrand-strong);
+}
+
 @utility outline-figma-transparent {
   outline-color: transparent;
 }

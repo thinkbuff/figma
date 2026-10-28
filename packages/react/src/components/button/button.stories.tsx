@@ -1,142 +1,60 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { PlusIcon } from '~/icons';
+
 import { Button } from './button';
 
 const meta = {
   title: 'Components/Button',
   component: Button,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    variant: {
-      control: 'radio',
-      options: ['solid', 'outline', 'link', 'ghost'],
-      table: {
-        defaultValue: { summary: 'solid' },
-      },
-    },
-    color: {
-      control: 'radio',
-      options: ['primary', 'secondary', 'success', 'warning', 'danger', 'inverse'],
-      table: {
-        defaultValue: { summary: 'primary' },
-      },
-    },
-    size: {
-      control: 'radio',
-      options: ['default', 'large'],
-      table: {
-        defaultValue: { summary: 'default' },
-      },
-    },
-    disabled: {
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
-  },
-  args: {
-    variant: 'solid',
-    color: 'primary',
-    disabled: false,
-  },
-  render: (args) => <Button {...args}>Figma</Button>,
+  parameters: { layout: 'centered' },
 } satisfies Meta<typeof Button>;
 
+export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-  args: {
-    color: 'primary',
-  },
+export const Primary: Story = { args: { children: 'Primary' } };
+export const Secondary: Story = { args: { variant: 'secondary', children: 'Secondary' } };
+export const Destructive: Story = { args: { variant: 'destructive', children: 'Destructive' } };
+export const SecondaryDestructive: Story = {
+  args: { variant: 'secondary-destructive', children: 'Secondary destructive' },
 };
-
-export const Secondary: Story = {
-  args: {
-    color: 'secondary',
-  },
-};
-
-export const Success: Story = {
-  args: {
-    color: 'success',
-  },
-};
-
-export const Warning: Story = {
-  args: {
-    color: 'warning',
-  },
-};
-
-export const Danger: Story = {
-  args: {
-    color: 'danger',
-  },
-};
-
-export const Inverse: Story = {
-  args: {
-    color: 'inverse',
-  },
-};
-
-export const Ghost: Story = {
-  args: {
-    variant: 'ghost',
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: 'large',
-  },
-};
-
-export const FullWidth: Story = {
-  args: {
-    fullWidth: true,
-  },
-  decorators: [
-    (Story) => (
-      <div className="w-64">
-        <Story />
-      </div>
-    ),
-  ],
-};
-
+export const Inverse: Story = { args: { variant: 'inverse', children: 'Inverse' } };
+export const Success: Story = { args: { variant: 'success', children: 'Success' } };
+export const FigJam: Story = { args: { variant: 'figjam', children: 'Open in FigJam' } };
+export const Link: Story = { args: { variant: 'link', children: 'Link' } };
+export const LinkDanger: Story = { args: { variant: 'link-danger', children: 'Link danger' } };
+export const Ghost: Story = { args: { variant: 'ghost', children: 'Ghost' } };
+export const Large: Story = { args: { size: 'large', children: 'Large' } };
+export const Wide: Story = { args: { size: 'wide', children: 'Wide' } };
 export const WithIcon: Story = {
-  render: (args) => (
-    <Button {...args}>
-      <svg
-        className="mr-1"
-        xmlns="http://www.w3.org/2000/svg"
-        width="8"
-        height="8"
-        viewBox="0 0 8 8"
-      >
-        <path
-          fill="currentColor"
-          fillOpacity="1"
-          fillRule="evenodd"
-          stroke="none"
-          d="M3.5 3.5V0h1v3.5H8v1H4.5V8h-1V4.5H0v-1h3.5z"
-        ></path>
-      </svg>
-      Design File
-    </Button>
+  args: { icon: <PlusIcon />, children: 'With icon' },
+};
+export const Disabled: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-2">
+      {(
+        [
+          'primary',
+          'secondary',
+          'destructive',
+          'secondary-destructive',
+          'inverse',
+          'success',
+          'figjam',
+          'link',
+          'link-danger',
+          'ghost',
+        ] as const
+      ).map((variant) => (
+        <Button
+          key={variant}
+          variant={variant}
+          disabled
+        >
+          {variant}
+        </Button>
+      ))}
+    </div>
   ),
 };
-
-export const WithSpinner: Story = {
-  render: (args) => (
-    <Button {...args}>
-      <span className="icon-[tabler--loader-2] mx-2 size-4 animate-spin"></span>
-    </Button>
-  ),
-};
-
-export default meta;
