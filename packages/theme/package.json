@@ -61,7 +61,8 @@
     "typecheck": "tsc --noEmit",
     "release": "changelogen --bump --no-output",
     "prepublishOnly": "pnpm build",
-    "test": "vitest run"
+    "test": "vitest run",
+    "tokens:import": "tsx scripts/tokens-import.ts"
   },
   "devDependencies": {
     "tsx": "catalog:cli",

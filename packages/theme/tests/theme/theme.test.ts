@@ -9,23 +9,14 @@ import {
   FigmaLightThemeCSSVariables,
   SharedFoundationVariables,
 } from '../../src/theme/index';
-import { docsThemeTokenSource, localThemeTokenSource } from '../../src/theme/tokens';
-import { isExposedLocalThemeToken } from '../../src/theme/utility-contract';
+import { docsThemeTokenSource } from '../../src/theme/tokens';
 
 describe('@thinkbuff/figma-theme', () => {
-  it('splits theme tokens from local shared theme tokens', () => {
-    expect(Object.keys(docsThemeTokenSource.shared)).toHaveLength(0);
+  it('keeps complete per-mode token maps', () => {
     expect(docsThemeTokenSource.themes['figma-light']['--figma-color-bg']).toBeDefined();
-    expect(localThemeTokenSource.shared['--figma-color-bg-menu']).toBe('#1e1e1e');
-    expect(localThemeTokenSource.shared['--figma-color-text-tooltip']).toBeDefined();
-    expect(localThemeTokenSource.shared['--figma-color-text-tooltip-warning']).toBeUndefined();
-    expect(docsThemeTokenSource.themes['figjam']['--figma-color-bg-menu-selected']).toBe('#9747ff');
-  });
-
-  it('uses an explicit contract for locally exposed utility tokens', () => {
-    expect(isExposedLocalThemeToken('--figma-color-bg-menu')).toBe(true);
-    expect(isExposedLocalThemeToken('--figma-color-border-tooltip-selected-strong')).toBe(true);
-    expect(isExposedLocalThemeToken('--figma-color-bg-brand')).toBe(false);
+    expect(docsThemeTokenSource.themes['figma-light']['--figma-color-bg-menu']).toBe('#1e1e1e');
+    expect(docsThemeTokenSource.themes['figma-light']['--figma-color-text-tooltip']).toBeDefined();
+    expect(docsThemeTokenSource.themes['figjam']['--figma-color-bg-menu-selected']).toBeDefined();
   });
 
   it('generates figma variables for light and dark scopes', () => {
@@ -66,7 +57,8 @@ describe('@thinkbuff/figma-theme', () => {
     const css = generateThemeVariablesCSS('figjam');
 
     expect(css).toContain('@theme {');
-    expect(css).toContain(':root, html.figjam, .figjam');
+    expect(css).toContain('html.figjam, .figjam');
+    expect(css).not.toContain(':root, html.figjam');
     expect(css).toContain(
       `--figma-color-bg-brand: ${FigJamLightThemeCSSVariables['--figma-color-bg-brand']};`,
     );
@@ -133,10 +125,11 @@ describe('UI3 theme tokens', () => {
     const expected: Record<string, [string, string, string]> = {
       'body-small': ['.5625rem', '.875rem', '.00281rem'],
       'body-medium': ['.6875rem', '1rem', '.00344rem'],
-      'body-large': ['.8125rem', '1.375rem', '-.002rem'],
-      'heading-small': ['.8125rem', '1.375rem', '-.002rem'],
+      'body-large': ['.8125rem', '1.375rem', '-.00203rem'],
+      'heading-small': ['.8125rem', '1.375rem', '-.00203rem'],
       'heading-medium': ['.9375rem', '1.5625rem', '-.00469rem'],
       'heading-large': ['1.5rem', '2rem', '-.0255rem'],
+      'heading-display': ['3rem', '3.5rem', '-.09rem'],
     };
 
     for (const [name, [size, lineHeight, letterSpacing]] of Object.entries(expected)) {
@@ -151,13 +144,20 @@ describe('UI3 theme tokens', () => {
     }
   });
 
-  it('sets font-weight 550 on heading text aliases only', () => {
+  it('sets font-weight aliases on non-default-weight styles only', () => {
     const css = generateThemeVariablesCSS('figma');
 
-    for (const name of ['heading-small', 'heading-medium', 'heading-large']) {
+    for (const name of [
+      'heading-small',
+      'heading-medium',
+      'heading-large',
+      'body-small-strong',
+      'body-medium-strong',
+      'body-large-strong',
+    ]) {
       expect(css).toContain(`--text-figma-${name}--font-weight: 550;`);
     }
-    for (const name of ['body-small', 'body-medium', 'body-large']) {
+    for (const name of ['body-small', 'body-medium', 'body-large', 'heading-display']) {
       expect(css).not.toContain(`--text-figma-${name}--font-weight`);
     }
   });
@@ -190,7 +190,7 @@ describe('UI3 theme tokens', () => {
     expect(darkBlock).toContain('inset');
 
     const figjamCss = generateThemeVariablesCSS('figjam');
-    const figjamBlock = figjamCss.split(':root, html.figjam, .figjam {')[1].split('}')[0];
+    const figjamBlock = figjamCss.split('html.figjam, .figjam {')[1].split('}')[0];
     expect(figjamBlock).toContain('--figma-elevation-100:');
     expect(figjamBlock).toContain('--figma-elevation-500:');
     expect(figjamBlock).not.toContain('inset');

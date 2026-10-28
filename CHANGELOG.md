@@ -16,6 +16,12 @@
 - Utilities follow the theme's utility contract (`text-figma-sm`, `rounded-figma-sm`, `bg-figma-*`, …). Dark mode is `.figma-dark`; FigJam is `.figjam`.
 - Components use inline SVG icons, so no icon preset is needed.
 
+#### Tokens: generated from `packages/theme/tokens/`
+
+- `@thinkbuff/figma-theme/colors` no longer exports `BaseThemeCSSVariables`/`BaseThemeCSSVariableKey` — each mode map is complete on its own.
+- New exports: `FigJamDarkThemeCSSVariables`, `DevModeLightThemeCSSVariables`, `DevModeDarkThemeCSSVariables`, `SlidesLightThemeCSSVariables`, `SlidesDarkThemeCSSVariables` (+ types).
+- Token values are now generated from `packages/theme/tokens/` via `pnpm tokens:import`; the FigJam block no longer claims `:root` (that selector is Figma light only).
+
 #### Primitives: Radix UI → Base UI (`@base-ui/react`)
 
 - `asChild` → `render` everywhere (e.g. `<Dialog.Trigger render={<Button />} />`). Use `nativeButton={false}` when rendering a non-button element through `Button`.

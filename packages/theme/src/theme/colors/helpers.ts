@@ -1,3 +1,4 @@
+import typography from '../../../tokens/typography.json';
 import {
   DarkElevationCSSVariables,
   LegacyElevationShadowVariables,
@@ -6,7 +7,6 @@ import {
 import { SharedFoundationVariables } from '../shared-foundation-variables';
 import { FigJamLightThemeCSSVariables } from './figjam';
 import { FigmaLightThemeCSSVariables, FigmaDarkThemeCSSVariables } from './figma';
-import { SharedThemeCSSVariables } from './shared';
 import type { ThemeCSSVariableKey } from './types';
 
 function extractSharedScale(prefix: string, compareFn?: (left: string, right: string) => number) {
@@ -29,27 +29,15 @@ function getSharedFoundationAliases() {
   const fontWeightScale = extractSharedScale('--figma-font-weight-', (left, right) => {
     return left.localeCompare(right);
   });
-  const typographyScale = [
-    'xs',
-    'sm',
-    'md',
-    'lg',
-    'body-small',
-    'body-medium',
-    'body-large',
-    'heading-small',
-    'heading-medium',
-    'heading-large',
-  ] as const;
-  const semanticTypographyScale = [
-    'body-small',
-    'body-medium',
-    'body-large',
-    'heading-small',
-    'heading-medium',
-    'heading-large',
-  ] as const;
-  const headingTypographyScale = ['heading-small', 'heading-medium', 'heading-large'] as const;
+  const legacyTypographyScale = ['xs', 'sm', 'md', 'lg'] as const;
+  // Style names come from tokens/typography.json, not a hardcoded list, so new
+  // Design file styles get utilities automatically.
+  const typographyScale = [...legacyTypographyScale, ...Object.keys(typography.styles)] as const;
+  const semanticTypographyScale = Object.keys(typography.styles);
+  // Non-default-weight styles get a --font-weight alias on their text utility.
+  const weightedTypographyScale = Object.entries(typography.styles)
+    .filter(([, style]) => style.fontWeight !== typography.weight.default)
+    .map(([name, style]) => [name, String(style.fontWeight)] as const);
   const radiusScale = extractSharedScale('--figma-radius-', (left, right) => {
     return left.localeCompare(right);
   });
@@ -138,11 +126,8 @@ function getSharedFoundationAliases() {
       }),
     ),
     ...Object.fromEntries(
-      headingTypographyScale.map((suffix) => {
-        return [
-          `--text-figma-${suffix}--font-weight`,
-          getSharedFoundationValue('--figma-font-weight-strong'),
-        ];
+      weightedTypographyScale.map(([suffix, weight]) => {
+        return [`--text-figma-${suffix}--font-weight`, weight];
       }),
     ),
     ...Object.fromEntries(
@@ -263,7 +248,6 @@ ${serializeCSSVariableDeclarations(getInlineShadowAliases())}
 
 :root, html.figma-light, .figma-light {
 ${serializeCSSVariableDeclarations({
-  ...SharedThemeCSSVariables,
   ...FigmaLightThemeCSSVariables,
   ...LightElevationCSSVariables,
   ...LegacyElevationShadowVariables,
@@ -272,7 +256,6 @@ ${serializeCSSVariableDeclarations({
 
 html.figma-dark, .figma-dark {
 ${serializeCSSVariableDeclarations({
-  ...SharedThemeCSSVariables,
   ...FigmaDarkThemeCSSVariables,
   ...DarkElevationCSSVariables,
   ...LegacyElevationShadowVariables,
@@ -280,11 +263,12 @@ ${serializeCSSVariableDeclarations({
 }`;
   }
 
+  // `:root` belongs only to the Figma light block; the FigJam scope is opt-in
+  // so index.css stops leaking FigJam colors into the unthemed default.
   return `${sharedFoundationVariablesCSS}
 
-:root, html.figjam, .figjam {
+html.figjam, .figjam {
 ${serializeCSSVariableDeclarations({
-  ...SharedThemeCSSVariables,
   ...FigJamLightThemeCSSVariables,
   ...LightElevationCSSVariables,
   ...LegacyElevationShadowVariables,

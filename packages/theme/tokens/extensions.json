@@ -1,0 +1,130 @@
+{
+  "font-family": {
+    "default": {
+      "value": "\"Inter\", ui-sans-serif, system-ui, -apple-system, \"BlinkMacSystemFont\", \"Segoe UI\", \"Roboto\", \"Helvetica Neue\", \"Arial\", \"Noto Sans\", sans-serif, \"SFProLocalRange\"",
+      "note": "Fallback stack appended to the Design file's Inter."
+    },
+    "code": {
+      "value": "\"Roboto Mono\", \"SFMono-Regular\", \"Menlo\", \"Monaco\", \"Consolas\", \"Liberation Mono\", \"Courier New\", monospace",
+      "note": "Fallback stack appended to the Design file's Roboto Mono (mono)."
+    },
+    "display": {
+      "value": "\"Whyte\", ui-sans-serif, system-ui, sans-serif",
+      "note": "Repo-only fallback for the Design file's display family."
+    }
+  },
+  "typography-legacy": {
+    "xs": {
+      "fontSize": ".625rem",
+      "lineHeight": ".875rem",
+      "letterSpacing": ".00344rem",
+      "note": "Legacy 10px scale step kept for backwards compatibility."
+    },
+    "sm": {
+      "fontSize": ".6875rem",
+      "lineHeight": "1rem",
+      "letterSpacing": ".00344rem",
+      "note": "Legacy 11px step; equals body-medium but kept under the old name."
+    },
+    "md": {
+      "fontSize": ".75rem",
+      "lineHeight": "1.25rem",
+      "letterSpacing": "-.00125rem",
+      "note": "Legacy 12px step with no Design file counterpart."
+    },
+    "lg": {
+      "fontSize": ".8125rem",
+      "lineHeight": "1.375rem",
+      "letterSpacing": "-.002rem",
+      "note": "Legacy 13px step; equals body-large but kept under the old name."
+    }
+  },
+  "space": {
+    "0.5": {
+      "value": ".125rem",
+      "note": "Extra 2px half-step with no spacer token."
+    },
+    "1.5": {
+      "value": ".375rem",
+      "note": "Extra 6px step with no spacer token."
+    },
+    "2.5": {
+      "value": ".75rem",
+      "note": "Extra 12px step with no spacer token."
+    }
+  },
+  "border-width": {
+    "1": {
+      "value": "1px",
+      "note": "Standard hairline used across controls."
+    },
+    "4": {
+      "value": ".25rem",
+      "note": "4px stroke used by the slider thumb."
+    }
+  },
+  "duration": {
+    "100": {
+      "value": "100ms",
+      "note": "Popup/tooltip fade."
+    },
+    "200": {
+      "value": "200ms",
+      "note": "Sheet slide transition."
+    },
+    "300": {
+      "value": "300ms",
+      "note": "Longer overlay transitions."
+    }
+  },
+  "opacity": {
+    "50": {
+      "value": "0.5",
+      "note": "Half opacity utility step."
+    },
+    "disabled": {
+      "value": "0.3",
+      "note": "Disabled glyph dimming."
+    }
+  },
+  "z-index": {
+    "1": {
+      "value": "1",
+      "note": "Base stacking step."
+    },
+    "2": {
+      "value": "2",
+      "note": "Second stacking step."
+    },
+    "dropdown": {
+      "value": "10",
+      "note": "Dropdowns above content."
+    },
+    "modal": {
+      "value": "50",
+      "note": "Dialogs/sheets above dropdowns."
+    },
+    "tooltip": {
+      "value": "100",
+      "note": "Tooltips above modals."
+    }
+  },
+  "shadow-slider": {
+    "value": "0 1px 3px 0 #0000001a, 0 3px 8px 0 #0000001a, 0 0 0.5px 0 #0000002e, inset 0 0 0 0.5px #0000001a",
+    "note": "Slider thumb shadow; not an elevation scale level."
+  },
+  "shadow-aliases": {
+    "tooltip": {
+      "value": "var(--figma-elevation-300)",
+      "note": "Legacy alias: tooltip chrome."
+    },
+    "menu": {
+      "value": "var(--figma-elevation-400)",
+      "note": "Legacy alias: menu panels."
+    },
+    "modal": {
+      "value": "var(--figma-elevation-500)",
+      "note": "Legacy alias: modal windows."
+    }
+  }
+}

@@ -4,10 +4,14 @@ import * as colors from '../../src/colors/index';
 
 describe('@thinkbuff/figma-theme ./colors compat exports', () => {
   it('exports every pre-Tailwind named export', () => {
-    expect(colors.BaseThemeCSSVariables).toBeDefined();
     expect(colors.FigmaLightThemeCSSVariables).toBeDefined();
     expect(colors.FigmaDarkThemeCSSVariables).toBeDefined();
     expect(colors.FigJamLightThemeCSSVariables).toBeDefined();
+    expect(colors.FigJamDarkThemeCSSVariables).toBeDefined();
+    expect(colors.DevModeLightThemeCSSVariables).toBeDefined();
+    expect(colors.DevModeDarkThemeCSSVariables).toBeDefined();
+    expect(colors.SlidesLightThemeCSSVariables).toBeDefined();
+    expect(colors.SlidesDarkThemeCSSVariables).toBeDefined();
     expect(typeof colors.getCSSPreflights).toBe('function');
     expect(typeof colors.generateCSSVariables).toBe('function');
     expect(typeof colors.generateThemeVariablesCSS).toBe('function');

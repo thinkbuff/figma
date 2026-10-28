@@ -1,24 +1,16 @@
 import {
   docsThemeTokenSource,
-  localThemeTokenSource,
   parseThemeTokenName,
   type ThemeColorScope,
   type ThemeTokenName,
 } from './tokens';
-import { isExposedLocalThemeToken, semanticUtilities } from './utility-contract';
+import { semanticUtilities } from './utility-contract';
 
-const docsThemeVariableNames = Array.from(
-  new Set(Object.values(docsThemeTokenSource.themes).flatMap((tokens) => Object.keys(tokens))),
-).sort() as ThemeTokenName[];
-
-const localThemeVariableNames = Object.keys(localThemeTokenSource.shared)
-  .filter((variableName): variableName is ThemeTokenName =>
-    Boolean(parseThemeTokenName(variableName)),
-  )
-  .filter((variableName) => isExposedLocalThemeToken(variableName));
-
+// Every published token gets utilities through the family rules; the per-mode
+// maps are complete (menu/tooltip chrome included), so there is no separate
+// local token source anymore.
 const themeVariableNames = Array.from(
-  new Set([...docsThemeVariableNames, ...localThemeVariableNames]),
+  new Set(Object.values(docsThemeTokenSource.themes).flatMap((tokens) => Object.keys(tokens))),
 ).sort() as ThemeTokenName[];
 
 type UtilityDefinition = {

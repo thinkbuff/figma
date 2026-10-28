@@ -1,7 +1,3 @@
-import { parseThemeTokenName, type ThemeTokenName } from './tokens';
-
-const localThemeUtilityFamilies = new Set(['menu', 'toolbar', 'tooltip']);
-
 export const semanticUtilities = {
   'accent-figma-brand': 'accent-color: var(--figma-color-bg-brand);',
   'bg-figma-brand-5':
@@ -21,15 +17,3 @@ export const semanticUtilities = {
   'ring-figma': '--tw-ring-color: var(--figma-color-border-selected);',
   'ring-offset-figma': '--tw-ring-offset-color: var(--figma-color-bg);',
 } as const;
-
-export function isExposedLocalThemeToken(tokenName: ThemeTokenName) {
-  const descriptor = parseThemeTokenName(tokenName);
-
-  if (!descriptor) {
-    return false;
-  }
-
-  const [family] = descriptor.suffix.split('-');
-
-  return Boolean(family) && localThemeUtilityFamilies.has(family);
-}

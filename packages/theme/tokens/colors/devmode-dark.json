@@ -1,0 +1,1506 @@
+{
+  "bg": {
+    "value": "#2c2c2c",
+    "description": "Our default background color"
+  },
+  "bg-assistive": {
+    "value": "#f316b0"
+  },
+  "bg-assistive-hover": {
+    "value": "#d01b9c"
+  },
+  "bg-assistive-pressed": {
+    "value": "#d01b9c"
+  },
+  "bg-assistive-secondary": {
+    "value": "#96207a"
+  },
+  "bg-assistive-tertiary": {
+    "value": "#68275e"
+  },
+  "bg-brand": {
+    "value": "#198f51",
+    "description": "A fill tinted to match the accent color of the current product."
+  },
+  "bg-brand-hover": {
+    "value": "#078348"
+  },
+  "bg-brand-pressed": {
+    "value": "#078348"
+  },
+  "bg-brand-secondary": {
+    "value": "#0a5c35"
+  },
+  "bg-brand-tertiary": {
+    "value": "#476656"
+  },
+  "bg-component": {
+    "value": "#8a38f5"
+  },
+  "bg-component-hover": {
+    "value": "#7a2ed6"
+  },
+  "bg-component-pressed": {
+    "value": "#7a2ed6"
+  },
+  "bg-component-secondary": {
+    "value": "#652ca8"
+  },
+  "bg-component-tertiary": {
+    "value": "#473956"
+  },
+  "bg-danger": {
+    "value": "#e03e1a",
+    "description": "Red fill color behind destructive buttons, and error banners."
+  },
+  "bg-danger-hover": {
+    "value": "#c4381c"
+  },
+  "bg-danger-pressed": {
+    "value": "#c4381c"
+  },
+  "bg-danger-secondary": {
+    "value": "#963323"
+  },
+  "bg-danger-tertiary": {
+    "value": "#60332a"
+  },
+  "bg-design": {
+    "value": "#0c8ce9"
+  },
+  "bg-design-hover": {
+    "value": "#0a6dc2"
+  },
+  "bg-design-pressed": {
+    "value": "#0a6dc2"
+  },
+  "bg-design-secondary": {
+    "value": "#105cad"
+  },
+  "bg-design-tertiary": {
+    "value": "#394360"
+  },
+  "bg-disabled": {
+    "value": "#757575"
+  },
+  "bg-disabled-secondary": {
+    "value": "#b3b3b3"
+  },
+  "bg-figjam": {
+    "value": "#8a38f5",
+    "description": "Purple fill color used for backgrounds like a button that opens in FigJam."
+  },
+  "bg-figjam-hover": {
+    "value": "#7a2ed6"
+  },
+  "bg-figjam-pressed": {
+    "value": "#7a2ed6"
+  },
+  "bg-figjam-secondary": {
+    "value": "#652ca8"
+  },
+  "bg-figjam-tertiary": {
+    "value": "#473956"
+  },
+  "bg-handoff": {
+    "value": "#198f51",
+    "description": "Green fill color used for backgrounds like a button that opens in Dev Mode."
+  },
+  "bg-handoff-hover": {
+    "value": "#078348"
+  },
+  "bg-handoff-pressed": {
+    "value": "#078348"
+  },
+  "bg-handoff-secondary": {
+    "value": "#0a5c35"
+  },
+  "bg-handoff-tertiary": {
+    "value": "#476656"
+  },
+  "bg-hover": {
+    "value": "#383838",
+    "description": "A light grey hover fill color behind icons, and selectable elements."
+  },
+  "bg-info": {
+    "value": "#476656"
+  },
+  "bg-inverse": {
+    "value": "#ffffff"
+  },
+  "bg-measure": {
+    "value": "#e03e1a"
+  },
+  "bg-measure-hover": {
+    "value": "#c4381c"
+  },
+  "bg-measure-pressed": {
+    "value": "#c4381c"
+  },
+  "bg-measure-secondary": {
+    "value": "#963323"
+  },
+  "bg-measure-tertiary": {
+    "value": "#60332a"
+  },
+  "bg-menu": {
+    "value": "#1e1e1e",
+    "description": "The dark fill color of our menus "
+  },
+  "bg-menu-disabled": {
+    "value": "#757575"
+  },
+  "bg-menu-hover": {
+    "value": "#2c2c2c"
+  },
+  "bg-menu-pressed": {
+    "value": "#2c2c2c"
+  },
+  "bg-menu-secondary": {
+    "value": "#383838"
+  },
+  "bg-menu-selected": {
+    "value": "#198f51"
+  },
+  "bg-menu-selected-hover": {
+    "value": "#078348"
+  },
+  "bg-menu-selected-pressed": {
+    "value": "#078348"
+  },
+  "bg-menu-selected-secondary": {
+    "value": "#476656"
+  },
+  "bg-menu-selected-tertiary": {
+    "value": "#476656"
+  },
+  "bg-menu-tertiary": {
+    "value": "#444444"
+  },
+  "bg-onselected": {
+    "value": "#678e79"
+  },
+  "bg-onselected-hover": {
+    "value": "#678e79"
+  },
+  "bg-onselected-pressed": {
+    "value": "#678e79"
+  },
+  "bg-pressed": {
+    "value": "#383838"
+  },
+  "bg-secondary": {
+    "value": "#383838",
+    "description": "Our secondary background color for most containers."
+  },
+  "bg-selected": {
+    "value": "#517361",
+    "description": "A lightly tinted selected fill color for selected elements."
+  },
+  "bg-selected-hover": {
+    "value": "#5c806d"
+  },
+  "bg-selected-pressed": {
+    "value": "#5c806d"
+  },
+  "bg-selected-secondary": {
+    "value": "#476656"
+  },
+  "bg-selected-strong": {
+    "value": "#198f51"
+  },
+  "bg-selected-tertiary": {
+    "value": "#476656"
+  },
+  "bg-success": {
+    "value": "#198f51"
+  },
+  "bg-success-hover": {
+    "value": "#078348"
+  },
+  "bg-success-pressed": {
+    "value": "#078348"
+  },
+  "bg-success-secondary": {
+    "value": "#0a5c35"
+  },
+  "bg-success-tertiary": {
+    "value": "#476656"
+  },
+  "bg-tertiary": {
+    "value": "#444444"
+  },
+  "bg-toolbar": {
+    "value": "#2c2c2c",
+    "description": "The dark fill color of our UI2 editor toolbar"
+  },
+  "bg-toolbar-disabled": {
+    "value": "#757575"
+  },
+  "bg-toolbar-hover": {
+    "value": "#111111"
+  },
+  "bg-toolbar-pressed": {
+    "value": "#111111"
+  },
+  "bg-toolbar-secondary": {
+    "value": "#383838"
+  },
+  "bg-toolbar-selected": {
+    "value": "#198f51"
+  },
+  "bg-toolbar-selected-hover": {
+    "value": "#078348"
+  },
+  "bg-toolbar-selected-pressed": {
+    "value": "#078348"
+  },
+  "bg-toolbar-selected-secondary": {
+    "value": "#0a5c35"
+  },
+  "bg-toolbar-selected-tertiary": {
+    "value": "#198f51"
+  },
+  "bg-toolbar-tertiary": {
+    "value": "#444444"
+  },
+  "bg-tooltip": {
+    "value": "#1e1e1e"
+  },
+  "bg-tooltip-disabled": {
+    "value": "#757575"
+  },
+  "bg-tooltip-hover": {
+    "value": "#2c2c2c"
+  },
+  "bg-tooltip-pressed": {
+    "value": "#2c2c2c"
+  },
+  "bg-tooltip-secondary": {
+    "value": "#383838"
+  },
+  "bg-tooltip-selected": {
+    "value": "#198f51"
+  },
+  "bg-tooltip-selected-hover": {
+    "value": "#078348"
+  },
+  "bg-tooltip-selected-pressed": {
+    "value": "#078348"
+  },
+  "bg-tooltip-selected-secondary": {
+    "value": "#476656"
+  },
+  "bg-tooltip-selected-tertiary": {
+    "value": "#476656"
+  },
+  "bg-tooltip-tertiary": {
+    "value": "#444444"
+  },
+  "bg-warning": {
+    "value": "#f3c11b",
+    "description": "Yellow fill color for warning banners"
+  },
+  "bg-warning-hover": {
+    "value": "#f2b50d"
+  },
+  "bg-warning-pressed": {
+    "value": "#f2b50d"
+  },
+  "bg-warning-secondary": {
+    "value": "#e4a711"
+  },
+  "bg-warning-tertiary": {
+    "value": "#5c4100"
+  },
+  "bghoverondarkcanvas": {
+    "value": "#ffffff33"
+  },
+  "bghoveronlightcanvas": {
+    "value": "#00000033"
+  },
+  "bghovertransparent": {
+    "value": "#ffffff0d"
+  },
+  "bgsecondaryoncanvas": {
+    "value": "#111111"
+  },
+  "bgselectedarea": {
+    "value": "#14ae5c33"
+  },
+  "bgtransparent": {
+    "value": "#00000099"
+  },
+  "bgtransparent-secondary-hover": {
+    "value": "#ffffff1a"
+  },
+  "bgtransparent-secondary-pressed": {
+    "value": "#ffffff26"
+  },
+  "bgtransparentsecondary": {
+    "value": "#ffffff26"
+  },
+  "bgvoting": {
+    "value": "#f3c11b"
+  },
+  "bgvotingsecondary": {
+    "value": "#fbe8ad"
+  },
+  "bgvotingtertiary": {
+    "value": "#fdf7dd"
+  },
+  "bgvotingwheeldial": {
+    "value": "#fdf7dd"
+  },
+  "bgvotingwheelhover": {
+    "value": "#fbe8ad"
+  },
+  "border": {
+    "value": "#444444",
+    "description": "Our default border color used as a divider between sections, or around inputs."
+  },
+  "border-assistive": {
+    "value": "#96207a"
+  },
+  "border-assistive-strong": {
+    "value": "#fc9ce0"
+  },
+  "border-brand": {
+    "value": "#0a5c35"
+  },
+  "border-brand-strong": {
+    "value": "#79d297"
+  },
+  "border-component": {
+    "value": "#652ca8"
+  },
+  "border-component-hover": {
+    "value": "#8a38f5"
+  },
+  "border-component-strong": {
+    "value": "#d6b6fb"
+  },
+  "border-danger": {
+    "value": "#963323"
+  },
+  "border-danger-strong": {
+    "value": "#fca397"
+  },
+  "border-design": {
+    "value": "#105cad"
+  },
+  "border-design-strong": {
+    "value": "#7cc4f8"
+  },
+  "border-disabled": {
+    "value": "#444444"
+  },
+  "border-disabled-strong": {
+    "value": "#ffffff66"
+  },
+  "border-figjam": {
+    "value": "#652ca8"
+  },
+  "border-figjam-strong": {
+    "value": "#d1a8ff"
+  },
+  "border-handoff": {
+    "value": "#0a5c35"
+  },
+  "border-handoff-strong": {
+    "value": "#79d297"
+  },
+  "border-measure": {
+    "value": "#963323"
+  },
+  "border-measure-strong": {
+    "value": "#fca397"
+  },
+  "border-menu": {
+    "value": "#383838",
+    "description": "Used for borders or dividers within a menu element."
+  },
+  "border-menu-disabled": {
+    "value": "#383838"
+  },
+  "border-menu-disabled-strong": {
+    "value": "#383838"
+  },
+  "border-menu-onselected": {
+    "value": "#79d297"
+  },
+  "border-menu-onselected-strong": {
+    "value": "#ffffff"
+  },
+  "border-menu-selected": {
+    "value": "#198f51"
+  },
+  "border-menu-selected-strong": {
+    "value": "#79d297"
+  },
+  "border-menu-strong": {
+    "value": "#ffffff"
+  },
+  "border-onassistive": {
+    "value": "#d01b9c"
+  },
+  "border-onassistive-strong": {
+    "value": "#ffffff"
+  },
+  "border-onbrand": {
+    "value": "#078348"
+  },
+  "border-onbrand-strong": {
+    "value": "#ffffff",
+    "description": "Used for borders against a bg-brand background"
+  },
+  "border-oncomponent": {
+    "value": "#7a2ed6"
+  },
+  "border-oncomponent-strong": {
+    "value": "#ffffff"
+  },
+  "border-ondanger": {
+    "value": "#c4381c"
+  },
+  "border-ondanger-strong": {
+    "value": "#ffffff"
+  },
+  "border-ondesign": {
+    "value": "#0a6dc2"
+  },
+  "border-ondesign-strong": {
+    "value": "#ffffff"
+  },
+  "border-onfigjam": {
+    "value": "#7a2ed6"
+  },
+  "border-onfigjam-strong": {
+    "value": "#7a2ed6"
+  },
+  "border-onmeasure": {
+    "value": "#c4381c"
+  },
+  "border-onmeasure-strong": {
+    "value": "#ffffff"
+  },
+  "border-onselected": {
+    "value": "#678e79"
+  },
+  "border-onselected-strong": {
+    "value": "#ffffffe5"
+  },
+  "border-onsuccess": {
+    "value": "#078348"
+  },
+  "border-onsuccess-strong": {
+    "value": "#ffffff"
+  },
+  "border-onwarning": {
+    "value": "#e4a711"
+  },
+  "border-onwarning-strong": {
+    "value": "#000000e5"
+  },
+  "border-selected": {
+    "value": "#198f51",
+    "description": "Default selection border color we use for focused / selected inputs."
+  },
+  "border-selected-strong": {
+    "value": "#79d297",
+    "description": "When presenting a selected border against an already selected background, we sometimes need to increase the prominence of the selected border."
+  },
+  "border-strong": {
+    "value": "#ffffffe5",
+    "description": "A much darker border color that we can use for emphasis around some UI elements."
+  },
+  "border-success": {
+    "value": "#0a5c35"
+  },
+  "border-success-strong": {
+    "value": "#79d297"
+  },
+  "border-toolbar": {
+    "value": "#444444"
+  },
+  "border-toolbar-disabled": {
+    "value": "#ffffff66"
+  },
+  "border-toolbar-onselected": {
+    "value": "#ffffff"
+  },
+  "border-toolbar-selected": {
+    "value": "#198f51"
+  },
+  "border-toolbar-selected-strong": {
+    "value": "#79d297"
+  },
+  "border-toolbar-strong": {
+    "value": "#ffffff"
+  },
+  "border-tooltip": {
+    "value": "#383838"
+  },
+  "border-tooltip-disabled": {
+    "value": "#383838"
+  },
+  "border-tooltip-disabled-strong": {
+    "value": "#383838"
+  },
+  "border-tooltip-onselected": {
+    "value": "#078348"
+  },
+  "border-tooltip-onselected-strong": {
+    "value": "#ffffff"
+  },
+  "border-tooltip-selected": {
+    "value": "#198f51"
+  },
+  "border-tooltip-selected-strong": {
+    "value": "#79d297"
+  },
+  "border-tooltip-strong": {
+    "value": "#ffffff"
+  },
+  "border-warning": {
+    "value": "#925711"
+  },
+  "border-warning-strong": {
+    "value": "#f7d15f"
+  },
+  "bordertranslucent": {
+    "value": "#ffffff1a"
+  },
+  "conditionalborder": {
+    "value": "#444444"
+  },
+  "icon": {
+    "value": "#ffffff",
+    "description": "Our default icon color"
+  },
+  "icon-assistive": {
+    "value": "#fc9ce0",
+    "description": "Pink icons used when Figma is assisting you in some way."
+  },
+  "icon-assistive-pressed": {
+    "value": "#fbb1ed"
+  },
+  "icon-assistive-secondary": {
+    "value": "#fc9ce0"
+  },
+  "icon-assistive-tertiary": {
+    "value": "#fc9ce0"
+  },
+  "icon-brand": {
+    "value": "#79d297",
+    "description": "An icon tinted to match the accent color of the current product."
+  },
+  "icon-brand-pressed": {
+    "value": "#198f51"
+  },
+  "icon-brand-secondary": {
+    "value": "#078348"
+  },
+  "icon-brand-tertiary": {
+    "value": "#476656"
+  },
+  "icon-component": {
+    "value": "#d1a8ff"
+  },
+  "icon-component-pressed": {
+    "value": "#d6b6fb"
+  },
+  "icon-component-secondary": {
+    "value": "#7f699b"
+  },
+  "icon-component-tertiary": {
+    "value": "#7f699b"
+  },
+  "icon-danger": {
+    "value": "#e03e1a",
+    "description": "Red icons used to alert users about an error."
+  },
+  "icon-danger-hover": {
+    "value": "#fbbcb6"
+  },
+  "icon-danger-pressed": {
+    "value": "#fbbcb6"
+  },
+  "icon-danger-secondary": {
+    "value": "#e03e1a"
+  },
+  "icon-danger-secondary-hover": {
+    "value": "#e03e1a"
+  },
+  "icon-danger-tertiary": {
+    "value": "#e03e1a"
+  },
+  "icon-design": {
+    "value": "#7cc4f8"
+  },
+  "icon-design-pressed": {
+    "value": "#a8d7fa"
+  },
+  "icon-design-secondary": {
+    "value": "#7cc4f8"
+  },
+  "icon-design-tertiary": {
+    "value": "#7cc4f8"
+  },
+  "icon-disabled": {
+    "value": "#ffffff66"
+  },
+  "icon-figjam": {
+    "value": "#d1a8ff"
+  },
+  "icon-figjam-pressed": {
+    "value": "#d6b6fb"
+  },
+  "icon-figjam-secondary": {
+    "value": "#7f699b"
+  },
+  "icon-figjam-tertiary": {
+    "value": "#7f699b"
+  },
+  "icon-handoff": {
+    "value": "#79d297"
+  },
+  "icon-handoff-pressed": {
+    "value": "#a1e8b9"
+  },
+  "icon-handoff-secondary": {
+    "value": "#79d297"
+  },
+  "icon-handoff-tertiary": {
+    "value": "#79d297"
+  },
+  "icon-hover": {
+    "value": "#ffffff"
+  },
+  "icon-measure": {
+    "value": "#e03e1a"
+  },
+  "icon-measure-hover": {
+    "value": "#fbbcb6"
+  },
+  "icon-measure-pressed": {
+    "value": "#fbbcb6"
+  },
+  "icon-measure-secondary": {
+    "value": "#e03e1a"
+  },
+  "icon-measure-secondary-hover": {
+    "value": "#e03e1a"
+  },
+  "icon-measure-tertiary": {
+    "value": "#e03e1a"
+  },
+  "icon-menu": {
+    "value": "#ffffff"
+  },
+  "icon-menu-danger": {
+    "value": "#e03e1a"
+  },
+  "icon-menu-disabled": {
+    "value": "#ffffff66"
+  },
+  "icon-menu-hover": {
+    "value": "#ffffff"
+  },
+  "icon-menu-ondisabled": {
+    "value": "#1e1e1e"
+  },
+  "icon-menu-onselected": {
+    "value": "#ffffff"
+  },
+  "icon-menu-pressed": {
+    "value": "#198f51"
+  },
+  "icon-menu-secondary": {
+    "value": "#ffffffb2"
+  },
+  "icon-menu-secondary-hover": {
+    "value": "#ffffff"
+  },
+  "icon-menu-selected": {
+    "value": "#79d297"
+  },
+  "icon-menu-selected-secondary": {
+    "value": "#79d297"
+  },
+  "icon-menu-selected-tertiary": {
+    "value": "#79d297"
+  },
+  "icon-menu-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-menu-tertiary-hover": {
+    "value": "#ffffff"
+  },
+  "icon-menu-warning": {
+    "value": "#f3c11b"
+  },
+  "icon-onassistive": {
+    "value": "#ffffff"
+  },
+  "icon-onassistive-secondary": {
+    "value": "#ffffffcc"
+  },
+  "icon-onassistive-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-onbrand": {
+    "value": "#ffffff",
+    "description": "Icons against a “background with a fill color” (for example, a blue / purple background in our “Share” button)"
+  },
+  "icon-onbrand-secondary": {
+    "value": "#ffffffcc"
+  },
+  "icon-onbrand-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-oncomponent": {
+    "value": "#ffffff"
+  },
+  "icon-oncomponent-secondary": {
+    "value": "#ffffffcc"
+  },
+  "icon-oncomponent-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-ondanger": {
+    "value": "#ffffff"
+  },
+  "icon-ondanger-secondary": {
+    "value": "#ffffffcc"
+  },
+  "icon-ondanger-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-ondesign": {
+    "value": "#ffffff"
+  },
+  "icon-ondesign-secondary": {
+    "value": "#ffffffcc"
+  },
+  "icon-ondesign-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-ondisabled": {
+    "value": "#2c2c2c"
+  },
+  "icon-onfigjam": {
+    "value": "#ffffff"
+  },
+  "icon-onfigjam-secondary": {
+    "value": "#ffffffcc"
+  },
+  "icon-onfigjam-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-oninverse": {
+    "value": "#000000e5"
+  },
+  "icon-onmeasure": {
+    "value": "#ffffff"
+  },
+  "icon-onmeasure-secondary": {
+    "value": "#ffffffcc"
+  },
+  "icon-onmeasure-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-onselected": {
+    "value": "#ffffff"
+  },
+  "icon-onselected-secondary": {
+    "value": "#ffffffb2"
+  },
+  "icon-onselected-strong": {
+    "value": "#ffffff"
+  },
+  "icon-onselected-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-onsuccess": {
+    "value": "#ffffff"
+  },
+  "icon-onsuccess-secondary": {
+    "value": "#ffffffcc"
+  },
+  "icon-onsuccess-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-onwarning": {
+    "value": "#000000e5"
+  },
+  "icon-onwarning-secondary": {
+    "value": "#00000080"
+  },
+  "icon-onwarning-tertiary": {
+    "value": "#0000004d"
+  },
+  "icon-pressed": {
+    "value": "#078348"
+  },
+  "icon-secondary": {
+    "value": "#ffffffb2",
+    "description": "Our secondary icon color for inactive elements that need to be “lighter” in order to create hierarchy."
+  },
+  "icon-secondary-hover": {
+    "value": "#ffffff"
+  },
+  "icon-selected": {
+    "value": "#79d297"
+  },
+  "icon-selected-secondary": {
+    "value": "#79d297"
+  },
+  "icon-selected-tertiary": {
+    "value": "#79d297"
+  },
+  "icon-success": {
+    "value": "#198f51",
+    "description": "Green icons used for confirmation, and approval."
+  },
+  "icon-success-pressed": {
+    "value": "#a1e8b9"
+  },
+  "icon-success-secondary": {
+    "value": "#198f51"
+  },
+  "icon-success-tertiary": {
+    "value": "#198f51"
+  },
+  "icon-tertiary": {
+    "value": "#ffffff66",
+    "description": "Our tertiary icon color primarily used for carets"
+  },
+  "icon-tertiary-hover": {
+    "value": "#ffffff"
+  },
+  "icon-toolbar": {
+    "value": "#ffffff"
+  },
+  "icon-toolbar-danger": {
+    "value": "#e03e1a"
+  },
+  "icon-toolbar-disabled": {
+    "value": "#ffffff66"
+  },
+  "icon-toolbar-hover": {
+    "value": "#ffffff"
+  },
+  "icon-toolbar-ondisabled": {
+    "value": "#2c2c2c"
+  },
+  "icon-toolbar-onselected": {
+    "value": "#ffffff"
+  },
+  "icon-toolbar-pressed": {
+    "value": "#198f51"
+  },
+  "icon-toolbar-secondary": {
+    "value": "#ffffffb2"
+  },
+  "icon-toolbar-secondary-hover": {
+    "value": "#ffffff"
+  },
+  "icon-toolbar-selected": {
+    "value": "#79d297"
+  },
+  "icon-toolbar-selected-secondary": {
+    "value": "#79d297"
+  },
+  "icon-toolbar-selected-tertiary": {
+    "value": "#79d297"
+  },
+  "icon-toolbar-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-toolbar-tertiary-hover": {
+    "value": "#ffffff"
+  },
+  "icon-toolbar-warning": {
+    "value": "#f3c11b"
+  },
+  "icon-tooltip": {
+    "value": "#ffffff"
+  },
+  "icon-tooltip-danger": {
+    "value": "#e03e1a"
+  },
+  "icon-tooltip-disabled": {
+    "value": "#ffffff66"
+  },
+  "icon-tooltip-hover": {
+    "value": "#ffffff"
+  },
+  "icon-tooltip-ondisabled": {
+    "value": "#1e1e1e"
+  },
+  "icon-tooltip-onselected": {
+    "value": "#ffffff"
+  },
+  "icon-tooltip-pressed": {
+    "value": "#198f51"
+  },
+  "icon-tooltip-secondary": {
+    "value": "#ffffffb2"
+  },
+  "icon-tooltip-secondary-hover": {
+    "value": "#ffffff"
+  },
+  "icon-tooltip-selected": {
+    "value": "#79d297"
+  },
+  "icon-tooltip-selected-secondary": {
+    "value": "#79d297"
+  },
+  "icon-tooltip-selected-tertiary": {
+    "value": "#79d297"
+  },
+  "icon-tooltip-tertiary": {
+    "value": "#ffffff66"
+  },
+  "icon-tooltip-tertiary-hover": {
+    "value": "#ffffff"
+  },
+  "icon-tooltip-warning": {
+    "value": "#f3c11b"
+  },
+  "icon-warning": {
+    "value": "#f3c11b",
+    "description": "Yellow icons used to warn users about a potential problem."
+  },
+  "icon-warning-pressed": {
+    "value": "#f7d15f"
+  },
+  "icon-warning-secondary": {
+    "value": "#f3c11b"
+  },
+  "icon-warning-tertiary": {
+    "value": "#f3c11b"
+  },
+  "icondesignfilesecondary": {
+    "value": "#7cc4f8"
+  },
+  "iconfigjamfilesecondary": {
+    "value": "#d1a8ff"
+  },
+  "iconondarkcanvas": {
+    "value": "#ffffffe5"
+  },
+  "icononlightcanvas": {
+    "value": "#000000e5"
+  },
+  "icononvoting": {
+    "value": "#000000e5"
+  },
+  "iconprototypefile": {
+    "value": "#757575"
+  },
+  "iconprototypefilesecondary": {
+    "value": "#ffffff"
+  },
+  "iconpublishedfile": {
+    "value": "#757575"
+  },
+  "iconpublishedfilesecondary": {
+    "value": "#b3b3b3"
+  },
+  "loading": {
+    "value": "#ffffff1a"
+  },
+  "loadingmenu": {
+    "value": "#ffffff1a"
+  },
+  "loadingsecondary": {
+    "value": "#ffffff0d"
+  },
+  "loadingsecondarymenu": {
+    "value": "#ffffff0d"
+  },
+  "modalbackdrop": {
+    "value": "#00000080"
+  },
+  "multiplayerblue": {
+    "value": "#0a6dc2"
+  },
+  "multiplayerbluehover": {
+    "value": "#105cad"
+  },
+  "multiplayerbluesecondary": {
+    "value": "#184591"
+  },
+  "multiplayergreen": {
+    "value": "#198f51"
+  },
+  "multiplayergreenhover": {
+    "value": "#078348"
+  },
+  "multiplayergreensecondary": {
+    "value": "#0a4c2d"
+  },
+  "multiplayergrey": {
+    "value": "#667799"
+  },
+  "multiplayergreyhover": {
+    "value": "#536383"
+  },
+  "multiplayergreysecondary": {
+    "value": "#394360"
+  },
+  "multiplayerpink": {
+    "value": "#f316b0"
+  },
+  "multiplayerpinkhover": {
+    "value": "#d01b9c"
+  },
+  "multiplayerpinksecondary": {
+    "value": "#68275e"
+  },
+  "multiplayerpurple": {
+    "value": "#8a38f5"
+  },
+  "multiplayerpurplehover": {
+    "value": "#7a2ed6"
+  },
+  "multiplayerpurplesecondary": {
+    "value": "#50297a"
+  },
+  "multiplayerred": {
+    "value": "#e03e1a"
+  },
+  "multiplayerredhover": {
+    "value": "#c4381c"
+  },
+  "multiplayerredsecondary": {
+    "value": "#7c2622"
+  },
+  "multiplayeryellow": {
+    "value": "#f3c11b"
+  },
+  "multiplayeryellowhover": {
+    "value": "#f2b50d"
+  },
+  "multiplayeryellowsecondary": {
+    "value": "#c58011"
+  },
+  "nodehandle": {
+    "value": "#7cc4f8"
+  },
+  "prototypeloadingbackdrop": {
+    "value": "#000000e5"
+  },
+  "scrollbar": {
+    "value": "#b3b3b380"
+  },
+  "shadow": {
+    "value": "#00000099"
+  },
+  "text": {
+    "value": "#ffffff",
+    "description": "Our default text color for most titles, tabs, and body text."
+  },
+  "text-assistive": {
+    "value": "#fc9ce0",
+    "description": "Pink text used when Figma is assisting you in some way (ex: in auto layout)"
+  },
+  "text-assistive-pressed": {
+    "value": "#fbb1ed"
+  },
+  "text-assistive-secondary": {
+    "value": "#fc9ce0"
+  },
+  "text-assistive-tertiary": {
+    "value": "#fc9ce0"
+  },
+  "text-brand": {
+    "value": "#79d297",
+    "description": "Text that is tinted to match the current product, typically used for things like links. For specifically referring to concepts in design, we can use color-text-design instead."
+  },
+  "text-brand-secondary": {
+    "value": "#79d297"
+  },
+  "text-brand-tertiary": {
+    "value": "#79d297"
+  },
+  "text-component": {
+    "value": "#d1a8ff"
+  },
+  "text-component-pressed": {
+    "value": "#d6b6fb"
+  },
+  "text-component-secondary": {
+    "value": "#7f699b"
+  },
+  "text-component-tertiary": {
+    "value": "#7f699b"
+  },
+  "text-danger": {
+    "value": "#fca397",
+    "description": "Red text used to alert users about an error."
+  },
+  "text-danger-secondary": {
+    "value": "#fca397"
+  },
+  "text-danger-tertiary": {
+    "value": "#fca397"
+  },
+  "text-design": {
+    "value": "#7cc4f8"
+  },
+  "text-design-pressed": {
+    "value": "#a8d7fa"
+  },
+  "text-design-secondary": {
+    "value": "#7cc4f8"
+  },
+  "text-design-tertiary": {
+    "value": "#7cc4f8"
+  },
+  "text-disabled": {
+    "value": "#ffffff66"
+  },
+  "text-figjam": {
+    "value": "#c5b2dc"
+  },
+  "text-figjam-pressed": {
+    "value": "#d6b6fb"
+  },
+  "text-figjam-secondary": {
+    "value": "#7f699b"
+  },
+  "text-figjam-tertiary": {
+    "value": "#7f699b"
+  },
+  "text-handoff": {
+    "value": "#79d297"
+  },
+  "text-handoff-secondary": {
+    "value": "#79d297"
+  },
+  "text-handoff-tertiary": {
+    "value": "#79d297"
+  },
+  "text-hover": {
+    "value": "#ffffff"
+  },
+  "text-measure": {
+    "value": "#fca397"
+  },
+  "text-measure-secondary": {
+    "value": "#fca397"
+  },
+  "text-measure-tertiary": {
+    "value": "#fca397"
+  },
+  "text-menu": {
+    "value": "#ffffff"
+  },
+  "text-menu-danger": {
+    "value": "#fca397"
+  },
+  "text-menu-disabled": {
+    "value": "#ffffff66"
+  },
+  "text-menu-hover": {
+    "value": "#ffffff"
+  },
+  "text-menu-ondisabled": {
+    "value": "#1e1e1e"
+  },
+  "text-menu-onselected": {
+    "value": "#ffffff"
+  },
+  "text-menu-secondary": {
+    "value": "#ffffffb2"
+  },
+  "text-menu-secondary-hover": {
+    "value": "#ffffff"
+  },
+  "text-menu-selected": {
+    "value": "#79d297"
+  },
+  "text-menu-selected-secondary": {
+    "value": "#79d297"
+  },
+  "text-menu-selected-tertiary": {
+    "value": "#79d297"
+  },
+  "text-menu-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-menu-tertiary-hover": {
+    "value": "#ffffff"
+  },
+  "text-menu-warning": {
+    "value": "#f7d15f"
+  },
+  "text-onassistive": {
+    "value": "#ffffff"
+  },
+  "text-onassistive-secondary": {
+    "value": "#ffffffcc"
+  },
+  "text-onassistive-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-onbrand": {
+    "value": "#ffffff",
+    "description": "Used for text against a “background with a fill color” (for example, a blue / purple background in our “Share” button)"
+  },
+  "text-onbrand-secondary": {
+    "value": "#ffffffcc"
+  },
+  "text-onbrand-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-oncomponent": {
+    "value": "#ffffff"
+  },
+  "text-oncomponent-secondary": {
+    "value": "#ffffffcc"
+  },
+  "text-oncomponent-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-ondanger": {
+    "value": "#ffffff"
+  },
+  "text-ondanger-secondary": {
+    "value": "#ffffffcc"
+  },
+  "text-ondanger-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-ondesign": {
+    "value": "#ffffff"
+  },
+  "text-ondesign-secondary": {
+    "value": "#ffffffcc"
+  },
+  "text-ondesign-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-ondisabled": {
+    "value": "#2c2c2c"
+  },
+  "text-onfigjam": {
+    "value": "#ffffff"
+  },
+  "text-onfigjam-secondary": {
+    "value": "#ffffffcc"
+  },
+  "text-onfigjam-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-oninverse": {
+    "value": "#000000e5"
+  },
+  "text-onmeasure": {
+    "value": "#ffffff"
+  },
+  "text-onmeasure-secondary": {
+    "value": "#ffffffcc"
+  },
+  "text-onmeasure-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-onselected": {
+    "value": "#ffffffe5"
+  },
+  "text-onselected-secondary": {
+    "value": "#ffffffb2"
+  },
+  "text-onselected-strong": {
+    "value": "#ffffff"
+  },
+  "text-onselected-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-onsuccess": {
+    "value": "#ffffff"
+  },
+  "text-onsuccess-secondary": {
+    "value": "#ffffffcc"
+  },
+  "text-onsuccess-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-onwarning": {
+    "value": "#000000e5"
+  },
+  "text-onwarning-secondary": {
+    "value": "#00000080"
+  },
+  "text-onwarning-tertiary": {
+    "value": "#0000004d"
+  },
+  "text-secondary": {
+    "value": "#ffffffb2",
+    "description": "Our secondary text color for inactive tabs, labels, timestamps, and other text that needs to be “lighter” in order to create hierarchy."
+  },
+  "text-secondary-hover": {
+    "value": "#ffffff"
+  },
+  "text-selected": {
+    "value": "#79d297"
+  },
+  "text-selected-secondary": {
+    "value": "#79d297"
+  },
+  "text-selected-tertiary": {
+    "value": "#79d297"
+  },
+  "text-success": {
+    "value": "#79d297"
+  },
+  "text-success-secondary": {
+    "value": "#79d297"
+  },
+  "text-success-tertiary": {
+    "value": "#79d297"
+  },
+  "text-tertiary": {
+    "value": "#ffffff66",
+    "description": "Primarily used for placeholder text (for example in a search input), or for hierarchy below secondary text. Note that text at this level is below our color contrast threshold, and may not be readable to all users."
+  },
+  "text-tertiary-hover": {
+    "value": "#ffffff"
+  },
+  "text-toolbar": {
+    "value": "#ffffff"
+  },
+  "text-toolbar-danger": {
+    "value": "#fca397"
+  },
+  "text-toolbar-disabled": {
+    "value": "#ffffff66"
+  },
+  "text-toolbar-hover": {
+    "value": "#ffffff"
+  },
+  "text-toolbar-ondisabled": {
+    "value": "#2c2c2c"
+  },
+  "text-toolbar-onselected": {
+    "value": "#ffffff"
+  },
+  "text-toolbar-secondary": {
+    "value": "#ffffffb2"
+  },
+  "text-toolbar-secondary-hover": {
+    "value": "#ffffff"
+  },
+  "text-toolbar-selected": {
+    "value": "#79d297"
+  },
+  "text-toolbar-selected-secondary": {
+    "value": "#79d297"
+  },
+  "text-toolbar-selected-tertiary": {
+    "value": "#79d297"
+  },
+  "text-toolbar-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-toolbar-tertiary-hover": {
+    "value": "#ffffff"
+  },
+  "text-toolbar-warning": {
+    "value": "#f7d15f"
+  },
+  "text-tooltip": {
+    "value": "#ffffff"
+  },
+  "text-tooltip-danger": {
+    "value": "#fca397"
+  },
+  "text-tooltip-disabled": {
+    "value": "#ffffff66"
+  },
+  "text-tooltip-hover": {
+    "value": "#ffffff"
+  },
+  "text-tooltip-ondisabled": {
+    "value": "#1e1e1e"
+  },
+  "text-tooltip-onselected": {
+    "value": "#ffffff"
+  },
+  "text-tooltip-secondary": {
+    "value": "#ffffffb2"
+  },
+  "text-tooltip-secondary-hover": {
+    "value": "#ffffff"
+  },
+  "text-tooltip-selected": {
+    "value": "#79d297"
+  },
+  "text-tooltip-selected-secondary": {
+    "value": "#79d297"
+  },
+  "text-tooltip-selected-tertiary": {
+    "value": "#79d297"
+  },
+  "text-tooltip-tertiary": {
+    "value": "#ffffff66"
+  },
+  "text-tooltip-tertiary-hover": {
+    "value": "#ffffff"
+  },
+  "text-tooltip-warning": {
+    "value": "#f7d15f"
+  },
+  "text-warning": {
+    "value": "#f7d15f",
+    "description": "Yellow text used to warn users about a potential problem."
+  },
+  "text-warning-secondary": {
+    "value": "#f7d15f"
+  },
+  "text-warning-tertiary": {
+    "value": "#f7d15f"
+  },
+  "texthighlight": {
+    "value": "#14ae5c66"
+  },
+  "textondarkcanvas": {
+    "value": "#ffffffe5"
+  },
+  "textondarkcanvassecondary": {
+    "value": "#ffffffb2"
+  },
+  "textonlightcanvas": {
+    "value": "#000000e5"
+  },
+  "textonlightcanvassecondary": {
+    "value": "#0000004d"
+  },
+  "textonmultiplayerblue": {
+    "value": "#ffffff"
+  },
+  "textonmultiplayergreen": {
+    "value": "#ffffff"
+  },
+  "textonmultiplayergrey": {
+    "value": "#ffffff"
+  },
+  "textonmultiplayerpink": {
+    "value": "#ffffff"
+  },
+  "textonmultiplayerpurple": {
+    "value": "#ffffff"
+  },
+  "textonmultiplayerred": {
+    "value": "#ffffff"
+  },
+  "textonmultiplayeryellow": {
+    "value": "#000000e5"
+  },
+  "textonvoting": {
+    "value": "#000000e5"
+  }
+}

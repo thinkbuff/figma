@@ -1,6 +1,5 @@
 import { FigJamLightThemeCSSVariables } from './colors/figjam';
 import { FigmaDarkThemeCSSVariables, FigmaLightThemeCSSVariables } from './colors/figma';
-import { SharedThemeCSSVariables } from './colors/shared';
 
 const THEME_COLOR_SCOPES = ['bg', 'border', 'icon', 'text'] as const;
 
@@ -15,7 +14,6 @@ export type ThemeVariant = 'figma' | 'figjam';
 export type RuntimeThemeVariant = 'figma-light' | 'figma-dark' | 'figjam';
 
 export type ThemeTokenSource = {
-  shared: ThemeTokenMap;
   themes: Record<RuntimeThemeVariant, ThemeTokenMap>;
 };
 
@@ -53,29 +51,13 @@ export function parseThemeTokenName(value: string): ParsedThemeTokenName | null 
 }
 
 /**
- * Theme source backed by this package's checked-in color data.
- * The shared tokens are the mode-invariant menu/tooltip chrome; accent tokens
- * follow each editor mode and live in the per-theme maps.
+ * Theme source backed by the normalized color JSON in ../../tokens/colors/.
+ * Each mode map is complete — the old shared/mode-invariant split is gone.
  */
 export const docsThemeTokenSource: ThemeTokenSource = {
-  shared: {},
   themes: {
     'figma-light': FigmaLightThemeCSSVariables as ThemeTokenMap,
     'figma-dark': FigmaDarkThemeCSSVariables as ThemeTokenMap,
     figjam: FigJamLightThemeCSSVariables as ThemeTokenMap,
   },
-};
-
-export const localThemeTokenSource: ThemeTokenSource = {
-  shared: SharedThemeCSSVariables as ThemeTokenMap,
-  themes: {
-    'figma-light': {},
-    'figma-dark': {},
-    figjam: {},
-  },
-};
-
-export const themeTokenSource: ThemeTokenSource = {
-  shared: SharedThemeCSSVariables as ThemeTokenMap,
-  themes: docsThemeTokenSource.themes,
 };

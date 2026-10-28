@@ -1,10 +1,7 @@
-import type { SharedFoundationVariableKey } from '../shared-foundation-variables';
+import type { ThemeColorScope } from '../tokens';
 import type { FigmaThemeCSSVariableKey } from './figma';
-import type { SharedThemeCSSVariableKey } from './shared';
 
-export type ThemeCSSVariableKey =
-  | SharedFoundationVariableKey
-  | SharedThemeCSSVariableKey
-  | FigmaThemeCSSVariableKey;
+// All eight mode files publish the same key set, so the union collapses to one.
+export type ThemeCSSVariableKey = FigmaThemeCSSVariableKey;
 
-export type { ThemeColorScope } from '../tokens';
+export type { ThemeColorScope };
