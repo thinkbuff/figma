@@ -58,3 +58,7 @@ storybook-static
 
 # Devin local config
 .devin/*.local.json
+
+# Local Design file working-copy links and component audits
+docs/figma-ui3-design.md
+docs/audit/

@@ -1,0 +1,3 @@
+# Component directories stay flat even though components are layered
+
+Components are classified as Core (one-to-one with a Design file component set) or Pattern (editor-specific compositions of Core components), but they all live in `packages/react/src/components/<kebab-name>/` rather than `core/` and `patterns/` subfolders. The published subpath exports (`@thinkbuff/figma-react/<name>`) map directly onto that folder, and a component may move between layers as the Design file evolves; nesting would make either change a breaking import path. The layer is expressed in the Storybook title (`Core/Button`, `Pattern/ValueField`) and the component inventory in `docs/architecture.md`.
