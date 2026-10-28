@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { CheckmarkIcon } from '~/icons';
 
-import { Badge } from './badge';
+import { Badge, BadgeDot } from './badge';
 
 const meta = {
   title: 'Components/Badge',
@@ -36,6 +36,7 @@ const colors = [
   'warning',
   'success',
   'selected',
+  'figjam',
 ] as const;
 
 export const Gallery: Story = {
@@ -68,7 +69,8 @@ export const BranchingAndMerging: Story = {
       <Badge
         {...args}
         variant="light"
-        color="success"
+        color="merged"
+        size="large"
         icon={<span className="size-1.5 rounded-full bg-figma-icon-success" />}
       >
         Merged
@@ -76,23 +78,69 @@ export const BranchingAndMerging: Story = {
       <Badge
         {...args}
         variant="light"
-        color="default"
-        className="border-figma-border bg-transparent text-figma-tertiary"
+        color="archived"
+        size="large"
         icon={<span className="size-1.5 rounded-full bg-figma-icon-disabled" />}
       >
         Archived
       </Badge>
+    </div>
+  ),
+};
+
+/**
+ * The "Badge small alt" family — subtle fills, no border.
+ */
+export const Alt: Story = {
+  render: (args) => (
+    <div className="flex items-center gap-3">
       <Badge
         {...args}
-        variant="light"
-        color="success"
-        size="small"
-        icon={<span className="size-1 rounded-full bg-figma-icon-success" />}
+        variant="alt"
+        color="default"
       >
-        Merged
+        Default
+      </Badge>
+      <Badge
+        {...args}
+        variant="alt"
+        color="count"
+      >
+        3
+      </Badge>
+      <Badge
+        {...args}
+        variant="alt"
+        color="count-inactive"
+      >
+        12
+      </Badge>
+      <Badge
+        {...args}
+        variant="alt"
+        color="strong"
+      >
+        Strong
       </Badge>
     </div>
   ),
+};
+
+/**
+ * The spec's "Badge Dot" — a 9x9 `bg-default` pill with a 5x5 brand dot.
+ */
+export const Dot: Story = {
+  render: () => <BadgeDot />,
+};
+
+/**
+ * `size="large"` — 16px badge with 13px text.
+ */
+export const Large: Story = {
+  args: {
+    size: 'large',
+    children: 'Large badge',
+  },
 };
 
 export const WithIcons: Story = {

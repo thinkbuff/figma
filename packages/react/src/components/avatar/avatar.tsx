@@ -1,15 +1,17 @@
 import { cn } from '~/utils';
 
-// UI3 initials palette — Figma assigns these fixed user colors; they are not theme tokens.
+// The spec's `_multiplayer/*` fills paired with `special/textonmultiplayer*` text.
 const palette = {
-  purple: 'bg-[#9747ff] text-white',
-  blue: 'bg-[#007be5] text-white',
-  magenta: 'bg-[#ff24bd] text-white',
-  red: 'bg-[#f24822] text-white',
-  yellow: 'bg-[#ffcd29] text-figma',
-  green: 'bg-[#14ae5c] text-white',
-  slate: 'bg-[#667799] text-white',
+  purple: 'bg-figma-multiplayerpurple text-figma-textonmultiplayerpurple',
+  blue: 'bg-figma-multiplayerblue text-figma-textonmultiplayerblue',
+  pink: 'bg-figma-multiplayerpink text-figma-textonmultiplayerpink',
+  red: 'bg-figma-multiplayerred text-figma-textonmultiplayerred',
+  yellow: 'bg-figma-multiplayeryellow text-figma-textonmultiplayeryellow',
+  green: 'bg-figma-multiplayergreen text-figma-textonmultiplayergreen',
+  grey: 'bg-figma-multiplayergrey text-figma-textonmultiplayergrey',
   neutral: 'bg-figma-secondary text-figma',
+  'overflow-unread': 'bg-figma-brand-secondary text-figma-onbrand',
+  'overflow-read': 'bg-figma-secondary text-figma',
 } as const;
 
 type AvatarColor = keyof typeof palette;
@@ -35,9 +37,14 @@ interface AvatarProps extends React.ComponentPropsWithRef<'span'> {
    */
   name?: string;
   /**
-   * Initials background color from the UI3 user palette.
+   * Initials background color from the UI3 user palette. `overflow-unread` /
+   * `overflow-read` render the spec's "+N" overflow variants.
    */
   color?: AvatarColor;
+  /**
+   * The spec's `State=Disabled` — `bg-tertiary` fill with `text-default`.
+   */
+  disabled?: boolean;
 }
 
 /**
@@ -50,6 +57,7 @@ function Avatar({
   src,
   name,
   color = 'purple',
+  disabled,
   className,
   children,
   ref,
@@ -73,8 +81,12 @@ function Avatar({
       className={cn(
         'inline-flex select-none items-center justify-center overflow-hidden leading-none',
         sizes[size],
-        shape === 'circle' ? 'rounded-full' : 'rounded-figma-md',
-        !src && palette[color],
+        shape === 'circle'
+          ? 'rounded-full'
+          : size === 'small'
+            ? 'rounded-figma-sm'
+            : 'rounded-figma-md',
+        !src && (disabled ? 'bg-figma-tertiary text-figma' : palette[color]),
         className,
       )}
       {...props}

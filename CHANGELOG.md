@@ -59,6 +59,11 @@
 - `Slider`: new `modified` prop renders the spec's `Stroke (Modified)` thumb (`bg-default` knob, `icon-onbrand` ring, elevation-300). Hue/opacity thumbs now embed the spec's 12px `_Chit 24` square instead of a 6px disc. Disabled thumb uses `bg-disabled` (was `bg-disabled-secondary`); the track and gradient-chit rings use the `bordertranslucent` token (were hardcoded); stepper ticks use `icon-tertiary` / `icon` (were `black/30` / `black/85`).
 - `Swatch`: new `type="opacity"` (left half solid, right half at ~24% alpha — the spec's `Type=Opacity`) and `shape="circle"` (the spec's 16px round chit). The inset ring now uses `bordertranslucent` (same values as the previous hardcoded hexes — no visual change).
 
+#### Avatar and Badge: UI3 spec variants
+
+- `Avatar`: initials fills now bind to the `multiplayer*` / `textonmultiplayer*` tokens (were hardcoded light-theme hexes — dark themes were visibly wrong). Colors renamed to spec names (`magenta`→`pink`, `slate`→`grey`); new `overflow-unread` / `overflow-read` colors for "+N" avatars; new `disabled` prop (`bg-tertiary` + `text`); `shape="square"` uses `rounded-figma-sm` at `size="small"` (spec r=2).
+- `Badge`: `size="small"` (14px) removed — no such badge in the spec; `size="large"` added (16px with 13px text — the spec's "Badge large"). New `variant="alt"` for the "Badge small alt" subtle-fill family (`default`/`count`/`count-inactive`/`strong`); new colors `figjam`, `menu`, `merged`, `archived`; the `warning` strong fill uses `icon-warning` per spec. New `BadgeDot` (the spec's "Badge Dot": 9px `bg-default` pill + 5px `bg-brand` dot).
+
 #### Tokens: generated from `packages/theme/tokens/`
 
 - `@thinkbuff/figma-theme/colors` no longer exports `BaseThemeCSSVariables`/`BaseThemeCSSVariableKey` — each mode map is complete on its own.

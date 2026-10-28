@@ -21,7 +21,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-const colors = ['purple', 'blue', 'magenta', 'red', 'yellow', 'green', 'slate'] as const;
+const colors = ['purple', 'blue', 'pink', 'red', 'yellow', 'green', 'grey'] as const;
 
 export const Gallery: Story = {
   render: (args) => (
@@ -70,6 +70,47 @@ export const Photo: Story = {
   },
 };
 
+/**
+ * The spec's Overflow variants — "+N" style avatars.
+ */
+export const Overflow: Story = {
+  render: (args) => (
+    <div className="flex items-center gap-3">
+      <Avatar
+        {...args}
+        color="overflow-unread"
+      >
+        +12
+      </Avatar>
+      <Avatar
+        {...args}
+        color="overflow-read"
+      >
+        +8
+      </Avatar>
+    </div>
+  ),
+};
+
+export const Disabled: Story = {
+  render: (args) => (
+    <div className="flex items-center gap-3">
+      <Avatar
+        {...args}
+        disabled
+        color="purple"
+      />
+      <Avatar
+        {...args}
+        disabled
+        color="overflow-read"
+      >
+        +8
+      </Avatar>
+    </div>
+  ),
+};
+
 export const Content: Story = {
   render: (args) => (
     <div className="flex items-center gap-3">
@@ -102,7 +143,7 @@ export const Group: Story = {
       />
       <Avatar
         {...args}
-        color="magenta"
+        color="pink"
       />
       <Avatar
         {...args}

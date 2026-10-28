@@ -8,7 +8,7 @@ describe('Avatar', () => {
     const { container } = await render(<Avatar name="Ada" />);
     const avatar = container.querySelector('[role="img"]') as HTMLElement;
     expect(avatar.textContent).toBe('A');
-    expect(avatar.className).toContain('bg-[#9747ff]');
+    expect(avatar.className).toContain('bg-figma-multiplayerpurple');
     expect(avatar.getAttribute('aria-label')).toBe('Ada');
   });
 
@@ -33,7 +33,20 @@ describe('Avatar', () => {
     );
     const avatar = container.querySelector('[role="img"]') as HTMLElement;
     expect(avatar.className).toContain('size-4');
-    expect(avatar.className).toContain('rounded-figma-md');
+    // The spec's small square avatar is r=2; default/large are r=5.
+    expect(avatar.className).toContain('rounded-figma-sm');
+  });
+
+  it('renders the disabled state', async () => {
+    const { container } = await render(
+      <Avatar
+        name="Ada"
+        disabled
+      />,
+    );
+    const avatar = container.querySelector('[role="img"]') as HTMLElement;
+    expect(avatar.className).toContain('bg-figma-tertiary');
+    expect(avatar.className).not.toContain('multiplayer');
   });
 
   it('groups avatars in a pill', async () => {
