@@ -54,6 +54,11 @@
 - New `VariableCell`: the spec's `Variable Cell` — a 24px bordered row with the variable icon cell plus a label.
 - `ValueField.NumericSelect`: the dropdown segment uses `bg-selected` + `border-selected` while open (the spec's selected-chevron state).
 
+#### Slider and Swatch: UI3 spec variants
+
+- `Slider`: new `modified` prop renders the spec's `Stroke (Modified)` thumb (`bg-default` knob, `icon-onbrand` ring, elevation-300). Hue/opacity thumbs now embed the spec's 12px `_Chit 24` square instead of a 6px disc. Disabled thumb uses `bg-disabled` (was `bg-disabled-secondary`); the track and gradient-chit rings use the `bordertranslucent` token (were hardcoded); stepper ticks use `icon-tertiary` / `icon` (were `black/30` / `black/85`).
+- `Swatch`: new `type="opacity"` (left half solid, right half at ~24% alpha — the spec's `Type=Opacity`) and `shape="circle"` (the spec's 16px round chit). The inset ring now uses `bordertranslucent` (same values as the previous hardcoded hexes — no visual change).
+
 #### Tokens: generated from `packages/theme/tokens/`
 
 - `@thinkbuff/figma-theme/colors` no longer exports `BaseThemeCSSVariables`/`BaseThemeCSSVariableKey` — each mode map is complete on its own.

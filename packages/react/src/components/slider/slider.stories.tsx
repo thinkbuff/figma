@@ -134,6 +134,16 @@ export const Delta: Story = {
   },
 };
 
+/**
+ * The spec's `Stroke (Modified)` thumb — a `bg-default` knob with an
+ * `icon-onbrand` ring and elevation-300.
+ */
+export const Modified: Story = {
+  args: {
+    modified: true,
+  },
+};
+
 export const Hue: Story = {
   args: {
     variant: 'hue',

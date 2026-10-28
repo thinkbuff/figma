@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 import { addClassName, cn } from '~/utils';
 
+import { Swatch } from '../swatch/swatch';
+
 const SNAP_PERCENTAGE_THRESHOLD = 2;
 
 function getSnappedValue(value: number, hints: number[] | undefined, min: number, max: number) {
@@ -73,7 +75,7 @@ function SliderTrack({
         'overflow-hidden',
         'rounded-full',
         'bg-figma-secondary',
-        'outline-solid outline-1 -outline-offset-1 outline-[#0000001a] dark:outline-[#ffffff1a]',
+        'outline-solid outline-1 -outline-offset-1 outline-figma-bordertranslucent',
         'data-[orientation=horizontal]:-mx-2',
         'data-[orientation=vertical]:w-4 data-[orientation=vertical]:-my-2',
       )}
@@ -137,7 +139,7 @@ function SliderThumb({
         'outline-0',
         'after:pointer-events-none after:absolute after:inset-1 after:rounded-full after:content-[""] after:shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.1)]',
         'focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-figma-border-selected',
-        'data-disabled:border-0 data-disabled:bg-figma-disabled-secondary data-disabled:shadow-none data-disabled:pointer-events-none data-disabled:after:hidden',
+        'data-disabled:border-0 data-disabled:bg-figma-disabled data-disabled:shadow-none data-disabled:pointer-events-none data-disabled:after:hidden',
       )}
       {...props}
       ref={ref}
@@ -163,11 +165,11 @@ function SliderHint({ hint, baseValue, min, max, orientation = 'horizontal' }: S
       data-hint=""
       data-orientation={orientation}
       className={cn(
-        'pointer-events-none absolute block size-1 rounded-full bg-black/30',
+        'pointer-events-none absolute block size-1 rounded-full bg-figma-icon-tertiary',
         horizontal
           ? 'top-1/2 -translate-y-1/2 -translate-x-1/2'
           : 'left-1/2 -translate-x-1/2 translate-y-1/2',
-        hint === baseValue && 'bg-black/85',
+        hint === baseValue && 'bg-figma-icon',
       )}
       style={horizontal ? { left: `${offset}%` } : { bottom: `${offset}%` }}
     />
@@ -219,6 +221,11 @@ interface SliderProps extends React.ComponentPropsWithRef<typeof SliderRoot> {
    * Overrides `fill` inside the thumb at that index.
    */
   thumbFills?: string[];
+  /**
+   * Renders the spec's `Stroke (Modified)` thumb: a `bg-default` knob with
+   * an `icon-onbrand` ring and elevation-300.
+   */
+  modified?: boolean;
 }
 
 /**
@@ -234,6 +241,7 @@ function Slider({
   variant,
   fill,
   thumbFills,
+  modified,
   value: valueProp,
   defaultValue,
   onValueChange,
@@ -310,22 +318,23 @@ function Slider({
                 'flex items-center justify-center',
               variant === 'gradient' &&
                 'group/thumb size-4 border-0 bg-transparent shadow-none focus-visible:outline-0 after:hidden',
+              modified &&
+                'border bg-figma shadow-figma-elevation-300 flex items-center justify-center',
             )}
           >
-            {variant && variant !== 'gradient' && (
-              <span
+            {modified && variant !== 'gradient' && (
+              <span className="block size-2 rounded-full outline-1 outline-figma-bordertranslucent" />
+            )}
+            {variant && variant !== 'gradient' && !modified && (
+              <Swatch
                 data-thumb-fill=""
-                className="block size-1.5 rounded-full"
-                style={
+                size="small"
+                fill={
                   variant === 'hue'
-                    ? { background: `hsl(${((v - min) / (max - min)) * 360} 100% 50%)` }
-                    : {
-                        background: `${
-                          thumbFill
-                            ? `linear-gradient(color-mix(in srgb, ${thumbFill} ${(((v - min) / (max - min)) * 100).toFixed(1)}%, transparent), color-mix(in srgb, ${thumbFill} ${(((v - min) / (max - min)) * 100).toFixed(1)}%, transparent)), `
-                            : ''
-                        }${CHECKERBOARD}`,
-                      }
+                    ? `hsl(${((v - min) / (max - min)) * 360} 100% 50%)`
+                    : thumbFill
+                      ? `color-mix(in srgb, ${thumbFill} ${(((v - min) / (max - min)) * 100).toFixed(1)}%, transparent)`
+                      : undefined
                 }
               />
             )}
@@ -343,7 +352,7 @@ function Slider({
                 <span
                   className={cn(
                     'relative block size-6 rounded-figma-md bg-figma p-1.25',
-                    'outline-1 -outline-offset-1 outline-solid outline-[#0000001a]',
+                    'outline-1 -outline-offset-1 outline-solid outline-figma-bordertranslucent',
                     'drop-shadow-[0_0_0.25px_rgba(0,0,0,0.18),0_3px_4px_rgba(0,0,0,0.1),0_1px_1.5px_rgba(0,0,0,0.1)]',
                     'after:absolute after:bottom-[-5px] after:left-1/2 after:block after:h-1.5 after:w-3',
                     'after:-translate-x-1/2 after:bg-inherit after:content-[""]',
@@ -352,7 +361,7 @@ function Slider({
                   )}
                 >
                   <span
-                    className="block size-full rounded-figma-sm outline-1 -outline-offset-1 outline-solid outline-[#0000001a]"
+                    className="block size-full rounded-figma-sm outline-1 -outline-offset-1 outline-solid outline-figma-bordertranslucent"
                     style={{
                       background: `${thumbFill ? `${toLayer(thumbFill)}, ` : ''}${CHECKERBOARD}, linear-gradient(#fff, #fff)`,
                     }}

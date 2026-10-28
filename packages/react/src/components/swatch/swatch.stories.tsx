@@ -32,6 +32,43 @@ export const Fills: Story = {
   ),
 };
 
+/**
+ * The spec's Type=Opacity — solid fill on the left half, ~24% alpha on
+ * the right.
+ */
+export const Opacity: Story = {
+  render: () => (
+    <div className="flex items-center gap-3">
+      <Swatch
+        type="opacity"
+        fill="#ff24bd"
+      />
+      <Swatch
+        type="opacity"
+        fill="linear-gradient(90deg, #ff24bd, #007be5)"
+      />
+    </div>
+  ),
+};
+
+/**
+ * The spec's Variant=Circle — a 16px round chit with no inset ring.
+ */
+export const Circle: Story = {
+  render: () => (
+    <div className="flex items-center gap-3">
+      <Swatch
+        shape="circle"
+        fill="#ff24bd"
+      />
+      <Swatch
+        shape="circle"
+        fill="linear-gradient(90deg, #ff24bd, #007be5)"
+      />
+    </div>
+  ),
+};
+
 export const InValueField: Story = {
   render: () => (
     <ValueField.Root>
