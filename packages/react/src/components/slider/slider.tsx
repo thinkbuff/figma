@@ -1,9 +1,22 @@
 import { Slider as SliderPrimitive } from '@base-ui/react/slider';
-import { useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 import { addClassName, cn } from '~/utils';
 
 const SNAP_PERCENTAGE_THRESHOLD = 2;
+
+interface SliderValuesContextValue {
+  min: number;
+  values: readonly number[];
+}
+
+/**
+ * The resolved slider values, mirrored from `SliderRoot` so `SliderRange`
+ * can tell when the range is empty and skip its under-thumb bleed (a
+ * zero-width indicator would otherwise still paint its padding, leaving a
+ * stray fill stub inside the hollow thumb at the min edge).
+ */
+const SliderValuesContext = createContext<SliderValuesContextValue>({ min: 0, values: [1] });
 
 function getSnappedValue(value: number, hints: number[] | undefined, min: number, max: number) {
   const snappingFactor = ((max - min) / 100) * SNAP_PERCENTAGE_THRESHOLD;
@@ -28,30 +41,55 @@ function toArray(value: number | readonly number[]) {
   return typeof value === 'number' ? [value] : value;
 }
 
-function SliderRoot({ className, children, ref, ...props }: SliderRootProps) {
+function SliderRoot({
+  className,
+  children,
+  ref,
+  value,
+  defaultValue,
+  onValueChange,
+  min = 0,
+  ...props
+}: SliderRootProps) {
+  // In uncontrolled usage Base UI keeps the value internally — mirror it so
+  // the context below always reflects the resolved range.
+  const [mirroredValue, setMirroredValue] = useState<number | readonly number[] | undefined>(
+    defaultValue,
+  );
+  const values = toArray(value ?? mirroredValue ?? min);
+
   return (
-    <SliderPrimitive.Root
-      thumbAlignment="center"
-      className={addClassName(
-        className,
-        'relative',
-        'flex',
-        'items-center',
-        'grow',
-        'w-full',
-        'h-6',
-        'touch-none',
-        'select-none',
-        'border-0 border-x-8 border-solid border-transparent',
-        'data-[orientation=vertical]:flex-col data-[orientation=vertical]:w-6 data-[orientation=vertical]:h-full data-[orientation=vertical]:border-x-0 data-[orientation=vertical]:border-y-8',
-      )}
-      {...props}
-      ref={ref}
-    >
-      <SliderPrimitive.Control className="group relative flex h-full w-full items-center group-data-[orientation=vertical]:flex-col">
-        {children}
-      </SliderPrimitive.Control>
-    </SliderPrimitive.Root>
+    <SliderValuesContext.Provider value={{ min, values }}>
+      <SliderPrimitive.Root
+        thumbAlignment="center"
+        className={addClassName(
+          className,
+          'relative',
+          'flex',
+          'items-center',
+          'grow',
+          'w-full',
+          'h-6',
+          'touch-none',
+          'select-none',
+          'border-0 border-x-8 border-solid border-transparent',
+          'data-[orientation=vertical]:flex-col data-[orientation=vertical]:w-6 data-[orientation=vertical]:h-full data-[orientation=vertical]:border-x-0 data-[orientation=vertical]:border-y-8',
+        )}
+        min={min}
+        value={value}
+        defaultValue={defaultValue}
+        onValueChange={(next, details) => {
+          setMirroredValue(next);
+          onValueChange?.(next, details);
+        }}
+        {...props}
+        ref={ref}
+      >
+        <SliderPrimitive.Control className="group relative flex h-full w-full items-center data-[orientation=vertical]:flex-col">
+          {children}
+        </SliderPrimitive.Control>
+      </SliderPrimitive.Root>
+    </SliderValuesContext.Provider>
   );
 }
 
@@ -94,6 +132,13 @@ function SliderRange({
   ref,
   ...props
 }: React.ComponentPropsWithRef<typeof SliderPrimitive.Indicator>) {
+  const { min, values } = useContext(SliderValuesContext);
+  // The track bleeds 8px past the value domain so the hollow thumb at the
+  // extremes still sits on the rail; the fill must reach -8 on the min side
+  // to stay flush with the rounded cap, and +6 on the value side to reach
+  // under the thumb's 4px hollow center. On an empty range the indicator is
+  // zero-size and the bleed alone would still paint a stub — skip it.
+  const empty = values.length === 1 ? values[0] <= min : values[values.length - 1] <= values[0];
   return (
     <SliderPrimitive.Indicator
       className={addClassName(
@@ -103,8 +148,9 @@ function SliderRange({
         'rounded-full',
         'bg-figma-brand',
         'box-content',
-        'data-[orientation=horizontal]:h-4 data-[orientation=horizontal]:px-1.5 data-[orientation=horizontal]:-ml-1.5',
-        'data-[orientation=vertical]:w-4 data-[orientation=vertical]:py-1.5 data-[orientation=vertical]:-mt-1.5',
+        'data-[orientation=horizontal]:h-4 data-[orientation=vertical]:w-4',
+        !empty &&
+          'data-[orientation=horizontal]:-ml-2 data-[orientation=horizontal]:pl-2 data-[orientation=horizontal]:pr-1.5 data-[orientation=vertical]:-mb-2 data-[orientation=vertical]:pb-2 data-[orientation=vertical]:pt-1.5',
         'data-disabled:bg-figma-disabled',
       )}
       {...props}
