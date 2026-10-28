@@ -18,8 +18,8 @@ interface SwatchProps extends React.ComponentPropsWithRef<'span'> {
    */
   type?: 'fill' | 'opacity';
   /**
-   * `circle` renders the spec's Variant=Circle — a 16px round chit with no
-   * inset ring.
+   * `circle` renders the spec's Variant=Circle — a round chit with no
+   * inset ring (16px, or 12px at `size="small"`).
    */
   shape?: 'square' | 'circle';
 }
@@ -46,9 +46,9 @@ function Swatch({
       className={cn(
         'relative inline-block overflow-hidden',
         circle
-          ? 'size-4 rounded-full'
+          ? 'rounded-full'
           : 'rounded-figma-sm after:absolute after:inset-0 after:rounded-[inherit] after:shadow-[inset_0_0_0_1px_var(--figma-color-bordertranslucent)]',
-        !circle && (size === 'small' ? 'size-3' : 'size-3.5'),
+        size === 'small' ? 'size-3' : circle ? 'size-4' : 'size-3.5',
         className,
       )}
       style={style}
