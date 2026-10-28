@@ -36,7 +36,7 @@ const menuItemClassName = [
   'select-none',
   'outline-none',
   'rounded-figma-md',
-  'data-highlighted:bg-figma-selected-strong',
+  'data-highlighted:bg-figma-menu-selected',
 ];
 
 const menuItemIndicatorClassName = 'absolute left-1';
@@ -58,10 +58,9 @@ const menuScrollButtonClassName =
 const menuItemTrailClassName = 'ml-auto flex items-center pl-6 text-figma-menu-secondary';
 
 const menuItemBadgeClassName =
-  'flex h-5 items-center rounded-figma-md bg-figma-menu px-1.5 text-figma-menu';
+  'flex h-5 items-center rounded-figma-md bg-figma-toolbar px-1.5 text-figma-onbrand';
 
-const menuItemCheckClassName =
-  'flex size-4 items-center justify-center rounded-figma-md bg-figma-selected-strong icon-figma-onbrand';
+const menuItemCheckClassName = 'flex size-4 items-center justify-center icon-figma-menu';
 
 export {
   menuContentClassName,

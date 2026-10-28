@@ -42,6 +42,11 @@
 - `ActionIcon`: `activeAppearance` removed (the on state now always follows the UI3 dialog-toggle spec); new `variant="secondary"` for the stroked `Button icon` variant.
 - `Toggle`: `stroke` replaced by `variant` — `'highlighted'` (default, previous fill behavior), `'default'` (icon-swap only, no pressed fill), `'secondary'` (the former `stroke` look with the `bordertranslucent` token).
 
+#### Menu items: UI3 tokens + `ItemSwitch`
+
+- `DropdownMenu.ItemSwitch` and `ContextMenu.ItemSwitch` added: a `menuitemcheckbox` row with a Switch cell on the leading side (the spec's `Menu row/Toggle`). Clicking the row toggles the switch; the menu stays open.
+- Menu row highlight now uses `bg-menu-selected` (was `bg-selected-strong` — visibly wrong in FigJam dark). `ItemBadge` uses `bg-toolbar` + `text-onbrand`; `ItemCheck` renders the spec's plain 16px check icon instead of a filled chip. Disabled items unify on `text-menu-disabled` / `icon-menu-disabled`.
+
 #### Tokens: generated from `packages/theme/tokens/`
 
 - `@thinkbuff/figma-theme/colors` no longer exports `BaseThemeCSSVariables`/`BaseThemeCSSVariableKey` — each mode map is complete on its own.

@@ -254,7 +254,7 @@ function SelectItem({ className, children, ref, ...props }: SelectItemProps) {
         'w-full',
         'pl-6',
         'pr-2',
-        'data-disabled:text-figma-menu-tertiary data-disabled:icon-figma-menu-tertiary data-disabled:pointer-events-none',
+        'data-disabled:text-figma-menu-disabled data-disabled:icon-figma-menu-disabled data-disabled:pointer-events-none',
       )}
       {...props}
     >

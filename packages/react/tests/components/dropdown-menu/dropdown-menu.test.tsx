@@ -9,12 +9,14 @@ import { clickForce, firstArg } from '../../test-utils';
 function Fixture({
   onSelect,
   onCheckedChange,
+  onSwitchChange,
   onRadioChange,
   checked = true,
   radioValue = 'a',
 }: {
   onSelect?: () => void;
   onCheckedChange?: (checked: boolean) => void;
+  onSwitchChange?: (checked: boolean) => void;
   onRadioChange?: (value: string) => void;
   checked?: boolean;
   radioValue?: string;
@@ -36,6 +38,12 @@ function Fixture({
         >
           Show grid
         </DropdownMenu.CheckboxItem>
+        <DropdownMenu.ItemSwitch
+          defaultChecked
+          onCheckedChange={onSwitchChange}
+        >
+          Toggle row
+        </DropdownMenu.ItemSwitch>
         <DropdownMenu.RadioGroup
           value={radioValue}
           onValueChange={onRadioChange}
@@ -106,6 +114,23 @@ describe('DropdownMenu', () => {
     await userEvent.click(item);
     expect(onCheckedChange).toHaveBeenCalledOnce();
     expect(firstArg(onCheckedChange)).toBe(false);
+  });
+
+  it('toggles a switch item without closing the menu', async () => {
+    const onSwitchChange = vi.fn<(checked: boolean) => void>();
+    await render(<Fixture onSwitchChange={onSwitchChange} />);
+
+    await userEvent.click(page.getByRole('button', { name: 'Open menu' }));
+
+    const item = page.getByRole('menuitemcheckbox', { name: 'Toggle row' });
+    await expect.element(item).toHaveAttribute('aria-checked', 'true');
+
+    await userEvent.click(item);
+    expect(onSwitchChange).toHaveBeenCalledOnce();
+    expect(firstArg(onSwitchChange)).toBe(false);
+
+    await expect.element(page.getByRole('menu')).toBeVisible();
+    await expect.element(item).toHaveAttribute('aria-checked', 'false');
   });
 
   it('renders radio items with checked state', async () => {

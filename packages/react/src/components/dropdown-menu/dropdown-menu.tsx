@@ -1,7 +1,7 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
 
 import { CheckmarkIcon, ChevronRightIcon, CircleIcon } from '~/icons';
-import { addClassName, cn } from '~/utils';
+import { addClassName, cn, useControllableState } from '~/utils';
 
 import {
   menuContentClassName,
@@ -13,6 +13,7 @@ import {
   menuSeparatorClassName,
   menuItemTrailClassName,
 } from '../menu/menu-classes';
+import { Switch } from '../switch/switch';
 
 type PositionerProps = React.ComponentPropsWithRef<typeof MenuPrimitive.Positioner>;
 
@@ -89,7 +90,7 @@ function DropdownMenuSubTrigger({
         className,
         menuItemClassName,
         'justify-between',
-        'data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary data-disabled:icon-figma-menu-tertiary',
+        'data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled data-disabled:icon-figma-menu-disabled',
       )}
       {...props}
     >
@@ -201,7 +202,7 @@ function DropdownMenuCheckboxItem({
       className={addClassName(
         className,
         menuItemClassName,
-        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary data-disabled:icon-figma-menu-tertiary',
+        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled data-disabled:icon-figma-menu-disabled',
       )}
       {...props}
     >
@@ -228,7 +229,7 @@ function DropdownMenuRadioItem({
       className={addClassName(
         className,
         menuItemClassName,
-        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-tertiary data-disabled:icon-figma-menu-tertiary',
+        'pl-6 data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled data-disabled:icon-figma-menu-disabled',
       )}
       {...props}
     >
@@ -241,6 +242,59 @@ function DropdownMenuRadioItem({
 }
 
 DropdownMenuRadioItem.displayName = 'DropdownMenuRadioItem';
+
+/**
+ * Menu row/Toggle from the spec — a `menuitemcheckbox` row with a Switch
+ * cell on the leading side. Clicking the row toggles the switch; the menu
+ * stays open (`closeOnClick={false}` by default).
+ */
+function DropdownMenuItemSwitch({
+  className,
+  children,
+  checked,
+  defaultChecked,
+  onCheckedChange,
+  disabled,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<typeof MenuPrimitive.CheckboxItem>) {
+  const [isChecked, setChecked] = useControllableState<boolean>({
+    prop: checked,
+    defaultProp: defaultChecked ?? false,
+  });
+
+  return (
+    <MenuPrimitive.CheckboxItem
+      ref={ref}
+      checked={isChecked}
+      disabled={disabled}
+      onCheckedChange={(next, details) => {
+        setChecked(next);
+        onCheckedChange?.(next, details);
+      }}
+      className={addClassName(
+        className,
+        menuItemClassName,
+        'px-4 gap-2',
+        'data-disabled:pointer-events-none data-disabled:text-figma-menu-disabled data-disabled:icon-figma-menu-disabled',
+      )}
+      {...props}
+    >
+      <span className="flex h-6 w-8 shrink-0 items-center">
+        <Switch
+          render={<span aria-hidden />}
+          checked={isChecked}
+          disabled={disabled}
+          tabIndex={-1}
+          className="pointer-events-none"
+        />
+      </span>
+      {children}
+    </MenuPrimitive.CheckboxItem>
+  );
+}
+
+DropdownMenuItemSwitch.displayName = 'DropdownMenuItemSwitch';
 
 /**
  * Must be rendered inside `Group` or `RadioGroup`.
@@ -298,8 +352,8 @@ function DropdownMenuItemShortcut({
 DropdownMenuItemShortcut.displayName = 'DropdownMenuItemShortcut';
 
 /**
- * Right-aligned badge trail — a menu-colored chip that only surfaces on a
- * highlighted row, matching the spec's trailing "Menu" chip.
+ * Right-aligned badge trail — the spec's `Badge small` Variant=Menu chip
+ * (`bg-toolbar` fill, `text-onbrand` label).
  */
 function DropdownMenuItemBadge({
   className,
@@ -321,7 +375,7 @@ function DropdownMenuItemBadge({
 DropdownMenuItemBadge.displayName = 'DropdownMenuItemBadge';
 
 /**
- * Right-aligned check trail — the spec's small brand chip used as a trailing
+ * Right-aligned check trail — a plain 16px check icon used as a trailing
  * selection indicator.
  */
 function DropdownMenuItemCheck({ className, ref, ...props }: React.ComponentPropsWithRef<'span'>) {
@@ -332,7 +386,7 @@ function DropdownMenuItemCheck({ className, ref, ...props }: React.ComponentProp
       {...props}
     >
       <span className={menuItemCheckClassName}>
-        <CheckmarkIcon size="2.5" />
+        <CheckmarkIcon size="4" />
       </span>
     </span>
   );
@@ -351,6 +405,7 @@ export {
   DropdownMenuItemBadge as ItemBadge,
   DropdownMenuItemCheck as ItemCheck,
   DropdownMenuItemShortcut as ItemShortcut,
+  DropdownMenuItemSwitch as ItemSwitch,
   DropdownMenuLabel as Label,
   DropdownMenuRadioGroup as RadioGroup,
   DropdownMenuRadioItem as RadioItem,

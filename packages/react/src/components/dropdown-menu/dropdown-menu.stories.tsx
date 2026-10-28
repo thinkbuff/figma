@@ -127,6 +127,12 @@ const meta = {
           </DropdownMenu.CheckboxItem>
           <DropdownMenu.CheckboxItem checked>Show Full URLs</DropdownMenu.CheckboxItem>
           <DropdownMenu.Separator />
+          <DropdownMenu.ItemSwitch defaultChecked>
+            Toggle row <DropdownMenu.ItemShortcut>⌥⇧⌘O</DropdownMenu.ItemShortcut>
+          </DropdownMenu.ItemSwitch>
+          <DropdownMenu.ItemSwitch>Toggle row off</DropdownMenu.ItemSwitch>
+          <DropdownMenu.ItemSwitch disabled>Toggle disabled</DropdownMenu.ItemSwitch>
+          <DropdownMenu.Separator />
           <DropdownMenu.RadioGroup value="pedro">
             <DropdownMenu.Label>People</DropdownMenu.Label>
             <DropdownMenu.RadioItem value="pedro">Eleven Zhang</DropdownMenu.RadioItem>
