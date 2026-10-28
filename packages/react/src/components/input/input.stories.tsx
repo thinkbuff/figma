@@ -3,6 +3,7 @@ import { useArgs } from 'storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
 import { Tooltip, TooltipProvider } from '../tooltip';
+import { VariableChip } from '../variable-chip';
 import { Input, InputSlot } from './input';
 
 const meta = {
@@ -113,6 +114,26 @@ export const WithSlots: Story = {
           <span className="icon-[tabler--x] size-3"></span>
         </ActionIcon>
       </InputSlot>
+    </Input>
+  ),
+};
+
+/**
+ * The spec's `State=Variable` — an applied variable renders as a
+ * `VariableChip` pill in place of the field text.
+ */
+export const WithVariable: Story = {
+  args: {
+    placeholder: undefined,
+  },
+  render: (args) => (
+    <Input
+      {...args}
+      className="text-transparent"
+    >
+      <span className="absolute left-2 top-1">
+        <VariableChip>Spacing</VariableChip>
+      </span>
     </Input>
   ),
 };

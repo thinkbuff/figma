@@ -6,6 +6,8 @@ import * as Select from './select';
 type StoryArgs = React.ComponentPropsWithRef<typeof Select.Content> & {
   disabled?: boolean;
   size?: 'default' | 'large';
+  stroke?: boolean;
+  icon?: boolean;
   value?: string | null;
 };
 
@@ -102,6 +104,18 @@ const meta: Meta = {
         defaultValue: { summary: 'default' },
       },
     },
+    stroke: {
+      control: 'boolean',
+      table: {
+        defaultValue: { summary: 'true' },
+      },
+    },
+    icon: {
+      control: 'boolean',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
     value: {
       control: 'text',
     },
@@ -169,6 +183,8 @@ const meta: Meta = {
   },
   args: {
     disabled: false,
+    stroke: true,
+    icon: false,
     alignItemWithTrigger: true,
     side: 'top',
     sideOffset: 4,
@@ -183,7 +199,7 @@ const meta: Meta = {
       </div>
     ),
   ],
-  render: function Render({ disabled, size, ...props }) {
+  render: function Render({ disabled, size, stroke, icon, ...props }) {
     const [args, updateArgs] = useArgs();
 
     return (
@@ -196,6 +212,8 @@ const meta: Meta = {
         <Select.Trigger
           disabled={disabled}
           size={size}
+          stroke={stroke}
+          icon={icon ? <span className="icon-[tabler--droplet] size-4"></span> : undefined}
           placeholder="Select. color"
         />
         <Select.Content {...props}>
@@ -220,6 +238,28 @@ export const Large: Story = {
   args: {
     value: 'blue',
     size: 'large',
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    value: 'blue',
+    icon: true,
+  },
+};
+
+export const WithIconLarge: Story = {
+  args: {
+    value: 'blue',
+    icon: true,
+    size: 'large',
+  },
+};
+
+export const NoStroke: Story = {
+  args: {
+    value: 'blue',
+    stroke: false,
   },
 };
 
@@ -275,7 +315,7 @@ export const CustomTrigger: Story = {
       >
         <Select.Trigger
           disabled={disabled}
-          icon={<span className="icon-[tabler--droplet] size-3"></span>}
+          icon={<span className="icon-[tabler--droplet] size-4"></span>}
           placeholder="Select. an option"
         />
         <Select.Content {...props}>

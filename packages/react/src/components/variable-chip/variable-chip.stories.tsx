@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { LinkBrokenIcon } from '~/icons';
 import { cn } from '~/utils';
 
-import { VariableChip } from './variable-chip';
+import { VariableCell, VariableChip } from './variable-chip';
 
 const meta = {
   title: 'Components/VariableChip',
@@ -101,6 +101,14 @@ export const InFocusedField: Story = {
       <VariableChip selected>24</VariableChip>
     </Field>
   ),
+};
+
+/**
+ * The spec's `Variable Cell` — a 24px bordered row next to fields that
+ * accept a variable binding.
+ */
+export const Cell: Story = {
+  render: () => <VariableCell>Value</VariableCell>,
 };
 
 export default meta;

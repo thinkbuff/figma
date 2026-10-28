@@ -65,6 +65,13 @@ interface SelectTriggerProps extends React.ComponentPropsWithRef<typeof SelectPr
    * @default 'default'
    */
   size?: 'default' | 'large';
+  /**
+   * Whether the trigger renders its `border-default` stroke — the spec's
+   * `Stroke` property. Focused/open states still swap in `border-selected`.
+   *
+   * @default true
+   */
+  stroke?: boolean;
 }
 
 function SelectTrigger({
@@ -74,6 +81,7 @@ function SelectTrigger({
   icon,
   placeholder,
   size = 'default',
+  stroke = true,
   ref,
   ...props
 }: SelectTriggerProps) {
@@ -85,17 +93,14 @@ function SelectTrigger({
         'w-full',
         size === 'large' ? 'h-8' : 'h-6',
         'flex',
-        'pl-2',
+        icon ? 'pl-0' : 'pl-2',
+        size === 'large' && 'pr-1',
         'items-center',
         'bg-figma',
         'bg-clip-border',
         'border',
         'border-solid',
-        'border-figma-border',
-        'outline-solid',
-        'outline-1',
-        '-outline-offset-2',
-        'outline-transparent',
+        stroke ? 'border-figma-border' : 'border-transparent',
         'rounded-figma-md',
         'data-placeholder:text-figma-tertiary data-placeholder:fill-figma-icon-tertiary',
         disabled
@@ -105,8 +110,8 @@ function SelectTrigger({
               'cursor-default',
               'text-figma',
               'fill-figma-icon',
-              'focus-visible:border-figma-selected focus-visible:outline-figma-border-selected',
-              'data-popup-open:outline-figma-border-selected',
+              'focus-visible:border-figma-selected',
+              'data-popup-open:border-figma-selected',
             ],
       )}
       {...props}
@@ -114,17 +119,34 @@ function SelectTrigger({
       disabled={disabled}
     >
       <div className="pointer-events-none flex items-center grow">
-        {icon && (
-          <span
-            className={cn(
-              'mr-1 flex w-4 shrink-0 items-center justify-center',
-              disabled ? 'icon-figma-disabled' : 'icon-figma-secondary',
-            )}
-          >
-            {icon}
-          </span>
+        {icon &&
+          (size === 'large' ? (
+            <span className="flex size-8 shrink-0 items-center justify-center">
+              <span
+                className={cn(
+                  'flex size-6 items-center justify-center rounded-figma-md bg-figma-secondary',
+                  disabled ? 'icon-figma-disabled' : 'icon-figma-secondary',
+                )}
+              >
+                {icon}
+              </span>
+            </span>
+          ) : (
+            <span
+              className={cn(
+                'flex size-6 shrink-0 items-center justify-center',
+                disabled ? 'icon-figma-disabled' : 'icon-figma-secondary',
+              )}
+            >
+              {icon}
+            </span>
+          ))}
+        {children ?? (
+          <SelectValue
+            className="group-data-popup-open:bg-figma-texthighlight"
+            placeholder={placeholder}
+          />
         )}
-        {children ?? <SelectValue placeholder={placeholder} />}
       </div>
       <SelectPrimitive.Icon
         data-disabled={disabled}

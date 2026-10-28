@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { render } from 'vitest-browser-react';
 
-import { VariableChip } from '~/components/variable-chip/variable-chip';
+import { VariableCell, VariableChip } from '~/components/variable-chip/variable-chip';
 
 describe('VariableChip', () => {
   it('renders the elevated pill by default', async () => {
@@ -38,5 +38,22 @@ describe('VariableChip', () => {
     const chip = container.firstElementChild as HTMLElement;
     expect(chip.className).toContain('text-figma-disabled');
     expect(chip.getAttribute('data-disabled')).toBe('true');
+  });
+
+  it('uses the disabled border token when disabled', async () => {
+    const { container } = await render(<VariableChip disabled>24</VariableChip>);
+    const chip = container.firstElementChild as HTMLElement;
+    expect(chip.className).toContain('border-figma-disabled');
+  });
+});
+
+describe('VariableCell', () => {
+  it('renders the variable icon cell and label', async () => {
+    const { container } = await render(<VariableCell>Value</VariableCell>);
+    const cell = container.firstElementChild as HTMLElement;
+    expect(cell).toHaveTextContent('Value');
+    expect(cell.className).toContain('h-6');
+    expect(cell.className).toContain('bg-figma');
+    expect(cell.querySelector('svg')).not.toBeNull();
   });
 });

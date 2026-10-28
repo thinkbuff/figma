@@ -47,6 +47,13 @@
 - `DropdownMenu.ItemSwitch` and `ContextMenu.ItemSwitch` added: a `menuitemcheckbox` row with a Switch cell on the leading side (the spec's `Menu row/Toggle`). Clicking the row toggles the switch; the menu stays open.
 - Menu row highlight now uses `bg-menu-selected` (was `bg-selected-strong` — visibly wrong in FigJam dark). `ItemBadge` uses `bg-toolbar` + `text-onbrand`; `ItemCheck` renders the spec's plain 16px check icon instead of a filled chip. Disabled items unify on `text-menu-disabled` / `icon-menu-disabled`.
 
+#### Fields: UI3 variants and states
+
+- `Select.Trigger`: new `stroke` prop (`Stroke=False` renders borderless on `bg-default`); focus and open states are a single `border-selected` swap (the extra outline ring is removed); the open value shows the spec's `texthighlight` block; the `icon` lead is a flush 24px cell, and on `size="large"` a 32px cell holding the spec's 24px `bg-secondary` well.
+- `VariableChip` is 16px tall (was 18px) and uses `border-disabled` when disabled.
+- New `VariableCell`: the spec's `Variable Cell` — a 24px bordered row with the variable icon cell plus a label.
+- `ValueField.NumericSelect`: the dropdown segment uses `bg-selected` + `border-selected` while open (the spec's selected-chevron state).
+
 #### Tokens: generated from `packages/theme/tokens/`
 
 - `@thinkbuff/figma-theme/colors` no longer exports `BaseThemeCSSVariables`/`BaseThemeCSSVariableKey` — each mode map is complete on its own.

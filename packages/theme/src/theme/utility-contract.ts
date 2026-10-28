@@ -19,6 +19,7 @@ export const semanticUtilities = {
   'bg-figma-bgtransparent-secondary-pressed':
     'background-color: var(--figma-color-bgtransparent-secondary-pressed);',
   'bg-figma-bghovertransparent': 'background-color: var(--figma-color-bghovertransparent);',
+  'bg-figma-texthighlight': 'background-color: var(--figma-color-texthighlight);',
   'outline-figma-bordertranslucent': 'outline-color: var(--figma-color-bordertranslucent);',
   'border-figma-bordertranslucent': 'border-color: var(--figma-color-bordertranslucent);',
   'shadow-figma-focus-inset':
