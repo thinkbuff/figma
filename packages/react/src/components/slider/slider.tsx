@@ -328,6 +328,7 @@ function Slider({
             {variant && variant !== 'gradient' && !modified && (
               <Swatch
                 data-thumb-fill=""
+                className="shrink-0"
                 shape="circle"
                 size="small"
                 fill={
