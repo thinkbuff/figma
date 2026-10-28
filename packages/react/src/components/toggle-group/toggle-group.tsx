@@ -58,7 +58,7 @@ function ToggleGroupItem({ className, children, ref, ...props }: ToggleGroupItem
         'w-fit',
         'flex-[1_0_auto]',
         'group-data-[full-width]:min-w-0 group-data-[full-width]:flex-1',
-        'text-figma-sm leading-figma-sm',
+        'text-figma-body-medium',
         'font-figma-default',
         'flex',
         'justify-center',

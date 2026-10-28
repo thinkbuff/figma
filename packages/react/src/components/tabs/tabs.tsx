@@ -73,7 +73,7 @@ function TabsTrigger({ className, ref, ...props }: TabsTriggerProps) {
         'shrink-0',
         'h-6',
         'px-2',
-        'text-figma-sm leading-figma-sm',
+        'text-figma-body-medium',
         'font-figma-default',
         'text-figma-secondary',
         'fill-figma-icon-secondary',

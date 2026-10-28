@@ -50,7 +50,7 @@ function ActionIcon({
           'icon-figma',
           'text-figma-icon',
           'fill-figma-icon',
-          'text-figma-sm leading-figma-sm',
+          'text-figma-body-medium',
           'flex',
           'justify-center',
           'items-center',

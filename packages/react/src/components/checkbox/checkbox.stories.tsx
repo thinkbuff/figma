@@ -104,7 +104,7 @@ export const WithDescription: Story = {
         />
         <div className="flex flex-col">
           <Label htmlFor="checkbox-desc">Off, Normal + Muted</Label>
-          <span className="text-figma-sm leading-figma-sm text-figma-secondary">
+          <span className="text-figma-body-medium text-figma-secondary">
             Helpful description of the setting which may briefly highlight side effects or
             conditions of the setting.
           </span>

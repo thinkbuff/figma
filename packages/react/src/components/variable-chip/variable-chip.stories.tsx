@@ -42,7 +42,7 @@ function Field({
             : 'outline-transparent',
       )}
     >
-      <span className="w-4 shrink-0 text-center text-figma-sm leading-figma-sm text-figma-secondary">
+      <span className="w-4 shrink-0 text-center text-figma-body-medium text-figma-secondary">
         X
       </span>
       {children}

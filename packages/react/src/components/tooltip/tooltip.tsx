@@ -79,7 +79,7 @@ function TooltipContent({
             'text-figma-tooltip',
             'fill-figma-icon-tooltip',
             'font-figma-default',
-            'text-figma-sm leading-figma-sm',
+            'text-figma-body-medium',
             'max-w-50',
             'px-2',
             'py-1',

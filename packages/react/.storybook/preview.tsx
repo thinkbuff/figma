@@ -6,18 +6,24 @@ import '../tests/test-utils/styles.css';
 import './preview.css';
 
 const themes = [
-  { value: 'figma-light', title: 'Figma (Light)' },
-  { value: 'figma-dark', title: 'Figma (Dark)' },
-  { value: 'figjam', title: 'FigJam' },
+  { value: 'figma-light', title: 'Figma (Light)', classes: ['figma-light'] },
+  { value: 'figma-dark', title: 'Figma (Dark)', classes: ['figma-dark'] },
+  { value: 'figjam', title: 'FigJam (Light)', classes: ['figjam'] },
+  { value: 'figjam-dark', title: 'FigJam (Dark)', classes: ['figjam', 'figma-dark'] },
+  { value: 'devmode', title: 'Dev Mode (Light)', classes: ['devmode'] },
+  { value: 'devmode-dark', title: 'Dev Mode (Dark)', classes: ['devmode', 'figma-dark'] },
+  { value: 'slides', title: 'Slides (Light)', classes: ['slides'] },
+  { value: 'slides-dark', title: 'Slides (Dark)', classes: ['slides', 'figma-dark'] },
 ] as const;
+
+const ALL_THEME_CLASSES = [...new Set(themes.flatMap(({ classes }) => classes))];
 
 type Theme = (typeof themes)[number]['value'];
 
 function setTheme(theme: Theme) {
-  for (const theme of themes) {
-    document.documentElement.classList.remove(theme.value);
-  }
-  document.documentElement.classList.add(theme);
+  const selected = themes.find(({ value }) => value === theme);
+  document.documentElement.classList.remove(...ALL_THEME_CLASSES);
+  document.documentElement.classList.add(...(selected?.classes ?? []));
 }
 
 const preview: Preview = {

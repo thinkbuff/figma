@@ -169,7 +169,7 @@ function SheetTitle({
       className={addClassName(
         className,
         'text-figma',
-        'text-figma-sm leading-figma-sm',
+        'text-figma-body-medium',
         'font-figma-strong',
       )}
       {...props}

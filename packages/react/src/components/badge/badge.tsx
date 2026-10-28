@@ -55,7 +55,7 @@ function Badge({
     <span
       ref={ref}
       className={cn(
-        'inline-flex items-center gap-1 rounded-figma-md text-figma-sm leading-figma-sm select-none',
+        'inline-flex items-center gap-1 rounded-figma-md text-figma-body-medium select-none',
         size === 'small' ? 'h-3.5 px-1' : 'h-4 px-1',
         variant === 'strong' ? strongColors[color] : lightColors[color],
         className,

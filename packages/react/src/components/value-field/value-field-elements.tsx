@@ -48,7 +48,7 @@ function Root({ className, disabled, ref, children, ...props }: RootProps) {
         ref={ref}
         className={cn(
           'relative flex h-6 items-center',
-          'font-figma text-figma-sm leading-figma-sm tracking-figma-sm font-figma-default',
+          'font-figma text-figma-body-medium font-figma-default',
           'text-figma',
           context?.inMulti
             ? [

@@ -179,7 +179,7 @@ function Base<V>(props: BaseProps<V>) {
         'h-full min-w-0 flex-1',
         'bg-transparent',
         'cursor-default outline-none',
-        'font-figma text-figma-sm leading-figma-sm tracking-figma-sm font-figma-default',
+        'font-figma text-figma-body-medium font-figma-default',
         'text-figma placeholder:text-figma-tertiary',
         context?.inMulti ? 'pl-1 pr-1' : 'pl-2 pr-2',
         'disabled:cursor-not-allowed disabled:text-figma-disabled',

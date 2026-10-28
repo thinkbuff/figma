@@ -16,8 +16,8 @@ type AvatarColor = keyof typeof palette;
 
 const sizes = {
   small: 'size-4 text-figma-body-small leading-figma-body-small font-figma-strong',
-  default: 'size-6 text-figma-lg leading-figma-lg font-figma-default',
-  large: 'size-8 text-figma-lg leading-figma-lg font-figma-strong',
+  default: 'size-6 text-figma-body-large font-figma-default',
+  large: 'size-8 text-figma-body-large font-figma-strong',
 } as const;
 
 interface AvatarProps extends React.ComponentPropsWithRef<'span'> {

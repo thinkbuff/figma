@@ -5,10 +5,6 @@ const twMerge = extendTailwindMerge<'icon-color'>({
   extend: {
     theme: {
       text: [
-        'figma-xs',
-        'figma-sm',
-        'figma-md',
-        'figma-lg',
         'figma-body-small',
         'figma-body-small-strong',
         'figma-body-medium',

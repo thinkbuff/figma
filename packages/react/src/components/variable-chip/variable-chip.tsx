@@ -42,7 +42,7 @@ function VariableChip({
       data-disabled={disabled || undefined}
       className={cn(
         'inline-flex h-4.5 select-none items-center truncate rounded-figma-md border px-1',
-        'text-figma-sm leading-figma-sm',
+        'text-figma-body-medium',
         onSelected
           ? 'border-figma-onselected bg-figma-onselected'
           : selected

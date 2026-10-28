@@ -36,11 +36,6 @@ function spaceKey(suffix: string) {
   return `--figma-space-${suffix.replace(/\./g, '\\.')}` as const;
 }
 
-const legacyTypography = extensions['typography-legacy'] as Record<
-  string,
-  { fontSize: string; lineHeight: string; letterSpacing: string }
->;
-
 export const SharedFoundationVariables: Record<string, string> = {
   '--figma-font-family-default': extensions['font-family'].default.value,
   '--figma-font-family-code': extensions['font-family'].code.value,
@@ -49,13 +44,6 @@ export const SharedFoundationVariables: Record<string, string> = {
     Object.entries(typography.weight).map(([name, weight]) => [
       `--figma-font-weight-${name}`,
       String(weight),
-    ]),
-  ),
-  ...Object.fromEntries(
-    Object.entries(legacyTypography).flatMap(([name, style]) => [
-      [`--figma-font-size-${name}`, style.fontSize],
-      [`--figma-line-height-${name}`, style.lineHeight],
-      [`--figma-letter-spacing-${name}`, style.letterSpacing],
     ]),
   ),
   ...Object.fromEntries(

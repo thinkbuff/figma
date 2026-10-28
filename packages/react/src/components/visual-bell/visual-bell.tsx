@@ -26,7 +26,7 @@ function VisualBellRoot({ color = 'default', className, ref, ...props }: VisualB
       // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a div pill is intentional; role=status announces it politely
       role="status"
       className={cn(
-        'inline-flex h-10 items-center gap-2 overflow-hidden rounded-figma-lg px-2 text-figma-sm leading-figma-sm shadow-figma-elevation-100',
+        'inline-flex h-10 items-center gap-2 overflow-hidden rounded-figma-lg px-2 text-figma-body-medium shadow-figma-elevation-100',
         colors[color],
         className,
       )}
@@ -82,7 +82,7 @@ function VisualBellAction({
       ref={ref}
       type={type}
       className={cn(
-        'flex h-6 items-center rounded-figma-md border border-(--bell-edge) px-2 text-figma-sm leading-figma-sm',
+        'flex h-6 items-center rounded-figma-md border border-(--bell-edge) px-2 text-figma-body-medium',
         'hover:bg-white/10 active:bg-white/15',
         className,
       )}

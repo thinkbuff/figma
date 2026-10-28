@@ -125,7 +125,7 @@ function LinkTooltipInput({ className, ref, ...props }: React.ComponentPropsWith
       ref={ref}
       className={cn(
         'h-6 w-46 bg-transparent px-2',
-        'text-figma-sm leading-figma-sm text-figma-tooltip',
+        'text-figma-body-medium text-figma-tooltip',
         'cursor-default outline-none',
         'placeholder:text-figma-tooltip-secondary',
         className,
@@ -183,7 +183,7 @@ function LinkTooltipAction({
       type="button"
       className={cn(
         'flex cursor-default items-center px-2',
-        'text-figma-sm leading-figma-sm text-figma-tooltip',
+        'text-figma-body-medium text-figma-tooltip',
         'whitespace-nowrap hover:bg-figma-tooltip-hover',
         className,
       )}

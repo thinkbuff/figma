@@ -26,8 +26,10 @@ describe('cn', () => {
   });
 
   it('keeps figma text size and figma text color as separate groups', () => {
-    expect(cn('text-figma-sm', 'text-figma-danger')).toBe('text-figma-sm text-figma-danger');
-    expect(cn('text-figma', 'text-figma-lg')).toBe('text-figma text-figma-lg');
+    expect(cn('text-figma-body-medium', 'text-figma-danger')).toBe(
+      'text-figma-body-medium text-figma-danger',
+    );
+    expect(cn('text-figma', 'text-figma-body-large')).toBe('text-figma text-figma-body-large');
   });
 
   it('merges conflicting figma color classes, keeping the last', () => {
@@ -36,7 +38,7 @@ describe('cn', () => {
   });
 
   it('merges conflicting figma text sizes, keeping the last', () => {
-    expect(cn('text-figma-sm', 'text-figma-lg')).toBe('text-figma-lg');
+    expect(cn('text-figma-body-medium', 'text-figma-body-large')).toBe('text-figma-body-large');
   });
 
   it('merges figma font families and weights by group', () => {
@@ -47,7 +49,9 @@ describe('cn', () => {
 
 describe('cn UI3 typography', () => {
   it('treats text-figma-body-* and text-figma-heading-* as font sizes', () => {
-    expect(cn('text-figma-sm', 'text-figma-heading-medium')).toBe('text-figma-heading-medium');
+    expect(cn('text-figma-body-medium', 'text-figma-heading-medium')).toBe(
+      'text-figma-heading-medium',
+    );
     expect(cn('text-figma-body-small', 'text-figma-body-large')).toBe('text-figma-body-large');
     expect(cn('text-figma-heading-small', 'text-figma-danger')).toBe(
       'text-figma-heading-small text-figma-danger',

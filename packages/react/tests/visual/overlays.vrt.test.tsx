@@ -11,7 +11,14 @@ import * as selectStories from '../../src/components/select/select.stories';
 import * as sheetStories from '../../src/components/sheet/sheet.stories';
 import * as tooltipStories from '../../src/components/tooltip/tooltip.stories';
 
-const themes = ['figma-light', 'figma-dark', 'figjam'] as const;
+const themes = {
+  'figma-light': ['figma-light'],
+  'figma-dark': ['figma-dark'],
+  figjam: ['figjam'],
+  'figjam-dark': ['figjam', 'figma-dark'],
+} as const;
+
+const allThemeClasses = Object.values(themes).flat();
 
 type StoriesModule = { default: unknown } & Record<string, unknown>;
 type StoryComponent = ReturnType<typeof composeStory>;
@@ -105,11 +112,11 @@ const overlays: Record<string, { story: StoryComponent; open: () => Promise<void
 
 for (const [name, { story: Story, open }] of Object.entries(overlays)) {
   describe(String(name), () => {
-    for (const theme of themes) {
+    for (const [theme, classes] of Object.entries(themes)) {
       it(String(theme), async () => {
         await render(<Story />);
-        document.documentElement.classList.remove(...themes);
-        document.documentElement.classList.add(theme);
+        document.documentElement.classList.remove(...allThemeClasses);
+        document.documentElement.classList.add(...classes);
         await open();
         await document.fonts.ready;
         await expect(page).toMatchScreenshot(`${name}-open-${theme}`, {

@@ -22,7 +22,7 @@ export const Default: Story = {
         {...args}
       >
         <div className="w-full flex flex-col p-2">
-          <div className="h-6 inline-flex items-center font-medium text-figma-lg">Tags</div>
+          <div className="h-6 inline-flex items-center font-medium text-figma-body-large">Tags</div>
           {TAGS.map((tag) => (
             <div
               className="h-8 inline-flex items-center border-t text-xs border-figma text-figma"

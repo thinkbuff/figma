@@ -102,7 +102,7 @@ function PopoverContent({
             className,
             'w-auto',
             'text-figma',
-            'text-figma-sm leading-figma-sm',
+            'text-figma-body-medium',
             'bg-figma',
             'rounded-figma-lg',
             'overflow-y-auto',

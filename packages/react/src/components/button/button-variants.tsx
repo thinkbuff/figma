@@ -9,7 +9,7 @@ export const buttonVariants = cva(
     'select-none',
     'appearance-none',
     'rounded-figma-md',
-    'text-figma-sm leading-figma-sm',
+    'text-figma-body-medium',
     'truncate',
     'font-figma-default',
     'border-none',

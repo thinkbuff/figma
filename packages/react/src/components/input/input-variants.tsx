@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 export const inputVariants = cva(
   [
     'w-full',
-    'text-figma-sm leading-figma-sm',
+    'text-figma-body-medium',
     'text-figma',
     'fill-figma-icon',
     'cursor-default',

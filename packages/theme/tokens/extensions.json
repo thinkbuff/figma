@@ -13,32 +13,6 @@
       "note": "Repo-only fallback for the Design file's display family."
     }
   },
-  "typography-legacy": {
-    "xs": {
-      "fontSize": ".625rem",
-      "lineHeight": ".875rem",
-      "letterSpacing": ".00344rem",
-      "note": "Legacy 10px scale step kept for backwards compatibility."
-    },
-    "sm": {
-      "fontSize": ".6875rem",
-      "lineHeight": "1rem",
-      "letterSpacing": ".00344rem",
-      "note": "Legacy 11px step; equals body-medium but kept under the old name."
-    },
-    "md": {
-      "fontSize": ".75rem",
-      "lineHeight": "1.25rem",
-      "letterSpacing": "-.00125rem",
-      "note": "Legacy 12px step with no Design file counterpart."
-    },
-    "lg": {
-      "fontSize": ".8125rem",
-      "lineHeight": "1.375rem",
-      "letterSpacing": "-.002rem",
-      "note": "Legacy 13px step; equals body-large but kept under the old name."
-    }
-  },
   "space": {
     "0.5": {
       "value": ".125rem",

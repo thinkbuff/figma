@@ -6,7 +6,7 @@ function Label({ className, ref, ...props }: React.ComponentPropsWithRef<'label'
     <label
       ref={ref}
       className={cn(
-        'text-figma-sm leading-figma-sm',
+        'text-figma-body-medium',
         'font-figma-default',
         'cursor-default',
         'disabled:cursor-not-allowed disabled:text-figma-disabled',

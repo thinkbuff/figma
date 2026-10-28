@@ -38,16 +38,19 @@ describe('@thinkbuff/figma-theme', () => {
     expect(css).toContain(
       `--font-weight-figma-default: ${SharedFoundationVariables['--figma-font-weight-default']};`,
     );
-    expect(css).toContain(`--text-figma-sm: ${SharedFoundationVariables['--figma-font-size-sm']};`);
     expect(css).toContain(
-      `--leading-figma-sm: ${SharedFoundationVariables['--figma-line-height-sm']};`,
+      `--text-figma-body-medium: ${SharedFoundationVariables['--figma-font-size-body-medium']};`,
     );
     expect(css).toContain(
-      `--tracking-figma-sm: ${SharedFoundationVariables['--figma-letter-spacing-sm']};`,
+      `--leading-figma-body-medium: ${SharedFoundationVariables['--figma-line-height-body-medium']};`,
+    );
+    expect(css).toContain(
+      `--tracking-figma-body-medium: ${SharedFoundationVariables['--figma-letter-spacing-body-medium']};`,
     );
     expect(css).toContain(`--radius-figma-md: ${SharedFoundationVariables['--figma-radius-md']};`);
     expect(css).toContain(`--spacing-figma-0: ${SharedFoundationVariables['--figma-space-0']};`);
-    expect(css).toContain(`--text-figma-xs: ${SharedFoundationVariables['--figma-font-size-xs']};`);
+    expect(css).not.toContain('--figma-font-size-sm');
+    expect(css).not.toContain('--text-figma-xs:');
     expect(css).toContain(
       `--font-figma-code: ${SharedFoundationVariables['--figma-font-family-code']};`,
     );
@@ -57,8 +60,11 @@ describe('@thinkbuff/figma-theme', () => {
     const css = generateThemeVariablesCSS('figjam');
 
     expect(css).toContain('@theme {');
-    expect(css).toContain('html.figjam, .figjam');
-    expect(css).not.toContain(':root, html.figjam');
+    expect(css).toContain(
+      '.figjam, .figma-light .figjam, .figjam .figma-light, .figjam.figma-light',
+    );
+    expect(css).toContain('.figma-dark .figjam, .figjam .figma-dark, .figjam.figma-dark');
+    expect(css).not.toContain(':root');
     expect(css).toContain(
       `--figma-color-bg-brand: ${FigJamLightThemeCSSVariables['--figma-color-bg-brand']};`,
     );
@@ -84,16 +90,18 @@ describe('@thinkbuff/figma-theme', () => {
     expect(figmaCss).toContain(`@import './figma-theme.css';`);
     expect(figmaCss).toContain(`@import './utilities.css';`);
     expect(figmaCss).toContain(`@import './preflight.css' layer(base);`);
-    expect(figjamCss).toContain(`@import './figjam-theme.css';`);
+    expect(figjamCss).toContain(':root, .figjam');
     expect(figjamCss).toContain(`@import './utilities.css';`);
     expect(indexCss).toContain(`@import './figma-theme.css';`);
     expect(indexCss).toContain(`@import './figjam-theme.css';`);
+    expect(indexCss).toContain(`@import './devmode-theme.css';`);
+    expect(indexCss).toContain(`@import './slides-theme.css';`);
     expect(indexCss).toContain('@custom-variant dark (&:where(.figma-dark, .figma-dark *));');
     expect(figmaThemeCss).toContain(
       `--figma-color-bg-brand: ${FigmaLightThemeCSSVariables['--figma-color-bg-brand']};`,
     );
     expect(figjamThemeCss).toContain(
-      `--figma-color-bg-brand: ${FigJamLightThemeCSSVariables['--figma-color-bg-brand']};`,
+      `--figma-color-bg-brand: ${FigJamLightThemeCSSVariables['--figma-color-bg-brand'] as string};`,
     );
     expect(utilitiesCss).toContain('@utility text-figma-icon {');
     expect(utilitiesCss).toContain('@utility border-figma-bg-brand {');
@@ -112,6 +120,7 @@ describe('@thinkbuff/figma-theme', () => {
     expect(utilitiesCss).not.toContain('@utility text-figma-sm {');
     expect(utilitiesCss).not.toContain('@utility leading-figma-sm {');
     expect(utilitiesCss).not.toContain('@utility tracking-figma-sm {');
+    expect(utilitiesCss).toContain('@utility text-figma-bg-brand {');
     expect(utilitiesCss).not.toContain('@utility rounded-figma-md {');
     expect(utilitiesCss).not.toContain('@utility p-figma-1 {');
     expect(utilitiesCss).not.toContain('@utility shadow-figma-menu {');
@@ -190,7 +199,9 @@ describe('UI3 theme tokens', () => {
     expect(darkBlock).toContain('inset');
 
     const figjamCss = generateThemeVariablesCSS('figjam');
-    const figjamBlock = figjamCss.split('html.figjam, .figjam {')[1].split('}')[0];
+    const figjamBlock = figjamCss
+      .split('.figma-light .figjam, .figjam .figma-light, .figjam.figma-light {')[1]
+      .split('}')[0];
     expect(figjamBlock).toContain('--figma-elevation-100:');
     expect(figjamBlock).toContain('--figma-elevation-500:');
     expect(figjamBlock).not.toContain('inset');
@@ -217,5 +228,27 @@ describe('UI3 theme tokens', () => {
     expect(lightBlock).toContain('--figma-shadow-tooltip: var(--figma-elevation-300);');
     expect(lightBlock).toContain('--figma-shadow-menu: var(--figma-elevation-400);');
     expect(lightBlock).toContain('--figma-shadow-modal: var(--figma-elevation-500);');
+  });
+});
+
+describe('standalone editor entries', () => {
+  it.each(['figjam', 'devmode', 'slides'] as const)(
+    'emits %s light mode at :root for its standalone entry',
+    (type) => {
+      const css = generateThemeVariablesCSS(type, true);
+      expect(css).toContain(`:root, .${type}, .figma-light .${type}`);
+      const lightBlock = css.split(`\n\n`)[2];
+      expect(lightBlock).toContain(':root');
+    },
+  );
+
+  it('keeps :root only on figma light inside index.css', () => {
+    const indexCss = readFileSync(new URL('../../src/css/index.css', import.meta.url), 'utf8');
+    const figjamThemeCss = readFileSync(
+      new URL('../../src/css/figjam-theme.css', import.meta.url),
+      'utf8',
+    );
+    expect(indexCss).not.toContain(':root');
+    expect(figjamThemeCss).not.toContain(':root');
   });
 });

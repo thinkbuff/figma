@@ -158,7 +158,7 @@ function DialogTitle({
       className={addClassName(
         className,
         'text-figma',
-        'text-figma-sm leading-figma-sm',
+        'text-figma-body-medium',
         'font-figma-strong',
       )}
       {...props}
@@ -176,7 +176,7 @@ function DialogDescription({
   return (
     <DialogPrimitive.Description
       ref={ref}
-      className={addClassName(className, 'text-figma', 'text-figma-sm leading-figma-sm')}
+      className={addClassName(className, 'text-figma', 'text-figma-body-medium')}
       {...props}
     />
   );

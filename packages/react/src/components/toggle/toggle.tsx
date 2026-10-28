@@ -23,7 +23,7 @@ function Toggle({ className, disabled, stroke = false, ref, ...props }: TogglePr
         className,
         'size-6',
         'icon-figma',
-        'text-figma-sm leading-figma-sm',
+        'text-figma-body-medium',
         'text-figma',
         'inline-flex',
         'items-center',

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { renderStory, stories, themes } from './stories';
+import { allThemeClasses, renderStory, stories, themes } from './stories';
 
 // Dump computed styles for a story instead of comparing screenshots.
 // Usage: VRT_PROBE="Components-Button-Default" pnpm -F @thinkbuff/figma-react probe
@@ -45,11 +45,11 @@ function dump(el: Element, depth: number, lines: string[]) {
 
 for (const story of matched) {
   describe(story.id, () => {
-    for (const theme of themes) {
+    for (const [theme, classes] of Object.entries(themes)) {
       it(theme, async () => {
         const { container } = await renderStory(story);
-        document.documentElement.classList.remove(...themes);
-        document.documentElement.classList.add(theme);
+        document.documentElement.classList.remove(...allThemeClasses);
+        document.documentElement.classList.add(...classes);
         await document.fonts.ready;
         const lines: string[] = [];
         const activeEl = document.activeElement;

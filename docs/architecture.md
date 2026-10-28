@@ -86,8 +86,9 @@ packages/theme/src/css/**           generated CSS (CI fails on drift)
 Spacing and radius keep short names because the scales match the Design file
 one-to-one. The extra spacing steps `0.5`, `1.5`, `2.5` (2, 6, 12 px) are
 extension tokens with no Design file counterpart and are marked as such in the
-source. Typography uses the Design file names only; the old `xs/sm/md/lg` scale
-is removed before 0.1.0 ships.
+source. Typography uses the Design file names only (`text-figma-body-medium`,
+…); the line height and letter spacing come with the text utility, so there are
+no separate `leading-figma-*` / `tracking-figma-*` steps.
 
 ### 3.3 Editor themes and modes
 
@@ -104,6 +105,8 @@ eight modes. `:root` is Figma light.
 
 Theme-scoped values (colors, elevation) live in these selector blocks, not in
 `@theme`, so nested scopes resolve correctly. `dark:` matches `.figma-dark`.
+The single-editor entries `css/figjam.css`, `css/devmode.css` and
+`css/slides.css` resolve their own editor's light mode at `:root` instead.
 
 ### 3.4 Usage rules for components
 

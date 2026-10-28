@@ -7,7 +7,7 @@
  */
 
 const menuPopupClassName = [
-  'text-figma-sm text-figma-menu',
+  'text-figma-body-medium text-figma-menu',
   'bg-figma-menu',
   'rounded-figma-lg',
   'shadow-figma-menu',
@@ -29,7 +29,7 @@ const menuItemClassName = [
   'items-center',
   'h-6',
   'px-2',
-  'text-figma-sm leading-figma-sm',
+  'text-figma-body-medium',
   'text-figma-menu',
   'icon-figma-menu',
   'cursor-default',
@@ -46,7 +46,7 @@ const menuLabelClassName = [
   'items-center',
   'h-6',
   'px-2',
-  'text-figma-sm leading-figma-sm',
+  'text-figma-body-medium',
   'text-figma-menu-tertiary',
 ];
 

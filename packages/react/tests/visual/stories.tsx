@@ -5,7 +5,14 @@ import { render } from 'vitest-browser-react';
 
 const modules = import.meta.glob('../../src/**/*.stories.tsx', { eager: true });
 
-export const themes = ['figma-light', 'figma-dark', 'figjam'] as const;
+export const themes = {
+  'figma-light': ['figma-light'],
+  'figma-dark': ['figma-dark'],
+  figjam: ['figjam'],
+  'figjam-dark': ['figjam', 'figma-dark'],
+} as const;
+
+export const allThemeClasses = Object.values(themes).flat();
 
 export type StoryEntry = {
   component: ComponentType;
