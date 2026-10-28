@@ -33,6 +33,10 @@
 | `variant="ghost"` | `variant="ghost"` |
 | `fullWidth` | `size="wide"` |
 
+#### `ActionIconSplit` added
+
+- New compound component for the UI3 `Button icon split` set (41x24 small / 49x32 large): `ActionIconSplit` root plus `Button` (primary action) and `Chevron` (16px trigger half) subparts. Each half supports `render`, `aria-expanded` fills follow the dialog-toggle spec.
+
 #### `ActionIcon` / `Toggle` API rework
 
 - `ActionIcon`: `activeAppearance` removed (the on state now always follows the UI3 dialog-toggle spec); new `variant="secondary"` for the stroked `Button icon` variant.

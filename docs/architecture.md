@@ -194,6 +194,7 @@ nearest evidence noted in their audit.
 | badge | Core | Badges / Badge small, Badge small alt, Badge large, Badge Dot |
 | button | Core | Buttons / Button |
 | action-icon | Core | Buttons / Button icon |
+| action-icon-split | Core | Buttons / Button icon split |
 | toggle | Core | Buttons / Button icon toggle, Button icon dialog toggle |
 | checkbox | Core | Checkboxes / Checkbox |
 | radio | Core | Radio Buttons / Radio button |
@@ -216,9 +217,9 @@ nearest evidence noted in their audit.
 | visual-bell | Pattern | Visual Bells / Bell |
 | sheet, popover, scroll-area, separator, label | — | — |
 
-Design file sets with no component yet: Button icon split, Combo input (as a
-standalone input), Numeric input multi, Menu multi-select, Bell Multiplayer,
-and the Comments page.
+Design file sets with no component yet: Combo input (as a standalone input),
+Numeric input multi, Menu multi-select, Bell Multiplayer, and the Comments
+page.
 
 ## 8. Remediation roadmap
 

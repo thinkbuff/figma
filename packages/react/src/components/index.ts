@@ -1,4 +1,5 @@
 export * from './action-icon';
+export * from './action-icon-split';
 export * from './alert-dialog';
 export * from './avatar';
 export * from './badge';
