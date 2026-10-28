@@ -1,124 +1,138 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import { FigmaIcon } from '@thinkbuff/figma-react';
+import { ScrollArea } from '@thinkbuff/figma-react/scroll-area';
 import { Select } from '@thinkbuff/figma-react/select';
-import { SliderRoot, SliderTrack, SliderRange, SliderThumb } from '@thinkbuff/figma-react/slider';
-import { Tooltip } from '@thinkbuff/figma-react/tooltip';
-import { cn } from '@thinkbuff/figma-react/utils';
+import { Toaster } from '@thinkbuff/figma-react/toast';
 
-import ReactLogo from './assets/react.svg';
+import { Section } from './demo';
+import { ActionIcons, Buttons, TabsDemo, Toggles } from './sections/actions';
+import { Checks, Radios } from './sections/choices';
+import { Avatars, Badges, Feedback, Icons, Scroll } from './sections/display';
+import { Inputs, Selects, ValueFields } from './sections/fields';
+import { Dialogs, Menus, Popovers } from './sections/overlays';
+import { Sliders, Swatches } from './sections/sliders';
 
-import './app.css';
+const THEMES = {
+  'figma-light': 'Figma light',
+  'figma-dark': 'Figma dark',
+  figjam: 'FigJam light',
+  'figjam-dark': 'FigJam dark',
+  devmode: 'Dev Mode light',
+  'devmode-dark': 'Dev Mode dark',
+  slides: 'Slides light',
+  'slides-dark': 'Slides dark',
+} as const;
 
-function Slider() {
-  const [values, setValues] = useState([20]);
-  const [showTooltip, toggleTooltip] = useState(false);
-  return (
-    <SliderRoot
-      value={values}
-      className="data-[orientation=vertical]:h-60"
-      onValueChange={(value) => setValues(value as number[])}
-    >
-      <SliderTrack>
-        <SliderRange />
-      </SliderTrack>
-      {values.map((value, index) => (
-        <Tooltip
-          // eslint-disable-next-line react/no-array-index-key
-          key={index}
-          defaultOpen={showTooltip}
-          open={showTooltip}
-          content={<p>{value}</p>}
-          delay={200}
-        >
-          <SliderThumb
-            onMouseOver={() => toggleTooltip(true)}
-            onMouseOut={() => toggleTooltip(false)}
-          />
-        </Tooltip>
-      ))}
-    </SliderRoot>
-  );
+type Theme = keyof typeof THEMES;
+
+const THEME_CLASSES: Record<Theme, string[]> = {
+  'figma-light': ['figma-light'],
+  'figma-dark': ['figma-dark'],
+  figjam: ['figjam'],
+  'figjam-dark': ['figjam', 'figma-dark'],
+  devmode: ['devmode'],
+  'devmode-dark': ['devmode', 'figma-dark'],
+  slides: ['slides'],
+  'slides-dark': ['slides', 'figma-dark'],
+};
+
+const ALL_THEME_CLASSES = [...new Set(Object.values(THEME_CLASSES).flat())];
+
+const SECTIONS = [
+  { id: 'button', title: 'Button', render: <Buttons /> },
+  { id: 'action-icon', title: 'Action icon', render: <ActionIcons /> },
+  { id: 'toggle', title: 'Toggle', render: <Toggles /> },
+  { id: 'tabs', title: 'Tabs', render: <TabsDemo /> },
+  { id: 'input', title: 'Input', render: <Inputs /> },
+  { id: 'select', title: 'Select', render: <Selects /> },
+  { id: 'value-field', title: 'Value field', render: <ValueFields /> },
+  { id: 'slider', title: 'Slider', render: <Sliders /> },
+  { id: 'swatch', title: 'Swatch', render: <Swatches /> },
+  { id: 'checkbox', title: 'Checkbox & switch', render: <Checks /> },
+  { id: 'radio', title: 'Radio', render: <Radios /> },
+  { id: 'menu', title: 'Menu', render: <Menus /> },
+  { id: 'dialog', title: 'Dialog', render: <Dialogs /> },
+  { id: 'popover', title: 'Popover & tooltip', render: <Popovers /> },
+  { id: 'toast', title: 'Toast & visual bell', render: <Feedback /> },
+  { id: 'avatar', title: 'Avatar', render: <Avatars /> },
+  { id: 'badge', title: 'Badge', render: <Badges /> },
+  { id: 'scroll-area', title: 'Scroll area', render: <Scroll /> },
+  { id: 'icons', title: 'Icons', render: <Icons /> },
+] as const;
+
+function initialTheme(): Theme {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'figma-dark' : 'figma-light';
 }
 
 export function App() {
+  const [theme, setTheme] = useState<Theme>(initialTheme);
+
+  useEffect(() => {
+    document.documentElement.classList.remove(...ALL_THEME_CLASSES);
+    document.documentElement.classList.add(...THEME_CLASSES[theme]);
+  }, [theme]);
+
   return (
-    <>
-      <div className={cn('outline-figma-icon', 'outline-figma-border-brand')}>
-        <a
-          href="https://vitejs.dev"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src="/vite.svg"
-            className="logo"
-            alt="Vite logo"
-          />
-        </a>
-        <a
-          href="https://react.dev"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src={ReactLogo}
-            className="logo react"
-            alt="React logo"
-          />
-        </a>
-      </div>
-      <h1 className="border border-solid p-2 bg-figma border-figma hover:text-figma-brand">
-        Vite + React + Figma
-      </h1>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-      <div className="min-h-60 min-w-60 flex flex-col items-center justify-center gap-4 bg-figma">
-        <Slider />
+    <div className="flex h-screen flex-col bg-figma text-figma">
+      <header className="flex h-11 shrink-0 items-center justify-between border-b border-figma px-4">
+        <div className="flex items-center gap-2">
+          <FigmaIcon size="4" />
+          <h1 className="font-figma-strong text-figma-body-large">figma-react playground</h1>
+        </div>
         <Select.Root
-          items={{
-            text: 'Text',
-            width: 'Width',
-            height: 'Height',
-            gap: 'Gap',
-            'horizontal-padding': 'Horizontal padding',
-            'vertical-padding': 'Vertical padding',
-            'fill-width': 'Fill weight',
-            'stroke-width': 'Stroke weight',
-            'corner-radius': 'Corner radius',
-          }}
+          items={THEMES}
+          value={theme}
+          onValueChange={(value) => setTheme(value as Theme)}
         >
-          <Select.Trigger placeholder="Select. an option" />
-          <Select.Content>
-            <Select.Group>
-              <Select.Label>String</Select.Label>
-              <Select.Item value="text">Text</Select.Item>
-            </Select.Group>
-            <Select.Separator />
-            <Select.Group>
-              <Select.Label>Sizing</Select.Label>
-              <Select.Item value="width">Width</Select.Item>
-              <Select.Item value="height">Height</Select.Item>
-            </Select.Group>
-            <Select.Separator />
-            <Select.Group>
-              <Select.Label>Auto Layout</Select.Label>
-              <Select.Item value="gap">Gap</Select.Item>
-              <Select.Item value="horizontal-padding">Horizontal padding</Select.Item>
-              <Select.Item value="vertical-padding">Vertical padding</Select.Item>
-            </Select.Group>
-            <Select.Separator />
-            <Select.Group>
+          <Select.Trigger
+            aria-label="Theme"
+            className="w-36"
+          />
+          <Select.Content
+            alignItemWithTrigger={false}
+            side="bottom"
+          >
+            {Object.keys(THEMES).map((value) => (
               <Select.Item
-                value="fill-width"
-                disabled
+                key={value}
+                value={value}
               >
-                Fill weight
+                {THEMES[value as Theme]}
               </Select.Item>
-              <Select.Item value="stroke-width">Stroke weight</Select.Item>
-              <Select.Item value="corner-radius">Corner radius</Select.Item>
-            </Select.Group>
+            ))}
           </Select.Content>
         </Select.Root>
+      </header>
+      <div className="flex min-h-0 flex-1">
+        <ScrollArea className="w-40 shrink-0 border-r border-figma">
+          <nav className="flex flex-col gap-0.5 p-3">
+            {SECTIONS.map((section) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                className="rounded-figma-md px-2 py-1 text-figma-secondary hover:bg-figma-secondary hover:text-figma"
+              >
+                {section.title}
+              </a>
+            ))}
+          </nav>
+        </ScrollArea>
+        <ScrollArea className="min-w-0 flex-1">
+          <main className="flex max-w-3xl flex-col gap-6 p-6">
+            {SECTIONS.map((section) => (
+              <Section
+                key={section.id}
+                id={section.id}
+                title={section.title}
+              >
+                {section.render}
+              </Section>
+            ))}
+          </main>
+        </ScrollArea>
       </div>
-    </>
+      <Toaster />
+    </div>
   );
 }
