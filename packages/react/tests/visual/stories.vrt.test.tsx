@@ -7,7 +7,7 @@ async function shot(name: string) {
   await document.fonts.ready;
   await expect(page).toMatchScreenshot(name, {
     comparatorName: 'pixelmatch',
-    comparatorOptions: { allowedMismatchedPixels: 0, threshold: 0.2 },
+    comparatorOptions: { allowedMismatchedPixels: 0, threshold: 0 },
   });
 }
 
