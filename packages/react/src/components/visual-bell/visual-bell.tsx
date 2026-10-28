@@ -4,11 +4,13 @@ import { cn } from '~/utils';
 type VisualBellColor = 'default' | 'danger' | 'brand' | 'success' | 'component';
 
 const colors: Record<VisualBellColor, string> = {
-  default: 'bg-[#2c2c2c] text-figma-onbrand [--bell-edge:rgba(255,255,255,0.1)]',
-  danger: 'bg-figma-danger text-figma-ondanger [--bell-edge:rgba(0,0,0,0.1)]',
-  brand: 'bg-figma-brand text-figma-onbrand [--bell-edge:rgba(255,255,255,0.1)]',
-  success: 'bg-figma-success text-figma-onsuccess [--bell-edge:rgba(255,255,255,0.1)]',
-  component: 'bg-figma-component text-figma-oncomponent [--bell-edge:rgba(255,255,255,0.1)]',
+  default: 'bg-figma text-figma [--bell-edge:var(--figma-color-bordertranslucent)]',
+  danger: 'bg-figma-danger text-figma-ondanger [--bell-edge:var(--figma-color-bordertranslucent)]',
+  brand: 'bg-figma-brand text-figma-onbrand [--bell-edge:var(--figma-color-bordertranslucent)]',
+  success:
+    'bg-figma-success text-figma-onsuccess [--bell-edge:var(--figma-color-bordertranslucent)]',
+  component:
+    'bg-figma-component text-figma-oncomponent [--bell-edge:var(--figma-color-bordertranslucent)]',
 };
 
 interface VisualBellRootProps extends React.ComponentPropsWithRef<'div'> {
@@ -83,7 +85,7 @@ function VisualBellAction({
       type={type}
       className={cn(
         'flex h-6 items-center rounded-figma-md border border-(--bell-edge) px-2 text-figma-body-medium',
-        'hover:bg-white/10 active:bg-white/15',
+        'hover:bg-figma-bghovertransparent active:bg-figma-bgtransparent-secondary-hover',
         className,
       )}
       {...props}
@@ -103,7 +105,7 @@ function VisualBellDismiss({ className, ref, ...props }: React.ComponentPropsWit
         aria-label="Dismiss"
         className={cn(
           'flex size-6 items-center justify-center rounded-figma-md',
-          'hover:bg-white/10 active:bg-white/15',
+          'hover:bg-figma-bghovertransparent active:bg-figma-bgtransparent-secondary-hover',
           className,
         )}
         {...props}

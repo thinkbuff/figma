@@ -92,6 +92,7 @@ export const SharedFoundationVariables: Record<string, string> = {
     ]),
   ),
   '--figma-shadow-slider': extensions['shadow-slider'].value,
+  '--figma-shadow-hud': extensions['shadow-hud'].value,
 };
 
 export type SharedFoundationVariableKey = keyof typeof SharedFoundationVariables;

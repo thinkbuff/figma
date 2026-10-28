@@ -26,6 +26,7 @@ export const semanticUtilities = {
   'bg-figma-multiplayerpurple': 'background-color: var(--figma-color-multiplayerpurple);',
   'bg-figma-multiplayerred': 'background-color: var(--figma-color-multiplayerred);',
   'bg-figma-multiplayeryellow': 'background-color: var(--figma-color-multiplayeryellow);',
+  'bg-figma-scrollbar': 'background-color: var(--figma-color-scrollbar);',
   'bg-figma-texthighlight': 'background-color: var(--figma-color-texthighlight);',
   'outline-figma-bordertranslucent': 'outline-color: var(--figma-color-bordertranslucent);',
   'border-figma-bordertranslucent': 'border-color: var(--figma-color-bordertranslucent);',

@@ -64,6 +64,14 @@
 - `Avatar`: initials fills now bind to the `multiplayer*` / `textonmultiplayer*` tokens (were hardcoded light-theme hexes — dark themes were visibly wrong). Colors renamed to spec names (`magenta`→`pink`, `slate`→`grey`); new `overflow-unread` / `overflow-read` colors for "+N" avatars; new `disabled` prop (`bg-tertiary` + `text`); `shape="square"` uses `rounded-figma-sm` at `size="small"` (spec r=2).
 - `Badge`: `size="small"` (14px) removed — no such badge in the spec; `size="large"` added (16px with 13px text — the spec's "Badge large"). New `variant="alt"` for the "Badge small alt" subtle-fill family (`default`/`count`/`count-inactive`/`strong`); new colors `figjam`, `menu`, `merged`, `archived`; the `warning` strong fill uses `icon-warning` per spec. New `BadgeDot` (the spec's "Badge Dot": 9px `bg-default` pill + 5px `bg-brand` dot).
 
+#### Radio, Tabs, Toast, Visual Bell, ScrollArea: UI3 tokens and states
+
+- `Radio` button variant: default border now uses `bordertranslucent` (was opaque `border`).
+- `Tabs`: trigger gains the spec's `border-selected` focus ring; unselected hover uses `bg-hover` (same values, correct token).
+- `Toast`: surface uses `bg-menu` / `text-menu` tokens (same values); shadow upgraded to the spec's "LEGACY - HUD shadow" via new `shadow-figma-hud` utility.
+- `VisualBell`: `color="default"` is now the spec's light bell (`bg-default` + `text` + elevation-100) — replaces the dark `#2c2c2c` hardcoded fill. Action/dismiss edges use `bordertranslucent`; hover/active use the secondary-button transparent tokens.
+- `ScrollArea`: thumb uses the `scrollbar` token via new `bg-figma-scrollbar` utility (was `text-secondary`).
+
 #### Tokens: generated from `packages/theme/tokens/`
 
 - `@thinkbuff/figma-theme/colors` no longer exports `BaseThemeCSSVariables`/`BaseThemeCSSVariableKey` — each mode map is complete on its own.

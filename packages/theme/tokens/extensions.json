@@ -100,5 +100,9 @@
       "value": "var(--figma-elevation-500)",
       "note": "Legacy alias: modal windows."
     }
+  },
+  "shadow-hud": {
+    "value": "0px 5px 17px rgba(0, 0, 0, 0.2), 0px 2px 7px rgba(0, 0, 0, 0.15)",
+    "note": "Spec '_Legacy/LEGACY - HUD shadow' used by Notifications (toast)."
   }
 }

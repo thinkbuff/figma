@@ -19,7 +19,7 @@ function ScrollBar({ className, orientation = 'vertical', ref, ...props }: Scrol
       )}
       {...props}
     >
-      <ScrollAreaPrimitive.Thumb className="relative grow rounded-full bg-figma-text-secondary" />
+      <ScrollAreaPrimitive.Thumb className="relative grow rounded-full bg-figma-scrollbar" />
     </ScrollAreaPrimitive.Scrollbar>
   );
 }

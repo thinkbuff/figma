@@ -213,6 +213,7 @@ function getInlineShadowAliases() {
     '--shadow-figma-menu': 'var(--figma-elevation-400)',
     '--shadow-figma-modal': 'var(--figma-elevation-500)',
     '--shadow-figma-slider': getSharedFoundationValue('--figma-shadow-slider'),
+    '--shadow-figma-hud': getSharedFoundationValue('--figma-shadow-hud'),
   };
 }
 

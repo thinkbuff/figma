@@ -79,7 +79,8 @@ function TabsTrigger({ className, ref, ...props }: TabsTriggerProps) {
         'fill-figma-icon-secondary',
         'whitespace-nowrap',
         'rounded-figma-md',
-        'not-data-disabled:hover:bg-figma-secondary',
+        'not-data-disabled:hover:bg-figma-hover',
+        'not-data-disabled:focus-visible:outline-solid not-data-disabled:focus-visible:outline-1 not-data-disabled:focus-visible:outline-figma-border-selected',
         'data-active:font-figma-strong data-active:text-figma data-active:fill-figma-icon data-active:bg-figma-secondary',
         'data-disabled:text-figma-disabled',
       )}

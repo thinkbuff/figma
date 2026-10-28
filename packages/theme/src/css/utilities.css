@@ -13050,6 +13050,10 @@
   background-color: var(--figma-color-multiplayeryellow);
 }
 
+@utility bg-figma-scrollbar {
+  background-color: var(--figma-color-scrollbar);
+}
+
 @utility bg-figma-texthighlight {
   background-color: var(--figma-color-texthighlight);
 }
