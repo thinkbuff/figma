@@ -3,8 +3,6 @@ import { useState } from 'react';
 
 import { addClassName, cn } from '~/utils';
 
-import { Swatch } from '../swatch/swatch';
-
 const SNAP_PERCENTAGE_THRESHOLD = 2;
 
 function getSnappedValue(value: number, hints: number[] | undefined, min: number, max: number) {
@@ -326,18 +324,17 @@ function Slider({
               <span className="block size-2 rounded-full outline-1 outline-figma-bordertranslucent" />
             )}
             {variant && variant !== 'gradient' && !modified && (
-              <Swatch
+              <span
                 data-thumb-fill=""
-                className="shrink-0"
-                shape="circle"
-                size="small"
-                fill={
-                  variant === 'hue'
-                    ? `hsl(${((v - min) / (max - min)) * 360} 100% 50%)`
-                    : thumbFill
-                      ? `color-mix(in srgb, ${thumbFill} ${(((v - min) / (max - min)) * 100).toFixed(1)}%, transparent)`
-                      : undefined
-                }
+                className="block size-2 shrink-0 rounded-full"
+                style={{
+                  background:
+                    variant === 'hue'
+                      ? `hsl(${((v - min) / (max - min)) * 360} 100% 50%)`
+                      : thumbFill
+                        ? `color-mix(in srgb, ${thumbFill} ${(((v - min) / (max - min)) * 100).toFixed(1)}%, transparent)`
+                        : undefined,
+                }}
               />
             )}
             {variant === undefined && v === baseValue && (
