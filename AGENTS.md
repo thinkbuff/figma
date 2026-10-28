@@ -34,6 +34,9 @@ Per-component design audits live in `docs/audit/` (gitignored, local only).
   `VRT_PROBE="<story id>" pnpm -F @thinkbuff/figma-react probe`.
 - `pnpm vrt:diff -- [vitest args]` snapshots baselines, re-runs the update and
   lists which shots changed (before-copies under `$TMPDIR/figma-vrt-diff/`).
+- An update run can rewrite PNGs byte-differently with identical pixels; compare
+  decoded pixels against `HEAD` (e.g. PIL `ImageChops.difference`) and
+  `git restore` the pixel-identical ones before committing.
 
 ## Theme (`packages/theme`)
 
