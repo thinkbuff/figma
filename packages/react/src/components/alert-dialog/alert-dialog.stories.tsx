@@ -37,7 +37,7 @@ const meta = {
             This action cannot be undone. This will permanently delete your account and remove your
             data from our servers.
           </AlertDialog.Description>
-          <AlertDialog.Footer className="justify-end gap-3">
+          <AlertDialog.Footer className="justify-end gap-2">
             <AlertDialog.Cancel render={<Button variant="secondary">Cancel</Button>} />
             <AlertDialog.Action
               render={<Button variant="destructive">Yes, delete account</Button>}

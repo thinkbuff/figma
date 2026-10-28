@@ -63,9 +63,9 @@ function Root({ className, disabled, ref, children, ...props }: RootProps) {
                 'outline-1 -outline-offset-1 outline-solid outline-transparent',
                 'not-data-disabled:hover:outline-figma-border',
                 'focus-within:outline-figma-border-selected',
-                'data-disabled:bg-figma data-disabled:outline-figma-border-disabled',
+                'data-disabled:bg-figma data-disabled:outline-figma-border',
               ],
-          'data-disabled:text-figma-disabled',
+          'data-disabled:text-figma-tertiary',
           className,
         )}
         data-disabled={providerValue.disabled ? '' : undefined}
@@ -97,7 +97,7 @@ function Multi({ className, disabled, ref, ...props }: MultiProps) {
           'after:border-transparent after:-outline-offset-1 after:pointer-events-none',
           'not-data-disabled:hover:after:border-figma-border',
           'focus-within:after:outline-1 focus-within:after:outline-solid focus-within:after:outline-figma-border-selected',
-          'data-disabled:bg-figma data-disabled:after:border-figma-border-disabled',
+          'data-disabled:bg-figma data-disabled:after:border-figma-border',
           className,
         )}
         data-disabled={providerValue.disabled ? '' : undefined}
@@ -126,7 +126,7 @@ function Label({ className, ref, ...props }: LabelProps) {
         // The parent <label> element is the Root.
         context?.inMulti ? '' : '[&+input]:pl-0',
         '[label>&]:last:w-5',
-        'data-disabled:text-figma-disabled data-disabled:icon-figma-disabled',
+        'data-disabled:text-figma-tertiary data-disabled:icon-figma-disabled',
         className,
       )}
       data-disabled={context?.disabled ? '' : undefined}

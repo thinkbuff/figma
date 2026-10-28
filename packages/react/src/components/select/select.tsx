@@ -104,7 +104,7 @@ function SelectTrigger({
         'rounded-figma-md',
         'data-placeholder:text-figma-tertiary data-placeholder:fill-figma-icon-tertiary',
         disabled
-          ? ['cursor-not-allowed', 'text-figma-disabled', 'fill-figma-icon-disabled']
+          ? ['cursor-not-allowed', 'text-figma-tertiary', 'fill-figma-icon-disabled']
           : [
               'group',
               'cursor-default',

@@ -5,6 +5,10 @@ import { addClassName } from '~/utils';
 /**
  * Visually or semantically separates content.
  *
+ * Uses `border/default`, the divider token for default surfaces. On menu or
+ * tooltip surfaces the spec draws `border/menu` / `border/tooltip` instead —
+ * pass `bg-figma-border-menu` / `bg-figma-border-tooltip` via `className`.
+ *
  * - [Docs](https://base-ui.com/react/components/separator)
  */
 function Separator({

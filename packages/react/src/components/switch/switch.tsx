@@ -1,5 +1,6 @@
 import { Switch as SwitchPrimitives } from '@base-ui/react/switch';
 
+import { CheckmarkIndeterminateIcon } from '~/icons';
 import { addClassName } from '~/utils';
 
 interface SwitchProps extends React.ComponentPropsWithRef<typeof SwitchPrimitives.Root> {
@@ -24,6 +25,7 @@ function Switch({ className, indeterminate = false, ref, ...props }: SwitchProps
       className={addClassName(
         className,
         'peer',
+        'group',
         'relative',
         'block',
         'shrink-0',
@@ -54,10 +56,14 @@ function Switch({ className, indeterminate = false, ref, ...props }: SwitchProps
       {...props}
       ref={ref}
     >
-      <SwitchPrimitives.Thumb
-        data-mixed={indeterminate || undefined}
-        className="pointer-events-none absolute top-px left-px size-3.5 rounded-full bg-figma-icon-onbrand transition-all duration-[80ms] data-checked:left-[calc(100%-15px)] data-disabled:bg-figma-icon-ondisabled data-mixed:left-1/2 data-mixed:top-1/2 data-mixed:-translate-x-1/2 data-mixed:-translate-y-1/2 data-mixed:h-px data-mixed:w-2 data-mixed:rounded-xs"
-      />
+      {indeterminate ? (
+        <CheckmarkIndeterminateIcon
+          size="4"
+          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 icon-figma-onbrand group-data-disabled:icon-figma-disabled"
+        />
+      ) : (
+        <SwitchPrimitives.Thumb className="pointer-events-none absolute top-px left-px size-3.5 rounded-full bg-figma-icon-onbrand transition-all duration-[80ms] data-checked:left-[calc(100%-15px)] data-disabled:bg-figma-icon-ondisabled" />
+      )}
     </SwitchPrimitives.Root>
   );
 }

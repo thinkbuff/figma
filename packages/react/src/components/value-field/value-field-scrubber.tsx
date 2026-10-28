@@ -264,7 +264,7 @@ function Scrubber(props: ScrubberProps) {
         // input's 4px inset already accounts for the spec's inter-cell gap.
         'empty:absolute empty:inset-y-0 empty:left-0 empty:z-figma-1 empty:w-1',
         context?.inMulti ? '' : 'not-empty:-mr-2',
-        'data-disabled:cursor-default data-disabled:text-figma-disabled data-disabled:icon-figma-disabled',
+        'data-disabled:cursor-default data-disabled:text-figma-tertiary data-disabled:icon-figma-disabled',
         className,
       )}
       data-disabled={contextDisabled ? '' : undefined}

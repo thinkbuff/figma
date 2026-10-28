@@ -73,7 +73,7 @@ function ToggleGroupItem({ className, children, ref, ...props }: ToggleGroupItem
         'transition-colors',
         'focus-visible:outline-solid focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-figma-border-selected',
         'data-pressed:bg-figma data-pressed:text-figma data-pressed:fill-figma-icon data-pressed:shadow-[inset_0_0_0_1px_var(--figma-color-border)]',
-        'disabled:text-figma-disabled disabled:fill-figma-icon-disabled',
+        'disabled:text-figma-tertiary disabled:fill-figma-icon-disabled',
       )}
       {...props}
     >
@@ -96,7 +96,7 @@ function ToggleGroupText({ className, ref, ...props }: React.ComponentPropsWithR
         'gap-1.5',
         'min-w-0',
         'truncate',
-        'group-data-disabled:text-figma-disabled',
+        'group-data-disabled:text-figma-tertiary',
       )}
       {...props}
     />

@@ -77,7 +77,7 @@ function Input({
             'py-1',
             'pl-2',
             'pr-2',
-            inputVariants({ variant, disabled, invalid, className }),
+            inputVariants({ variant, disabled, invalid, size, className }),
           )}
           {...mergeProps<'input'>(selectOnClick ? selectOnClickProps : {}, props)}
           disabled={disabled}

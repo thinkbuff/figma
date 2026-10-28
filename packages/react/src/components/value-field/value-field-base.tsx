@@ -182,7 +182,7 @@ function Base<V>(props: BaseProps<V>) {
         'font-figma text-figma-body-medium font-figma-default',
         'text-figma placeholder:text-figma-tertiary',
         context?.inMulti ? 'pl-1 pr-1' : 'pl-2 pr-2',
-        'disabled:cursor-not-allowed disabled:text-figma-disabled',
+        'disabled:cursor-not-allowed disabled:text-figma-tertiary',
         className,
       )}
       value={inputValue}

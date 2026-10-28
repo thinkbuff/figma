@@ -116,7 +116,7 @@ function NumericSelect(props: NumericSelectProps) {
             'text-figma icon-figma',
             'not-disabled:hover:bg-figma-tertiary',
             'data-popup-open:bg-figma-selected data-popup-open:border-figma-selected',
-            'disabled:text-figma-disabled disabled:icon-figma-disabled',
+            'disabled:text-figma-tertiary disabled:icon-figma-disabled',
           )}
           aria-label={triggerLabel}
         >

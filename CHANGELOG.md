@@ -72,6 +72,15 @@
 - `VisualBell`: `color="default"` is now the spec's light bell (`bg-default` + `text` + elevation-100) — replaces the dark `#2c2c2c` hardcoded fill. Action/dismiss edges use `bordertranslucent`; hover/active use the secondary-button transparent tokens.
 - `ScrollArea`: thumb uses the `scrollbar` token via new `bg-figma-scrollbar` utility (was `text-secondary`).
 
+#### Remaining UI3 audit items
+
+- `Switch`: `indeterminate` renders the spec's `icon.16.mixed` glyph (16px, `icon-onbrand`; `icon-disabled` when disabled) instead of a hand-drawn bar.
+- `Input`/`Textarea`: disabled state follows the spec per size — `size="default"` keeps `bg-default` + `border-default` stroke; `size="large"` stays `bg-secondary` with no stroke.
+- Disabled colors aligned to the spec's tokens where values are identical: `text-tertiary` on `Select`, `ToggleGroup` items and labels, and all ValueField elements; `border-default` on ValueField outlines.
+- `LinkTooltip.Action`: new `strong` prop for the spec's `body.medium.strong` CTA weight (w550).
+- `Separator`: documented per-surface divider tokens — menu/tooltip surfaces should pass `bg-figma-border-menu`/`bg-figma-border-tooltip`.
+- `AlertDialog` story CTA gap aligned to the Modal footer's 8px rhythm.
+
 #### Tokens: generated from `packages/theme/tokens/`
 
 - `@thinkbuff/figma-theme/colors` no longer exports `BaseThemeCSSVariables`/`BaseThemeCSSVariableKey` — each mode map is complete on its own.

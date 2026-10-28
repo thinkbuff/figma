@@ -171,12 +171,20 @@ LinkTooltipItem.displayName = 'LinkTooltipItem';
 /**
  * A single action inside a `LinkTooltipItem` — `Open google.com`, `Edit`, …
  */
+interface LinkTooltipActionProps extends React.ComponentPropsWithRef<'button'> {
+  /**
+   * UI3 "Email" variant: the trailing CTA uses `body.medium.strong` (w550).
+   */
+  strong?: boolean;
+}
+
 function LinkTooltipAction({
   className,
   children,
+  strong = false,
   ref,
   ...props
-}: React.ComponentPropsWithRef<'button'>) {
+}: LinkTooltipActionProps) {
   return (
     <button
       ref={ref}
@@ -184,6 +192,7 @@ function LinkTooltipAction({
       className={cn(
         'flex cursor-default items-center px-2',
         'text-figma-body-medium text-figma-tooltip',
+        strong && 'font-figma-strong',
         'whitespace-nowrap hover:bg-figma-tooltip-hover',
         className,
       )}

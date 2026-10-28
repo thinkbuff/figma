@@ -28,14 +28,12 @@ export const inputVariants = cva(
         false: '',
       },
       disabled: {
-        true: [
-          'cursor-not-allowed',
-          'text-figma-disabled',
-          'fill-figma-icon-disabled',
-          'bg-figma',
-          'outline-figma-border-disabled',
-        ],
+        true: ['cursor-not-allowed', 'text-figma-disabled', 'fill-figma-icon-disabled'],
         false: '',
+      },
+      size: {
+        default: '',
+        large: '',
       },
     },
     compoundVariants: [
@@ -44,11 +42,22 @@ export const inputVariants = cva(
         disabled: false,
         className: ['focus:outline-figma-border-danger'],
       },
+      {
+        disabled: true,
+        size: 'default',
+        className: ['bg-figma', 'outline-figma-border'],
+      },
+      {
+        disabled: true,
+        size: 'large',
+        className: ['bg-figma-secondary', 'outline-transparent'],
+      },
     ],
     defaultVariants: {
       variant: 'default',
       invalid: false,
       disabled: false,
+      size: 'default',
     },
   },
 );
