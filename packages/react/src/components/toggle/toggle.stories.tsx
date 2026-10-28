@@ -11,6 +11,13 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    variant: {
+      control: 'inline-radio',
+      options: ['default', 'highlighted', 'secondary'],
+      table: {
+        defaultValue: { summary: 'highlighted' },
+      },
+    },
     disabled: {
       table: {
         defaultValue: { summary: 'false' },
@@ -51,15 +58,22 @@ export const Disabled: Story = {
   },
 };
 
+export const IconSwap: Story = {
+  args: {
+    variant: 'default',
+    pressed: true,
+  },
+};
+
 export const WithStroke: Story = {
   args: {
-    stroke: true,
+    variant: 'secondary',
   },
 };
 
 export const WithStrokePressed: Story = {
   args: {
-    stroke: true,
+    variant: 'secondary',
     pressed: true,
   },
 };

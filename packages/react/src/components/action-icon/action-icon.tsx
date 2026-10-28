@@ -15,27 +15,26 @@ interface ActionIconProps extends Omit<React.ComponentPropsWithRef<'button'>, 'c
    */
   'aria-label': string;
   /**
+   * `secondary` draws the persistent translucent stroke from the UI3
+   * `Button icon` spec.
+   *
+   * @default 'default'
+   */
+  variant?: 'default' | 'secondary';
+  /**
    * The button size. `'small'` matches the UI3 `Button icon` spec (24px).
    *
    * @default 'small'
    */
   size?: 'small' | 'medium';
-  /**
-   * The look of the button when it is active (`aria-expanded`, e.g. it opened a
-   * popup). `'subtle'` tints the icon and background; `'solid'` fills the
-   * background.
-   *
-   * @default 'subtle'
-   */
-  activeAppearance?: 'subtle' | 'solid';
 }
 
 function ActionIcon({
   className,
   disabled,
   render,
+  variant = 'default',
   size = 'small',
-  activeAppearance = 'subtle',
   ref,
   ...props
 }: ActionIconProps) {
@@ -48,9 +47,6 @@ function ActionIcon({
         className: cn(
           size === 'small' ? 'size-6' : 'size-8',
           'icon-figma',
-          'text-figma-icon',
-          'fill-figma-icon',
-          'text-figma-body-medium',
           'flex',
           'justify-center',
           'items-center',
@@ -68,6 +64,7 @@ function ActionIcon({
           'outline-transparent',
           'transition-colors',
           'focus:not-focus-visible:outline-0 focus:not-focus-visible:outline-transparent',
+          variant === 'secondary' && 'border border-solid border-figma-bordertranslucent',
           disabled
             ? [
                 'cursor-not-allowed',
@@ -76,17 +73,14 @@ function ActionIcon({
                 'fill-figma-icon-disabled',
               ]
             : [
-                'hover:bg-figma-pressed',
+                'hover:bg-figma-bghovertransparent',
                 'focus-visible:outline-figma-border-selected',
-                activeAppearance === 'subtle'
-                  ? [
-                      'aria-expanded:bg-figma-selected aria-expanded:icon-figma-brand',
-                      'aria-expanded:hover:bg-figma-selected aria-expanded:hover:icon-figma-brand',
-                    ]
-                  : [
-                      'aria-expanded:bg-figma-selected-strong aria-expanded:icon-figma-onbrand',
-                      'aria-expanded:hover:bg-figma-selected-strong aria-expanded:hover:icon-figma-onbrand',
-                    ],
+                variant === 'secondary'
+                  ? 'not-aria-expanded:active:bg-figma-bghovertransparent'
+                  : 'not-aria-expanded:active:bg-figma-bgtransparent-secondary-hover',
+                'aria-expanded:bg-figma-selected aria-expanded:border-transparent',
+                'aria-expanded:hover:bg-figma-selected-secondary',
+                'aria-expanded:active:bg-figma-selected',
               ],
           className,
         ),

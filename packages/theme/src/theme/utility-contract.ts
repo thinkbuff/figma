@@ -20,6 +20,7 @@ export const semanticUtilities = {
     'background-color: var(--figma-color-bgtransparent-secondary-pressed);',
   'bg-figma-bghovertransparent': 'background-color: var(--figma-color-bghovertransparent);',
   'outline-figma-bordertranslucent': 'outline-color: var(--figma-color-bordertranslucent);',
+  'border-figma-bordertranslucent': 'border-color: var(--figma-color-bordertranslucent);',
   'shadow-figma-focus-inset':
     'box-shadow: inset 0 0 0 2px var(--figma-color-border-onbrand-strong);',
   'outline-figma-transparent': 'outline-color: transparent;',

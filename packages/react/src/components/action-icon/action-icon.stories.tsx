@@ -17,11 +17,11 @@ const meta = {
         defaultValue: { summary: 'small' },
       },
     },
-    activeAppearance: {
+    variant: {
       control: 'inline-radio',
-      options: ['subtle', 'solid'],
+      options: ['default', 'secondary'],
       table: {
-        defaultValue: { summary: 'subtle' },
+        defaultValue: { summary: 'default' },
       },
     },
     disabled: {
@@ -75,7 +75,13 @@ export const Medium: Story = {
   },
 };
 
-export const ExpandedSolid = {
+export const Secondary: Story = {
+  args: {
+    variant: 'secondary',
+  },
+};
+
+export const SecondaryExpanded = {
   argTypes: {
     'aria-expanded': {
       control: 'boolean',
@@ -83,7 +89,7 @@ export const ExpandedSolid = {
   },
   args: {
     'aria-expanded': true,
-    activeAppearance: 'solid',
+    variant: 'secondary',
   },
 };
 

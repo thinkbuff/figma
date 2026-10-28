@@ -33,6 +33,11 @@
 | `variant="ghost"` | `variant="ghost"` |
 | `fullWidth` | `size="wide"` |
 
+#### `ActionIcon` / `Toggle` API rework
+
+- `ActionIcon`: `activeAppearance` removed (the on state now always follows the UI3 dialog-toggle spec); new `variant="secondary"` for the stroked `Button icon` variant.
+- `Toggle`: `stroke` replaced by `variant` — `'highlighted'` (default, previous fill behavior), `'default'` (icon-swap only, no pressed fill), `'secondary'` (the former `stroke` look with the `bordertranslucent` token).
+
 #### Tokens: generated from `packages/theme/tokens/`
 
 - `@thinkbuff/figma-theme/colors` no longer exports `BaseThemeCSSVariables`/`BaseThemeCSSVariableKey` — each mode map is complete on its own.
