@@ -43,7 +43,7 @@ function TabsList({ className, scrollable, ref, ...props }: TabsListProps) {
         'flex',
         'gap-1',
         scrollable
-          ? 'overflow-x-auto overflow-y-hidden [mask-image:linear-gradient(to_right,black_88%,transparent)]'
+          ? 'overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [mask-image:linear-gradient(to_right,black_88%,transparent)]'
           : 'overflow-y-auto',
       )}
       {...props}
