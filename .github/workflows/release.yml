@@ -18,7 +18,6 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
-          registry-url: https://registry.npmjs.org
 
       # A mistyped tag publishes the wrong version; refuse early.
       - name: tag matches package version
@@ -40,12 +39,9 @@ jobs:
       - run: pnpm test
       - run: pnpm build
 
-      # Once npm trusted publishers are configured for this repo/workflow
-      # (npmjs.com → package settings → trusted publisher), drop NODE_AUTH_TOKEN.
+      # Auth is npm trusted publishing (OIDC) — no token needed.
       - name: publish to npm
         run: pnpm -r publish --provenance --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: create github release
         env:
