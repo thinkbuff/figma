@@ -34,10 +34,12 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-workspace.yaml') }}
       - run: pnpm -F @thinkbuff/figma-react exec playwright install --with-deps chromium
+      - run: pnpm build # first: playground typechecks against packages' dist
       - run: pnpm check
       - run: pnpm typecheck
       - run: pnpm test
-      - run: pnpm build
+      - name: generated theme css is committed
+        run: git diff --exit-code -- packages/theme/src/css/
 
       # Auth is npm trusted publishing (OIDC) — no token needed.
       - name: publish to npm
