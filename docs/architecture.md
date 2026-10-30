@@ -173,6 +173,12 @@ reuse Core components or their exported variants instead of copying classes.
 
 - The three packages are versioned in lockstep and released together with
   changelogen (`pnpm release`). No changesets.
+- Releasing: `pnpm release` drafts the changelog and bumps versions; review,
+  commit, push, then tag `vX.Y.Z` and push the tag — the tag is the only
+  release trigger. `.github/workflows/release.yml` verifies the tag equals the
+  root package version, reruns check/typecheck/test/build, publishes all
+  packages to npm with provenance, and creates the GitHub release. npm auth
+  uses `NPM_TOKEN` until trusted publishing is configured on npmjs.com.
 - Public API: `--figma-*` variable names, Utility contract class names,
   component props and compound parts, and subpath exports.
 - Before 0.1.0 is published, API changes are made directly. From 0.1.0 on:
