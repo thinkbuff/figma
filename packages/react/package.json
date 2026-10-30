@@ -25,7 +25,9 @@
   },
   "files": [
     "*.css",
-    "dist"
+    "dist",
+    "LICENSE",
+    "NOTICE.md"
   ],
   "type": "module",
   "main": "./dist/index.mjs",

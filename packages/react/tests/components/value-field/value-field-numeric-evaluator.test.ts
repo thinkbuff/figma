@@ -1,9 +1,3 @@
-/**
- * Adapted from figma-kit. MIT License
- * Copyright (c) 2024 Tigran Petrossian
- * https://github.com/tigranpetrossian/figma-kit/blob/beta/LICENSE
- */
-
 import { describe, expect, it } from 'vitest';
 
 import { evaluateExpression } from '~/components/value-field/value-field-numeric';

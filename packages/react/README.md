@@ -69,3 +69,7 @@ import { TooltipProvider, Tooltip } from '@thinkbuff/figma-react/tooltip';
   </Tooltip>
 </TooltipProvider>
 ```
+
+## License
+
+[MIT](./LICENSE) — third-party attributions are listed in [NOTICE.md](./NOTICE.md).

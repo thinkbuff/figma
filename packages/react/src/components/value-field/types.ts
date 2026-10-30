@@ -1,9 +1,3 @@
-/**
- * Adapted from figma-kit. MIT License
- * Copyright (c) 2024 Tigran Petrossian
- * https://github.com/tigranpetrossian/figma-kit/blob/beta/LICENSE
- */
-
 type RGB = { r: number; g: number; b: number };
 type RGBA = RGB & { a: number };
 

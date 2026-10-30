@@ -15,8 +15,8 @@ trade-offs are recorded in [docs/adr/](./adr/).
 | Runtime colors | Figma editor (`themeColors: true`) | Overrides our values at runtime under the same names ([ADR 0002](./adr/0002-runtime-variable-names-over-design-file-names.md)). |
 
 Precedence when they disagree: Design file component set > Design file
-variables > user screenshots of the live editor. figma-kit is no longer a
-reference. When the Design file contradicts itself (e.g. text style
+variables > user screenshots of the live editor. When the Design file
+contradicts itself (e.g. text style
 `heading.medium` is 11/25 while its variables say 15/25), variables win and the
 conflict is noted in the audit.
 

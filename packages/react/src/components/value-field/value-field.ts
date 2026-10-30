@@ -1,9 +1,3 @@
-/**
- * Adapted from figma-kit. MIT License
- * Copyright (c) 2024 Tigran Petrossian
- * https://github.com/tigranpetrossian/figma-kit/blob/beta/LICENSE
- */
-
 export { Label, Multi, Root } from './value-field-elements';
 export { Numeric } from './value-field-numeric';
 export { NumericSelect } from './value-field-numeric-select';

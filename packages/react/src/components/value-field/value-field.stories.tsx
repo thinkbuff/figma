@@ -1,9 +1,3 @@
-/**
- * Adapted from figma-kit. MIT License
- * Copyright (c) 2024 Tigran Petrossian
- * https://github.com/tigranpetrossian/figma-kit/blob/beta/LICENSE
- */
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 

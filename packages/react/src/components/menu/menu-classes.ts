@@ -1,11 +1,3 @@
-/**
- * Shared menu styling used by DropdownMenu, ContextMenu, Select, Combobox,
- * and ValueField.NumericSelect. Keep visual parity with Figma's menu styles.
- * Adapted from figma-kit's menu.base.css. MIT License
- * Copyright (c) 2024 Tigran Petrossian
- * https://github.com/tigranpetrossian/figma-kit/blob/beta/LICENSE
- */
-
 const menuPopupClassName = [
   'text-figma-body-medium text-figma-menu',
   'bg-figma-menu',

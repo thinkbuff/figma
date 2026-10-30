@@ -65,7 +65,7 @@ Per-component design audits live in `docs/audit/` (gitignored, local only).
 - Design reference: the UI3 Design file (official community file linked in
   `docs/architecture.md` §1). Match component sets by page and set name, never
   by node id; working-copy links live in the gitignored
-  `docs/figma-ui3-design.md`. figma-kit is no longer a reference.
+  `docs/figma-ui3-design.md`.
 
 ## Components (`packages/react`)
 

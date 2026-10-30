@@ -1,12 +1,3 @@
-/**
- * Adapted from figma-kit. MIT License
- * Copyright (c) 2024 Tigran Petrossian
- * https://github.com/tigranpetrossian/figma-kit/blob/beta/LICENSE
- *
- * figma-kit's scrubber is in turn adapted from Base UI NumberFieldScrubArea. MIT license, Copyright
- * (c) 2019 Material-UI SAS.
- * https://github.com/mui/base-ui/blob/master/packages/react/src/number-field/scrub-area/NumberFieldScrubArea.tsx
- */
 import * as React from 'react';
 import { createPortal, flushSync } from 'react-dom';
 

@@ -19,7 +19,8 @@
     "directory": "packages/utils"
   },
   "files": [
-    "dist"
+    "dist",
+    "LICENSE"
   ],
   "type": "module",
   "sideEffects": false,

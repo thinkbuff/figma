@@ -8,7 +8,7 @@
 
 ## Acknowledgements
 
-Component behavior and styling reference [figma-kit](https://github.com/tigranpetrossian/figma-kit) (MIT, © Tigran Petrossian). Ported files carry attribution headers.
+Third-party attributions are listed in [NOTICE.md](./NOTICE.md).
 
 ## License
 

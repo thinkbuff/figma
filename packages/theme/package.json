@@ -22,7 +22,8 @@
   },
   "files": [
     "*.css",
-    "dist"
+    "dist",
+    "LICENSE"
   ],
   "type": "module",
   "sideEffects": false,

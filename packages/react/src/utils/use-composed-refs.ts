@@ -1,8 +1,3 @@
-/**
- * @license MIT License
- *   Copyright (c) 2022 WorkOS
- *   https://github.com/radix-ui/primitives/blob/main/LICENSE
- */
 import * as React from 'react';
 
 type PossibleRef<T> = React.Ref<T> | undefined;

@@ -111,7 +111,7 @@
 
 #### Components: UI3 look
 
-- Components are restyled to Figma's UI3 against the official [UI3 Design file](docs/figma-ui3-design.md) and its exported variables ([figma-kit](https://github.com/tigranpetrossian/figma-kit) is historical reference only). Layouts may shift: `Input`, `Select` triggers, `Tabs` and `ToggleGroup` items are 24px tall (were 32px), `Checkbox` and `Radio` are 16px, and `Switch` is 32×16.
+- Components are restyled to Figma's UI3 against the official [UI3 Design file](https://www.figma.com/community/file/1486123838948777078/ui3-figmas-ui-kit) and its exported variables. Layouts may shift: `Input`, `Select` triggers, `Tabs` and `ToggleGroup` items are 24px tall (were 32px), `Checkbox` and `Radio` are 16px, and `Switch` is 32×16.
 - Solid buttons have no hover background; focus is a 1px outline plus a 1px ring. Fields are outline-only on `bg-secondary`. Menus, popovers and dialogs use 13px radius and elevation shadows; menu highlight is `bg-menu-selected`.
 - `ActionIcon` open state (`aria-expanded`) is now subtle (`bg-selected`) instead of solid brand.
 - Inline `RadioGroup` items are 20px apart (were 8px).
