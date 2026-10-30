@@ -24,7 +24,7 @@
     "pages:preview": "tsx scripts/pages.ts preview",
     "pages:serve": "tsx scripts/pages.ts serve",
     "storybook": "pnpm -F @thinkbuff/figma-react storybook",
-    "release": "changelogen --release --no-commit --no-tag && tsx scripts/update-version.ts",
+    "release": "changelogen --release --no-commit --no-tag --no-github && tsx scripts/update-version.ts",
     "postinstall": "pnpm -F @thinkbuff/figma-theme build",
     "prepare": "simple-git-hooks",
     "tokens:import": "pnpm -F @thinkbuff/figma-theme tokens:import"
