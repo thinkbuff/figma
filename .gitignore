@@ -54,6 +54,9 @@ coverage
 
 # storybook static build output
 storybook-static
+
+# assembled github pages site (scripts/pages.ts)
+site/
 .vitest
 
 # Devin local config
