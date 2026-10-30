@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Textarea } from './textarea';
 
@@ -10,13 +10,6 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    variant: {
-      control: 'inline-radio',
-      options: ['default', 'border'],
-      table: {
-        defaultValue: { summary: 'border' },
-      },
-    },
     invalid: {
       table: {
         defaultValue: { summary: 'false' },
@@ -29,7 +22,6 @@ const meta = {
     },
   },
   args: {
-    variant: 'default',
     invalid: false,
     disabled: false,
     placeholder: 'Placeholder',
@@ -39,12 +31,6 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-
-export const Border: Story = {
-  args: {
-    variant: 'border',
-  },
-};
 
 export const Disabled: Story = {
   args: {

@@ -1,0 +1,108 @@
+{
+  "font-family": {
+    "default": {
+      "value": "\"Inter\", ui-sans-serif, system-ui, -apple-system, \"BlinkMacSystemFont\", \"Segoe UI\", \"Roboto\", \"Helvetica Neue\", \"Arial\", \"Noto Sans\", sans-serif, \"SFProLocalRange\"",
+      "note": "Fallback stack appended to the Design file's Inter."
+    },
+    "code": {
+      "value": "\"Roboto Mono\", \"SFMono-Regular\", \"Menlo\", \"Monaco\", \"Consolas\", \"Liberation Mono\", \"Courier New\", monospace",
+      "note": "Fallback stack appended to the Design file's Roboto Mono (mono)."
+    },
+    "display": {
+      "value": "\"Whyte\", ui-sans-serif, system-ui, sans-serif",
+      "note": "Repo-only fallback for the Design file's display family."
+    }
+  },
+  "space": {
+    "0.5": {
+      "value": ".125rem",
+      "note": "Extra 2px half-step with no spacer token."
+    },
+    "1.5": {
+      "value": ".375rem",
+      "note": "Extra 6px step with no spacer token."
+    },
+    "2.5": {
+      "value": ".75rem",
+      "note": "Extra 12px step with no spacer token."
+    }
+  },
+  "border-width": {
+    "1": {
+      "value": "1px",
+      "note": "Standard hairline used across controls."
+    },
+    "4": {
+      "value": ".25rem",
+      "note": "4px stroke used by the slider thumb."
+    }
+  },
+  "duration": {
+    "100": {
+      "value": "100ms",
+      "note": "Popup/tooltip fade."
+    },
+    "200": {
+      "value": "200ms",
+      "note": "Sheet slide transition."
+    },
+    "300": {
+      "value": "300ms",
+      "note": "Longer overlay transitions."
+    }
+  },
+  "opacity": {
+    "50": {
+      "value": "0.5",
+      "note": "Half opacity utility step."
+    },
+    "disabled": {
+      "value": "0.3",
+      "note": "Disabled glyph dimming."
+    }
+  },
+  "z-index": {
+    "1": {
+      "value": "1",
+      "note": "Base stacking step."
+    },
+    "2": {
+      "value": "2",
+      "note": "Second stacking step."
+    },
+    "dropdown": {
+      "value": "10",
+      "note": "Dropdowns above content."
+    },
+    "modal": {
+      "value": "50",
+      "note": "Dialogs/sheets above dropdowns."
+    },
+    "tooltip": {
+      "value": "100",
+      "note": "Tooltips above modals."
+    }
+  },
+  "shadow-slider": {
+    "value": "0 1px 3px 0 #0000001a, 0 3px 8px 0 #0000001a, 0 0 0.5px 0 #0000002e, inset 0 0 0 0.5px #0000001a",
+    "note": "Slider thumb shadow; not an elevation scale level."
+  },
+  "shadow-aliases": {
+    "tooltip": {
+      "value": "var(--figma-elevation-300)",
+      "note": "Legacy alias: tooltip chrome."
+    },
+    "menu": {
+      "value": "var(--figma-elevation-400)",
+      "note": "Legacy alias: menu panels."
+    },
+    "modal": {
+      "value": "var(--figma-elevation-500)",
+      "note": "Legacy alias: modal windows."
+    }
+  },
+  "shadow-hud": {
+    "value": "0px 5px 17px rgba(0, 0, 0, 0.2), 0px 2px 7px rgba(0, 0, 0, 0.15)",
+    "note": "Spec '_Legacy/LEGACY - HUD shadow' used by Notifications (toast)."
+  }
+}

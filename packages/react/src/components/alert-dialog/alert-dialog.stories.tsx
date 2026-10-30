@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { Button } from '../button';
-
 import * as AlertDialog from './alert-dialog';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof AlertDialog.Content> & {
@@ -19,34 +18,30 @@ const meta = {
   args: {
     open: false,
   },
-  render: (args) => {
+  render: function Render(args) {
     const { open: _, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
     return (
       <AlertDialog.Root
         open={open}
-        onOpenChange={value => updateArgs({ open: value })}
+        onOpenChange={(value) => updateArgs({ open: value })}
       >
-        <AlertDialog.Trigger asChild>
-          <Button variant="outline" color="danger">
-            Delete account
-          </Button>
-        </AlertDialog.Trigger>
+        <AlertDialog.Trigger
+          render={<Button variant="secondary-destructive">Delete account</Button>}
+        />
         <AlertDialog.Content {...props}>
           <AlertDialog.Header>
             <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
           </AlertDialog.Header>
           <AlertDialog.Description>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            This action cannot be undone. This will permanently delete your account and remove your
+            data from our servers.
           </AlertDialog.Description>
-          <AlertDialog.Footer className="justify-end gap-3">
-            <AlertDialog.Cancel asChild>
-              <Button variant="outline" color="secondary">Cancel</Button>
-            </AlertDialog.Cancel>
-            <AlertDialog.Action asChild>
-              <Button color="danger">Yes, delete account</Button>
-            </AlertDialog.Action>
+          <AlertDialog.Footer className="justify-end gap-2">
+            <AlertDialog.Cancel render={<Button variant="secondary">Cancel</Button>} />
+            <AlertDialog.Action
+              render={<Button variant="destructive">Yes, delete account</Button>}
+            />
           </AlertDialog.Footer>
         </AlertDialog.Content>
       </AlertDialog.Root>

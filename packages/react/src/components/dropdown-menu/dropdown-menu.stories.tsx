@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
-
 import * as DropdownMenu from './dropdown-menu';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof DropdownMenu.Content> & {
@@ -34,7 +33,10 @@ const meta = {
         type: 'number',
       },
       table: {
-        type: { summary: 'number', detail: 'An offset in pixels from the "start" or "end" alignment options.' },
+        type: {
+          summary: 'number',
+          detail: 'An offset in pixels from the "start" or "end" alignment options.',
+        },
       },
     },
     side: {
@@ -59,15 +61,6 @@ const meta = {
         type: { summary: 'number', detail: 'The distance in pixels from the trigger.' },
       },
     },
-    avoidCollisions: {
-      table: {
-        type: {
-          summary: 'boolean',
-          detail: 'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
-        },
-        defaultValue: { summary: 'true' },
-      },
-    },
   },
   args: {
     modal: true,
@@ -75,10 +68,9 @@ const meta = {
     align: 'center',
     alignOffset: 0,
     side: 'top',
-    sideOffset: 4,
-    avoidCollisions: true,
+    sideOffset: 9,
   },
-  render: (args) => {
+  render: function Render(args) {
     const { open: _, modal, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
     return (
@@ -86,38 +78,42 @@ const meta = {
         modal={modal}
         defaultOpen={false}
         open={open}
-        onOpenChange={value => updateArgs({ open: value })}
+        onOpenChange={(value) => updateArgs({ open: value })}
       >
-        <DropdownMenu.Trigger asChild>
-          <ActionIcon>
-            <span className="i-tabler-menu-2 size-4"></span>
-          </ActionIcon>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content {...props} className="min-w-60">
+        <DropdownMenu.Trigger
+          render={
+            <ActionIcon aria-label="Open menu">
+              <span className="icon-[tabler--menu-2] size-4"></span>
+            </ActionIcon>
+          }
+        />
+        <DropdownMenu.Content
+          {...props}
+          className="min-w-60"
+        >
           <DropdownMenu.Item>
-            New Tab
-            {' '}
-            <span className="ml-auto">⌘+T</span>
+            New Tab <DropdownMenu.ItemShortcut>⌘+T</DropdownMenu.ItemShortcut>
           </DropdownMenu.Item>
           <DropdownMenu.Item>
-            New Window
-            {' '}
-            <span className="ml-auto">⌘+N</span>
+            New Window <DropdownMenu.ItemShortcut>⌘+N</DropdownMenu.ItemShortcut>
           </DropdownMenu.Item>
           <DropdownMenu.Item disabled>
-            New Private Window
-            {' '}
-            <span className="ml-auto">⇧+⌘+N</span>
+            New Private Window <DropdownMenu.ItemShortcut>⇧+⌘+N</DropdownMenu.ItemShortcut>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            File Menu <DropdownMenu.ItemBadge>Menu</DropdownMenu.ItemBadge>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            Selected <DropdownMenu.ItemCheck />
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            Item count <DropdownMenu.ItemShortcut>250</DropdownMenu.ItemShortcut>
           </DropdownMenu.Item>
           <DropdownMenu.Sub>
-            <DropdownMenu.SubTrigger>
-              More Tools
-            </DropdownMenu.SubTrigger>
+            <DropdownMenu.SubTrigger>More Tools</DropdownMenu.SubTrigger>
             <DropdownMenu.SubContent className="min-w-40">
               <DropdownMenu.Item>
-                Save Page As
-                {' '}
-                <span className="ml-auto">⌘+S</span>
+                Save Page As <DropdownMenu.ItemShortcut>⌘+S</DropdownMenu.ItemShortcut>
               </DropdownMenu.Item>
               <DropdownMenu.Item>Create Shortcut</DropdownMenu.Item>
               <DropdownMenu.Item>Name Window</DropdownMenu.Item>
@@ -127,22 +123,20 @@ const meta = {
           </DropdownMenu.Sub>
           <DropdownMenu.Separator />
           <DropdownMenu.CheckboxItem>
-            Show Bookmarks
-            {' '}
-            <span className="ml-auto">⌘+B</span>
+            Show Bookmarks <span className="ml-auto">⌘+B</span>
           </DropdownMenu.CheckboxItem>
-          <DropdownMenu.CheckboxItem checked>
-            Show Full URLs
-          </DropdownMenu.CheckboxItem>
+          <DropdownMenu.CheckboxItem checked>Show Full URLs</DropdownMenu.CheckboxItem>
           <DropdownMenu.Separator />
-          <DropdownMenu.Label>People</DropdownMenu.Label>
+          <DropdownMenu.ItemSwitch defaultChecked>
+            Toggle row <DropdownMenu.ItemShortcut>⌥⇧⌘O</DropdownMenu.ItemShortcut>
+          </DropdownMenu.ItemSwitch>
+          <DropdownMenu.ItemSwitch>Toggle row off</DropdownMenu.ItemSwitch>
+          <DropdownMenu.ItemSwitch disabled>Toggle disabled</DropdownMenu.ItemSwitch>
+          <DropdownMenu.Separator />
           <DropdownMenu.RadioGroup value="pedro">
-            <DropdownMenu.RadioItem value="pedro">
-              Eleven Zhang
-            </DropdownMenu.RadioItem>
-            <DropdownMenu.RadioItem value="colm">
-              Jerry Zhang
-            </DropdownMenu.RadioItem>
+            <DropdownMenu.Label>People</DropdownMenu.Label>
+            <DropdownMenu.RadioItem value="pedro">Eleven Zhang</DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="colm">Jerry Zhang</DropdownMenu.RadioItem>
           </DropdownMenu.RadioGroup>
           <DropdownMenu.Arrow />
         </DropdownMenu.Content>

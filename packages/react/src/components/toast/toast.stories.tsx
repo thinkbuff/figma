@@ -1,11 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Button } from '../button';
-
-import { Toaster } from './toaster';
 import { toast } from './toast';
+import { Toaster } from './toaster';
 
-const meta = {
+const meta: Meta = {
   title: 'Components/Toast',
   component: Toaster,
   parameters: {
@@ -16,14 +15,14 @@ const meta = {
   },
   tags: ['autodocs'],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="min-h-60">
         <Story />
         <Toaster />
       </div>
     ),
   ],
-} satisfies Meta<typeof Toaster>;
+} satisfies Meta;
 
 type Story = StoryObj<typeof meta>;
 
@@ -32,16 +31,17 @@ export const Default: Story = {
     return (
       <div className="flex flex-wrap items-center gap-2">
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast('Event has been created', {
               duration: 1_000_000,
-            })}
+            })
+          }
         >
           Default
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -50,12 +50,13 @@ export const Default: Story = {
                 label: 'Undo',
                 onClick: () => console.log('Undo'),
               },
-            })}
+            })
+          }
         >
           Action
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -64,12 +65,32 @@ export const Default: Story = {
                 label: 'Cancel',
                 onClick: () => console.log('Cancel'),
               },
-            })}
+            })
+          }
         >
           Cancel
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
+          onClick={() =>
+            toast('Event has been created', {
+              description: 'Monday, January 3rd at 6:00pm',
+              duration: 1_000_000,
+              action: {
+                label: 'Action',
+                onClick: () => console.log('Action'),
+              },
+              cancel: {
+                label: 'Dismiss',
+                onClick: () => console.log('Dismiss'),
+              },
+            })
+          }
+        >
+          Action + Dismiss
+        </Button>
+        <Button
+          variant="secondary"
           onClick={() =>
             toast.success('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -78,12 +99,13 @@ export const Default: Story = {
                 label: 'Cancel',
                 onClick: () => console.log('Cancel'),
               },
-            })}
+            })
+          }
         >
           Success
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast.info('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -92,12 +114,13 @@ export const Default: Story = {
                 label: 'Cancel',
                 onClick: () => console.log('Cancel'),
               },
-            })}
+            })
+          }
         >
           Info
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast.warning('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -106,12 +129,13 @@ export const Default: Story = {
                 label: 'Cancel',
                 onClick: () => console.log('Cancel'),
               },
-            })}
+            })
+          }
         >
           Warning
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() =>
             toast.error('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -120,15 +144,16 @@ export const Default: Story = {
                 label: 'Cancel',
                 onClick: () => console.log('Cancel'),
               },
-            })}
+            })
+          }
         >
           Error
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() => {
             toast.promise(
-              new Promise<{ name: string }>(resolve =>
+              new Promise<{ name: string }>((resolve) =>
                 setTimeout(() => resolve({ name: 'Figma' }), 2000),
               ),
               {
@@ -136,7 +161,7 @@ export const Default: Story = {
                 description: () => {
                   return 'Monday, January 3rd at 6:00pm';
                 },
-                success: (data) => {
+                success: (data: { name: string }) => {
                   return `${data.name} toast has been added`;
                 },
                 error: 'Error',
@@ -147,7 +172,7 @@ export const Default: Story = {
           Promise
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() => {
             toast.loading('Loading toast...', {
               duration: 2000,
@@ -160,22 +185,6 @@ export const Default: Story = {
           }}
         >
           Loading
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() => {
-            toast('Event has been created', {
-              description: 'Monday, January 3rd at 6:00pm',
-              duration: 6000,
-              closeButton: true,
-              action: {
-                label: 'Undo',
-                onClick: () => console.log('Undo'),
-              },
-            });
-          }}
-        >
-          CloseButton
         </Button>
       </div>
     );

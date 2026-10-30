@@ -1,0 +1,75 @@
+{
+  "family": {
+    "default": "Inter",
+    "display": "Whyte",
+    "mono": "Roboto Mono"
+  },
+  "weight": {
+    "default": 450,
+    "medium": 450,
+    "strong": 550,
+    "heavy": 550
+  },
+  "styles": {
+    "body-large": {
+      "fontSize": 13,
+      "lineHeight": 22,
+      "letterSpacing": -0.0025,
+      "fontWeight": 450
+    },
+    "body-large-strong": {
+      "fontSize": 13,
+      "lineHeight": 22,
+      "letterSpacing": -0.0025,
+      "fontWeight": 550
+    },
+    "body-medium": {
+      "fontSize": 11,
+      "lineHeight": 16,
+      "letterSpacing": 0.005,
+      "fontWeight": 450
+    },
+    "body-medium-strong": {
+      "fontSize": 11,
+      "lineHeight": 16,
+      "letterSpacing": 0.005,
+      "fontWeight": 550
+    },
+    "body-small": {
+      "fontSize": 9,
+      "lineHeight": 14,
+      "letterSpacing": 0.005,
+      "fontWeight": 450
+    },
+    "body-small-strong": {
+      "fontSize": 9,
+      "lineHeight": 14,
+      "letterSpacing": 0.005,
+      "fontWeight": 550
+    },
+    "heading-display": {
+      "fontSize": 48,
+      "lineHeight": 56,
+      "letterSpacing": -0.03,
+      "fontWeight": 450
+    },
+    "heading-large": {
+      "fontSize": 24,
+      "lineHeight": 32,
+      "letterSpacing": -0.017,
+      "fontWeight": 550
+    },
+    "heading-medium": {
+      "fontSize": 15,
+      "lineHeight": 25,
+      "letterSpacing": -0.005,
+      "fontWeight": 550
+    },
+    "heading-small": {
+      "fontSize": 13,
+      "lineHeight": 22,
+      "letterSpacing": -0.0025,
+      "fontWeight": 550
+    }
+  }
+}

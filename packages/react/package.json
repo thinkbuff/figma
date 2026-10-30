@@ -1,60 +1,38 @@
 {
   "name": "@thinkbuff/figma-react",
-  "author": "Eleven <eteplus@outlook.com>",
-  "license": "MIT",
-  "type": "module",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "A Figma React UI components for creating plugins and widgets",
-  "scripts": {
-    "clean": "rm -rf dist node_modules",
-    "build": "tsc && vite build",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "lint:config-viewer": "npx @eslint/config-inspector",
-    "typecheck": "tsc --noEmit",
-    "storybook": "storybook dev -h 127.0.0.1 -p 6006",
-    "build-storybook": "storybook build",
-    "prepublishOnly": "pnpm build"
-  },
-  "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/thinkbuff/figma",
-    "directory": "packages/react"
-  },
-  "bugs": {
-    "url": "https://github.com/thinkbuff/figma/issues"
-  },
   "keywords": [
     "figma",
     "figma-plugin",
     "figma-react",
     "react",
     "react-component",
-    "unocss",
-    "unocss-preset",
-    "unocss-preset-figma-theme"
+    "tailwindcss",
+    "tailwindcss-figma-theme",
+    "tailwindcss-theme"
   ],
+  "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
+  "bugs": {
+    "url": "https://github.com/thinkbuff/figma/issues"
+  },
+  "license": "MIT",
+  "author": "Eleven <eteplus@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thinkbuff/figma",
+    "directory": "packages/react"
+  },
+  "files": [
+    "*.css",
+    "dist",
+    "LICENSE",
+    "NOTICE.md"
+  ],
+  "type": "module",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
-    },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "import": "./dist/utils/index.mjs"
-    },
-    "./components": {
-      "types": "./dist/components/index.d.ts",
-      "import": "./dist/components/index.mjs"
-    },
-    "./*": {
-      "types": "./dist/components/*/index.d.ts",
-      "import": "./dist/components/*/index.mjs"
-    }
-  },
+  "types": "./dist/index.d.mts",
   "typesVersions": {
     "*": {
       "*": [
@@ -63,16 +41,75 @@
       ]
     }
   },
-  "files": [
-    "*.css",
-    "dist"
-  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.mts",
+      "import": "./dist/utils/index.mjs"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.mts",
+      "import": "./dist/components/index.mjs"
+    },
+    "./*": {
+      "types": "./dist/components/*/index.d.mts",
+      "import": "./dist/components/*/index.mjs"
+    },
+    "./styles.css": "./styles.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rm -rf dist node_modules",
+    "build": "vp pack",
+    "typecheck": "tsc --noEmit",
+    "storybook": "storybook dev -h 127.0.0.1 -p 6006",
+    "build-storybook": "storybook build",
+    "prepublishOnly": "pnpm build",
+    "test": "vitest run --project browser --project unit",
+    "test:visual": "rm -rf node_modules/.vite && vitest run --project vrt",
+    "test:visual:update": "rm -rf node_modules/.vite && vitest run --project vrt --update",
+    "probe": "rm -rf node_modules/.vite && vitest run --project probe --reporter=verbose"
+  },
+  "dependencies": {
+    "@base-ui/react": "catalog:react",
+    "@emmetio/math-expression": "catalog:runtime",
+    "@thinkbuff/figma-theme": "workspace:^",
+    "class-variance-authority": "catalog:tailwind",
+    "clsx": "catalog:tailwind",
+    "sonner": "catalog:react",
+    "tailwind-merge": "catalog:tailwind"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "catalog:iconify",
+    "@iconify-json/tabler": "catalog:iconify",
+    "@iconify/tailwind4": "catalog:iconify",
+    "@storybook/addon-docs": "catalog:storybook",
+    "@storybook/react-vite": "catalog:storybook",
+    "@tailwindcss/vite": "catalog:tailwind",
+    "@vitejs/plugin-react": "catalog:react",
+    "@vitest/browser": "catalog:test",
+    "@vitest/browser-playwright": "catalog:test",
+    "glob": "catalog:toolchain",
+    "playwright": "catalog:test",
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "storybook": "catalog:storybook",
+    "tailwindcss": "catalog:tailwind",
+    "typescript": "catalog:toolchain",
+    "vite": "catalog:toolchain",
+    "vitest": "catalog:test",
+    "vitest-browser-react": "catalog:test"
+  },
   "peerDependencies": {
-    "@thinkbuff/figma-theme": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "peerDependenciesMeta": {
     "@types/react": {
@@ -81,57 +118,5 @@
     "@types/react-dom": {
       "optional": true
     }
-  },
-  "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.6",
-    "@storybook/addon-essentials": "^8.6.14",
-    "@storybook/addon-interactions": "^8.6.14",
-    "@storybook/addon-links": "^8.6.14",
-    "@storybook/addon-onboarding": "^8.6.14",
-    "@storybook/blocks": "^8.6.14",
-    "@storybook/react": "^8.6.14",
-    "@storybook/react-vite": "^8.6.14",
-    "@storybook/test": "^8.6.14",
-    "@thinkbuff/figma-theme": "workspace:*",
-    "@unocss/preset-rem-to-px": "^66.1.2",
-    "@vitejs/plugin-react": "^4.4.1",
-    "glob": "^11.0.2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "storybook": "^8.6.14",
-    "typescript": "^5.8.3",
-    "unocss": "^66.1.2",
-    "unocss-preset-animations": "^1.2.1",
-    "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.4"
-  },
-  "dependencies": {
-    "@radix-ui/react-alert-dialog": "^1.1.13",
-    "@radix-ui/react-checkbox": "^1.3.1",
-    "@radix-ui/react-dialog": "^1.1.13",
-    "@radix-ui/react-dropdown-menu": "^2.1.14",
-    "@radix-ui/react-label": "^2.1.6",
-    "@radix-ui/react-popover": "^1.1.13",
-    "@radix-ui/react-radio-group": "^1.3.6",
-    "@radix-ui/react-scroll-area": "^1.2.8",
-    "@radix-ui/react-select": "^2.2.4",
-    "@radix-ui/react-separator": "^1.1.6",
-    "@radix-ui/react-slider": "^1.3.4",
-    "@radix-ui/react-slot": "^1.2.2",
-    "@radix-ui/react-switch": "^1.2.4",
-    "@radix-ui/react-tabs": "^1.1.11",
-    "@radix-ui/react-toggle": "^1.1.8",
-    "@radix-ui/react-toggle-group": "^1.1.9",
-    "@radix-ui/react-tooltip": "^1.2.6",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "sonner": "^2.0.3",
-    "tailwind-merge": "^3.3.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
   }
 }

@@ -1,50 +1,57 @@
 {
   "name": "@thinkbuff/figma",
-  "version": "0.0.8",
-  "description": "Simplify plugin and widget creation for Figma and FigJam",
+  "version": "0.1.0",
   "private": true,
+  "description": "Simplify plugin and widget creation for Figma and FigJam",
+  "license": "MIT",
+  "author": "Eleven <eteplus@outlook.com>",
   "type": "module",
   "scripts": {
     "clean": "pnpm run -r clean && rm -rf node_modules",
-    "lint": "pnpm run -r lint",
-    "lint:fix": "pnpm run -r lint --fix",
+    "lint": "vp lint",
+    "lint:fix": "vp lint --fix",
+    "fmt": "vp fmt",
+    "fmt:check": "vp fmt --check",
+    "deps": "taze -r -I -l",
+    "check": "vp check",
     "typecheck": "pnpm run -r typecheck",
-    "build": "pnpm --parallel run -r build",
-    "release": "changelogen --release --no-commit --no-tag && tsx scripts/update-version.ts",
+    "build": "pnpm run -r build",
+    "test": "pnpm -r test",
+    "test:visual": "pnpm -F @thinkbuff/figma-react test:visual",
+    "test:visual:update": "pnpm -F @thinkbuff/figma-react test:visual:update",
+    "vrt:diff": "tsx scripts/vrt-diff.ts",
+    "pages:build": "tsx scripts/pages.ts build",
+    "pages:preview": "tsx scripts/pages.ts preview",
+    "pages:serve": "tsx scripts/pages.ts serve",
     "storybook": "pnpm -F @thinkbuff/figma-react storybook",
-    "postinstall": "pnpm run -r stub",
-    "prepare": "simple-git-hooks"
+    "release": "changelogen --release --no-commit --no-tag --no-github && tsx scripts/update-version.ts",
+    "postinstall": "pnpm -F @thinkbuff/figma-theme build",
+    "prepare": "simple-git-hooks",
+    "tokens:import": "pnpm -F @thinkbuff/figma-theme tokens:import"
   },
-  "packageManager": "pnpm@10.11.0",
-  "engines": {
-    "node": ">=20"
-  },
-  "author": "Eleven <eteplus@outlook.com>",
-  "license": "MIT",
   "devDependencies": {
-    "@eslint-react/eslint-plugin": "^1.49.0",
-    "@thinkbuff/eslint-config": "^0.2.7",
-    "@types/node": "^22.15.18",
-    "@unocss/eslint-plugin": "^66.1.2",
-    "changelogen": "^0.6.1",
-    "eslint": "^9.27.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "eslint-plugin-storybook": "^0.12.0",
-    "glob": "^11.0.2",
-    "lint-staged": "^16.0.0",
-    "simple-git-hooks": "^2.13.0",
-    "tsx": "^4.19.4",
-    "typescript": "^5.8.3"
+    "@commitlint/cli": "catalog:cli",
+    "@commitlint/config-conventional": "catalog:cli",
+    "@types/node": "catalog:types",
+    "changelogen": "catalog:cli",
+    "glob": "catalog:toolchain",
+    "simple-git-hooks": "catalog:cli",
+    "taze": "catalog:cli",
+    "tsx": "catalog:cli",
+    "typescript": "catalog:toolchain",
+    "vite-plus": "catalog:toolchain"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "vp staged",
+    "commit-msg": "pnpm commitlint --edit ${1}"
   },
-  "prettier": {
-    "semi": true,
-    "singleQuote": true,
-    "jsxSingleQuote": false,
-    "printWidth": 120,
-    "trailingComma": "all"
-  }
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "engines": {
+    "node": ">=24.21.0"
+  },
+  "packageManager": "pnpm@12.15.0"
 }

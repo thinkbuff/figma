@@ -1,0 +1,52 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write # create the GitHub release
+  id-token: write # npm provenance / trusted publishing
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      # A mistyped tag publishes the wrong version; refuse early.
+      - name: tag matches package version
+        run: |
+          pkg=$(node -p "require('./package.json').version")
+          [ "$GITHUB_REF_NAME" = "v$pkg" ] || {
+            echo "::error::tag $GITHUB_REF_NAME does not match package.json version v$pkg"
+            exit 1
+          }
+
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-workspace.yaml') }}
+      - run: pnpm -F @thinkbuff/figma-react exec playwright install --with-deps chromium
+      - run: pnpm check
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+
+      # Auth is npm trusted publishing (OIDC) — no token needed.
+      - name: publish to npm
+        run: pnpm -r publish --provenance --no-git-checks
+
+      - name: create github release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ver="${GITHUB_REF_NAME#v}"
+          awk -v v="$ver" '$0=="## v"v{f=1;next} f&&/^## /{exit} f' CHANGELOG.md > notes.md
+          gh release create "$GITHUB_REF_NAME" --notes-file notes.md --verify-tag

@@ -1,13 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
-import { Root as Portal } from '@radix-ui/react-portal';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { createPortal } from 'react-dom';
+import { useArgs } from 'storybook/preview-api';
 
-import { Button } from '../button';
-import { Label } from '../label';
-import { Input } from '../input';
 import { ActionIcon } from '../action-icon';
+import { Button } from '../button';
+import { Input } from '../input';
+import { Label } from '../label';
 import { toast, Toaster } from '../toast';
-
 import * as Dialog from './dialog';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof Dialog.Content> & {
@@ -15,7 +14,7 @@ type StoryArgs = React.ComponentPropsWithRef<typeof Dialog.Content> & {
   open?: boolean;
 };
 
-const meta = {
+const meta: Meta = {
   title: 'Components/Dialog',
   component: Dialog.Content,
   parameters: {
@@ -27,43 +26,56 @@ const meta = {
     open: false,
   },
   decorators: [
-    Story => (
+    (Story) => (
       <>
         <Story />
-        <Portal>
-          <Toaster className="pointer-events-auto" />
-        </Portal>
+        {createPortal(<Toaster className="pointer-events-auto" />, document.body)}
       </>
     ),
   ],
-  render: (args) => {
+  render: function Render(args) {
     const { open: _, modal, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
     return (
-      <Dialog.Root modal={modal} open={open} onOpenChange={value => updateArgs({ open: value })}>
-        <Dialog.Trigger asChild>
-          <Button variant="outline">Edit profile</Button>
-        </Dialog.Trigger>
-        <Dialog.Content
-          {...props}
-          onPointerDownOutside={(event) => {
-            if (event.target instanceof Element && event.target.closest('[data-sonner-toast]')) {
-              event.preventDefault();
-            }
-          }}
-        >
+      <Dialog.Root
+        modal={modal}
+        open={open}
+        onOpenChange={(value, eventDetails) => {
+          const target = eventDetails.event.target;
+          if (
+            eventDetails.reason === 'outside-press' &&
+            target instanceof Element &&
+            target.closest('[data-sonner-toast]')
+          ) {
+            eventDetails.cancel();
+            return;
+          }
+          updateArgs({ open: value });
+        }}
+      >
+        <Dialog.Trigger render={<Button variant="secondary">Edit profile</Button>} />
+        <Dialog.Content {...props}>
           <Dialog.Header className="justify-between">
             <Dialog.Title>Edit profile</Dialog.Title>
-            <Dialog.Close asChild>
-              <ActionIcon className="-mr-2 -mt-2">
-                <span className="i-mdi-window-close size-4"></span>
-              </ActionIcon>
-            </Dialog.Close>
+            <Dialog.Close
+              render={
+                <ActionIcon aria-label="Close">
+                  <span className="icon-[mdi--window-close] size-4"></span>
+                </ActionIcon>
+              }
+            />
           </Dialog.Header>
-          <Dialog.Description>Make changes to your profile here. Click save when you&apos;re done.</Dialog.Description>
-          <div className="grid gap-4 p-4">
+          <Dialog.Section>
+            <Dialog.Description>
+              Make changes to your profile here. Click save when you&apos;re done.
+            </Dialog.Description>
+          </Dialog.Section>
+          <Dialog.Section className="grid gap-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
+              <Label
+                htmlFor="name"
+                className="text-right"
+              >
                 Name
               </Label>
               <Input
@@ -76,7 +88,10 @@ const meta = {
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
+              <Label
+                htmlFor="username"
+                className="text-right"
+              >
                 Username
               </Label>
               <Input
@@ -88,13 +103,9 @@ const meta = {
                 }}
               />
             </div>
-          </div>
-          <Dialog.Footer className="justify-end gap-3">
-            <Dialog.Close asChild>
-              <Button variant="outline" color="secondary">
-                Cancel
-              </Button>
-            </Dialog.Close>
+          </Dialog.Section>
+          <Dialog.Footer className="justify-end gap-2">
+            <Dialog.Close render={<Button variant="secondary">Cancel</Button>} />
             <Button
               onClick={() => {
                 toast.success('Profile has been updated', {
@@ -115,5 +126,11 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+export const Large: Story = {
+  args: {
+    size: 'large',
+  },
+};
 
 export default meta;

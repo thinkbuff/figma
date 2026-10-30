@@ -1,64 +1,133 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import unocss from 'unocss/vite';
-import dts from 'vite-plugin-dts';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite-plus';
+
+import tailwindcss from '@tailwindcss/vite';
+import { playwright } from '@vitest/browser-playwright';
 import { glob } from 'glob';
 
 import { dependencies } from './package.json';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const entries = glob
-  .sync('src/**/*.{ts,tsx}', {
-    ignore: ['src/**/*.stories.{ts,tsx}'],
-  })
-  .map(file => ([
-    path.relative(
-      'src',
-      file.slice(0, file.length - path.extname(file).length),
-    ),
-    path.resolve(__dirname, file),
-  ]));
+const vitePlugins = [react(), tailwindcss()];
 
-/**
- * @see https://vitejs.dev/config/
- */
-export default defineConfig({
-  plugins: [
-    react(),
-    unocss(),
-    dts({
-      include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.stories.{ts,tsx}'],
-    }),
-  ],
-  resolve: {
-    alias: {
-      '~': path.resolve(__dirname, 'src'),
-    },
+const viteResolve = {
+  alias: {
+    '~': path.resolve(__dirname, 'src'),
   },
-  build: {
-    copyPublicDir: false,
-    target: 'esnext',
-    minify: false,
-    lib: {
-      entry: Object.fromEntries(entries),
-      formats: ['es'],
-    },
-    rollupOptions: {
-      external: [
-        'react',
-        'react/jsx-runtime',
-        'react-dom',
-        './components',
-        ...Object.keys(dependencies),
-      ],
-      output: {
-        preserveModules: true,
-        entryFileNames: '[name].mjs',
+};
+
+// Every exported @base-ui/react subpath must be pre-optimized: the bare
+// package name in `dependencies` does not cover deep imports, and a
+// partially-optimized dep graph leaves stale Radix chunks in the browser
+// test cache after a dependency swap (phantom VRT diffs).
+const baseUiSubpaths = Object.keys(
+  JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, 'node_modules/@base-ui/react/package.json'), 'utf8'),
+  ).exports as Record<string, unknown>,
+)
+  .filter((key) => key !== '.' && !key.includes('*') && key !== './package.json')
+  .map((key) => `@base-ui/react/${key.slice(2)}`);
+
+// BrowserProviderOption<T> is invariant over T and vite-plus resolves a
+// different vitest instance than the browser-playwright import, so the
+// provider option needs an opaque cast either way.
+function browserProvider() {
+  return playwright() as never;
+}
+
+const optimizeDeps = {
+  include: [
+    'react',
+    'react/jsx-runtime',
+    'react/jsx-dev-runtime',
+    'react-dom',
+    'react-dom/client',
+    'vitest-browser-react',
+    ...baseUiSubpaths,
+    ...Object.keys(dependencies),
+  ],
+};
+
+const entries = Object.fromEntries(
+  glob
+    .sync('src/**/*.{ts,tsx}', {
+      ignore: ['src/**/*.stories.*'],
+    })
+    .map((file) => [
+      path.relative('src', file.slice(0, file.length - path.extname(file).length)),
+      path.resolve(__dirname, file),
+    ]),
+);
+
+export default defineConfig({
+  plugins: vitePlugins,
+  resolve: viteResolve,
+  optimizeDeps,
+  test: {
+    projects: [
+      {
+        test: {
+          name: 'unit',
+          environment: 'node',
+          include: ['tests/**/*.test.ts'],
+        },
       },
-    },
+      {
+        test: {
+          name: 'browser',
+          include: ['tests/**/*.test.tsx', '!tests/visual/**'],
+          setupFiles: ['./tests/test-utils/setup.ts'],
+          browser: {
+            enabled: true,
+            provider: browserProvider(),
+            headless: true,
+            instances: [{ browser: 'chromium' }],
+          },
+        },
+      },
+      {
+        test: {
+          name: 'vrt',
+          include: ['tests/**/*.vrt.test.tsx'],
+          setupFiles: ['./tests/visual/vrt.setup.ts'],
+          browser: {
+            enabled: true,
+            provider: browserProvider(),
+            headless: true,
+            viewport: { width: 800, height: 600 },
+            instances: [{ browser: 'chromium' }],
+          },
+        },
+      },
+      {
+        define: {
+          'import.meta.env.VRT_PROBE': JSON.stringify(process.env.VRT_PROBE ?? ''),
+        },
+        test: {
+          name: 'probe',
+          include: ['tests/visual/probe.test.tsx'],
+          setupFiles: ['./tests/visual/vrt.setup.ts'],
+          browser: {
+            enabled: true,
+            provider: browserProvider(),
+            headless: true,
+            viewport: { width: 800, height: 600 },
+            instances: [{ browser: 'chromium' }],
+          },
+        },
+      },
+    ],
+  },
+  pack: {
+    entry: entries,
+    format: ['esm'],
+    dts: true,
+    unbundle: true,
+    target: 'esnext',
   },
 });

@@ -1,8 +1,12 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import unocss from 'unocss/vite';
+import { defineConfig } from 'vite-plus';
+
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), unocss()],
+  // Relative base keeps the build mountable at any subpath (GitHub Pages
+  // serves it from /figma/playground/).
+  base: './',
+  plugins: [react(), tailwindcss()],
 });

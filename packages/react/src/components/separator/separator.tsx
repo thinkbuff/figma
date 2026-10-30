@@ -1,35 +1,40 @@
-import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import { Separator as BaseSeparator } from '@base-ui/react/separator';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
 /**
  * Visually or semantically separates content.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/separator)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/separator#api-reference)
+ * Uses `border/default`, the divider token for default surfaces. On menu or
+ * tooltip surfaces the spec draws `border/menu` / `border/tooltip` instead —
+ * pass `bg-figma-border-menu` / `bg-figma-border-tooltip` via `className`.
+ *
+ * - [Docs](https://base-ui.com/react/components/separator)
  */
-const Separator: React.FC<React.ComponentPropsWithRef<typeof SeparatorPrimitive.Root>> = ({
+function Separator({
   className,
   orientation = 'vertical',
   decorative = true,
   ref,
   ...props
-}) => (
-  <SeparatorPrimitive.Root
-    ref={ref}
-    decorative={decorative}
-    orientation={orientation}
-    className={cn(
-      'block',
-      'shrink-0',
-      'bg-figma-border',
-      orientation === 'horizontal' ? 'w-full h-px' : 'w-px h-full',
-      className,
-    )}
-    {...props}
-  />
-);
+}: React.ComponentPropsWithRef<typeof BaseSeparator> & { decorative?: boolean }) {
+  return (
+    <BaseSeparator
+      ref={ref}
+      role={decorative ? 'none' : 'separator'}
+      orientation={orientation}
+      className={addClassName(
+        className,
+        'block',
+        'shrink-0',
+        'bg-figma-border',
+        orientation === 'horizontal' ? 'w-full h-px' : 'w-px h-full',
+      )}
+      {...props}
+    />
+  );
+}
 
-Separator.displayName = SeparatorPrimitive.Root.displayName;
+Separator.displayName = 'Separator';
 
 export { Separator };

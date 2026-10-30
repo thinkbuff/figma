@@ -1,75 +1,109 @@
-import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
+import { Toggle as BaseToggle } from '@base-ui/react/toggle';
+import { ToggleGroup as BaseToggleGroup } from '@base-ui/react/toggle-group';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
+
+interface ToggleGroupProps extends React.ComponentPropsWithRef<typeof BaseToggleGroup> {
+  /**
+   * Stretches the control to fill the available width.
+   */
+  fullWidth?: boolean | undefined;
+}
+
+interface ToggleGroupItemProps extends React.ComponentPropsWithRef<typeof BaseToggle> {}
 
 /**
  * A set of two-state buttons that can be toggled on or off.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/toggle-group)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/toggle-group#api-reference)
+ * - [Docs](https://base-ui.com/react/components/toggle-group)
+ * - [API Reference](https://base-ui.com/react/components/toggle-group#api)
  */
-const ToggleGroup: React.FC<React.ComponentPropsWithRef<typeof ToggleGroupPrimitive.Root>> = ({
+function ToggleGroup({
   className,
   children,
   disabled,
+  fullWidth,
   ref,
   ...props
-}) => (
-  <ToggleGroupPrimitive.Root
-    ref={ref}
-    className={cn(
-      'group',
-      'flex',
-      'items-center',
-      'justify-center',
-      'bg-figma',
-      'border',
-      'border-solid',
-      'border-transparent',
-      'rounded-0.5',
-      disabled ? 'cursor-not-allowed' : 'hover:border-figma',
-      className,
-    )}
-    {...props}
-    disabled={disabled}
-  >
-    {children}
-  </ToggleGroupPrimitive.Root>
-);
+}: ToggleGroupProps) {
+  return (
+    <BaseToggleGroup
+      ref={ref}
+      className={addClassName(
+        className,
+        'group',
+        fullWidth ? 'flex' : 'inline-flex',
+        'bg-figma-secondary',
+        'rounded-figma-md',
+      )}
+      {...props}
+      data-full-width={fullWidth || undefined}
+      disabled={disabled}
+    >
+      {children}
+    </BaseToggleGroup>
+  );
+}
 
-ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName;
+ToggleGroup.displayName = 'ToggleGroup';
 
-const ToggleGroupItem: React.FC<React.ComponentPropsWithRef<typeof ToggleGroupPrimitive.Item>> = ({
-  className,
-  children,
-  ref,
-  ...props
-}) => (
-  <ToggleGroupPrimitive.Item
-    ref={ref}
-    className={cn(
-      'size-6',
-      'font-size-11',
-      'flex',
-      'justify-center',
-      'items-center',
-      'cursor-default',
-      'appearance-none',
-      'text-figma',
-      'fill-figma-icon',
-      'bg-transparent',
-      'transition-colors',
-      'data-[state=on]:bg-figma-tertiary',
-      'disabled:(pointer-events-none cursor-not-allowed text-figma-disabled fill-figma-icon-disabled)',
-      'disabled:data-[state=on]:(bg-figma-disabled text-figma-ondisabled fill-figma-icon-ondisabled)',
-      className,
-    )}
-    {...props}
-  >
-    {children}
-  </ToggleGroupPrimitive.Item>
-);
+function ToggleGroupItem({ className, children, ref, ...props }: ToggleGroupItemProps) {
+  return (
+    <BaseToggle
+      ref={ref}
+      className={addClassName(
+        className,
+        'h-6',
+        'min-w-6',
+        'w-fit',
+        'flex-[1_0_auto]',
+        'group-data-[full-width]:min-w-0 group-data-[full-width]:flex-1',
+        'text-figma-body-medium',
+        'font-figma-default',
+        'flex',
+        'justify-center',
+        'items-center',
+        'whitespace-nowrap',
+        'cursor-default',
+        'appearance-none',
+        'text-figma-secondary',
+        'fill-figma-icon-secondary',
+        'bg-transparent',
+        'rounded-figma-md',
+        'transition-colors',
+        'focus-visible:outline-solid focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-figma-border-selected',
+        'data-pressed:bg-figma data-pressed:text-figma data-pressed:fill-figma-icon data-pressed:shadow-[inset_0_0_0_1px_var(--figma-color-border)]',
+        'disabled:text-figma-tertiary disabled:fill-figma-icon-disabled',
+      )}
+      {...props}
+    >
+      {children}
+    </BaseToggle>
+  );
+}
 
-ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName;
+ToggleGroupItem.displayName = 'ToggleGroupItem';
 
-export { ToggleGroup, ToggleGroupItem };
+function ToggleGroupText({ className, ref, ...props }: React.ComponentPropsWithRef<'span'>) {
+  return (
+    <span
+      ref={ref}
+      className={addClassName(
+        className,
+        'flex',
+        'items-center',
+        'p-2',
+        'gap-1.5',
+        'min-w-0',
+        'truncate',
+        'group-data-disabled:text-figma-tertiary',
+      )}
+      {...props}
+    />
+  );
+}
+
+ToggleGroupText.displayName = 'ToggleGroupText';
+
+export { ToggleGroup, ToggleGroupItem, ToggleGroupText };
+export type { ToggleGroupProps, ToggleGroupItemProps };

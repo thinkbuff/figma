@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { Label } from '../label';
-
 import { Switch } from './switch';
 
 const meta = {
@@ -23,14 +22,14 @@ const meta = {
     disabled: false,
     checked: false,
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ checked }, updateArgs] = useArgs();
 
     return (
       <Switch
         {...args}
         checked={checked}
-        onCheckedChange={value => updateArgs({ checked: value })}
+        onCheckedChange={(value) => updateArgs({ checked: value })}
       />
     );
   },
@@ -46,6 +45,12 @@ export const Checked: Story = {
   },
 };
 
+export const Mixed: Story = {
+  args: {
+    indeterminate: true,
+  },
+};
+
 export const Disabled: Story = {
   args: {
     disabled: true,
@@ -53,7 +58,7 @@ export const Disabled: Story = {
 };
 
 export const WithLabel: Story = {
-  render: (args) => {
+  render: function Render(args) {
     const [{ checked }, updateArgs] = useArgs();
 
     return (

@@ -1,23 +1,24 @@
-import * as LabelPrimitive from '@radix-ui/react-label';
-
 import { cn } from '~/utils';
 
-const Label: React.FC<React.ComponentPropsWithRef<typeof LabelPrimitive.Root>> = ({ className, ref, ...props }) => (
-  <LabelPrimitive.Root
-    ref={ref}
-    className={cn(
-      'font-size-11',
-      'font-medium',
-      'leading-none',
-      'cursor-default',
-      'disabled:(cursor-not-allowed text-figma-disabled)',
-      'peer-disabled:(cursor-not-allowed text-figma-disabled)',
-      className,
-    )}
-    {...props}
-  />
-);
+function Label({ className, ref, ...props }: React.ComponentPropsWithRef<'label'>) {
+  return (
+    // oxlint-disable-next-line jsx-a11y/label-has-associated-control -- primitive; the caller associates via htmlFor or nesting
+    <label
+      ref={ref}
+      className={cn(
+        'text-figma-body-medium',
+        'font-figma-default',
+        'cursor-default',
+        'disabled:cursor-not-allowed disabled:text-figma-disabled',
+        'peer-disabled:cursor-not-allowed peer-disabled:text-figma-disabled',
+        'peer-data-disabled:cursor-not-allowed peer-data-disabled:text-figma-disabled',
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
-Label.displayName = LabelPrimitive.Root.displayName;
+Label.displayName = 'Label';
 
 export { Label };

@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { Button } from '../button';
 import { Input } from '../input';
 import { Label } from '../label';
-
 import * as Popover from './popover';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof Popover.Content> & {
@@ -53,8 +52,7 @@ const meta = {
       table: {
         type: {
           summary: 'number',
-          detail:
-            'An offset in pixels from the "start" or "end" alignment options.',
+          detail: 'An offset in pixels from the "start" or "end" alignment options.',
         },
       },
     },
@@ -83,16 +81,6 @@ const meta = {
         },
       },
     },
-    avoidCollisions: {
-      table: {
-        type: {
-          summary: 'boolean',
-          detail:
-            'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
-        },
-        defaultValue: { summary: 'true' },
-      },
-    },
   },
   args: {
     modal: false,
@@ -100,10 +88,9 @@ const meta = {
     align: 'center',
     alignOffset: 0,
     side: 'bottom',
-    sideOffset: 4,
-    avoidCollisions: true,
+    sideOffset: 11,
   },
-  render: (args) => {
+  render: function Render(args) {
     const { open: _, modal, ...props } = args;
     const [{ open }, updateArgs] = useArgs();
 
@@ -112,12 +99,13 @@ const meta = {
         modal={modal}
         defaultOpen={false}
         open={open}
-        onOpenChange={value => updateArgs({ open: value })}
+        onOpenChange={(value) => updateArgs({ open: value })}
       >
-        <Popover.Trigger asChild>
-          <Button variant="outline">Open</Button>
-        </Popover.Trigger>
-        <Popover.Content {...props} className="w-60 p-4">
+        <Popover.Trigger render={<Button variant="secondary">Open</Button>} />
+        <Popover.Content
+          {...props}
+          className="w-60 p-4"
+        >
           <div className="grid gap-4">
             <div className="space-y-2">
               <h3 className="font-medium leading-none">Dimensions</h3>

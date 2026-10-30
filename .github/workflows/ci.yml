@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-workspace.yaml') }}
+      - run: pnpm -F @thinkbuff/figma-react exec playwright install --with-deps chromium
+      - run: pnpm build
+      - run: pnpm check
+      - run: pnpm typecheck
+      - run: pnpm test
+      - name: generated theme css is committed
+        run: git diff --exit-code -- packages/theme/src/css/

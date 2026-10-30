@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { Label } from '../label';
-
 import * as Radio from './radio';
 
 const meta = {
@@ -35,36 +34,41 @@ const meta = {
     value: 'all',
     inline: false,
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs();
 
-    const options = [{
-      value: 'all',
-      label: 'All comments, mentions, and replies',
-    }, {
-      value: 'only',
-      label: 'Only mentions and replies',
-    }, {
-      value: 'none',
-      label: 'None',
-    }];
+    const options = [
+      {
+        value: 'all',
+        label: 'All comments, mentions, and replies',
+      },
+      {
+        value: 'only',
+        label: 'Only mentions and replies',
+      },
+      {
+        value: 'none',
+        label: 'None',
+      },
+    ];
 
     return (
       <Radio.Group
         {...args}
         className="gap-3"
         value={value}
-        onValueChange={changed => updateArgs({ value: changed })}
+        onValueChange={(changed) => updateArgs({ value: changed })}
       >
-        {options.map(option => (
-          <div key={option.value} className="flex items-center gap-2">
+        {options.map((option) => (
+          <div
+            key={option.value}
+            className="flex items-center gap-2"
+          >
             <Radio.GroupItem
               id={`radio-${option.value}`}
               value={option.value}
             />
-            <Label htmlFor={`radio-${option.value}`}>
-              {option.label}
-            </Label>
+            <Label htmlFor={`radio-${option.value}`}>{option.label}</Label>
           </div>
         ))}
       </Radio.Group>
@@ -85,6 +89,36 @@ export const Inline: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
+  },
+};
+
+export const Buttons: Story = {
+  render: function Render() {
+    const [{ value }, updateArgs] = useArgs();
+    return (
+      <Radio.Group
+        className="w-48 gap-2"
+        value={value}
+        onValueChange={(changed) => updateArgs({ value: changed })}
+      >
+        {['all', 'only', 'none'].map((option) => (
+          <Radio.GroupItem
+            key={option}
+            value={option}
+            variant="button"
+          >
+            {option === 'all' ? 'All' : option === 'only' ? 'Only' : 'None'}
+          </Radio.GroupItem>
+        ))}
+        <Radio.GroupItem
+          value="disabled"
+          variant="button"
+          disabled
+        >
+          Disabled
+        </Radio.GroupItem>
+      </Radio.Group>
+    );
   },
 };
 

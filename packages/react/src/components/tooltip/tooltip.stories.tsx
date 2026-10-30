@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { ActionIcon } from '../action-icon';
-
 import { Tooltip, TooltipProvider } from './tooltip';
 
 const meta = {
@@ -34,7 +33,10 @@ const meta = {
         type: 'number',
       },
       table: {
-        type: { summary: 'number', detail: 'An offset in pixels from the "start" or "end" alignment options.' },
+        type: {
+          summary: 'number',
+          detail: 'An offset in pixels from the "start" or "end" alignment options.',
+        },
       },
     },
     side: {
@@ -57,15 +59,6 @@ const meta = {
       },
       table: {
         type: { summary: 'number', detail: 'The distance in pixels from the trigger.' },
-      },
-    },
-    avoidCollisions: {
-      table: {
-        type: {
-          summary: 'boolean',
-          detail: 'When true, overrides the side andalign preferences to prevent collisions with boundary edges.',
-        },
-        defaultValue: { summary: 'true' },
       },
     },
     withArrow: {
@@ -92,8 +85,6 @@ const meta = {
     align: 'center',
     alignOffset: 0,
     side: 'top',
-    sideOffset: 4,
-    avoidCollisions: true,
     withArrow: true,
   },
 } satisfies Meta<typeof Tooltip>;
@@ -104,11 +95,11 @@ export const Default: Story = {
   args: {
     content: 'Open settings',
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ open }, updateArgs] = useArgs();
 
     return (
-      <TooltipProvider delayDuration={200}>
+      <TooltipProvider delay={200}>
         <Tooltip
           {...args}
           open={open}
@@ -116,13 +107,22 @@ export const Default: Story = {
             updateArgs({ open: value });
           }}
         >
-          <ActionIcon>
-            <span className="i-tabler-adjustments-alt size-4"></span>
+          <ActionIcon aria-label="Adjust">
+            <span className="icon-[tabler--adjustments-alt] size-4"></span>
           </ActionIcon>
         </Tooltip>
       </TooltipProvider>
     );
   },
+};
+
+export const WithHotkey: Story = {
+  args: {
+    content: 'Paste',
+    hotkey: '⌘V',
+    open: true,
+  },
+  render: Default.render,
 };
 
 export default meta;

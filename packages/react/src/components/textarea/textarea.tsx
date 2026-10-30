@@ -1,19 +1,23 @@
 import { cn } from '~/utils';
 
-import { inputVariants, type InputVariantsProps } from '../input';
+import { inputVariants } from '../input';
 
 const textareaVariants = inputVariants;
 
-type TextareaVariantsProps = InputVariantsProps;
-
-interface TextareaProps extends React.ComponentPropsWithRef<'textarea'>, TextareaVariantsProps {
+// UI3 multi-line inputs only exist in the bordered style, so unlike Input there
+// is no variant prop.
+interface TextareaProps extends React.ComponentPropsWithRef<'textarea'> {
   invalid?: boolean;
   disabled?: boolean;
 }
 
-const Textarea: React.FC<TextareaProps> = ({ className, variant, invalid, disabled, children, ref, ...props }) => {
+function Textarea({ className, invalid, disabled, children, ref, ...props }: TextareaProps) {
   return (
-    <div className={cn('peer', 'relative')} data-disabled={disabled} data-invalid={invalid}>
+    <div
+      className={cn('peer', 'relative')}
+      data-disabled={disabled}
+      data-invalid={invalid}
+    >
       {children}
       <textarea
         ref={ref}
@@ -24,14 +28,20 @@ const Textarea: React.FC<TextareaProps> = ({ className, variant, invalid, disabl
           'px-2',
           'py-1',
           'resize-none',
-          textareaVariants({ variant, disabled, invalid, className }),
+          'break-words',
+          textareaVariants({
+            variant: 'border',
+            disabled,
+            invalid,
+            className: cn('bg-figma', className),
+          }),
         )}
         {...props}
         disabled={disabled}
       />
     </div>
   );
-};
+}
 
 Textarea.displayName = 'Textarea';
 

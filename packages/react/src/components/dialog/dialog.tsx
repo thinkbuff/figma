@@ -1,6 +1,6 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { Dialog as DialogPrimitive } from '@base-ui/react/dialog';
 
-import { cn } from '~/utils';
+import { addClassName, cn } from '~/utils';
 
 const DialogRoot = DialogPrimitive.Root;
 
@@ -10,102 +10,179 @@ const DialogPortal = DialogPrimitive.Portal;
 
 const DialogClose = DialogPrimitive.Close;
 
-const DialogOverlay: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive.Overlay>> = ({
+function DialogOverlay({
   className,
   ref,
   ...props
-}) => (
-  <DialogPrimitive.Overlay
-    ref={ref}
-    className={cn(
-      'fixed',
-      'inset-0',
-      'z-50',
-      'bg-black/50',
-      'data-[state=open]:(animate-in fade-in-0)',
-      'data-[state=closed]:(animate-out fade-out-0)',
-      className,
-    )}
-    {...props}
-  />
-);
-
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
-
-interface DialogContentProps extends React.ComponentPropsWithRef<typeof DialogPrimitive.Content> {
-  container?: DialogPrimitive.DialogPortalProps['container'];
-}
-
-/**
- * A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
- *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/dialog)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/dialog#api-reference)
- */
-const DialogContent: React.FC<DialogContentProps> = ({ className, container, ref, ...props }) => (
-  <DialogPortal container={container}>
-    <DialogOverlay />
-    <DialogPrimitive.Content
+}: React.ComponentPropsWithRef<typeof DialogPrimitive.Backdrop>) {
+  return (
+    <DialogPrimitive.Backdrop
       ref={ref}
-      className={cn(
-        'fixed',
-        'grid',
-        'w-full',
-        'max-w-80',
-        'left-1/2',
-        'top-1/2',
-        '-translate-x-1/2',
-        '-translate-y-1/2',
-        'z-50',
-        'rounded-0.5',
-        'bg-figma',
-        'p-6',
-        'shadow-lg',
-        'data-[state=open]:(animate-in fade-in-0 zoom-in-95 slide-in-from-left-1/2 slide-in-from-top-12/25)',
-        'data-[state=closed]:(animate-out fade-out-0 zoom-out-95 slide-out-to-left-1/2 slide-out-to-top-12/25)',
-        'animate-duration-200',
+      className={addClassName(
         className,
+        'fixed',
+        'inset-0',
+        'z-50',
+        'bg-figma-overlay',
+        'transition-opacity duration-150 data-starting-style:opacity-0 data-ending-style:opacity-0 motion-reduce:transition-none',
       )}
       {...props}
     />
-  </DialogPortal>
-);
+  );
+}
 
-DialogContent.displayName = DialogPrimitive.Content.displayName;
+DialogOverlay.displayName = 'DialogOverlay';
 
-const DialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({ className, children, ref, ...props }) => (
-  <div ref={ref} className={cn('flex', 'items-center', 'pb-6', className)} {...props}>
-    {children}
-  </div>
-);
+interface DialogContentProps extends React.ComponentPropsWithRef<typeof DialogPrimitive.Popup> {
+  container?: React.ComponentProps<typeof DialogPrimitive.Portal>['container'];
+  /**
+   * UI3 template width: `default` is 320px, `large` is 480px.
+   */
+  size?: 'default' | 'large';
+  /**
+   * Vertical placement. UI3 modals hang near the top (`top`) rather than
+   * dead-center.
+   */
+  placement?: 'top' | 'center';
+}
+
+/**
+ * A window overlaid on either the primary window or another dialog window, rendering the content
+ * underneath inert.
+ *
+ * - [Docs](https://base-ui.com/react/components/dialog)
+ * - [API Reference](https://base-ui.com/react/components/dialog#api-reference)
+ */
+function DialogContent({
+  className,
+  container,
+  size,
+  placement,
+  ref,
+  ...props
+}: DialogContentProps) {
+  return (
+    <DialogPortal container={container}>
+      <DialogOverlay />
+      <DialogPrimitive.Popup
+        ref={ref}
+        className={addClassName(
+          className,
+          'fixed',
+          'w-full',
+          size === 'large' ? 'max-w-120' : 'max-w-80',
+          placement === 'center' ? 'top-1/2 -translate-y-1/2' : 'top-[min(10vh,80px)]',
+          'left-1/2',
+          '-translate-x-1/2',
+          'z-50',
+          'max-h-[80%]',
+          'overflow-y-auto',
+          'rounded-figma-lg',
+          'bg-figma',
+          'shadow-figma-modal',
+          'outline-none',
+          'transition-[opacity,scale] duration-150 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95 motion-reduce:transition-none',
+        )}
+        {...props}
+      />
+    </DialogPortal>
+  );
+}
+
+DialogContent.displayName = 'DialogContent';
+
+function DialogHeader({ className, children, ref, ...props }: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        'flex',
+        'h-10',
+        'items-center',
+        'px-2',
+        'border-b',
+        'border-figma-border',
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
 
 DialogHeader.displayName = 'DialogHeader';
 
-const DialogFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({ className, children, ref, ...props }) => (
-  <div ref={ref} className={cn('flex', 'items-center', 'pt-6', className)} {...props}>
-    {children}
-  </div>
-);
+function DialogSection({ className, ref, ...props }: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <div
+      ref={ref}
+      className={cn('px-4 py-2', className)}
+      {...props}
+    />
+  );
+}
+
+DialogSection.displayName = 'DialogSection';
+
+function DialogFooter({ className, children, ref, ...props }: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        'flex',
+        'h-10',
+        'items-center',
+        'px-2',
+        'border-t',
+        'border-figma-border',
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
 
 DialogFooter.displayName = 'DialogFooter';
 
-const DialogTitle: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive.Title>> = ({
+function DialogTitle({
   className,
   ref,
   ...props
-}) => (
-  <DialogPrimitive.Title ref={ref} className={cn('text-figma', 'font-size-14', 'font-medium', className)} {...props} />
-);
+}: React.ComponentPropsWithRef<typeof DialogPrimitive.Title>) {
+  return (
+    <DialogPrimitive.Title
+      ref={ref}
+      className={addClassName(
+        className,
+        'text-figma',
+        'text-figma-body-medium',
+        'font-figma-strong',
+      )}
+      {...props}
+    />
+  );
+}
 
-DialogTitle.displayName = DialogPrimitive.Title.displayName;
+DialogTitle.displayName = 'DialogTitle';
 
-const DialogDescription: React.FC<React.ComponentPropsWithRef<typeof DialogPrimitive.Description>> = ({
+function DialogDescription({
   className,
   ref,
   ...props
-}) => <DialogPrimitive.Description ref={ref} className={cn('text-figma', 'font-size-11', className)} {...props} />;
+}: React.ComponentPropsWithRef<typeof DialogPrimitive.Description>) {
+  return (
+    <DialogPrimitive.Description
+      ref={ref}
+      className={addClassName(className, 'text-figma', 'text-figma-body-medium')}
+      {...props}
+    />
+  );
+}
 
-DialogDescription.displayName = DialogPrimitive.Description.displayName;
+DialogDescription.displayName = 'DialogDescription';
 
 export {
   DialogRoot as Root,
@@ -115,6 +192,7 @@ export {
   DialogContent as Content,
   DialogHeader as Header,
   DialogFooter as Footer,
+  DialogSection as Section,
   DialogTitle as Title,
   DialogDescription as Description,
   DialogClose as Close,

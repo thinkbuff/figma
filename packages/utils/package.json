@@ -1,59 +1,71 @@
 {
   "name": "@thinkbuff/figma-utils",
-  "author": "Eleven <eteplus@outlook.com>",
-  "license": "MIT",
-  "type": "module",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Utilities for Figma plugin and widget",
-  "scripts": {
-    "clean": "rm -rf dist node_modules",
-    "build": "tsc && vite build",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm build"
-  },
-  "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/utils#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/thinkbuff/figma",
-    "directory": "packages/utils"
-  },
-  "bugs": {
-    "url": "https://github.com/thinkbuff/figma/issues"
-  },
   "keywords": [
     "figma",
     "figma-plugin",
     "figma-utils"
   ],
-  "publishConfig": {
-    "access": "public"
+  "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/utils#readme",
+  "bugs": {
+    "url": "https://github.com/thinkbuff/figma/issues"
   },
+  "license": "MIT",
+  "author": "Eleven <eteplus@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thinkbuff/figma",
+    "directory": "packages/utils"
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "type": "module",
   "sideEffects": false,
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs"
     },
     "./node": {
-      "types": "./dist/node/index.d.ts",
+      "types": "./dist/node/index.d.mts",
       "import": "./dist/node/index.mjs"
     },
     "./image": {
-      "types": "./dist/image/index.d.ts",
+      "types": "./dist/image/index.d.mts",
       "import": "./dist/image/index.mjs"
     },
     "./message-channel": {
-      "types": "./dist/message-channel.d.ts",
+      "types": "./dist/message-channel.d.mts",
       "import": "./dist/message-channel.mjs"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rm -rf dist node_modules",
+    "build": "vp pack",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "eventemitter3": "catalog:runtime",
+    "type-fest": "catalog:types"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "catalog:figma",
+    "@figma/widget-typings": "catalog:figma",
+    "typescript": "catalog:toolchain",
+    "vite-plus": "catalog:toolchain",
+    "vitest": "catalog:test"
+  },
   "peerDependencies": {
     "@figma/plugin-typings": "*",
     "@figma/widget-typings": "*"
@@ -65,18 +77,5 @@
     "@figma/widget-typings": {
       "optional": true
     }
-  },
-  "dependencies": {
-    "eventemitter3": "^5.0.1",
-    "type-fest": "^4.41.0"
-  },
-  "devDependencies": {
-    "@figma/plugin-typings": "^1.112.0",
-    "@figma/widget-typings": "^1.11.0",
-    "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.4"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
   }
 }

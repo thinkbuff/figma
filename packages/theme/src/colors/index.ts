@@ -1,12 +1,21 @@
-import { BaseThemeCSSVariables, type BaseThemeCSSVariableKey } from './base';
-import { FigmaLightThemeCSSVariables, FigmaDarkThemeCSSVariables, type FigmaThemeCSSVariableKey } from './figma';
-import { FigJamLightThemeCSSVariables, type FigJamThemeCSSVariableKey } from './figjam';
+import { FigJamLightThemeCSSVariables } from '../theme/colors/figjam';
+import { FigmaDarkThemeCSSVariables, FigmaLightThemeCSSVariables } from '../theme/colors/figma';
+import type { ThemeCSSVariableKey } from '../theme/colors/types';
 
-export * from './base';
-export * from './figma';
-export * from './figjam';
+export { FigmaLightThemeCSSVariables, FigmaDarkThemeCSSVariables, FigJamLightThemeCSSVariables };
+export { FigJamDarkThemeCSSVariables } from '../theme/colors/figjam';
+export {
+  DevModeLightThemeCSSVariables,
+  DevModeDarkThemeCSSVariables,
+} from '../theme/colors/devmode';
+export { SlidesLightThemeCSSVariables, SlidesDarkThemeCSSVariables } from '../theme/colors/slides';
+export type { FigmaThemeCSSVariables, FigmaThemeCSSVariableKey } from '../theme/colors/figma';
+export type { FigJamThemeCSSVariables, FigJamThemeCSSVariableKey } from '../theme/colors/figjam';
+export type { DevModeThemeCSSVariables, DevModeThemeCSSVariableKey } from '../theme/colors/devmode';
+export type { SlidesThemeCSSVariables, SlidesThemeCSSVariableKey } from '../theme/colors/slides';
+export { generateThemeVariablesCSS } from '../theme/colors';
 
-export type ThemeCSSVariableKey = BaseThemeCSSVariableKey | FigmaThemeCSSVariableKey | FigJamThemeCSSVariableKey;
+export type { ThemeCSSVariableKey };
 
 export type ThemeColorScope = 'bg' | 'border' | 'icon' | 'text';
 
@@ -21,14 +30,14 @@ export function getCSSPreflights(theme: Record<ThemeCSSVariableKey, string>) {
 export function generateCSSVariables(type: 'figma' | 'figjam') {
   if (type === 'figma') {
     return `html, html.figma-light, .figma-light {
-      ${getCSSPreflights({ ...BaseThemeCSSVariables, ...FigmaLightThemeCSSVariables })}
+      ${getCSSPreflights(FigmaLightThemeCSSVariables)}
     }
     html.figma-dark, .figma-dark {
-      ${getCSSPreflights({ ...BaseThemeCSSVariables, ...FigmaDarkThemeCSSVariables })}
+      ${getCSSPreflights(FigmaDarkThemeCSSVariables)}
     }`;
   }
 
   return `html.figjam, .figjam {
-    ${getCSSPreflights({ ...BaseThemeCSSVariables, ...FigJamLightThemeCSSVariables })}
+    ${getCSSPreflights(FigJamLightThemeCSSVariables)}
   }`;
 }

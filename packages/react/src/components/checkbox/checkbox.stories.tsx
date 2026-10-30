@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { Label } from '../label';
-
 import { Checkbox } from './checkbox';
 
 const meta = {
@@ -24,7 +23,7 @@ const meta = {
     indeterminate: false,
     checked: false,
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ checked, indeterminate }, updateArgs] = useArgs();
 
     return (
@@ -66,6 +65,55 @@ export const Disabled: Story = {
   },
 };
 
+export const Variants: Story = {
+  render: function Render(args) {
+    const [{ checked }, updateArgs] = useArgs();
+    const variants = ['default', 'muted', 'ghost'] as const;
+    return (
+      <div className="flex flex-col gap-3">
+        {variants.map((variant) => (
+          <div
+            key={variant}
+            className="flex items-center gap-2"
+          >
+            <Checkbox
+              {...args}
+              variant={variant}
+              checked={checked}
+              onCheckedChange={(value) => updateArgs({ checked: value })}
+            />
+            <Label>{variant}</Label>
+          </div>
+        ))}
+      </div>
+    );
+  },
+};
+
+export const WithDescription: Story = {
+  render: function Render(args) {
+    const [{ checked }, updateArgs] = useArgs();
+    return (
+      <div className="flex w-64 items-start gap-2">
+        <Checkbox
+          id="checkbox-desc"
+          {...args}
+          variant="muted"
+          checked={checked}
+          onCheckedChange={(value) => updateArgs({ checked: value })}
+        />
+        <div className="flex flex-col">
+          <Label htmlFor="checkbox-desc">Off, Normal + Muted</Label>
+          <span className="text-figma-body-medium text-figma-secondary">
+            Helpful description of the setting which may briefly highlight side effects or
+            conditions of the setting.
+          </span>
+        </div>
+      </div>
+    );
+  },
+};
+
 export const WithLabel: Story = {
   argTypes: {
     indeterminate: {
@@ -74,11 +122,11 @@ export const WithLabel: Story = {
       },
     },
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ checked }, updateArgs] = useArgs();
 
     return (
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-2">
         <Checkbox
           id="checkbox"
           {...args}
@@ -87,9 +135,7 @@ export const WithLabel: Story = {
             updateArgs({ checked: !checked });
           }}
         />
-        <Label htmlFor="checkbox">
-          Accept terms and conditions.
-        </Label>
+        <Label htmlFor="checkbox">Accept terms and conditions.</Label>
       </div>
     );
   },

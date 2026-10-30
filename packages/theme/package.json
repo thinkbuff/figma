@@ -1,59 +1,35 @@
 {
   "name": "@thinkbuff/figma-theme",
-  "author": "Eleven <eteplus@outlook.com>",
-  "license": "MIT",
-  "type": "module",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Figma theme",
-  "scripts": {
-    "clean": "rm -rf dist node_modules",
-    "build": "unbuild --minify && pnpm generate:css",
-    "stub": "unbuild --stub && pnpm generate:css",
-    "generate:css": "tsx scripts/generate-css-files.ts",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "release": "changelogen --bump --no-output",
-    "prepublishOnly": "pnpm build"
-  },
+  "keywords": [
+    "figma",
+    "figma-theme",
+    "tailwindcss",
+    "tailwindcss-figma-theme",
+    "tailwindcss-theme"
+  ],
   "homepage": "https://github.com/thinkbuff/figma/tree/main/packages/react#readme",
+  "bugs": {
+    "url": "https://github.com/thinkbuff/figma/issues"
+  },
+  "license": "MIT",
+  "author": "Eleven <eteplus@outlook.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/thinkbuff/figma",
     "directory": "packages/theme"
   },
-  "bugs": {
-    "url": "https://github.com/thinkbuff/figma/issues"
-  },
-  "keywords": [
-    "figma",
-    "figma-theme",
-    "unocss",
-    "unocss-preset",
-    "unocss-preset-figma-theme"
+  "files": [
+    "*.css",
+    "dist",
+    "LICENSE"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
+  "type": "module",
   "sideEffects": false,
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
-    },
-    "./colors": {
-      "types": "./dist/colors/index.d.ts",
-      "import": "./dist/colors/index.mjs"
-    },
-    "./unocss": {
-      "types": "./dist/unocss/index.d.ts",
-      "import": "./dist/unocss/index.mjs"
-    },
-    "./css/*": "./dist/css/*",
-    "./*": "./*"
-  },
+  "types": "./dist/index.d.mts",
   "typesVersions": {
     "*": {
       "*": [
@@ -62,15 +38,37 @@
       ]
     }
   },
-  "files": [
-    "*.css",
-    "dist"
-  ],
-  "devDependencies": {
-    "unbuild": "^3.5.0",
-    "unocss": "^66.1.2"
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    },
+    "./colors": {
+      "types": "./dist/colors/index.d.mts",
+      "import": "./dist/colors/index.mjs",
+      "default": "./dist/colors/index.mjs"
+    },
+    "./css/*": "./dist/css/*",
+    "./*": "./*"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rm -rf dist node_modules",
+    "build": "pnpm generate:css && vp pack && cp -r src/css dist/css",
+    "generate:css": "tsx src/theme/generate-css-files.ts",
+    "typecheck": "tsc --noEmit",
+    "release": "changelogen --bump --no-output",
+    "prepublishOnly": "pnpm build",
+    "test": "vitest run",
+    "tokens:import": "tsx scripts/tokens-import.ts"
+  },
+  "devDependencies": {
+    "tsx": "catalog:cli",
+    "typescript": "catalog:toolchain",
+    "vite-plus": "catalog:toolchain",
+    "vitest": "catalog:test"
   }
 }

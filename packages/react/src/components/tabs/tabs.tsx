@@ -1,93 +1,106 @@
-import * as TabsPrimitive from '@radix-ui/react-tabs';
+import { Tabs } from '@base-ui/react/tabs';
+import * as React from 'react';
 
-import { cn } from '~/utils';
+import { addClassName, useComposedRefs } from '~/utils';
+
+interface TabsRootProps extends React.ComponentPropsWithRef<typeof Tabs.Root> {}
+
+interface TabsListProps extends React.ComponentPropsWithRef<typeof Tabs.List> {
+  /**
+   * UI3 "Overflow" behavior — horizontal scrolling with a right-edge
+   * gradient fade on the visible frame.
+   */
+  scrollable?: boolean;
+}
+
+interface TabsTriggerProps extends React.ComponentPropsWithRef<typeof Tabs.Tab> {}
+
+interface TabsContentProps extends React.ComponentPropsWithRef<typeof Tabs.Panel> {}
 
 /**
  * A set of layered sections of content—known as tab panels—that are displayed one at a time.
  *
- * - [Docs](https://www.radix-ui.com/docs/primitives/components/tabs)
- * - [API Reference](https://www.radix-ui.com/primitives/docs/components/tabs#api-reference)
+ * - [Docs](https://base-ui.com/react/components/tabs)
+ * - [API Reference](https://base-ui.com/react/components/tabs#api)
  */
-const TabsRoot: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Root>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <TabsPrimitive.Root
-    className={cn('bg-figma', className)}
-    {...props}
-    ref={ref}
-  />
-);
+function TabsRoot({ className, ref, ...props }: TabsRootProps) {
+  return (
+    <Tabs.Root
+      className={addClassName(className, 'bg-figma')}
+      {...props}
+      ref={ref}
+    />
+  );
+}
 
-TabsRoot.displayName = TabsPrimitive.Root.displayName;
+TabsRoot.displayName = 'Tabs';
 
-const TabsList: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.List>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <TabsPrimitive.List
-    className={cn(
-      'bg-figma',
-      'inline-flex',
-      'items-center',
-      'justify-center',
-      'border-b',
-      'border-solid',
-      'border-figma',
-      className,
-    )}
-    {...props}
-    ref={ref}
-  />
-);
+function TabsList({ className, scrollable, ref, ...props }: TabsListProps) {
+  return (
+    <Tabs.List
+      className={addClassName(
+        className,
+        'flex',
+        'gap-1',
+        scrollable
+          ? 'overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [mask-image:linear-gradient(to_right,black_88%,transparent)]'
+          : 'overflow-y-auto',
+      )}
+      {...props}
+      ref={ref}
+    />
+  );
+}
 
-TabsList.displayName = TabsPrimitive.List.displayName;
+TabsList.displayName = 'TabsList';
 
-const TabsTrigger: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Trigger>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <TabsPrimitive.Trigger
-    className={cn(
-      'inline-flex',
-      'items-center',
-      'justify-center',
-      'px-3',
-      'font-size-11',
-      'text-figma-secondary',
-      'bg-transparent',
-      'hover:text-figma',
-      'data-[state=active]:(text-figma font-bold)',
-      'disabled:pointer-events-none',
-      className,
-    )}
-    {...props}
-    ref={ref}
-  />
-);
+function TabsTrigger({ className, ref, ...props }: TabsTriggerProps) {
+  // Freeze the measured width on mount so switching to the active (bolder)
+  // weight doesn't shift siblings.
+  const fixedWidthRef = React.useCallback((node: HTMLButtonElement | null) => {
+    if (node !== null) {
+      node.style.width = `${node.getBoundingClientRect().width}px`;
+    }
+  }, []);
+  return (
+    <Tabs.Tab
+      ref={useComposedRefs(ref, fixedWidthRef)}
+      className={addClassName(
+        className,
+        'flex',
+        'items-center',
+        'justify-center',
+        'shrink-0',
+        'h-6',
+        'px-2',
+        'text-figma-body-medium',
+        'font-figma-default',
+        'text-figma-secondary',
+        'fill-figma-icon-secondary',
+        'whitespace-nowrap',
+        'rounded-figma-md',
+        'not-data-disabled:hover:bg-figma-hover',
+        'not-data-disabled:focus-visible:outline-solid not-data-disabled:focus-visible:outline-1 not-data-disabled:focus-visible:outline-figma-border-selected',
+        'data-active:font-figma-strong data-active:text-figma data-active:fill-figma-icon data-active:bg-figma-secondary',
+        'data-disabled:text-figma-disabled',
+      )}
+      {...props}
+    />
+  );
+}
 
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+TabsTrigger.displayName = 'TabsTrigger';
 
-const TabsContent: React.FC<React.ComponentPropsWithRef<typeof TabsPrimitive.Content>> = ({
-  className,
-  ref,
-  ...props
-}) => (
-  <TabsPrimitive.Content
-    className={cn('bg-figma', className)}
-    {...props}
-    ref={ref}
-  />
-);
+function TabsContent({ className, ref, ...props }: TabsContentProps) {
+  return (
+    <Tabs.Panel
+      className={addClassName(className, 'bg-figma')}
+      {...props}
+      ref={ref}
+    />
+  );
+}
 
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+TabsContent.displayName = 'TabsContent';
 
-export {
-  TabsRoot as Root,
-  TabsList as List,
-  TabsTrigger as Trigger,
-  TabsContent as Content,
-};
+export { TabsRoot as Root, TabsList as List, TabsTrigger as Trigger, TabsContent as Content };

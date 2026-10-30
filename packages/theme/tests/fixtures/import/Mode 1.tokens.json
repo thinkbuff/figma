@@ -1,0 +1,27 @@
+{
+  "font": {
+    "family": {
+      "default": { "$type": "string", "$value": "Inter" },
+      "mono": { "$type": "string", "$value": "Roboto Mono" }
+    },
+    "weight": {
+      "default": { "$type": "number", "$value": 450 },
+      "strong": { "$type": "number", "$value": 550 }
+    }
+  },
+  "body": {
+    "medium": {
+      "fontSize": { "$type": "number", "$value": 11 },
+      "lineHeight": { "$type": "number", "$value": 16 },
+      "letterSpacing": { "$type": "number", "$value": 0.5 },
+      "fontWeight": { "$type": "number", "$value": "{font.weight.default}" },
+      "strong": {
+        "fontSize": { "$type": "number", "$value": 11 },
+        "lineHeight": { "$type": "number", "$value": 16 },
+        "letterSpacing": { "$type": "number", "$value": 0.5 },
+        "fontWeight": { "$type": "number", "$value": "{font.weight.strong}" }
+      }
+    }
+  },
+  "$extensions": { "com.figma.modeName": "Mode 1" }
+}

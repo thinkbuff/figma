@@ -1,0 +1,74 @@
+{
+  "✦": {
+    "_text": {
+      "text-default": {
+        "$type": "color",
+        "$value": "{✦.text.default.default}",
+        "$description": "Alias form of default text.",
+        "$extensions": { "com.figma.codeSyntax": { "WEB": "var(--color-text)" } }
+      }
+    },
+    "text": {
+      "default": {
+        "default": {
+          "$type": "color",
+          "$value": "{🎨.black.800}",
+          "$extensions": { "com.figma.codeSyntax": { "WEB": "var(--color-text)" } }
+        }
+      }
+    },
+    "special": {
+      "code": {
+        "$type": "color",
+        "$value": "#123456",
+        "$extensions": { "com.figma.codeSyntax": { "WEB": "var(--color-code)" } }
+      },
+      "inspectorAccent": {
+        "$type": "color",
+        "$value": "#123456",
+        "$extensions": { "com.figma.codeSyntax": { "WEB": "var(--color-inspector-accent)" } }
+      }
+    },
+    "bg": {
+      "desktopPanel": {
+        "$type": "color",
+        "$value": "#123456",
+        "$extensions": { "com.figma.codeSyntax": { "WEB": "var(--color-bg-desktop-panel)" } }
+      }
+    },
+    "fullscreen": {
+      "selection": {
+        "$type": "color",
+        "$value": "#123456",
+        "$extensions": { "com.figma.codeSyntax": { "WEB": "var(--color-border-fs-selected)" } }
+      }
+    },
+    "icon": {
+      "overlay": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [1, 1, 1],
+          "alpha": 0.9,
+          "hex": "#ffffff"
+        },
+        "$extensions": { "com.figma.codeSyntax": { "WEB": "var(--color-icon-overlay)" } }
+      }
+    }
+  },
+  "🎨": {
+    "black": {
+      "800": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0, 0, 0],
+          "alpha": 0.9,
+          "hex": "#000000"
+        },
+        "$extensions": { "com.figma.codeSyntax": { "WEB": "var(--ramp-black-800)" } }
+      }
+    }
+  },
+  "$extensions": { "com.figma.modeName": "Light" }
+}

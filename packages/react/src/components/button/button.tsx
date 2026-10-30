@@ -1,34 +1,33 @@
-import { Slot } from '@radix-ui/react-slot';
+import { Button as BaseButton } from '@base-ui/react/button';
 
-import { cn } from '~/utils';
+import { addClassName } from '~/utils';
 
 import { buttonVariants, type ButtonVariantsProps } from './button-variants';
 
-interface ButtonProps extends Omit<React.ComponentPropsWithRef<'button'>, 'color'>, ButtonVariantsProps {
+interface ButtonProps
+  extends
+    Omit<React.ComponentPropsWithRef<typeof BaseButton>, 'color'>,
+    Omit<ButtonVariantsProps, 'class' | 'className' | 'icon'> {
   /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   *
-   * Read [Composition](https://www.radix-ui.com/primitives/docs/guides/composition) guide for more details.
+   * Leading icon slot (Design "Icon Lead") — rendered in a 24px box.
    */
-  asChild?: boolean;
+  icon?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ className, variant, color, asChild = false, ref, ...props }) => {
-  const Component = asChild ? Slot : 'button';
+function Button({ className, variant, size, icon, children, ref, ...props }: ButtonProps) {
   return (
-    <Component
+    <BaseButton
       ref={ref}
-      className={cn(
-        buttonVariants({
-          variant,
-          color,
-          className,
-        }),
-      )}
+      className={addClassName(className, buttonVariants({ variant, size, icon: icon != null }))}
       {...props}
-    />
+    >
+      {icon ? (
+        <span className="flex size-6 shrink-0 items-center justify-center">{icon}</span>
+      ) : null}
+      {children}
+    </BaseButton>
   );
-};
+}
 
 Button.displayName = 'Button';
 

@@ -1,15 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { TooltipProvider, Tooltip } from '../tooltip';
-
-import {
-  Slider,
-  SliderRoot,
-  SliderTrack,
-  SliderRange,
-  SliderThumb,
-} from './slider';
+import { Slider, SliderRoot, SliderTrack, SliderRange, SliderThumb } from './slider';
 
 type CustomStoryProps = React.ComponentPropsWithRef<typeof Slider> & {
   showTooltip?: boolean;
@@ -36,14 +29,6 @@ const meta = {
           summary: 'number[]',
           detail:
             'The controlled value of the slider. Must be used in conjunction with onValueChange.',
-        },
-      },
-    },
-    inverted: {
-      table: {
-        type: {
-          summary: 'boolean',
-          detail: 'Whether the slider is visually inverted.',
         },
       },
     },
@@ -82,7 +67,7 @@ const meta = {
         },
       },
     },
-    minStepsBetweenThumbs: {
+    minStepsBetweenValues: {
       table: {
         type: {
           summary: 'number',
@@ -98,15 +83,14 @@ const meta = {
   },
   args: {
     disabled: false,
-    inverted: false,
     orientation: 'horizontal',
     value: [50],
     min: 0,
     max: 100,
     step: 1,
-    minStepsBetweenThumbs: 0,
+    minStepsBetweenValues: 0,
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs();
     return (
       <div className="min-h-60 min-w-60 flex items-center justify-center">
@@ -114,7 +98,7 @@ const meta = {
           {...args}
           value={value}
           className="data-[orientation=vertical]:h-60"
-          onValueChange={changed => updateArgs({ value: changed })}
+          onValueChange={(changed) => updateArgs({ value: changed })}
         />
       </div>
     );
@@ -137,8 +121,56 @@ export const RangeSlider: Story = {
   },
 };
 
+export const Stepper: Story = {
+  args: {
+    hints: [0, 25, 50, 75, 100],
+  },
+};
+
+export const Delta: Story = {
+  args: {
+    hints: [0, 25, 50, 75, 100],
+    baseValue: 50,
+  },
+};
+
+/**
+ * The spec's `Stroke (Modified)` thumb — a `bg-default` knob with an
+ * `icon-onbrand` ring and elevation-300.
+ */
+export const Modified: Story = {
+  args: {
+    modified: true,
+  },
+};
+
+export const Hue: Story = {
+  args: {
+    variant: 'hue',
+    value: [210],
+    max: 360,
+  },
+};
+
+export const Opacity: Story = {
+  args: {
+    variant: 'opacity',
+    fill: '#9747ff',
+    value: [60],
+  },
+};
+
+export const Gradient: Story = {
+  args: {
+    variant: 'gradient',
+    fill: 'linear-gradient(to right, rgba(151, 71, 255, 0), #9747ff)',
+    thumbFills: ['rgba(151, 71, 255, 0.4)', '#9747ff'],
+    value: [20, 80],
+  },
+};
+
 export const CustomStyle: Story = {
-  render: (args) => {
+  render: function Render(args) {
     const [{ value: values }, updateArgs] = useArgs<{
       value: number[];
     }>();
@@ -148,9 +180,9 @@ export const CustomStyle: Story = {
           {...args}
           value={values}
           className="data-[orientation=vertical]:h-60"
-          onValueChange={value => updateArgs({ value })}
+          onValueChange={(value) => updateArgs({ value: value as number[] })}
         >
-          <SliderTrack className="h-1px bg-figma-icon data-[orientation=vertical]:w-1px">
+          <SliderTrack className="h-px bg-figma-icon data-[orientation=vertical]:w-px">
             <SliderRange className="bg-figma-icon" />
           </SliderTrack>
           {values.map((_, index) => (
@@ -174,7 +206,7 @@ export const WithValueTooltip: Story = {
   args: {
     showTooltip: false,
   },
-  render: ({ showTooltip: _, ...props }) => {
+  render: function Render({ showTooltip: _showTooltip, ...props }) {
     const [{ value: values, showTooltip }, updateArgs] = useArgs<{
       value: number[];
       showTooltip: boolean;
@@ -187,7 +219,7 @@ export const WithValueTooltip: Story = {
             {...props}
             value={values}
             className="data-[orientation=vertical]:h-60"
-            onValueChange={value => updateArgs({ value })}
+            onValueChange={(value) => updateArgs({ value: value as number[] })}
           >
             <SliderTrack>
               <SliderRange />
@@ -199,8 +231,7 @@ export const WithValueTooltip: Story = {
                 open={showTooltip}
                 side={props.orientation === 'horizontal' ? 'top' : 'left'}
                 content={<p>{value}</p>}
-                delayDuration={200}
-                updatePositionStrategy="always"
+                delay={200}
               >
                 <SliderThumb
                   onMouseOver={() => updateArgs({ showTooltip: true })}

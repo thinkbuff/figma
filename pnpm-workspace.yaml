@@ -2,6 +2,61 @@ packages:
   - packages/*
   - playground
 
-onlyBuiltDependencies:
-  - esbuild
-  - simple-git-hooks
+catalogs:
+  cli:
+    '@commitlint/cli': ^21.2.4
+    '@commitlint/config-conventional': ^21.2.4
+    changelogen: ^0.6.2
+    simple-git-hooks: ^2.14.0
+    taze: ^21.3.0
+    tsx: ^4.23.15
+  figma:
+    '@figma/plugin-typings': ^1.142.0
+    '@figma/widget-typings': ^1.13.0
+  iconify:
+    '@iconify-json/mdi': ^1.2.3
+    '@iconify-json/tabler': ^1.2.42
+    '@iconify/tailwind4': ^1.2.3
+  react:
+    '@base-ui/react': 1.9.0
+    '@types/react': ^19.3.0
+    '@types/react-dom': ^19.3.0
+    '@vitejs/plugin-react': ^6.1.2
+    react: ^19.3.1
+    react-dom: ^19.3.1
+    sonner: ^2.0.8
+  runtime:
+    '@emmetio/math-expression': ^1.0.5
+    eventemitter3: ^5.0.4
+  storybook:
+    '@storybook/addon-docs': 10.6.3
+    '@storybook/react-vite': 10.6.3
+    storybook: 10.6.3
+  tailwind:
+    '@tailwindcss/vite': ^4.3.3
+    class-variance-authority: ^0.7.1
+    clsx: ^2.1.1
+    tailwind-merge: ^3.7.0
+    tailwindcss: ^4.3.3
+  test:
+    '@vitest/browser': 5.0.5
+    '@vitest/browser-playwright': 5.0.5
+    playwright: 1.64.1
+    vitest: 5.0.5
+    vitest-browser-react: 2.3.0
+  toolchain:
+    glob: ^13.0.6
+    typescript: ^7.0.2
+    vite: 'npm:@voidzero-dev/vite-plus-core@1.4.0'
+    vite-plus: 1.4.0
+  types:
+    '@types/node': ^24.19.2
+    type-fest: ^5.10.0
+
+cleanupUnusedCatalogs: true
+
+minimumReleaseAge: 60
+
+allowBuilds:
+  esbuild: true
+  simple-git-hooks: true

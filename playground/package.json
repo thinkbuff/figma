@@ -1,32 +1,29 @@
 {
   "name": "playground",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.8",
   "type": "module",
   "scripts": {
     "clean": "rm -rf dist node_modules",
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "vp dev",
+    "build": "vp build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vp preview"
   },
   "dependencies": {
     "@thinkbuff/figma-react": "workspace:*",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "catalog:react",
+    "react-dom": "catalog:react"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "catalog:tailwind",
     "@thinkbuff/figma-theme": "workspace:*",
-    "@types/react": "^19.1.4",
-    "@types/react-dom": "^19.1.5",
-    "@unocss/preset-rem-to-px": "^66.1.2",
-    "@vitejs/plugin-react": "^4.4.1",
-    "typescript": "^5.8.3",
-    "unocss": "^66.1.2",
-    "unocss-preset-animations": "^1.2.1",
-    "vite": "^6.3.5"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
+    "@types/react": "catalog:react",
+    "@types/react-dom": "catalog:react",
+    "@vitejs/plugin-react": "catalog:react",
+    "tailwindcss": "catalog:tailwind",
+    "typescript": "catalog:toolchain",
+    "vite": "catalog:toolchain",
+    "vite-plus": "catalog:toolchain"
   }
 }

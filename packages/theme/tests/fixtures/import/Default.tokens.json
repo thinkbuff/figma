@@ -1,0 +1,11 @@
+{
+  "Spacers": {
+    "spacer-0": { "$type": "number", "$value": 0 },
+    "spacer-2": { "$type": "number", "$value": 8 }
+  },
+  "Radius": {
+    "radius-medium": { "$type": "number", "$value": 5 },
+    "radius-full": { "$type": "number", "$value": 9999 }
+  },
+  "$extensions": { "com.figma.modeName": "Default" }
+}

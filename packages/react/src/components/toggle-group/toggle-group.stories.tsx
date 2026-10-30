@@ -1,9 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
+
+import {
+  AlignHorizontalCenterIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
+  TextAlignJustifiedIcon,
+} from '~/icons';
 
 import { Tooltip, TooltipProvider } from '../tooltip';
-
-import { ToggleGroup, ToggleGroupItem } from './toggle-group';
+import { ToggleGroup, ToggleGroupItem, ToggleGroupText } from './toggle-group';
 
 type StoryArgs = React.ComponentPropsWithRef<typeof ToggleGroup>;
 
@@ -20,50 +26,45 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
-    type: {
-      table: {
-        disable: true,
-      },
-    },
   },
   args: {
     disabled: false,
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs<{
-      value: string;
+      value: string[];
     }>();
     const options = [
       {
         value: 'horizontal',
         label: 'Horizontal layout',
-        icon: <span className="i-tabler-arrow-left"></span>,
+        icon: <span className="icon-[tabler--arrow-left]"></span>,
       },
       {
         value: 'vertical',
         label: 'Vertical layout',
-        icon: <span className="i-tabler-arrow-down"></span>,
+        icon: <span className="icon-[tabler--arrow-down]"></span>,
       },
       {
         value: 'wrap',
-        label: 'Wrap ',
-        icon: <span className="i-tabler-arrow-back"></span>,
+        label: 'Wrap',
+        icon: <span className="icon-[tabler--arrow-back]"></span>,
       },
     ];
     return (
       <ToggleGroup
         {...args}
-        type="single"
-        defaultValue="horizontal"
+        defaultValue={['horizontal']}
         value={value}
         onValueChange={(selected) => {
-          if (selected) {
-            updateArgs({ value: selected });
-          }
+          updateArgs({ value: selected });
         }}
       >
-        {options.map(option => (
-          <ToggleGroupItem key={option.value} value={option.value}>
+        {options.map((option) => (
+          <ToggleGroupItem
+            key={option.value}
+            value={option.value}
+          >
             {option.icon}
           </ToggleGroupItem>
         ))}
@@ -76,17 +77,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Single: Story = {
   args: {
-    type: 'single',
-    value: 'horizontal',
+    value: ['horizontal'],
   },
 };
 
 export const Multiple: Story = {
   args: {
-    type: 'multiple',
+    multiple: true,
     value: [],
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs<{
       value: string[];
     }>();
@@ -94,31 +94,34 @@ export const Multiple: Story = {
       {
         value: 'bold',
         label: 'Bold',
-        icon: <span className="i-tabler-bold"></span>,
+        icon: <span className="icon-[tabler--bold]"></span>,
       },
       {
         value: 'italic',
         label: 'Italic',
-        icon: <span className="i-tabler-italic"></span>,
+        icon: <span className="icon-[tabler--italic]"></span>,
       },
       {
         value: 'underline',
-        label: 'Underline ',
-        icon: <span className="i-tabler-underline"></span>,
+        label: 'Underline',
+        icon: <span className="icon-[tabler--underline]"></span>,
       },
     ];
     return (
       <ToggleGroup
         {...args}
-        type="multiple"
+        multiple
         defaultValue={[]}
         value={value}
         onValueChange={(selected) => {
           updateArgs({ value: selected });
         }}
       >
-        {options.map(option => (
-          <ToggleGroupItem key={option.value} value={option.value}>
+        {options.map((option) => (
+          <ToggleGroupItem
+            key={option.value}
+            value={option.value}
+          >
             {option.icon}
           </ToggleGroupItem>
         ))}
@@ -129,10 +132,10 @@ export const Multiple: Story = {
 
 export const WithTooltip: Story = {
   args: {
-    type: 'multiple',
+    multiple: true,
     value: [],
   },
-  render: (args) => {
+  render: function Render(args) {
     const [{ value }, updateArgs] = useArgs<{
       value: string[];
     }>();
@@ -140,36 +143,37 @@ export const WithTooltip: Story = {
       {
         value: 'bold',
         label: 'Bold',
-        icon: <span className="i-tabler-bold"></span>,
+        icon: <span className="icon-[tabler--bold]"></span>,
       },
       {
         value: 'italic',
         label: 'Italic',
-        icon: <span className="i-tabler-italic"></span>,
+        icon: <span className="icon-[tabler--italic]"></span>,
       },
       {
         value: 'underline',
-        label: 'Underline ',
-        icon: <span className="i-tabler-underline"></span>,
+        label: 'Underline',
+        icon: <span className="icon-[tabler--underline]"></span>,
       },
     ];
     return (
-      <TooltipProvider delayDuration={200}>
+      <TooltipProvider delay={200}>
         <ToggleGroup
           {...args}
-          type="multiple"
+          multiple
           defaultValue={[]}
           value={value}
           onValueChange={(selected) => {
             updateArgs({ value: selected });
           }}
         >
-          {options.map(option => (
-            <Tooltip key={option.value} content={option.label}>
+          {options.map((option) => (
+            <Tooltip
+              key={option.value}
+              content={option.label}
+            >
               <div className="inline-flex items-center justify-center">
-                <ToggleGroupItem value={option.value}>
-                  {option.icon}
-                </ToggleGroupItem>
+                <ToggleGroupItem value={option.value}>{option.icon}</ToggleGroupItem>
               </div>
             </Tooltip>
           ))}
@@ -181,9 +185,61 @@ export const WithTooltip: Story = {
 
 export const Disabled: Story = {
   args: {
-    type: 'single',
-    value: 'vertical',
+    value: ['vertical'],
     disabled: true,
+  },
+};
+
+const alignOptions = [
+  { value: 'left', label: 'Align left', icon: <AlignLeftIcon size="4" /> },
+  { value: 'center', label: 'Align center', icon: <AlignHorizontalCenterIcon size="4" /> },
+  { value: 'right', label: 'Align right', icon: <AlignRightIcon size="4" /> },
+  { value: 'justify', label: 'Align justify', icon: <TextAlignJustifiedIcon size="4" /> },
+];
+
+export const FullWidth: Story = {
+  render: function Render() {
+    return (
+      <ToggleGroup
+        fullWidth
+        defaultValue={['left']}
+      >
+        {alignOptions.map((option) => (
+          <ToggleGroupItem
+            key={option.value}
+            value={option.value}
+            aria-label={option.label}
+          >
+            {option.icon}
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
+    );
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 240 }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const Text: Story = {
+  render: function Render() {
+    return (
+      <ToggleGroup defaultValue={['minimalist']}>
+        <ToggleGroupItem value="minimalist">
+          <ToggleGroupText>Minimalist</ToggleGroupText>
+        </ToggleGroupItem>
+        <ToggleGroupItem value="modern">
+          <ToggleGroupText>Modern</ToggleGroupText>
+        </ToggleGroupItem>
+        <ToggleGroupItem value="retro">
+          <ToggleGroupText>Retro</ToggleGroupText>
+        </ToggleGroupItem>
+      </ToggleGroup>
+    );
   },
 };
 

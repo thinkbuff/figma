@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { cn } from '~/utils';
 
@@ -47,9 +47,15 @@ const meta = {
           })}
         >
           <span>Blog</span>
-          <Separator decorative={decorative} orientation={orientation} />
+          <Separator
+            decorative={decorative}
+            orientation={orientation}
+          />
           <span>Docs</span>
-          <Separator decorative={decorative} orientation={orientation} />
+          <Separator
+            decorative={decorative}
+            orientation={orientation}
+          />
           <span>Community</span>
         </div>
       </div>

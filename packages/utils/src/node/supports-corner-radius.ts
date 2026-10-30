@@ -13,16 +13,16 @@ export function supportsCornerRadius(
   | StarNode
   | VectorNode {
   return (
-    node.type === 'BOOLEAN_OPERATION'
-    || node.type === 'COMPONENT'
-    || node.type === 'COMPONENT_SET'
-    || node.type === 'ELLIPSE'
-    || node.type === 'FRAME'
-    || node.type === 'HIGHLIGHT'
-    || node.type === 'INSTANCE'
-    || node.type === 'POLYGON'
-    || node.type === 'RECTANGLE'
-    || node.type === 'STAR'
-    || node.type === 'VECTOR'
+    node.type === 'BOOLEAN_OPERATION' ||
+    node.type === 'COMPONENT' ||
+    node.type === 'COMPONENT_SET' ||
+    node.type === 'ELLIPSE' ||
+    node.type === 'FRAME' ||
+    node.type === 'HIGHLIGHT' ||
+    node.type === 'INSTANCE' ||
+    node.type === 'POLYGON' ||
+    node.type === 'RECTANGLE' ||
+    node.type === 'STAR' ||
+    node.type === 'VECTOR'
   );
 }
