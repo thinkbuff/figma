@@ -177,8 +177,11 @@ reuse Core components or their exported variants instead of copying classes.
   commit, push, then tag `vX.Y.Z` and push the tag — the tag is the only
   release trigger. `.github/workflows/release.yml` verifies the tag equals the
   root package version, reruns check/typecheck/test/build, publishes all
-  packages to npm with provenance, and creates the GitHub release. npm auth
-  uses `NPM_TOKEN` until trusted publishing is configured on npmjs.com.
+  packages to npm with provenance via trusted publishing (OIDC, no stored
+  token), and creates the GitHub release.
+- The Storybook + playground site (`pnpm pages:build`) deploys to GitHub Pages
+  on pushes to `main` via `.github/workflows/pages.yml` — the site tracks
+  latest `main`, not the latest release.
 - Public API: `--figma-*` variable names, Utility contract class names,
   component props and compound parts, and subpath exports.
 - Before 0.1.0 is published, API changes are made directly. From 0.1.0 on:
