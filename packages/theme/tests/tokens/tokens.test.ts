@@ -66,6 +66,8 @@ describe('generated css', () => {
 
   it('does not claim :root in the figjam block', () => {
     expect(figjamThemeCss).not.toContain(':root');
-    expect(figjamThemeCss).toContain('html.figjam, .figjam {');
+    expect(figjamThemeCss).toContain(
+      '.figjam, .figma-light .figjam, .figjam .figma-light, .figjam.figma-light {',
+    );
   });
 });
